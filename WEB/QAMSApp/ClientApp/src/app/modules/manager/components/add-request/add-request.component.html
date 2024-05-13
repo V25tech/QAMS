@@ -1,0 +1,169 @@
+<div class="container-fluid">
+  <div class="row p-2">
+
+    <div class="col d-flex justify-content-between align-items-center">
+      <h4 class="page-title">{{editMode? 'Modify': 'New' }} Document Request</h4>
+      <div class="back-icon" style="margin-right: 10px;">
+        <a href="javascript:void(0);" onclick="history.back();">
+          <i class="bi bi-arrow-left-circle-fill" style="font-size: 30px;"></i>
+        </a>
+      </div>
+    </div>
+
+
+  </div>
+  <div class="row p-2">
+    <div class="col">
+      <form (ngSubmit)="saveRequest()" #fm="ngForm">
+        <div class="p-4 bg-white shadow-dark rounded-2">
+
+          <div class="form-group row">
+            <label for="docType" class="col-sm-2 col-form-label">
+              Document Type<span style="color: red; font-weight: bolder;">*</span>
+            </label>
+            <div class="col-sm-10">
+              <p-dropdown name="docType" [options]="typeSource" [(ngModel)]="request.documenttype"
+                          optionLabel="Documenttypename" optionValue="Documenttypename" [disabled]="viewMode"
+                          [autoDisplayFirst]="false" [required]="true"
+                          #DocumenttypeInput="ngModel" placeholder="Select Document Type" (onChange)="onChange()">
+              </p-dropdown>
+              <div *ngIf="DocumenttypeInput.invalid && (DocumenttypeInput.dirty || DocumenttypeInput.touched)" class="text-danger">
+                Document Type is Required.
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="reqCode" class="col-sm-2 col-form-label">Request Code</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="reqCode" name="reqCode" placeholder="System Generated"
+                     [(ngModel)]="request.drid" [disabled]="viewMode||editMode" readonly />
+            </div>
+          </div>
+
+
+
+          <!-- <div class="form-group row">
+            <label for="department" class="col-sm-2 col-form-label">Department<span
+                style="color: red; font-weight: bolder;">*</span></label>
+            <div class="col-sm-10">
+              <p-dropdown name="department" [options]="departmentsSource" [(ngModel)]="request.department"
+                optionLabel="DepartmentName" optionValue="DepartmentName" [disabled]="viewMode" [required]="true"
+                [autoDisplayFirst]="false" #DepartmentInput="ngModel" placeholder="Select Document Type">
+              </p-dropdown>
+              <div *ngIf="DepartmentInput.invalid && (DepartmentInput.dirty || DepartmentInput.touched)" class="text-danger">
+                Department is required
+              </div>
+            </div>
+          </div> -->
+
+          <div class="form-group row">
+            <label for="department" class="col-sm-2 col-form-label">Department</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="Department" name="Department" placeholder="Select Departmnet"
+                     [(ngModel)]="request.department" readonly [disabled]="viewMode" />
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="purpose" class="col-sm-2 col-form-label">
+              Purpose<span style="color: red; font-weight: bolder;">*</span>
+            </label>
+            <div class="col-sm-10">
+              <textarea class="form-control mw-350" id="purpose" name="purpose" rows="3" placeholder="Purpose"
+                        [(ngModel)]="request.purpose" [disabled]="viewMode" required #purposeInput="ngModel">
+              </textarea>
+              <div *ngIf="purposeInput.invalid && (purposeInput.dirty || purposeInput.touched)" class="text-danger">
+                Give Your Purpose.
+              </div>
+            </div>
+
+          </div>
+          <div class="form-group row">
+            <!-- <div class="form-group row" *ngIf="request.status=='Rejected' || request.status=='In-Progress' || request.status==''"> -->
+            <label for="workflow" class="col-sm-2 col-form-label">
+              Workflow<span style="color: red; font-weight: bolder;">*</span>
+            </label>
+            <div class="col-sm-10">
+              <p-dropdown name="workflow" [options]="workflowsSource" [(ngModel)]="request.workflow"
+                          optionLabel="workflowName" optionValue="workflowName" [disabled]="viewMode || editMode" [required]="true"
+                          [autoDisplayFirst]="false" #WorkFlowInput="ngModel" placeholder="Select Workflow">
+              </p-dropdown>
+              <div *ngIf="WorkFlowInput.invalid && (WorkFlowInput.dirty || WorkFlowInput.touched)" class="text-danger">
+                Workflow is required.
+              </div>
+            </div>
+          </div>
+
+         
+          <div *ngIf="viewMode" class="form-group row">
+            <label for="reason" class="col-sm-2 col-form-label">Reason(s)/Remark(s)</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="reason" name="reason"
+                [(ngModel)]="request.reason" #reasonInput="ngModel" [required]="true"/>
+                <div *ngIf="!fm.form.valid && isSubmit" class="text-danger">
+                  Reason is required on return/reject.
+                </div>
+            </div>
+          </div>
+  
+  
+        </div>
+
+
+        <div class="form-group row my-4">
+          <div class="col-sm-10 offset-sm-2">
+            <button type="button" class="btn btn-outline-secondary mx-2" (click)="onCancel()">
+              Cancel
+            </button>
+            <button type="submit" class="btn btn-primary" *ngIf="!viewMode" [disabled]="!fm.form.valid || isButtonDisabled">Submit</button>
+
+            <button type="button" class="col-xs-1 mx-2  btn btn-success" *ngIf="viewMode && !iscompleted" (click)="approve(template)">Proceed</button>
+            <!-- <button type="button" class="col-xs-1 mx-2 offset-sm-1 btn btn-primary" *ngIf="viewMode && !iscompleted" (click)="return(template)">Return</button>
+            <button type="button" class="col-xs-1 mx-2 offset-sm-1 btn btn-danger" *ngIf="viewMode && !iscompleted" (click)="reject(template)">Reject</button> -->
+
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<ng-template #template>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">E-sign Credentials</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modalRef!.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" class="form-control" id="username" name="username" value="{{ username }}" readonly>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" name="password">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="modalRef!.hide()">Close</button>
+        <button type="button" class="btn btn-success" (click)="confirmApproval()">Approve</button>
+        <button type="button" class="btn btn-primary" (click)="confirmReturn()">Return</button>
+        <button type="button" class="btn btn-danger" (click)="confirmReject()">Reject</button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+

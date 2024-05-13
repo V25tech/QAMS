@@ -1,0 +1,193 @@
+<div class="container-fluid">
+  <div class="row p-2">
+
+    <div class="col d-flex justify-content-between align-items-center">
+      <h4 class="page-title">{{editMode? 'Update': 'Add'}} Existing Document Request</h4>
+      <div class="back-icon" style="margin-right: 10px;">
+        <a href="javascript:void(0);" onclick="history.back();">
+          <i class="bi bi-arrow-left-circle-fill" style="font-size: 30px;"></i>
+        </a>
+      </div>
+    </div>
+
+  </div>
+  <div class="row p-2">
+    <div class="col">
+      <form (ngSubmit)="Save()" #fm="ngForm">
+        <div class="p-4 bg-white shadow-dark rounded-2">
+
+
+          <div *ngIf="!editMode"  class="form-group row">
+            <label for="reviewsType" class="col-sm-2 col-form-label">Print</label>
+            <div class="col-sm-10">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" name="reviewsType1" type="radio" id="reviewsType2" value="single"
+                  [(ngModel)]="printType" />
+                <label class="form-check-label" for="reviewsType2">Single</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" name="reviewsType1" type="radio" id="reviewsType1" value="bulk"
+                  [(ngModel)]="printType" />
+                <label class="form-check-label" for="reviewsType1">Bulk</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Single option controls start here -->
+          <fieldset *ngIf="printType != 'bulk'" [disabled]="printType == 'bulk'">
+
+            <div class="form-group row">
+              <label for="docType" class="col-sm-2 col-form-label">Document Type<span
+                  style="color: red; font-weight: bolder;">*</span></label>
+              <div class="col-sm-10">
+                <p-dropdown name="docType" [options]="typeSource" [(ngModel)]="existingDocReq.documenttype"
+                  optionLabel="Documenttypename" optionValue="Documenttypename" [disabled]="viewMode"
+                  [autoDisplayFirst]="false" [required]="true" #DocumenttypeInput="ngModel" placeholder="Select Document Type">
+                </p-dropdown>
+                <div *ngIf="DocumenttypeInput.invalid && (DocumenttypeInput.dirty || DocumenttypeInput.touched)"
+                  class="text-danger">
+                  Document Type is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="department" class="col-sm-2 col-form-label">Department<span
+                  style="color: red; font-weight: bolder;">*</span></label>
+              <div class="col-sm-10">
+                <p-dropdown name="department" [options]="departmentsSource" [(ngModel)]="existingDocReq.department"
+                  optionLabel="DepartmentName" optionValue="DepartmentName" [disabled]="viewMode" [required]="true"
+                  [autoDisplayFirst]="false" #DepartmentInput="ngModel" placeholder="Select Department">
+                </p-dropdown>
+                <div *ngIf="DepartmentInput.invalid && (DepartmentInput.dirty || DepartmentInput.touched)"
+                  class="text-danger">
+                  Department is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="documentTitle" class="col-sm-2 col-form-label">Document Title</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="documentTitle" name="documentTitle"
+                  placeholder="Document Title" [(ngModel)]="existingDocReq.documenttitle" #documenttitleInput="ngModel" maxlength="99"
+                  required />
+                <div *ngIf="documenttitleInput.invalid && (documenttitleInput.dirty || documenttitleInput.touched)"
+                  class="text-danger">
+                  Document Title is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="documentType" class="col-sm-2 col-form-label">Document Number</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="dnumber" name="Dnumber" placeholder="Document Number"
+                  [(ngModel)]="existingDocReq.documentno" #documentno="ngModel" maxlength="99" required />
+                <div *ngIf="documentno.invalid && (documentno.dirty || documentno.touched)" class="text-danger">
+                  Document Number is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="documentType" class="col-sm-2 col-form-label">Effective Date</label>
+              <div class="col-sm-10">
+                <input type="date" class="form-control" id="edate" name="Edate"  placeholder="Effective Date"
+                  [(ngModel)]="existingDocReq.effectiveDate"
+                  #effectiveDateInput="ngModel" required />
+                <div *ngIf="effectiveDateInput.invalid && (effectiveDateInput.dirty || effectiveDateInput.touched)"
+                  class="text-danger">
+                  Effective Date is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="documentType" class="col-sm-2 col-form-label">Review Date</label>
+              <div class="col-sm-10">
+                <input type="date" class="form-control" id="rdate" name="Rdate" placeholder="Review Date"
+                  [(ngModel)]="existingDocReq.reviewDate"
+                  #reviewDateInput="ngModel"  />
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="document" class="col-sm-2 col-form-label">Browse Document</label>
+              <div *ngIf="!existingDocReq.document" class="col-sm-10">
+                <input class="form-control" type="file" id="fileInput" name="fileInput" #fileInput
+                accept=".pdf" [disabled]="isUploaded" (change)="onFileSelected($event)">
+                  <div *ngIf="isFileUploadError && printType == 'single'"
+                  class="text-danger">
+                  Document file upload is required.
+                </div>
+              </div>
+              <div *ngIf="existingDocReq.document" class="col-sm-1">
+                <a class="link-opacity-100-hover" (click)="previewtemplate(template)">View Document</a>
+              </div>
+              <div *ngIf="existingDocReq.document" class="col-sm-9">
+                <a class="link-opacity-100-hover" style="color: red;" (click)="onDeleteFile()">Delete</a>
+              </div>
+            </div>
+            <div *ngIf="selectedFile && !isUploaded" class="form-group row">
+              <label for="document" class="col-sm-2 col-form-label"></label>
+              <div class="col-sm-10">
+                <button type="button" class="btn btn-outline-secondary mx-2" (click)="onUpload()">Upload</button>
+              </div>
+            </div>
+          </fieldset>
+          <!-- Single option controls end here -->
+
+          <!-- Bulk option controls start here -->
+          <fieldset *ngIf="printType != 'single'" [disabled]="printType == 'single'">
+            <div class="form-group row">
+              <label for="bdoc" class="col-sm-2 col-form-label">Sample Template</label>
+              <div class="col-sm-10">
+                <a href="javascript: void(0)" (click)="export()">Download Excel Sheet</a>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="document" class="col-sm-2 col-form-label">Browse Document</label>
+              <div *ngIf="!existingDocReq.document" class="col-sm-10">
+                <input class="form-control" type="file" id="fileInput" name="fileInput" #fileInput
+                  accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+                  [disabled]="isUploaded" (change)="onFileSelected($event)">
+                  <div *ngIf="isFileUploadError && printType == 'bulk'"
+                  class="text-danger">
+                  Document file is required.
+                </div>
+              </div>              
+            </div>
+            
+          </fieldset>
+          <!-- Bulk option controls end here -->
+
+          <div class="form-group row my-4">
+            <div class="col-sm-10 offset-sm-2">             
+              <button type="submit" class="btn btn-primary" *ngIf="!editMode"
+                [disabled]="!fm.form.valid">Submit</button>
+              <button type="submit" class="btn btn-primary" *ngIf="editMode" [disabled]="!fm.form.valid">Update</button>
+              <button type="button" class="btn btn-outline-secondary mx-2" (click)="onCancel()">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Preview</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="closeModel()">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <iframe *ngIf="pdfUrl" [src]="pdfUrl" type="application/pdf" width="100%" height="500px"></iframe>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="closeModel()">Close</button>
+  </div>
+</ng-template>

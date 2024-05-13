@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile></DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Logs\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\QAMS.WEB.DataAccess\QAMS.WEB.DataAccess.csproj" />
+    <ProjectReference Include="..\..\QAMS.Entities\QAMS.Entities.csproj" />
+    <ProjectReference Include="..\QAMS.WEB.Services\QAMS.WEB.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="VAMLIbrary.Core">
+        <HintPath>..\..\SharedDlls\VAMLIbrary.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

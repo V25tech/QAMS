@@ -1,0 +1,378 @@
+<div class="container-fluid">
+  <div class="row p-2">
+    <div class="col">
+     
+     
+<div class="col d-flex justify-content-between align-items-center">
+
+  <h4 class="page-title">{{title}}</h4>
+
+      <div class="back-icon" style="margin-right: 10px;">
+
+        <a href="javascript:void(0);" onclick="history.back();">
+
+          <i class="bi bi-arrow-left-circle-fill" style="font-size: 30px;"></i>
+
+        </a>
+
+      </div>
+
+    </div>
+    </div>
+  </div>
+  <div class="row p-2">
+    <div class="col">
+      <form (ngSubmit)="addWorkflow(workflow)" #fm="ngForm">
+        <div class="p-4 bg-white shadow-dark rounded-2">
+          <div class="form-group row">
+            <label for="workflowName" class="col-sm-2 col-form-label"
+              >Workflow Name <span style="color: red; font-weight: bolder;">*</span></label
+            >
+            <div class="col-sm-10">
+              <input
+                type="text"
+                class="form-control"
+                id="workflowName"
+                name="workflowName"
+                placeholder="Enter workflow Name"
+                [(ngModel)]="workflow.workflowName" [disabled]="editMode"
+                required
+                #workflowNameInput="ngModel" maxlength="49"
+              />
+              <div *ngIf="workflowNameInput.invalid && (workflowNameInput.dirty || workflowNameInput.touched)" class="text-danger">
+                Workflow Name is Required
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="workflowCode" class="col-sm-2 col-form-label"
+              > Workflow Code<span style="color: red; font-weight: bolder;">*</span></label
+            >
+            <div class="col-sm-10">
+              <input
+                type="text"
+                class="form-control"
+                id="workflowCode"
+                name="workflowCode"
+                placeholder="System Generated"
+                [(ngModel)]="workflow.code" 
+                required
+                #workflowCodeInput="ngModel"
+                readonly
+              />
+              <div *ngIf="workflowCodeInput.invalid && (workflowCodeInput.dirty || workflowCodeInput.touched)" class="text-danger">
+                workflowCode is Required
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="workflow" class="col-sm-2 col-form-label"
+              >Document Stage<span style="color: red; font-weight: bolder;">*</span></label
+            >
+            <div class="col-sm-3">
+              <!-- <p-dropdown
+                name="workflowStage"
+                [options]="stageSource"
+                [(ngModel)]="workflow.documentstage"
+                optionLabel="label"
+                optionValue="label"
+                [required]="true"
+                [autoDisplayFirst]="false"
+                placeholder="Select Document Stage"
+                #documentstage="ngModel">
+              </p-dropdown> -->
+              <p-multiSelect
+                [options]="stageSource"
+                [(ngModel)]="selectedStage"
+                placeholder="Select Document Stage"
+                name="workflowStage"
+                optionLabel="value"
+                display="chip"
+                [required]="true"
+                #documentstage="ngModel" [maxSelectedLabels]="100">
+              </p-multiSelect>
+              <div *ngIf="documentstage.invalid && (documentstage.dirty || documentstage.touched)" class="text-danger">
+                Document Stage is required
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="prefix" class="col-sm-2 col-form-label"
+              >Document Type<span style="color: red; font-weight: bolder;">*</span> 
+            </label>
+            <div class="col-sm-10">
+              <p-dropdown
+                name="type"
+                [options]="types"
+                [(ngModel)]="workflow.documenttype"
+                optionLabel="Documenttypename"
+                placeholder="Select Document Type"
+                optionValue="Documenttypename"
+                [required]="true"
+                [autoDisplayFirst]="false"
+                #documenttypeInput="ngModel"  (onChange)="typeChange()">
+              </p-dropdown>
+              <div *ngIf="documenttypeInput.invalid && (documenttypeInput.dirty || documenttypeInput.touched)" class="text-danger">
+                Document Type is required
+              </div>
+            </div>
+          </div>
+
+          <!-- <span style="color: red; font-weight: bolder;">*</span> -->
+
+          <div class="form-group row">
+            <label for="department" class="col-sm-2 col-form-label"
+              >Department <span style="color: red; font-weight: bolder;">*</span> </label>
+            <div class="col-sm-10">
+              <p-multiSelect
+                [options]="departs"
+                [(ngModel)]="workflow.department"
+                placeholder="Select Department"
+                name="department"
+                optionLabel="DepartmentName"
+                display="chip"
+                [required]="true"
+                #departmentInput="ngModel"  [disabled]="true">
+              </p-multiSelect>
+              <div *ngIf="departmentInput.invalid && (departmentInput.dirty || departmentInput.touched)" class="text-danger">
+                Department is required
+              </div>
+            </div>
+          </div>
+        </div>
+        <form #fm1="ngForm">
+        <div class="p-4 bg-white mt-3 shadow-dark rounded-2">
+          <h5 class="page-card-title">Reviewers</h5>
+          <div class="form-group row" *ngIf="workflow.reviewsType === 'user'">
+            <label for="reviewers" class="col-sm-2 col-form-label"
+              >Reviewer(s)</label
+            >
+            <div class="col-sm-10">
+              <p-multiSelect
+                [options]="users"
+                [(ngModel)]="workflow.reviewers"
+                defaultLabel="Select a User"
+                id="UserID"
+                name="UserID"
+                optionLabel="UserID"
+                display="chip"  (ngModelChange)="calculatereviewscount()"
+                >
+              </p-multiSelect>
+              <!-- <div *ngIf="reviewers.invalid && (reviewers.dirty || reviewers.touched)" class="text-danger">
+                Reviewer(s) is required.
+              </div> -->
+              <!-- <p-dropdown
+                name="UserID"
+                [options]="users"
+                [(ngModel)]="workflow.review" 
+                optionLabel="UserID" placeholder="Select a User"
+              >
+              </p-dropdown> -->
+            </div>
+            <!-- <div class="col-sm-10">
+              <div class="d-flex align-items-center mb-2" *ngFor="let reviewer of reviewers; let i = index">
+                <p-dropdown name= "reviewer{{i}}" [options]="reviewersDatasource" [(ngModel)]="reviewer.value" optionLabel="label"  [group]="true">
+                  <ng-template let-group pTemplate="group">
+                    <div class="flex align-items-center">
+                        <span>{{ group.label }}</span>
+                    </div>
+                </ng-template>
+                </p-dropdown>
+                
+                <a (click)="removeReviewer(i)"><i class="bi bi-x fs-4 mx-2 text-secondary"></i></a>
+                
+              </div>
+              <a (click)="addReviewer()"><i class="bi bi-person-add fs-4 me-2 "></i> Add Reviewer</a>
+            </div> -->
+          </div>
+          
+
+          <div class="form-group row">
+            <label for="reviewsType" class="col-sm-2 col-form-label"> </label>
+            <div class="col-sm-10">
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  name="reviewsType"
+                  type="radio"
+                  id="reviewsType2"
+                  [(ngModel)]="workflow.reviewsType"
+                  value="user" 
+                />
+                <label class="form-check-label" for="reviewsType2"
+                  >User(s)</label
+                >
+              </div>
+              <!-- <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  name="reviewsType1"
+                  type="radio"
+                  id="reviewsType1"
+                  [(ngModel)]="workflow.reviewsType"
+                  value="group" [disabled]="true"
+                />
+                <label class="form-check-label" for="reviewsType1">User Group</label>
+              </div> -->
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="reviewsCount" class="col-sm-2 col-form-label"
+              >No. of Reviews
+            </label>
+            <div class="col-sm-10">
+              <input
+                type="number"
+                class="form-control"
+                id="reviewsCount"
+                name="reviewsCount"
+                max="10"
+                min="1"
+                placeholder="Select No. of Reviews"
+                [(ngModel)]="workflow.reviewsCount" readonly
+                
+              />
+              <!-- required
+                #reviewsCountInput="ngModel" -->
+               
+    <!-- <div *ngIf="workflow.reviewsCount > 1" class="text-danger">
+      Select Only One Reviwer.
+            </div> -->
+            </div>
+          </div>
+
+          <div class="form-group row" *ngIf="workflow.reviewsType !== 'user'">
+            <label for="reviewers" class="col-sm-2 col-form-label"
+              >Reviewer Group</label
+            >
+            <div class="col-sm-10">
+              <p-dropdown
+                name="usergroupname"
+                [options]="usergroups"
+                [(ngModel)]="workflow.reviewersGroup"
+                optionLabel="usergroupname" placeholder="Select a User Group"
+                optionValue="usergroupname"
+              >
+              </p-dropdown>
+            </div>
+          </div>
+
+          
+        </div>
+      </form>
+        <div class="p-4 bg-white mt-3 shadow-dark rounded-2">
+          <h5 class="page-card-title">Approvers</h5>
+          <div class="form-group row" *ngIf="workflow.approvalsType === 'user'">
+            <label for="reviewers" class="col-sm-2 col-form-label"
+              >Approver(s)<span style="color: red; font-weight: bolder;">*</span></label
+            >
+            <div class="col-sm-10">
+              <p-multiSelect
+                [options]="users"
+                [(ngModel)]="workflow.approvals"
+                defaultLabel="Select a User"
+                id="UserID1"
+                name="UserID1"
+                optionLabel="UserID"
+                display="chip" (ngModelChange)="calculateapprovalscount()"
+                [required]="true"
+                #approvals="ngModel">
+              </p-multiSelect>
+              <div *ngIf="approvals.invalid && (approvals.dirty || approvals.touched)" class="text-danger">
+                Approver(s) is required
+              </div>
+              <!-- <p-dropdown
+              name="UserID"
+              [options]="users"
+              [(ngModel)]="workflow.approve" 
+              optionLabel="UserID" placeholder="Select a User"
+            >
+            </p-dropdown> -->
+            </div>
+           
+          </div>
+         
+
+          <div class="form-group row">
+            <label for="approvalType" class="col-sm-2 col-form-label"> </label>
+            <div class="col-sm-10">
+              <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  name="approvalType"
+                  type="radio"
+                  id="approvalType2"
+                  [(ngModel)]="workflow.approvalsType"
+                  value="user"
+                />
+                <label class="form-check-label" for="approvalType2"
+                  >User(s)</label
+                >
+              </div>
+              <!-- <div class="form-check form-check-inline">
+                <input
+                  class="form-check-input"
+                  name="approvalType1"
+                  type="radio"
+                  id="approvalType1"
+                  [(ngModel)]="workflow.approvalsType"
+                  value="group" [disabled]="true"
+                />
+                <label class="form-check-label" for="approvalType1">User Group</label>
+              </div> -->
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="reviewsCount" class="col-sm-2 col-form-label"
+              >No. of Approvals<span style="color: red; font-weight: bolder;">*</span>
+            </label>
+            <div class="col-sm-10">
+              <input
+                type="number"
+                class="form-control"
+                id="approvalsCount"
+                name="approvalsCount"
+                max="10"
+                min="1"
+                placeholder="Select No. of Reviews"
+                [(ngModel)]="workflow.approvalsCount" readonly
+              />
+            </div>
+          </div>
+
+          <div class="form-group row" *ngIf="workflow.approvalsType !== 'user'">
+            <label for="reviewers" class="col-sm-2 col-form-label"
+              >Approver Group</label
+            >
+            <div class="col-sm-10">
+              <p-dropdown
+                name="usergroupname"
+                [options]="usergroups"
+                [(ngModel)]="workflow.approvalsGroup"
+                optionLabel="usergroupname" placeholder="Select a User Group"
+                optionValue="usergroupname"
+              >
+              </p-dropdown>
+            </div>
+          </div>
+
+          
+        </div>
+
+        <div class="form-group row my-4">
+          <div class="col-sm-10 offset-sm-2">
+            <button
+              type="button"
+              class="btn btn-outline-secondary mx-2"
+              (click)="onCancel()"
+            >
+              Cancel
+            </button>
+            <button type="submit" class="btn btn-primary" [disabled]="!fm.form.valid || isButtonDisabled" >{{editMode?'Update':'Submit'}}</button>          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
