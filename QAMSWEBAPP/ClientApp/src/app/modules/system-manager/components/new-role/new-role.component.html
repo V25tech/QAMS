@@ -1,0 +1,318 @@
+<div class="d-flex justify-content-between align-items-center bg-white shadow-dark px-3">
+    <a class="me-2"> <i class="fa-solid fa-arrow-left back-icon m-l-3" (click)="backToRoles()"></i></a>
+    <h4 class="page-title flex-grow-1 labelStyles">
+        New Role & Functional Profile Registration
+    </h4>
+</div>
+<div class="px-4 py-4">
+    <div class="row">
+        <div class="col">
+
+            <form [formGroup]="RoleForm!" (ngSubmit)="saveRoleClick()">
+                <div class="p-3 bg-white shadow-dark rounded-2">
+                    <h5 class="page-card-title border-bottom">Basic Info</h5>
+                    <div class="px-4 pt-4 pb-2">
+                        <div class="form-group row">
+                            <label for="name" class="col-sm-12 col-md-3 col-form-label">Role Name</label>
+                            <div class="col-sm-10 col-md-4">
+                                <input class="form-control" rows="4" id="name" placeholder="Role Name" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row mt-3">
+                            <label for="description" class="col-sm-12 col-md-3 col-form-label">Description</label>
+                            <div class="col-sm-10 col-md-4">
+                                <textarea class="form-control" rows="4" formControlName="description"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4 p-3 bg-white shadow-dark rounded-2">
+                    <h5 class="page-card-title border-bottom">Functional Profile</h5>
+                    <div class="px-4 pt-4 pb-2">
+
+                        <div class="fp-block">
+                            <h5 class="fp-title">Change Controls</h5>
+                            <div class="row mt-3 px-4">
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="controlLoginInitiation">
+                                        <label class="form-check-label" for="controlLoginInitiation">Control Login
+                                            Initiation</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="hodReviewCC">
+                                        <label class="form-check-label" for="hodReviewCC">HOD Review</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="qaReview">
+                                        <label class="form-check-label" for="qaReview">QA Review</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="cftReview">
+                                        <label class="form-check-label" for="cftReview">CFT Review</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="customerNotification">
+                                        <label class="form-check-label" for="customerNotification">Customer
+                                            Notification</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="qaDecision">
+                                        <label class="form-check-label" for="qaDecision">QA Decision</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="actionPlan">
+                                        <label class="form-check-label" for="actionPlan">Action Plan</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="finalClosure">
+                                        <label class="form-check-label" for="finalClosure">Final Closure</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="extensionOfTargetDate">
+                                        <label class="form-check-label" for="extensionOfTargetDate">Extension of Target
+                                            Date</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="workTransfer">
+                                        <label class="form-check-label" for="workTransfer">Work Transfer</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="dossierPrint">
+                                        <label class="form-check-label" for="dossierPrint">Dossier Print</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="auditTrials">
+                                        <label class="form-check-label" for="auditTrials">Audit Trials</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="reports">
+                                        <label class="form-check-label" for="reports">Reports</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="fp-block mt-3">
+                            <h5 class="fp-title" for="allDeviations">Deviations</h5>
+                            <div class="row mt-3 px-4">
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="deviationInitiation">
+                                        <label class="form-check-label" for="deviationInitiation">Deviation
+                                            Initiation</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="hodReviewD">
+                                        <label class="form-check-label" for="hodReviewD">HOD Review</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="qaReviewD">
+                                        <label class="form-check-label" for="qaReviewD">QA Review</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="cftReviewD">
+                                        <label class="form-check-label" for="cftReviewD">CFT Review</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="customerNotificationD">
+                                        <label class="form-check-label" for="customerNotificationD">Customer
+                                            Notification</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="investigationD">
+                                        <label class="form-check-label" for="investigationD">Investigation</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="qaDecisionD">
+                                        <label class="form-check-label" for="qaDecisionD">QA Decision</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="actionPlanD">
+                                        <label class="form-check-label" for="actionPlanD">Action Plan</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="finalClosureQAD">
+                                        <label class="form-check-label" for="finalClosureQAD">Final Closure (QA)</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="extensionOfTargetDateD">
+                                        <label class="form-check-label" for="extensionOfTargetDateD">Extension of Target
+                                            Date</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="workTransferD">
+                                        <label class="form-check-label" for="workTransferD">Work Transfer</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="dossierPrintD">
+                                        <label class="form-check-label" for="dossierPrintD">Dossier Print</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="auditTrialsD">
+                                        <label class="form-check-label" for="auditTrialsD">Dossier Print</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="reportsD">
+                                        <label class="form-check-label" for="reportsD">Dossier Print</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="fp-block mt-3">
+                            <h5 class="fp-title" for="allDeviations">Correction and Preventive Actions </h5>
+                            <div class="row mt-3 px-4">
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="capaInitiation">
+                                        <label class="form-check-label" for="capaInitiation">CAPA Initiation</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="hodReviewC">
+                                        <label class="form-check-label" for="hodReviewC">HOD Review</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="qaReviewC">
+                                        <label class="form-check-label" for="qaReviewC">QA Review</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="cftReviewC">
+                                        <label class="form-check-label" for="cftReviewC">CFT Review</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="qaDecisionC">
+                                        <label class="form-check-label" for="qaDecisionC">QA Decision</label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="actionPlanC">
+                                        <label class="form-check-label" for="actionPlanC">Action Plan</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="finalClosureQAC">
+                                        <label class="form-check-label" for="finalClosureQAC">Final Closure
+                                            (QA)</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="extensionOfTargetDateC">
+                                        <label class="form-check-label" for="extensionOfTargetDateC">Extension of
+                                            Target Date</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="workTransferC">
+                                        <label class="form-check-label" for="workTransferC">Work Transfer</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="dossierPrintC">
+                                        <label class="form-check-label" for="dossierPrintC">Dossier Print</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="auditTrialsC">
+                                        <label class="form-check-label" for="auditTrialsC">Audit Trials</label>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="reportsC">
+                                        <label class="form-check-label" for="reportsC">Reports</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="fp-block mt-3">
+                            <h5 class="fp-title" for="allDeviations">System Manager</h5>
+                            <div class="row mt-3 px-4">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+            <p-toast></p-toast>
+
+            <div class="d-flex justify-content-end mt-4">
+                <button type="button" class="btn btn-default rounded-pill me-3" (click)="backToRoles()">Cancel</button>
+
+                <button type="button" class="btn btn-primary rounded-pill me-2"
+                    (click)="saveRoleClick()">Submit</button>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,247 @@
+<div class="d-flex justify-content-between align-items-center bg-white shadow-dark px-3">
+    <div class="workItemWrapper">
+      <a (click)="navToChangeControls()" class=" me-2"><i class="fa-solid fa-arrow-left back-icon"></i></a>
+      <h4 class="page-title flex-grow-1"> {{id}}</h4>
+    </div>
+    <div *ngIf="selectedReviewOptions ==='hodReview'"><span class="status rounded-pill status-returned ">HOD PENDING
+      </span></div>
+    <div *ngIf="selectedReviewOptions ==='qaReview'"><span class="status rounded-pill status-returned ">QA PENDING
+      </span></div>
+      <div *ngIf="selectedReviewOptions ==='cftReview'"><span class="status rounded-pill status-returned ">CFT PENDING
+      </span></div>
+    <div *ngIf="selectedReviewOptions ==='customerNotification'"><span class="status rounded-pill status-returned ">CUSTOMER NOTFICATION PENDING
+      </span></div>
+      <div *ngIf="selectedReviewOptions ==='qaDecision'"><span class="status rounded-pill status-returned ">QA DECISION PENDING
+      </span></div>
+      <div *ngIf="selectedReviewOptions ==='actionPlan'"><span class="status rounded-pill status-returned ">ACTION PLAN PENDING
+      </span></div>
+      <div *ngIf="selectedReviewOptions ==='closure'"><span class="status rounded-pill status-returned ">CLOSURE 
+      </span></div>
+  </div>
+  
+  <div class="container-fluid">
+  
+    <div class="stepper-wrapper">
+      <div class="stepper-item" [ngClass]="{'active': selectedReviewOptions === 'initiation', 
+    'completed' : selectedReviewOptions === 'hodReview' || selectedReviewOptions === 'qaReview' || 
+    selectedReviewOptions === 'cftReview'||selectedReviewOptions === 'customerNotification'||selectedReviewOptions === 'qaDecision'||selectedReviewOptions === 'actionPlan'
+    ||selectedReviewOptions === 'closure'}">
+        <div class="step-counter"></div>
+        <div class="step-name" (click)="selectProgressBar('initiation')">Initiation</div>
+      </div>
+      <div class="stepper-item" [ngClass]="{'active': selectedReviewOptions ==='hodReview', 
+    'completed' : selectedReviewOptions === 'qaReview' || selectedReviewOptions ==='cftReview'||selectedReviewOptions === 'customerNotification'
+    ||selectedReviewOptions === 'qaDecision'||selectedReviewOptions === 'actionPlan'||selectedReviewOptions === 'closure', 
+    '':selectedReviewOptions==='initiation'}">
+        <div class="step-counter"></div>
+        <div class="step-name" (click)="selectProgressBar('hodReview')">HOD Review</div>
+      </div>
+      <div class="stepper-item" [ngClass]="{'active': selectedReviewOptions === 'qaReview', 
+    'completed' : selectedReviewOptions ==='cftReview' || selectedReviewOptions==='qaDecision'||selectedReviewOptions === 'actionPlan'
+    ||selectedReviewOptions === 'closure', 
+    '':selectedReviewOptions==='initiation' || selectedReviewOptions==='hodReview'}">
+        <div class="step-counter"></div>
+        <div class="step-name" (click)="selectProgressBar('qaReview')">QA Review</div>
+      </div>
+      <div class="stepper-item" [ngClass]="{'active': selectedReviewOptions ==='cftReview', 
+      'completed' :  selectedReviewOptions === 'qaDecision'  
+      || selectedReviewOptions === 'actionPlan'|| selectedReviewOptions==='closure',
+    '':selectedReviewOptions==='initiation' || selectedReviewOptions==='hodReview'|| selectedReviewOptions==='qaReview'}">
+        <div class="step-counter"></div>
+        <div class="step-name" (click)="selectProgressBar('cftReview')">CFT Review</div>
+      </div>
+     
+      <div class="stepper-item" [ngClass]="{'active': selectedReviewOptions === 'qaDecision', 
+      'completed':selectedReviewOptions === 'actionPlan' || selectedReviewOptions === 'closure','':
+      selectedReviewOptions==='initiation'|| selectedReviewOptions==='hodReview'|| selectedReviewOptions==='qaReview'|| selectedReviewOptions==='cftReview'
+    }">
+        <div class="step-counter"></div>
+        <div class="step-name"(click)="selectProgressBar('qaDecision')">QA Decision</div>
+      </div>
+      <div class="stepper-item" [ngClass]="{'active': selectedReviewOptions === 'actionPlan', 
+      'completed':selectedReviewOptions === 'closure',
+      '':selectedReviewOptions==='initiation' || selectedReviewOptions==='hodReview'|| selectedReviewOptions==='qaReview'
+      ||selectedReviewOptions==='cftReview'||selectedReviewOptions==='qaDecision'}">
+        <div class="step-counter"></div>
+        <div class="step-name"(click)="selectProgressBar('actionPlan')">Action Plan</div>
+      </div>
+      <div class="stepper-item" [ngClass]="{'active': selectedReviewOptions === 'closure', 
+    '':selectedReviewOptions==='initiation' || selectedReviewOptions==='hodReview'
+    || selectedReviewOptions==='qaReview'||selectedReviewOptions==='cftReview'
+    ||selectedReviewOptions==='qaDecision'||selectedReviewOptions==='actionPlan'}">
+        <div class="step-counter"></div>
+        <div class="step-name" (click)="selectProgressBar('closure')">Closure</div>
+      </div>
+    </div>
+  
+  </div>
+  <div>
+    <p-tabView>
+      <p-tabPanel header="General">
+        <div class="row">
+          <!-- <div class="col-lg-5 "> -->
+            <div [ngClass]="{'col-lg-12 ': selectedReviewOptions === 'initiation', 'col-lg-5 ': selectedReviewOptions !== 'initiation'}">
+            <div class="w-100 summary-tab">
+              <p-tabView>
+                <p-tabPanel header="Request Details" class="mr-3 tab-styles">
+                  <div class="bg-white px-2">
+                    <div class="d-flex mb-3 mt-3">
+                      <span class="col-lg-5 mr-5 small text-color">Change Related To</span>
+                      <span>Material</span>
+                    </div>
+                    <div class="d-flex mb-3 ">
+                      <span class="col-lg-5 mr-5 small text-color">Batch No./Lot No.</span> <span
+                        class="small">AXBD01</span>
+                    </div>
+                    <div class="d-flex mb-3 ">
+                      <span class="col-lg-5 mr-5 small text-color">Batch/Lot Details</span> <span
+                        class="small">Anesthesia</span>
+                    </div>
+                    <div class="d-flex mb-3 ">
+                      <span class="col-lg-5 mr-5 small text-color">Equipment</span> <span class="small">Equipment
+                        1</span>
+                    </div>
+                    <div class="d-flex mb-3 ">
+                      <span class="col-lg-5 mr-5 small text-color">Document Details</span> <span class="small">Document
+                        Details</span>
+                    </div>
+                    <div class="d-flex mb-3 ">
+                      <span class="col-lg-5 mr-5 small text-color">Facility/Utility Details</span> <span
+                        class="small">Facility/Utility Details</span>
+                    </div>
+                    <div class="d-flex mb-3 ">
+                      <span class="col-lg-5 mr-5 small text-color">Validation Details</span> <span
+                        class="small">Validation Details</span>
+                    </div>
+                    <div class="d-flex  mb-3 ">
+                      <span class="col-lg-5 mr-5 small text-color">Packing Details</span> <span class="small">Packing
+                        Details</span>
+                    </div>
+                    <div class="d-flex  mb-3 ">
+                      <span class="col-lg-5 mr-5 small text-color">Software Details</span> <span class="small">Software
+                        Details</span>
+                    </div>
+                    <div class="d-flex  mb-3 ">
+                      <span class="col-lg-5 mr-5 small text-color">Testing Details</span> <span class="small">Testing
+                        Details</span>
+                    </div>
+                    <div class="d-flex  mb-3">
+                      <span class="col-lg-5 mr-5 small text-color">Supplier/Service Provider</span> <span
+                        class="small">Supplier/Service Provider</span>
+                    </div>
+                    <div class="d-flex  mb-3">
+                      <span class="col-lg-5 mr-5 small text-color">Process Details</span> <span class="small"> Process
+                        Details</span>
+                    </div>
+                    <div class="d-flex  mb-3 ">
+                      <span class="col-lg-5 mr-5 small text-color">Other Details</span> <span class="small">Other
+                        Details</span>
+                    </div>
+                    <div class="d-flex mb-3  ">
+                      <span class="col-lg-5 mr-5 small text-color">Product</span> <span class="small">Product</span>
+                    </div>
+                  </div>
+                </p-tabPanel>
+  
+                <p-tabPanel header="Change Details" class="mr-3">
+                  <div class="bg-white">
+                    <div class="d-flex mb-3 mt-3">
+                      <span class="col-lg-5 mr-5 small text-color">Change Related To</span>
+                      <span>Material</span>
+                    </div>
+                    <div class="d-flex mb-3 ">
+                      <span class="col-lg-5 mr-5 small text-color">Batch No./Lot No.</span> <span
+                        class="small">AXBD01</span>
+                    </div>
+                    <div class="d-flex mb-3 ">
+                      <span class="col-lg-5 mr-5 small text-color">Batch/Lot Details</span> <span
+                        class="small">Anesthesia</span>
+                    </div>
+                    <div class="d-flex mb-3 ">
+                      <span class="col-lg-5 mr-5 small text-color">Equipment</span> <span class="small">Equipment
+                        1</span>
+                    </div>
+                    <div class="d-flex mb-3 ">
+                      <span class="col-lg-5 mr-5 small text-color">Document Details</span> <span class="small">Document
+                        Details</span>
+                    </div>
+                    <div class="d-flex mb-3 ">
+                      <span class="col-lg-5 mr-5 small text-color">Facility/Utility Details</span> <span
+                        class="small">Facility/Utility Details</span>
+                    </div>
+                    <div class="d-flex mb-3 ">
+                      <span class="col-lg-5 mr-5 small text-color">Validation Details</span> <span
+                        class="small">Validation Details</span>
+                    </div>
+                    <div class="d-flex  mb-3 ">
+                      <span class="col-lg-5 mr-5 small text-color">Packing Details</span> <span class="small">Packing
+                        Details</span>
+                    </div>
+                    <div class="d-flex  mb-3 ">
+                      <span class="col-lg-5 mr-5 small text-color">Software Details</span> <span class="small">Software
+                        Details</span>
+                    </div>
+                    <div class="d-flex  mb-3 ">
+                      <span class="col-lg-5 mr-5 small text-color">Testing Details</span> <span class="small">Testing
+                        Details</span>
+                    </div>
+                    <div class="d-flex  mb-3">
+                      <span class="col-lg-5 mr-5 small text-color">Supplier/Service Provider</span> <span
+                        class="small">Supplier/Service Provider</span>
+                    </div>
+                    <div class="d-flex  mb-3">
+                      <span class="col-lg-5 mr-5 small text-color">Process Details</span> <span class="small"> Process
+                        Details</span>
+                    </div>
+                    <div class="d-flex  mb-3 ">
+                      <span class="col-lg-5 mr-5 small text-color">Other Details</span> <span class="small">Other
+                        Details</span>
+                    </div>
+                    <div class="d-flex mb-3  ">
+                      <span class="col-lg-5 mr-5 small text-color">Product</span> <span class="small">Product</span>
+                    </div>
+                  </div>
+                </p-tabPanel>
+  
+                <p-tabPanel header="Impact Details" class="mr-3">
+  
+                </p-tabPanel>
+              </p-tabView>
+            </div>
+  
+  
+          </div>
+  
+         
+          <div *ngIf="selectedReviewOptions==='hodReview'" class="col-lg-7">
+            <app-capa-hod-review></app-capa-hod-review>
+          </div>
+          <div *ngIf="selectedReviewOptions==='qaReview'" class="col-lg-7">
+            <app-capa-qa-review></app-capa-qa-review>
+          </div>
+          <div *ngIf="selectedReviewOptions==='cftReview'" class="col-lg-7">
+            <app-capa-cft-review></app-capa-cft-review>
+         </div>
+         
+         <div  *ngIf="selectedReviewOptions==='qaDecision'"class="col-lg-7">
+               <app-capa-qa-decision></app-capa-qa-decision>
+         </div>
+         <div  *ngIf="selectedReviewOptions==='actionPlan'"class="col-lg-7">
+          <app-capa-action-plan></app-capa-action-plan>            
+    </div>
+    <div  *ngIf="selectedReviewOptions==='closure'"class="col-lg-7">
+      <app-capa-closure></app-capa-closure>            
+  </div>
+         
+        </div>
+      </p-tabPanel>
+      <p-tabPanel header="Documents">
+        <ng-template pTemplate="content">
+          <app-capa-documents></app-capa-documents>
+        </ng-template>
+      </p-tabPanel>
+      <p-tabPanel header="Activities">
+        <app-capa-activities></app-capa-activities>
+      </p-tabPanel>
+    </p-tabView>
+  </div>

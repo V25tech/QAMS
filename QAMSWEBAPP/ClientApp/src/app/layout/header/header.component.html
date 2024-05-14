@@ -1,0 +1,34 @@
+<header>
+    <div class="container-fluid d-grid gap-3 align-items-center text-white">
+      
+      <div class="d-flex align-items-center">
+        <div class="w-100 d-flex align-items-center">
+            <!-- <img src="../../../assets/images/dms logo.png" height="24px"> -->
+            <h5 class="mb-0"><a routerLink="/home">QAMS</a></h5>
+        </div>
+        <!-- <form class="w-100 me-3 search-block" role="search">
+          <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+        </form> -->
+
+        <div class="header-actions">
+<!--             
+           <a class="d-block mx-2 fs-m"> <i class="bi bi-bell"></i></a> -->
+        </div>
+        <div class="d-lg-flex h-100 mx-lg-2 text-white">
+          <div class="btn-group user-info-block" dropdown>
+            <a id="button-basic" dropdownToggle type="button" class="dropdown-toggle"
+                    aria-controls="dropdown-basic">
+                    <span class="user-title">Dominic Keller</span>
+                    <img src="../../../assets/images/user.png"  width="36" height="36" class="rounded-circle ms-2">
+                     <span class="caret"></span>
+          </a>
+            <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+                role="menu" aria-labelledby="button-basic">
+              <li role="menuitem"><a class="dropdown-item" (click)="logout()">Sign out</a></li>
+            </ul>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </header>

@@ -1,0 +1,31 @@
+
+.progress{
+  background-color:rgb(241, 241, 20);
+  color: rgb(232, 232, 108);
+  height: 3px;
+}
+.progress-bar{
+  background-color:rgb(86, 229, 86);
+}
+* {box-sizing: border-box}
+
+/* Style the tab */
+.tab {
+  float: left;
+  // border: 1px solid #ccc;
+ width: 20%;
+  height: 250px;
+}
+.tablinks{
+  margin-left:1rem;
+  height: 50px;
+  margin-bottom: 1rem;
+  background-color:#F3F4FF;
+  
+  
+  }
+  .external-radio-btn,.internal-radio-btn{
+    vertical-align: middle !important;
+    margin-top: 0px !important;
+  }
+  
