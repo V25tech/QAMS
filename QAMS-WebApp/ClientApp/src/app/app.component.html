@@ -1,0 +1,10 @@
+<app-header *ngIf="isLoggedIn"></app-header>
+
+<button class="hamburger-icon toggle-nav" (click)="toggleSidenav()" *ngIf="isLoggedIn">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="-5 -7 24 24"><path fill="currentColor" d="M1 0h5a1 1 0 1 1 0 2H1a1 1 0 1 1 0-2m7 8h5a1 1 0 0 1 0 2H8a1 1 0 1 1 0-2M1 4h12a1 1 0 0 1 0 2H1a1 1 0 1 1 0-2"/></svg>
+</button>
+
+<div [class.showNav]="isNavOpen" [class.content]="isLoggedIn">
+  <app-left-nav *ngIf="isLoggedIn"></app-left-nav>
+  <router-outlet></router-outlet>
+</div>

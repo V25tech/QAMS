@@ -1,0 +1,25 @@
+$primary-color: #4D44B5;
+$secondary-color: #FB7D5B;
+$heading-color: #303972;
+$label-color: #A098AE;
+$link-color: $primary-color;
+$background-color: #F3F4FF;
+$background-contrast: #f6f6f6;
+
+$text-color-primary: #363B64;
+$text-color-secondary: #6a6e72; //  #A098AE;
+$text-color-tertiary: #6D6D8C;
+$white: #ffffff;
+$green: #69C667;
+$left-nav-bg: #282842;
+
+$font-family: 'Roboto', sans-serif;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: $heading-color;
+}

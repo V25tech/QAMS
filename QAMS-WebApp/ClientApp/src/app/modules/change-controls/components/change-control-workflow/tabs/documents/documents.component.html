@@ -1,0 +1,97 @@
+<div class="px-4 py-3 bg-white shadow-dark rounded-2">
+    <div class="d-flex  justify-content-between align-items-center border-bottom mb-3">
+
+        <h5 class="page-card-title">All Documents</h5>
+        <button type="button" class="btn btn-create mb-2" (click)="visibleSidebar2 = true">
+            + New Document
+        </button>
+    </div>
+
+    <p-table #dt dataKey="id" [value]="documentDatasource" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[10, 25, 50]" [showCurrentPageReport]="true"
+    [globalFilterFields]="['document', 'id', 'description', 'uploadedBy']"
+        tableStyleClass="table table-striped">
+        <ng-template pTemplate="header">
+            <tr>
+                <th class="lh-lg">S.No</th>
+                <th pSortableColumn="document" style="width:150px">Document<p-sortIcon field="document"></p-sortIcon>
+                    <p-columnFilter type="text" field="document" display="menu"></p-columnFilter>  </th>
+                <th pSortableColumn="id" style="width:150px">ID <p-columnFilter type="text" field="id" display="menu"></p-columnFilter></th>
+                <th pSortableColumn="Description" style="width:300px">Description <p-columnFilter type="text" field="description" display="menu"></p-columnFilter></th>
+                <th pSortableColumn="Uploaded by" style="width:200px">Uploaded by <p-columnFilter type="text" field="uploadedBy" display="menu"></p-columnFilter> </th>
+                <th pSortableColumn="Uploaded on" style="width:200px">Uploaded on <p-columnFilter type="date" field="date" display="menu"></p-columnFilter></th>
+                <!-- <th style="width:50px">Actions</th> -->
+
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-document let-i="rowIndex">
+            <tr>
+                <td>{{i+1}}</td>
+                <td><img src="../../../assets/images/vscode-icons--file-type-excel.svg" width="20" height="20">
+                    <span (click)="showDialog()" class="cursor-pointer">{{document.document}}</span></td>
+                <td>{{document.id}}</td>
+                <td>{{document.description}}</td>
+                <td>{{document.uploadedBy}}</td>
+                <td>{{document.date | date: 'MM/dd/yyyy'}}</td>
+                <!-- <td class="text-center">
+                    <div class="ellipsis-menu">
+                        <i class="fa fa-ellipsis-h"></i>
+                    </div>
+                </td> -->
+            </tr>
+
+        </ng-template>
+    </p-table>
+</div>
+<ng-container>
+    <p-dialog header="Document" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+        <p class="m-0">
+            <img src="../../../assets/images/document pdf.png">
+        </p>
+    </p-dialog>
+</ng-container>
+<div>
+    <p-sidebar [(visible)]="visibleSidebar2" position="right" [baseZIndex]="30000">
+        <div class="panel-header">
+            <div class="d-flex justify-content-between align-items-center w-100 p-2">
+                <h5 class="text-white px-3 py-4 m-0">New Document</h5>
+                <a class="p-2" (click)="closeNavBar()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="#ffffff" viewBox="0 0 16 16">
+                        <path
+                            d="M7.293 8L3.146 3.854a.5.5 0 1 1 .708-.708L8 7.293l4.146-4.147a.5.5 0 0 1 .708.708L8.707 8l4.147 4.146a.5.5 0 0 1-.708.708L8 8.707l-4.146 4.147a.5.5 0 0 1-.708-.708z" />
+                    </svg></a>
+
+            </div>
+        </div>
+
+        <div class="d-flex flex-column py-3 px-4">
+            <div class="form-group row ">
+                <label for="Batch no" class="col-sm-4 col-form-label">
+                    Title</label>
+                <div class="col-lg-8">
+                    <input type="text" class="form-control input-width" id="title" name="title" placeholder="" />
+                </div>
+            </div>
+
+            <div class="form-group row ">
+                <label for="Description" class="col-sm-4 col-form-label text-dark">Description</label>
+                <div class="col-lg-8  border-styles">
+                    <textarea rows="4" name="comment" form="usrform" class="form-control">
+                      </textarea>
+                </div>
+            </div>
+
+            <div class="form-group row ">
+                <label for="Description" class="col-sm-4 col-form-label text-dark">Upload File</label>
+                <div class="col-lg-8  border-styles">
+                    <input type="file" class="form-control input-width" id="file" name="file" placeholder="" />
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-end mt-4">
+            <button type="button" class="btn btn-outline-primary rounded-pill me-3">Cancel</button>
+            <button type="button" class="btn btn-outline-primary rounded-pill me-3 save-btn">Save & Add
+                New</button>
+            <button type="button" class="btn btn-primary rounded-pill me-2">Save</button>
+        </div>
+    </p-sidebar>
+</div>

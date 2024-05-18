@@ -1,0 +1,107 @@
+[
+  {
+    "id": "PROV-CC-PL01-24-0021",
+    "department": "Quality Control",
+    "initiatedBy": "John Doe",
+    "date": "2023-05-17",
+    "status": "Approval Pending"
+  },
+  {
+    "id": "PROV-CC-PL01-24-0022",
+    "department": "Operations",
+    "initiatedBy": "Jane Smith",
+    "date": "2023-05-18",
+    "status": "Approved"
+  },
+  {
+    "id": "PROV-CC-PL01-24-0023",
+    "department": "Finance",
+    "initiatedBy": "Alice Johnson",
+    "date": "2023-05-19",
+    "status": "Rejected"
+  },
+  {
+    "id": "PROV-CC-PL01-24-0024",
+    "department": "Human Resources",
+    "initiatedBy": "Bob Williams",
+    "date": "2023-05-20",
+    "status": "Returned"
+  },
+  {
+    "id": "PROV-CC-PL01-24-0025",
+    "department": "Marketing",
+    "initiatedBy": "Emily Brown",
+    "date": "2023-05-21",
+    "status": "In Progress"
+  },
+  {
+    "id": "PROV-CC-PL01-24-0026",
+    "department": "Quality Control",
+    "initiatedBy": "David Wilson",
+    "date": "2023-05-22",
+    "status": "Approval Pending"
+  },
+  {
+    "id": "PROV-CC-PL01-24-0027",
+    "department": "Operations",
+    "initiatedBy": "Emma Martinez",
+    "date": "2023-05-23",
+    "status": "Approved"
+  },
+  {
+    "id": "PROV-CC-PL01-24-0028",
+    "department": "Finance",
+    "initiatedBy": "Daniel Lee",
+    "date": "2023-05-24",
+    "status": "Rejected"
+  },
+  {
+    "id": "PROV-CC-PL01-24-0029",
+    "department": "Human Resources",
+    "initiatedBy": "Olivia Garcia",
+    "date": "2023-05-25",
+    "status": "Returned"
+  },
+  {
+    "id": "PROV-CC-PL01-24-0030",
+    "department": "Marketing",
+    "initiatedBy": "Noah Rodriguez",
+    "date": "2023-05-26",
+    "status": "In Progress"
+  },
+  {
+    "id": "PROV-CC-PL01-24-0031",
+    "department": "Quality Control",
+    "initiatedBy": "Sophia Hernandez",
+    "date": "2023-05-27",
+    "status": "Approval Pending"
+  },
+  {
+    "id": "PROV-CC-PL01-24-0032",
+    "department": "Operations",
+    "initiatedBy": "Liam Martinez",
+    "date": "2023-05-28",
+    "status": "Approved"
+  },
+  {
+    "id": "PROV-CC-PL01-24-0033",
+    "department": "Finance",
+    "initiatedBy": "Isabella Lopez",
+    "date": "2023-05-29",
+    "status": "Rejected"
+  },
+  {
+    "id": "PROV-CC-PL01-24-0034",
+    "department": "Human Resources",
+    "initiatedBy": "Mason Taylor",
+    "date": "2023-05-30",
+    "status": "Returned"
+  },
+  {
+    "id": "PROV-CC-PL01-24-0035",
+    "department": "Marketing",
+    "initiatedBy": "Ava Gonzalez",
+    "date": "2023-05-31",
+    "status": "In Progress"
+  }
+]

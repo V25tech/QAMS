@@ -1,0 +1,678 @@
+<div class="d-flex justify-content-between align-items-center bg-white shadow-dark px-3">
+    <a class="me-2" (click)="backToCapaClick()">
+        <i class="fa-solid fa-arrow-left back-icon m-l-3"></i></a>
+    <h4 class="page-title flex-grow-1 labelStyles">CAPA Login New Initiations</h4>
+</div>
+<div class="px-4 py-4">
+    <div class="p-3 bg-white shadow-dark rounded-2 mb-3">
+        <h5 class="page-card-title border-bottom">  CAPA Identification</h5>
+        <div class="p-3 row">
+            <div class="col-lg-12">
+            <div class="form-group row">
+                <label for="Reference " class="col-sm-12 col-md-4 col-form-label">Reference </label>
+
+                <div class="col-md-6 d-flex radio-styles">
+                    <div class=""><input type="radio" class="form-check-input radio-btn" id="External" name="reference" value="External" checked
+                        (change)="selectRef($event)">
+                        <label class="p-2" for="External">External</label>
+                    </div>
+                    <div class="rd-styles ms-4"> <input type="radio" class="form-check-input radio-btn" id="Not Applicable" name="reference" value="Not Applicable"
+                        (change)="selectRef($event)">
+                        <label class="p-2" for="Not Applicable">Not Applicable</label>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+            <div class="col-lg-12" *ngIf="externalFlag">
+                <div class="form-group row">
+                    <label for="External Reference" class="col-md-4 col-sm-12 col-form-label">External
+                        Reference</label>
+                    <div class="col-md-6  ">
+                        <textarea rows="3" class="form-control" name="comment" form="usrform"
+                            placeholder="Enter text here..."></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12" *ngIf="externalFlag">
+            <div class="form-group row ">
+                <label for="documents" class="col-md-4 col-sm-12 col-form-label text-dark">External Reference Documents,if any</label>
+                <div class="col-md-6  ">
+                    <input type="file" class="form-control input-width" id="file" name="file" placeholder="" />
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12" *ngIf="internalFlag">
+            <div class="form-group row ">
+                <label for="Description" class="col-md-4 col-sm-12 col-form-label text-dark">Quality Events</label>
+                <div class="col-md-6  ">
+                    <select name="status" class="form-select" (change)="selectEvents($event)">
+                        <option *ngFor="let selecteCAPAeventsDetails of eventDetails" [value]="selecteCAPAeventsDetails.code">
+                            {{selecteCAPAeventsDetails.name}} 
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="form-group row">
+                <label for="Initiating Department" class="col-md-4 col-sm-12 col-form-label">Initiating
+                    Department</label>
+                <div class="col-md-6 ">
+                    <input type="text" class="form-control input-width" id="Initiating Department"
+                        name="Initiating Department" placeholder="Quality Control" readonly />
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="form-group row">
+                <label for="Date of Initiation" class="col-md-4 col-sm-12 col-form-label">Date of
+                    Initiation</label>
+                <div class="col-md-6 ">
+                    <input type="text" class="form-control input-width" id="Date of Initiation"
+                        name="Date of Initiation" placeholder="19/03/24" readonly />
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <div class="form-group row">
+                <label for="Date of Occurence" class="col-md-4 col-sm-12 col-form-label">Target Date Of Closure
+                    </label>
+                <div class="col-md-6 ">
+                    <input class="form-control date-styles" type="date" id="Date of Occurence" name="">
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+<!-- CAPA Details-->
+<div class="p-3 bg-white shadow-dark rounded-2 mb-3">
+    <h5 class="page-card-title border-bottom">CAPA Details</h5>
+    <div class="p-3 row">
+        <div class="col-lg-12">
+            <div class="form-group row ">
+                <label for="Description" class="col-md-4 col-sm-12 col-form-label text-dark">Product</label>
+                <div class="col-md-6  ">
+                    <select name="status" class="form-select" (change)="selectProducts($event)">
+                        <option *ngFor="let selectedProductsDetails of ProductDetails" [value]="selectedProductsDetails.code">
+                            {{selectedProductsDetails.name}} 
+                        </option>
+                    </select>
+                </div></div>
+                <div class="col-lg-12">
+                    <div class=" form-group row ">
+                        
+                            <label for="Material" class="col-md-4 col-sm-12 col-form-label">Material</label>
+                            <div class="col-md-6">
+                                <select name="status" class="form-select" (change)="selectMaterial($event)">
+                                    <option *ngFor="let selectedMaterialDetails of materialDetails" [value]="selectedMaterialDetails.code">
+                                        {{selectedMaterialDetails.name}}
+                                    </option>
+                                </select>
+                            
+                           
+                        </div>   
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group row">
+                        <label for="Market" class="col-sm-12 col-md-4 col-form-label">Market</label>
+                        <div class="col-md-6">
+                            
+                            <select name="status" class="form-select" (change)="selectMarket($event)">
+                                <option *ngFor="let selectedMarketDetails of marketDetails" [value]="selectedMarketDetails.code">
+                                    {{selectedMarketDetails.name}} -  {{selectedMarketDetails.code}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group row">
+                        <label for="Customer" class="col-sm-12 col-md-4 col-form-label">Customer</label>
+                        <div class="col-md-6">
+                            <select name="status" class="form-select" (change)="selectCustomer($event)">
+                                <option *ngFor="let selectedCustomerDetails of customerDetails" [value]="selectedCustomerDetails.code">
+                                    {{selectedCustomerDetails.name}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                <div class="form-group row">
+                    <label for="CapaSource" class="col-sm-12 col-md-4 col-form-label">CAPA Source</label>
+                    <div class="col-md-6 ">
+                        <textarea class="form-control input-width" name="CapaSource"
+                            placeholder="Training">
+                            </textarea>
+                    </div>
+                </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group row">
+                        <label for="dateOfDocumentationInitiation" class="col-md-4 col-sm-12 col-form-label">Date Of Documentation Initiation
+                            </label>
+                        <div class="col-md-6 ">
+                            <input class="form-control date-styles" type="date" id="dateOfDocumentationInitiation" name="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="form-group row">
+                        <label for="CapaSource" class="col-sm-12 col-md-4 col-form-label">Description Of The Event</label>
+                        <div class="col-md-6 ">
+                            <textarea class="form-control input-width" name="CapaSource"
+                                placeholder="Audit Complaince">
+                                </textarea>
+                        </div>
+                    </div>
+                    </div>
+            </div>
+        
+
+    </div>
+</div>
+<!--Action Plan Details-->
+<div class="p-3 bg-white shadow-dark rounded-2 mb-3">
+    <h5 class="page-card-title border-bottom">Action Plan Proposals</h5>
+    <div class="p-3 row">
+    <div class="col-lg-12">
+        <div class="form-group row">
+            <label for="correctiveActionPlanProposalRequired " class="col-sm-12 col-md-4 col-form-label">Corrective Action Plan Proposal(s) Required  </label>
+
+            <div class="col-md-6 d-flex radio-styles">
+                <div class=""><input type="radio" class="form-check-input radio-btn" id="Yes" name="correctiveActionPlanProposalRequired" value="Yes" checked
+                    (change)="selectCorrectiveRadioBtn($event)">
+                    <label class="p-2" for="Yes">Yes</label>
+                </div>
+                <div class="rd-styles ms-4"> <input type="radio" class="form-check-input radio-btn" id="No" name="correctiveActionPlanProposalRequired" value="No"
+                    (change)="selectCorrectiveRadioBtn($event)">
+                    <label class="p-2" for="No">No</label>
+                </div>
+            </div>
+        </div>
+
+        </div>
+    <div class="mt-4 bg-contrast pb-3 rounded"  *ngIf="correctiveYesFlag">
+        <div class="d-flex justify-content-between align-items-center p-3">
+            <h6 class="mb-0">Corrective Action Plans</h6>
+
+            <button type="button" class="btn btn-create btn-add rounded-circle" (click)="visibleSidebar2 = true">+
+            </button>
+        </div>
+        <div class="action-plans-block px-3 ">
+            <div class="d-flex brd-dashed bg-white flex-column rounded p-3 mb-2">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h6 class="mb-2">CAPA-PL01-24-0001/DM1/W1</h6>
+                    <span class="badge text-bg-secondary">SOP</span>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <p class="m-0">GTP shall be revised to make in line
+                        with pharmacopoeia's</p>
+                </div>
+            </div>
+
+            <div class="d-flex brd-dashed bg-white flex-column rounded p-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h6 class="mb-2">CAPA-PL01-24-0001/DM1/W1</h6>
+                    <span class="badge text-bg-secondary">SOP</span>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <p class="m-0">GTP shall be revised to make in line
+                        with pharmacopoeia's</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-lg-12" *ngIf="correctiveNoFlag">
+        <div class="form-group row">
+            <label for="justification" class="col-md-4 col-sm-12 col-form-label">Justification</label>
+            <div class="col-md-6  ">
+                <textarea rows="3" class="form-control" name="justification" form="usrform"
+                    placeholder="Enter text here..."></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 mt-4">
+        <div class="form-group row">
+            <label for="preventiveActionPlanProposalRequired " class="col-sm-12 col-md-4 col-form-label">Preventive Action Plan Proposal(s) Required   </label>
+
+            <div class="col-md-6 d-flex radio-styles">
+                <div class=""><input type="radio" class="form-check-input radio-btn" id="Yes" name="preventiveActionPlanProposalRequired" value="Yes" checked
+                    (change)="selectPreventiveRadioBtn($event)">
+                    <label class="p-2" for="Yes">Yes</label>
+                </div>
+                <div class="rd-styles ms-4"> <input type="radio" class="form-check-input radio-btn" id="No" name="preventiveActionPlanProposalRequired" value="No"
+                    (change)="selectPreventiveRadioBtn($event)">
+                    <label class="p-2" for="No">No</label>
+                </div>
+            </div>
+        </div>
+
+        </div>
+    <div class="mt-4 bg-contrast pb-3 rounded"  *ngIf="preventiveYesFlag">
+        <div class="d-flex justify-content-between align-items-center p-3">
+            <h6 class="mb-0">Preventive Action Plans</h6>
+
+            <button type="button" class="btn btn-create btn-add rounded-circle" (click)="visibleSidebar3 = true">+
+            </button>
+        </div>
+        <div class="action-plans-block px-3 ">
+            <div class="d-flex brd-dashed bg-white flex-column rounded p-3 mb-2">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h6 class="mb-2">CAPA-PL01-24-0001/DM1/W1</h6>
+                    <span class="badge text-bg-secondary">SOP</span>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <p class="m-0">GTP shall be revised to make in line
+                        with pharmacopoeia's</p>
+                </div>
+            </div>
+
+            <div class="d-flex brd-dashed bg-white flex-column rounded p-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h6 class="mb-2">CAPA-PL01-24-0001/DM1/W1</h6>
+                    <span class="badge text-bg-secondary">SOP</span>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <p class="m-0">GTP shall be revised to make in line
+                        with pharmacopoeia's</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-lg-12" *ngIf="preventiveNoFlag">
+        <div class="form-group row">
+            <label for="justification" class="col-md-4 col-sm-12 col-form-label">Justification</label>
+            <div class="col-md-6  ">
+                <textarea rows="3" class="form-control" name="justification" form="usrform"
+                    placeholder="Enter text here..."></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 mt-4">
+        <div class="form-group row">
+            <label for="otherActionPlanProposalRequired " class="col-sm-12 col-md-4 col-form-label">Other Action Plan Proposal(s) Required    </label>
+
+            <div class="col-md-6 d-flex radio-styles">
+                <div class=""><input type="radio" class="form-check-input radio-btn" id="Yes" name="otherActionPlanProposalRequired" value="Yes" checked
+                    (change)="selectOtherRadioBtn($event)">
+                    <label class="p-2" for="Yes">Yes</label>
+                </div>
+                <div class="rd-styles ms-4"> <input type="radio" class="form-check-input radio-btn" id="No" name="otherActionPlanProposalRequired" value="No"
+                    (change)="selectOtherRadioBtn($event)">
+                    <label class="p-2" for="No">No</label>
+                </div>
+            </div>
+        </div>
+
+        </div>
+    <div class="mt-4 bg-contrast pb-3 rounded"*ngIf="otherYesFlag">
+        <div class="d-flex justify-content-between align-items-center p-3">
+            <h6 class="mb-0">Other Action Plans</h6>
+
+            <button type="button" class="btn btn-create btn-add rounded-circle" (click)="visibleSidebar4 = true">+
+            </button>
+        </div>
+        <div class="action-plans-block px-3 ">
+            <div class="d-flex brd-dashed bg-white flex-column rounded p-3 mb-2">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h6 class="mb-2">CAPA-PL01-24-0001/DM1/W1</h6>
+                    <span class="badge text-bg-secondary">SOP</span>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <p class="m-0">GTP shall be revised to make in line
+                        with pharmacopoeia's</p>
+                </div>
+            </div>
+
+            <div class="d-flex brd-dashed bg-white flex-column rounded p-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h6 class="mb-2">CAPA-PL01-24-0001/DM1/W1</h6>
+                    <span class="badge text-bg-secondary">SOP</span>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <p class="m-0">GTP shall be revised to make in line
+                        with pharmacopoeia's</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-lg-12" *ngIf="otherNoFlag">
+        <div class="form-group row">
+            <label for="justification" class="col-md-4 col-sm-12 col-form-label">Justification</label>
+            <div class="col-md-6  ">
+                <textarea rows="3" class="form-control" name="justification" form="usrform"
+                    placeholder="Enter text here..."></textarea>
+            </div>
+        </div>
+    </div>
+   
+</div>
+<div class="col-lg-12">
+    <div class="form-group row ">
+        <label for="documents" class="col-md-4 col-sm-12 col-form-label text-dark"> Documents,if any</label>
+        <div class="col-md-6  ">
+            <input type="file" class="form-control input-width" id="file" name="file" placeholder="" />
+        </div>
+    </div>
+</div>
+</div>
+<p-toast></p-toast>
+<div class="d-flex py-2 justify-content-end">
+    <button type="button" class="btn btn-default rounded-pill me-3" (click)="backToCapaClick()">Cancel</button>
+    <button type="button" class="btn btn-outline-primary rounded-pill  me-3" (click)="show()">Save as Draft</button>
+    <button type="button" class="btn btn-primary rounded-pill me-3" (click)="show()">Save</button>
+</div>
+</div>
+
+<p-sidebar [(visible)]="visibleSidebar2" position="right" [baseZIndex]="30000">
+    <div class="panel-header">
+        <div class="d-flex justify-content-between align-items-center w-100 p-2">
+            <h5 class="text-white px-3 py-4 m-0">New Action Plan </h5>
+            <a class="p-2" (click)="closeNavBar()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="#ffffff" viewBox="0 0 16 16">
+                    <path
+                        d="M7.293 8L3.146 3.854a.5.5 0 1 1 .708-.708L8 7.293l4.146-4.147a.5.5 0 0 1 .708.708L8.707 8l4.147 4.146a.5.5 0 0 1-.708.708L8 8.707l-4.146 4.147a.5.5 0 0 1-.708-.708z" />
+                </svg></a>
+
+        </div>
+    </div>
+    <div class="d-flex flex-column py-3 px-4">
+        <div class="form-group row">
+            <label for="Plan Type" class="col-md-4 col-form-label">Plan Type</label>
+            <div class="col-md-7 drp-styles ">
+                <select name="status" class="form-select" (change)="selectCorrectivePlantType($event)">
+                    <option *ngFor="let selectedCorrectivePlantTypeDetails of correctivePlantTypeDetails" [value]="selectedCorrectivePlantTypeDetails.code">
+                        {{selectedCorrectivePlantTypeDetails.name}}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="Description" class="col-md-4 col-form-label">Description</label>
+            <div class="col-md-7">
+                <textarea class="form-control" rows="4" name="Description" form="usrform">
+                  </textarea>
+                  
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="Internal Reference" class="col-md-4 col-form-label">In-Charge Department</label>
+            <div class="col-lg-7 drp-styles ">
+                <select name="status" class="form-select" (change)="selectIncharge($event)">
+                    <option *ngFor="let selectedInchargeDetails of inChargeDepartmentDetails" [value]="selectedInchargeDetails.code">
+                        {{selectedInchargeDetails.name}}
+                    </option>
+                </select> 
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="Assign to" class="col-md-4 col-form-label">Assign to </label>
+
+            <div class="col-lg-8 d-flex">
+                <div class="me-3">
+                    <input type="radio" id="usergroup" name="radiobtn" value="0"
+                        checked class="form-check-input radio-btn" (change)="selectAssignTo($event)">
+                    <label class="p-2 " for="usergroup">User Group</label>
+                </div>
+                <div class="">
+                    <input type="radio" class="form-check-input radio-btn" id="user" name="radiobtn" value="1" (change)="selectAssignTo($event)">
+                    <label class="p-2 " for="user">User</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row "  *ngIf= "usergroupFlag">
+            <label for="SelectUserGroup" class="col-md-4 col-form-label">Select User Group</label>
+            <div class="col-lg-7">
+                <select name="status" class="form-select" (change)="selectUserGroup($event)">
+                    <option *ngFor="let selectedUserGroupDetails of userGroupDetails" [value]="selectedUserGroupDetails.code">
+                        {{selectedUserGroupDetails.name}}
+                    </option>
+                </select> 
+            </div>
+        </div>
+        <div class="form-group row" *ngIf= "userFlag" >
+            <label for="Select User Group" class="col-md-4 col-form-label">Select User</label>
+            <div class="col-lg-7">
+                <select name="status" class="form-select" (change)="selectUser($event)">
+                    <option *ngFor="let selectedUserDetails of userDetails" [value]="selectedUserDetails.code">
+                        {{selectedUserDetails.name}}
+                    </option>
+                </select> 
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="Target Date of Closure" class="col-md-4 col-form-label">Target Date</label>
+            <div class="col-lg-7">
+                <input type="date" class="form-control" id="targetDate" name="" [(ngModel)]="selectedDate"
+                    placeholder="10/11/2024" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="Review" class="col-md-4 col-form-label">Review/Remarks</label>
+            <div class="col-lg-7  border-styles">
+                <textarea rows="4" class="form-control" name="comment" form="usrform"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-end mt-4">
+        <button type="button"
+            class="btn btn-outline-primary rounded-pill me-3">Cancel</button>
+        <button type="button" class="btn btn-outline-primary rounded-pill me-3 save-btn">Save & Add
+            New</button>
+        <button type="button" class="btn btn-primary rounded-pill me-2">Save</button>
+    </div>
+</p-sidebar>
+<p-sidebar [(visible)]="visibleSidebar3" position="right" [baseZIndex]="30000">
+    <div class="panel-header">
+        <div class="d-flex justify-content-between align-items-center w-100 p-2">
+            <h5 class="text-white px-3 py-4 m-0">New Action Plan </h5>
+            <a class="p-2" (click)="closeAdditionalNavBar()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="#ffffff" viewBox="0 0 16 16">
+                    <path
+                        d="M7.293 8L3.146 3.854a.5.5 0 1 1 .708-.708L8 7.293l4.146-4.147a.5.5 0 0 1 .708.708L8.707 8l4.147 4.146a.5.5 0 0 1-.708.708L8 8.707l-4.146 4.147a.5.5 0 0 1-.708-.708z" />
+                </svg></a>
+
+        </div>
+    </div>
+    <div class="d-flex flex-column py-3 px-4">
+        <div class="form-group row">
+            <label for="Plan Type" class="col-md-4 col-form-label">Plan Type</label>
+            <div class="col-md-7 drp-styles ">
+                <select name="status" class="form-select" (change)="selectPreventivePlantType($event)">
+                    <option *ngFor="let selectedPreventivePlantTypeDetails of preventivePlantTypeDetails" [value]="selectedPreventivePlantTypeDetails.code">
+                        {{selectedPreventivePlantTypeDetails.name}}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="Description" class="col-md-4 col-form-label">Description</label>
+            <div class="col-md-7">
+                <textarea class="form-control" rows="4" name="Description" form="usrform">
+                  </textarea>
+                  
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="In-Charge Department" class="col-md-4 col-form-label">In-Charge Department</label>
+            <div class="col-lg-7 drp-styles ">
+                <select name="status" class="form-select" (change)="selectIncharge($event)">
+                    <option *ngFor="let selectedInchargeDetails of inChargeDepartmentDetails" [value]="selectedInchargeDetails.code">
+                        {{selectedInchargeDetails.name}}
+                    </option>
+                </select> 
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="Assign to" class="col-md-4 col-form-label">Assign to </label>
+
+            <div class="col-lg-8 d-flex">
+                <div class="me-3">
+                    <input type="radio" id="usergroup" name="radiobtn" value="0"
+                        checked class="form-check-input radio-btn" (change)="selectAssignTo($event)">
+                    <label class="p-2 " for="usergroup">User Group</label>
+                </div>
+                <div class="">
+                    <input type="radio" class="form-check-input radio-btn" id="user" name="radiobtn" value="1" (change)="selectAssignTo($event)">
+                    <label class="p-2 " for="user">User</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row" *ngIf= "usergroupFlag" >
+            <label for="Select User Group" class="col-md-4 col-form-label">Select User Group</label>
+            <div class="col-lg-7">
+                <select name="status" class="form-select" (change)="selectUserGroup($event)">
+                    <option *ngFor="let selectedUserGroupDetails of userGroupDetails" [value]="selectedUserGroupDetails.code">
+                        {{selectedUserGroupDetails.name}}
+                    </option>
+                </select> 
+            </div>
+        </div>
+        <div class="form-group row" *ngIf= "userFlag" >
+            <label for="Select User Group" class="col-md-4 col-form-label">Select User</label>
+            <div class="col-lg-7">
+                <select name="status" class="form-select" (change)="selectUser($event)">
+                    <option *ngFor="let selectedUserDetails of userDetails" [value]="selectedUserDetails.code">
+                        {{selectedUserDetails.name}}
+                    </option>
+                </select> 
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="Target Date of Closure" class="col-md-4 col-form-label">Target Date</label>
+            <div class="col-lg-7">
+                <input type="date" class="form-control" id="targetDate" name="" [(ngModel)]="selectedDate"
+                    placeholder="10/11/2024" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="Review" class="col-md-4 col-form-label">Review/Remarks</label>
+            <div class="col-lg-7  border-styles">
+                <textarea rows="4" class="form-control" name="comment" form="usrform"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-end mt-4">
+        <button type="button"
+            class="btn btn-outline-primary rounded-pill me-3">Cancel</button>
+        <button type="button" class="btn btn-outline-primary rounded-pill me-3 save-btn">Save & Add
+            New</button>
+        <button type="button" class="btn btn-primary rounded-pill me-2">Save</button>
+    </div>
+</p-sidebar>
+<p-sidebar [(visible)]="visibleSidebar4" position="right" [baseZIndex]="30000">
+    <div class="panel-header">
+        <div class="d-flex justify-content-between align-items-center w-100 p-2">
+            <h5 class="text-white px-3 py-4 m-0">New Action Plan </h5>
+            <a class="p-2" (click)="closeNavBar1()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="#ffffff" viewBox="0 0 16 16">
+                    <path
+                        d="M7.293 8L3.146 3.854a.5.5 0 1 1 .708-.708L8 7.293l4.146-4.147a.5.5 0 0 1 .708.708L8.707 8l4.147 4.146a.5.5 0 0 1-.708.708L8 8.707l-4.146 4.147a.5.5 0 0 1-.708-.708z" />
+                </svg></a>
+
+        </div>
+    </div>
+    <div class="d-flex flex-column py-3 px-4">
+        <div class="form-group row">
+            <label for="Plan Type" class="col-md-4 col-form-label">Plan Type</label>
+            <div class="col-md-7 drp-styles ">
+                <select name="status" class="form-select" (change)="selectOtherPlantType($event)">
+                    <option *ngFor="let selectedOtherPlantTypeDetails of otherPlantTypeDetails" [value]="selectedOtherPlantTypeDetails.code">
+                        {{selectedOtherPlantTypeDetails.name}}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="Description" class="col-md-4 col-form-label">Description</label>
+            <div class="col-md-7">
+                <textarea class="form-control" rows="4" name="Description" form="usrform">
+                  </textarea>
+                  
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="In-Charge Department" class="col-md-4 col-form-label">In-Charge Department</label>
+            <div class="col-lg-7 drp-styles ">
+                <select name="status" class="form-select" (change)="selectIncharge($event)">
+                    <option *ngFor="let selectedInchargeDetails of inChargeDepartmentDetails" [value]="selectedInchargeDetails.code">
+                        {{selectedInchargeDetails.name}}
+                    </option>
+                </select> 
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="Assign to" class="col-md-4 col-form-label">Assign to </label>
+
+            <div class="col-lg-8 d-flex">
+                <div class="me-3">
+                    <input type="radio" id="usergroup" name="radiobtn" value="0"
+                        checked class="form-check-input radio-btn" (change)="selectAssignTo($event)">
+                    <label class="p-2 " for="usergroup">User Group</label>
+                </div>
+                <div class="">
+                    <input type="radio" class="form-check-input radio-btn" id="user" name="radiobtn" value="1" (change)="selectAssignTo($event)">
+                    <label class="p-2 " for="user">User</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row " *ngIf= "usergroupFlag">
+            <label for="Select User Group" class="col-md-4 col-form-label">Select User Group</label>
+            <div class="col-lg-7">
+                <select name="status" class="form-select" (change)="selectUserGroup($event)">
+                    <option *ngFor="let selectedUserGroupDetails of userGroupDetails" [value]="selectedUserGroupDetails.code">
+                        {{selectedUserGroupDetails.name}}
+                    </option>
+                </select> 
+            </div>
+        </div>
+        <div class="form-group row" *ngIf= "userFlag" >
+            <label for="Select User Group" class="col-md-4 col-form-label">Select User</label>
+            <div class="col-lg-7">
+                <select name="status" class="form-select" (change)="selectUser($event)">
+                    <option *ngFor="let selectedUserDetails of userDetails" [value]="selectedUserDetails.code">
+                        {{selectedUserDetails.name}}
+                    </option>
+                </select> 
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="Target Date of Closure" class="col-md-4 col-form-label">Target Date</label>
+            <div class="col-lg-7">
+                <input type="date" class="form-control" id="targetDate" name="" [(ngModel)]="selectedDate"
+                    placeholder="10/11/2024" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="Review" class="col-md-4 col-form-label">Review/Remarks</label>
+            <div class="col-lg-7  border-styles">
+                <textarea rows="4" class="form-control" name="comment" form="usrform"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-end mt-4">
+        <button type="button"
+            class="btn btn-outline-primary rounded-pill me-3">Cancel</button>
+        <button type="button" class="btn btn-outline-primary rounded-pill me-3 save-btn">Save & Add
+            New</button>
+        <button type="button" class="btn btn-primary rounded-pill me-2">Save</button>
+    </div>
+</p-sidebar>

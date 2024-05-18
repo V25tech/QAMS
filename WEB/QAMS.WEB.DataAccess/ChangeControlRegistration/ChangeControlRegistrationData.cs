@@ -111,7 +111,11 @@ namespace QAMS.WEB.Data
                 sqlparms.Add(new SqlParameter { DbType = DbType.Boolean, ParameterName = ChangeControlRegistrationConstants.Reintiate, Value = changeControlRegistration.Reintiate });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = ChangeControlRegistrationConstants.Status, Value = changeControlRegistration.Status });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeControlRegistrationConstants.CreatedBy, Value = changeControlRegistration.CreatedBy });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeControlRegistrationConstants.ModifiedBy, Value = changeControlRegistration.ModifiedBy });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeControlRegistrationConstants.ModifiedBy, Value = changeControlRegistration.ModifiedBy });              
+                
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeControlRegistrationConstants.CategoryName, Value = changeControlRegistration.Category });
+                sqlparms.Add(new SqlParameter { DbType = DbType.Int16, ParameterName = ChangeControlRegistrationConstants.CategoryId, Value = changeControlRegistration.CategoryId });
+
                 Object result = dataAccessHelper.ExecuteStoredProcedure(ChangeControlRegistrationConstants.USP_ChangeControlRegistration_PSY_INSERT, sqlparms, ExecutionType.Scalar);
                 return (Convert.ToInt32(result) > 0);
             }

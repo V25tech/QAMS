@@ -9,10 +9,6 @@
 
 namespace QAMS.WEB.Entities
 {
-    using System;
-    using System.Collections.Generic;
-    using QAMS.Common.Entities;
-    
     
     // Comment
     public class CAPA  : BaseEntity
@@ -26,7 +22,7 @@ namespace QAMS.WEB.Entities
 
         private string externaldocumentFile;     
 
-        private System.Boolean? otherActionPlansReq;      
+        private System.Boolean? otherActionPlansReq;     
 
         public System.Boolean? CorrectiveActionPlanRequired
         {

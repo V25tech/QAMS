@@ -31,8 +31,13 @@ namespace QAMS.Admin.Entities
         private DateTime? createddateField;
         
         private string modifiedbyField;
+
+        private string CategoryField;
         
         private DateTime? modifieddateField;
+
+        private int catIdField;
+
         
         public System.Int32? nd
         {
@@ -127,6 +132,30 @@ namespace QAMS.Admin.Entities
             set
             {
                 this.modifieddateField = value;
+            }
+        }
+
+        public string Category
+        {
+            get
+            {
+                return this.CategoryField;
+            }
+            set
+            {
+                this.CategoryField = value;
+            }
+        }
+
+        public int CatId
+        {
+            get
+            {
+                return this.catIdField;
+            }
+            set
+            {
+                this.CatId = value;
             }
         }
     }

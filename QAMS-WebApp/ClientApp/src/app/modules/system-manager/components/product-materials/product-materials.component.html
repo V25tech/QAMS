@@ -1,0 +1,178 @@
+<div class="d-flex justify-content-between align-items-center bg-white shadow-dark px-3">
+    <h4 class="page-title flex-grow-1 labelStyles">Product/Material Name Details</h4>
+    <button type="button" class="btn btn-create rounded-pill initiative " (click)="showProductsForm = true">+ New
+        Product/Material
+    </button>
+</div>
+<div class="gx-15">
+    <div class="container-fluid mb-5">
+
+        <div class="row">
+            <div class="col mt-2 table-landing ">
+                <p-table #dt dataKey="id" [value]="productsDatasource" [paginator]="true" [rows]="10"
+                    [rowsPerPageOptions]="[10, 25, 50]" [showCurrentPageReport]="true"
+                    [globalFilterFields]="['productMaterialName', 'id', 'registerdBy','date']"
+                    tableStyleClass="table table-striped">
+                    <ng-template pTemplate="caption">
+                        <div class="d-flex justify-content-end">
+                            <span class="p-input-icon-left ml-auto search-block">
+                                <i class="fa fa-search search-icon"></i>
+                                <input pInputText type="text" class="form-control rounded-pill search-text"
+                                    (input)="applyFilterGlobal($event, 'contains')" placeholder="Search keyword" />
+                            </span>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th style="width:40px" class="lh-lg">S.No</th>
+                            <th pSortableColumn="productName">Product/Material Name<p-columnFilter type="text"
+                                    field="productMaterialName" display="menu"></p-columnFilter></th>
+                            <th pSortableColumn="ID">Unique Code
+                                <p-columnFilter type="text" field="id" display="menu"></p-columnFilter>
+                            </th>
+                            <th pSortableColumn="initiatedBy">Initiated By <p-columnFilter type="text"
+                                    field="initiatedBy" display="menu"></p-columnFilter></th>
+                            <th pSortableColumn="initiatedOn">Initiated On <p-columnFilter type="date" field="date"
+                                    display="menu"></p-columnFilter> </th>
+                            <th pSortableColumn="status">Status
+                                <p-columnFilter field="status" matchMode="equals" display="menu" [showMenu]="true">
+                                    <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+                                        <p-dropdown [ngModel]="value" [options]="status"
+                                            (onChange)="filter($event.value)" placeholder="Any">
+                                            <ng-template let-option pTemplate="item">
+                                                <span
+                                                    [class]="'customer-badge status-' + option.value">{{option.label}}</span>
+                                            </ng-template>
+                                        </p-dropdown>
+                                    </ng-template>
+                                </p-columnFilter>
+                            </th>
+                            <th class="text-center">Actions</th>
+
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-products let-i="rowIndex" #templatesTable>
+                        <tr>
+                            <td>{{i+1}}</td>
+                            <td>{{products.productName}}</td>
+                            <td class="idname">
+                                {{products.id}}</td>
+
+
+                            <td>{{products.initiatedBy}}</td>
+                            <td>{{products.date | date: 'MM/dd/yyyy'}}</td>
+
+                            <td><span pInputText pTooltip="Change Status" tooltipPosition="top" role="button"
+                                    tabindex="0" (click)="showStatusForm = true;openFlyout(i)"
+                                    class="status-dot rounded-pill " [ngClass]="{'status-active':products.status==='Active',
+                                'status-inactive':products.status ==='Inactive'}">{{products.status}}
+                                </span>
+
+                            </td>
+                            <td class="text-center">
+                                <a class="me-2" (click)="showProductsForm = true">
+                                    <i class="bi bi-pencil-square" ></i>
+                                </a>
+                            </td>
+                        </tr>
+
+                    </ng-template>
+                </p-table>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<p-sidebar [(visible)]="showProductsForm" position="right" [baseZIndex]="30000">
+    <div class="panel-header">
+
+        <div class="d-flex justify-content-between align-items-center w-100 p-2">
+            <h5 class="text-white px-3 py-4 m-0">Product/Material Registration</h5>
+            <a class="p-2" (click)="closeNavBar()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="#ffffff" viewBox="0 0 16 16">
+                    <path
+                        d="M7.293 8L3.146 3.854a.5.5 0 1 1 .708-.708L8 7.293l4.146-4.147a.5.5 0 0 1 .708.708L8.707 8l4.147 4.146a.5.5 0 0 1-.708.708L8 8.707l-4.146 4.147a.5.5 0 0 1-.708-.708z" />
+                </svg></a>
+
+        </div>
+    </div>
+    <form [formGroup]="regProductForm!" (ngSubmit)="regProduct()">
+        <div class="d-flex flex-column py-3 px-4">
+
+            <div class="form-group row">
+                <label for="name" class="col-md-4 col-form-label"> Name</label>
+                <div class="col-md-7">
+                    <input class="form-control" rows="4" id="name" placeholder="" formControlName="name" />
+
+
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="uniqueCode" class="col-md-4 col-form-label">Unique Code</label>
+                <div class="col-md-7">
+                    <input class="form-control" rows="4" id="uniqueCode" formControlName="uniqueCode" />
+
+
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label for="chemicalName" class="col-md-4 col-form-label">Chemical Name</label>
+                <div class="col-md-7">
+                    <input class="form-control" rows="4" id="chemicalName" formControlName="chemicalName" />
+
+
+                </div>
+            </div>
+        </div>
+    </form>
+    <p-toast></p-toast>
+
+    <div class="d-flex justify-content-end mt-4">
+        <button type="button" class="btn btn-default rounded-pill me-3" (click)="closeNavBar()">Cancel</button>
+
+        <button type="button" class="btn btn-primary rounded-pill me-2" (click)="regProduct()">Submit</button>
+    </div>
+
+</p-sidebar>
+
+<p-sidebar [(visible)]="showStatusForm" position="right" [baseZIndex]="30000">
+    <div class="panel-header">
+        <div class="d-flex justify-content-between align-items-center w-100 p-2">
+            <h5 class="text-white px-3 py-4 m-0">Change Status </h5>
+            <a class="p-2" (click)="closeNavBar()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="#ffffff" viewBox="0 0 16 16">
+                    <path
+                        d="M7.293 8L3.146 3.854a.5.5 0 1 1 .708-.708L8 7.293l4.146-4.147a.5.5 0 0 1 .708.708L8.707 8l4.147 4.146a.5.5 0 0 1-.708.708L8 8.707l-4.146 4.147a.5.5 0 0 1-.708-.708z" />
+                </svg></a>
+
+        </div>
+    </div>
+    <div class="d-flex flex-column py-3 px-4">
+        <div class="form-group row">
+            <label for="Plan Type" class="col-md-4 col-form-label">Status</label>
+            <div class="col-md-7 drp-styles ">
+
+                <select name="status" class="form-select" (change)="selectStatusType($event)">
+                    <option *ngFor="let statusVal of status" [value]="statusVal.value">
+                        {{statusVal.label}}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="Review" class="col-md-4 col-form-label">Review/Remarks</label>
+            <div class="col-lg-7  border-styles">
+                <textarea rows="4" class="form-control" name="comment" form="usrform"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-end mt-4">
+        <button type="button" class="btn btn-default rounded-pill me-3" (click)="closeNavBar()">Cancel</button>
+        <button type="button" class="btn btn-primary rounded-pill me-2">Submit</button>
+    </div>
+</p-sidebar>

@@ -14,102 +14,106 @@ namespace QAMS.WEB.Entities
 
     // Comment
     public class BaseEntity
-    {  
-        
+    {
+
         private System.Boolean? referenceField;
-        
+
         private string externalreferenceField;
-        
+
         private string referencedocumentsField;
-        
+
         private System.Int32? qualityeventField;
-        
+
         private System.Int32? initiatingdepartmentField;
-        
+
         private System.Boolean? typeofchangeField;
-        
+
         private DateTime? dateofinitiationField;
-        
+
         private DateTime? targetdateofclosureField;
-        
+
         private System.Int32? marketField;
-        
+
         private System.Int32? customerField;
-        
+
         private System.Int32? changerelatedtoField;
-        
+
         private System.Int32? batchorlotnumberField;
-        
+
         private string batchorlotdetailField;
-        
+
         private System.Int32? materialField;
-        
+
         private System.Int32? equipmentField;
-        
+
         private string documentdetailsField;
-        
+
         private string facilityutilitydetailsField;
-        
+
         private string validationdetailsField;
-        
+
         private string packingdetailsField;
-        
+
         private string softwaredetailsField;
-        
+
         private string testingdetailsField;
-        
+
         private string supplierserviceproviderdetailsField;
-        
+
         private string processdetailsField;
-        
+
         private string otherdetailsField;
-        
+
         private System.Int32? productField;
-        
+
         private System.Boolean? elementalimpuritiesassesmentField;
-        
+
         private string elementalimpuritiesassesmentreasonField;
-        
+
         private System.Boolean? nitrosamineimpuritiesassesmentField;
-        
+
         private string nitrosamineimpuritiesassesmentreasonField;
-        
+
         private System.Boolean? genotxicimpuritiesassesmentField;
-        
+
         private string genotxicimpuritiesassesmentreasonField;
-        
+
         private string existingprocedureField;
-        
+
         private string proposedchangeField;
-        
+
         private string justificationforproposedchangeField;
-        
+
         private string documentsField;
-        
+
         private System.Boolean? doesthechangeimpactproductmaterialqualityField;
-        
+
         private System.Int32? impactedproductmaterialsField;
-        
+
         private System.Boolean? areanyproceduresimpactedField;
-        
+
         private System.Int32? impactedproceduresField;
-        
+
         private string commentsField;
-        
+
         private System.Int32? registeredbyField;
-        
+
         private System.Boolean? reintiateField;
-        
+
         private System.Int32? statusField;
-        
+
         private string createdbyField;
-        
+
         private DateTime? createddateField;
-        
+
         private string modifiedbyField;
-        
+
         private DateTime? modifieddateField;
-        
+
+        private int categoryIdField;
+
+        private string categoryField;
+
         public System.Boolean? Reference
         {
             get
@@ -121,7 +125,7 @@ namespace QAMS.WEB.Entities
                 this.referenceField = value;
             }
         }
-        
+
         public string ExternalReference
         {
             get
@@ -133,7 +137,7 @@ namespace QAMS.WEB.Entities
                 this.externalreferenceField = value;
             }
         }
-        
+
         public string ReferenceDocuments
         {
             get
@@ -145,7 +149,7 @@ namespace QAMS.WEB.Entities
                 this.referencedocumentsField = value;
             }
         }
-        
+
         public System.Int32? QualityEvent
         {
             get
@@ -157,7 +161,7 @@ namespace QAMS.WEB.Entities
                 this.qualityeventField = value;
             }
         }
-        
+
         public System.Int32? InitiatingDepartment
         {
             get
@@ -169,7 +173,7 @@ namespace QAMS.WEB.Entities
                 this.initiatingdepartmentField = value;
             }
         }
-        
+
         public System.Boolean? TypeOfChange
         {
             get
@@ -181,7 +185,7 @@ namespace QAMS.WEB.Entities
                 this.typeofchangeField = value;
             }
         }
-        
+
         public DateTime? DateOfInitiation
         {
             get
@@ -193,7 +197,7 @@ namespace QAMS.WEB.Entities
                 this.dateofinitiationField = value;
             }
         }
-        
+
         public DateTime? TargetDateOfClosure
         {
             get
@@ -205,7 +209,7 @@ namespace QAMS.WEB.Entities
                 this.targetdateofclosureField = value;
             }
         }
-        
+
         public System.Int32? Market
         {
             get
@@ -217,7 +221,7 @@ namespace QAMS.WEB.Entities
                 this.marketField = value;
             }
         }
-        
+
         public System.Int32? Customer
         {
             get
@@ -229,7 +233,7 @@ namespace QAMS.WEB.Entities
                 this.customerField = value;
             }
         }
-        
+
         public System.Int32? ChangeRelatedTo
         {
             get
@@ -241,7 +245,7 @@ namespace QAMS.WEB.Entities
                 this.changerelatedtoField = value;
             }
         }
-        
+
         public System.Int32? BatchOrLotNumber
         {
             get
@@ -253,7 +257,7 @@ namespace QAMS.WEB.Entities
                 this.batchorlotnumberField = value;
             }
         }
-        
+
         public string BatchOrLotDetail
         {
             get
@@ -265,7 +269,7 @@ namespace QAMS.WEB.Entities
                 this.batchorlotdetailField = value;
             }
         }
-        
+
         public System.Int32? Material
         {
             get
@@ -277,7 +281,7 @@ namespace QAMS.WEB.Entities
                 this.materialField = value;
             }
         }
-        
+
         public System.Int32? Equipment
         {
             get
@@ -289,7 +293,7 @@ namespace QAMS.WEB.Entities
                 this.equipmentField = value;
             }
         }
-        
+
         public string DocumentDetails
         {
             get
@@ -301,7 +305,7 @@ namespace QAMS.WEB.Entities
                 this.documentdetailsField = value;
             }
         }
-        
+
         public string FacilityUtilityDetails
         {
             get
@@ -313,7 +317,7 @@ namespace QAMS.WEB.Entities
                 this.facilityutilitydetailsField = value;
             }
         }
-        
+
         public string ValidationDetails
         {
             get
@@ -325,7 +329,7 @@ namespace QAMS.WEB.Entities
                 this.validationdetailsField = value;
             }
         }
-        
+
         public string PackingDetails
         {
             get
@@ -337,7 +341,7 @@ namespace QAMS.WEB.Entities
                 this.packingdetailsField = value;
             }
         }
-        
+
         public string SoftwareDetails
         {
             get
@@ -349,7 +353,7 @@ namespace QAMS.WEB.Entities
                 this.softwaredetailsField = value;
             }
         }
-        
+
         public string TestingDetails
         {
             get
@@ -361,7 +365,7 @@ namespace QAMS.WEB.Entities
                 this.testingdetailsField = value;
             }
         }
-        
+
         public string SupplierServiceProviderDetails
         {
             get
@@ -373,7 +377,7 @@ namespace QAMS.WEB.Entities
                 this.supplierserviceproviderdetailsField = value;
             }
         }
-        
+
         public string ProcessDetails
         {
             get
@@ -385,7 +389,7 @@ namespace QAMS.WEB.Entities
                 this.processdetailsField = value;
             }
         }
-        
+
         public string OtherDetails
         {
             get
@@ -397,7 +401,7 @@ namespace QAMS.WEB.Entities
                 this.otherdetailsField = value;
             }
         }
-        
+
         public System.Int32? Product
         {
             get
@@ -409,7 +413,7 @@ namespace QAMS.WEB.Entities
                 this.productField = value;
             }
         }
-        
+
         public System.Boolean? ElementalImpuritiesAssesment
         {
             get
@@ -421,7 +425,7 @@ namespace QAMS.WEB.Entities
                 this.elementalimpuritiesassesmentField = value;
             }
         }
-        
+
         public string ElementalImpuritiesAssesmentReason
         {
             get
@@ -433,7 +437,7 @@ namespace QAMS.WEB.Entities
                 this.elementalimpuritiesassesmentreasonField = value;
             }
         }
-        
+
         public System.Boolean? NitrosamineImpuritiesAssesment
         {
             get
@@ -445,7 +449,7 @@ namespace QAMS.WEB.Entities
                 this.nitrosamineimpuritiesassesmentField = value;
             }
         }
-        
+
         public string NitrosamineImpuritiesAssesmentReason
         {
             get
@@ -457,7 +461,7 @@ namespace QAMS.WEB.Entities
                 this.nitrosamineimpuritiesassesmentreasonField = value;
             }
         }
-        
+
         public System.Boolean? GenotxicImpuritiesAssesment
         {
             get
@@ -469,7 +473,7 @@ namespace QAMS.WEB.Entities
                 this.genotxicimpuritiesassesmentField = value;
             }
         }
-        
+
         public string GenotxicImpuritiesAssesmentReason
         {
             get
@@ -481,7 +485,7 @@ namespace QAMS.WEB.Entities
                 this.genotxicimpuritiesassesmentreasonField = value;
             }
         }
-        
+
         public string ExistingProcedure
         {
             get
@@ -493,7 +497,7 @@ namespace QAMS.WEB.Entities
                 this.existingprocedureField = value;
             }
         }
-        
+
         public string ProposedChange
         {
             get
@@ -505,7 +509,7 @@ namespace QAMS.WEB.Entities
                 this.proposedchangeField = value;
             }
         }
-        
+
         public string JustificationForProposedChange
         {
             get
@@ -517,7 +521,7 @@ namespace QAMS.WEB.Entities
                 this.justificationforproposedchangeField = value;
             }
         }
-        
+
         public string Documents
         {
             get
@@ -529,7 +533,7 @@ namespace QAMS.WEB.Entities
                 this.documentsField = value;
             }
         }
-        
+
         public System.Boolean? DoesTheChangeImpactProductMaterialQuality
         {
             get
@@ -541,7 +545,7 @@ namespace QAMS.WEB.Entities
                 this.doesthechangeimpactproductmaterialqualityField = value;
             }
         }
-        
+
         public System.Int32? ImpactedProductMaterials
         {
             get
@@ -553,7 +557,7 @@ namespace QAMS.WEB.Entities
                 this.impactedproductmaterialsField = value;
             }
         }
-        
+
         public System.Boolean? AreAnyProceduresImpacted
         {
             get
@@ -565,7 +569,7 @@ namespace QAMS.WEB.Entities
                 this.areanyproceduresimpactedField = value;
             }
         }
-        
+
         public System.Int32? ImpactedProcedures
         {
             get
@@ -577,7 +581,7 @@ namespace QAMS.WEB.Entities
                 this.impactedproceduresField = value;
             }
         }
-        
+
         public string Comments
         {
             get
@@ -589,7 +593,7 @@ namespace QAMS.WEB.Entities
                 this.commentsField = value;
             }
         }
-        
+
         public System.Int32? Registeredby
         {
             get
@@ -601,7 +605,7 @@ namespace QAMS.WEB.Entities
                 this.registeredbyField = value;
             }
         }
-        
+
         public System.Boolean? Reintiate
         {
             get
@@ -613,7 +617,7 @@ namespace QAMS.WEB.Entities
                 this.reintiateField = value;
             }
         }
-        
+
         public System.Int32? Status
         {
             get
@@ -625,7 +629,7 @@ namespace QAMS.WEB.Entities
                 this.statusField = value;
             }
         }
-        
+
         public string CreatedBy
         {
             get
@@ -637,7 +641,7 @@ namespace QAMS.WEB.Entities
                 this.createdbyField = value;
             }
         }
-        
+
         public DateTime? CreatedDate
         {
             get
@@ -649,7 +653,7 @@ namespace QAMS.WEB.Entities
                 this.createddateField = value;
             }
         }
-        
+
         public string ModifiedBy
         {
             get
@@ -661,7 +665,7 @@ namespace QAMS.WEB.Entities
                 this.modifiedbyField = value;
             }
         }
-        
+
         public DateTime? ModifiedDate
         {
             get
@@ -673,5 +677,28 @@ namespace QAMS.WEB.Entities
                 this.modifieddateField = value;
             }
         }
+        public string Category
+        {
+            get
+            {
+                return this.categoryField;
+            }
+            set
+            {
+                this.categoryField = value;
+            }
+        }
+        public int CategoryId
+        {
+            get
+            {
+                return this.categoryIdField;
+            }
+            set
+            {
+                this.categoryIdField = value;
+            }
+        }
+
     }
 }

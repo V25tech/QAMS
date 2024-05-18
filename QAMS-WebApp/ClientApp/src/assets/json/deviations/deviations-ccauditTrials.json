@@ -1,0 +1,123 @@
+[
+    {
+      "id": "DEV-PL01-24-0001",
+      "initiatedBy": "John Doe",
+      "date": "2023-05-17",
+      "status": "Approval Pending",
+      "revision":"0",
+      "dateExtended":"false"
+    },
+    {
+      "id": "DEV-PL01-24-0002",
+      "initiatedBy": "Jane Smith",
+      "date": "2023-05-18",
+      "status": "closed",
+      "revision":"1",
+      "dateExtended":"true"
+    },
+    {
+      "id": "DEV-PL01-24-0003",
+      "initiatedBy": "Alice Johnson",
+      "date": "2023-05-19",
+      "status": "Rejected",
+      "revision":"2",
+      "dateExtended":"true"
+    },
+    {
+      "id": "DEV-PL01-24-0004",
+      "initiatedBy": "Bob Williams",
+      "date": "2023-05-20",
+      "status": "Returned",
+      "revision":"1",
+      "dateExtended":"true"
+    },
+    {
+      "id": "DEV-PL01-24-0005",
+      "initiatedBy": "Emily Brown",
+      "date": "2023-05-21",
+      "status": "In Progress",
+      "revision":"1",
+      "dateExtended":"false"
+    },
+    {
+      "id": "DEV-PL01-24-0006",
+      "initiatedBy": "David Wilson",
+      "date": "2023-05-22",
+      "status": "Approval Pending",
+      "revision":"1",
+      "dateExtended":"true"
+    },
+    {
+      "id": "DEV-PL01-24-0007",
+      "initiatedBy": "Emma Martinez",
+      "date": "2023-05-23",
+      "status": "Approved",
+      "revision":"0",
+      "dateExtended":"false"
+    },
+    {
+      "id": "DEV-PL01-24-0008",
+      "initiatedBy": "Daniel Lee",
+      "date": "2023-05-24",
+      "status": "Rejected",
+      "revision":"1",
+      "dateExtended":"true"
+    },
+    {
+      "id": "DEV-PL01-24-0009",
+      "initiatedBy": "Olivia Garcia",
+      "date": "2023-05-25",
+      "status": "Returned",
+      "revision":"1",
+      "dateExtended":"true"
+    },
+    {
+      "id": "DEV-PL01-24-0010",
+      "initiatedBy": "Noah Rodriguez",
+      "date": "2023-05-26",
+      "status": "In Progress",
+      "revision":"1",
+      "dateExtended":"true"
+    },
+    {
+      "id": "DEV-PL01-24-0011",
+      "initiatedBy": "Sophia Hernandez",
+      "date": "2023-05-27",
+      "status": "Approval Pending",
+      "revision":"1",
+      "dateExtended":"true"
+    },
+    {
+      "id": "DEV-PL01-24-0012",
+      "initiatedBy": "Liam Martinez",
+      "date": "2023-05-28",
+      "status": "Approved",
+      "revision":"1",
+      "dateExtended":"false"
+    },
+    {
+      "id": "DEV-PL01-24-0013",
+      "initiatedBy": "Isabella Lopez",
+      "date": "2023-05-29",
+      "status": "Rejected",
+      "revision":"1",
+      "dateExtended":"true"
+    },
+    {
+      "id": "DEV-PL01-24-0014",
+      "initiatedBy": "Mason Taylor",
+      "date": "2023-05-30",
+      "status": "Returned",
+      "revision":"1",
+      "dateExtended":"false"
+    },
+    {
+      "id": "DEV-PL01-24-0015",
+      "initiatedBy": "Ava Gonzalez",
+      "date": "2023-05-31",
+      "status": "In Progress",
+      "revision":"0",
+      "dateExtended":"true"
+    }
+  ]
+  

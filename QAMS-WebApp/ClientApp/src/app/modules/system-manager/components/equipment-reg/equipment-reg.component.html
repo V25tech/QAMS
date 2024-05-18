@@ -1,0 +1,110 @@
+<div class="d-flex justify-content-between align-items-center bg-white shadow-dark px-3">
+    <a class="me-2"> <i class="fa-solid fa-arrow-left back-icon m-l-3"></i></a>
+    <h4 class="page-title flex-grow-1 labelStyles">
+        Equipment Registration Initiation
+      </h4>
+    </div>
+    <div class="px-4 py-4">
+        <div class="row">
+          <div class="col">
+            <form [formGroup]="equipmentRegForm!" (ngSubmit)="registerEquipment()">
+            <div class="p-5 bg-white shadow-dark rounded-2">
+            <div class="form-group row">
+                
+                <label for="equipmentName" class="col-md-3 col-sm-12 col-form-label">Equipment Name</label>
+                <div class="col-sm-10 col-md-4 ">
+                    <input type="text" class="form-control input-width" id="equipmentName"
+                        name="equipmentName" formControlName="equipmentName" placeholder="" />
+                </div>
+            
+        </div>
+        <div class="form-group row"> 
+            <label for="equipmentId" class="col-md-3 col-sm-12 col-form-label">Equipment ID</label>
+            <div class="col-sm-10 col-md-4 ">
+                <input type="text" class="form-control input-width" id="equipmentId"
+                    name="equipmentId" formControlName="equipmentId" placeholder="" />
+            </div>
+        
+    </div>
+    <div class="form-group row"> 
+        <label for="make" class="col-md-3 col-sm-12 col-form-label">Make</label>
+        <div class="col-sm-10 col-md-4 ">
+            <input type="text" class="form-control" id="make"
+                name="make" formControlName="make" placeholder="" />
+        </div>
+    
+</div>
+<div class="form-group row"> 
+    <label for="model" class="col-md-3 col-sm-12 col-form-label">Model</label>
+    <div class="col-sm-10 col-md-4 ">
+        <input type="model" class="form-control" id="model"
+            name="model" formControlName="model" placeholder="" />
+    </div>
+
+</div>
+<div class="form-group row"> 
+    <label for="serialNumber" class="col-md-3 col-sm-12 col-form-label">Serial Number</label>
+    <div class="col-sm-10 col-md-4 ">
+        <input type="text" class="form-control" id="serialNumber"
+            name="serialNumber" formControlName="serialNumber" placeholder="" />
+    </div>
+
+</div>
+<div class="form-group row"> 
+    <label for="installedLocation" class="col-md-3 col-sm-12 col-form-label">Installed Location </label>
+    <div class="col-sm-10 col-md-4 ">
+        <input type="text" class="form-control" id="installedLocation"
+            name="installedLocation" formControlName="installedLocation" placeholder="" />
+    </div>
+
+</div>
+<div class="form-group row"> 
+    <label for="department" class="col-md-3 col-sm-12 col-form-label">Department</label>
+    <div class="col-sm-10 col-md-4 ">
+        <input type="text" class="form-control" id="department"
+            name="department" formControlName="department" placeholder="" />
+    </div>
+
+</div>
+<div class="form-group row">
+    <label for="installedOn" class="col-md-3 col-sm-12 col-form-label">Installed On</label>
+    <div class="col-sm-10 col-md-4 ">
+        <input class="form-control" type="date" id="installedOn"   formControlName="installedOn" >
+    </div>
+</div>
+<div class="form-group row">
+    <label for="warranty" class="col-md-3 col-sm-12 col-form-label">Equipment Warranty expires on </label>
+    <div class="col-sm-10 col-md-4 ">
+        <input class="form-control" type="date" id="warranty"   formControlName="warranty" >
+    </div>
+</div>
+<div class="form-group row"> 
+    <label for="suppliedBy" class="col-md-3 col-sm-12 col-form-label">Supplied By</label>
+    <div class="col-sm-10 col-md-4 ">
+        <input type="text" class="form-control" id="suppliedBy"
+            name="suppliedBy" formControlName="suppliedBy" placeholder="" />
+    </div>
+
+</div>
+<div class="form-group row"> 
+    <label for="software" class="col-md-3 col-sm-12 col-form-label">Software</label>
+    <div class="col-sm-10 col-md-4 ">
+        <input type="text" class="form-control" id="software"
+            formControlName="software" placeholder="" />
+    </div>
+
+</div>
+
+            
+
+            </div>
+            <div class="d-flex mt-4 justify-content-end">
+                <button type="button" class="btn btn-default rounded-pill me-3" (click)="cancelClick()">Cancel</button>
+                <button type="button" class="btn btn-primary rounded-pill me-3" (click)="registerEquipment()"
+                  >Submit</button>
+              </div>
+             </form>
+             <p-toast></p-toast>
+          </div>
+        </div>
+    </div>

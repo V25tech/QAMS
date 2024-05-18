@@ -1,0 +1,171 @@
+
+<div class="p-3 bg-white shadow-dark rounded-2">
+    <h5 class="page-card-title border-bottom" >Action Plans </h5>
+    <div class="p-2">
+
+        <div class="mt-3 bg-contrast py-3 rounded" *ngIf="showActionPlans">
+
+            <div class="action-plans-block px-3 " >
+                <div  *ngFor="let capaActionPlan of actionPlansDatasource">
+                <div class="action-plans-item d-flex brd-dashed bg-white flex-column rounded p-3 mb-2" [ngClass]="getStatusClass(capaActionPlan['status'])">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <h6 class="mb-0 w-100"><a (click)="actionPlanClick(capaActionPlan.id)"> {{capaActionPlan.id}} </a> <span class="ms-2 badge text-bg-secondary">SOP</span> </h6>
+                        <span class="user-assigned">{{capaActionPlan.assignedTo}}</span>
+                        <div class="dropdown" dropdown placement="bottom right">                           
+                        <a class="mx-2 px-1" dropdownToggle > <i class="fa fa-ellipsis-v"></i></a>                       
+                            <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu">
+                              <li><button class="dropdown-item" type="button" (click)="visibleForceClosure = true"><i class="fa fa-times-circle me-1" aria-hidden="true"></i> Force Closure</button></li>
+                              <li><button class="dropdown-item" type="button" (click)="visibleMonitorPlan = true"><i class="fa fa-user-plus me-1" aria-hidden="true"></i> Monitoring Plan</button></li>
+                            </ul>
+                          </div>
+                        <!-- <span class="status-dot"  [ngClass]="getStatusClass(actionPlan['status'])">{{actionPlan.status}}</span>                         -->
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p class="m-0">GTP shall be revised to make in line with pharmacopoeia's</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+   
+
+        <div class="mt-3 bg-contrast p-3 rounded"  *ngIf="!showActionPlans">
+            <div class="action-plans-block p-3 brd-dashed bg-white rounded" >
+                <div class="action-plans-item d-flex flex-column rounded">
+                <div class="d-flex justify-content-between align-items-center  mb-2"  >
+                    <a class=" me-2" (click)="backToActionPlans()"><i class="fa-solid fa-arrow-left back-icon"></i></a>
+                    <h6 class="mb-0 w-100">{{actionPlanID}} <span class="ms-2 badge text-bg-secondary">SOP</span> </h6>
+                    <span class="user-assigned">Michael Chen</span>
+                   
+                </div>
+                <div class="d-flex justify-content-between align-items-center pb-3 ms-3 border-bottom">
+                    <p class="m-0">GTP shall be revised to make in line with pharmacopoeia's</p>
+                </div>
+            </div>
+                <div class="p-2">
+                    <div class="form-group mt-2 px-1">
+                        <label for="comments">Status Comments</label>
+                        <textarea class="form-control mt-2 text-muted review-styles" id="comments"
+                            placeholder="Enter review comments here" rows="3"></textarea>
+                    </div>
+                    <div class="form-group mt-3 px-1">
+                        <label for="comments">Action Plan Executive Review Comments</label>
+                        <textarea class="form-control mt-2 text-muted review-styles" id="comments"
+                            placeholder="Enter review comments here" rows="3"></textarea>
+                    </div>
+                
+                    <div class="form-group row mt-3">
+                        <label for="Decision" class="col-md-4 col-form-label">Decision </label>
+
+                        <div class="col-lg-8 d-flex">
+                            <div class="me-3">
+                                <input type="radio" id="Approve" name="radiobtn" value="0" [(ngModel)]="defaultRadioBtn"
+                                    [checked]="defaultRadioBtn===0? true: false">
+                                <label class="p-2 " for="Approve">Approve</label>
+                            </div>
+                            <div class="">
+                                <input type="radio" id="Return" name="radiobtn" value="1" [(ngModel)]="defaultRadioBtn">
+                                <label class="p-2 " for="Return">Return</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="col-lg-12 mt-3 px-1">
+                        <p>No of Approvals Required:1</p>
+                        <p>No of Approvals Completed:0</p>
+                    </div> -->
+                
+                    <div class="form-group mt-3 px-1">
+                        <label for="comments">Remarks/Reason</label>
+                        <textarea class="form-control mt-2 text-muted review-styles" id="comments"
+                            placeholder="Enter Remarks here" rows="3"></textarea>
+                    </div>
+                    <div class="mt-4 d-flex justify-content-end">
+                        <button type="button"
+                            class="btn btn-default rounded-pill me-3" (click)="backToActionPlans()">Cancel</button>
+                        <button type="button" class="btn btn-outline-primary rounded-pill me-3">Save</button>
+                        <button type="button"
+                            class="btn btn-primary rounded-pill me-3">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<p-sidebar [(visible)]="visibleForceClosure" position="right" [baseZIndex]="30000">
+    <div class="panel-header">
+        <div class="d-flex justify-content-between align-items-center w-100 p-2">
+            <h5 class="text-white px-3 py-4 m-0">Force Closure</h5>
+            <a class="p-2" (click)="visibleForceClosure = false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="#ffffff" viewBox="0 0 16 16">
+                    <path
+                        d="M7.293 8L3.146 3.854a.5.5 0 1 1 .708-.708L8 7.293l4.146-4.147a.5.5 0 0 1 .708.708L8.707 8l4.147 4.146a.5.5 0 0 1-.708.708L8 8.707l-4.146 4.147a.5.5 0 0 1-.708-.708z" />
+                </svg></a>
+
+        </div>
+    </div>
+    <div class="d-flex flex-column py-3 px-4">
+        <div class="form-group">
+            <label for="Closure Comments" class="col-form-label">Closure Comments</label>
+            <textarea class="form-control mt-2 review-styles" id="comments"
+            placeholder="Enter review comments here" rows="3"></textarea>
+        </div>
+
+    </div>
+    <div class="d-flex justify-content-end mt-3">
+        <button type="button"
+            class="btn btn btn-default rounded-pill me-2" (click)="visibleForceClosure = false">Cancel</button>        
+        <button type="button" class="btn btn-primary rounded-pill me-3">Save</button>
+    </div>
+</p-sidebar>
+
+<p-sidebar [(visible)]="visibleMonitorPlan" position="right" [baseZIndex]="30000">
+    <div class="panel-header">
+        <div class="d-flex justify-content-between align-items-center w-100 p-2">
+            <h5 class="text-white px-3 py-4 m-0">Monitoring Plan</h5>
+            <a class="p-2" (click)="visibleMonitorPlan = false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="#ffffff" viewBox="0 0 16 16">
+                    <path
+                        d="M7.293 8L3.146 3.854a.5.5 0 1 1 .708-.708L8 7.293l4.146-4.147a.5.5 0 0 1 .708.708L8.707 8l4.147 4.146a.5.5 0 0 1-.708.708L8 8.707l-4.146 4.147a.5.5 0 0 1-.708-.708z" />
+                </svg></a>
+
+        </div>
+    </div>
+    <div class="d-flex flex-column py-3 px-4">
+        <div class="form-group row mt-2">
+            <label for="Frequency" class="col-form-label col-md-4">Schedule Frequency</label>
+            <div class="col-md-8">
+            <div class="input-group mb-3 ">
+                <input type="text" class="form-control" placeholder="Days" aria-label="Frequency" aria-describedby="Frequency">
+                <span class="input-group-text" id="Frequency">Days</span>
+              </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="Duration" class="col-form-label col-md-4">Monitoring Plan Duration</label>
+            <div class="col-md-8">
+            <div class="input-group mb-3 ">
+                <input type="text" class="form-control" placeholder="Days" aria-label="Duration" aria-describedby="Frequency">
+                <span class="input-group-text" id="Duration">Days</span>
+              </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="Target Date of Closure" class="col-md-4 col-form-label">Target Date</label>
+            <div class="col-lg-7">
+                <input type="date" class="form-control" id="targetDate" name="" [(ngModel)]="selectedDate"
+                    placeholder="10/11/2024" />
+            </div>
+        </div>
+
+
+    </div>
+    <div class="d-flex justify-content-end mt-3 ">
+        <button type="button"
+            class="btn btn btn-default rounded-pill me-2" (click)="visibleMonitorPlan = false">Cancel</button>        
+        <button type="button" class="btn btn-primary rounded-pill me-3">Save</button>
+    </div>
+</p-sidebar>

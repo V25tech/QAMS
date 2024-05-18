@@ -1,0 +1,102 @@
+
+<div class="d-flex justify-content-between align-items-center bg-white shadow-dark px-3">
+    <h4 class="page-title flex-grow-1 labelStyles">CAPA Login Details</h4>
+    <button type="button" class="btn btn-create rounded-pill initiative " (click)="gotoRegPage()">+ New
+        Initiative</button>
+</div>
+<div class="gx-15">
+    <div class="container-fluid mb-5">
+
+        <div class="row">
+            <div class="col mt-2 table-landing ">
+                
+                    <!-- px-4 pt-2 bg-white shadow-dark rounded-2 -->
+                    <p-table #dt dataKey="id" [value]="capaDatasource" [paginator]="true" [rows]="10"
+                        [rowsPerPageOptions]="[10, 25, 50]" [showCurrentPageReport]="true"
+                        [globalFilterFields]="['id', 'department', 'initiatedBy','status']"
+
+                        tableStyleClass="table table-striped">
+                        <ng-template pTemplate="caption">
+                            <div class="d-flex justify-content-end">
+                                <span class="p-input-icon-left ml-auto search-block">
+                                    <i class="fa fa-search search-icon"></i>
+                                    <input pInputText type="text" class="form-control rounded-pill search-text" (input)="applyFilterGlobal($event, 'contains')" placeholder="Search keyword" />
+                                </span>
+                            </div>
+                        </ng-template>
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th style="width:40px" class="lh-lg">S.No</th>
+                                <th pSortableColumn="ID" style="width:20%">CAPA ID
+                                    <p-sortIcon field="id"></p-sortIcon>
+                                    <p-columnFilter type="text" field="id" display="menu"></p-columnFilter>
+                                    </th>
+                                <th pSortableColumn="Initiating Department" style="width:20%">Iniating Department <p-columnFilter type="text" field="department" display="menu"></p-columnFilter></th>
+                                <th pSortableColumn="initiatedBy">Initiated By <p-columnFilter type="text" field="initiatedBy" display="menu"></p-columnFilter></th>
+                                <th pSortableColumn="initiatedOn">Initiated On <p-columnFilter type="date" field="date" display="menu"></p-columnFilter> </th>
+                                <th pSortableColumn="status">Status 
+                                     <p-columnFilter field="status" matchMode="equals" display="menu" [showMenu]="true">
+                                    <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+                                        <p-dropdown [ngModel]="value" [options]="status" (onChange)="filter($event.value)" placeholder="Any">
+                                            <ng-template let-option pTemplate="item">
+                                                <span [class]="'customer-badge status-' + option.value">{{option.label}}</span>
+                                            </ng-template>
+                                        </p-dropdown>
+                                    </ng-template>
+                                </p-columnFilter></th>
+                                <th style="width:80px">Actions</th>
+
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-capaDetails let-i="rowIndex" #templatesTable>
+                            <tr>
+                                <td>{{i+1}}</td>
+                                <td><a class="idname" (click)="NavToCapaWorkflow(capaDetails.id)">
+                                        {{capaDetails.id}}</a></td>
+                                <td>{{capaDetails.department}}</td>
+                                <td>{{capaDetails.initiatedBy}}</td>
+                                <td>{{capaDetails.date | date: 'MM/dd/yyyy'}}</td>
+                                <td><span class="status rounded-pill"
+                                        [ngClass]="getStatusClass(capaDetails['status'])">{{capaDetails.status}}
+                                    </span></td>
+                                <td class="text-center">
+                                    <div class="ellipsis-menu" (click)="toggleMenu(i)">
+                                        <i class="fa fa-ellipsis-h"></i>
+                                        <ng-container *ngIf="i === selectedIndex">
+                                            <ul class="menu bg-white shadow-dark" *ngIf="isOpen">
+                                                <li class="d-flex" (click)="gotoRegPage()">
+                                                    <img src="../../../assets/images/mdi--edit-outline.svg" width="20"
+                                                        height="20">
+                                                    <span class="menu-styles"> Edit</span>
+                                                </li>
+                                                <li class="d-flex" (click)="gotoWorkTransferPage()"><img
+                                                        src="../../../assets/images/fluent--arrow-swap-20-regular.svg"
+                                                        width="20" height="20">
+                                                    <span class="menu-styles"> Work Transfer</span>
+                                                </li>
+                                                <li class="d-flex" (click)="goToExtendDate()"><img
+                                                        src="../../../assets/images/ic--twotone-more-time.svg"
+                                                        width="20" height="20">
+                                                    <span class="menu-styles"> Extend Target date</span>
+                                                </li>
+                                                <li class="d-flex"(click)="gotoDossierPrintPage()">
+                                                    <img src="../../../assets/images/material-symbols--print-add-outline.svg"
+                                                        width="20" height="20">
+                                                    <span class="menu-styles"> Dossier Print Request </span>
+                                                </li>
+                                            </ul>
+                                        </ng-container>
+
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </ng-template>
+                    </p-table>
+
+                
+            </div>
+        </div>
+
+    </div>
+</div>

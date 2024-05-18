@@ -113,7 +113,11 @@ namespace QAMS.WEB.Entities
         public const string ModifiedBy = "@ModifiedBy_PSY";
         
         public const string ModifiedDate = "@ModifiedDate_PSY";
-        
+
+        public const string CategoryName = "@CategoryName_PSY";
+
+        public const string CategoryId = "@CATID_PSY";
+
         public const string USP_ChangeControlRegistration_PSY_GET_ALL = "dbo.USP_ChangeControlRegistration_PSY_GET_ALL";
         
         public const string USP_ChangeControlRegistration_PSY_GET = "dbo.USP_ChangeControlRegistration_PSY_GET";

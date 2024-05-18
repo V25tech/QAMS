@@ -10,8 +10,7 @@
 namespace QAMS.WEB.Entities
 {
     using System;
-    using System.Collections.Generic;
-    using QAMS.Common.Entities;
+    
     
     
     // Comment

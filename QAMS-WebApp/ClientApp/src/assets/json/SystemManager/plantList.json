@@ -1,0 +1,78 @@
+[
+    {
+       
+        "id": "PL01",
+        "plantName":"Plant-01",
+        "initiatedBy": "David Wilson",
+        "date": "2023-05-17"
+        
+      },
+      {
+        "id": "PL02",
+        "plantName":"Plant-02",
+        "initiatedBy": "David Wilson",
+        "date": "2023-05-17"
+        
+      },
+      {
+        "id": "PL03",
+        "plantName":"Plant-03",
+        "initiatedBy": "David Wilson",
+        "date": "2023-05-17"
+      },
+      {
+        "id": "PL04",
+        "plantName":"Plant-04",
+        "initiatedBy": "David Wilson",
+        "date": "2023-05-17"
+        
+      },
+      {
+        "id": "PL05",
+        "plantName":"Plant-05",
+        "initiatedBy": "David Wilson",
+        "date": "2023-05-17"
+        
+      },
+      {
+        "id": "PL06",
+        "plantName":"Plant-06",
+        "initiatedBy": "David Wilson",
+        "date": "2023-05-17"
+        
+      },
+      {
+        "id": "PL07",
+        "plantName":"Plant-07",
+        "initiatedBy": "David Wilson",
+        "date": "2023-05-17"
+        
+      },
+      {
+        "id": "PL08",
+        "plantName":"Plant-08",
+        "initiatedBy": "David Wilson",
+        "date": "2023-05-17"
+        
+      },
+      {
+        "id": "PL09",
+        "plantName":"Plant-09",
+        "initiatedBy": "David Wilson",
+        "date": "2023-05-17"
+        
+      },
+      {
+        "id": "PL10",
+        "plantName":"Plant-10",
+        "initiatedBy": "David Wilson",
+        "date": "2023-05-17"
+        
+      },
+      {
+        "id": "PL11",
+        "plantName":"Plant-11",
+        "initiatedBy": "David Wilson",
+        "date": "2023-05-17"
+      }
+]

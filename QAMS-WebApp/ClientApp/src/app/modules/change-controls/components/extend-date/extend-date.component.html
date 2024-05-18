@@ -1,0 +1,79 @@
+<div class="d-flex justify-content-between align-items-center bg-white shadow-dark px-3">
+    <a class="me-2" (click)="backToCCClick()">
+      <i class="fa-solid fa-arrow-left back-icon m-l-3"></i></a>
+    <h4 class="page-title flex-grow-1 labelStyles">Extension of Target Date Registration Initiation</h4>
+  </div>
+  <div class="px-4 py-4">
+    <div class="row">
+      <div class="col"> 
+        <div class="p-4 bg-white shadow-dark rounded-2">
+
+        <div class="form-group row">
+            <label for="Initiating Department" class="col-sm-2 col-form-label">Initiating
+                Department</label>
+            <div class="col-sm-10 ">
+                <input type="text" class="form-control input-width" name="Initiating Department"
+                    placeholder="Quality Control" />
+            </div>
+        </div>
+
+        <!-- <div class="form-group row">
+            <label for="purpose" class="col-md-4 col-sm-12 col-form-label">Date of Initiation</label>
+            <div class="col-md-6">
+                <p-calendar [(ngModel)]="dates" [showIcon]="true"></p-calendar>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="purpose" class="col-md-4 col-sm-12 col-form-label">Target Date of Closure</label>
+            <div class="col-md-6">
+                <p-calendar [(ngModel)]="dates" [showIcon]="true"></p-calendar>
+            </div>
+        </div>
+ -->
+
+
+        <div class="form-group row">
+            <label for="ProposedExtension" style="width:200px"  class="col-sm-2 col-form-label">Proposed Extension</label>
+            <div class="col-sm-10">
+                <div class="input-group">
+                    <input type="text" class="form-control extend-date" placeholder="Extension" aria-label="ProposedExtension">
+                    <span class="input-group-text">Days</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="Extended" class="col-sm-2 col-form-label">Extended Target Date</label>
+            <div class="col-sm-10">
+                <p-calendar [(ngModel)]="dates" [showIcon]="true"></p-calendar>
+            </div>
+        </div>
+
+
+        <div class="form-group row">
+            <label for="comments" class="col-sm-2  col-form-label">Remarks/Reason</label>
+            <div class="col-sm-10 ">
+                <textarea class="form-control mt-2 text-muted review-styles" placeholder="Enter Remarks here"
+                    rows="3"></textarea>
+            </div>
+        </div>
+
+        <p-toast></p-toast>
+        <p-confirmDialog>
+            <ng-template pTemplate="message" let-message>
+                <div class="flex flex-column align-items-center w-full gap-3 border-bottom-1 surface-border">
+                    <i class="pi pi-exclamation-circle text-6xl text-primary-500"></i>
+                    <p>{{ message.message }}</p>
+                </div>
+            </ng-template>
+        </p-confirmDialog>
+        </div>
+        <div class="mt-5 d-flex justify-content-end">
+            <button type="button" class="btn btn-default rounded-pill me-3" (click)="backToCCClick()">Cancel</button>
+            <button type="button" class="btn btn-primary rounded-pill me-3" (click)="confirm1()">Submit</button>
+        </div>
+    
+      </div>
+    </div>
+  </div>

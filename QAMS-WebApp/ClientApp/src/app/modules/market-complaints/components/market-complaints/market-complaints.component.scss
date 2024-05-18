@@ -1,0 +1,40 @@
+.status-select {
+    padding: 0.5rem;
+    width: 100%;
+  }
+  
+  .ellipsis-menu {
+    position: static;
+    cursor: pointer;
+  }
+  
+  .ellipsis {
+    cursor: pointer;
+  }
+  
+  .menu {
+    //display: none;
+    cursor: pointer;
+    position: absolute;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: #fff;
+    border: 1px solid #f1ebeb;
+    margin-left: -7rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+  
+  .menu li {
+    padding: 5px;
+    border-bottom: 1px solid #f1ebeb;
+  }
+  
+  .menu li:last-child {
+    border-bottom: none;
+  }
+  
+  .menu-styles {
+    margin-left: 10px;
+  }
+ 

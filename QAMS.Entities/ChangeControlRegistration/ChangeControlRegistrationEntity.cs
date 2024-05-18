@@ -9,9 +9,6 @@
 
 namespace QAMS.WEB.Entities
 {
-    using System;
-
-
     // Comment
     public class ChangeControlRegistration : BaseEntity
     {

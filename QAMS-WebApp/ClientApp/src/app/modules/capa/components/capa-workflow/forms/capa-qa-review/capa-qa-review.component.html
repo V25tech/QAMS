@@ -1,0 +1,129 @@
+<div class="p-3 bg-white shadow-dark rounded-2">
+    <h5 class="page-card-title border-bottom">QA Review</h5>
+    <div class="p-2">
+        <div class="d-flex justify-content-center mt-2">
+            <div class="reviews mt-3">
+
+                <label class="review approve-review" for="approve">
+                    <input type="radio" name="review" id="approve" />
+                    <div class="review-content">
+                        <div class="review-details">
+                            <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15">
+                                    <path fill-rule="evenodd"
+                                        d="M0 7.5a7.5 7.5 0 1 1 15 0a7.5 7.5 0 0 1-15 0m7.072 3.21l4.318-5.398l-.78-.624l-3.682 4.601L4.32 7.116l-.64.768z"
+                                        clip-rule="evenodd" />
+                                </svg> Approve</span>
+                        </div>
+                    </div>
+                </label>
+
+                <label class="review return-review" for="return">
+                    <input type="radio" id="return" name="review" />
+                    <div class="review-content">
+
+                        <div class="review-details">
+                            <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56">
+                                    <path
+                                        d="M19.281 49.516c1.242 0 2.063-.844 2.063-2.063c0-.61-.188-1.055-.563-1.43l-6.75-6.586l-4.453-3.796l5.508.234h29.906c5.46 0 7.735-2.508 7.735-7.805V14.22c0-5.461-2.274-7.735-7.735-7.735H31.867c-1.289 0-2.133.938-2.133 2.086c0 1.149.844 2.086 2.133 2.086h13.125c2.484 0 3.563 1.078 3.563 3.563v13.85c0 2.555-1.079 3.633-3.563 3.633H15.086l-5.508.235l4.453-3.797l6.75-6.586c.375-.375.563-.844.563-1.453c0-1.196-.82-2.063-2.063-2.063c-.515 0-1.125.258-1.523.656L3.976 32.22c-.468.445-.703.984-.703 1.57c0 .563.235 1.125.703 1.57l13.782 13.524a2.273 2.273 0 0 0 1.523.633" />
+                                </svg>
+                                Return</span>
+                        </div>
+                    </div>
+                </label>
+
+                <label class="review reject-review" for="reject">
+                    <input type="radio" id="reject" name="review" />
+                    <div class="review-content">
+
+                        <div class="review-details">
+                            <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                                    <path
+                                        d="M7.293 8L3.146 3.854a.5.5 0 1 1 .708-.708L8 7.293l4.146-4.147a.5.5 0 0 1 .708.708L8.707 8l4.147 4.146a.5.5 0 0 1-.708.708L8 8.707l-4.146 4.147a.5.5 0 0 1-.708-.708z" />
+                                </svg>
+                                Reject</span>
+                        </div>
+                    </div>
+                </label>
+            </div>
+
+        </div>
+        <div class="mt-4 bg-contrast pb-3 rounded">
+            <div class="d-flex justify-content-between align-items-center p-3">
+                <h6 class="mb-0">Department(s) Required to provide comments</h6>
+            </div>
+            <div class="action-plans-block px-3 ">
+                <div class="d-flex brd-dashed bg-white flex-column rounded p-3">
+                    <p-table #deviationHodReview [value]="departmentPlantCode">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th class="line-height">S.No</th>
+                               
+                                <th>Department (Plant Code)</th>
+                                <th>Assign To </th>
+                                <th style="width:170px"> In-Charge </th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-departmentType let-i="rowIndex" #templatesTable>
+                            <tr>
+                                <td>{{i+1}}</td>
+                                <td>{{departmentType?.name}}</td>
+                                <td>
+                                    <div class="col-lg-8 d-flex">
+                                        <div class="">
+                                            <input type="radio" id="usergroup" name="radiobtn{{i}}" value="userGroup{{i}}" #userGroup
+                                                 class="form-check-input user-group-radio-btn" (change)="selectDepartmentUserGroup($event,i)">
+                                            <label class="p-2 " for="usergroup">User Group</label>
+                                        </div>
+                                        <div class="">
+                                            <input type="radio" class="form-check-input user-group-radio-btn" id="user" name="radiobtn{{i}}" 
+                                            value="user{{i}}" (change)="selectDepartmentUserGroup($event,i)" #user>
+                                            <label class="p-2 " for="user">User</label>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group row" *ngIf="userGroup.checked && !user.checked">
+                                        <div class="col-md-12  mt-3 px-0 ">
+                                            <select name="status" class="form-select drop-styles" (change)="selectInchargeDropdown($event)">
+                                                <option *ngFor="let userGroupDetails of departmentUserGroupDetails" [value]="userGroupDetails.code">
+                                                    {{userGroupDetails.name}}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row" *ngIf="user.checked && !userGroup.checked">
+                                        <div class="col-md-12 drp-styles mt-3 px-0 ">
+                                            <select name="status" class="form-select drop-styles" (change)="selectInchargeDropdown($event)">
+                                                <option *ngFor="let userDetails of departmentUserDetails" [value]="userDetails.code">
+                                                    {{userDetails.name}}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
+
+                        </ng-template>
+                </p-table> 
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group mt-3 px-1">
+            <label for="comments">Review Comments</label>
+            <textarea class="form-control mt-2 text-muted review-styles" id="comments"
+                placeholder="Enter review comments here" rows="3"></textarea>
+        </div>
+
+        <div class="mt-4 d-flex justify-content-end">
+            <button type="button"
+                class="btn btn-default rounded-pill me-3">Cancel</button>
+            <button type="button" class="btn btn-outline-primary rounded-pill me-3">Save</button>
+            <button type="button"
+                class="btn btn-primary rounded-pill me-3">Submit</button>
+        </div>
+    </div>
+</div>
+
