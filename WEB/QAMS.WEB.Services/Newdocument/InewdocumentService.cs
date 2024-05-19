@@ -11,16 +11,16 @@ namespace QAMS.Sheet1.Services
     public interface INewdocumentService
     {
         
-        ResponseContext<NewDocument> GetAllnewdocument(RequestContext requestContext);
+        ResponseContext<NewDocument> GetAllNewdocument(RequestContext requestContext);
         
-        NewDocument GetnewdocumentBynd(System.Int32? nd);
+        NewDocument GetNewdocumentBynd(int? nd);
         
-        bool Savenewdocument(NewDocument newdocument);
+        bool SaveNewdocument(NewDocument newdocument);
         
-        bool Updatenewdocument(NewDocument newdocument);
+        bool UpdateNewdocument(NewDocument newdocument);
         
-        bool DeletenewdocumentBynd(System.Int32? nd);
+        bool DeleteNewdocumentBynd(int? nd);
         
-        bool DeleteAllnewdocument(List<int> nds);
+        bool DeleteAllNewdocument(List<int> nds);
     }
 }

@@ -118,6 +118,12 @@ namespace QAMS.WEB.Entities
 
         public const string CategoryId = "@CATID_PSY";
 
+        public const string ChangeDetails = "@ChangeDetails_PSY";
+        
+        public const string ImpactDetails = "@ImpactDetails_PSY";
+
+        public const string RequestDetails = "@RequestDetails_PSY";
+
         public const string USP_ChangeControlRegistration_PSY_GET_ALL = "dbo.USP_ChangeControlRegistration_PSY_GET_ALL";
         
         public const string USP_ChangeControlRegistration_PSY_GET = "dbo.USP_ChangeControlRegistration_PSY_GET";

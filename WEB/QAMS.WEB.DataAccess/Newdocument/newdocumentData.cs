@@ -26,9 +26,11 @@ namespace QAMS.WEB.Data
         {
             try
             {
-                List<SqlParameter> sqlparms = new List<SqlParameter>();
-                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = RequestContextConstants.PageNumber, Value = requestContext.PageNumber });
-                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = RequestContextConstants.PageSize, Value = requestContext.PageSize });
+                List<SqlParameter> sqlparms = new()
+                {
+                    new SqlParameter { DbType = DbType.Int32, ParameterName = RequestContextConstants.PageNumber, Value = requestContext.PageNumber },
+                    new SqlParameter { DbType = DbType.Int32, ParameterName = RequestContextConstants.PageSize, Value = requestContext.PageSize }
+                };
                 DataSet dataset = (DataSet)dataAccessHelper.ExecuteStoredProcedure(NewDocumentConstants.USP_newdocument_PSY_GET_ALL, sqlparms, ExecutionType.Dataset);
                 return dataset;
             }
@@ -78,13 +80,14 @@ namespace QAMS.WEB.Data
         {
             try
             {
-                List<SqlParameter> sqlparms = new List<SqlParameter>();
-                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = NewDocumentConstants.title, Value = newdocument.title });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.nd, Value = newdocument.nd });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.title, Value = newdocument.title });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.description, Value = newdocument.description });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.uploadfile, Value = newdocument.uploadfile });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.ModifiedBy, Value = newdocument.ModifiedBy });
+                List<SqlParameter> sqlparms = new()
+                {
+                    new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.nd, Value = newdocument.nd },
+                    new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.title, Value = newdocument.title },
+                    new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.description, Value = newdocument.description },
+                    new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.uploadfile, Value = newdocument.uploadfile },
+                    new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.ModifiedBy, Value = newdocument.ModifiedBy }
+                };
                 Object result = dataAccessHelper.ExecuteStoredProcedure(NewDocumentConstants.USP_newdocument_PSY_UPDATE, sqlparms, ExecutionType.Scalar);
                 return (Convert.ToInt32(result) > 0);
             }
@@ -101,7 +104,7 @@ namespace QAMS.WEB.Data
                 var result = dataAccessHelper.ExecuteStoredProcedure(NewDocumentConstants.USP_newdocument_PSY_DELETE, NewDocumentConstants.nd, DbType.Int32, nd, ExecutionType.NonQuery);
                 return (Convert.ToInt32(result) >= 0);
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
                 throw;
             }
@@ -114,15 +117,12 @@ namespace QAMS.WEB.Data
                 var result = dataAccessHelper.ExecuteStoredProcedure(NewDocumentConstants.USP_newdocument_PSY_DELETE_ALL, NewDocumentConstants.nd, DbType.String, string.Join(',',  nds), ExecutionType.NonQuery);
                 return (Convert.ToInt32(result) >= 0);
             }
-            catch (System.Exception ex)
+            catch (Exception)
             {
                 throw;
             }
         }
 
-        //public bool Updatenewdocument(NewDocument newdocument)
-        //{
-        //    throw new NotImplementedException();
-        //}
+       
     }
 }

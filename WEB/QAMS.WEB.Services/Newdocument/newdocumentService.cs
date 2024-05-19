@@ -25,7 +25,7 @@ namespace QAMS.WEB.Services
             this.newdocumentData = newdocumentData;
         }
         
-        public ResponseContext<NewDocument> GetAllnewdocument(RequestContext requestContext)
+        public ResponseContext<NewDocument> GetAllNewdocument(RequestContext requestContext)
         {
             try
             {
@@ -33,13 +33,13 @@ namespace QAMS.WEB.Services
                 List<NewDocument> result = newdocumentConverter.SetAllnewdocument(dataset);
                 return new ResponseContext<NewDocument>() { RowCount = CommonConverter.SetRowsCount(dataset), Response = result };
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
                 throw;
             }
         }
         
-        public NewDocument GetnewdocumentBynd(System.Int32? nd)
+        public NewDocument GetNewdocumentBynd(int? nd)
         {
             try
             {
@@ -47,31 +47,31 @@ namespace QAMS.WEB.Services
                 NewDocument result = newdocumentConverter.Setnewdocument(dataset);
                 return result;
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
                 throw;
             }
         }
         
-        public bool Savenewdocument(NewDocument newdocument)
+        public bool SaveNewdocument(NewDocument newdocument)
         {
             try
             {
-                String validationMessages = newdocumentValidator.IsValidnewdocument(newdocument);
+                string validationMessages = newdocumentValidator.IsValidnewdocument(newdocument);
                 if (validationMessages.Length <= 0)
                 {
                     var result = newdocumentData.Savenewdocument(newdocument);
                     return result;
                 }
-                throw new System.Exception(validationMessages);
+                throw new Exception(validationMessages);
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
                 throw;
             }
         }
         
-        public bool Updatenewdocument(NewDocument newdocument)
+        public bool UpdateNewdocument(NewDocument newdocument)
         {
             try
             {
@@ -83,31 +83,31 @@ namespace QAMS.WEB.Services
                 }
                 throw new System.Exception(validationMessages);
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
                 throw;
             }
         }
         
-        public bool DeletenewdocumentBynd(System.Int32? nd)
+        public bool DeleteNewdocumentBynd(int? nd)
         {
             try
             {
                 return newdocumentData.DeletenewdocumentBynd(nd);
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
                 throw;
             }
         }
         
-        public bool DeleteAllnewdocument(List<int> nds)
+        public bool DeleteAllNewdocument(List<int> nds)
         {
             try
             {
                 return newdocumentData.DeleteAllnewdocument(nds);
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
                 throw;
             }
