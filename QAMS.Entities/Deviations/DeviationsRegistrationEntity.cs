@@ -9,12 +9,13 @@
 
 namespace QAMS.WEB.Entities
 {
+    using QAMS.Entities.Common;
     using System;
     
     public class DeviationsRegistration : BaseEntity
     {
         
-        private System.Int32? deviationidField;
+        private Int32? deviationidField;
         
         private string deviationUniquecodeField;
 
@@ -27,8 +28,12 @@ namespace QAMS.WEB.Entities
         private string systemField;
         
         private string deviationdetailsField;
-        
-        public System.Int32? DeviationId
+
+        private string CategoryField;
+
+        private readonly int catIdField;
+
+        public Int32? DeviationId
         {
             get
             {
@@ -105,5 +110,31 @@ namespace QAMS.WEB.Entities
                 this.deviationdetailsField = value;
             }
         }
+        public ChangeDetailsEntity DeviationIdentification { get; set; }
+        public RequestDetailsEntity ChangeDetails { get; set; }
+        public string Category
+        {
+            get
+            {
+                return this.CategoryField;
+            }
+            set
+            {
+                this.CategoryField = value;
+            }
+        }
+
+        public int CatId
+        {
+            get
+            {
+                return this.catIdField;
+            }
+            set
+            {
+                CatId = value;
+            }
+        }
+
     }
 }

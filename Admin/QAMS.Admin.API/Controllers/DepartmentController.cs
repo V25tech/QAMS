@@ -9,16 +9,13 @@
 
 namespace QAMS.Controllers
 {
-    using System;
     using System.Collections.Generic;
-    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Authorization;
     using QAMS.Common.Entities;
     using QAMS.Admin.Entities;
     using QAMS.Admin.Services;
-    
-    
+
+
     /// <summary>
     /// Comment
     /// </summary>
