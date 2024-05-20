@@ -4,6 +4,8 @@ using System;
 namespace QAMS.WEB.Entities
 {
     // Comment
+
+    //EntityInitiationform
     public class ChangeControlRegistration 
     {
         public ChangeDetailsEntity ChangeDetails { get; set; }

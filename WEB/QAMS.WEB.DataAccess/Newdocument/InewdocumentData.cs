@@ -8,16 +8,16 @@ namespace QAMS.WEB.Data
     public interface INewdocumentData
     {
         
-        DataSet GetAllnewdocument(RequestContext requestContext);
+        DataSet GetAllNewdocument(RequestContext requestContext);
         
-        DataSet GetnewdocumentBynd(System.Int32? nd);
+        DataSet GetNewdocumentBynd(System.Int32? nd);
         
-        bool Savenewdocument(NewDocument newdocument);
+        bool SaveNewdocument(NewDocument newdocument);
         
-        bool Updatenewdocument(NewDocument newdocument);
+        bool UpdateNewdocument(NewDocument newdocument);
         
-        bool DeletenewdocumentBynd(System.Int32? nd);
+        bool DeleteNewdocumentBynd(System.Int32? nd);
         
-        bool DeleteAllnewdocument(List<int> nds);
+        bool DeleteAllNewdocument(List<int> nds);
     }
 }

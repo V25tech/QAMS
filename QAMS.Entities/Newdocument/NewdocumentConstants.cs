@@ -36,6 +36,8 @@ namespace QAMS.Admin.Entities
 
         public const string CatId = "@CATID_PSY";
 
+        public const string ChangeControlId = "@ChangeControlId_PSY";
+
         public const string USP_newdocument_PSY_GET_ALL = "dbo.USP_newdocument_PSY_GET_ALL";
         
         public const string USP_newdocument_PSY_GET = "dbo.USP_newdocument_PSY_GET";

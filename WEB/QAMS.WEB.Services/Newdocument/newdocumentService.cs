@@ -29,7 +29,7 @@ namespace QAMS.WEB.Services
         {
             try
             {
-                DataSet dataset = newdocumentData.GetAllnewdocument(requestContext);
+                DataSet dataset = newdocumentData.GetAllNewdocument(requestContext);
                 List<NewDocument> result = newdocumentConverter.SetAllnewdocument(dataset);
                 return new ResponseContext<NewDocument>() { RowCount = CommonConverter.SetRowsCount(dataset), Response = result };
             }
@@ -43,7 +43,7 @@ namespace QAMS.WEB.Services
         {
             try
             {
-                DataSet dataset = newdocumentData.GetnewdocumentBynd(nd);
+                DataSet dataset = newdocumentData.GetNewdocumentBynd(nd);
                 NewDocument result = newdocumentConverter.Setnewdocument(dataset);
                 return result;
             }
@@ -60,7 +60,7 @@ namespace QAMS.WEB.Services
                 string validationMessages = newdocumentValidator.IsValidnewdocument(newdocument);
                 if (validationMessages.Length <= 0)
                 {
-                    var result = newdocumentData.Savenewdocument(newdocument);
+                    var result = newdocumentData.SaveNewdocument(newdocument);
                     return result;
                 }
                 throw new Exception(validationMessages);
@@ -78,7 +78,7 @@ namespace QAMS.WEB.Services
                 String validationMessages = newdocumentValidator.IsValidnewdocument(newdocument);
                 if (validationMessages.Length <= 0)
                 {
-                    bool result = newdocumentData.Updatenewdocument(newdocument);
+                    bool result = newdocumentData.UpdateNewdocument(newdocument);
                     return result;
                 }
                 throw new System.Exception(validationMessages);
@@ -93,7 +93,7 @@ namespace QAMS.WEB.Services
         {
             try
             {
-                return newdocumentData.DeletenewdocumentBynd(nd);
+                return newdocumentData.DeleteNewdocumentBynd(nd);
             }
             catch (System.Exception)
             {
@@ -105,7 +105,7 @@ namespace QAMS.WEB.Services
         {
             try
             {
-                return newdocumentData.DeleteAllnewdocument(nds);
+                return newdocumentData.DeleteAllNewdocument(nds);
             }
             catch (System.Exception)
             {

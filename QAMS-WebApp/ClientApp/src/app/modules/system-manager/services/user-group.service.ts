@@ -33,7 +33,7 @@ export class UserGroupService {
 }
   constructor(private http: HttpClient) { }
   getUserData(): Observable<any> {
-    return this.http.get('assets/json/SystemManager/userGroup.json');
+    return this.http.post('http://localhost:54456/api/usergroup/getusergroups',"{\"pageNumber\":1,\"pageSize\":100}");
   }
   getProductsSmall() {
     return Promise.resolve(this.getProductsData().slice(0, 10));
