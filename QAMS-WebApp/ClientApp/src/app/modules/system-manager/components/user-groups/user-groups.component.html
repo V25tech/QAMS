@@ -25,13 +25,13 @@
                         <ng-template pTemplate="header">
                             <tr>
                                 <th style="width:40px" class="lh-lg">S.No</th>
-                                <th pSortableColumn="userName">User Group Name<p-columnFilter type="text" field="userGroupName" display="menu"></p-columnFilter></th>
-                                <th pSortableColumn="ID">Unique ID
-                                    <p-sortIcon field="id"></p-sortIcon>
-                                    <p-columnFilter type="text" field="id" display="menu"></p-columnFilter>
+                                <th pSortableColumn="name">User Group Name<p-columnFilter type="text" field="name" display="menu"></p-columnFilter></th>
+                                <th pSortableColumn="code">Unique ID
+                                    <p-sortIcon field="code"></p-sortIcon>
+                                    <p-columnFilter type="text" field="code" display="menu"></p-columnFilter>
                                     </th>
-                                <th pSortableColumn="initiatedBy">Initiated By <p-columnFilter type="text" field="initiatedby" display="menu"></p-columnFilter></th>
-                                <th pSortableColumn="InitiatedOn">Initiated On <p-columnFilter type="date" field="date" display="menu"></p-columnFilter> </th>
+                                <th pSortableColumn="createdBy">Initiated By <p-columnFilter type="text" field="createdBy" display="menu"></p-columnFilter></th>
+                                <th pSortableColumn="createdDate">Initiated On <p-columnFilter type="date" field="createdDate" display="menu"></p-columnFilter> </th>
                                 <th class="text-center">Actions</th>
 
                             </tr>
@@ -39,12 +39,12 @@
                         <ng-template pTemplate="body" let-userGroup let-i="rowIndex" #templatesTable>
                             <tr>
                                 <td>{{i+1}}</td>
-                                <td>{{userGroup.name}}</td>
+                                <td>{{userGroup?.name}}</td>
                                 <td class="idname">
-                                        {{userGroup.code}}</td>
-                                <td>{{userGroup.createdBy}}</td>
-                                <!-- <td>{{userGroup.createdDate | date: 'MM/dd/yyyy'}}</td> -->
-                                <td>{{userGroup.roles}}</td>
+                                        {{userGroup?.code}}</td>
+                                <td>{{userGroup?.createdBy}}</td>
+                                <td>{{userGroup.createdDate | date: 'MM/dd/yyyy'}}</td>
+                                <!-- <td>{{userGroup?.roles}}</td> -->
                              
                                 <td class="text-center">
                                     
