@@ -35,7 +35,7 @@ export class UserGroupsComponent {
    
     this.UserGroupService.getUserData().subscribe((data: any) => {
       this.userGroupDatasource = data;
-      this.userGroupDatasource.forEach(dataSource=>dataSource.date = new Date(dataSource.date))
+      //this.userGroupDatasource.forEach(dataSource=> dataSource.date = new Date(dataSource.date))
     });
   }
    

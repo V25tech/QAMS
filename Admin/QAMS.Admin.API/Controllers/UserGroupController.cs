@@ -42,7 +42,7 @@ namespace QAMS.Controllers
         /// This method is used to Get List of UserGroup
         /// </summary>
         /// <param name="requestContext"></param>
-        [HttpPost()]
+        [HttpPost("getallusergroups")]
         public ActionResult<ResponseContext<UserGroup>> GetAllUserGroup(RequestContext requestContext)
         {
             var result = userGroupService.GetAllUserGroup(requestContext);

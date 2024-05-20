@@ -12,7 +12,7 @@ import { Observable, tap } from 'rxjs';
 export class NetworkInterceptor implements HttpInterceptor {
   constructor() {}
 
-  api_url = 'https://dummyjson.com/';
+  api_url = 'http://localhost:54456/api';
   intercept(request: HttpRequest<any>,next: HttpHandler): Observable<HttpEvent<any>> {
     console.log('Outgoing HTTP request', request);
     
