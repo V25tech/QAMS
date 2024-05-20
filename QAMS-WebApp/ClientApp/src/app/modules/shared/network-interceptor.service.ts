@@ -17,7 +17,7 @@ export class NetworkInterceptor implements HttpInterceptor {
     console.log('Outgoing HTTP request', request);
     
     const final_request = request.clone({
-        url: this.api_url + request.url
+        url: (request.url.startsWith('assets')? '': this.api_url) + request.url
       });
     // return next.handle(request).pipe(
     //   tap((event: HttpEvent<any>) => {

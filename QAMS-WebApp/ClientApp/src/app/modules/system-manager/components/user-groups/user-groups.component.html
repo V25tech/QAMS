@@ -10,8 +10,9 @@
         <div class="row">
             <div class="col mt-2 table-landing ">
                     <p-table #dt dataKey="id" [value]="userGroupDatasource" [paginator]="true" [rows]="10"
-                        [rowsPerPageOptions]="[10, 25, 50]" [showCurrentPageReport]="true"
-                        [globalFilterFields]="['name', 'code',  'createdBy','roles']"
+                        [showCurrentPageReport]="true" [totalRecords]="userGroupDatasource.length"
+                        [rowsPerPageOptions]="[10, 25, 50]"
+                        [globalFilterFields]="['name', 'code',  'createdBy','createdDate']"
 
                         tableStyleClass="table table-striped">
                         <ng-template pTemplate="caption">
@@ -29,7 +30,7 @@
                                 <th pSortableColumn="code">Unique ID
                                     <p-sortIcon field="code"></p-sortIcon>
                                     <p-columnFilter type="text" field="code" display="menu"></p-columnFilter>
-                                    </th>
+                                </th>
                                 <th pSortableColumn="createdBy">Initiated By <p-columnFilter type="text" field="createdBy" display="menu"></p-columnFilter></th>
                                 <th pSortableColumn="createdDate">Initiated On <p-columnFilter type="date" field="createdDate" display="menu"></p-columnFilter> </th>
                                 <th class="text-center">Actions</th>
@@ -40,8 +41,7 @@
                             <tr>
                                 <td>{{i+1}}</td>
                                 <td>{{userGroup?.name}}</td>
-                                <td class="idname">
-                                        {{userGroup?.code}}</td>
+                                <td class="idname">{{userGroup?.code}}</td>
                                 <td>{{userGroup?.createdBy}}</td>
                                 <td>{{userGroup.createdDate | date: 'MM/dd/yyyy'}}</td>
                                 <!-- <td>{{userGroup?.roles}}</td> -->

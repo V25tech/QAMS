@@ -34,7 +34,7 @@ export class UserGroupsComponent {
   ngOnInit() :void {
    
     this.UserGroupService.getUserData().subscribe((data: any) => {
-      this.userGroupDatasource = data;
+      this.userGroupDatasource = data.response;
       //this.userGroupDatasource.forEach(dataSource=> dataSource.date = new Date(dataSource.date))
     });
   }
