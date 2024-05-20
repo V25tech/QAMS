@@ -38,7 +38,20 @@ namespace QAMS.Admin.Entities
 
         private int catIdField;
 
-        
+        private int changeControlIdField;
+
+        public int ParentControlId
+        {
+            get
+            {
+                return this.changeControlIdField;
+            }
+            set
+            {
+                this.changeControlIdField = value;
+            }
+        }
+
         public System.Int32? nd
         {
             get

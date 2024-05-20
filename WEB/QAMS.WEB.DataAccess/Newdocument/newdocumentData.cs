@@ -22,7 +22,7 @@ namespace QAMS.WEB.Data
             this.dataAccessHelper = dataAccessHelper;
         }
         
-        public DataSet GetAllnewdocument(RequestContext requestContext)
+        public DataSet GetAllNewdocument(RequestContext requestContext)
         {
             try
             {
@@ -34,26 +34,26 @@ namespace QAMS.WEB.Data
                 DataSet dataset = (DataSet)dataAccessHelper.ExecuteStoredProcedure(NewDocumentConstants.USP_newdocument_PSY_GET_ALL, sqlparms, ExecutionType.Dataset);
                 return dataset;
             }
-            catch (System.Exception ex)
+            catch (Exception)
             {
                 throw;
             }
         }
         
-        public DataSet GetnewdocumentBynd(System.Int32? nd)
+        public DataSet GetNewdocumentBynd(int? nd)
         {
             try
             {
                 DataSet dataset = (DataSet)dataAccessHelper.ExecuteStoredProcedure(NewDocumentConstants.USP_newdocument_PSY_GET, NewDocumentConstants.nd, DbType.Int32, nd, ExecutionType.Dataset);
                 return dataset;
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
                 throw;
             }
         }
         
-        public bool Savenewdocument(NewDocument newdocument)
+        public bool SaveNewdocument(NewDocument newdocument)
         {
             try
             {
@@ -65,18 +65,19 @@ namespace QAMS.WEB.Data
                     new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.CreatedBy, Value = newdocument.CreatedBy },
                     new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.ModifiedBy, Value = newdocument.ModifiedBy },
                     new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.Category, Value = newdocument.Category },
-                    new SqlParameter { DbType = DbType.Int16, ParameterName = NewDocumentConstants.CatId, Value = newdocument.CatId }
+                    new SqlParameter { DbType = DbType.Int16, ParameterName = NewDocumentConstants.CatId, Value = newdocument.CatId },
+                    new SqlParameter { DbType = DbType.Int16, ParameterName = NewDocumentConstants.ChangeControlId, Value = newdocument.ParentControlId }
                 };
                 Object result = dataAccessHelper.ExecuteStoredProcedure(NewDocumentConstants.USP_newdocument_PSY_INSERT, sqlparms, ExecutionType.Scalar);
                 return (Convert.ToInt32(result) > 0);
             }
-            catch (System.Exception ex)
+            catch (Exception)
             {
                 throw;
             }
         }
         
-        public bool Updatenewdocument(NewDocument newdocument)
+        public bool UpdateNewdocument(NewDocument newdocument)
         {
             try
             {
@@ -86,31 +87,32 @@ namespace QAMS.WEB.Data
                     new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.title, Value = newdocument.title },
                     new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.description, Value = newdocument.description },
                     new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.uploadfile, Value = newdocument.uploadfile },
-                    new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.ModifiedBy, Value = newdocument.ModifiedBy }
+                    new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.ModifiedBy, Value = newdocument.ModifiedBy },
+                    new SqlParameter { DbType = DbType.Int16, ParameterName = NewDocumentConstants.ChangeControlId, Value = newdocument.ParentControlId }
                 };
                 Object result = dataAccessHelper.ExecuteStoredProcedure(NewDocumentConstants.USP_newdocument_PSY_UPDATE, sqlparms, ExecutionType.Scalar);
                 return (Convert.ToInt32(result) > 0);
             }
-            catch (System.Exception ex)
+            catch (Exception)
             {
                 throw;
             }
         }
         
-        public bool DeletenewdocumentBynd(System.Int32? nd)
+        public bool DeleteNewdocumentBynd(int? nd)
         {
             try
             {
                 var result = dataAccessHelper.ExecuteStoredProcedure(NewDocumentConstants.USP_newdocument_PSY_DELETE, NewDocumentConstants.nd, DbType.Int32, nd, ExecutionType.NonQuery);
                 return (Convert.ToInt32(result) >= 0);
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 throw;
             }
         }
         
-        public bool DeleteAllnewdocument(List<int> nds)
+        public bool DeleteAllNewdocument(List<int> nds)
         {
             try
             {
