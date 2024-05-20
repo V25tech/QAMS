@@ -37,15 +37,15 @@ namespace QAMS.Admin.Services
                     {
                         DataRow row = dataset.Tables[0].Rows[i];
                         userGroupData = new UserGroup();
-                        userGroupData.Id = DatatypeConverter.SetIntValue(row[UserGroupConstants.Id.TrimAt()]);
-                        userGroupData.Name = Convert.ToString(row[UserGroupConstants.Name.TrimAt()]);
-                        userGroupData.Code = Convert.ToString(row[UserGroupConstants.Code.TrimAt()]);
-                        userGroupData.Roles = Convert.ToString(row[UserGroupConstants.Roles.TrimAt()]);
-                        userGroupData.Revision = DatatypeConverter.SetIntValue(row[UserGroupConstants.Revision.TrimAt()]);
-                        userGroupData.CreatedBy = Convert.ToString(row[UserGroupConstants.CreatedBy.TrimAt()]);
-                        userGroupData.CreatedDate = DatatypeConverter.SetDateTime(row[UserGroupConstants.CreatedDate.TrimAt()]);
-                        userGroupData.ModifiedBy = Convert.ToString(row[UserGroupConstants.ModifiedBy.TrimAt()]);
-                        userGroupData.ModifiedDate = DatatypeConverter.SetDateTime(row[UserGroupConstants.ModifiedDate.TrimAt()]);
+                        userGroupData.id = DatatypeConverter.SetIntValue(row[UserGroupConstants.Id.TrimAt()]);
+                        userGroupData.name = Convert.ToString(row[UserGroupConstants.Name.TrimAt()]);
+                        userGroupData.code = Convert.ToString(row[UserGroupConstants.Code.TrimAt()]);
+                        userGroupData.roles = Convert.ToString(row[UserGroupConstants.Roles.TrimAt()]);
+                        userGroupData.revision = DatatypeConverter.SetIntValue(row[UserGroupConstants.Revision.TrimAt()]);
+                        userGroupData.createdBy = Convert.ToString(row[UserGroupConstants.CreatedBy.TrimAt()]);
+                        userGroupData.createdDate = DatatypeConverter.SetDateTime(row[UserGroupConstants.CreatedDate.TrimAt()]);
+                        userGroupData.modifiedBy = Convert.ToString(row[UserGroupConstants.ModifiedBy.TrimAt()]);
+                        userGroupData.modifiedDate = DatatypeConverter.SetDateTime(row[UserGroupConstants.ModifiedDate.TrimAt()]);
                         result.Add(userGroupData);
                     }
                 }

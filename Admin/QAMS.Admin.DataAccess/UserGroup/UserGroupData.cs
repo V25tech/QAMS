@@ -66,12 +66,12 @@ namespace QAMS.Admin.Data
             try
             {
                 List<SqlParameter> sqlparms = new List<SqlParameter>();
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = UserGroupConstants.Name, Value = userGroup.Name });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = UserGroupConstants.Code, Value = userGroup.Code });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = UserGroupConstants.Roles, Value = userGroup.Roles });
-                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = UserGroupConstants.Revision, Value = userGroup.Revision });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = UserGroupConstants.CreatedBy, Value = userGroup.CreatedBy });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = UserGroupConstants.ModifiedBy, Value = userGroup.ModifiedBy });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = UserGroupConstants.Name, Value = userGroup.name });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = UserGroupConstants.Code, Value = userGroup.code });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = UserGroupConstants.Roles, Value = userGroup.roles });
+                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = UserGroupConstants.Revision, Value = userGroup.revision });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = UserGroupConstants.CreatedBy, Value = userGroup.createdBy });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = UserGroupConstants.ModifiedBy, Value = userGroup.modifiedBy });
                 Object result = dataAccessHelper.ExecuteStoredProcedure(UserGroupConstants.USP_UserGroup_PSY_INSERT, sqlparms, ExecutionType.Scalar);
                 return (Convert.ToInt32(result) > 0);
             }
@@ -86,12 +86,12 @@ namespace QAMS.Admin.Data
             try
             {
                 List<SqlParameter> sqlparms = new List<SqlParameter>();
-                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = UserGroupConstants.Id, Value = userGroup.Id });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = UserGroupConstants.Name, Value = userGroup.Name });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = UserGroupConstants.Code, Value = userGroup.Code });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = UserGroupConstants.Roles, Value = userGroup.Roles });
-                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = UserGroupConstants.Revision, Value = userGroup.Revision });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = UserGroupConstants.ModifiedBy, Value = userGroup.ModifiedBy });
+                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = UserGroupConstants.Id, Value = userGroup.id });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = UserGroupConstants.Name, Value = userGroup.name });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = UserGroupConstants.Code, Value = userGroup.code });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = UserGroupConstants.Roles, Value = userGroup.roles });
+                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = UserGroupConstants.Revision, Value = userGroup.revision });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = UserGroupConstants.ModifiedBy, Value = userGroup.modifiedBy });
                 Object result = dataAccessHelper.ExecuteStoredProcedure(UserGroupConstants.USP_UserGroup_PSY_UPDATE, sqlparms, ExecutionType.Scalar);
                 return (Convert.ToInt32(result) > 0);
             }

@@ -11,7 +11,7 @@
             <div class="col mt-2 table-landing ">
                     <p-table #dt dataKey="id" [value]="userGroupDatasource" [paginator]="true" [rows]="10"
                         [rowsPerPageOptions]="[10, 25, 50]" [showCurrentPageReport]="true"
-                        [globalFilterFields]="['userName', 'id',  'initiatedBy','date']"
+                        [globalFilterFields]="['name', 'code',  'createdBy','roles']"
 
                         tableStyleClass="table table-striped">
                         <ng-template pTemplate="caption">
@@ -39,11 +39,12 @@
                         <ng-template pTemplate="body" let-userGroup let-i="rowIndex" #templatesTable>
                             <tr>
                                 <td>{{i+1}}</td>
-                                <td>{{userGroup.userName}}</td>
+                                <td>{{userGroup.name}}</td>
                                 <td class="idname">
-                                        {{userGroup.id}}</td>
-                                <td>{{userGroup.initiatedBy}}</td>
-                                <td>{{userGroup.date | date: 'MM/dd/yyyy'}}</td>
+                                        {{userGroup.code}}</td>
+                                <td>{{userGroup.createdBy}}</td>
+                                <!-- <td>{{userGroup.createdDate | date: 'MM/dd/yyyy'}}</td> -->
+                                <td>{{userGroup.roles}}</td>
                              
                                 <td class="text-center">
                                     

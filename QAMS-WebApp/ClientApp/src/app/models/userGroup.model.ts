@@ -1,8 +1,12 @@
 export interface UserGroup{
-    id?:string,
-    userName?:string,
-   initiatedBy?:string,
-    date:string | Date,
+    id?:Int16Array,
+    code?:string,
+    name?:string,
+    roles?:string,
+    createdBy?:string,
+    createdDate:Date ,
+    modifiedBy?:string,
+    modifiedDate?:Date
     
 }
 export interface RegUserGroup{

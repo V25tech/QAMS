@@ -10,10 +10,8 @@
 namespace QAMS.Admin.Entities
 {
     using System;
-    using System.Collections.Generic;
-    using QAMS.Common.Entities;
-    
-    
+
+
     // Comment
     public class UserGroup
     {
@@ -36,7 +34,7 @@ namespace QAMS.Admin.Entities
         
         private DateTime? modifieddateField;
         
-        public System.Int32? Id
+        public System.Int32? id
         {
             get
             {
@@ -48,7 +46,7 @@ namespace QAMS.Admin.Entities
             }
         }
         
-        public string Name
+        public string name
         {
             get
             {
@@ -60,7 +58,7 @@ namespace QAMS.Admin.Entities
             }
         }
         
-        public string Code
+        public string code
         {
             get
             {
@@ -72,7 +70,7 @@ namespace QAMS.Admin.Entities
             }
         }
         
-        public string Roles
+        public string roles
         {
             get
             {
@@ -84,7 +82,7 @@ namespace QAMS.Admin.Entities
             }
         }
         
-        public System.Int32? Revision
+        public System.Int32? revision
         {
             get
             {
@@ -96,7 +94,7 @@ namespace QAMS.Admin.Entities
             }
         }
         
-        public string CreatedBy
+        public string createdBy
         {
             get
             {
@@ -108,7 +106,7 @@ namespace QAMS.Admin.Entities
             }
         }
         
-        public DateTime? CreatedDate
+        public DateTime? createdDate
         {
             get
             {
@@ -120,7 +118,7 @@ namespace QAMS.Admin.Entities
             }
         }
         
-        public string ModifiedBy
+        public string modifiedBy
         {
             get
             {
@@ -132,7 +130,7 @@ namespace QAMS.Admin.Entities
             }
         }
         
-        public DateTime? ModifiedDate
+        public DateTime? modifiedDate
         {
             get
             {

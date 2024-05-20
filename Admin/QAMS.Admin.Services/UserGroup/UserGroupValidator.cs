@@ -30,16 +30,16 @@ namespace QAMS.Admin.Services
             {
                 StringBuilder validationMessages = new StringBuilder();
                 ValidationHelper validationHelper = new ValidationHelper();
-                validationMessages.Append(validationHelper.NullCheckValidator(userGroup.Name, nameof(userGroup.Name)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(userGroup.Name,150, nameof(userGroup.Name)));
-                validationMessages.Append(validationHelper.NullCheckValidator(userGroup.Code, nameof(userGroup.Code)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(userGroup.Code,150, nameof(userGroup.Code)));
-                validationMessages.Append(validationHelper.NullCheckValidator(userGroup.Roles, nameof(userGroup.Roles)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(userGroup.Roles,150, nameof(userGroup.Roles)));
-                validationMessages.Append(validationHelper.NullCheckValidator(userGroup.CreatedBy, nameof(userGroup.CreatedBy)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(userGroup.CreatedBy,150, nameof(userGroup.CreatedBy)));
-                validationMessages.Append(validationHelper.NullCheckValidator(userGroup.ModifiedBy, nameof(userGroup.ModifiedBy)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(userGroup.ModifiedBy,150, nameof(userGroup.ModifiedBy)));
+                validationMessages.Append(validationHelper.NullCheckValidator(userGroup.name, nameof(userGroup.name)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(userGroup.name,150, nameof(userGroup.name)));
+                validationMessages.Append(validationHelper.NullCheckValidator(userGroup.code, nameof(userGroup.code)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(userGroup.code,150, nameof(userGroup.code)));
+                validationMessages.Append(validationHelper.NullCheckValidator(userGroup.roles, nameof(userGroup.roles)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(userGroup.roles,150, nameof(userGroup.roles)));
+                validationMessages.Append(validationHelper.NullCheckValidator(userGroup.createdBy, nameof(userGroup.createdBy)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(userGroup.createdBy,150, nameof(userGroup.createdBy)));
+                validationMessages.Append(validationHelper.NullCheckValidator(userGroup.modifiedBy, nameof(userGroup.modifiedBy)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(userGroup.modifiedBy,150, nameof(userGroup.modifiedBy)));
                 if (!String.IsNullOrEmpty(validationMessages.ToString()))
                 {
                     return Convert.ToString(validationMessages.Remove(validationMessages.ToString().LastIndexOf(','),1));
