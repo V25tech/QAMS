@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TableModule } from 'primeng/table';
 import { PickListModule } from 'primeng/picklist';
@@ -27,6 +27,7 @@ import { CapaModule } from './modules/capa/capa.module';
 import { CapaRoutingModule } from './modules/capa/capa-routing.module';
 import { MarketComplaintsRoutingModule } from './modules/market-complaints/market-complaints-routing.module';
 import { MarketComplaintsModule } from './modules/market-complaints/market-complaints.module';
+import { NetworkInterceptor } from './modules/shared/network-interceptor.service';
 
 
 
@@ -65,7 +66,11 @@ import { MarketComplaintsModule } from './modules/market-complaints/market-compl
     MarketComplaintsModule
     
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, useClass: NetworkInterceptor, multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
