@@ -1,26 +1,28 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormGroup, FormControl,FormBuilder, Validators, FormArray } from '@angular/forms'
 import { MessageService, PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-register-cc',
   templateUrl: './register-cc.component.html',
   styleUrls: ['./register-cc.component.scss'],
-  providers: [ MessageService]
+  providers: [MessageService]
 })
 export class RegisterCCComponent implements OnInit {
   labelText: string = "Request Details";
   selectInternalOption: any;
-  selectedChangeDetails: string="Material";
-  selectedMarketValue:any;
-  selectedCustomerValue:any;
-  selectedProducts:any;
-  selectedMaterials:any;
-  selectedEquipments:any;
-  selectedBatchDetails:any;
+  selectedChangeDetails: string = "Material";
+  selectedMarketValue: any;
+  selectedCustomerValue: any;
+  selectedProducts: any;
+  selectedMaterials: any;
+  selectedEquipments: any;
+
   constructor(private router: Router,
     private primengConfig: PrimeNGConfig,
     private messageService: MessageService,
+    private fb: FormBuilder,
     private cdr: ChangeDetectorRef) {
 
   }
@@ -36,14 +38,14 @@ export class RegisterCCComponent implements OnInit {
   position: any;
   saveFlag: boolean = false;
   tab = 1;
-  externalFlag:boolean=true;
-  internalFlag:boolean=false;
-  tempRadioBtnFlag:boolean=false;
-  impurityReason:boolean=false;
-  nitrosamineReason:boolean=false;
-  genatoxicReason:boolean=false;
-  changeImpactProductdetails: boolean=true;
-  changeImpactProcedure:boolean=true;
+  externalFlag: boolean = true;
+  internalFlag: boolean = false;
+  tempRadioBtnFlag: boolean = false;
+  impurityReason: boolean = false;
+  nitrosamineReason: boolean = false;
+  genatoxicReason: boolean = false;
+  changeImpactProductdetails: boolean = true;
+  changeImpactProcedure: boolean = true;
 
   internalDetails = [
     { name: 'Capa', code: 'Capa' },
@@ -75,95 +77,170 @@ export class RegisterCCComponent implements OnInit {
     { name: 'New Product & Existing Product ', code: 'New Product & Existing Product' }
 
   ];
-  batchDetails=[
+  batchDetails = [
     { name: 'MEPJ240001', code: 'MEPJ240001' },
     { name: 'MEPJ240002 ', code: 'MEPJ240002' },
     { name: 'MEPJ240003 ', code: 'MEPJ240003' }
   ]
 
-  productDetails =[
+  productDetails = [
     { name: 'Mebeverine HCL Capsules 200 mg', code: 'Mebeverine HCL Capsules 200 mg' },
     { name: 'Meberine HCl Tablets 135 mg ', code: 'Meberine HCl Tablets 135 mg' }
   ]
-  materialDetails =[
+  materialDetails = [
     { name: 'Mebeverine HCL Capsules 200 mg', code: 'Mebeverine HCL Capsules 200 mg' },
     { name: 'Meberine HCl Tablets 135 mg ', code: 'Meberine HCl Tablets 135 mg' }
   ]
-  equipmentDetails =[
+  equipmentDetails = [
     { name: 'High Performance Liquid Chromatography', code: 'High Performance Liquid Chromatography' },
     { name: 'High Performance Liquid instrument ', code: 'High Performance Liquid instrument' }
   ]
 
+  mainForm: FormGroup ;
+
   ngOnInit(): void {
     this.primengConfig.ripple = true;
-   
-   
+    this.buildMainForm();
   }
-  selectionDetails(event: any) {
-    
-      this.selectedChangeDetails = event.target.value;
-      this.displayBasic = true;
-      this.cdr.detectChanges();
-    
-    
-  
-   // this.cdr.detectChanges();
 
+
+  buildMainForm() {
+    this.mainForm = this.fb.group({
+
+      //Request Details Controls
+      requestDetails: this.fb.group({
+        reference: ['External', Validators.required],
+        externalReference: [{ value: '', disabled: false }],
+        qualityEvents: [{ value: '', disabled: true }],
+        initiatingDepartment: ['', Validators.required],
+        typeOfChange: ['Permanent', Validators.required],
+        batchNoLotNo: [{ value: '', disabled: false }],
+        batchNoLotDetails: [{ value: '', disabled: false }],
+        dateofInitiation: ['', Validators.required],
+        targetDateofClosure: ['', Validators.required],
+        market: [this.marketDetails[0].code, Validators.required],
+        customer: [this.customerDetails[0].code, Validators.required]
+      }),
+      
+      //Change Details Controls
+      changeDetails: this.fb.group({
+        //name: ['', Validators.required],        
+      }),
+
+      //Impact Assessment Details Controls
+      impactAssessmentDetails: this.fb.group({
+        //name: ['', Validators.required],
+      })
+    });
+
+    this.mainForm.get('requestDetails.reference').valueChanges.subscribe(value => {
+      this.onReferenceChange(value);
+    });
+
+    this.mainForm.get('requestDetails.typeOfChange').valueChanges.subscribe(value => {
+      this.onTypeOfChange(value);
+    });
   }
-  selectProducts(event:any){
+
+  onReferenceChange(value: string): void {
+    const requestDetails = this.mainForm.get('requestDetails') as FormGroup;
+    if (value === 'External') {
+      requestDetails.get('externalReference').enable();
+      requestDetails.get('qualityEvents').disable();
+      requestDetails.get('qualityEvents').reset();
+    } else if (value === 'Internal') {
+      requestDetails.get('qualityEvents').setValue(this.internalDetails[0].code);
+      requestDetails.get('qualityEvents').enable();
+      requestDetails.get('externalReference').disable();
+      requestDetails.get('externalReference').reset();
+    }
+  }
+
+  onTypeOfChange(value: string): void {
+    const requestDetails = this.mainForm.get('requestDetails') as FormGroup;
+    if (value === 'Permanent') {
+      requestDetails.get('batchNoLotNo').disable();
+      requestDetails.get('batchNoLotDetails').disable();
+    } else if (value === 'Temporary') {      
+      requestDetails.get('batchNoLotNo').enable();      
+      requestDetails.get('batchNoLotDetails').enable();      
+      requestDetails.get('batchNoLotNo').setValue(this.batchDetails[0].code);
+    }
+  }
+
+  onSubmit(): void {
+    if (this.mainForm.valid) {
+      console.log(this.mainForm.value);
+    } else {
+      console.log('Form is invalid');
+    }
+  }
+
+  selectionDetails(event: any) {
+    this.selectedChangeDetails = event.target.value;
+    this.displayBasic = true;
+    this.cdr.detectChanges();
+  }
+
+  selectProducts(event: any) {
     this.selectedProducts = event.target.value;
     this.displayBasic = true;
     this.cdr.detectChanges();
   }
-  selectMaterials(event:any){
+
+  selectMaterials(event: any) {
     this.selectedMaterials = event.target.value;
     this.displayBasic = true;
     this.cdr.detectChanges();
   }
-  selectEquipments(event:any){
+
+  selectEquipments(event: any) {
     this.selectedMaterials = event.target.value;
     this.displayBasic = true;
     this.cdr.detectChanges();
   }
-  selectImpurity(event:any){
-    if(event.target.value ==='no'){
-     this.impurityReason = true;
-    }else{
-      this.impurityReason =false
+
+  selectImpurity(event: any) {
+    if (event.target.value === 'no') {
+      this.impurityReason = true;
+    } else {
+      this.impurityReason = false
     }
   }
-  selectNitrosamine(event:any){
-    if(event.target.value ==='no'){
-     this.nitrosamineReason = true;
-    }else{
-      this.nitrosamineReason =false
+
+  selectNitrosamine(event: any) {
+    if (event.target.value === 'no') {
+      this.nitrosamineReason = true;
+    } else {
+      this.nitrosamineReason = false
     }
   }
-  selectChangeImpact(event:any){
-    if(event.target.value ==='No'){
-     this.changeImpactProductdetails =false;
-    }else if(event.target.value ==='Not Applicable'){
-      this.changeImpactProductdetails =false;
+
+  selectChangeImpact(event: any) {
+    if (event.target.value === 'No') {
+      this.changeImpactProductdetails = false;
+    } else if (event.target.value === 'Not Applicable') {
+      this.changeImpactProductdetails = false;
     }
-    else{
-      this.changeImpactProductdetails=true;
-    }
-  }
-  selectImpactProcedures(event:any){
-    if(event.target.value ==='No'){
-     this.changeImpactProcedure =false;
-    }else if(event.target.value ==='Not Applicable'){
-      this.changeImpactProcedure =false;
-    }
-    else{
-      this.changeImpactProcedure=true;
+    else {
+      this.changeImpactProductdetails = true;
     }
   }
-  selectGenotoxic(event:any){
-    if(event.target.value ==='no'){
-     this.genatoxicReason = true;
-    }else{
-      this.genatoxicReason =false
+  selectImpactProcedures(event: any) {
+    if (event.target.value === 'No') {
+      this.changeImpactProcedure = false;
+    } else if (event.target.value === 'Not Applicable') {
+      this.changeImpactProcedure = false;
+    }
+    else {
+      this.changeImpactProcedure = true;
+    }
+  }
+  selectGenotoxic(event: any) {
+    if (event.target.value === 'no') {
+      this.genatoxicReason = true;
+    } else {
+      this.genatoxicReason = false
     }
   }
   backToCCClick() {
@@ -185,18 +262,11 @@ export class RegisterCCComponent implements OnInit {
   }
 
   selectInternalDetails(event: any) {
-     
-      this.selectInternalOption = event.target.value;
-       this.displayBasic = true;
-       this.cdr.detectChanges();
-  }
-
-  selectMarket(event: any) {
-    // This is for to populate Market dropdown selection 
-    this.selectedMarketValue = event.target.value;
+    this.selectInternalOption = event.target.value;
     this.displayBasic = true;
     this.cdr.detectChanges();
   }
+
   selectCustomer(event: any) {
     // This is for to populate customer dropdown selection 
     this.selectedCustomerValue = event.target.value;
@@ -206,21 +276,5 @@ export class RegisterCCComponent implements OnInit {
 
   show() {
     this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Change Control Login Initiated Successfully' });
-  }
-  selectRef(event:any){
-   if(event.target.value ==='External'){
-      this.externalFlag = true;
-      this.internalFlag =false;
-   }else{
-    this.internalFlag =true;
-    this.externalFlag = false;
-   }
-  }
-  selectTypeOfChange(event:any){
-   if(event.target.value ==='Temporary'){
-    this.tempRadioBtnFlag = true;
-   }else{
-    this.tempRadioBtnFlag =false;
-   }
   }
 }
