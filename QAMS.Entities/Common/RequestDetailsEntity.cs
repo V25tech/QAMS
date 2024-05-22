@@ -1,4 +1,6 @@
-﻿namespace QAMS.Entities.Common
+﻿using System;
+
+namespace QAMS.Entities.Common
 {
     public class RequestDetailsEntity
     {
@@ -79,6 +81,30 @@
                 documentdetailsField = value;
             }
         }
+        private string customerField;
+        public string customer
+        {
+            get
+            {
+                return customerField;
+            }
+            set
+            {
+                customerField = value;
+            }
+        }
+        private string marketField;
+        public string market
+        {
+            get
+            {
+                return marketField;
+            }
+            set
+            {
+                marketField = value;
+            }
+        }
         private string facilityutilitydetailsField;
         public string FacilityUtilityDetails
         {
@@ -115,6 +141,31 @@
                 packingdetailsField = value;
             }
         }
+        private DateTime targetDateofClosureField;
+        public DateTime targetDateofClosure
+        {
+            get
+            {
+                return targetDateofClosureField;
+            }
+            set
+            {
+                targetDateofClosureField = value;
+            }
+        }
+
+        private DateTime batchNoLotDetailsField;
+        public DateTime batchNoLotDetails
+        {
+            get
+            {
+                return batchNoLotDetailsField;
+            }
+            set
+            {
+                batchNoLotDetailsField = value;
+            }
+        }
 
         public string SoftwareDetails
         {
@@ -137,6 +188,18 @@
             set
             {
                 testingdetailsField = value;
+            }
+        }
+        private string typeOfChangeField;
+        public string typeOfChange
+        {
+            get
+            {
+                return typeOfChangeField;
+            }
+            set
+            {
+                typeOfChangeField = value;
             }
         }
         private string supplierserviceproviderdetailsField;
@@ -175,7 +238,30 @@
                 otherdetailsField = value;
             }
         }
-
+        private string qualityEventsField;
+        public string qualityEvents
+        {
+            get
+            {
+                return qualityEventsField;
+            }
+            set
+            {
+                qualityEventsField = value;
+            }
+        }
+        private string initiatingDepartmentField;
+        public string initiatingDepartment
+        {
+            get
+            {
+                return initiatingDepartmentField;
+            }
+            set
+            {
+                initiatingDepartmentField = value;
+            }
+        }
         public int? Product
         {
             get
@@ -187,5 +273,18 @@
                 productField = value;
             }
         }
+        private bool externalReferenceField;
+        public bool externalReference
+        {
+            get
+            {
+                return externalReferenceField;
+            }
+            set
+            {
+                externalReferenceField = value;
+            }
+        }
+        //externalReference
     }
 }

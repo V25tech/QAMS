@@ -10,6 +10,10 @@ namespace QAMS.WEB.Entities
     {
         public ChangeDetailsEntity ChangeDetails { get; set; }
         public RequestDetailsEntity RequestDetails { get; set; }
+
+        public string RequestDetailsJson { get; set; }
+        public string ChangeDetailsJson { get; set; }
+        public string ImpactDetailsJson { get; set; }
         public  ImpactDetailsEntity ImpactDetails { get; set; }
 
         private int? changecontrolidField;
