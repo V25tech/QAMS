@@ -42,7 +42,7 @@ namespace QAMS.Controllers
         /// This method is used to Get List of Role
         /// </summary>
         /// <param name="requestContext"></param>
-        [HttpPost()]
+        [HttpPost("GetAllRole")]
         public ActionResult<ResponseContext<Role>> GetAllRole(RequestContext requestContext)
         {
             var result = roleService.GetAllRole(requestContext);

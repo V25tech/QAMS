@@ -1,8 +1,9 @@
 export interface NewRole{
     
-    role?:string,
-    initiatedBy?:string,
-    date:string | Date
+    name?:string,
+    description?:string,
+    createdBy?:string,
+    createdDate:string | Date
     
 }
 export interface RegNewRole{

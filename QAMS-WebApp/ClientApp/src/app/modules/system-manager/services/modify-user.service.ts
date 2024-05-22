@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -9,6 +9,8 @@ export class ModifyUserService {
 
   constructor(private http: HttpClient) { }
   getUserData(): Observable<any> {
-    return this.http.get('assets/json/SystemManager/modifyUser.json');
+
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post('/user/GetAllUser',"{\"pageNumber\":1,\"pageSize\":100}", { headers });
   }
 }
