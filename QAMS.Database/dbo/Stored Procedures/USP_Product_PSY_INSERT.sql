@@ -1,4 +1,4 @@
-﻿  CREATE PROCEDURE [dbo].[USP_Product_PSY_INSERT] @Id_PSY Int,
+﻿  CREATE PROCEDURE [dbo].[USP_Product_PSY_INSERT] 
 @Name_PSY NVarChar(150),
 @Code_PSY NVarChar(150),
 @ChemicalName_PSY NVarChar(150),
@@ -11,7 +11,7 @@
   
  DECLARE @ID INT 
  INSERT INTO [dbo].[Product_PSY] 
- (Id_PSY,
+ (
 Name_PSY,
 Code_PSY,
 ChemicalName_PSY,
@@ -21,7 +21,7 @@ CreatedDate_PSY,
 ModifiedBy_PSY,
 ModifiedDate_PSY)
  VALUES 
-(@Id_PSY,
+(
 @Name_PSY,
 @Code_PSY,
 @ChemicalName_PSY,
