@@ -109,9 +109,9 @@ namespace QAMS.WEB.Data
                 //sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = ChangeControlRegistrationConstants.ImpactedProcedures, Value = changeControlRegistration.ImpactedProcedures });
                 //sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeControlRegistrationConstants.Comments, Value = changeControlRegistration.Comments }); 
                 #endregion
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeControlRegistrationConstants.RequestDetails, Value = changeControlRegistration.RequestDetails });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeControlRegistrationConstants.ImpactDetails, Value = changeControlRegistration.ImpactDetails });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeControlRegistrationConstants.ChangeDetails, Value = changeControlRegistration.ChangeDetails });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeControlRegistrationConstants.RequestDetails, Value = changeControlRegistration.RequestDetailsJson });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeControlRegistrationConstants.ImpactDetails, Value = changeControlRegistration.ImpactDetailsJson });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeControlRegistrationConstants.ChangeDetails, Value = changeControlRegistration.ChangeDetailsJson });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = ChangeControlRegistrationConstants.Registeredby, Value = changeControlRegistration.Registeredby });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Boolean, ParameterName = ChangeControlRegistrationConstants.Reintiate, Value = changeControlRegistration.Reintiate });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = ChangeControlRegistrationConstants.Status, Value = changeControlRegistration.Status });

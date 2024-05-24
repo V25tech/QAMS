@@ -18,14 +18,15 @@ namespace QAMS.WEB.Services
     using QAMS.Common.Entities;
     using QAMS.WEB.Entities;
     using QAMS.WEB.Data;
-    
-    
+    using Newtonsoft.Json;
+
+
     // Comment
     public class ChangeControlRegistrationService : IChangeControlRegistrationService
     {
-        
+
         private readonly IChangeControlRegistrationData changeControlRegistrationData;
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -34,7 +35,7 @@ namespace QAMS.WEB.Services
         {
             this.changeControlRegistrationData = changeControlRegistrationData;
         }
-        
+
         public ResponseContext<ChangeControlRegistration> GetAllChangeControlRegistration(RequestContext requestContext)
         {
             try
@@ -48,7 +49,7 @@ namespace QAMS.WEB.Services
                 throw;
             }
         }
-        
+
         public ChangeControlRegistration GetChangeControlRegistrationByChangeControlId(System.Int32? changeControlId)
         {
             try
@@ -62,7 +63,7 @@ namespace QAMS.WEB.Services
                 throw;
             }
         }
-        
+
         public bool SaveChangeControlRegistration(ChangeControlRegistration changeControlRegistration)
         {
             try
@@ -70,6 +71,9 @@ namespace QAMS.WEB.Services
                 String validationMessages = ChangeControlRegistrationValidator.IsValidChangeControlRegistration(changeControlRegistration);
                 if (validationMessages.Length <= 0)
                 {
+                    changeControlRegistration.RequestDetailsJson = JsonConvert.SerializeObject(changeControlRegistration.RequestDetails, Formatting.Indented);
+                    changeControlRegistration.ChangeDetailsJson = JsonConvert.SerializeObject(changeControlRegistration.ChangeDetailsJson, Formatting.Indented);
+                    changeControlRegistration.ImpactDetailsJson = JsonConvert.SerializeObject(changeControlRegistration.ImpactDetailsJson, Formatting.Indented);
                     var result = changeControlRegistrationData.SaveChangeControlRegistration(changeControlRegistration);
                     return result;
                 }
@@ -80,7 +84,7 @@ namespace QAMS.WEB.Services
                 throw;
             }
         }
-        
+
         public bool UpdateChangeControlRegistration(ChangeControlRegistration changeControlRegistration)
         {
             try
@@ -98,7 +102,7 @@ namespace QAMS.WEB.Services
                 throw;
             }
         }
-        
+
         public bool DeleteChangeControlRegistrationByChangeControlId(System.Int32? changeControlId)
         {
             try
@@ -110,7 +114,7 @@ namespace QAMS.WEB.Services
                 throw;
             }
         }
-        
+
         public bool DeleteAllChangeControlRegistration(List<int> changeControlIds)
         {
             try

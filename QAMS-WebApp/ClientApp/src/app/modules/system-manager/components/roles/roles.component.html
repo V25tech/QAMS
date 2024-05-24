@@ -12,7 +12,7 @@
 
                 <p-table #dt dataKey="id" [value]="newRoleDataSource" [paginator]="true" [rows]="10"
                     [rowsPerPageOptions]="[10, 25, 50]" [showCurrentPageReport]="true"
-                    [globalFilterFields]="['role', 'initiatedBy','date']" tableStyleClass="table table-striped">
+                    [globalFilterFields]="['name','description', 'createdBy','createdDate']" tableStyleClass="table table-striped">
                     <ng-template pTemplate="caption">
                         <div class="d-flex justify-content-end">
                             <span class="p-input-icon-left ml-auto search-block">
@@ -26,12 +26,14 @@
                         <tr>
                             <th style="width:100px;" class="lh-lg">S.No</th>
 
-                            <th pSortableColumn="role" style="width:30%">Role<p-columnFilter type="text"
-                                    field="role" display="menu"></p-columnFilter></th>
-                            <th pSortableColumn="initiatedBy" style="width:30%">Initiated By <p-columnFilter
-                                    type="text" field="initiatedBy" display="menu"></p-columnFilter></th>
-                            <th pSortableColumn="initiatesOn" style="width:30%">Initiated On <p-columnFilter
-                                    type="date" field="date" display="menu"></p-columnFilter> </th>
+                            <th pSortableColumn="name" style="width:30%">Name<p-columnFilter type="text"
+                                field="name" display="menu"></p-columnFilter></th>
+                                <th pSortableColumn="description" style="width:30%">Description<p-columnFilter type="text"
+                                    field="description" display="menu"></p-columnFilter></th>
+                                    <th pSortableColumn="createdBy" style="width:30%">Created By <p-columnFilter
+                                        type="text" field="createdBy" display="menu"></p-columnFilter></th>
+                                        <th pSortableColumn="createdDate" style="width:30%">Created On <p-columnFilter
+                                            type="date" field="createdDate" display="menu"></p-columnFilter> </th>
 
                             <th class="text-center">Actions</th>
 
@@ -41,9 +43,10 @@
                         <tr>
                             <td>{{i+1}}</td>
 
-                            <td>{{newRole.role}}</td>
-                            <td>{{newRole.initiatedBy}}</td>
-                            <td>{{newRole.date | date: 'MM/dd/yyyy'}}</td>
+                            <td>{{newRole.name}}</td>
+                            <td>{{newRole.description}}</td>
+                            <td>{{newRole.createdBy}}</td>
+                            <td>{{newRole.createdDate}}</td>
 
                             <td class="text-center">
                                 <div class="ellipsis-menu">

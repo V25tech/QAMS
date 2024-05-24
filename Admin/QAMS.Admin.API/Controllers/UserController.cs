@@ -42,7 +42,7 @@ namespace QAMS.Controllers
         /// This method is used to Get List of User
         /// </summary>
         /// <param name="requestContext"></param>
-        [HttpPost()]
+        [HttpPost("GetAllUser")]
         public ActionResult<ResponseContext<User>> GetAllUser(RequestContext requestContext)
         {
             var result = userService.GetAllUser(requestContext);

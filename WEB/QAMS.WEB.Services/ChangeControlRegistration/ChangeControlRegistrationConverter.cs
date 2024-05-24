@@ -19,8 +19,9 @@ namespace QAMS.WEB.Services
     using QAMS.WEB.Entities;
     using VAMLIbrary.Core.Extentions;
     using QAMS.Common.Entities;
-    
-    
+    using QAMS.Entities.Common;
+
+
     // Comment
     public static class ChangeControlRegistrationConverter
     {
@@ -39,6 +40,7 @@ namespace QAMS.WEB.Services
                         changeControlRegistrationData = new ChangeControlRegistration();
                         changeControlRegistrationData.ChangeControlId = DatatypeConverter.SetIntValue(row[ChangeControlRegistrationConstants.ChangeControlId.TrimAt()]);
                         changeControlRegistrationData.ChangeControlUniqueCode = Convert.ToString(row[ChangeControlRegistrationConstants.ChangeControlUniqueCode.TrimAt()]);
+                        #region Commented Region
                         //changeControlRegistrationData.Reference = DatatypeConverter.SetBoolValue(row[ChangeControlRegistrationConstants.Reference.TrimAt()]);
                         //changeControlRegistrationData.ExternalReference = Convert.ToString(row[ChangeControlRegistrationConstants.ExternalReference.TrimAt()]);
                         //changeControlRegistrationData.ReferenceDocuments = Convert.ToString(row[ChangeControlRegistrationConstants.ReferenceDocuments.TrimAt()]);
@@ -78,14 +80,18 @@ namespace QAMS.WEB.Services
                         //changeControlRegistrationData.ImpactedProductMaterials = DatatypeConverter.SetIntValue(row[ChangeControlRegistrationConstants.ImpactedProductMaterials.TrimAt()]);
                         //changeControlRegistrationData.AreAnyProceduresImpacted = DatatypeConverter.SetBoolValue(row[ChangeControlRegistrationConstants.AreAnyProceduresImpacted.TrimAt()]);
                         //changeControlRegistrationData.ImpactedProcedures = DatatypeConverter.SetIntValue(row[ChangeControlRegistrationConstants.ImpactedProcedures.TrimAt()]);
-                        //changeControlRegistrationData.Comments = Convert.ToString(row[ChangeControlRegistrationConstants.Comments.TrimAt()]);
+                        //changeControlRegistrationData.Comments = Convert.ToString(row[ChangeControlRegistrationConstants.Comments.TrimAt()]); 
+                        #endregion
                         changeControlRegistrationData.Registeredby = DatatypeConverter.SetIntValue(row[ChangeControlRegistrationConstants.Registeredby.TrimAt()]);
                         changeControlRegistrationData.Reintiate = DatatypeConverter.SetBoolValue(row[ChangeControlRegistrationConstants.Reintiate.TrimAt()]);
                         changeControlRegistrationData.Status = DatatypeConverter.SetIntValue(row[ChangeControlRegistrationConstants.Status.TrimAt()]);
                         changeControlRegistrationData.CreatedBy = Convert.ToString(row[ChangeControlRegistrationConstants.CreatedBy.TrimAt()]);
                         changeControlRegistrationData.CreatedDate = DatatypeConverter.SetDateTime(row[ChangeControlRegistrationConstants.CreatedDate.TrimAt()]);
                         changeControlRegistrationData.ModifiedBy = Convert.ToString(row[ChangeControlRegistrationConstants.ModifiedBy.TrimAt()]);
-                       // changeControlRegistrationData.ModifiedDate = DatatypeConverter.SetDateTime(row[ChangeControlRegistrationConstants.ModifiedDate.TrimAt()]);
+                        changeControlRegistrationData.ChangeDetails= JsonConvert.DeserializeObject<ChangeDetailsEntity>(Convert.ToString(row[ChangeControlRegistrationConstants.ChangeDetails.TrimAt()]));
+                        changeControlRegistrationData.RequestDetails = JsonConvert.DeserializeObject<RequestDetailsEntity>(Convert.ToString(row[ChangeControlRegistrationConstants.RequestDetails.TrimAt()]));
+                        changeControlRegistrationData.ImpactDetails = JsonConvert.DeserializeObject<ImpactDetailsEntity>(Convert.ToString(row[ChangeControlRegistrationConstants.ImpactDetails.TrimAt()]));
+                        // changeControlRegistrationData.ModifiedDate = DatatypeConverter.SetDateTime(row[ChangeControlRegistrationConstants.ModifiedDate.TrimAt()]);
                         result.Add(changeControlRegistrationData);
                     }
                 }
