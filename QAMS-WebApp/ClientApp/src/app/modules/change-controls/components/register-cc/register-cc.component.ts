@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl,FormBuilder, Validators, FormArray } from '@angular/forms'
+import { FormGroup, FormControl, FormBuilder, Validators, FormArray } from '@angular/forms'
 import { MessageService, PrimeNGConfig } from 'primeng/api';
 
 @Component({
@@ -12,9 +12,9 @@ import { MessageService, PrimeNGConfig } from 'primeng/api';
 export class RegisterCCComponent implements OnInit {
   labelText: string = "Request Details";
   selectInternalOption: any;
-  selectedChangeDetails: string = "Material";
   selectedMarketValue: any;
   selectedCustomerValue: any;
+  selectedChangeDetails: any;
   selectedProducts: any;
   selectedMaterials: any;
   selectedEquipments: any;
@@ -96,7 +96,7 @@ export class RegisterCCComponent implements OnInit {
     { name: 'High Performance Liquid instrument ', code: 'High Performance Liquid instrument' }
   ]
 
-  mainForm: FormGroup ;
+  mainForm: FormGroup;
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
@@ -121,15 +121,23 @@ export class RegisterCCComponent implements OnInit {
         market: [this.marketDetails[0].code, Validators.required],
         customer: [this.customerDetails[0].code, Validators.required]
       }),
-      
+
       //Change Details Controls
       changeDetails: this.fb.group({
-        //name: ['', Validators.required],        
+        changesRelatedTo: [this.changeDetails[0].code, Validators.required],
+        material: [{ value: this.materialDetails[0].code, disabled: false }],
+        existingProcedure: [''],
+        proposedChange: [''],
+        justificationForProposedChange: ['']
       }),
 
       //Impact Assessment Details Controls
       impactAssessmentDetails: this.fb.group({
-        //name: ['', Validators.required],
+        isChangeImpactProductMaterial: ['Yes', Validators.required],
+        impactProductOrMaterials: [{ value: this.impactDetails[0].code, disabled: false }],
+        isAnyProceduresImpacted: ['Yes', Validators.required],
+        impactedProcedures: [{ value: '', disabled: false }],
+        comments: [''],
       })
     });
 
@@ -139,6 +147,14 @@ export class RegisterCCComponent implements OnInit {
 
     this.mainForm.get('requestDetails.typeOfChange').valueChanges.subscribe(value => {
       this.onTypeOfChange(value);
+    });
+
+    this.mainForm.get('impactAssessmentDetails.isChangeImpactProductMaterial').valueChanges.subscribe(value => {
+      this.onIsChangeImpactProductMaterialChange(value);
+    });
+
+    this.mainForm.get('impactAssessmentDetails.isAnyProceduresImpacted').valueChanges.subscribe(value => {
+      this.onIsAnyProceduresImpactedChange(value);
     });
   }
 
@@ -161,12 +177,33 @@ export class RegisterCCComponent implements OnInit {
     if (value === 'Permanent') {
       requestDetails.get('batchNoLotNo').disable();
       requestDetails.get('batchNoLotDetails').disable();
-    } else if (value === 'Temporary') {      
-      requestDetails.get('batchNoLotNo').enable();      
-      requestDetails.get('batchNoLotDetails').enable();      
+    } else if (value === 'Temporary') {
+      requestDetails.get('batchNoLotNo').enable();
+      requestDetails.get('batchNoLotDetails').enable();
       requestDetails.get('batchNoLotNo').setValue(this.batchDetails[0].code);
     }
   }
+
+  onIsChangeImpactProductMaterialChange(value: string): void {
+    const impactAssessmentDetails = this.mainForm.get('impactAssessmentDetails') as FormGroup;
+    if (value === 'Yes') {
+      impactAssessmentDetails.get('impactProductOrMaterials').enable();
+      impactAssessmentDetails.get('impactProductOrMaterials').setValue(this.impactDetails[0].code);
+    } else {
+      impactAssessmentDetails.get('impactProductOrMaterials').disable();
+    }
+  }
+
+  onIsAnyProceduresImpactedChange(value: string): void {
+    const impactAssessmentDetails = this.mainForm.get('impactAssessmentDetails') as FormGroup;
+    if (value === 'Yes') {
+      impactAssessmentDetails.get('impactedProcedures').enable();
+      impactAssessmentDetails.get('impactedProcedures').reset();
+    } else {
+      impactAssessmentDetails.get('impactedProcedures').disable();
+    }
+  }
+
 
   onSubmit(): void {
     if (this.mainForm.valid) {
@@ -176,20 +213,8 @@ export class RegisterCCComponent implements OnInit {
     }
   }
 
-  selectionDetails(event: any) {
-    this.selectedChangeDetails = event.target.value;
-    this.displayBasic = true;
-    this.cdr.detectChanges();
-  }
-
   selectProducts(event: any) {
     this.selectedProducts = event.target.value;
-    this.displayBasic = true;
-    this.cdr.detectChanges();
-  }
-
-  selectMaterials(event: any) {
-    this.selectedMaterials = event.target.value;
     this.displayBasic = true;
     this.cdr.detectChanges();
   }
@@ -216,26 +241,6 @@ export class RegisterCCComponent implements OnInit {
     }
   }
 
-  selectChangeImpact(event: any) {
-    if (event.target.value === 'No') {
-      this.changeImpactProductdetails = false;
-    } else if (event.target.value === 'Not Applicable') {
-      this.changeImpactProductdetails = false;
-    }
-    else {
-      this.changeImpactProductdetails = true;
-    }
-  }
-  selectImpactProcedures(event: any) {
-    if (event.target.value === 'No') {
-      this.changeImpactProcedure = false;
-    } else if (event.target.value === 'Not Applicable') {
-      this.changeImpactProcedure = false;
-    }
-    else {
-      this.changeImpactProcedure = true;
-    }
-  }
   selectGenotoxic(event: any) {
     if (event.target.value === 'no') {
       this.genatoxicReason = true;
@@ -257,20 +262,6 @@ export class RegisterCCComponent implements OnInit {
   }
   saveChanges() {
     this.displayBasic = false;
-    this.selectedChangeDetails = "";
-    this.cdr.detectChanges();
-  }
-
-  selectInternalDetails(event: any) {
-    this.selectInternalOption = event.target.value;
-    this.displayBasic = true;
-    this.cdr.detectChanges();
-  }
-
-  selectCustomer(event: any) {
-    // This is for to populate customer dropdown selection 
-    this.selectedCustomerValue = event.target.value;
-    this.displayBasic = true;
     this.cdr.detectChanges();
   }
 
