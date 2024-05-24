@@ -48,7 +48,13 @@
     [CreatedDate_PSY]                               DATETIME        NULL,
     [ModifiedBy_PSY]                                NVARCHAR (150)  NOT NULL,
     [ModifiedDate_PSY]                              DATETIME        NULL,
+    [Document]                                      NVARCHAR (MAX)  NULL,
+    [ChangeDetails_PSY]                             NVARCHAR (MAX)  NULL,
+    [RequestDetails_PSY]                            NVARCHAR (MAX)  NULL,
+    [ImpactDetails_PSY]                             NVARCHAR (MAX)  NULL,
     CONSTRAINT [PK_ChangeControlRegistration_PSY] PRIMARY KEY CLUSTERED ([ChangeControlId_PSY] ASC),
     UNIQUE NONCLUSTERED ([ChangeControlUniqueCode_PSY] ASC)
 );
+
+
 

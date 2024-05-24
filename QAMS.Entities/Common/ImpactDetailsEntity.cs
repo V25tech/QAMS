@@ -13,29 +13,29 @@ namespace QAMS.Entities.Common
 
         }
 
-        private bool? doesthechangeimpactproductmaterialqualityField;
+        private bool? isChangeImpactProductMaterialField;
 
-        private int? impactedproductmaterialsField;
+        private string impactedproductmaterialsField;
 
-        private bool? areanyproceduresimpactedField;
+        private bool? isAnyProceduresImpactedField;
 
         private int? impactedproceduresField;
 
         private string commentsField;
 
-        public bool? DoesTheChangeImpactProductMaterialQuality
+        public bool? isChangeImpactProductMaterial
         {
             get
             {
-                return doesthechangeimpactproductmaterialqualityField;
+                return isChangeImpactProductMaterialField;
             }
             set
             {
-                doesthechangeimpactproductmaterialqualityField = value;
+                isChangeImpactProductMaterialField = value;
             }
         }
 
-        public int? ImpactedProductMaterials
+        public string impactProductOrMaterials
         {
             get
             {
@@ -47,19 +47,19 @@ namespace QAMS.Entities.Common
             }
         }
 
-        public bool? AreAnyProceduresImpacted
+        public bool? isAnyProceduresImpacted
         {
             get
             {
-                return areanyproceduresimpactedField;
+                return isAnyProceduresImpactedField;
             }
             set
             {
-                areanyproceduresimpactedField = value;
+                isAnyProceduresImpactedField = value;
             }
         }
 
-        public int? ImpactedProcedures
+        public int? impactedProcedures
         {
             get
             {
@@ -71,7 +71,7 @@ namespace QAMS.Entities.Common
             }
         }
 
-        public string Comments
+        public string comments
         {
             get
             {

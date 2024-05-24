@@ -15,19 +15,19 @@ namespace QAMS.Entities.Common
 
         private string justificationforproposedchangeField;
 
-        private int? changerelatedtoField;
+        private string changesrelatedtoField;
 
-        private int? equipmentField;
+        private string equipmentField;
 
-        private string documentdetailsField;
+        private string documentField;
 
-        private string facilityutilitydetailsField;
+        private string facilityutilityField;
 
-        private string validationdetailsField;
+        private string validationField;
 
-        private string packingdetailsField;
+        private string packingField;
 
-        private string softwaredetailsField;
+        private string softwareField;
 
         private string testingdetailsField;
 
@@ -37,20 +37,20 @@ namespace QAMS.Entities.Common
 
         private string otherdetailsField;
 
-        private int? productField;
-        public int? ChangeRelatedTo
+        private string productField;
+        public string ChangesRelatedTo
         {
             get
             {
-                return changerelatedtoField;
+                return changesrelatedtoField;
             }
             set
             {
-                changerelatedtoField = value;
+                changesrelatedtoField = value;
             }
         }
-        private int? materialField;
-        public int? Material
+        private string materialField;
+        public string material
         {
             get
             {
@@ -62,7 +62,7 @@ namespace QAMS.Entities.Common
             }
         }
         private string existingprocedureField;
-        public string ExistingProcedure
+        public string existingProcedure
         {
             get
             {
@@ -73,7 +73,7 @@ namespace QAMS.Entities.Common
                 existingprocedureField = value;
             }
         }
-        public string ProposedChange
+        public string proposedChange
         {
             get
             {
@@ -85,7 +85,7 @@ namespace QAMS.Entities.Common
             }
         }
 
-        public string JustificationForProposedChange
+        public string justificationForProposedChange
         {
             get
             {
@@ -97,7 +97,7 @@ namespace QAMS.Entities.Common
             }
         }
 
-        public int? Equipment
+        public string Equipment
         {
             get
             {
@@ -109,67 +109,67 @@ namespace QAMS.Entities.Common
             }
         }
 
-        public string DocumentDetails
+        public string document
         {
             get
             {
-                return documentdetailsField;
+                return documentField;
             }
             set
             {
-                documentdetailsField = value;
+                documentField = value;
             }
         }
 
-        public string FacilityUtilityDetails
+        public string FacilityUtility
         {
             get
             {
-                return facilityutilitydetailsField;
+                return facilityutilityField;
             }
             set
             {
-                facilityutilitydetailsField = value;
+                facilityutilityField = value;
             }
         }
 
-        public string ValidationDetails
+        public string validation
         {
             get
             {
-                return validationdetailsField;
+                return validationField;
             }
             set
             {
-                validationdetailsField = value;
+                validationField = value;
             }
         }
 
-        public string PackingDetails
+        public string Packing
         {
             get
             {
-                return packingdetailsField;
+                return packingField;
             }
             set
             {
-                packingdetailsField = value;
+                packingField = value;
             }
         }
 
-        public string SoftwareDetails
+        public string Software
         {
             get
             {
-                return softwaredetailsField;
+                return softwareField;
             }
             set
             {
-                softwaredetailsField = value;
+                softwareField = value;
             }
         }
 
-        public string TestingDetails
+        public string testing
         {
             get
             {
@@ -181,7 +181,7 @@ namespace QAMS.Entities.Common
             }
         }
 
-        public string SupplierServiceProviderDetails
+        public string supplierServiceProvider
         {
             get
             {
@@ -205,7 +205,7 @@ namespace QAMS.Entities.Common
             }
         }
 
-        public string OtherDetails
+        public string others
         {
             get
             {
@@ -217,7 +217,7 @@ namespace QAMS.Entities.Common
             }
         }
 
-        public int? Product
+        public string products
         {
             get
             {
@@ -228,5 +228,42 @@ namespace QAMS.Entities.Common
                 productField = value;
             }
         }
+        private string impurityAssesmentField;
+        public string impurityAssesment
+        {
+            get
+            {
+                return impurityAssesmentField;
+            }
+            set
+            {
+                impurityAssesmentField = value;
+            }
+        }
+        private string nitrosamineAssesmentField;
+        public string nitrosamineAssesment
+        {
+            get
+            {
+                return nitrosamineAssesmentField;
+            }
+            set
+            {
+                nitrosamineAssesmentField = value;
+            }
+        }
+        private string genotoxicAssesmentField;
+        public string genotoxicAssesment
+        {
+            get
+            {
+                return genotoxicAssesmentField;
+            }
+            set
+            {
+                genotoxicAssesmentField = value;
+            }
+        }
+        //
     }
 }

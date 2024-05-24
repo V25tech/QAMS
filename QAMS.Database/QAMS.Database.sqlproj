@@ -193,5 +193,19 @@
     <Build Include="dbo\Stored Procedures\USP_Department_PSY_UPDATE.sql" />
     <Build Include="dbo\Stored Procedures\USP_SecuritySetting_PSY_INSERT.sql" />
     <Build Include="dbo\Stored Procedures\USP_SecuritySetting_PSY_GET_ALL.sql" />
+    <Build Include="dbo\Tables\worktransferregistrationoinitiation_PSY.sql" />
+    <Build Include="dbo\Tables\newactionplan_PSY.sql" />
+    <Build Include="dbo\Tables\CategoryId_PSY.sql" />
+    <Build Include="dbo\Stored Procedures\USP_worktransferregistrationoinitiation_PSY_UPDATE.sql" />
+    <Build Include="dbo\Stored Procedures\USP_worktransferregistrationoinitiation_PSY_INSERT.sql" />
+    <Build Include="dbo\Stored Procedures\USP_worktransferregistrationoinitiation_PSY_GET_ALL.sql" />
+    <Build Include="dbo\Stored Procedures\USP_worktransferregistrationoinitiation_PSY_GET.sql" />
+    <Build Include="dbo\Stored Procedures\USP_worktransferregistrationoinitiation_PSY_DELETE_ALL.sql" />
+    <Build Include="dbo\Stored Procedures\USP_worktransferregistrationoinitiation_PSY_DELETE.sql" />
+    <Build Include="dbo\Stored Procedures\USP_newactionplan_PSY_INSERT.sql" />
+    <Build Include="dbo\Stored Procedures\USP_newactionplan_PSY_GET_ALL.sql" />
+    <Build Include="dbo\Stored Procedures\USP_newactionplan_PSY_GET.sql" />
+    <Build Include="dbo\Stored Procedures\USP_newactionplan_PSY_DELETE_ALL.sql" />
+    <Build Include="dbo\Stored Procedures\USP_newactionplan_PSY_DELETE.sql" />
   </ItemGroup>
 </Project>
