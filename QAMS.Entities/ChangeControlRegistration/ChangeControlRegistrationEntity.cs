@@ -8,13 +8,13 @@ namespace QAMS.WEB.Entities
     //EntityInitiationform
     public class ChangeControlRegistration 
     {
-        public ChangeDetailsEntity ChangeDetails { get; set; }
-        public RequestDetailsEntity RequestDetails { get; set; }
+        public ChangeDetailsEntity changeDetails { get; set; }
+        public RequestDetailsEntity requestDetails { get; set; }
 
         public string RequestDetailsJson { get; set; }
         public string ChangeDetailsJson { get; set; }
         public string ImpactDetailsJson { get; set; }
-        public  ImpactDetailsEntity ImpactDetails { get; set; }
+        public  ImpactDetailsEntity impactAssessmentDetails { get; set; }
 
         private int? changecontrolidField;
 
