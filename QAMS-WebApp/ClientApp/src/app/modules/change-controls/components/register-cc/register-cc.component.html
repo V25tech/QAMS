@@ -126,7 +126,7 @@
                     <div class="form-group row">
                         <label for="Customer" class="col-sm-4 col-md-3 col-form-label">Customer</label>
                         <div class="col-md-6">
-                            <select name="status" class="form-select" (change)="selectCustomer($event)">
+                            <select formControlName="customer" name="status" class="form-select">
                                 <option *ngFor="let selectedCustomerDetails of customerDetails" [value]="selectedCustomerDetails.code">
                                     {{selectedCustomerDetails.name}}
                                 </option>
@@ -146,7 +146,7 @@
                     <div class="form-group row">
                         <label for="Changes Related To" class="col-sm-3 col-form-label">Changes Related To</label>
                         <div class="col-md-6">
-                            <select name="status" class="form-select" (change)="selectionDetails($event)">
+                            <select formControlName="changesRelatedTo" name="status" class="form-select">
                                 <option *ngFor="let selectedChangeDetails of changeDetails" [value]="selectedChangeDetails.code">
                                     {{selectedChangeDetails.name}}
                                 </option>
@@ -155,12 +155,12 @@
                         </div>
                     </div>
                 </div>
-                <ng-container *ngIf="selectedChangeDetails ==='Material'">
+                <ng-container *ngIf="mainForm.get('changeDetails').get('changesRelatedTo').value === 'Material'">
                     <div class="material-container">
                         <div class="form-group row">
                             <label for="Material" class="col-sm-3 col-form-label">Material</label>
                             <div class="col-md-6 ">
-                                <select name="status" class="form-select" (change)="selectMaterials($event)">
+                                <select formControlName="material" name="status" class="form-select">
                                     <option *ngFor="let selectedMaterialDetails of materialDetails" [value]="selectedMaterialDetails.code">
                                         {{selectedMaterialDetails.name}}
                                     </option>
@@ -169,7 +169,7 @@
                         </div>
                     </div>
                 </ng-container>
-                <ng-container *ngIf="selectedChangeDetails ==='Equipment' && displayBasic ===true">
+                <ng-container *ngIf="mainForm.get('changeDetails').get('changesRelatedTo').value === 'Equipment'">
                     <div class="material-container">
                         <div class="form-group row">
                             <label for="Equipment" class="col-sm-3 col-form-label">Equipment</label>
@@ -183,7 +183,7 @@
                         </div>
                     </div>
                 </ng-container>
-                <ng-container *ngIf="selectedChangeDetails ==='Document' && displayBasic ===true">
+                <ng-container *ngIf="mainForm.get('changeDetails').get('changesRelatedTo').value === 'Document'">
                     <div class="material-container">
                         <div class="form-group row">
                             <label for="Document" class="col-sm-3 col-form-label">Document</label>
@@ -195,7 +195,7 @@
                         </div>
                     </div>
                 </ng-container>
-                <ng-container *ngIf="selectedChangeDetails ==='Facility/Utility' && displayBasic ===true">
+                <ng-container *ngIf="mainForm.get('changeDetails').get('changesRelatedTo').value === 'Facility/Utility'">
                     <div class="material-container">
                         <div class="form-group row">
                             <label for="Facility/Utility" class="col-sm-3 col-form-label">Facility/Utility</label>
@@ -207,7 +207,7 @@
                         </div>
                     </div>
                 </ng-container>
-                <ng-container *ngIf="selectedChangeDetails ==='Validation' && displayBasic ===true">
+                <ng-container *ngIf="mainForm.get('changeDetails').get('changesRelatedTo').value === 'Validation'">
                     <div class="material-container">
                         <div class="form-group row">
                             <label for="Validation" class="col-sm-3 col-form-label">Validation</label>
@@ -219,7 +219,7 @@
                         </div>
                     </div>
                 </ng-container>
-                <ng-container *ngIf="selectedChangeDetails ==='Packing' && displayBasic ===true">
+                <ng-container *ngIf="mainForm.get('changeDetails').get('changesRelatedTo').value === 'Packing'">
                     <div class="material-container">
                         <div class="form-group row">
                             <label for="Packing" class="col-sm-3 col-form-label">Packing</label>
@@ -231,19 +231,19 @@
                         </div>
                     </div>
                 </ng-container>
-                <ng-container *ngIf="selectedChangeDetails ==='Software' && displayBasic ===true">
+                <ng-container *ngIf="mainForm.get('changeDetails').get('changesRelatedTo').value === 'Software'">
                     <div class="material-container">
                         <div class="form-group row">
                             <label for="Software" class="col-sm-3 col-form-label">Software</label>
                             <div class="col-md-6 ">
                                 <textarea class="form-control input-width" name="softwareDetails"
                                     placeholder="Enter Details">
-                                    </textarea>
+                                </textarea>
                             </div>
                         </div>
                     </div>
                 </ng-container>
-                <ng-container *ngIf="selectedChangeDetails ==='Testing' && displayBasic ===true">
+                <ng-container *ngIf="mainForm.get('changeDetails').get('changesRelatedTo').value === 'Testing'">
                     <div class="material-container">
                         <div class="form-group row">
                             <label for="Testing" class="col-sm-3 col-form-label">Testing</label>
@@ -255,7 +255,7 @@
                         </div>
                     </div>
                 </ng-container>
-                <ng-container *ngIf="selectedChangeDetails ==='Supplier/Service Provider' && displayBasic ===true">
+                <ng-container *ngIf="mainForm.get('changeDetails').get('changesRelatedTo').value === 'Supplier/Service Provider'">
                     <div class="material-container">
                         <div class="form-group row">
                             <label for="Supplier/Service Provider" class="col-sm-3 col-form-label">Supplier/Service
@@ -268,7 +268,7 @@
                         </div>
                     </div>
                 </ng-container>
-                <ng-container *ngIf="selectedChangeDetails ==='Others' && displayBasic ===true">
+                <ng-container *ngIf="mainForm.get('changeDetails').get('changesRelatedTo').value === 'Others'">
                     <div class="material-container">
                         <div class="form-group row">
                             <label for="Others" class="col-sm-3 col-form-label">Others</label>
@@ -280,7 +280,7 @@
                         </div>
                     </div>
                 </ng-container>
-                <ng-container *ngIf="selectedChangeDetails ==='New Product & Existing Product' && displayBasic ===true">
+                <ng-container *ngIf="mainForm.get('changeDetails').get('changesRelatedTo').value === 'New Product & Existing Product'">
                     <div class="col-lg-12">
                         <div class=" form-group row mb-3">
                             <div class="col-lg-12 d-flex">
@@ -376,12 +376,11 @@
 
                 <div class="col-lg-12">
                     <div class="form-group row">
-                        <label for="Existing Procedure" class="col-md-3 col-sm-12 col-form-label">Existing
-                            Procedure</label>
+                        <label for="Existing Procedure" class="col-md-3 col-sm-12 col-form-label">Existing Procedure</label>
                             <div class="col-md-6 ">
-                                <textarea class="form-control input-width" name="Existing Procedure"
+                                <textarea formControlName="existingProcedure" class="form-control input-width" name="Existing Procedure"
                                     placeholder="details">
-                                    </textarea>
+                                </textarea>
                             </div>
                     </div>
                 </div>
@@ -390,9 +389,9 @@
                     <div class="form-group row">
                         <label for="Proposed Change" class="col-md-3 col-sm-12 col-form-label">Proposed Change</label>
                             <div class="col-md-6 ">
-                                <textarea class="form-control input-width" name="Proposed Change"
+                                <textarea formControlName="proposedChange" class="form-control input-width" name="Proposed Change"
                                     placeholder="details">
-                                    </textarea>
+                                </textarea>
                             </div>  
                     </div>
                 </div>
@@ -402,9 +401,9 @@
                         <label for="Justification for Proposed Change "
                             class="col-md-3 col-sm-12 col-form-label">Justification for Proposed Change</label>
                             <div class="col-md-6 ">
-                                <textarea class="form-control input-width" name="Justification for Proposed Change"
+                                <textarea formControlName="justificationForProposedChange" class="form-control input-width" name="Justification for Proposed Change"
                                     placeholder="details">
-                                    </textarea>
+                                </textarea>
                             </div> 
                     
                     </div>
@@ -419,31 +418,28 @@
             <div class="p-3 row">
                 <div class="col-md-12">
                     <div class="form-group row">
-                        <label for="Change Impact " class="col-md-4 col-sm-12 col-form-label">Does the Change Impact
-                            Product/Material
-                            Quality
+                        <label for="Change Impact " class="col-md-4 col-sm-12 col-form-label">
+                            Does the Change Impact Product/Material Quality
                         </label>
-
-
                         <div class="col-lg-6 d-flex radio-styles ">
                             <div class="form-check ">
-                                <input class="form-check-input" type="radio" id="yes" name="radiobtn" value="yes" checked  (change)="selectChangeImpact($event)">
-                                <label class="form-check-label" for="yes">yes</label>
+                                <input class="form-check-input" formControlName="isChangeImpactProductMaterial" type="radio" id="changeImpactProductMaterialyes" name="isChangeImpactProductMaterial" value="Yes">
+                                <label class="form-check-label" for="Yes">Yes</label>
                             </div>
                             <div class="form-check ms-4">
-                                <input class="form-check-input" type="radio" id="No" name="radiobtn" value="No"  (change)="selectChangeImpact($event)">
+                                <input class="form-check-input" formControlName="isChangeImpactProductMaterial" type="radio" id="changeImpactProductMaterialNo" name="isChangeImpactProductMaterial" value="No">
                                 <label class="form-check-label" for="No">No</label>
                             </div>
                             <div class="form-check ms-4">
-                                <input class="form-check-input" type="radio" id="notApplicable" name="radiobtn" value="Not Applicable"  (change)="selectChangeImpact($event)">
+                                <input class="form-check-input" formControlName="isChangeImpactProductMaterial" type="radio" id="changeImpactProductMaterialnotApplicable" name="isChangeImpactProductMaterial" value="Not Applicable">
                                 <label class="form-check-label" for="notApplicable">Not Applicable</label>
                             </div>
                         </div>
-                        <ng-container *ngIf="changeImpactProductdetails">
+                        <ng-container *ngIf="mainForm.get('impactAssessmentDetails').get('isChangeImpactProductMaterial').value == 'Yes'">
                             <div class="form-group row mt-3">
                                 <label for="Impact Product/Materials" class="col-md-4 col-sm-12 col-form-label">Impact Product/Materials</label>
                                 <div class="col-md-6 drp-styles ">
-                                    <select name="status" class="form-select" (change)="selectInternalDetails($event)">
+                                    <select formControlName="impactProductOrMaterials" name="status" class="form-select">
                                         <option *ngFor="let selectedImpactDetails of impactDetails" [value]="selectedImpactDetails.code">
                                             {{selectedImpactDetails.name}}
                                         </option>
@@ -460,25 +456,26 @@
 
                         <div class="col-lg-6 d-flex radio-styles ">
                             <div class="form-check ">
-                                <input class="form-check-input" type="radio" id="yes" name="Procedures" value="yes" checked (change)="selectImpactProcedures($event)">
-                                <label class="form-check-label" for="yes">yes</label>
+                                <input class="form-check-input" formControlName="isAnyProceduresImpacted" type="radio" id="yes" name="isAnyProceduresImpacted" value="Yes">
+                                <label class="form-check-label" for="yes">Yes</label>
                             </div>
                             <div class="form-check ms-4">
-                                <input class="form-check-input" type="radio" id="No" name="Procedures" value="No" (change)="selectImpactProcedures($event)">
+                                <input class="form-check-input" formControlName="isAnyProceduresImpacted" type="radio" id="No" name="isAnyProceduresImpacted" value="No">
                                 <label class="form-check-label" for="yes">No</label>
                             </div>
                             <div class="form-check ms-4">
-                                <input class="form-check-input" type="radio" id="na" name="Procedures" value="Not Applicable" (change)="selectImpactProcedures($event)">
+                                <input class="form-check-input" formControlName="isAnyProceduresImpacted" type="radio" id="na" name="isAnyProceduresImpacted" value="Not Applicable">
                                 <label class="form-check-label" for="yes">Not Applicable</label>
                             </div>
                         </div>
                     </div>
-                <ng-container *ngIf="changeImpactProcedure"> <div class="col-lg-12">
+                <ng-container *ngIf="mainForm.get('impactAssessmentDetails').get('isAnyProceduresImpacted').value == 'Yes'">
+                    <div class="col-lg-12">
                         <div class="form-group row">
                             <label for="Impacted Procedures" class="col-md-4 col-sm-12 col-form-label">
                                 Impacted Procedures</label>
                             <div class="col-md-6 ">
-                                <textarea class="form-control input-width" name="Impact Procedures"
+                                <textarea formControlName="impactedProcedures" class="form-control input-width" name="Impact Procedures"
                                     placeholder="Impacted Procedures">
                                         </textarea>
                             </div>
@@ -491,7 +488,7 @@
                     <div class="form-group row">
                         <label for="Comments" class="col-md-4 col-sm-12 col-form-label">Comments</label>
                         <div class="col-md-6 ">
-                            <textarea class="form-control input-width" name="comment" form="usrform"></textarea>
+                            <textarea formControlName="comments" class="form-control input-width" name="comment" form="usrform"></textarea>
                         </div>
                     </div>
                 </div>
