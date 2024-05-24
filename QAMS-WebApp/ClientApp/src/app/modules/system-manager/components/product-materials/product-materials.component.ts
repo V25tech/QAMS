@@ -41,8 +41,10 @@ export class ProductMaterialsComponent {
 
     });
     this.ProductsService.getProductsData().subscribe((data: any) => {
-      this.productsDatasource = data;
-      this.productsDatasource.forEach(dataSource => dataSource.date = new Date(dataSource?.date))
+      debugger
+      this.productsDatasource = data.response;
+      debugger
+    //  this.productsDatasource.forEach(dataSource => dataSource.createdDate = new Date(dataSource?.createdDate))
     });
 
   }
@@ -87,7 +89,7 @@ export class ProductMaterialsComponent {
 
 
       const RegProduct: RegProduct = {
-        uniqueCode: this.regProductForm.value.uniqueCode,
+        code: this.regProductForm.value.uniqueCode,
         name: this.regProductForm.value.name,
         chemicalName: this.regProductForm.value.chemicalName,
 

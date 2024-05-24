@@ -1,14 +1,14 @@
 export interface PlantList{
     id?:string,
-    plantName?:string,
-    initiatedBy?:string,
-    date:string | Date,
-    
+    name?:string,
+    createdBy?:string,
+    createdDate:string | Date,
+    revision?:string,
 }
 export interface RegPlant{
     plantName?:string;
-    plantCode?:string,
+    code?:string,
     address?:string,
-    comments?:string,
+    comment?:string,
    
 }

@@ -44,8 +44,8 @@ export class ModifyUserComponent {
     
     });
     this.modifyUserService.getUserData().subscribe((data: any) => {
-      this.modifyUserDatasource = data;
-      this.modifyUserDatasource.forEach(dataSource=>dataSource.date = new Date(dataSource.date))
+      this.modifyUserDatasource = data.response;
+      // this.modifyUserDatasource.forEach(dataSource=>dataSource.createdDate = new Date(dataSource.createdDate))
     });
      
   }

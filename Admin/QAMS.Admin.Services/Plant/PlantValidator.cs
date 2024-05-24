@@ -30,16 +30,16 @@ namespace QAMS.Admin.Services
             {
                 StringBuilder validationMessages = new StringBuilder();
                 ValidationHelper validationHelper = new ValidationHelper();
-                validationMessages.Append(validationHelper.NullCheckValidator(plant.Name, nameof(plant.Name)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(plant.Name,150, nameof(plant.Name)));
-                validationMessages.Append(validationHelper.NullCheckValidator(plant.Code, nameof(plant.Code)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(plant.Code,150, nameof(plant.Code)));
-                validationMessages.Append(validationHelper.NullCheckValidator(plant.Address, nameof(plant.Address)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(plant.Address,300, nameof(plant.Address)));
-                validationMessages.Append(validationHelper.NullCheckValidator(plant.Comment, nameof(plant.Comment)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(plant.Comment,150, nameof(plant.Comment)));
-                validationMessages.Append(validationHelper.NullCheckValidator(plant.CreatedBy, nameof(plant.CreatedBy)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(plant.CreatedBy,150, nameof(plant.CreatedBy)));
+                validationMessages.Append(validationHelper.NullCheckValidator(plant.name, nameof(plant.name)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(plant.name, 150, nameof(plant.name)));
+                validationMessages.Append(validationHelper.NullCheckValidator(plant.code, nameof(plant.code)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(plant.code, 150, nameof(plant.code)));
+                validationMessages.Append(validationHelper.NullCheckValidator(plant.address, nameof(plant.address)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(plant.address, 300, nameof(plant.address)));
+                validationMessages.Append(validationHelper.NullCheckValidator(plant.comment, nameof(plant.comment)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(plant.comment, 150, nameof(plant.comment)));
+                validationMessages.Append(validationHelper.NullCheckValidator(plant.createdBy, nameof(plant.createdBy)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(plant.createdBy, 150, nameof(plant.createdBy)));
                 validationMessages.Append(validationHelper.NullCheckValidator(plant.ModifiedBy, nameof(plant.ModifiedBy)));
                 validationMessages.Append(validationHelper.LengthCheckValidator(plant.ModifiedBy,150, nameof(plant.ModifiedBy)));
                 if (!String.IsNullOrEmpty(validationMessages.ToString()))

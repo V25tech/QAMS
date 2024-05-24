@@ -42,7 +42,7 @@ namespace QAMS.Controllers
         /// This method is used to Get List of Plant
         /// </summary>
         /// <param name="requestContext"></param>
-        [HttpPost()]
+        [HttpPost("GetAllPlant")]
         public ActionResult<ResponseContext<Plant>> GetAllPlant(RequestContext requestContext)
         {
             var result = plantService.GetAllPlant(requestContext);

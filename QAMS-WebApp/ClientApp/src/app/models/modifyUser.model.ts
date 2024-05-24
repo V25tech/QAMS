@@ -1,10 +1,10 @@
 export interface ModifyUser{
     id?:string,
-    role?:string,
-    userName?:string,
-    department?:string,
-    initiatedBy?:string,
-    date:string | Date,
+    roleId?:string,
+    userId?:string,
+    departmentId?:string,
+    createdBy?:string,
+    createdDate:string | Date,
     
 }
 export interface RegModifyUser{

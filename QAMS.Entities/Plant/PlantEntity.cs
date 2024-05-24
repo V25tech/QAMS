@@ -38,7 +38,7 @@ namespace QAMS.Admin.Entities
         
         private DateTime? modifieddateField;
         
-        public System.Int32? Id
+        public System.Int32? id
         {
             get
             {
@@ -50,7 +50,7 @@ namespace QAMS.Admin.Entities
             }
         }
         
-        public string Name
+        public string name
         {
             get
             {
@@ -62,7 +62,7 @@ namespace QAMS.Admin.Entities
             }
         }
         
-        public string Code
+        public string code
         {
             get
             {
@@ -74,7 +74,7 @@ namespace QAMS.Admin.Entities
             }
         }
         
-        public System.Int32? Revision
+        public System.Int32? revision
         {
             get
             {
@@ -86,7 +86,7 @@ namespace QAMS.Admin.Entities
             }
         }
         
-        public string Address
+        public string address
         {
             get
             {
@@ -98,7 +98,7 @@ namespace QAMS.Admin.Entities
             }
         }
         
-        public string Comment
+        public string comment
         {
             get
             {
@@ -110,7 +110,7 @@ namespace QAMS.Admin.Entities
             }
         }
         
-        public string CreatedBy
+        public string createdBy
         {
             get
             {
@@ -122,7 +122,7 @@ namespace QAMS.Admin.Entities
             }
         }
         
-        public DateTime? CreatedDate
+        public DateTime? createdDate
         {
             get
             {
