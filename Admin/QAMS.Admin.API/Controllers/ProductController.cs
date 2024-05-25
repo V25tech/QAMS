@@ -42,7 +42,7 @@ namespace QAMS.Controllers
         /// This method is used to Get List of Product
         /// </summary>
         /// <param name="requestContext"></param>
-        [HttpPost()]
+        [HttpPost("GetAllProduct")]
         public ActionResult<ResponseContext<Product>> GetAllProduct(RequestContext requestContext)
         {
             var result = productService.GetAllProduct(requestContext);

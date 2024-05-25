@@ -41,8 +41,8 @@ export class PlantListComponent {
     
     });
     this.PlantListService.getplantData().subscribe((data: any) => {
-      this.plantDatasource = data;
-      this.plantDatasource.forEach(dataSource=>dataSource.date = new Date(dataSource.date))
+      this.plantDatasource = data.response;
+      // this.plantDatasource.forEach(dataSource=>dataSource.createdDate = new Date(dataSource.createdDate))
     });
      
   }
@@ -82,10 +82,10 @@ export class PlantListComponent {
 
 
       const RegPlant: RegPlant = {
-        plantCode: this.regPlantForm.value.plantCode,
+        code: this.regPlantForm.value.plantCode,
         plantName: this.regPlantForm.value.plantName,
         address: this.regPlantForm.value.address,
-        comments: this.regPlantForm.value.comments
+        comment: this.regPlantForm.value.comments
       };
 
       

@@ -1,13 +1,13 @@
 export interface Products{
     id?:string,
-    productName?:string, 
-    initiatedBy?:string,
-    date:string | Date,
+    isActive?:string, 
+    createdBy?:string,
+    createdDate:string | Date,
     status?:string
     
 }
 export interface RegProduct{
     name?:string;
-    uniqueCode?:string,
+    code?:string,
     chemicalName?:string,
 }

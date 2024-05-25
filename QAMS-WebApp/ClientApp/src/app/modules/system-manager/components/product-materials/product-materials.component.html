@@ -11,7 +11,7 @@
             <div class="col mt-2 table-landing ">
                 <p-table #dt dataKey="id" [value]="productsDatasource" [paginator]="true" [rows]="10"
                     [rowsPerPageOptions]="[10, 25, 50]" [showCurrentPageReport]="true"
-                    [globalFilterFields]="['productMaterialName', 'id', 'registerdBy','date']"
+                    [globalFilterFields]="['name', 'code', 'createdBy','createdDate']"
                     tableStyleClass="table table-striped">
                     <ng-template pTemplate="caption">
                         <div class="d-flex justify-content-end">
@@ -25,14 +25,14 @@
                     <ng-template pTemplate="header">
                         <tr>
                             <th style="width:40px" class="lh-lg">S.No</th>
-                            <th pSortableColumn="productName">Product/Material Name<p-columnFilter type="text"
-                                    field="productMaterialName" display="menu"></p-columnFilter></th>
-                            <th pSortableColumn="ID">Unique Code
-                                <p-columnFilter type="text" field="id" display="menu"></p-columnFilter>
+                            <th pSortableColumn="name">Product/Material Name<p-columnFilter type="text"
+                                    field="name" display="menu"></p-columnFilter></th>
+                            <th pSortableColumn="code">Unique Code
+                                <p-columnFilter type="text" field="code" display="menu"></p-columnFilter>
                             </th>
-                            <th pSortableColumn="initiatedBy">Initiated By <p-columnFilter type="text"
-                                    field="initiatedBy" display="menu"></p-columnFilter></th>
-                            <th pSortableColumn="initiatedOn">Initiated On <p-columnFilter type="date" field="date"
+                            <th pSortableColumn="createdBy">Initiated By <p-columnFilter type="text"
+                                    field="createdBy" display="menu"></p-columnFilter></th>
+                            <th pSortableColumn="createdDate">Initiated On <p-columnFilter type="date" field="createdDate"
                                     display="menu"></p-columnFilter> </th>
                             <th pSortableColumn="status">Status
                                 <p-columnFilter field="status" matchMode="equals" display="menu" [showMenu]="true">
@@ -54,18 +54,19 @@
                     <ng-template pTemplate="body" let-products let-i="rowIndex" #templatesTable>
                         <tr>
                             <td>{{i+1}}</td>
-                            <td>{{products.productName}}</td>
+                            
+                            <td>{{products?.name}}</td>
                             <td class="idname">
-                                {{products.id}}</td>
+                                {{products?.code}}</td>
 
 
-                            <td>{{products.initiatedBy}}</td>
-                            <td>{{products.date | date: 'MM/dd/yyyy'}}</td>
+                            <td>{{products?.createdBy}}</td>
+                            <td>{{products?.createdDate}}</td>
 
                             <td><span pInputText pTooltip="Change Status" tooltipPosition="top" role="button"
                                     tabindex="0" (click)="showStatusForm = true;openFlyout(i)"
                                     class="status-dot rounded-pill " [ngClass]="{'status-active':products.status==='Active',
-                                'status-inactive':products.status ==='Inactive'}">{{products.status}}
+                                'status-inactive':products.status ==='Inactive'}">{{products?.status}}
                                 </span>
 
                             </td>

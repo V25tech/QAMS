@@ -66,12 +66,12 @@ namespace QAMS.Admin.Data
             try
             {
                 List<SqlParameter> sqlparms = new List<SqlParameter>();
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = PlantConstants.Name, Value = plant.Name });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = PlantConstants.Code, Value = plant.Code });
-                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = PlantConstants.Revision, Value = plant.Revision });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = PlantConstants.Address, Value = plant.Address });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = PlantConstants.Comment, Value = plant.Comment });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = PlantConstants.CreatedBy, Value = plant.CreatedBy });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = PlantConstants.Name, Value = plant.name });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = PlantConstants.Code, Value = plant.code });
+                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = PlantConstants.Revision, Value = plant.revision });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = PlantConstants.Address, Value = plant.address });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = PlantConstants.Comment, Value = plant.comment });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = PlantConstants.CreatedBy, Value = plant.createdBy });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = PlantConstants.ModifiedBy, Value = plant.ModifiedBy });
                 Object result = dataAccessHelper.ExecuteStoredProcedure(PlantConstants.USP_Plant_PSY_INSERT, sqlparms, ExecutionType.Scalar);
                 return (Convert.ToInt32(result) > 0);
@@ -87,12 +87,12 @@ namespace QAMS.Admin.Data
             try
             {
                 List<SqlParameter> sqlparms = new List<SqlParameter>();
-                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = PlantConstants.Id, Value = plant.Id });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = PlantConstants.Name, Value = plant.Name });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = PlantConstants.Code, Value = plant.Code });
-                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = PlantConstants.Revision, Value = plant.Revision });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = PlantConstants.Address, Value = plant.Address });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = PlantConstants.Comment, Value = plant.Comment });
+                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = PlantConstants.Id, Value = plant.id });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = PlantConstants.Name, Value = plant.name });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = PlantConstants.Code, Value = plant.code });
+                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = PlantConstants.Revision, Value = plant.revision });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = PlantConstants.Address, Value = plant.address });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = PlantConstants.Comment, Value = plant.comment });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = PlantConstants.ModifiedBy, Value = plant.ModifiedBy });
                 Object result = dataAccessHelper.ExecuteStoredProcedure(PlantConstants.USP_Plant_PSY_UPDATE, sqlparms, ExecutionType.Scalar);
                 return (Convert.ToInt32(result) > 0);

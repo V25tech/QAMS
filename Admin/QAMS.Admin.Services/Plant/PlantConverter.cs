@@ -37,14 +37,14 @@ namespace QAMS.Admin.Services
                     {
                         DataRow row = dataset.Tables[0].Rows[i];
                         plantData = new Plant();
-                        plantData.Id = DatatypeConverter.SetIntValue(row[PlantConstants.Id.TrimAt()]);
-                        plantData.Name = Convert.ToString(row[PlantConstants.Name.TrimAt()]);
-                        plantData.Code = Convert.ToString(row[PlantConstants.Code.TrimAt()]);
-                        plantData.Revision = DatatypeConverter.SetIntValue(row[PlantConstants.Revision.TrimAt()]);
-                        plantData.Address = Convert.ToString(row[PlantConstants.Address.TrimAt()]);
-                        plantData.Comment = Convert.ToString(row[PlantConstants.Comment.TrimAt()]);
-                        plantData.CreatedBy = Convert.ToString(row[PlantConstants.CreatedBy.TrimAt()]);
-                        plantData.CreatedDate = DatatypeConverter.SetDateTime(row[PlantConstants.CreatedDate.TrimAt()]);
+                        plantData.id = DatatypeConverter.SetIntValue(row[PlantConstants.Id.TrimAt()]);
+                        plantData.name = Convert.ToString(row[PlantConstants.Name.TrimAt()]);
+                        plantData.code = Convert.ToString(row[PlantConstants.Code.TrimAt()]);
+                        plantData.revision = DatatypeConverter.SetIntValue(row[PlantConstants.Revision.TrimAt()]);
+                        plantData.address = Convert.ToString(row[PlantConstants.Address.TrimAt()]);
+                        plantData.comment = Convert.ToString(row[PlantConstants.Comment.TrimAt()]);
+                        plantData.createdBy = Convert.ToString(row[PlantConstants.CreatedBy.TrimAt()]);
+                        plantData.createdDate = DatatypeConverter.SetDateTime(row[PlantConstants.CreatedDate.TrimAt()]);
                         plantData.ModifiedBy = Convert.ToString(row[PlantConstants.ModifiedBy.TrimAt()]);
                         plantData.ModifiedDate = DatatypeConverter.SetDateTime(row[PlantConstants.ModifiedDate.TrimAt()]);
                         result.Add(plantData);

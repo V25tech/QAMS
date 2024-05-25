@@ -34,7 +34,7 @@ namespace QAMS.Entities.Common
             }
         }
         private int? batchorlotnumberField;
-        public int? BatchOrLotNumber
+        public int? batchNoLotNo
         {
             get
             {
@@ -285,6 +285,30 @@ namespace QAMS.Entities.Common
                 externalReferenceField = value;
             }
         }
-        //externalReference
+        private string referenceField;
+        public string reference
+        {
+            get
+            {
+                return referenceField;
+            }
+            set
+            {
+                referenceField = value;
+            }
+        }
+        private DateTime dateofInitiationField;
+        public DateTime dateofInitiation
+        {
+            get
+            {
+                return dateofInitiationField;
+            }
+            set
+            {
+                dateofInitiationField = value;
+            }
+        }
+        
     }
 }
