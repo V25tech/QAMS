@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: 'home', redirectTo: 'home', pathMatch: 'full' },
   { path: 'change-controls', component: ChangecontrolsComponent, canActivate: [AuthGuard] },
   { path: 'register-change-control', component: RegisterCCComponent, canActivate: [AuthGuard] },
+  { path: 'edit-change-control/:id', component: RegisterCCComponent, canActivate: [AuthGuard] },
   { path: 'cc-workflow', component: ChangeControlWorkflowComponent, canActivate: [AuthGuard] },
   { path: 'workItems', component: WorkItemsComponent, canActivate: [AuthGuard] },
   { path: 'workItems-workFlow',component: WorkItemsWorkflowComponent,canActivate: [AuthGuard] },

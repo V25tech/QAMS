@@ -78,8 +78,8 @@ export class ChangecontrolsComponent {
     this.cdr.detectChanges();
   }
 
-  gotoRegPage() {
-    this.router.navigateByUrl('/register-change-control');
+  gotoEditPage(id: string) {
+    this.router.navigateByUrl(`/edit-change-control/${id}`);
   }
   gotoWorkTransferPage() {
     this.router.navigateByUrl('/work-Transfer');
