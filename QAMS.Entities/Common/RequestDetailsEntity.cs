@@ -154,8 +154,8 @@ namespace QAMS.Entities.Common
             }
         }
 
-        private DateTime batchNoLotDetailsField;
-        public DateTime batchNoLotDetails
+        private string batchNoLotDetailsField;
+        public string batchNoLotDetails
         {
             get
             {
@@ -273,8 +273,8 @@ namespace QAMS.Entities.Common
                 productField = value;
             }
         }
-        private bool externalReferenceField;
-        public bool externalReference
+        private string externalReferenceField;
+        public string externalReference
         {
             get
             {
@@ -298,7 +298,7 @@ namespace QAMS.Entities.Common
             }
         }
         private DateTime dateofInitiationField;
-        public DateTime dateofInitiation
+        public DateTime tardateofInitiation
         {
             get
             {

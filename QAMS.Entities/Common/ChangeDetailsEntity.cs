@@ -240,6 +240,18 @@ namespace QAMS.Entities.Common
                 impurityAssesmentField = value;
             }
         }
+        private string impurityReasonField;
+        public string impurityReason
+        {
+            get
+            {
+                return impurityReasonField;
+            }
+            set
+            {
+                impurityReasonField = value;
+            }
+        }
         private string nitrosamineAssesmentField;
         public string nitrosamineAssesment
         {
@@ -252,6 +264,18 @@ namespace QAMS.Entities.Common
                 nitrosamineAssesmentField = value;
             }
         }
+        private string nitrosamineReasonField;
+        public string nitrosamineReason
+        {
+            get
+            {
+                return nitrosamineReasonField;
+            }
+            set
+            {
+                nitrosamineReasonField = value;
+            }
+        }
         private string genotoxicAssesmentField;
         public string genotoxicAssesment
         {
@@ -262,6 +286,18 @@ namespace QAMS.Entities.Common
             set
             {
                 genotoxicAssesmentField = value;
+            }
+        }
+        private string genotoxicReasonField;
+        public string genotoxicReason
+        {
+            get
+            {
+                return genotoxicReasonField;
+            }
+            set
+            {
+                genotoxicReasonField = value;
             }
         }
         //
