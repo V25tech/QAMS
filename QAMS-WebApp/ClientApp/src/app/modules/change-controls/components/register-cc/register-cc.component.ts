@@ -79,14 +79,39 @@ export class RegisterCCComponent implements OnInit {
     console.log(id);
 
     let ccValueStr = localStorage.getItem(id)
-    let ccValue : CC_Model = JSON.parse(ccValueStr)??null;
-    
+    let ccValue: CC_Model = JSON.parse(ccValueStr) ?? null;
+
     this.primengConfig.ripple = true;
     this.buildMainForm(ccValue);
   }
 
+  backToCCClick() {
+    this.router.navigateByUrl('/change-controls');
+  }
 
-  buildMainForm(ccValue : CC_Model) {
+  show() {
+    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Change Control Login Initiated Successfully' });
+  }
+
+  saveChanges() {
+    //this.displayBasic = false;
+    this.cdr.detectChanges();
+  }
+
+  onSubmit(): void {
+    if (this.mainForm.valid) {
+      console.log(this.mainForm.value);
+      let ccValue: CC_Model = this.mainForm.value;
+
+      localStorage.setItem('PROV-CC-PL01-24-0021', JSON.stringify(ccValue));
+
+      console.log(JSON.stringify(ccValue))
+    } else {
+      console.log('Form is invalid');
+    }
+  }
+
+  buildMainForm(ccValue: CC_Model) {
     this.mainForm = this.fb.group({
       //Request Details Controls
       requestDetails: this.fb.group({
@@ -138,6 +163,15 @@ export class RegisterCCComponent implements OnInit {
       })
     });
 
+    this.onChangeRefFunctions();
+
+    if (ccValue) {
+      this.mainForm.patchValue(ccValue);
+    }
+  }
+
+  onChangeRefFunctions() {
+
     this.mainForm.get('requestDetails.reference').valueChanges.subscribe(value => {
       this.onReferenceChange(value);
     });
@@ -169,10 +203,6 @@ export class RegisterCCComponent implements OnInit {
     this.mainForm.get('impactAssessmentDetails.isAnyProceduresImpacted').valueChanges.subscribe(value => {
       this.onIsAnyProceduresImpactedChange(value);
     });
-
-    if(ccValue){
-      this.mainForm.patchValue(ccValue);
-    }
   }
 
   onReferenceChange(value: string): void {
@@ -263,29 +293,4 @@ export class RegisterCCComponent implements OnInit {
     }
   }
 
-  backToCCClick() {
-    this.router.navigateByUrl('/change-controls');
-  }
-
-  show() {
-    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Change Control Login Initiated Successfully' });
-  }
-
-  saveChanges() {
-    //this.displayBasic = false;
-    this.cdr.detectChanges();
-  }
-
-  onSubmit(): void {
-    if (this.mainForm.valid) {
-      console.log(this.mainForm.value);
-      let ccValue: CC_Model = this.mainForm.value;
-
-      localStorage.setItem('PROV-CC-PL01-24-0021', JSON.stringify(ccValue));
-
-      console.log(JSON.stringify(ccValue))
-    } else {
-      console.log('Form is invalid');
-    }
-  }
 }
