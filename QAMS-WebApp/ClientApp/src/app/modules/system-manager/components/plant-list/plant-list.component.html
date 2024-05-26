@@ -12,7 +12,7 @@
             <div class="col mt-2 table-landing ">
                     <p-table #dt dataKey="id" [value]="plantDatasource" [paginator]="true" [rows]="10"
                         [rowsPerPageOptions]="[10, 25, 50]" [showCurrentPageReport]="true"
-                        [globalFilterFields]="['userName','role', 'id', 'department', 'initiatedBy','date']"
+                        [globalFilterFields]="['code','name', 'createdBy', 'createdDate']"
 
                         tableStyleClass="table table-striped">
                         <ng-template pTemplate="caption">
@@ -26,12 +26,10 @@
                         <ng-template pTemplate="header">
                             <tr>
                                 <th style="width:40px" class="lh-lg">S.No</th>
-                                <th pSortableColumn="ID">Plant Code <p-columnFilter type="text" field="id" display="menu"></p-columnFilter>
-                                
-                                    <p-sortIcon field="id"></p-sortIcon></th>
-                                <th pSortableColumn="plantName">Plant Name<p-columnFilter type="text" field="plantName" display="menu"></p-columnFilter></th>
-                                <th pSortableColumn="initiatedBy">Initiated By <p-columnFilter type="text" field="initiatedby" display="menu"></p-columnFilter></th>
-                                <th pSortableColumn="InitiatedOn">Initiated On <p-columnFilter type="date" field="date" display="menu"></p-columnFilter> </th>
+                                <th pSortableColumn="code">Plant Code <p-columnFilter type="text" field="code" display="menu"></p-columnFilter></th>
+                                <th pSortableColumn="name">Plant Name<p-columnFilter type="text" field="name" display="menu"></p-columnFilter></th>
+                                <th pSortableColumn="createdBy">Initiated By <p-columnFilter type="text" field="createdBy" display="menu"></p-columnFilter></th>
+                                <th pSortableColumn="createdDate">Initiated On <p-columnFilter type="date" field="createdDate" display="menu"></p-columnFilter> </th>
                                 <th class="text-center">Actions</th>
 
                             </tr>
@@ -41,10 +39,10 @@
                                 <td>{{i+1}}</td>
                                 
                                 <td class="idname">
-                                        {{plantList.id}}</td>
-                                        <td>{{plantList.plantName}}</td>
-                                  <td>{{plantList.initiatedBy}}</td>
-                                <td>{{plantList.date | date: 'MM/dd/yyyy'}}</td>
+                                  {{plantList.code}}</td>
+                                  <td>{{plantList.name}}</td>
+                                  <td>{{plantList.createdBy}}</td>
+                                <td>{{plantList.createdDate}}</td>
                              
                                 <td class="text-center">
                                     

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -9,6 +9,8 @@ export class ProductsService {
 
   constructor(private http: HttpClient) { }
   getProductsData(): Observable<any> {
-    return this.http.get('assets/json/SystemManager/products.json');
+
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post('/product/GetAllProduct',"{\"pageNumber\":1,\"pageSize\":100}", { headers });
   }
 }
