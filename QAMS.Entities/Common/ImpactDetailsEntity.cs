@@ -17,7 +17,7 @@ namespace QAMS.Entities.Common
 
         private string impactedproductmaterialsField;
 
-        private bool? isAnyProceduresImpactedField;
+        private string isAnyProceduresImpactedField;
 
         private string impactedproceduresField;
 
@@ -59,7 +59,7 @@ namespace QAMS.Entities.Common
             }
         }
 
-        public int? impactedProcedures
+        public string impactedProcedures
         {
             get
             {
