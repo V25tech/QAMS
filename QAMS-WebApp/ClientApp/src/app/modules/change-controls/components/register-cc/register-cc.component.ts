@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, FormBuilder, Validators, FormArray } from '@angular/forms'
 import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { CC_Model } from 'src/app/models/changecontrol.model';
+import { ChangeControlsService } from '../../services/change-controls.service';
 
 @Component({
   selector: 'app-register-cc',
@@ -69,6 +70,7 @@ export class RegisterCCComponent implements OnInit {
     private primengConfig: PrimeNGConfig,
     private messageService: MessageService,
     private fb: FormBuilder,
+    private changeControlsService: ChangeControlsService,
     private cdr: ChangeDetectorRef) {
 
   }
@@ -102,10 +104,20 @@ export class RegisterCCComponent implements OnInit {
     if (this.mainForm.valid) {
       console.log(this.mainForm.value);
       let ccValue: CC_Model = this.mainForm.value;
+      ccValue.changeControlId =0;
+      ccValue.catId = 0;
+      ccValue.registeredby = 123;
+      ccValue.status = 2;
+      ccValue.createdDate = new Date()
+
 
       localStorage.setItem('PROV-CC-PL01-24-0021', JSON.stringify(ccValue));
 
       console.log(JSON.stringify(ccValue))
+      this.changeControlsService.saveChangeControlRegistration(ccValue).subscribe(res => {
+        console.log(res);
+      });
+
     } else {
       console.log('Form is invalid');
     }

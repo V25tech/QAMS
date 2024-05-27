@@ -1,7 +1,18 @@
 export interface CC_Model {
     requestDetails?: RequestDetails;
     changeDetails?: ChangeDetails;
-    impactAssessmentDetails?: ImpactAssessmentDetails
+    impactAssessmentDetails?: ImpactAssessmentDetails;
+
+    changeControlId?: number,
+    changeControlUniqueCode?: string,
+    category?: string,
+    catId?: number,
+    registeredby?: number
+    reintiate?: boolean,
+    status?: number,
+    createdBy?: string,
+    createdDate?: Date,
+    modifiedBy?: string
 }
 
 export interface RequestDetails {
