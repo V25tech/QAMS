@@ -110,8 +110,8 @@ namespace QAMS.WEB.Entities
                 this.deviationdetailsField = value;
             }
         }
-        public ChangeDetailsEntity DeviationIdentification { get; set; }
-        public RequestDetailsEntity ChangeDetails { get; set; }
+        public  ChangeDetails DeviationIdentification { get; set; }
+        public RequestDetails ChangeDetails { get; set; }
         public string Category
         {
             get

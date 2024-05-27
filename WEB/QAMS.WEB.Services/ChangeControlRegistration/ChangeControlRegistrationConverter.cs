@@ -10,22 +10,17 @@
 namespace QAMS.WEB.Services
 {
     using System;
-    using System.Text;
-    using System.IO;
     using System.Linq;
     using System.Data;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
     using QAMS.WEB.Entities;
     using VAMLIbrary.Core.Extentions;
-    using QAMS.Common.Entities;
-    using QAMS.Entities.Common;
+    using Newtonsoft.Json;
 
 
     // Comment
     public static class ChangeControlRegistrationConverter
     {
-        
         public static List<ChangeControlRegistration> SetAllChangeControlRegistration(DataSet dataset)
         {
             try
@@ -88,10 +83,10 @@ namespace QAMS.WEB.Services
                         changeControlRegistrationData.CreatedBy = Convert.ToString(row[ChangeControlRegistrationConstants.CreatedBy.TrimAt()]);
                         changeControlRegistrationData.CreatedDate = DatatypeConverter.SetDateTime(row[ChangeControlRegistrationConstants.CreatedDate.TrimAt()]);
                         changeControlRegistrationData.ModifiedBy = Convert.ToString(row[ChangeControlRegistrationConstants.ModifiedBy.TrimAt()]);
-                        changeControlRegistrationData.changeDetails= JsonConvert.DeserializeObject<ChangeDetailsEntity>(Convert.ToString(row[ChangeControlRegistrationConstants.ChangeDetails.TrimAt()]));
-                        changeControlRegistrationData.requestDetails = JsonConvert.DeserializeObject<RequestDetailsEntity>(Convert.ToString(row[ChangeControlRegistrationConstants.RequestDetails.TrimAt()]));
-                        changeControlRegistrationData.impactAssessmentDetails = JsonConvert.DeserializeObject<ImpactDetailsEntity>(Convert.ToString(row[ChangeControlRegistrationConstants.ImpactDetails.TrimAt()]));
-                        // changeControlRegistrationData.ModifiedDate = DatatypeConverter.SetDateTime(row[ChangeControlRegistrationConstants.ModifiedDate.TrimAt()]);
+                        changeControlRegistrationData.changeDetails = JsonConvert.DeserializeObject<ChangeDetails>(Convert.ToString(row[ChangeControlRegistrationConstants.ChangeDetails.TrimAt()]));
+                        changeControlRegistrationData.requestDetails = JsonConvert.DeserializeObject<RequestDetails>(Convert.ToString(row[ChangeControlRegistrationConstants.RequestDetails.TrimAt()]));
+                        changeControlRegistrationData.impactAssessmentDetails = JsonConvert.DeserializeObject<ImpactAssessmentDetails>(Convert.ToString(row[ChangeControlRegistrationConstants.ImpactDetails.TrimAt()]));
+                        //// changeControlRegistrationData.ModifiedDate = DatatypeConverter.SetDateTime(row[ChangeControlRegistrationConstants.ModifiedDate.TrimAt()]);
                         result.Add(changeControlRegistrationData);
                     }
                 }
@@ -102,7 +97,7 @@ namespace QAMS.WEB.Services
                 throw;
             }
         }
-        
+
         public static ChangeControlRegistration SetChangeControlRegistration(DataSet dataset)
         {
             var result = SetAllChangeControlRegistration(dataset);

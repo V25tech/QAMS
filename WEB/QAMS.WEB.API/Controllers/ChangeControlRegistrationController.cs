@@ -65,7 +65,8 @@ namespace QAMS.Controllers
         /// </summary>
         /// <param name="changeControlRegistration"></param>
         [HttpPost("savechangecontrolregistration")]
-        public ActionResult<System.Boolean> SaveChangeControlRegistration(ChangeControlRegistration changeControlRegistration)
+
+        public ActionResult<bool> SaveChangeControlRegistration(ChangeControlRegistration changeControlRegistration)
         {
             var result = changeControlRegistrationService.SaveChangeControlRegistration(changeControlRegistration);
             return result;
@@ -76,7 +77,7 @@ namespace QAMS.Controllers
         /// </summary>
         /// <param name="changeControlRegistration"></param>
         [HttpPost("updatechangecontrolregistration")]
-        public ActionResult<System.Boolean> UpdateChangeControlRegistration(ChangeControlRegistration changeControlRegistration)
+        public ActionResult<bool> UpdateChangeControlRegistration(ChangeControlRegistration changeControlRegistration)
         {
             var result = changeControlRegistrationService.UpdateChangeControlRegistration(changeControlRegistration);
             return result;

@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="eab96106-da58-41ed-b1ab-ffe193819020" ChangeDateTime="05/25/2024 18:08:37">
+    <Property Name="ElementName" Value="[dbo].[ChangeControlRegistration_PSY].[Product_PSY]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ChangeControlRegistration_PSY]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ImpactProduct_PSY" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="8d9ab165-e0e0-4cee-a7af-50670b3deb01" ChangeDateTime="05/25/2024 18:15:26">
+    <Property Name="ElementName" Value="[dbo].[ChangeControlRegistration_PSY].[DoesTheChangeImpactProductMaterialQuality_PSY]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ChangeControlRegistration_PSY]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IsImpacted" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a0de23a9-2300-4d25-bbdc-6002052d1a6c" ChangeDateTime="05/25/2024 18:15:41">
+    <Property Name="ElementName" Value="[dbo].[ChangeControlRegistration_PSY].[IsImpacted]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ChangeControlRegistration_PSY]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IsImpactProduct" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ef11e273-0172-447d-858d-8c0610e4570d" ChangeDateTime="05/25/2024 18:18:05">
+    <Property Name="ElementName" Value="[dbo].[ChangeControlRegistration_PSY].[AreAnyProceduresImpacted_PSY]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ChangeControlRegistration_PSY]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IsProceduresImpacted_PSY" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="fb60a12d-5821-4006-b473-d6d0a0cc943a" ChangeDateTime="05/26/2024 07:27:57">
+    <Property Name="ElementName" Value="[dbo].[INITIATIVE_WORKFLOW_PSY].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[INITIATIVE_WORKFLOW_PSY]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="WORKFLOW_ID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a7cd7ea0-2e2f-46e3-a76f-958d50e376e0" ChangeDateTime="05/26/2024 07:31:01">
+    <Property Name="ElementName" Value="[dbo].[INITIATIVE_WORKFLOW_PSY].[STATUS]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[INITIATIVE_WORKFLOW_PSY]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ISCOMPLETED" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="722feb19-e984-4742-a478-67f1c3242a5b" ChangeDateTime="05/26/2024 11:12:41">
+    <Property Name="ElementName" Value="[dbo].[WORKFLOW_ACTION_PLAN_USERS_MAPPING].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[WORKFLOW_ACTION_PLAN_USERS_MAPPING]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ACTION_ID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d0085a5b-9995-47db-9c28-42fdef41f773" ChangeDateTime="05/26/2024 11:13:06">
+    <Property Name="ElementName" Value="[dbo].[WORKFLOW_ACTION_PLAN_USERS_MAPPING].[ACTION_ID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[WORKFLOW_ACTION_PLAN_USERS_MAPPING]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ACTION_USER_ID" />
+  </Operation>
+</Operations>
