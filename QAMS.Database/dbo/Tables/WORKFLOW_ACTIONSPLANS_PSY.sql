@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[ChangeContolActionPlan_PSY] (
+﻿CREATE TABLE [dbo].[WORKFLOW_ACTION_PLANS_PSY] (
     [ChangeContolActionPlanId_PSY] INT            IDENTITY (1, 1) NOT NULL,
     [Type_PSY]                     NVARCHAR (250) NULL,
     [Description_PSY]              NVARCHAR (250) NULL,
@@ -13,8 +13,6 @@
     [ModifiedDate_PSY]             DATETIME       NULL,
     [CATEGORYNAME_PSY]             VARCHAR (200)  NULL,
     [CATID_PSY]                    INT            NULL,
-    [WORKFLOW_ID] INT NULL, 
-    [WORKFLOW_TYPE] VARCHAR(50) NULL, 
     CONSTRAINT [PK_ChangeContolActionPlan_PSY] PRIMARY KEY CLUSTERED ([ChangeContolActionPlanId_PSY] ASC),
     CONSTRAINT [FK_ChangeContolActionPlan_PSY_Id_PSY_Department_PSY_DepartmentId_PSY] FOREIGN KEY ([DepartmentId_PSY]) REFERENCES [dbo].[Department_PSY] ([Id_PSY]),
     CONSTRAINT [FK_ChangeContolActionPlan_PSY_Id_PSY_User_PSY_AssignedUser_PSY] FOREIGN KEY ([AssignedUser_PSY]) REFERENCES [dbo].[User_PSY] ([Id_PSY]),

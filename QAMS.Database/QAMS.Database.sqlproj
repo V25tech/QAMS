@@ -207,5 +207,11 @@
     <Build Include="dbo\Stored Procedures\USP_newactionplan_PSY_GET.sql" />
     <Build Include="dbo\Stored Procedures\USP_newactionplan_PSY_DELETE_ALL.sql" />
     <Build Include="dbo\Stored Procedures\USP_newactionplan_PSY_DELETE.sql" />
+    <Build Include="dbo\Tables\INITIATIVE_WORKFLOW_PSY.sql" />
+    <Build Include="dbo\Tables\WORKFLOW_ACTION_PLAN_USERS_MAPPING.sql" />
+    <Build Include="dbo\Tables\WORKFLOW_ACTIONSPLANS_PSY.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="QAMS.Database.refactorlog" />
   </ItemGroup>
 </Project>
