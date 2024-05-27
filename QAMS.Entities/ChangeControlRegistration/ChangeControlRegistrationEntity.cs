@@ -6,153 +6,97 @@ namespace QAMS.WEB.Entities
     // Comment
 
     //EntityInitiationform
-    public class ChangeControlRegistration 
+    public class ChangeControlRegistration
     {
-        public ChangeDetailsEntity changeDetails { get; set; }
-        public RequestDetailsEntity requestDetails { get; set; }
+        public ChangeDetails changeDetails { get; set; }
+        public RequestDetails requestDetails { get; set; }
 
         public string RequestDetailsJson { get; set; }
         public string ChangeDetailsJson { get; set; }
         public string ImpactDetailsJson { get; set; }
-        public  ImpactDetailsEntity impactAssessmentDetails { get; set; }
+        public ImpactAssessmentDetails impactAssessmentDetails { get; set; }       
 
-        private int? changecontrolidField;
+        public int? ChangeControlId { get; set; }
 
-        private string changecontroluniquecodeField;
+        public string ChangeControlUniqueCode { get; set; }
 
-        private string CategoryField;
+        public string Category { get; set; }
+        public int CatId { get; set; }
+     
+        public int? Registeredby { get; set; }
 
-        private readonly int catIdField;
 
-        public int? ChangeControlId
-        {
-            get
-            {
-                return this.changecontrolidField;
-            }
-            set
-            {
-                this.changecontrolidField = value;
-            }
-        }
+        public bool? Reintiate { get; set; }
 
-        public string ChangeControlUniqueCode
-        {
-            get
-            {
-                return this.changecontroluniquecodeField;
-            }
-            set
-            {
-                this.changecontroluniquecodeField = value;
-            }
-        }
-        public string Category
-        {
-            get
-            {
-                return this.CategoryField;
-            }
-            set
-            {
-                this.CategoryField = value;
-            }
-        }
 
-        public int CatId
-        {
-            get
-            {
-                return this.catIdField;
-            }
-            set
-            {
-                CatId = value;
-            }
-        }
-        private System.Int32? registeredbyField;
+        public int? Status { get; set; }
 
-        private System.Boolean? reintiateField;
+        public string CreatedBy { get; set; }
 
-        private System.Int32? statusField;
+        public DateTime? CreatedDate { get; set; }
 
-        private string createdbyField;
+        public string ModifiedBy { get; set; }
 
-        private DateTime? createddateField;
-
-        private string modifiedbyField;
-
-        private DateTime? modifieddateField;
-        public System.Int32? Registeredby
-        {
-            get
-            {
-                return this.registeredbyField;
-            }
-            set
-            {
-                this.registeredbyField = value;
-            }
-        }
-
-        public System.Boolean? Reintiate
-        {
-            get
-            {
-                return this.reintiateField;
-            }
-            set
-            {
-                this.reintiateField = value;
-            }
-        }
-
-        public System.Int32? Status
-        {
-            get
-            {
-                return this.statusField;
-            }
-            set
-            {
-                this.statusField = value;
-            }
-        }
-
-        public string CreatedBy
-        {
-            get
-            {
-                return this.createdbyField;
-            }
-            set
-            {
-                this.createdbyField = value;
-            }
-        }
-
-        public DateTime? CreatedDate
-        {
-            get
-            {
-                return this.createddateField;
-            }
-            set
-            {
-                this.createddateField = value;
-            }
-        }
-
-        public string ModifiedBy
-        {
-            get
-            {
-                return this.modifiedbyField;
-            }
-            set
-            {
-                this.modifiedbyField = value;
-            }
-        }
     }
+
+
+
+    public class RequestDetails
+    {
+        public string reference { get; set; }
+        public string externalReference { get; set; }
+        public string qualityEvents { get; set; }
+        public string initiatingDepartment { get; set; }
+        public string typeOfChange { get; set; }
+        public string batchNoLotDetails { get; set; }
+        public string dateofInitiation { get; set; }
+        public string targetDateofClosure { get; set; }
+
+        public string market { get; set; }
+
+        public string customer { get; set; }
+
+
+
+
+    }
+
+    public class ChangeDetails
+    {
+        public string customer { get; set; }
+        public string genatoxicReason { get; set; }
+        public string genotoxicAssesment { get; set; }
+        public string nitrosamineReason { get; set; }
+        public string nitrosamineAssesment { get; set; }
+        public string impurityAssesment { get; set; }
+        public string products { get; set; }
+        public string others { get; set; }
+        public string supplierServiceProvider { get; set; }
+        public string testing { get; set; }
+        public string software { get; set; }
+        public string packing { get; set; }
+        public string validation { get; set; }
+        public string facilityUtility { get; set; }
+        public string document { get; set; }
+        public string equipment { get; set; }
+        public string material { get; set; }
+        public string changesRelatedTo { get; set; }
+        public string justificationForProposedChange { get; set; }
+        public string proposedChange { get; set; }
+        public string existingProcedure { get; set; }
+
+    }
+    public class ImpactAssessmentDetails
+    {
+        public string isChangeImpactProductMaterial { get; set; }
+
+        public string impactProductOrMaterials { get; set; }
+        public string isAnyProceduresImpacted { get; set; }
+        public string impactedProcedures { get; set; }
+
+        public string comments { get; set; }
+
+
+    }
+
 }
