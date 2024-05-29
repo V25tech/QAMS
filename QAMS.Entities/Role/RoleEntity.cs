@@ -18,102 +18,22 @@ namespace QAMS.Admin.Entities
     public class Role : RoleMetadata
     {
 
-        private System.Int32? idField;
 
-        private string nameField;
 
-        private string descriptionField;
+        public string Name { get; set; }
 
-        private string createdbyField;
+        public string Description { get; set; }
 
-        private DateTime? createddateField;
+        public string CreatedBy { get; set; }
 
-        private string modifiedbyField;
+        public DateTime? CreatedDate { get; set; }
 
-        private DateTime? modifieddateField;
+        public string ModifiedBy { get; set; }
 
-        public System.Int32? Id
-        {
-            get
-            {
-                return this.idField;
-            }
-            set
-            {
-                this.idField = value;
-            }
-        }
+        public DateTime? ModifiedDate { get; set; }
 
-        public string Name
-        {
-            get
-            {
-                return this.nameField;
-            }
-            set
-            {
-                this.nameField = value;
-            }
-        }
+        public string ruleMetadata { get; set; }
 
-        public string Description
-        {
-            get
-            {
-                return this.descriptionField;
-            }
-            set
-            {
-                this.descriptionField = value;
-            }
-        }
 
-        public string CreatedBy
-        {
-            get
-            {
-                return this.createdbyField;
-            }
-            set
-            {
-                this.createdbyField = value;
-            }
-        }
-
-        public DateTime? CreatedDate
-        {
-            get
-            {
-                return this.createddateField;
-            }
-            set
-            {
-                this.createddateField = value;
-            }
-        }
-
-        public string ModifiedBy
-        {
-            get
-            {
-                return this.modifiedbyField;
-            }
-            set
-            {
-                this.modifiedbyField = value;
-            }
-        }
-
-        public DateTime? ModifiedDate
-        {
-            get
-            {
-                return this.modifieddateField;
-            }
-            set
-            {
-                this.modifieddateField = value;
-            }
-        }
     }
 }

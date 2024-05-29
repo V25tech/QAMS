@@ -18,25 +18,23 @@ namespace QAMS.Admin.Entities
     public class RoleMetadata
     {
 
-        private int idField;
-        private string Type;
-        private bool HODReview { get; set; }
-        private bool QAReview { get; set; }
-        private bool CFTReview { get; set; }
-        private bool CustomerNotification { get; set; }
-        private bool QADecision { get; set; }
-        private bool ActionPlan { get; set; }
+        public int? Id { get; set; }
+        public string Type { get; set; }
+        public bool HODReview { get; set; }
+        public bool QAReview { get; set; }
+        public bool CFTReview { get; set; }
+        public bool CustomerNotification { get; set; }
+        public bool QADecision { get; set; }
+        public bool ActionPlan { get; set; }
+        public bool FinalClosure { get; set; }
+        public bool ExtensionOfTargetDate { get; set; }
 
-        private bool FinalClosure { get; set; }
+        public bool WorkTransfer { get; set; }
 
-        private bool ExtensionOfTargetDate { get; set; }
+        public bool DossierPrint { get; set; }
 
-        private bool WorkTransfer { get; set; }
+        public bool AuditTrails { get; set; }
 
-        private bool DossierPrint { get; set; }
-
-        private bool AuditTrails { get; set; }
-
-        private bool Reports { get; set; }
+        public bool Reports { get; set; }
     }
 }

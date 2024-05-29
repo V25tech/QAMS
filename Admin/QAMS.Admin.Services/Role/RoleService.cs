@@ -18,14 +18,15 @@ namespace QAMS.Admin.Services
     using QAMS.Common.Entities;
     using QAMS.Admin.Entities;
     using QAMS.Admin.Data;
-    
-    
+    using Newtonsoft.Json;
+
+
     // Comment
     public class RoleService : IRoleService
     {
-        
+
         private readonly IRoleData roleData;
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -34,7 +35,7 @@ namespace QAMS.Admin.Services
         {
             this.roleData = roleData;
         }
-        
+
         public ResponseContext<Role> GetAllRole(RequestContext requestContext)
         {
             try
@@ -48,7 +49,7 @@ namespace QAMS.Admin.Services
                 throw;
             }
         }
-        
+
         public Role GetRoleById(System.Int32? id)
         {
             try
@@ -62,12 +63,14 @@ namespace QAMS.Admin.Services
                 throw;
             }
         }
-        
+
         public bool SaveRole(Role role)
         {
             try
             {
                 String validationMessages = RoleValidator.IsValidRole(role);
+                string roleMetadata = JsonConvert.SerializeObject(role, Formatting.Indented);
+                role.ruleMetadata = roleMetadata;
                 if (validationMessages.Length <= 0)
                 {
                     var result = roleData.SaveRole(role);
@@ -80,7 +83,7 @@ namespace QAMS.Admin.Services
                 throw;
             }
         }
-        
+
         public bool UpdateRole(Role role)
         {
             try
@@ -98,7 +101,7 @@ namespace QAMS.Admin.Services
                 throw;
             }
         }
-        
+
         public bool DeleteRoleById(System.Int32? id)
         {
             try
@@ -110,7 +113,7 @@ namespace QAMS.Admin.Services
                 throw;
             }
         }
-        
+
         public bool DeleteAllRole(List<int> ids)
         {
             try
