@@ -18,9 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\QAMS.WEB.DataAccess\QAMS.WEB.DataAccess.csproj" />
+    <ProjectReference Include="..\QAMS.WEB.DataAccess\QAMS.DataAccess.csproj" />
     <ProjectReference Include="..\..\QAMS.Entities\QAMS.Entities.csproj" />
-    <ProjectReference Include="..\QAMS.WEB.Services\QAMS.WEB.Services.csproj" />
+    <ProjectReference Include="..\QAMS.WEB.Services\QAMS.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>
