@@ -19,12 +19,12 @@ namespace QAMS.Admin.Services
     using QAMS.Admin.Entities;
     using VAMLIbrary.Core.Extentions;
     using QAMS.Common.Entities;
-    
-    
+
+
     // Comment
     public static class RoleConverter
     {
-        
+
         public static List<Role> SetAllRole(DataSet dataset)
         {
             try
@@ -44,6 +44,7 @@ namespace QAMS.Admin.Services
                         roleData.CreatedDate = DatatypeConverter.SetDateTime(row[RoleConstants.CreatedDate.TrimAt()]);
                         roleData.ModifiedBy = Convert.ToString(row[RoleConstants.ModifiedBy.TrimAt()]);
                         roleData.ModifiedDate = DatatypeConverter.SetDateTime(row[RoleConstants.ModifiedDate.TrimAt()]);
+                        roleData = JsonConvert.DeserializeObject<Role>(Convert.ToString(row["roleMetadata"]));
                         result.Add(roleData);
                     }
                 }
@@ -54,7 +55,7 @@ namespace QAMS.Admin.Services
                 throw;
             }
         }
-        
+
         public static Role SetRole(DataSet dataset)
         {
             var result = SetAllRole(dataset);

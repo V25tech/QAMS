@@ -12,13 +12,11 @@ namespace QAMS.Admin.Entities
     using System;
     using System.Collections.Generic;
     using QAMS.Common.Entities;
-
+    
 
     // Comment
     public class Role : RoleMetadata
     {
-
-
 
         public string Name { get; set; }
 
@@ -32,7 +30,7 @@ namespace QAMS.Admin.Entities
 
         public DateTime? ModifiedDate { get; set; }
 
-        public string ruleMetadata { get; set; }
+        public string roleMetadata { get; set; }
 
 
     }
