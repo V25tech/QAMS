@@ -70,7 +70,7 @@ namespace QAMS.Admin.Services
             {
                 String validationMessages = RoleValidator.IsValidRole(role);
                 string roleMetadata = JsonConvert.SerializeObject(role, Formatting.Indented);
-                role.ruleMetadata = roleMetadata;
+                role.roleMetadata = roleMetadata;
                 if (validationMessages.Length <= 0)
                 {
                     var result = roleData.SaveRole(role);
