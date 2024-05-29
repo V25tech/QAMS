@@ -12,26 +12,26 @@ namespace QAMS.Admin.Entities
     using System;
     using System.Collections.Generic;
     using QAMS.Common.Entities;
-    
-    
+
+
     // Comment
-    public class Role
+    public class Role : RoleMetadata
     {
-        
+
         private System.Int32? idField;
-        
+
         private string nameField;
-        
+
         private string descriptionField;
-        
+
         private string createdbyField;
-        
+
         private DateTime? createddateField;
-        
+
         private string modifiedbyField;
-        
+
         private DateTime? modifieddateField;
-        
+
         public System.Int32? Id
         {
             get
@@ -43,7 +43,7 @@ namespace QAMS.Admin.Entities
                 this.idField = value;
             }
         }
-        
+
         public string Name
         {
             get
@@ -55,7 +55,7 @@ namespace QAMS.Admin.Entities
                 this.nameField = value;
             }
         }
-        
+
         public string Description
         {
             get
@@ -67,7 +67,7 @@ namespace QAMS.Admin.Entities
                 this.descriptionField = value;
             }
         }
-        
+
         public string CreatedBy
         {
             get
@@ -79,7 +79,7 @@ namespace QAMS.Admin.Entities
                 this.createdbyField = value;
             }
         }
-        
+
         public DateTime? CreatedDate
         {
             get
@@ -91,7 +91,7 @@ namespace QAMS.Admin.Entities
                 this.createddateField = value;
             }
         }
-        
+
         public string ModifiedBy
         {
             get
@@ -103,7 +103,7 @@ namespace QAMS.Admin.Entities
                 this.modifiedbyField = value;
             }
         }
-        
+
         public DateTime? ModifiedDate
         {
             get
