@@ -13,107 +13,25 @@ namespace QAMS.Admin.Entities
     using System.Collections.Generic;
     using QAMS.Common.Entities;
     
-    
+
     // Comment
-    public class Role
+    public class Role : RoleMetadata
     {
-        
-        private System.Int32? idField;
-        
-        private string nameField;
-        
-        private string descriptionField;
-        
-        private string createdbyField;
-        
-        private DateTime? createddateField;
-        
-        private string modifiedbyField;
-        
-        private DateTime? modifieddateField;
-        
-        public System.Int32? Id
-        {
-            get
-            {
-                return this.idField;
-            }
-            set
-            {
-                this.idField = value;
-            }
-        }
-        
-        public string Name
-        {
-            get
-            {
-                return this.nameField;
-            }
-            set
-            {
-                this.nameField = value;
-            }
-        }
-        
-        public string Description
-        {
-            get
-            {
-                return this.descriptionField;
-            }
-            set
-            {
-                this.descriptionField = value;
-            }
-        }
-        
-        public string CreatedBy
-        {
-            get
-            {
-                return this.createdbyField;
-            }
-            set
-            {
-                this.createdbyField = value;
-            }
-        }
-        
-        public DateTime? CreatedDate
-        {
-            get
-            {
-                return this.createddateField;
-            }
-            set
-            {
-                this.createddateField = value;
-            }
-        }
-        
-        public string ModifiedBy
-        {
-            get
-            {
-                return this.modifiedbyField;
-            }
-            set
-            {
-                this.modifiedbyField = value;
-            }
-        }
-        
-        public DateTime? ModifiedDate
-        {
-            get
-            {
-                return this.modifieddateField;
-            }
-            set
-            {
-                this.modifieddateField = value;
-            }
-        }
+
+        public string Name { get; set; }
+
+        public string Description { get; set; }
+
+        public string CreatedBy { get; set; }
+
+        public DateTime? CreatedDate { get; set; }
+
+        public string ModifiedBy { get; set; }
+
+        public DateTime? ModifiedDate { get; set; }
+
+        public string roleMetadata { get; set; }
+
+
     }
 }

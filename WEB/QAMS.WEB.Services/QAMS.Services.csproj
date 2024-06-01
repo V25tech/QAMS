@@ -1,11 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EnterpriseLibrary.Data.NetCore" Version="6.3.2" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
@@ -15,6 +14,7 @@
 
   <ItemGroup>
     
+    <ProjectReference Include="..\QAMS.WEB.DataAccess\QAMS.DataAccess.csproj" />
     <ProjectReference Include="..\..\QAMS.Entities\QAMS.Entities.csproj" />
   </ItemGroup>
 

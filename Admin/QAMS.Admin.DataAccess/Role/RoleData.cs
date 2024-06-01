@@ -70,6 +70,7 @@ namespace QAMS.Admin.Data
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = RoleConstants.Description, Value = role.Description });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = RoleConstants.CreatedBy, Value = role.CreatedBy });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = RoleConstants.ModifiedBy, Value = role.ModifiedBy });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = RoleConstants.RuleMetadata, Value = role.roleMetadata });
                 Object result = dataAccessHelper.ExecuteStoredProcedure(RoleConstants.USP_Role_PSY_INSERT, sqlparms, ExecutionType.Scalar);
                 return (Convert.ToInt32(result) > 0);
             }

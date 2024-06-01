@@ -19,7 +19,9 @@ namespace QAMS.Admin.Entities
         public const string Id = "@Id_PSY";
         
         public const string Name = "@Name_PSY";
-        
+
+        public const string RuleMetadata = "@RuleMetadata";
+
         public const string Description = "@Description_PSY";
         
         public const string CreatedBy = "@CreatedBy_PSY";
