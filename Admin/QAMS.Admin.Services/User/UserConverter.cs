@@ -39,11 +39,13 @@ namespace QAMS.Admin.Services
                         userData = new User();
                         userData.Id = DatatypeConverter.SetIntValue(row[UserConstants.Id.TrimAt()]);
                         userData.RoleId = DatatypeConverter.SetIntValue(row[UserConstants.RoleId.TrimAt()]);
+                        userData.roleName = Convert.ToString(row["RoleName"]);
                         userData.UserId = DatatypeConverter.SetIntValue(row[UserConstants.UserId.TrimAt()]);
                         userData.FirstName = Convert.ToString(row[UserConstants.FirstName.TrimAt()]);
                         userData.Plants = Convert.ToString(row[UserConstants.Plants.TrimAt()]);
                         userData.LastName = Convert.ToString(row[UserConstants.LastName.TrimAt()]);
                         userData.DepartmentId = DatatypeConverter.SetIntValue(row[UserConstants.DepartmentId.TrimAt()]);
+                        userData.Department = Convert.ToString(row["NAME_PSY"]);
                         userData.EmployeeId = Convert.ToString(row[UserConstants.EmployeeId.TrimAt()]);
                         userData.EmailId = DatatypeConverter.SetIntValue(row[UserConstants.EmailId.TrimAt()]);
                         userData.Password = Convert.ToString(row[UserConstants.Password.TrimAt()]);

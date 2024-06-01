@@ -12,44 +12,44 @@ namespace QAMS.Admin.Entities
     using System;
     using System.Collections.Generic;
     using QAMS.Common.Entities;
-    
-    
+
+
     // Comment
     public class User
     {
-        
+
         private System.Int32? idField;
-        
+
         private System.Int32? roleidField;
-        
+
         private System.Int32? useridField;
-        
+
         private string firstnameField;
-        
+
         private string plantsField;
-        
+
         private string lastnameField;
-        
+
         private System.Int32? departmentidField;
-        
+
         private string employeeidField;
-        
+
         private System.Int32? emailidField;
-        
+
         private string passwordField;
-        
+
         private System.Boolean? isactiveField;
-        
+
         private System.Boolean? forgotloginpasswordField;
-        
+
         private string createdbyField;
-        
+
         private DateTime? createddateField;
-        
+
         private string modifiedbyField;
-        
+
         private DateTime? modifieddateField;
-        
+
         public System.Int32? Id
         {
             get
@@ -61,7 +61,7 @@ namespace QAMS.Admin.Entities
                 this.idField = value;
             }
         }
-        
+
         public System.Int32? RoleId
         {
             get
@@ -73,7 +73,7 @@ namespace QAMS.Admin.Entities
                 this.roleidField = value;
             }
         }
-        
+        public string roleName { get; set; }
         public System.Int32? UserId
         {
             get
@@ -85,7 +85,7 @@ namespace QAMS.Admin.Entities
                 this.useridField = value;
             }
         }
-        
+
         public string FirstName
         {
             get
@@ -97,7 +97,7 @@ namespace QAMS.Admin.Entities
                 this.firstnameField = value;
             }
         }
-        
+
         public string Plants
         {
             get
@@ -109,7 +109,7 @@ namespace QAMS.Admin.Entities
                 this.plantsField = value;
             }
         }
-        
+
         public string LastName
         {
             get
@@ -121,7 +121,7 @@ namespace QAMS.Admin.Entities
                 this.lastnameField = value;
             }
         }
-        
+
         public System.Int32? DepartmentId
         {
             get
@@ -133,7 +133,10 @@ namespace QAMS.Admin.Entities
                 this.departmentidField = value;
             }
         }
-        
+
+        public string Department { get; set; }
+
+
         public string EmployeeId
         {
             get
@@ -145,7 +148,7 @@ namespace QAMS.Admin.Entities
                 this.employeeidField = value;
             }
         }
-        
+
         public System.Int32? EmailId
         {
             get
@@ -157,7 +160,7 @@ namespace QAMS.Admin.Entities
                 this.emailidField = value;
             }
         }
-        
+
         public string Password
         {
             get
@@ -169,7 +172,7 @@ namespace QAMS.Admin.Entities
                 this.passwordField = value;
             }
         }
-        
+
         public System.Boolean? IsActive
         {
             get
@@ -181,7 +184,7 @@ namespace QAMS.Admin.Entities
                 this.isactiveField = value;
             }
         }
-        
+
         public System.Boolean? ForgotLoginPassword
         {
             get
@@ -193,7 +196,7 @@ namespace QAMS.Admin.Entities
                 this.forgotloginpasswordField = value;
             }
         }
-        
+
         public string CreatedBy
         {
             get
@@ -205,7 +208,7 @@ namespace QAMS.Admin.Entities
                 this.createdbyField = value;
             }
         }
-        
+
         public DateTime? CreatedDate
         {
             get
@@ -217,7 +220,7 @@ namespace QAMS.Admin.Entities
                 this.createddateField = value;
             }
         }
-        
+
         public string ModifiedBy
         {
             get
@@ -229,7 +232,7 @@ namespace QAMS.Admin.Entities
                 this.modifiedbyField = value;
             }
         }
-        
+
         public DateTime? ModifiedDate
         {
             get

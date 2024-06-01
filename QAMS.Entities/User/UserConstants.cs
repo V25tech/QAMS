@@ -29,6 +29,8 @@ namespace QAMS.Admin.Entities
         public const string LastName = "@LastName_PSY";
         
         public const string DepartmentId = "@DepartmentId_PSY";
+
+
         
         public const string EmployeeId = "@EmployeeId_PSY";
         
