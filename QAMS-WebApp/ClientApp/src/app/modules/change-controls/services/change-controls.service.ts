@@ -18,6 +18,13 @@ export class ChangeControlsService {
 
   saveChangeControlRegistration(ccValue: CC_Model) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post('/changecontrolregistration/savechangecontrolregistration', JSON.stringify(JSON.stringify(ccValue)), { headers });
+    return this.http.post('/changecontrolregistration/savechangecontrolregistration', JSON.stringify(ccValue), { headers });
   }
+
+  getChangeControlById(changeControlId: number) {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.get('/changecontrolregistration/' + changeControlId, { headers });
+  }
+
+
 }

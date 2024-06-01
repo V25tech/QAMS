@@ -76,15 +76,21 @@ export class RegisterCCComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    let id = this.route.snapshot.paramMap.get('id');
-    console.log(id);
-
-    let ccValueStr = localStorage.getItem(id)
-    let ccValue: CC_Model = JSON.parse(ccValueStr) ?? null;
-
     this.primengConfig.ripple = true;
-    this.buildMainForm(ccValue);
+
+    this.buildMainForm();
+    let id = this.route.snapshot.paramMap.get('id');
+
+    if (id) {
+      let changeControlId: number = Number.parseInt(id);
+      this.getChangeControlById(changeControlId);
+    }
+
+    // let ccValueStr = localStorage.getItem(id);
+    // let ccValue: CC_Model = JSON.parse(ccValueStr) ?? null;
+    // if (ccValue) {
+    //   this.mainForm.patchValue(ccValue);
+    // }
   }
 
   backToCCClick() {
@@ -104,26 +110,40 @@ export class RegisterCCComponent implements OnInit {
     if (this.mainForm.valid) {
       console.log(this.mainForm.value);
       let ccValue: CC_Model = this.mainForm.value;
-      ccValue.changeControlId =0;
+      ccValue.changeControlId = 0;
       ccValue.catId = 0;
       ccValue.registeredby = 123;
+      ccValue.changeControlUniqueCode = 'RST234H';
       ccValue.status = 2;
-      ccValue.createdDate = new Date()
-
+      ccValue.createdBy = 'Creator';
+      ccValue.modifiedBy = 'Modifier';
+      ccValue.createdDate = new Date();
 
       localStorage.setItem('PROV-CC-PL01-24-0021', JSON.stringify(ccValue));
 
       console.log(JSON.stringify(ccValue))
       this.changeControlsService.saveChangeControlRegistration(ccValue).subscribe(res => {
         console.log(res);
-      });
+      }, er => console.log(er));
 
     } else {
       console.log('Form is invalid');
     }
   }
 
-  buildMainForm(ccValue: CC_Model) {
+
+  getChangeControlById(changeControlId: number) {
+    this.changeControlsService.getChangeControlById(changeControlId).subscribe(res => {
+    //let ccValueStr = localStorage.getItem(id);
+    let ccValue: CC_Model = res; //JSON.parse(ccValueStr) ?? null;
+    if (ccValue) {
+      this.mainForm.patchValue(ccValue);
+    }
+    }, er => console.log(er));
+  }
+
+
+  buildMainForm() {
     this.mainForm = this.fb.group({
       //Request Details Controls
       requestDetails: this.fb.group({
@@ -176,10 +196,6 @@ export class RegisterCCComponent implements OnInit {
     });
 
     this.onChangeRefFunctions();
-
-    if (ccValue) {
-      this.mainForm.patchValue(ccValue);
-    }
   }
 
   onChangeRefFunctions() {
