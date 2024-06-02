@@ -18,8 +18,9 @@ namespace QAMS.Admin.Services
     using Newtonsoft.Json;
     using QAMS.Admin.Entities;
     using VAMLIbrary.Core.Validators;
-    
-    
+    using QAMS.WEB.Entities;
+
+
     // Comment
     public static class ChangeContolActionPlanValidator
     {

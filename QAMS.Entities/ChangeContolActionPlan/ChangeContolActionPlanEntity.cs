@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace QAMS.Admin.Entities
+namespace QAMS.WEB.Entities
 {
     using System;
     using System.Collections.Generic;

@@ -17,8 +17,9 @@ namespace QAMS.Controllers
     using QAMS.Common.Entities;
     using QAMS.Admin.Entities;
     using QAMS.Admin.Services;
-    
-    
+    using QAMS.WEB.Entities;
+
+
     /// <summary>
     /// Comment
     /// </summary>

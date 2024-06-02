@@ -13,7 +13,8 @@ namespace QAMS.WEB.API.Extensions
     using QAMS.WEB.Services;
     using QAMS.WEB.Data;
     using VAMLibrary.Core;
-
+    using QAMS.Admin.Services;
+    using QAMS.Admin.Data;
 
     public static class LocalServiceExtention
     {
@@ -29,6 +30,8 @@ namespace QAMS.WEB.API.Extensions
             serviceCollection.AddScoped<IChangeControlHodApprovalData, ChangeControlHodApprovalData>();
             serviceCollection.AddScoped<IChangeContolQaApprovalService, ChangeContolQaApprovalService>();
             serviceCollection.AddScoped<IChangeContolQaApprovalData, ChangeContolQaApprovalData>();
+            serviceCollection.AddScoped<IChangeContolActionPlanService, ChangeContolActionPlanService>();
+            serviceCollection.AddScoped<IChangeContolActionPlanData, ChangeContolActionPlanData>();
         }
     }
 }

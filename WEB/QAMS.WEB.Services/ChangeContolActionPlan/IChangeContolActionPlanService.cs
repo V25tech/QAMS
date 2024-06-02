@@ -7,25 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace QAMS.Admin.Data
+namespace QAMS.Admin.Services
 {
-    using System;
-    using System.Data;
-    using System.Linq;
-    using System.Data.SqlClient;
     using System.Collections.Generic;
-    using Newtonsoft.Json;
     using QAMS.Common.Entities;
-    using QAMS.Admin.Entities;
-    
-    
+    using QAMS.WEB.Entities;
+
+
     // Comment
-    public interface IChangeContolActionPlanData
+    public interface IChangeContolActionPlanService
     {
         
-        DataSet GetAllChangeContolActionPlan(RequestContext requestContext);
+        ResponseContext<ChangeContolActionPlan> GetAllChangeContolActionPlan(RequestContext requestContext);
         
-        DataSet GetChangeContolActionPlanByChangeContolActionPlanId(System.Int32? changeContolActionPlanId);
+        ChangeContolActionPlan GetChangeContolActionPlanByChangeContolActionPlanId(System.Int32? changeContolActionPlanId);
         
         bool SaveChangeContolActionPlan(ChangeContolActionPlan changeContolActionPlan);
         
@@ -35,11 +30,11 @@ namespace QAMS.Admin.Data
         
         bool DeleteAllChangeContolActionPlan(List<int> changeContolActionPlanIds);
         
-        DataSet GetChangeContolActionPlanByDepartmentId(System.Int32? id);
+        List<ChangeContolActionPlan> GetChangeContolActionPlanByDepartmentId(System.Int32? id);
         
-        DataSet GetChangeContolActionPlanByUserId(System.Int32? id);
+        List<ChangeContolActionPlan> GetChangeContolActionPlanByUserId(System.Int32? id);
         
-        DataSet GetChangeContolActionPlanByUserGroupId(System.Int32? id);
+        List<ChangeContolActionPlan> GetChangeContolActionPlanByUserGroupId(System.Int32? id);
         
         bool DeleteChangeContolActionPlanByDepartmentId(System.Int32? id);
         
