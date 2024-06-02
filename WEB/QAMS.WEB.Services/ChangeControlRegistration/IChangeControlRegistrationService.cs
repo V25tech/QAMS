@@ -24,7 +24,11 @@ namespace QAMS.WEB.Services
     {
         
         ResponseContext<ChangeControlRegistration> GetAllChangeControlRegistration(RequestContext requestContext);
+
+        ResponseContext<ChangeControlRegistration> GetAllChangeControlbyPlant(RequestContext requestContext);
+
         
+
         ChangeControlRegistration GetChangeControlRegistrationByChangeControlId(System.Int32? changeControlId);
         
         bool SaveChangeControlRegistration(ChangeControlRegistration changeControlRegistration);

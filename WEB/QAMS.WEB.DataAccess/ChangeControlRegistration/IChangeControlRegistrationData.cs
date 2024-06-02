@@ -24,7 +24,9 @@ namespace QAMS.WEB.Data
     {
         
         DataSet GetAllChangeControlRegistration(RequestContext requestContext);
-        
+
+        DataSet GetAllChangeControlbyPlant(RequestContext requestContext);
+
         DataSet GetChangeControlRegistrationByChangeControlId(System.Int32? changeControlId);
         
         bool SaveChangeControlRegistration(ChangeControlRegistration changeControlRegistration);

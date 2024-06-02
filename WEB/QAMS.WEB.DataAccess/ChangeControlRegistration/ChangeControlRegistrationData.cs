@@ -48,6 +48,23 @@ namespace QAMS.WEB.Data
             }
         }
 
+        public DataSet GetAllChangeControlbyPlant(RequestContext requestContext)
+        {
+            try
+            {
+                List<SqlParameter> sqlparms = new List<SqlParameter>();
+                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = RequestContextConstants.PageNumber, Value = requestContext.PageNumber });
+                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = RequestContextConstants.PageSize, Value = requestContext.PageSize });
+                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = RequestContextConstants.PlantId, Value = requestContext.planId });
+                DataSet dataset = (DataSet)dataAccessHelper.ExecuteStoredProcedure(ChangeControlRegistrationConstants.USP_ChangeControlbyPlantId_PSY_GET_ALL, sqlparms, ExecutionType.Dataset);
+                return dataset;
+            }
+            catch (System.Exception ex)
+            {
+                throw;
+            }
+        }
+
         public DataSet GetChangeControlRegistrationByChangeControlId(System.Int32? changeControlId)
         {
             try

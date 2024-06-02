@@ -9,5 +9,7 @@ namespace QAMS.Common.Entities
         public const string PageNumber = "@PageNumber";
 
         public const string PageSize = "@PageSize";
+
+        public const string PlantId = "@PlantId";
     }
 }

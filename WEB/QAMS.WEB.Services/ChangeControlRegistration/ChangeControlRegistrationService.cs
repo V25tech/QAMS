@@ -49,7 +49,19 @@ namespace QAMS.WEB.Services
                 throw;
             }
         }
-
+        public ResponseContext<ChangeControlRegistration> GetAllChangeControlbyPlant(RequestContext requestContext)
+        {
+            try
+            {
+                DataSet dataset = changeControlRegistrationData.GetAllChangeControlbyPlant(requestContext);
+                List<ChangeControlRegistration> result = ChangeControlRegistrationConverter.SetAllChangeControlRegistration(dataset);
+                return new ResponseContext<ChangeControlRegistration>() { RowCount = CommonConverter.SetRowsCount(dataset), Response = result };
+            }
+            catch (System.Exception ex)
+            {
+                throw;
+            }
+        }
         public ChangeControlRegistration GetChangeControlRegistrationByChangeControlId(System.Int32? changeControlId)
         {
             try
