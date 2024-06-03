@@ -14,7 +14,7 @@ export class NetworkInterceptor implements HttpInterceptor {
 
   api_url = 'http://localhost:54456/api';
   intercept(request: HttpRequest<any>,next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log('Outgoing HTTP request', request);
+    //console.log('Outgoing HTTP request', request);
     
     const final_request = request.clone({
         url: (request.url.startsWith('assets')? '': this.api_url) + request.url
