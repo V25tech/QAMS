@@ -125,7 +125,9 @@ namespace QAMS.WEB.Entities
         public const string RequestDetails = "@RequestDetails_PSY";
 
         public const string USP_ChangeControlRegistration_PSY_GET_ALL = "dbo.USP_ChangeControlRegistration_PSY_GET_ALL";
-        
+
+        public const string USP_ChangeControlbyPlantId_PSY_GET_ALL = "USP_ChangeControlbyPlantId_PSY_GET_ALL";
+
         public const string USP_ChangeControlRegistration_PSY_GET = "dbo.USP_ChangeControlRegistration_PSY_GET";
         
         public const string USP_ChangeControlRegistration_PSY_INSERT = "dbo.USP_ChangeControlRegistration_PSY_INSERT";

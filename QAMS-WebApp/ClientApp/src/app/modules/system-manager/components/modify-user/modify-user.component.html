@@ -10,7 +10,7 @@
             <div class="col mt-2 table-landing ">
                 <p-table #dt dataKey="id" [value]="modifyUserDatasource" [paginator]="true" [rows]="10"
                     [rowsPerPageOptions]="[10, 25, 50]" [showCurrentPageReport]="true"
-                    [globalFilterFields]="['userId','userName', 'roleId', 'departmentId', 'createdBy','createdDate']"
+                    [globalFilterFields]="['userId','userName', 'roleName', 'department', 'createdBy','createdDate']"
                     tableStyleClass="table table-striped">
                     <ng-template pTemplate="caption">
                         <div class="d-flex justify-content-end">
@@ -31,9 +31,9 @@
                             <th pSortableColumn="userName">User Name<p-columnFilter type="text" field="userName"
                                     display="menu"></p-columnFilter></th>
 
-                            <th pSortableColumn="roleId">Role <p-columnFilter type="text" field="roleId"
+                            <th pSortableColumn="roleName">Role <p-columnFilter type="text" field="roleName"
                                     display="menu"></p-columnFilter></th>
-                            <th pSortableColumn="departmentId">Department <p-columnFilter type="text" field="departmentId"
+                            <th pSortableColumn="department">Department <p-columnFilter type="text" field="department"
                                     display="menu"></p-columnFilter></th>
                             <th pSortableColumn="createdBy">Initiated By <p-columnFilter type="text"
                                     field="createdBy" display="menu"></p-columnFilter></th>
@@ -62,8 +62,8 @@
                             <td class="idname">
                                 {{modifyUser.id}}</td>
                             <td>{{modifyUser.firstName}}</td>
-                            <td>{{modifyUser.roleId}}</td>
-                            <td>{{modifyUser.departmentId}}</td>
+                            <td>{{modifyUser.roleName}}</td>
+                            <td>{{modifyUser.department}}</td>
                             <td>{{modifyUser.createdBy}}</td>
                             <td>{{modifyUser.createdDate | date: 'MM/dd/yyyy'}}</td>
                             <td><span role="button" tabindex="0" pInputText pTooltip="Change Status"

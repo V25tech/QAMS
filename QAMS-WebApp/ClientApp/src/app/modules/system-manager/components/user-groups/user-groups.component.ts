@@ -32,7 +32,7 @@ export class UserGroupsComponent {
     private UserGroupService: UserGroupService, private cdr: ChangeDetectorRef) { }
 
   ngOnInit() :void {
-   
+   debugger;
     this.UserGroupService.getUserData().subscribe((data: any) => {
       this.userGroupDatasource = data.response;
       //this.userGroupDatasource.forEach(dataSource=> dataSource.date = new Date(dataSource.date))

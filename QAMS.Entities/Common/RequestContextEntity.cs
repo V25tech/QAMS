@@ -34,5 +34,6 @@ namespace QAMS.Common.Entities
                 this.pagesizeField = value;
             }
         }
+        public int planId { get; set; }
     }
 }

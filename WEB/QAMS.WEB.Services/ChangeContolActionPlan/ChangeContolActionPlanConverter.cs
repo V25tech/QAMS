@@ -19,8 +19,10 @@ namespace QAMS.Admin.Services
     using QAMS.Admin.Entities;
     using VAMLIbrary.Core.Extentions;
     using QAMS.Common.Entities;
-    
-    
+    using QAMS.WEB.Services;
+    using QAMS.WEB.Entities;
+
+
     // Comment
     public static class ChangeContolActionPlanConverter
     {

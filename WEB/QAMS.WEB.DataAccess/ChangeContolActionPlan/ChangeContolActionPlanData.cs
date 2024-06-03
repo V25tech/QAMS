@@ -19,8 +19,10 @@ namespace QAMS.Admin.Data
     using QAMS.Admin.Entities;
     using VAMLibrary.Core;
     using VAMLibrary.Core.Common;
-    
-    
+    using QAMS.WEB.Entities;
+    using QAMS.WEB.Data;
+
+
     // Comment
     public class ChangeContolActionPlanData : IChangeContolActionPlanData
     {

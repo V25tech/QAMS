@@ -48,7 +48,18 @@ namespace QAMS.Controllers
             var result = changeControlRegistrationService.GetAllChangeControlRegistration(requestContext);
             return result;
         }
-        
+
+        /// <summary>
+        /// This method is used to Get List of ChangeControlRegistration
+        /// </summary>
+        /// <param name="requestContext"></param>
+        [HttpPost("GetAllChangeControlbyPlant")]
+        public ActionResult<ResponseContext<ChangeControlRegistration>> GetAllChangeControlbyPlant(RequestContext requestContext)
+        {
+            var result = changeControlRegistrationService.GetAllChangeControlbyPlant(requestContext);
+            return result;
+        }
+
         /// <summary>
         /// This method is used to Get ChangeControlRegistration By Id changeControlId
         /// </summary>

@@ -18,8 +18,11 @@ namespace QAMS.Admin.Services
     using QAMS.Common.Entities;
     using QAMS.Admin.Entities;
     using QAMS.Admin.Data;
-    
-    
+    using QAMS.WEB.Services;
+    using QAMS.WEB.Data;
+    using QAMS.WEB.Entities;
+
+
     // Comment
     public class ChangeContolActionPlanService : IChangeContolActionPlanService
     {
