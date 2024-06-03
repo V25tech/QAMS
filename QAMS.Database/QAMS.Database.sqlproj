@@ -61,6 +61,7 @@
     <Folder Include="dbo\" />
     <Folder Include="dbo\Tables\" />
     <Folder Include="dbo\Stored Procedures\" />
+    <Folder Include="dbo\Triggers" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\ChangeControlRegistration_PSY.sql" />
@@ -211,6 +212,7 @@
     <Build Include="dbo\Tables\WORKFLOW_ACTION_PLAN_USERS_MAPPING.sql" />
     <Build Include="dbo\Tables\WORKFLOW_ACTIONSPLANS_PSY.sql" />
     <Build Include="dbo\Stored Procedures\USP_ChangeControlbyPlantId_PSY_GET_ALL.sql" />
+    <Build Include="dbo\Triggers\trgAfterInsertInitiative.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="QAMS.Database.refactorlog" />
