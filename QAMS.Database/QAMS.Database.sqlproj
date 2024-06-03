@@ -213,6 +213,10 @@
     <Build Include="dbo\Tables\WORKFLOW_ACTIONSPLANS_PSY.sql" />
     <Build Include="dbo\Stored Procedures\USP_ChangeControlbyPlantId_PSY_GET_ALL.sql" />
     <Build Include="dbo\Triggers\trgAfterInsertInitiative.sql" />
+    <Build Include="dbo\Tables\INITIATIVE_AND_ACTIONPLANS_USERS_MAPPING.sql" />
+    <Build Include="dbo\Tables\CATEGORY_CTG.sql" />
+    <Build Include="dbo\Tables\ROLE_MAPPING.sql" />
+    <Build Include="dbo\Tables\MASTER_CATEGORY_CTG.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="QAMS.Database.refactorlog" />
