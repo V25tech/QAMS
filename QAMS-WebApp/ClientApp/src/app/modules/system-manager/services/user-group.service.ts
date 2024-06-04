@@ -38,9 +38,7 @@ export class UserGroupService {
   }
 
   getUserData(): Observable<any> {
-   debugger;
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post(this.apiUrl+ '/usergroup/getallusergroups',"{\"pageNumber\":1,\"pageSize\":100}", { headers });
+    return this.http.post(this.apiUrl+ '/usergroup/getallusergroups',"{\"pageNumber\":1,\"pageSize\":100}");
   }
   getProductsSmall() {
     return Promise.resolve(this.getProductsData().slice(0, 10));
