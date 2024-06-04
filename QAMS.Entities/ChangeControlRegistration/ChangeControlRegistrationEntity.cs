@@ -25,10 +25,7 @@ namespace QAMS.WEB.Entities
 
         public int Registeredby { get; set; }
 
-
         public bool? Reintiate { get; set; }
-
-
         public string Status { get; set; }
 
         public string CreatedBy { get; set; }
@@ -36,6 +33,8 @@ namespace QAMS.WEB.Entities
         public DateTime? CreatedDate { get; set; }
 
         public string ModifiedBy { get; set; }
+
+        public int? PlantId { get; set; }
 
         //public int QualityEvent_PSY { get; set; }
 

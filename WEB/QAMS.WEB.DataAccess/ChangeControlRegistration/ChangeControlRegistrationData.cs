@@ -97,7 +97,7 @@ namespace QAMS.WEB.Data
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeControlRegistrationConstants.CreatedBy, Value = changeControlRegistration.CreatedBy });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeControlRegistrationConstants.ModifiedBy, Value = changeControlRegistration.ModifiedBy });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeControlRegistrationConstants.Comments, Value = "Test" });
-                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = ChangeControlRegistrationConstants.PLANT_ID, Value = 3 });
+                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = ChangeControlRegistrationConstants.PLANT_ID, Value = changeControlRegistration.PlantId });
                 //New params
 
                 #region Commented Region
