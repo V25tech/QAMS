@@ -7,7 +7,7 @@ import { CC_Model } from 'src/app/models/changecontrol.model';
   providedIn: 'root'
 })
 export class ChangeControlsService {
-  private apiUrl = 'your-api-url';
+  private apiUrl = 'QAMS_API';
 
   constructor(private http: HttpClient) { }
 
@@ -17,14 +17,17 @@ export class ChangeControlsService {
   }
 
   saveChangeControlRegistration(ccValue: CC_Model) {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post('/changecontrolregistration/savechangecontrolregistration', JSON.stringify(ccValue), { headers });
+    return this.http.post(this.apiUrl + '/changecontrolregistration/savechangecontrolregistration', JSON.stringify(ccValue));
   }
 
   getChangeControlById(changeControlId: number) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.get('/changecontrolregistration/' + changeControlId, { headers });
+    return this.http.get(this.apiUrl + '/changecontrolregistration/' + changeControlId);
   }
 
+  getAllChangeControlbyPlant(plantId: number) {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post(this.apiUrl + '/changecontrolregistration/GetAllChangeControlbyPlant',"{\"pageNumber\":1,\"pageSize\":100, \"planId\":2}");
+  }
 
 }
