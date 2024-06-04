@@ -6,6 +6,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserGroupService {
+  
+  private apiUrl = 'ADMIN_API';
+  
+  constructor(private http: HttpClient) { }
+  
   getProductsData() {
     return [
         {
@@ -30,12 +35,12 @@ export class UserGroupService {
         }
        
     ];
-}
-  constructor(private http: HttpClient) { }
+  }
+
   getUserData(): Observable<any> {
    debugger;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post('/usergroup/getallusergroups',"{\"pageNumber\":1,\"pageSize\":100}", { headers });
+    return this.http.post(this.apiUrl+ '/usergroup/getallusergroups',"{\"pageNumber\":1,\"pageSize\":100}", { headers });
   }
   getProductsSmall() {
     return Promise.resolve(this.getProductsData().slice(0, 10));
