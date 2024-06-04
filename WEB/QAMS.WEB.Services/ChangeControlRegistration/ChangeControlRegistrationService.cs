@@ -54,7 +54,7 @@ namespace QAMS.WEB.Services
             try
             {
                 DataSet dataset = changeControlRegistrationData.GetAllChangeControlbyPlant(requestContext);
-                List<ChangeControlRegistration> result = ChangeControlRegistrationConverter.SetAllChangeControlRegistration(dataset);
+                List<ChangeControlRegistration> result = ChangeControlRegistrationConverter.SetAllChangeControlRegPLant(dataset);
                 return new ResponseContext<ChangeControlRegistration>() { RowCount = CommonConverter.SetRowsCount(dataset), Response = result };
             }
             catch (System.Exception ex)

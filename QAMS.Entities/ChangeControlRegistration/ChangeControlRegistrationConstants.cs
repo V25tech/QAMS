@@ -99,7 +99,10 @@ namespace QAMS.WEB.Entities
         public const string ImpactedProcedures = "@ImpactedProcedures_PSY";
         
         public const string Comments = "@Comments_PSY";
-        
+
+        public const string PLANT_ID = "@PLANT_ID";
+
+
         public const string Registeredby = "@Registeredby_PSY";
         
         public const string Reintiate = "@Reintiate_PSY";
