@@ -116,8 +116,7 @@ namespace QAMS.WEB.Data
                 //sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = ChangeControlRegistrationConstants.Equipment, Value = changeControlRegistration.Equipment_PSY }); 
                 #endregion
 
-
-
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeControlRegistrationConstants.InitiatingDepartment, Value = changeControlRegistration.InitiatingDepartment_PSY });
                 //End Params
 
                 //sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeControlRegistrationConstants.CategoryName, Value = changeControlRegistration.Category });

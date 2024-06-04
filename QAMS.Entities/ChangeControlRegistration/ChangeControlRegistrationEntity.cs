@@ -36,6 +36,8 @@ namespace QAMS.WEB.Entities
 
         public int? PlantId { get; set; }
 
+        public string InitiatingDepartment_PSY { get; set; }
+
         //public int QualityEvent_PSY { get; set; }
 
         //public bool Reference_PSY { get; set; }   
