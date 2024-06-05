@@ -7,10 +7,12 @@ import { Observable } from 'rxjs';
 })
 export class PlantListService {
 
+  private apiUrl = 'ADMIN_API';
+
   constructor(private http: HttpClient) { }
   getplantData(): Observable<any> {
 
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post('/plant/GetAllPlant',"{\"pageNumber\":1,\"pageSize\":100}", { headers });
+    return this.http.post(this.apiUrl+'/plant/GetAllPlant',"{\"pageNumber\":1,\"pageSize\":100}", { headers });
   }
 }

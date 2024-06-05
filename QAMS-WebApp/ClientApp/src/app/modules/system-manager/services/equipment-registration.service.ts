@@ -8,7 +8,8 @@ import { EquipmentRegistration } from 'src/app/models/equipmentRegistration.mode
 })
 export class EquipmentRegistrationService {
 
-  private apiUrl = 'your-api-url/equipment-Registration'; // Replace with your actual API URL
+  //private apiUrl = 'your-api-url/equipment-Registration'; // Replace with your actual API URL
+  private apiUrl = 'ADMIN_API';
 
   constructor(private http: HttpClient) { }
 

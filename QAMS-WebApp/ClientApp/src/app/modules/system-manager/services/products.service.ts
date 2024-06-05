@@ -7,10 +7,11 @@ import { Observable } from 'rxjs';
 })
 export class ProductsService {
 
+  private apiUrl = 'ADMIN_API';
   constructor(private http: HttpClient) { }
   getProductsData(): Observable<any> {
 
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post('/product/GetAllProduct',"{\"pageNumber\":1,\"pageSize\":100}", { headers });
+    return this.http.post(this.apiUrl+'/product/GetAllProduct',"{\"pageNumber\":1,\"pageSize\":100}", { headers });
   }
 }

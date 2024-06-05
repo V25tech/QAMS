@@ -80,6 +80,7 @@ namespace QAMS.WEB.Services
         {
             try
             {
+                changeControlRegistration.Category = Category.ChangeControl;
                 String validationMessages = ChangeControlRegistrationValidator.IsValidChangeControlRegistration(changeControlRegistration);
                 if (validationMessages.Length <= 0)
                 {
