@@ -9,5 +9,13 @@ export interface BatchLotParticulars {
       otherDetails:string
   };
 
-
+  export interface BatchLot {
+       
+    batchNoLotNo: string,
+    productMaterial:string,
+    arNo: string,
+    initiatedBy: string,
+    date: string|Date
+    
+};
 

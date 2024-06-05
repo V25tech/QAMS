@@ -4,3 +4,9 @@ export interface MarketRegistration {
     remarks:string
   
 };
+export interface Markets {
+    id: string
+    name: string
+    initiateBy: string
+    createdDate: string | Date
+};
