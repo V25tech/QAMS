@@ -20,8 +20,4 @@ export class EquipmentRegistrationService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.put<EquipmentRegistration>(this.apiUrl, settings, { headers });
   }
-
-  getEquipData(): Observable<any> {
-    return this.http.get('assets/json/SystemManager/equipments.json');
-  }
 }

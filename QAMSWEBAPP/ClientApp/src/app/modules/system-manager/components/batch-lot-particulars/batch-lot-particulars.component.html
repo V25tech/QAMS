@@ -1,63 +1,106 @@
 <div class="d-flex justify-content-between align-items-center bg-white shadow-dark px-3">
-    <h4 class="page-title flex-grow-1 labelStyles">Batch/Lot Particulars Details </h4>
-    <button type="button" class="btn btn-create rounded-pill initiative " (click)="Initiation()">+ New
-        Initiative</button>
-</div>
-<div class="gx-15">
-    <div class="container-fluid mb-5">
-
-        <div class="row">
-            <div class="col mt-2 table-landing ">
-                
-                    <!-- px-4 pt-2 bg-white shadow-dark rounded-2 -->
-                    <p-table #dt dataKey="id" [value]="batchLotDatasource" [paginator]="true" [rows]="10"
-                        [rowsPerPageOptions]="[10, 25, 50]" [showCurrentPageReport]="true"
-                        [globalFilterFields]="['batchNoLotNo', 'productMaterial','arNo', 'initiatedBy']"
-
-                        tableStyleClass="table table-striped">
-                        <ng-template pTemplate="caption">
-                            <div class="d-flex justify-content-end">
-                                <span class="p-input-icon-left ml-auto search-block">
-                                    <i class="fa fa-search search-icon"></i>
-                                    <input pInputText type="text" class="form-control rounded-pill search-text" (input)="applyFilterGlobal($event, 'contains')" placeholder="Search keyword" />
-                                </span>
-                            </div>
-                        </ng-template>
-                        <ng-template pTemplate="header">
-                            <tr>
-                                <th style="width:40px" class="lh-lg">S.No</th>
-                                <th pSortableColumn="batchNoLotNo" style="width:20%">Batch No./Lot No.
-                                    
-                                    <p-columnFilter type="text" field="batchNoLotNo" display="menu"></p-columnFilter>
-                                    </th>
-                                <th pSortableColumn="productMaterial" style="width:20%">Product/Material <p-columnFilter type="text" field="productMaterial" display="menu"></p-columnFilter></th>
-                                <th pSortableColumn="arNo">A.R.No. <p-columnFilter type="text" field="arNo" display="menu"></p-columnFilter></th>
-                                <th pSortableColumn="initiatedBy">Initiated By<p-columnFilter type="text" field="initiatedBy" display="menu"></p-columnFilter> </th>
-                                <th pSortableColumn="initiatedOn">Initiated On<p-columnFilter type="date" field="date" display="menu"></p-columnFilter> </th>
-                               
-                               
-
-                            </tr>
-                        </ng-template>
-                        <ng-template pTemplate="body" let-batchLotType let-i="rowIndex" #templatesTable>
-                            <tr>
-                                <td>{{i+1}}</td>
-                                <td>
-                                        {{batchLotType.batchNoLotNo}}</td>
-                                <td>{{batchLotType.productMaterial}}</td>
-                                <td>{{batchLotType.arNo}}</td>
-                                <td>{{batchLotType.initiatedBy}}</td>
-                                <td>{{batchLotType.date | date: 'MM/dd/yyyy'}}</td>
-                                
-                               
-                            </tr>
-
-                        </ng-template>
-                    </p-table>
-
-                
-            </div>
-        </div>
-
+    <a class="me-2"> <i class="fa-solid fa-arrow-left back-icon m-l-3"></i></a>
+    <h4 class="page-title flex-grow-1 labelStyles">
+        Batch/Lot Particulars Registration Initiation
+      </h4>
     </div>
-</div>
+   
+    
+ <div class="px-4 py-4">
+        <div class="row">
+          <div class="col">
+            <form [formGroup]="batchLotParticularsForm!" (ngSubmit)="registerBatchLotParticulars()">
+                <div class="p-5 bg-white shadow-dark rounded-2">
+                     <div class="form-group row">
+                        
+                            <label for="type " class="col-sm-12 col-md-3 col-form-label">
+                                Type
+                            </label>
+                
+                            <div class="col-sm-10 col-md-4 d-flex ">
+                                <div class="form-check ">
+                                    <input class="form-check-input" type="radio" formControlName="batchType" id="batch"  value="yes">
+                                    <label class="form-check-label" for="batch">Batch</label>
+                                </div>
+                                <div class="form-check ms-4">
+                                    <input class="form-check-input" type="radio" id="lot" formControlName="batchType"  value="No">
+                                    <label class="form-check-label" for="lot">Lot</label>
+                                </div>
+                               
+                            </div>
+                     </div>
+                            
+                                <div class="form-group row">
+                                    <label for="productMaterial" class="col-sm-12 col-md-3 col-form-label">Product/Material</label>
+                                    <div class="col-sm-10 col-md-4">
+                                        
+                                        <select name="productMaterial" class="form-select" (change)="selectMaterial($event)" formControlName="productMaterial">
+                                            <option *ngFor="let selectedMaterialDetails of materialDetails" [value]="selectedMaterialDetails.code">
+                                                {{selectedMaterialDetails.name}}
+                                            </option>
+                                        </select>
+                                    
+                                </div>
+                            </div>
+                            
+                                <div class="form-group row">
+                                    <label for="batchLotNo" class="col-md-3 col-sm-12 col-form-label">Batch/Lot No.</label>
+                                    <div class="col-sm-10 col-md-4 ">
+                                        <input type="text" class="form-control input-width" id="batchLotNo"
+                                            name="batchLotNo" formControlName="batchLotNo" placeholder="" />
+                                    </div>
+                                
+                            </div>
+                             
+                            <div class="form-group row">
+                                <label for="batchLotSize" class="col-md-3 col-sm-12 col-form-label">Batch/Lot Size</label>
+                                <div class="col-sm-10 col-md-4 ">
+                                    <input type="text" class="form-control" id="batchLotSize"
+                                        name="batchLotSize"  formControlName="batchLotSize" placeholder="" />
+                                </div>
+                            
+                        </div>
+                        
+                    
+                    
+                        <div class="form-group row">
+                            <label for="manufacturingDate" class="col-md-3 col-sm-12 col-form-label">Manufacturing Date</label>
+                            <div class="col-sm-10 col-md-4 ">
+                                <input class="form-control" type="date" id="manufacturingDate"  formControlName="manufacturingDate" name="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="expiryDate" class="col-md-3 col-sm-12 col-form-label">Expiry Date</label>
+                            <div class="col-sm-10 col-md-4 ">
+                                <input class="form-control" type="date" id="expiryDate"   formControlName="expiryDate" >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="arno" class="col-md-3 col-sm-12 col-form-label">A.R.No</label>
+                            <div class="col-sm-10 col-md-4 ">
+                                <input type="text" class="form-control" id="arno"formControlName="arno"
+                                     placeholder="" />
+                            </div>
+                        
+                    </div>
+                    <div class="form-group row">
+                        <label for="otherDetails" class="col-sm-12 col-md-3 col-form-label">Other Details(if any)</label>
+                        <div class="col-sm-10 col-md-4">
+                          <textarea class="form-control" id="otherDetails" rows="3" formControName="otherDetails"></textarea>
+                        </div>
+                      </div>
+                    
+                        </div>
+
+                     
+                     
+                     <div class="d-flex mt-4 justify-content-end">
+                        <button type="button" class="btn btn-default rounded-pill me-3" (click)="cancelClick()">Cancel</button>
+                        <button type="button" class="btn btn-primary rounded-pill me-3"
+                          (click)="registerBatchLotParticulars()">Submit</button>
+                      </div>
+            </form>
+            <p-toast></p-toast>
+          </div>
+        </div>
+    </div>

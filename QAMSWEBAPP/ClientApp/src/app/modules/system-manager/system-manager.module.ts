@@ -4,7 +4,7 @@ import { ToastModule } from 'primeng/toast';
 import { SystemManagerRoutingModule } from './system-manager-routing.module';
 import { SecuritySettingsComponent } from './components/security-settings/security-settings.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// import { BatchLotParticularsComponent } from './components/batch-lot-reg/batch-lot-reg.component';
+import { BatchLotParticularsComponent } from './components/batch-lot-particulars/batch-lot-particulars.component';
 import { CalendarModule } from 'primeng/calendar';
 import { EquipmentRegComponent } from './components/equipment-reg/equipment-reg.component';
 import { MarketRegistrationComponent } from './components/market-registration/market-registration.component';
@@ -26,12 +26,6 @@ import { PlantListComponent } from './components/plant-list/plant-list.component
 import { ProductMaterialsComponent } from './components/product-materials/product-materials.component';
 import { ResetLoginPasswordComponent } from './components/reset-login-password/reset-login-password.component';
 import { RolesComponent } from './components/roles/roles.component';
-import { EquipmentsComponent } from './components/equipments/equipments.component';
-import { BatchLotParticularsComponent } from './components/batch-lot-particulars/batch-lot-particulars.component';
-import { MarketsComponent } from './components/markets/markets.component';
-import { CustomersComponent } from './components/customers/customers.component';
-import { BatchLotRegComponent } from './components/batch-lot-reg/batch-lot-reg.component';
-
 @NgModule({
   declarations: [
     SecuritySettingsComponent,
@@ -49,11 +43,7 @@ import { BatchLotRegComponent } from './components/batch-lot-reg/batch-lot-reg.c
     PlantListComponent,
     ProductMaterialsComponent,
     ResetLoginPasswordComponent,
-    RolesComponent,
-    EquipmentsComponent,
-    MarketsComponent,
-    CustomersComponent,
-    BatchLotRegComponent
+    RolesComponent
     
   ],
   imports: [

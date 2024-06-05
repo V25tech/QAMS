@@ -12,10 +12,5 @@ export interface CustomerRegistration {
     remarks:string
 };
 
-export interface Customers {
-    id: string
-    name: string
-    initiateBy: string
-    createdDate: string | Date
-};
+
 

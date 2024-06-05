@@ -20,7 +20,4 @@ export class CustomerRegistrationService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.put<CustomerRegistration>(this.apiUrl, settings, { headers });
   }
-  getCustomerData(): Observable<any> {
-    return this.http.get('assets/json/SystemManager/customers.json');
-  }
 }
