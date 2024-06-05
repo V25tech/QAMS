@@ -20,5 +20,7 @@ export class MarketRegistrationService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.put<MarketRegistration>(this.apiUrl, settings, { headers });
   }
-
+  getMarketData(): Observable<any> {
+    return this.http.get('assets/json/SystemManager/market.json');
+  }
 }

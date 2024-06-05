@@ -12,6 +12,17 @@ export interface EquipmentRegistration {
     software:string
 };
 
+export interface Equipments{
+    id:string,
+    name:string,
+    make:string,
+    model:string,
+    department:string,
+    createdDate:string |Date,
+    initiatedBy:string
+   
+};
+
 
 
 

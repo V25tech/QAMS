@@ -21,4 +21,7 @@ export class BatchLotServicesService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.put<BatchLotParticulars>(this.apiUrl, settings, { headers });
   }
+  getBatchLotData(): Observable<any> {
+    return this.http.get('assets/json/SystemManager/batchLotParticulars.json');
+  }
 }

@@ -1,0 +1,106 @@
+<div class="d-flex justify-content-between align-items-center bg-white shadow-dark px-3">
+    <a class="me-2"> <i class="fa-solid fa-arrow-left back-icon m-l-3" (click)="backToBatchLot()"></i></a>
+    <h4 class="page-title flex-grow-1 labelStyles">
+        Batch/Lot Particulars Registration Initiation
+      </h4>
+    </div>
+   
+    
+ <div class="px-4 py-4">
+        <div class="row">
+          <div class="col">
+            <form [formGroup]="batchLotParticularsForm!" (ngSubmit)="registerBatchLotParticulars()">
+                <div class="p-5 bg-white shadow-dark rounded-2">
+                     <div class="form-group row">
+                        
+                            <label for="type " class="col-sm-12 col-md-3 col-form-label">
+                                Type
+                            </label>
+                
+                            <div class="col-sm-10 col-md-4 d-flex ">
+                                <div class="form-check ">
+                                    <input class="form-check-input" type="radio" formControlName="batchType" id="batch"  value="yes">
+                                    <label class="form-check-label" for="batch">Batch</label>
+                                </div>
+                                <div class="form-check ms-4">
+                                    <input class="form-check-input" type="radio" id="lot" formControlName="batchType"  value="No">
+                                    <label class="form-check-label" for="lot">Lot</label>
+                                </div>
+                               
+                            </div>
+                     </div>
+                            
+                                <div class="form-group row">
+                                    <label for="productMaterial" class="col-sm-12 col-md-3 col-form-label">Product/Material</label>
+                                    <div class="col-sm-10 col-md-4">
+                                        
+                                        <select name="productMaterial" class="form-select" (change)="selectMaterial($event)" formControlName="productMaterial">
+                                            <option *ngFor="let selectedMaterialDetails of materialDetails" [value]="selectedMaterialDetails.code">
+                                                {{selectedMaterialDetails.name}}
+                                            </option>
+                                        </select>
+                                    
+                                </div>
+                            </div>
+                            
+                                <div class="form-group row">
+                                    <label for="batchLotNo" class="col-md-3 col-sm-12 col-form-label">Batch/Lot No.</label>
+                                    <div class="col-sm-10 col-md-4 ">
+                                        <input type="text" class="form-control input-width" id="batchLotNo"
+                                            name="batchLotNo" formControlName="batchLotNo" placeholder="" />
+                                    </div>
+                                
+                            </div>
+                             
+                            <div class="form-group row">
+                                <label for="batchLotSize" class="col-md-3 col-sm-12 col-form-label">Batch/Lot Size</label>
+                                <div class="col-sm-10 col-md-4 ">
+                                    <input type="text" class="form-control" id="batchLotSize"
+                                        name="batchLotSize"  formControlName="batchLotSize" placeholder="" />
+                                </div>
+                            
+                        </div>
+                        
+                    
+                    
+                        <div class="form-group row">
+                            <label for="manufacturingDate" class="col-md-3 col-sm-12 col-form-label">Manufacturing Date</label>
+                            <div class="col-sm-10 col-md-4 ">
+                                <input class="form-control" type="date" id="manufacturingDate"  formControlName="manufacturingDate" name="">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="expiryDate" class="col-md-3 col-sm-12 col-form-label">Expiry Date</label>
+                            <div class="col-sm-10 col-md-4 ">
+                                <input class="form-control" type="date" id="expiryDate"   formControlName="expiryDate" >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="arno" class="col-md-3 col-sm-12 col-form-label">A.R.No</label>
+                            <div class="col-sm-10 col-md-4 ">
+                                <input type="text" class="form-control" id="arno"formControlName="arno"
+                                     placeholder="" />
+                            </div>
+                        
+                    </div>
+                    <div class="form-group row">
+                        <label for="otherDetails" class="col-sm-12 col-md-3 col-form-label">Other Details(if any)</label>
+                        <div class="col-sm-10 col-md-4">
+                          <textarea class="form-control" id="otherDetails" rows="3" formControName="otherDetails"></textarea>
+                        </div>
+                      </div>
+                    
+                        </div>
+
+                     
+                     
+                     <div class="d-flex mt-4 justify-content-end">
+                        <button type="button" class="btn btn-default rounded-pill me-3" (click)="backToBatchLot()">Cancel</button>
+                        <button type="button" class="btn btn-primary rounded-pill me-3"
+                          (click)="registerBatchLotParticulars()">Submit</button>
+                      </div>
+            </form>
+            <p-toast></p-toast>
+          </div>
+        </div>
+    </div>
