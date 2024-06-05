@@ -14,7 +14,7 @@ namespace QAMS.WEB.Entities
         public string RequestDetailsJson { get; set; }
         public string ChangeDetailsJson { get; set; }
         public string ImpactDetailsJson { get; set; }
-        public ImpactAssessmentDetails impactAssessmentDetails { get; set; }       
+        public ImpactAssessmentDetails impactAssessmentDetails { get; set; }
 
         public int? ChangeControlId { get; set; }
 
@@ -22,14 +22,11 @@ namespace QAMS.WEB.Entities
 
         public string Category { get; set; }
         public int CatId { get; set; }
-     
-        public int? Registeredby { get; set; }
 
+        public int Registeredby { get; set; }
 
         public bool? Reintiate { get; set; }
-
-
-        public int? Status { get; set; }
+        public string Status { get; set; }
 
         public string CreatedBy { get; set; }
 
@@ -37,6 +34,35 @@ namespace QAMS.WEB.Entities
 
         public string ModifiedBy { get; set; }
 
+        public int? PlantId { get; set; }
+
+        public string InitiatingDepartment_PSY { get; set; }
+
+        //public int QualityEvent_PSY { get; set; }
+
+        //public bool Reference_PSY { get; set; }   
+
+        //public int TypeOfChange_PSY {  get; set; }
+
+        //public int InitiatingDepartment_PSY {  get; set; }
+
+        //public DateTime DateOfInitiation_PSY { get; set; }
+
+        //public DateTime TargetDateOfClosure_PSY { get; set; }
+
+        //public int Market_PSY { get; set; }
+
+        //public int Customer_PSY { get; set; }
+
+        //public int ChangeRelatedTo_PSY { get; set; }
+
+        //public int BatchOrLotNumber_PSY { get; set; }
+
+        //public int ImpactedProductMaterials_PSY { get; set; }
+
+        //public int Material_PSY { get; set; }
+
+        //public int Equipment_PSY { get;set; }
     }
 
 

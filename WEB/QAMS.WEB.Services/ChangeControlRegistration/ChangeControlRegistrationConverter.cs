@@ -77,9 +77,9 @@ namespace QAMS.WEB.Services
                         //changeControlRegistrationData.ImpactedProcedures = DatatypeConverter.SetIntValue(row[ChangeControlRegistrationConstants.ImpactedProcedures.TrimAt()]);
                         //changeControlRegistrationData.Comments = Convert.ToString(row[ChangeControlRegistrationConstants.Comments.TrimAt()]); 
                         #endregion
-                        changeControlRegistrationData.Registeredby = DatatypeConverter.SetIntValue(row[ChangeControlRegistrationConstants.Registeredby.TrimAt()]);
-                        changeControlRegistrationData.Reintiate = DatatypeConverter.SetBoolValue(row[ChangeControlRegistrationConstants.Reintiate.TrimAt()]);
-                        changeControlRegistrationData.Status = DatatypeConverter.SetIntValue(row[ChangeControlRegistrationConstants.Status.TrimAt()]);
+                        changeControlRegistrationData.Registeredby = Convert.ToInt32(row[ChangeControlRegistrationConstants.Registeredby.TrimAt()]);
+                        //changeControlRegistrationData.Reintiate = DatatypeConverter.SetBoolValue(row[ChangeControlRegistrationConstants.Reintiate.TrimAt()]);
+                        changeControlRegistrationData.Status = Convert.ToString(row[ChangeControlRegistrationConstants.Status.TrimAt()]);
                         changeControlRegistrationData.CreatedBy = Convert.ToString(row[ChangeControlRegistrationConstants.CreatedBy.TrimAt()]);
                         changeControlRegistrationData.CreatedDate = DatatypeConverter.SetDateTime(row[ChangeControlRegistrationConstants.CreatedDate.TrimAt()]);
                         changeControlRegistrationData.ModifiedBy = Convert.ToString(row[ChangeControlRegistrationConstants.ModifiedBy.TrimAt()]);
@@ -97,7 +97,41 @@ namespace QAMS.WEB.Services
                 throw;
             }
         }
-
+        public static List<ChangeControlRegistration> SetAllChangeControlRegPLant(DataSet dataset)
+        {
+            try
+            {
+                List<ChangeControlRegistration> result = new List<ChangeControlRegistration>();
+                ChangeControlRegistration changeControlRegistrationData;
+                if (dataset != null && dataset.Tables.Count > 0 && dataset.Tables[0].Rows.Count > 0)
+                {
+                    for (int i = 0; (i < dataset.Tables[0].Rows.Count); i = (i + 1))
+                    {
+                        DataRow row = dataset.Tables[0].Rows[i];
+                        changeControlRegistrationData = new ChangeControlRegistration();
+                        changeControlRegistrationData.ChangeControlId = DatatypeConverter.SetIntValue(row[ChangeControlRegistrationConstants.ChangeControlId.TrimAt()]);
+                        changeControlRegistrationData.ChangeControlUniqueCode = Convert.ToString(row[ChangeControlRegistrationConstants.ChangeControlUniqueCode.TrimAt()]);                        
+                        changeControlRegistrationData.Registeredby = Convert.ToInt32(row[ChangeControlRegistrationConstants.Registeredby.TrimAt()]);
+                        //changeControlRegistrationData.Reintiate = DatatypeConverter.SetBoolValue(row[ChangeControlRegistrationConstants.Reintiate.TrimAt()]);
+                        changeControlRegistrationData.Status = Convert.ToString(row[ChangeControlRegistrationConstants.Status.TrimAt()]);
+                        changeControlRegistrationData.CreatedBy = Convert.ToString(row[ChangeControlRegistrationConstants.CreatedBy.TrimAt()]);
+                        changeControlRegistrationData.CreatedDate = DatatypeConverter.SetDateTime(row[ChangeControlRegistrationConstants.CreatedDate.TrimAt()]);
+                        changeControlRegistrationData.ModifiedBy = Convert.ToString(row[ChangeControlRegistrationConstants.ModifiedBy.TrimAt()]);
+                        changeControlRegistrationData.InitiatingDepartment_PSY= Convert.ToString(row[ChangeControlRegistrationConstants.InitiatingDepartment.TrimAt()]);
+                        //changeControlRegistrationData.changeDetails = JsonConvert.DeserializeObject<ChangeDetails>(Convert.ToString(row[ChangeControlRegistrationConstants.ChangeDetails.TrimAt()]));
+                        //changeControlRegistrationData.requestDetails = JsonConvert.DeserializeObject<RequestDetails>(Convert.ToString(row[ChangeControlRegistrationConstants.RequestDetails.TrimAt()]));
+                        //changeControlRegistrationData.impactAssessmentDetails = JsonConvert.DeserializeObject<ImpactAssessmentDetails>(Convert.ToString(row[ChangeControlRegistrationConstants.ImpactDetails.TrimAt()]));
+                        //// changeControlRegistrationData.ModifiedDate = DatatypeConverter.SetDateTime(row[ChangeControlRegistrationConstants.ModifiedDate.TrimAt()]);
+                        result.Add(changeControlRegistrationData);
+                    }
+                }
+                return result;
+            }
+            catch (System.Exception ex)
+            {
+                throw;
+            }
+        }
         public static ChangeControlRegistration SetChangeControlRegistration(DataSet dataset)
         {
             var result = SetAllChangeControlRegistration(dataset);

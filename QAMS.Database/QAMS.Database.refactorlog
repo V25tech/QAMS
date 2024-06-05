@@ -56,4 +56,60 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="ACTION_USER_ID" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="b647cbb4-fb39-45aa-961e-a0e47276c1e6" ChangeDateTime="06/01/2024 11:50:09">
+    <Property Name="ElementName" Value="[dbo].[CATEGORY_CTG].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[CATEGORY_CTG]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID_CTG" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="0908d21a-1e7c-4db1-884c-a9bae63b232c" ChangeDateTime="06/01/2024 12:19:46">
+    <Property Name="ElementName" Value="[dbo].[MASTER_CATEGORY_CTG].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MASTER_CATEGORY_CTG]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID_CTG" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="7257f5a4-24dc-46eb-824f-7471e70fec90" ChangeDateTime="06/01/2024 12:46:25">
+    <Property Name="ElementName" Value="[dbo].[USERS_ROLE_MAPPING].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[USERS_ROLE_MAPPING]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ROLE_MAP_ID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="965e8068-be60-4db7-bd3b-0327702ec371" ChangeDateTime="06/01/2024 18:41:43">
+    <Property Name="ElementName" Value="[dbo].[WORKFLOW_ACTION_PLAN_USERS_MAPPING].[ACTION_USER_ID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[WORKFLOW_ACTION_PLAN_USERS_MAPPING]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ACTION_ID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a968a2fc-1d55-4b69-adbc-b64c8fb531f2" ChangeDateTime="06/01/2024 18:52:39">
+    <Property Name="ElementName" Value="[dbo].[INITIATIVE_USERS_MAPPING].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[INITIATIVE_USERS_MAPPING]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID_INT" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="8a339698-1ed1-4427-b5b3-c320b7012119" ChangeDateTime="06/01/2024 18:53:56">
+    <Property Name="ElementName" Value="[dbo].[INITIATIVE_USERS_MAPPING].[ID_INT]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[INITIATIVE_USERS_MAPPING]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ID_IM" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="957d2807-905b-46fa-8cf7-2a0a8acb3b89" ChangeDateTime="06/01/2024 18:54:49">
+    <Property Name="ElementName" Value="[dbo].[INITIATIVE_USERS_MAPPING].[ID_INITIATIVE]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[INITIATIVE_USERS_MAPPING]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="INIT_ID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b761f3c6-5313-4748-b939-df8b39e8e2b0" ChangeDateTime="06/03/2024 13:51:15">
+    <Property Name="ElementName" Value="[dbo].[INITIATIVE_AND_ACTIONPLANS_USERS_MAPPING].[DOCUMENT]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[INITIATIVE_AND_ACTIONPLANS_USERS_MAPPING]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DOCUMENT_ACTION" />
+  </Operation>
 </Operations>

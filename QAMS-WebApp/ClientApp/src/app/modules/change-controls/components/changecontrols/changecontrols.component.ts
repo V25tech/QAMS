@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LoginInitiateService } from '../../services/login-initiate.service';
 import { Table } from 'primeng/table';
 import { ChangeControls } from 'src/app/models/changecontrol.model';
+import { ChangeControlsService } from '../../services/change-controls.service';
 
 interface PageEvent {
   first?: any;
@@ -32,9 +33,14 @@ export class ChangecontrolsComponent {
     {  label: 'APPROVAL PENDING', value: 'Approval Pending' },
   ];
   constructor(private router: Router,
-    private loginInitiateService: LoginInitiateService, private cdr: ChangeDetectorRef) { }
+    private loginInitiateService: LoginInitiateService, private cdr: ChangeDetectorRef, private changeControlsService: ChangeControlsService) { }
 
   ngOnInit() {
+
+    this.changeControlsService.getAllChangeControlbyPlant(2).subscribe(res =>{
+      console.log(res);
+    })
+
     this.loginInitiateService.getData().subscribe((data: any) => {
       this.ccInitiateDatasource = data;
       this.ccInitiateDatasource.forEach(dataSource=>dataSource.date = new Date(dataSource.date))

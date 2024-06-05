@@ -6,6 +6,9 @@
     [CreatedDate_PSY]  DATETIME       NULL,
     [ModifiedBy_PSY]   NVARCHAR (150) NOT NULL,
     [ModifiedDate_PSY] DATETIME       NULL,
+    [DOCUMENT]         NVARCHAR (MAX) NULL,
     CONSTRAINT [PK_Role_PSY] PRIMARY KEY CLUSTERED ([Id_PSY] ASC)
 );
+
+
 

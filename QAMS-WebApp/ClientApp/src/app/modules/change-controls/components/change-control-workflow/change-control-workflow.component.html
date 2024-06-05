@@ -23,7 +23,7 @@
 
   <div class="stepper-wrapper">
     <div class="stepper-item" [ngClass]="{'active': selectedReviewOptions === 'initiation', 
-  'completed' : selectedReviewOptions === 'hodReview' || selectedReviewOptions === 'qaReview' || 
+  'completed' :  selectedReviewOptions === 'hodReview' || selectedReviewOptions === 'qaReview' || 
   selectedReviewOptions === 'cftReview'||selectedReviewOptions === 'customerNotification'||selectedReviewOptions === 'qaDecision'||selectedReviewOptions === 'actionPlan'
   ||selectedReviewOptions === 'closure'}">
       <div class="step-counter"></div>
@@ -90,128 +90,156 @@
           <div [ngClass]="{'col-lg-12 ': selectedReviewOptions === 'initiation', 'col-lg-5 ': selectedReviewOptions !== 'initiation'}">
           <div class="w-100 summary-tab">
             <p-tabView>
-              <p-tabPanel header="Request Details" class="mr-3 tab-styles">
+              <p-tabPanel  header="Request Details" *ngIf="changeControl && changeControl.requestDetails" class="mr-3 tab-styles">
                 <div class="bg-white px-2">
-                  <div class="d-flex mb-3 mt-3">
-                    <span class="col-lg-5 mr-5 small text-color">Change Related To</span>
-                    <span>Material</span>
+                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.requestDetails.reference == 'External'">
+                    <span class="col-lg-5 mr-5 small text-color">External Reference</span>
+                    <span>{{changeControl.requestDetails.externalReference}}</span>
+                  </div>
+                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.requestDetails.reference == 'Internal'">
+                    <span class="col-lg-5 mr-5 small text-color">Quality Events</span>
+                    <span>{{changeControl.requestDetails.qualityEvents}}</span>
                   </div>
                   <div class="d-flex mb-3 ">
-                    <span class="col-lg-5 mr-5 small text-color">Batch No./Lot No.</span> <span
-                      class="small">AXBD01</span>
+                    <span class="col-lg-5 mr-5 small text-color">Initiating Department</span> <span
+                      class="small">{{changeControl.requestDetails.initiatingDepartment}}</span>
                   </div>
-                  <div class="d-flex mb-3 ">
-                    <span class="col-lg-5 mr-5 small text-color">Batch/Lot Details</span> <span
-                      class="small">Anesthesia</span>
+                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.requestDetails.typeOfChange == 'Temporary'">
+                    <span class="col-lg-5 mr-5 small text-color">Batch No./Lot No.</span>
+                    <span>{{changeControl.requestDetails.batchNoLotNo}}</span>
                   </div>
-                  <div class="d-flex mb-3 ">
-                    <span class="col-lg-5 mr-5 small text-color">Equipment</span> <span class="small">Equipment
-                      1</span>
+                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.requestDetails.typeOfChange == 'Temporary'">
+                    <span class="col-lg-5 mr-5 small text-color">Batch No./Lot Details.</span>
+                    <span>{{changeControl.requestDetails.batchNoLotDetails}}</span>
                   </div>
-                  <div class="d-flex mb-3 ">
-                    <span class="col-lg-5 mr-5 small text-color">Document Details</span> <span class="small">Document
-                      Details</span>
+                  <div class="d-flex mb-3" *ngIf="changeControl.requestDetails.dateofInitiation"> 
+                    <span class="col-lg-5 mr-5 small text-color">Date of Initiation</span> 
+                    <span class="small">{{changeControl.requestDetails.dateofInitiation}}</span>
                   </div>
-                  <div class="d-flex mb-3 ">
-                    <span class="col-lg-5 mr-5 small text-color">Facility/Utility Details</span> <span
-                      class="small">Facility/Utility Details</span>
+                  <div class="d-flex mb-3" *ngIf="changeControl.requestDetails.targetDateofClosure"> 
+                    <span class="col-lg-5 mr-5 small text-color">Target Date of Closure</span> 
+                    <span class="small">{{changeControl.requestDetails.targetDateofClosure}}</span>
                   </div>
-                  <div class="d-flex mb-3 ">
-                    <span class="col-lg-5 mr-5 small text-color">Validation Details</span> <span
-                      class="small">Validation Details</span>
+                  <div class="d-flex  mb-3" *ngIf="changeControl.requestDetails.market"> 
+                    <span class="col-lg-5 mr-5 small text-color">Market</span>
+                    <span class="small">{{changeControl.requestDetails.market}}</span>
                   </div>
-                  <div class="d-flex  mb-3 ">
-                    <span class="col-lg-5 mr-5 small text-color">Packing Details</span> <span class="small">Packing
-                      Details</span>
-                  </div>
-                  <div class="d-flex  mb-3 ">
-                    <span class="col-lg-5 mr-5 small text-color">Software Details</span> <span class="small">Software
-                      Details</span>
-                  </div>
-                  <div class="d-flex  mb-3 ">
-                    <span class="col-lg-5 mr-5 small text-color">Testing Details</span> <span class="small">Testing
-                      Details</span>
-                  </div>
-                  <div class="d-flex  mb-3">
-                    <span class="col-lg-5 mr-5 small text-color">Supplier/Service Provider</span> <span
-                      class="small">Supplier/Service Provider</span>
-                  </div>
-                  <div class="d-flex  mb-3">
-                    <span class="col-lg-5 mr-5 small text-color">Process Details</span> <span class="small"> Process
-                      Details</span>
-                  </div>
-                  <div class="d-flex  mb-3 ">
-                    <span class="col-lg-5 mr-5 small text-color">Other Details</span> <span class="small">Other
-                      Details</span>
-                  </div>
-                  <div class="d-flex mb-3  ">
-                    <span class="col-lg-5 mr-5 small text-color">Product</span> <span class="small">Product</span>
-                  </div>
+                  <div class="d-flex  mb-3 " *ngIf="changeControl.requestDetails.customer">
+                    <span class="col-lg-5 mr-5 small text-color">Customer</span> 
+                    <span class="small">{{changeControl.requestDetails.customer}}</span>
+                  </div>                  
                 </div>
               </p-tabPanel>
 
-              <p-tabPanel header="Change Details" class="mr-3">
+              <p-tabPanel header="Change Details" *ngIf="changeControl && changeControl.changeDetails" class="mr-3">
                 <div class="bg-white">
-                  <div class="d-flex mb-3 mt-3">
-                    <span class="col-lg-5 mr-5 small text-color">Change Related To</span>
-                    <span>Material</span>
+                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.changeDetails.changesRelatedTo == 'Material'">
+                    <span class="col-lg-5 mr-5 small text-color">Material</span>
+                    <span>{{changeControl.changeDetails.material}}</span>
+                  </div>
+                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.changeDetails.changesRelatedTo == 'Equipment'">
+                    <span class="col-lg-5 mr-5 small text-color">Equipment</span>
+                    <span>{{changeControl.changeDetails.equipment}}</span>
+                  </div>
+                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.changeDetails.changesRelatedTo == 'Document'">
+                    <span class="col-lg-5 mr-5 small text-color">Document</span>
+                    <span>{{changeControl.changeDetails.document}}</span>
+                  </div>
+                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.changeDetails.changesRelatedTo == 'Facility/Utility'">
+                    <span class="col-lg-5 mr-5 small text-color">Facility/Utility</span>
+                    <span>{{changeControl.changeDetails.facilityUtility}}</span>
+                  </div>
+                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.changeDetails.changesRelatedTo == 'Packing'">
+                    <span class="col-lg-5 mr-5 small text-color">Packing</span>
+                    <span>{{changeControl.changeDetails.packing}}</span>
+                  </div>
+                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.changeDetails.changesRelatedTo == 'Software'">
+                    <span class="col-lg-5 mr-5 small text-color">Software</span>
+                    <span>{{changeControl.changeDetails.software}}</span>
+                  </div>
+                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.changeDetails.changesRelatedTo == 'Testing'">
+                    <span class="col-lg-5 mr-5 small text-color">Testing</span>
+                    <span>{{changeControl.changeDetails.testing}}</span>
+                  </div>
+                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.changeDetails.changesRelatedTo == 'Supplier/Service Provider'">
+                    <span class="col-lg-5 mr-5 small text-color">Supplier/Service Provider</span>
+                    <span>{{changeControl.changeDetails.supplierServiceProvider}}</span>
+                  </div>
+                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.changeDetails.changesRelatedTo == 'Others'">
+                    <span class="col-lg-5 mr-5 small text-color">Others</span>
+                    <span>{{changeControl.changeDetails.others}}</span>
+                  </div>
+                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.changeDetails.changesRelatedTo == 'New Product & Existing Product'">
+                    <span class="col-lg-5 mr-5 small text-color">Products</span>
+                    <span>{{changeControl.changeDetails.products}}</span>
+                  </div>
+                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.changeDetails.changesRelatedTo == 'New Product & Existing Product'">
+                    <span class="col-lg-5 mr-5 small text-color">Element Impurities Assesment</span>
+                    <span>{{changeControl.changeDetails.impurityAssesment}}</span>
+                  </div>
+                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.changeDetails.changesRelatedTo == 'New Product & Existing Product'">
+                    <span class="col-lg-5 mr-5 small text-color">Element Impurities Assesment</span>
+                    <span>{{changeControl.changeDetails.impurityAssesment}}</span>
+                  </div>
+                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.changeDetails.changesRelatedTo == 'New Product & Existing Product'">
+                    <span class="col-lg-5 mr-5 small text-color">Element Impurities Assesment Reason</span>
+                    <span>{{changeControl.changeDetails.impurityReason}}</span>
+                  </div>
+                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.changeDetails.changesRelatedTo == 'New Product & Existing Product'">
+                    <span class="col-lg-5 mr-5 small text-color">Nitrosamine Impurities Assesment</span>
+                    <span>{{changeControl.changeDetails.nitrosamineAssesment}}</span>
+                  </div>
+                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.changeDetails.changesRelatedTo == 'New Product & Existing Product'">
+                    <span class="col-lg-5 mr-5 small text-color">Nitrosamine Impurities Assesment Reason</span>
+                    <span>{{changeControl.changeDetails.nitrosamineReason}}</span>
+                  </div>
+                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.changeDetails.changesRelatedTo == 'New Product & Existing Product'">
+                    <span class="col-lg-5 mr-5 small text-color">Genotoxic Impurities Assesment</span>
+                    <span>{{changeControl.changeDetails.genotoxicAssesment}}</span>
+                  </div>
+                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.changeDetails.changesRelatedTo == 'New Product & Existing Product'">
+                    <span class="col-lg-5 mr-5 small text-color">Genotoxic Impurities Assesment Reason</span>
+                    <span>{{changeControl.changeDetails.genatoxicReason}}</span>
+                  </div>
+
+                  <div class="d-flex mb-3 ">
+                    <span class="col-lg-5 mr-5 small text-color">Existing Procedure</span>
+                    <span class="small">{{changeControl.changeDetails?.existingProcedure}}</span>
                   </div>
                   <div class="d-flex mb-3 ">
-                    <span class="col-lg-5 mr-5 small text-color">Batch No./Lot No.</span> <span
-                      class="small">AXBD01</span>
+                    <span class="col-lg-5 mr-5 small text-color">Proposed Change</span> <span
+                      class="small">{{changeControl.changeDetails?.proposedChange}}</span>
                   </div>
                   <div class="d-flex mb-3 ">
-                    <span class="col-lg-5 mr-5 small text-color">Batch/Lot Details</span> <span
-                      class="small">Anesthesia</span>
-                  </div>
-                  <div class="d-flex mb-3 ">
-                    <span class="col-lg-5 mr-5 small text-color">Equipment</span> <span class="small">Equipment
-                      1</span>
-                  </div>
-                  <div class="d-flex mb-3 ">
-                    <span class="col-lg-5 mr-5 small text-color">Document Details</span> <span class="small">Document
-                      Details</span>
-                  </div>
-                  <div class="d-flex mb-3 ">
-                    <span class="col-lg-5 mr-5 small text-color">Facility/Utility Details</span> <span
-                      class="small">Facility/Utility Details</span>
-                  </div>
-                  <div class="d-flex mb-3 ">
-                    <span class="col-lg-5 mr-5 small text-color">Validation Details</span> <span
-                      class="small">Validation Details</span>
-                  </div>
-                  <div class="d-flex  mb-3 ">
-                    <span class="col-lg-5 mr-5 small text-color">Packing Details</span> <span class="small">Packing
-                      Details</span>
-                  </div>
-                  <div class="d-flex  mb-3 ">
-                    <span class="col-lg-5 mr-5 small text-color">Software Details</span> <span class="small">Software
-                      Details</span>
-                  </div>
-                  <div class="d-flex  mb-3 ">
-                    <span class="col-lg-5 mr-5 small text-color">Testing Details</span> <span class="small">Testing
-                      Details</span>
-                  </div>
-                  <div class="d-flex  mb-3">
-                    <span class="col-lg-5 mr-5 small text-color">Supplier/Service Provider</span> <span
-                      class="small">Supplier/Service Provider</span>
-                  </div>
-                  <div class="d-flex  mb-3">
-                    <span class="col-lg-5 mr-5 small text-color">Process Details</span> <span class="small"> Process
-                      Details</span>
-                  </div>
-                  <div class="d-flex  mb-3 ">
-                    <span class="col-lg-5 mr-5 small text-color">Other Details</span> <span class="small">Other
-                      Details</span>
-                  </div>
-                  <div class="d-flex mb-3  ">
-                    <span class="col-lg-5 mr-5 small text-color">Product</span> <span class="small">Product</span>
-                  </div>
+                    <span class="col-lg-5 mr-5 small text-color">Justification for Proposed Change</span>
+                    <span class="small">{{changeControl.changeDetails?.justificationForProposedChange}}</span>
+                  </div>                  
                 </div>
               </p-tabPanel>
 
-              <p-tabPanel header="Impact Details" class="mr-3">
-
+              <p-tabPanel header="Impact Details" *ngIf="changeControl && changeControl.impactAssessmentDetails" class="mr-3">
+                <div class="bg-white">
+                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.impactAssessmentDetails.isChangeImpactProductMaterial != 'Yes'">
+                    <span class="col-lg-5 mr-5 small text-color">Does the Change Impact Product/Material Quality</span>
+                    <span>{{changeControl.impactAssessmentDetails.isChangeImpactProductMaterial}}</span>
+                  </div>
+                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.impactAssessmentDetails.isChangeImpactProductMaterial == 'Yes'">
+                    <span class="col-lg-5 mr-5 small text-color">Impact Product/Materials</span>
+                    <span>{{changeControl.impactAssessmentDetails.impactProductOrMaterials}}</span>
+                  </div>
+                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.impactAssessmentDetails.isAnyProceduresImpacted != 'Yes'">
+                    <span class="col-lg-5 mr-5 small text-color">Are any Procedures Impacted</span>
+                    <span>{{changeControl.impactAssessmentDetails.isAnyProceduresImpacted}}</span>
+                  </div>
+                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.impactAssessmentDetails.isAnyProceduresImpacted == 'Yes'">
+                    <span class="col-lg-5 mr-5 small text-color">Impacted Procedures</span>
+                    <span>{{changeControl.impactAssessmentDetails.impactedProcedures}}</span>
+                  </div>
+                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.impactAssessmentDetails.comments">
+                    <span class="col-lg-5 mr-5 small text-color">Comments</span>
+                    <span>{{changeControl.impactAssessmentDetails.comments}}</span>
+                  </div>
+                </div>
               </p-tabPanel>
             </p-tabView>
           </div>
