@@ -23,6 +23,7 @@ export class EquipmentRegistrationService {
   }
 
   getEquipData(): Observable<any> {
-    return this.http.get('assets/json/SystemManager/equipments.json');
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post(this.apiUrl+'/equipment/GetAllEquipment',"{\"pageNumber\":1,\"pageSize\":100,\"planId\":1}", { headers });
   }
 }

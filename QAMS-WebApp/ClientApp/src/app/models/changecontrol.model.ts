@@ -9,10 +9,11 @@ export interface CC_Model {
     catId?: number,
     registeredby?: number
     reintiate?: boolean,
-    status?: number,
+    status?: string,
     createdBy?: string,
     createdDate?: Date,
-    modifiedBy?: string
+    modifiedBy?: string,
+    plantId?: number
 }
 
 export interface RequestDetails {

@@ -15,7 +15,7 @@ export interface CustomerRegistration {
 export interface Customers {
     id: string
     name: string
-    initiateBy: string
+    createdBy: string
     createdDate: string | Date
 };
 

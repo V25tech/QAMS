@@ -112,18 +112,20 @@ export class RegisterCCComponent implements OnInit {
       let ccValue: CC_Model = this.mainForm.value;
       ccValue.changeControlId = 0;
       ccValue.catId = 0;
-      ccValue.registeredby = 123;
-      ccValue.changeControlUniqueCode = 'RST234H';
-      ccValue.status = 2;
+      ccValue.registeredby = 1234;
+      ccValue.changeControlUniqueCode = '';
+      ccValue.status = '';
       ccValue.createdBy = 'Creator';
       ccValue.modifiedBy = 'Modifier';
       ccValue.createdDate = new Date();
+      ccValue.plantId = 3;
 
       localStorage.setItem('PROV-CC-PL01-24-0021', JSON.stringify(ccValue));
 
       console.log(JSON.stringify(ccValue))
       this.changeControlsService.saveChangeControlRegistration(ccValue).subscribe(res => {
         console.log(res);
+        this.backToCCClick();
       }, er => console.log(er));
 
     } else {

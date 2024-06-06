@@ -42,7 +42,7 @@ namespace QAMS.Controllers
         /// This method is used to Get List of Market
         /// </summary>
         /// <param name="requestContext"></param>
-        [HttpPost()]
+        [HttpPost("GetAllMarket")]
         public ActionResult<ResponseContext<Market>> GetAllMarket(RequestContext requestContext)
         {
             var result = marketService.GetAllMarket(requestContext);
