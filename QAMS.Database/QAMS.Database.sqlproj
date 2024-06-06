@@ -217,6 +217,13 @@
     <Build Include="dbo\Tables\CATEGORY_CTG.sql" />
     <Build Include="dbo\Tables\ROLE_MAPPING.sql" />
     <Build Include="dbo\Tables\MASTER_CATEGORY_CTG.sql" />
+    <Build Include="dbo\Tables\ActionPlan_Map_PSY.sql" />
+    <Build Include="dbo\Stored Procedures\USP_ActionPlan_Map_PSY_UPDATE.sql" />
+    <Build Include="dbo\Stored Procedures\USP_ActionPlan_Map_PSY_INSERT.sql" />
+    <Build Include="dbo\Stored Procedures\USP_ActionPlan_Map_PSY_GET_ALL.sql" />
+    <Build Include="dbo\Stored Procedures\USP_ActionPlan_Map_PSY_GET.sql" />
+    <Build Include="dbo\Stored Procedures\USP_ActionPlan_Map_PSY_DELETE_ALL.sql" />
+    <Build Include="dbo\Stored Procedures\USP_ActionPlan_Map_PSY_DELETE.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="QAMS.Database.refactorlog" />

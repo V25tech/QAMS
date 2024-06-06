@@ -18,3 +18,8 @@
 		WHERE USR.Id_PSY=@USER_ID
 
 	END
+GO
+DISABLE TRIGGER [dbo].[trgAfterInsertInitiative]
+    ON [dbo].[ChangeControlRegistration_PSY];
+
+
