@@ -30,7 +30,7 @@ export class EquipmentsComponent {
 
   ngOnInit() {
     this.equipmentRegistrationService.getEquipData().subscribe((data: any) => {
-      this.equipmentDatasource = data;
+      this.equipmentDatasource = data.response;
       this.equipmentDatasource.forEach(dataSource=>dataSource.createdDate = new Date(dataSource.createdDate))
     });
      
