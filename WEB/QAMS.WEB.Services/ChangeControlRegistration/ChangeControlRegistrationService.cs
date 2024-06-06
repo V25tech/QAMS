@@ -105,6 +105,9 @@ namespace QAMS.WEB.Services
                 String validationMessages = ChangeControlRegistrationValidator.IsValidChangeControlRegistration(changeControlRegistration);
                 if (validationMessages.Length <= 0)
                 {
+                    changeControlRegistration.RequestDetailsJson = JsonConvert.SerializeObject(changeControlRegistration.requestDetails, Formatting.Indented);
+                    changeControlRegistration.ChangeDetailsJson = JsonConvert.SerializeObject(changeControlRegistration.changeDetails, Formatting.Indented);
+                    changeControlRegistration.ImpactDetailsJson = JsonConvert.SerializeObject(changeControlRegistration.impactAssessmentDetails, Formatting.Indented);
                     bool result = changeControlRegistrationData.UpdateChangeControlRegistration(changeControlRegistration);
                     return result;
                 }

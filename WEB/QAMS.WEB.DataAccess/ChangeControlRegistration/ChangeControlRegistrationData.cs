@@ -137,12 +137,11 @@ namespace QAMS.WEB.Data
                 List<SqlParameter> sqlparms = new List<SqlParameter>();
                 sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = ChangeControlRegistrationConstants.ChangeControlId, Value = changeControlRegistration.ChangeControlId });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeControlRegistrationConstants.ChangeControlUniqueCode, Value = changeControlRegistration.ChangeControlUniqueCode });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeControlRegistrationConstants.RequestDetails, Value = changeControlRegistration.requestDetails });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeControlRegistrationConstants.ImpactDetails, Value = changeControlRegistration.impactAssessmentDetails });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeControlRegistrationConstants.ChangeDetails, Value = changeControlRegistration.changeDetails });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeControlRegistrationConstants.RequestDetails, Value = changeControlRegistration.RequestDetailsJson });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeControlRegistrationConstants.ImpactDetails, Value = changeControlRegistration.ImpactDetailsJson });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeControlRegistrationConstants.ChangeDetails, Value = changeControlRegistration.ChangeDetailsJson });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = ChangeControlRegistrationConstants.Registeredby, Value = changeControlRegistration.Registeredby });
-                sqlparms.Add(new SqlParameter { DbType = DbType.Boolean, ParameterName = ChangeControlRegistrationConstants.Reintiate, Value = changeControlRegistration.Reintiate });
-                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = ChangeControlRegistrationConstants.Status, Value = changeControlRegistration.Status });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeControlRegistrationConstants.Status, Value = changeControlRegistration.Status });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeControlRegistrationConstants.ModifiedBy, Value = changeControlRegistration.ModifiedBy });
                 Object result = dataAccessHelper.ExecuteStoredProcedure(ChangeControlRegistrationConstants.USP_ChangeControlRegistration_PSY_UPDATE, sqlparms, ExecutionType.Scalar);
                 return (Convert.ToInt32(result) > 0);
