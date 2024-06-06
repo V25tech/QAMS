@@ -98,8 +98,8 @@ namespace QAMS.WEB.Data
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeControlRegistrationConstants.ModifiedBy, Value = changeControlRegistration.ModifiedBy });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeControlRegistrationConstants.Comments, Value = "Test" });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = ChangeControlRegistrationConstants.PLANT_ID, Value = changeControlRegistration.PlantId });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeControlRegistrationConstants.InitiatingDepartment, Value = changeControlRegistration.InitiatingDepartment_PSY });
                 //New params
-
                 #region Commented Region
                 //sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = ChangeControlRegistrationConstants.QualityEvent, Value = changeControlRegistration.QualityEvent_PSY });
                 //sqlparms.Add(new SqlParameter { DbType = DbType.Boolean, ParameterName = ChangeControlRegistrationConstants.Reference, Value = changeControlRegistration.Reference_PSY });
@@ -115,10 +115,7 @@ namespace QAMS.WEB.Data
                 //sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = ChangeControlRegistrationConstants.Material, Value = changeControlRegistration.Material_PSY });
                 //sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = ChangeControlRegistrationConstants.Equipment, Value = changeControlRegistration.Equipment_PSY }); 
                 #endregion
-
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeControlRegistrationConstants.InitiatingDepartment, Value = changeControlRegistration.InitiatingDepartment_PSY });
                 //End Params
-
                 //sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeControlRegistrationConstants.CategoryName, Value = changeControlRegistration.Category });
                 //sqlparms.Add(new SqlParameter { DbType = DbType.Int16, ParameterName = ChangeControlRegistrationConstants.CategoryId, Value = changeControlRegistration.CatId });
                 Object result = dataAccessHelper.ExecuteStoredProcedure(ChangeControlRegistrationConstants.USP_ChangeControlRegistration_PSY_INSERT, sqlparms, ExecutionType.Scalar);
@@ -143,6 +140,7 @@ namespace QAMS.WEB.Data
                 sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = ChangeControlRegistrationConstants.Registeredby, Value = changeControlRegistration.Registeredby });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeControlRegistrationConstants.Status, Value = changeControlRegistration.Status });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeControlRegistrationConstants.ModifiedBy, Value = changeControlRegistration.ModifiedBy });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeControlRegistrationConstants.InitiatingDepartment, Value = changeControlRegistration.InitiatingDepartment_PSY });
                 Object result = dataAccessHelper.ExecuteStoredProcedure(ChangeControlRegistrationConstants.USP_ChangeControlRegistration_PSY_UPDATE, sqlparms, ExecutionType.Scalar);
                 return (Convert.ToInt32(result) > 0);
             }

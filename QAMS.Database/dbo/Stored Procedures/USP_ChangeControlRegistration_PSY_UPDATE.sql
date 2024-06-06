@@ -5,10 +5,10 @@
 @ImpactDetails_PSY Nvarchar(Max),
 @ChangeDetails_PSY Nvarchar(Max),
 @InitiatingDepartment_PSY NVarChar(250), 
-@Comments_PSY NVarChar(250),
+--@Comments_PSY NVarChar(250),
 @Registeredby_PSY Int,
-@Reintiate_PSY Bit,
-@Status_PSY Int,
+--@Reintiate_PSY Bit,
+@Status_PSY NVarChar(150),
 @ModifiedBy_PSY NVarChar(150) 
  AS 
  BEGIN 
@@ -20,7 +20,7 @@ RequestDetails_PSY=@RequestDetails_PSY,
 ImpactDetails_PSY=@ImpactDetails_PSY,
 ChangeDetails_PSY=@ChangeDetails_PSY,
 InitiatingDepartment_PSY=@InitiatingDepartment_PSY,
-Comments_PSY=@Comments_PSY,
+--Comments_PSY=@Comments_PSY,
 Registeredby_PSY=@Registeredby_PSY,
 Status_PSY=@Status_PSY,
 ModifiedBy_PSY=@ModifiedBy_PSY WHERE  [ChangeControlId_PSY] = @ChangeControlId_PSY ;  select @ChangeControlId_PSY; 
@@ -30,4 +30,7 @@ ModifiedBy_PSY=@ModifiedBy_PSY WHERE  [ChangeControlId_PSY] = @ChangeControlId_P
  SELECT ERROR_MESSAGE(); 
  END CATCH 
  END 
+ 
+
+ Select * from ChangeControlRegistration_PSY 
  
