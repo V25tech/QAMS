@@ -11,7 +11,6 @@ export class ModifyUserService {
 
   constructor(private http: HttpClient) { }
   getUserData(): Observable<any> {
-debugger;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post(this.apiUrl+ '/user/GetAllUser',"{\"pageNumber\":1,\"pageSize\":100}", { headers });
   }

@@ -40,13 +40,9 @@ export class ProductMaterialsComponent {
       chemicalName: ['', Validators.required],
 
     });
-    this.ProductsService.getProductsData().subscribe((data: any) => {
-      debugger
+    this.ProductsService.getProductsData().subscribe((data: any) => {      
       this.productsDatasource = data.response;
-      debugger
-    //  this.productsDatasource.forEach(dataSource => dataSource.createdDate = new Date(dataSource?.createdDate))
     });
-
   }
 
 

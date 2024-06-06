@@ -42,8 +42,7 @@ export class ModifyUserComponent {
       employeeId: ['', Validators.required],
       email: ['', Validators.required]
     
-    });
-    debugger;
+    });    
     this.modifyUserService.getUserData().subscribe((data: any) => {
       this.modifyUserDatasource = data.response;
       // this.modifyUserDatasource.forEach(dataSource=>dataSource.createdDate = new Date(dataSource.createdDate))
