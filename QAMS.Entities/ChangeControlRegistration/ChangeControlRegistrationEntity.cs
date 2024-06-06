@@ -61,6 +61,8 @@ namespace QAMS.WEB.Entities
         public string qualityEvents { get; set; }
         public string initiatingDepartment { get; set; }
         public string typeOfChange { get; set; }
+
+        public string batchNoLotNo { get; set; }
         public string batchNoLotDetails { get; set; }
         public string dateofInitiation { get; set; }
         public string targetDateofClosure { get; set; }
