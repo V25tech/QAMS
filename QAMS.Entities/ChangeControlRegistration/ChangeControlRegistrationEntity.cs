@@ -10,32 +10,23 @@ namespace QAMS.WEB.Entities
     {
         public ChangeDetails changeDetails { get; set; }
         public RequestDetails requestDetails { get; set; }
-
         public string RequestDetailsJson { get; set; }
         public string ChangeDetailsJson { get; set; }
         public string ImpactDetailsJson { get; set; }
         public ImpactAssessmentDetails impactAssessmentDetails { get; set; }
-
         public int? ChangeControlId { get; set; }
-
         public string ChangeControlUniqueCode { get; set; }
-
-        public string Category { get; set; }
+        public Category Category { get; set; }
         public int CatId { get; set; }
-
         public int Registeredby { get; set; }
-
         public bool? Reintiate { get; set; }
         public string Status { get; set; }
-
         public string CreatedBy { get; set; }
-
         public DateTime? CreatedDate { get; set; }
-
         public string ModifiedBy { get; set; }
-
         public int? PlantId { get; set; }
-
+        public string InitiatingDepartment_PSY { get; set; }
+        #region Commented Region
         //public int QualityEvent_PSY { get; set; }
 
         //public bool Reference_PSY { get; set; }   
@@ -60,11 +51,9 @@ namespace QAMS.WEB.Entities
 
         //public int Material_PSY { get; set; }
 
-        //public int Equipment_PSY { get;set; }
+        //public int Equipment_PSY { get;set; } 
+        #endregion
     }
-
-
-
     public class RequestDetails
     {
         public string reference { get; set; }
@@ -86,7 +75,6 @@ namespace QAMS.WEB.Entities
 
 
     }
-
     public class ChangeDetails
     {
         public string customer { get; set; }
@@ -123,6 +111,16 @@ namespace QAMS.WEB.Entities
         public string comments { get; set; }
 
 
+    }
+
+    public enum Category
+    {
+        ChangeControl,
+        Deviation,
+        CAPA,
+        Incidents,
+        MarketComplaints,
+        CorrectivePreventiveActions
     }
 
 }

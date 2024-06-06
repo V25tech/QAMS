@@ -222,8 +222,8 @@ export class LeftNavComponent {
           iconClass: 'bi bi-files',
         },
         {
-          label: 'Equipment Registration',
-          path: '/equipment-registration',
+          label: 'Equipments',
+          path: '/equipments',
           isOpen: false,
           isActive: false,
           iconClass: 'bi bi-gear-wide-connected',

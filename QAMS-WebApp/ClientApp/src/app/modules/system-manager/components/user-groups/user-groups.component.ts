@@ -31,8 +31,7 @@ export class UserGroupsComponent {
   constructor(private fb: FormBuilder,private router: Router,protected messageService:MessageService,
     private UserGroupService: UserGroupService, private cdr: ChangeDetectorRef) { }
 
-  ngOnInit() :void {
-   debugger;
+  ngOnInit() :void {  
     this.UserGroupService.getUserData().subscribe((data: any) => {
       this.userGroupDatasource = data.response;
       //this.userGroupDatasource.forEach(dataSource=> dataSource.date = new Date(dataSource.date))

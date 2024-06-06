@@ -117,6 +117,7 @@ namespace QAMS.WEB.Services
                         changeControlRegistrationData.CreatedBy = Convert.ToString(row[ChangeControlRegistrationConstants.CreatedBy.TrimAt()]);
                         changeControlRegistrationData.CreatedDate = DatatypeConverter.SetDateTime(row[ChangeControlRegistrationConstants.CreatedDate.TrimAt()]);
                         changeControlRegistrationData.ModifiedBy = Convert.ToString(row[ChangeControlRegistrationConstants.ModifiedBy.TrimAt()]);
+                        changeControlRegistrationData.InitiatingDepartment_PSY= Convert.ToString(row[ChangeControlRegistrationConstants.InitiatingDepartment.TrimAt()]);
                         //changeControlRegistrationData.changeDetails = JsonConvert.DeserializeObject<ChangeDetails>(Convert.ToString(row[ChangeControlRegistrationConstants.ChangeDetails.TrimAt()]));
                         //changeControlRegistrationData.requestDetails = JsonConvert.DeserializeObject<RequestDetails>(Convert.ToString(row[ChangeControlRegistrationConstants.RequestDetails.TrimAt()]));
                         //changeControlRegistrationData.impactAssessmentDetails = JsonConvert.DeserializeObject<ImpactAssessmentDetails>(Convert.ToString(row[ChangeControlRegistrationConstants.ImpactDetails.TrimAt()]));
