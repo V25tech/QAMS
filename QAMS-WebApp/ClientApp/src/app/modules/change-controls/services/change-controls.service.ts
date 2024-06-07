@@ -20,6 +20,10 @@ export class ChangeControlsService {
     return this.http.post(this.apiUrl + '/changecontrolregistration/savechangecontrolregistration', JSON.stringify(ccValue));
   }
 
+  updateChangeControlRegistration(ccValue: CC_Model) {
+    return this.http.post(this.apiUrl + '/changecontrolregistration/updatechangecontrolregistration', JSON.stringify(ccValue));
+  }
+
   getChangeControlById(changeControlId: number) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.get(this.apiUrl + '/changecontrolregistration/' + changeControlId);

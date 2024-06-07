@@ -64,6 +64,8 @@ export class RegisterCCComponent implements OnInit {
   ]
 
   mainForm: FormGroup;
+  editMode: boolean = false;
+  editCCValue : CC_Model;
 
   constructor(private router: Router,
     private route: ActivatedRoute,
@@ -82,6 +84,7 @@ export class RegisterCCComponent implements OnInit {
     let id = this.route.snapshot.paramMap.get('id');
 
     if (id) {
+      this.editMode = true;
       let changeControlId: number = Number.parseInt(id);
       this.getChangeControlById(changeControlId);
     }
@@ -110,37 +113,62 @@ export class RegisterCCComponent implements OnInit {
     if (this.mainForm.valid) {
       console.log(this.mainForm.value);
       let ccValue: CC_Model = this.mainForm.value;
-      ccValue.changeControlId = 0;
-      ccValue.catId = 0;
-      ccValue.registeredby = 1234;
-      ccValue.changeControlUniqueCode = '';
-      ccValue.status = '';
-      ccValue.createdBy = 'Creator';
-      ccValue.modifiedBy = 'Modifier';
-      ccValue.createdDate = new Date();
-      ccValue.plantId = 3;
-
-      localStorage.setItem('PROV-CC-PL01-24-0021', JSON.stringify(ccValue));
-
-      console.log(JSON.stringify(ccValue))
-      this.changeControlsService.saveChangeControlRegistration(ccValue).subscribe(res => {
-        console.log(res);
-        this.backToCCClick();
-      }, er => console.log(er));
+      // if (this.editMode) {
+      //   this.updateControlChange(ccValue);
+      // }
+      //else {
+        this.saveControlChange(ccValue);
+      //}
 
     } else {
       console.log('Form is invalid');
     }
   }
 
+  saveControlChange(ccValue: CC_Model) {
+    ccValue.changeControlId = 0;
+    ccValue.catId = 0;
+    ccValue.registeredby = 1234;
+    ccValue.changeControlUniqueCode = this.editCCValue.changeControlUniqueCode+'E';
+    ccValue.status = '';
+    ccValue.createdBy = 'Creator';
+    ccValue.modifiedBy = 'Modifier';
+    ccValue.createdDate = new Date();
+    ccValue.plantId = 3;
+
+    localStorage.setItem('PROV-CC-PL01-24-0021', JSON.stringify(ccValue));
+
+    console.log(JSON.stringify(ccValue))
+    this.changeControlsService.saveChangeControlRegistration(ccValue).subscribe(res => {
+      console.log(res);
+      this.backToCCClick();
+    }, er => console.log(er));
+  }
+
+  updateControlChange(ccValue: CC_Model) {
+    
+    this.editCCValue.changeDetails = ccValue.changeDetails;
+    this.editCCValue.requestDetails = ccValue.requestDetails;
+    this.editCCValue.impactAssessmentDetails = ccValue.impactAssessmentDetails;
+    this.editCCValue.modifiedBy = 'Modifier';
+
+    console.log(JSON.stringify(ccValue))
+    this.changeControlsService.updateChangeControlRegistration(this.editCCValue).subscribe(res => {
+      console.log(res);
+      this.backToCCClick();
+    }, er => console.log(er));
+  }
+
+
 
   getChangeControlById(changeControlId: number) {
     this.changeControlsService.getChangeControlById(changeControlId).subscribe(res => {
-    //let ccValueStr = localStorage.getItem(id);
-    let ccValue: CC_Model = res; //JSON.parse(ccValueStr) ?? null;
-    if (ccValue) {
-      this.mainForm.patchValue(ccValue);
-    }
+      //let ccValueStr = localStorage.getItem(id);
+      let ccValue: CC_Model = res; //JSON.parse(ccValueStr) ?? null;
+      this.editCCValue = ccValue;
+      if (ccValue) {
+        this.mainForm.patchValue(ccValue);
+      }
     }, er => console.log(er));
   }
 

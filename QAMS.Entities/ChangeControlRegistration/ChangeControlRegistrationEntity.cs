@@ -83,6 +83,7 @@ namespace QAMS.WEB.Entities
         public string nitrosamineReason { get; set; }
         public string nitrosamineAssesment { get; set; }
         public string impurityAssesment { get; set; }
+        public string impurityReason { get; set; }
         public string products { get; set; }
         public string others { get; set; }
         public string supplierServiceProvider { get; set; }

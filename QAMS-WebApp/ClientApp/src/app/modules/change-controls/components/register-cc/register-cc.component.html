@@ -491,7 +491,7 @@
         <div class="d-flex py-2 justify-content-end">
             <button type="button" class="btn btn-default rounded-pill me-3" (click)="backToCCClick()">Cancel</button>
             <button type="button" class="btn btn-outline-primary rounded-pill  me-3" (click)="show()">Save as Draft</button>
-            <button type="submit" class="btn btn-primary rounded-pill me-3" (click)="show()">Save</button>
+            <button type="submit" class="btn btn-primary rounded-pill me-3" (click)="show()">{{ editMode ? 'Update' : 'Save'}}</button>
         </div>
     </form>
 </div>
