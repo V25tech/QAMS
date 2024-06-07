@@ -28,7 +28,7 @@ export class MarketsComponent {
 
   ngOnInit() {
     this.marketRegistrationService.getMarketData().subscribe((data: any) => {
-      this.marketDatasource = data;
+      this.marketDatasource = data.response;
       this.marketDatasource.forEach(dataSource=>dataSource.createdDate = new Date(dataSource.createdDate))
     });
      

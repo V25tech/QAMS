@@ -39,7 +39,7 @@ namespace QAMS.Controllers
         /// This method is used to Get List of Equipment
         /// </summary>
         /// <param name="requestContext"></param>
-        [HttpPost()]
+        [HttpPost("GetAllEquipment")]
         public ActionResult<ResponseContext<Equipment>> GetAllEquipment(RequestContext requestContext)
         {
             var result = equipmentService.GetAllEquipment(requestContext);

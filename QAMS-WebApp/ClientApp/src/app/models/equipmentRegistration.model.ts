@@ -19,7 +19,7 @@ export interface Equipments{
     model:string,
     department:string,
     createdDate:string |Date,
-    initiatedBy:string
+    createdBy:string
    
 };
 

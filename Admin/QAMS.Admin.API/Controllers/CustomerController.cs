@@ -42,7 +42,7 @@ namespace QAMS.Controllers
         /// This method is used to Get List of Customer
         /// </summary>
         /// <param name="requestContext"></param>
-        [HttpPost()]
+        [HttpPost("GetAllCustomer")]
         public ActionResult<ResponseContext<Customer>> GetAllCustomer(RequestContext requestContext)
         {
             var result = customerService.GetAllCustomer(requestContext);

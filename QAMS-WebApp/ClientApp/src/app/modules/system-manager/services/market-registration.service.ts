@@ -8,7 +8,7 @@ import { MarketRegistration} from 'src/app/models/marketRegistration.model';
 })
 export class MarketRegistrationService {
 
-  private apiUrl = 'your-api-url/market-Registration'; // Replace with your actual API URL
+  private apiUrl = 'ADMIN_API'; // Replace with your actual API URL
 
   constructor(private http: HttpClient) { }
 
@@ -21,6 +21,7 @@ export class MarketRegistrationService {
     return this.http.put<MarketRegistration>(this.apiUrl, settings, { headers });
   }
   getMarketData(): Observable<any> {
-    return this.http.get('assets/json/SystemManager/market.json');
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post(this.apiUrl+'/market/GetAllMarket',"{  \"pageNumber\": 1,  \"pageSize\": 100,  \"planId\": 1}", { headers });
   }
 }

@@ -28,7 +28,7 @@ export class CustomersComponent {
 
   ngOnInit() {
     this.customerRegistrationService.getCustomerData().subscribe((data: any) => {
-      this.customerDatasource = data;
+      this.customerDatasource = data.response;
       this.customerDatasource.forEach(dataSource=>dataSource.createdDate = new Date(dataSource.createdDate))
     });
      
