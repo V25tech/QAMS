@@ -27,9 +27,9 @@ namespace QAMS.Admin.Data
         
         DataSet GetCustomerById(System.Int32? id);
         
-        bool SaveCustomer(Customer customer);
+        bool SaveCustomer(CustomerRegistration customer);
         
-        bool UpdateCustomer(Customer customer);
+        bool UpdateCustomer(CustomerRegistration customer);
         
         bool DeleteCustomerById(System.Int32? id);
         

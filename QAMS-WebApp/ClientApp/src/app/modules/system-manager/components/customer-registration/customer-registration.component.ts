@@ -57,6 +57,13 @@ export class CustomerRegistrationComponent {
         remarks: this. customerRegistrationForm.value.remarks
       };
       debugger;
+
+      this.customerService.insertCustomerDetails(customerRegistration).subscribe((data: any) => {
+        console.log('Form submitted!', customerRegistration);
+        this.messageService.add({ severity: 'success', summary: 'Customer Registration Saved Successfull', detail: 'Message Content' });
+        
+      });
+
       this.customerService.insertCustomerDetails(customerRegistration)
       // Submit the  Customer Registration object to your service or backend
       console.log('Form submitted!', customerRegistration);

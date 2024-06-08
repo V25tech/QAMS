@@ -12,234 +12,27 @@ namespace QAMS.Admin.Entities
     using System;
     using System.Collections.Generic;
     using QAMS.Common.Entities;
-    
-    
+
+
     // Comment
-    public class Customer
+    public class CustomerRegistration
     {
-        
-        private System.Int32? idField;
-        
-        private string nameField;
-        
-        private string codeField;
-        
-        private string contactnameField;
-        
-        private string addressField;
-        
-        private string cityField;
-        
-        private string stateField;
-        
-        private string countryField;
-        
-        private System.Int32? zipcodeField;
-        
-        private System.Int32? faxField;
-        
-        private string emailField;
-        
-        private string remarkField;
-        
-        private string createdbyField;
-        
-        private DateTime? createddateField;
-        
-        private string modifiedbyField;
-        
-        private DateTime? modifieddateField;
-        
-        public System.Int32? Id
-        {
-            get
-            {
-                return this.idField;
-            }
-            set
-            {
-                this.idField = value;
-            }
-        }
-        
-        public string Name
-        {
-            get
-            {
-                return this.nameField;
-            }
-            set
-            {
-                this.nameField = value;
-            }
-        }
-        
-        public string Code
-        {
-            get
-            {
-                return this.codeField;
-            }
-            set
-            {
-                this.codeField = value;
-            }
-        }
-        
-        public string ContactName
-        {
-            get
-            {
-                return this.contactnameField;
-            }
-            set
-            {
-                this.contactnameField = value;
-            }
-        }
-        
-        public string Address
-        {
-            get
-            {
-                return this.addressField;
-            }
-            set
-            {
-                this.addressField = value;
-            }
-        }
-        
-        public string City
-        {
-            get
-            {
-                return this.cityField;
-            }
-            set
-            {
-                this.cityField = value;
-            }
-        }
-        
-        public string State
-        {
-            get
-            {
-                return this.stateField;
-            }
-            set
-            {
-                this.stateField = value;
-            }
-        }
-        
-        public string Country
-        {
-            get
-            {
-                return this.countryField;
-            }
-            set
-            {
-                this.countryField = value;
-            }
-        }
-        
-        public System.Int32? Zipcode
-        {
-            get
-            {
-                return this.zipcodeField;
-            }
-            set
-            {
-                this.zipcodeField = value;
-            }
-        }
-        
-        public System.Int32? Fax
-        {
-            get
-            {
-                return this.faxField;
-            }
-            set
-            {
-                this.faxField = value;
-            }
-        }
-        
-        public string Email
-        {
-            get
-            {
-                return this.emailField;
-            }
-            set
-            {
-                this.emailField = value;
-            }
-        }
-        
-        public string Remark
-        {
-            get
-            {
-                return this.remarkField;
-            }
-            set
-            {
-                this.remarkField = value;
-            }
-        }
-        
-        public string CreatedBy
-        {
-            get
-            {
-                return this.createdbyField;
-            }
-            set
-            {
-                this.createdbyField = value;
-            }
-        }
-        
-        public DateTime? CreatedDate
-        {
-            get
-            {
-                return this.createddateField;
-            }
-            set
-            {
-                this.createddateField = value;
-            }
-        }
-        
-        public string ModifiedBy
-        {
-            get
-            {
-                return this.modifiedbyField;
-            }
-            set
-            {
-                this.modifiedbyField = value;
-            }
-        }
-        
-        public DateTime? ModifiedDate
-        {
-            get
-            {
-                return this.modifieddateField;
-            }
-            set
-            {
-                this.modifieddateField = value;
-            }
-        }
+       
+        public System.Int32? Id { get; set; }
+        public string name { get; set; }
+        public string uniqueCode { get; set; }
+        public string contactName { get; set; }
+        public string address { get; set; }
+        public string city { get; set; }
+        public string state { get; set; }
+        public string country { get; set; }
+        public string zipcode { get; set; }
+        public string fax { get; set; }
+        public string email { get; set; }
+        public string remark { get; set; }
+        public string createdBy { get; set; }
+        public DateTime? CreatedDate { get; set; }
+        public string ModifiedBy { get; set; }
+        public DateTime? ModifiedDate { get; set; }
     }
 }

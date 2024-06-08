@@ -24,25 +24,25 @@ namespace QAMS.Admin.Services
     public static class CustomerValidator
     {
         
-        public static string IsValidCustomer(Customer customer)
+        public static string IsValidCustomer(CustomerRegistration customer)
         {
             try
             {
                 StringBuilder validationMessages = new StringBuilder();
                 ValidationHelper validationHelper = new ValidationHelper();
-                validationMessages.Append(validationHelper.NullCheckValidator(customer.Name, nameof(customer.Name)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(customer.Name,150, nameof(customer.Name)));
-                validationMessages.Append(validationHelper.NullCheckValidator(customer.Code, nameof(customer.Code)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(customer.Code,150, nameof(customer.Code)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(customer.ContactName,150, nameof(customer.ContactName)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(customer.Address,250, nameof(customer.Address)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(customer.City,150, nameof(customer.City)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(customer.State,150, nameof(customer.State)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(customer.Country,150, nameof(customer.Country)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(customer.Email,150, nameof(customer.Email)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(customer.Remark,150, nameof(customer.Remark)));
-                validationMessages.Append(validationHelper.NullCheckValidator(customer.CreatedBy, nameof(customer.CreatedBy)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(customer.CreatedBy,150, nameof(customer.CreatedBy)));
+                validationMessages.Append(validationHelper.NullCheckValidator(customer.name, nameof(customer.name)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(customer.name,150, nameof(customer.name)));
+                validationMessages.Append(validationHelper.NullCheckValidator(customer.uniqueCode, nameof(customer.uniqueCode)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(customer.uniqueCode, 150, nameof(customer.uniqueCode)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(customer.contactName,150, nameof(customer.contactName)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(customer.address,250, nameof(customer.address)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(customer.city,150, nameof(customer.city)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(customer.state,150, nameof(customer.state)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(customer.country,150, nameof(customer.country)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(customer.email,150, nameof(customer.email)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(customer.remark,150, nameof(customer.remark)));
+                validationMessages.Append(validationHelper.NullCheckValidator(customer.createdBy, nameof(customer.createdBy)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(customer.createdBy,150, nameof(customer.createdBy)));
                 validationMessages.Append(validationHelper.NullCheckValidator(customer.ModifiedBy, nameof(customer.ModifiedBy)));
                 validationMessages.Append(validationHelper.LengthCheckValidator(customer.ModifiedBy,150, nameof(customer.ModifiedBy)));
                 if (!String.IsNullOrEmpty(validationMessages.ToString()))
