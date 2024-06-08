@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { BatchLotServicesService } from '../../services/batch-lot-services.service';
 import { CustomerRegistration } from 'src/app/models/customerRegistration.model';
+import { CustomerRegistrationService } from '../../services/customer-registration.service';
 @Component({
   selector: 'app-customer-registration',
   templateUrl: './customer-registration.component.html',
@@ -12,7 +13,8 @@ import { CustomerRegistration } from 'src/app/models/customerRegistration.model'
 export class CustomerRegistrationComponent {
 
   customerRegistrationForm!: FormGroup;
-  constructor(private fb: FormBuilder, private messageService: MessageService, 
+  // CustomerRegistrationService: any;
+  constructor(private fb: FormBuilder, private messageService: MessageService, private customerService:CustomerRegistrationService,
     private batchLotService: BatchLotServicesService, private cdr: ChangeDetectorRef) { }
     ngOnInit(): void {
       this.customerRegistrationForm = this.fb.group({
@@ -54,7 +56,8 @@ export class CustomerRegistrationComponent {
         email: this. customerRegistrationForm.value.email,
         remarks: this. customerRegistrationForm.value.remarks
       };
-
+      debugger;
+      this.customerService.insertCustomerDetails(customerRegistration)
       // Submit the  Customer Registration object to your service or backend
       console.log('Form submitted!', customerRegistration);
       this.messageService.add({ severity: 'success', summary: 'Customer Registration Saved Successfull', detail: 'Message Content' });

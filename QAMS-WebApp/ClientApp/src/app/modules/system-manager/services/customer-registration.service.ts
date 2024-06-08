@@ -20,6 +20,11 @@ export class CustomerRegistrationService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.put<CustomerRegistration>(this.apiUrl, settings, { headers });
   }
+  insertCustomerDetails(settings: CustomerRegistration): Observable<CustomerRegistration> {
+    debugger;
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<CustomerRegistration>(this.apiUrl + '/customer/savecustomer', JSON.stringify(settings));    
+  }
   getCustomerData(): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post(this.apiUrl+'/customer/GetAllCustomer',"{\"pageNumber\":1,\"pageSize\":100,\"planId\":1}", { headers });
