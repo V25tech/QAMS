@@ -50,7 +50,6 @@ export class HODReviewComponent implements OnInit {
     });
 
     this.mainForm.get('assignTo').valueChanges.subscribe(value => {
-debugger
       if (value === 'userGroup') {
         this.mainForm.get('userGroup').enable();
         this.mainForm.get('userId').disable();

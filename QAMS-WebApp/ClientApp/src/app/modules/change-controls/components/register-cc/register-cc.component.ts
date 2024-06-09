@@ -65,7 +65,7 @@ export class RegisterCCComponent implements OnInit {
 
   mainForm: FormGroup;
   editMode: boolean = false;
-  editCCValue : CC_Model;
+  editCCValue: CC_Model;
 
   constructor(private router: Router,
     private route: ActivatedRoute,
@@ -113,13 +113,12 @@ export class RegisterCCComponent implements OnInit {
     if (this.mainForm.valid) {
       console.log(this.mainForm.value);
       let ccValue: CC_Model = this.mainForm.value;
-      // if (this.editMode) {
-      //   this.updateControlChange(ccValue);
-      // }
-      //else {
+      if (this.editMode) {
+        this.updateControlChange(ccValue);
+      }
+      else {
         this.saveControlChange(ccValue);
-      //}
-
+      }
     } else {
       console.log('Form is invalid');
     }
@@ -129,7 +128,7 @@ export class RegisterCCComponent implements OnInit {
     ccValue.changeControlId = 0;
     ccValue.catId = 0;
     ccValue.registeredby = 1234;
-    ccValue.changeControlUniqueCode = this.editCCValue.changeControlUniqueCode+'E';
+    ccValue.changeControlUniqueCode = this.editCCValue.changeControlUniqueCode + 'E';
     ccValue.status = '';
     ccValue.createdBy = 'Creator';
     ccValue.modifiedBy = 'Modifier';
@@ -146,7 +145,7 @@ export class RegisterCCComponent implements OnInit {
   }
 
   updateControlChange(ccValue: CC_Model) {
-    
+
     this.editCCValue.changeDetails = ccValue.changeDetails;
     this.editCCValue.requestDetails = ccValue.requestDetails;
     this.editCCValue.impactAssessmentDetails = ccValue.impactAssessmentDetails;

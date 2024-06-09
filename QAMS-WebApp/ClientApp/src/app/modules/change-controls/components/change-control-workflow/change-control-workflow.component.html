@@ -177,15 +177,15 @@
                     <span class="col-lg-5 mr-5 small text-color">Element Impurities Assesment</span>
                     <span>{{changeControl.changeDetails.impurityAssesment}}</span>
                   </div>                 
-                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.changeDetails.changesRelatedTo == 'New Product & Existing Product'">
+                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.changeDetails.changesRelatedTo == 'New Product & Existing Product' && changeControl.changeDetails.impurityAssesment == 'no'">
                     <span class="col-lg-5 mr-5 small text-color">Element Impurities Assesment Reason</span>
                     <span>{{changeControl.changeDetails.impurityReason}}</span>
                   </div>
-                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.changeDetails.changesRelatedTo == 'New Product & Existing Product' && changeControl.changeDetails.impurityReason == 'yes' ">
+                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.changeDetails.changesRelatedTo == 'New Product & Existing Product'">
                     <span class="col-lg-5 mr-5 small text-color">Nitrosamine Impurities Assesment</span>
                     <span>{{changeControl.changeDetails.nitrosamineAssesment}}</span>
                   </div>
-                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.changeDetails.changesRelatedTo == 'New Product & Existing Product' && changeControl.changeDetails.nitrosamineAssesment == 'yes' ">
+                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.changeDetails.changesRelatedTo == 'New Product & Existing Product' && changeControl.changeDetails.nitrosamineAssesment == 'no' ">
                     <span class="col-lg-5 mr-5 small text-color">Nitrosamine Impurities Assesment Reason</span>
                     <span>{{changeControl.changeDetails.nitrosamineReason}}</span>
                   </div>
@@ -193,7 +193,7 @@
                     <span class="col-lg-5 mr-5 small text-color">Genotoxic Impurities Assesment</span>
                     <span>{{changeControl.changeDetails.genotoxicAssesment}}</span>
                   </div>
-                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.changeDetails.changesRelatedTo == 'New Product & Existing Product' && changeControl.changeDetails.genotoxicAssesment == 'yes' ">
+                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.changeDetails.changesRelatedTo == 'New Product & Existing Product' && changeControl.changeDetails.genotoxicAssesment == 'no' ">
                     <span class="col-lg-5 mr-5 small text-color">Genotoxic Impurities Assesment Reason</span>
                     <span>{{changeControl.changeDetails.genatoxicReason}}</span>
                   </div>
