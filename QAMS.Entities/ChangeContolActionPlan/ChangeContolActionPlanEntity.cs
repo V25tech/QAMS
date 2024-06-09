@@ -185,5 +185,13 @@ namespace QAMS.WEB.Entities
                 this.modifieddateField = value;
             }
         }
+        public int ApprovedUser { get; set; }
+        public int ApprovedUserGroup { get; set; }
+        public int InitiativeId { get; set; }
+        public string InitiativeName { get; set; }
+        public int WorkflowId { get; set; }
+        public string WorkflowName { get; set; }
+        public bool IsReviewed { get; set; }
+        public bool IsApproved { get; set; }
     }
 }

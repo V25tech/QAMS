@@ -25,31 +25,31 @@ namespace QAMS.Admin.Services
     public static class CustomerConverter
     {
         
-        public static List<Customer> SetAllCustomer(DataSet dataset)
+        public static List<CustomerRegistration> SetAllCustomer(DataSet dataset)
         {
             try
             {
-                List<Customer> result = new List<Customer>();
-                Customer customerData;
+                List<CustomerRegistration> result = new List<CustomerRegistration>();
+                CustomerRegistration customerData;
                 if (dataset != null && dataset.Tables.Count > 0 && dataset.Tables[0].Rows.Count > 0)
                 {
                     for (int i = 0; (i < dataset.Tables[0].Rows.Count); i = (i + 1))
                     {
                         DataRow row = dataset.Tables[0].Rows[i];
-                        customerData = new Customer();
+                        customerData = new CustomerRegistration();
                         customerData.Id = DatatypeConverter.SetIntValue(row[CustomerConstants.Id.TrimAt()]);
-                        customerData.Name = Convert.ToString(row[CustomerConstants.Name.TrimAt()]);
-                        customerData.Code = Convert.ToString(row[CustomerConstants.Code.TrimAt()]);
-                        customerData.ContactName = Convert.ToString(row[CustomerConstants.ContactName.TrimAt()]);
-                        customerData.Address = Convert.ToString(row[CustomerConstants.Address.TrimAt()]);
-                        customerData.City = Convert.ToString(row[CustomerConstants.City.TrimAt()]);
-                        customerData.State = Convert.ToString(row[CustomerConstants.State.TrimAt()]);
-                        customerData.Country = Convert.ToString(row[CustomerConstants.Country.TrimAt()]);
-                        customerData.Zipcode = DatatypeConverter.SetIntValue(row[CustomerConstants.Zipcode.TrimAt()]);
-                        customerData.Fax = DatatypeConverter.SetIntValue(row[CustomerConstants.Fax.TrimAt()]);
-                        customerData.Email = Convert.ToString(row[CustomerConstants.Email.TrimAt()]);
-                        customerData.Remark = Convert.ToString(row[CustomerConstants.Remark.TrimAt()]);
-                        customerData.CreatedBy = Convert.ToString(row[CustomerConstants.CreatedBy.TrimAt()]);
+                        customerData.name = Convert.ToString(row[CustomerConstants.Name.TrimAt()]);
+                        customerData.uniqueCode = Convert.ToString(row[CustomerConstants.Code.TrimAt()]);
+                        customerData.contactName = Convert.ToString(row[CustomerConstants.ContactName.TrimAt()]);
+                        customerData.address = Convert.ToString(row[CustomerConstants.Address.TrimAt()]);
+                        customerData.city = Convert.ToString(row[CustomerConstants.City.TrimAt()]);
+                        customerData.state = Convert.ToString(row[CustomerConstants.State.TrimAt()]);
+                        customerData.country = Convert.ToString(row[CustomerConstants.Country.TrimAt()]);
+                        customerData.zipcode = Convert.ToString(row[CustomerConstants.Zipcode.TrimAt()]);
+                        customerData.fax = Convert.ToString(row[CustomerConstants.Fax.TrimAt()]);
+                        customerData.email = Convert.ToString(row[CustomerConstants.Email.TrimAt()]);
+                        customerData.remark = Convert.ToString(row[CustomerConstants.Remark.TrimAt()]);
+                        customerData.createdBy = Convert.ToString(row[CustomerConstants.CreatedBy.TrimAt()]);
                         customerData.CreatedDate = DatatypeConverter.SetDateTime(row[CustomerConstants.CreatedDate.TrimAt()]);
                         customerData.ModifiedBy = Convert.ToString(row[CustomerConstants.ModifiedBy.TrimAt()]);
                         customerData.ModifiedDate = DatatypeConverter.SetDateTime(row[CustomerConstants.ModifiedDate.TrimAt()]);
@@ -64,7 +64,7 @@ namespace QAMS.Admin.Services
             }
         }
         
-        public static Customer SetCustomer(DataSet dataset)
+        public static CustomerRegistration SetCustomer(DataSet dataset)
         {
             var result = SetAllCustomer(dataset);
             if (result.Count > 0)

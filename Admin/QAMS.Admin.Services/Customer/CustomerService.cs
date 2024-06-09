@@ -18,14 +18,14 @@ namespace QAMS.Admin.Services
     using QAMS.Common.Entities;
     using QAMS.Admin.Entities;
     using QAMS.Admin.Data;
-    
-    
+
+
     // Comment
     public class CustomerService : ICustomerService
     {
-        
+
         private readonly ICustomerData customerData;
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -34,27 +34,27 @@ namespace QAMS.Admin.Services
         {
             this.customerData = customerData;
         }
-        
-        public ResponseContext<Customer> GetAllCustomer(RequestContext requestContext)
+
+        public ResponseContext<CustomerRegistration> GetAllCustomer(RequestContext requestContext)
         {
             try
             {
                 DataSet dataset = customerData.GetAllCustomer(requestContext);
-                List<Customer> result = CustomerConverter.SetAllCustomer(dataset);
-                return new ResponseContext<Customer>() { RowCount = CommonConverter.SetRowsCount(dataset), Response = result };
+                List<CustomerRegistration> result = CustomerConverter.SetAllCustomer(dataset);
+                return new ResponseContext<CustomerRegistration>() { RowCount = CommonConverter.SetRowsCount(dataset), Response = result };
             }
             catch (System.Exception ex)
             {
                 throw;
             }
         }
-        
-        public Customer GetCustomerById(System.Int32? id)
+
+        public CustomerRegistration GetCustomerById(System.Int32? id)
         {
             try
             {
                 DataSet dataset = customerData.GetCustomerById(id);
-                Customer result = CustomerConverter.SetCustomer(dataset);
+                CustomerRegistration result = CustomerConverter.SetCustomer(dataset);
                 return result;
             }
             catch (System.Exception ex)
@@ -62,14 +62,16 @@ namespace QAMS.Admin.Services
                 throw;
             }
         }
-        
-        public bool SaveCustomer(Customer customer)
+
+        public bool SaveCustomer(CustomerRegistration customer)
         {
             try
             {
+                customer.createdBy = "Admin";
+                customer.ModifiedBy = "Admin";
                 String validationMessages = CustomerValidator.IsValidCustomer(customer);
                 if (validationMessages.Length <= 0)
-                {
+                {                    
                     var result = customerData.SaveCustomer(customer);
                     return result;
                 }
@@ -80,14 +82,16 @@ namespace QAMS.Admin.Services
                 throw;
             }
         }
-        
-        public bool UpdateCustomer(Customer customer)
+
+        public bool UpdateCustomer(CustomerRegistration customer)
         {
             try
             {
                 String validationMessages = CustomerValidator.IsValidCustomer(customer);
                 if (validationMessages.Length <= 0)
                 {
+                    customer.createdBy = "Admin";
+                    customer.ModifiedBy = "Admin";
                     bool result = customerData.UpdateCustomer(customer);
                     return result;
                 }
@@ -98,7 +102,7 @@ namespace QAMS.Admin.Services
                 throw;
             }
         }
-        
+
         public bool DeleteCustomerById(System.Int32? id)
         {
             try
@@ -110,7 +114,7 @@ namespace QAMS.Admin.Services
                 throw;
             }
         }
-        
+
         public bool DeleteAllCustomer(List<int> ids)
         {
             try

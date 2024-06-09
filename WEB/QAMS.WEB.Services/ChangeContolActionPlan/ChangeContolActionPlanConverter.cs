@@ -51,6 +51,12 @@ namespace QAMS.Admin.Services
                         changeContolActionPlanData.CreatedDate = DatatypeConverter.SetDateTime(row[ChangeContolActionPlanConstants.CreatedDate.TrimAt()]);
                         changeContolActionPlanData.ModifiedBy = Convert.ToString(row[ChangeContolActionPlanConstants.ModifiedBy.TrimAt()]);
                         changeContolActionPlanData.ModifiedDate = DatatypeConverter.SetDateTime(row[ChangeContolActionPlanConstants.ModifiedDate.TrimAt()]);
+                        changeContolActionPlanData.WorkflowId = Convert.ToInt32("WorkflowId_PSY");
+                        changeContolActionPlanData.WorkflowName = Convert.ToString("WorkflowName_PSY");
+                        changeContolActionPlanData.InitiativeId = Convert.ToInt32("InitiativeId_PSY");
+                        changeContolActionPlanData.InitiativeName= Convert.ToString("InitiativeName_PSY");
+                        changeContolActionPlanData.IsReviewed = Convert.ToBoolean("IsReviewed_PSY");
+                        changeContolActionPlanData.IsApproved = Convert.ToBoolean("IsApproved_PSY");
                         result.Add(changeContolActionPlanData);
                     }
                 }

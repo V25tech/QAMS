@@ -23,13 +23,13 @@ namespace QAMS.Admin.Services
     public interface ICustomerService
     {
         
-        ResponseContext<Customer> GetAllCustomer(RequestContext requestContext);
+        ResponseContext<CustomerRegistration> GetAllCustomer(RequestContext requestContext);
         
-        Customer GetCustomerById(System.Int32? id);
+        CustomerRegistration GetCustomerById(System.Int32? id);
         
-        bool SaveCustomer(Customer customer);
+        bool SaveCustomer(CustomerRegistration customer);
         
-        bool UpdateCustomer(Customer customer);
+        bool UpdateCustomer(CustomerRegistration customer);
         
         bool DeleteCustomerById(System.Int32? id);
         

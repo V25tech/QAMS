@@ -61,23 +61,23 @@ namespace QAMS.Admin.Data
             }
         }
         
-        public bool SaveCustomer(Customer customer)
+        public bool SaveCustomer(CustomerRegistration customer)
         {
             try
             {
                 List<SqlParameter> sqlparms = new List<SqlParameter>();
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.Name, Value = customer.Name });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.Code, Value = customer.Code });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.ContactName, Value = customer.ContactName });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.Address, Value = customer.Address });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.City, Value = customer.City });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.State, Value = customer.State });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.Country, Value = customer.Country });
-                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = CustomerConstants.Zipcode, Value = customer.Zipcode });
-                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = CustomerConstants.Fax, Value = customer.Fax });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.Email, Value = customer.Email });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.Remark, Value = customer.Remark });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.CreatedBy, Value = customer.CreatedBy });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.Name, Value = customer.name });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.Code, Value = customer.uniqueCode });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.ContactName, Value = customer.contactName });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.Address, Value = customer.address });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.City, Value = customer.city });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.State, Value = customer.state });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.Country, Value = customer.country });
+                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = CustomerConstants.Zipcode, Value = customer.zipcode });
+                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = CustomerConstants.Fax, Value = customer.fax });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.Email, Value = customer.email });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.Remark, Value = customer.remark });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.CreatedBy, Value = customer.createdBy });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.ModifiedBy, Value = customer.ModifiedBy });
                 Object result = dataAccessHelper.ExecuteStoredProcedure(CustomerConstants.USP_Customer_PSY_INSERT, sqlparms, ExecutionType.Scalar);
                 return (Convert.ToInt32(result) > 0);
@@ -88,23 +88,23 @@ namespace QAMS.Admin.Data
             }
         }
         
-        public bool UpdateCustomer(Customer customer)
+        public bool UpdateCustomer(CustomerRegistration customer)
         {
             try
             {
                 List<SqlParameter> sqlparms = new List<SqlParameter>();
                 sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = CustomerConstants.Id, Value = customer.Id });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.Name, Value = customer.Name });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.Code, Value = customer.Code });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.ContactName, Value = customer.ContactName });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.Address, Value = customer.Address });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.City, Value = customer.City });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.State, Value = customer.State });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.Country, Value = customer.Country });
-                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = CustomerConstants.Zipcode, Value = customer.Zipcode });
-                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = CustomerConstants.Fax, Value = customer.Fax });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.Email, Value = customer.Email });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.Remark, Value = customer.Remark });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.Name, Value = customer.name });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.Code, Value = customer.GetHashCode });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.ContactName, Value = customer.contactName });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.Address, Value = customer.address });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.City, Value = customer.city });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.State, Value = customer.state });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.Country, Value = customer.country });
+                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = CustomerConstants.Zipcode, Value = customer.zipcode });
+                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = CustomerConstants.Fax, Value = customer.fax });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.Email, Value = customer.email });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.Remark, Value = customer.remark });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.ModifiedBy, Value = customer.ModifiedBy });
                 Object result = dataAccessHelper.ExecuteStoredProcedure(CustomerConstants.USP_Customer_PSY_UPDATE, sqlparms, ExecutionType.Scalar);
                 return (Convert.ToInt32(result) > 0);

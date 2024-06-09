@@ -42,7 +42,7 @@ namespace QAMS.Tests
         [Test()]
         public void GetAllCustomer()
         {
-            List<Customer> customer = new List<Customer>();
+            List<CustomerRegistration> customer = new List<CustomerRegistration>();
             RequestContext requestContext = new RequestContext();
             requestContext.PageNumber=1;
             requestContext.PageSize=10;
@@ -63,7 +63,7 @@ namespace QAMS.Tests
         [Test()]
         public void SaveCustomer()
         {
-            Customer customer = CustomerViewModel();
+            CustomerRegistration customer = CustomerViewModel();
             System.Boolean id = false;
             customerData.Setup(p=>p.SaveCustomer(customer)).Returns(id);
             var result = customerService.SaveCustomer(customer);
@@ -73,7 +73,7 @@ namespace QAMS.Tests
         [Test()]
         public void UpdateCustomer()
         {
-            Customer customer = CustomerViewModel();
+            CustomerRegistration customer = CustomerViewModel();
             bool id = false;
             customerData.Setup(p=>p.UpdateCustomer(customer)).Returns(id);
             var result = customerService.UpdateCustomer(customer);
@@ -98,11 +98,11 @@ namespace QAMS.Tests
             return dataset;
         }
         
-        public Customer CustomerViewModel()
+        public CustomerRegistration CustomerViewModel()
         {
             try
             {
-                Customer customer = new Customer();
+                CustomerRegistration customer = new CustomerRegistration();
                 return customer;
             }
             catch (System.Exception ex)

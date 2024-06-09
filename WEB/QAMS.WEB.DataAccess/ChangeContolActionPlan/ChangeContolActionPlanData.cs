@@ -77,6 +77,16 @@ namespace QAMS.Admin.Data
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeContolActionPlanConstants.Remarks, Value = changeContolActionPlan.Remarks });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeContolActionPlanConstants.CreatedBy, Value = changeContolActionPlan.CreatedBy });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeContolActionPlanConstants.ModifiedBy, Value = changeContolActionPlan.ModifiedBy });
+
+                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = "@ApprovedUser_PSY", Value = changeContolActionPlan.ApprovedUser });
+                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = "@ApprovedUserGroup", Value = changeContolActionPlan.ApprovedUserGroup });
+                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = "@WorkflowId", Value = changeContolActionPlan.WorkflowId });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = "@WorkflowName", Value = changeContolActionPlan.WorkflowName });
+                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = "@InitiativeId", Value = changeContolActionPlan.InitiativeId });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = "@InitiativeName", Value = changeContolActionPlan.InitiativeName });
+                sqlparms.Add(new SqlParameter { DbType = DbType.Boolean, ParameterName = "@IsReviewed", Value = changeContolActionPlan.IsReviewed });
+                sqlparms.Add(new SqlParameter { DbType = DbType.Boolean, ParameterName = "@IsApproved", Value = changeContolActionPlan.IsApproved });
+
                 Object result = dataAccessHelper.ExecuteStoredProcedure(ChangeContolActionPlanConstants.USP_ChangeContolActionPlan_PSY_INSERT, sqlparms, ExecutionType.Scalar);
                 return (Convert.ToInt32(result) > 0);
             }
@@ -100,6 +110,16 @@ namespace QAMS.Admin.Data
                 sqlparms.Add(new SqlParameter { DbType = DbType.DateTime, ParameterName = ChangeContolActionPlanConstants.TargetDate, Value = changeContolActionPlan.TargetDate });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeContolActionPlanConstants.Remarks, Value = changeContolActionPlan.Remarks });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeContolActionPlanConstants.ModifiedBy, Value = changeContolActionPlan.ModifiedBy });
+
+                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = "@ApprovedUser_PSY", Value = changeContolActionPlan.ApprovedUser });
+                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = "@ApprovedUserGroup", Value = changeContolActionPlan.ApprovedUserGroup });
+                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = "@WorkflowId", Value = changeContolActionPlan.WorkflowId });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = "@WorkflowName", Value = changeContolActionPlan.WorkflowName });
+                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = "@InitiativeId", Value = changeContolActionPlan.InitiativeId });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = "@InitiativeName", Value = changeContolActionPlan.InitiativeName });
+                sqlparms.Add(new SqlParameter { DbType = DbType.Boolean, ParameterName = "@IsReviewed", Value = changeContolActionPlan.IsReviewed });
+                sqlparms.Add(new SqlParameter { DbType = DbType.Boolean, ParameterName = "@IsApproved", Value = changeContolActionPlan.IsApproved });
+
                 Object result = dataAccessHelper.ExecuteStoredProcedure(ChangeContolActionPlanConstants.USP_ChangeContolActionPlan_PSY_UPDATE, sqlparms, ExecutionType.Scalar);
                 return (Convert.ToInt32(result) > 0);
             }

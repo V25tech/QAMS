@@ -43,7 +43,7 @@ namespace QAMS.Controllers
         /// </summary>
         /// <param name="requestContext"></param>
         [HttpPost("GetAllCustomer")]
-        public ActionResult<ResponseContext<Customer>> GetAllCustomer(RequestContext requestContext)
+        public ActionResult<ResponseContext<CustomerRegistration>> GetAllCustomer(RequestContext requestContext)
         {
             var result = customerService.GetAllCustomer(requestContext);
             return result;
@@ -54,7 +54,7 @@ namespace QAMS.Controllers
         /// </summary>
         /// <param name="id"></param>
         [HttpGet("{id}")]
-        public ActionResult<Customer> GetCustomerById(System.Int32? id)
+        public ActionResult<CustomerRegistration> GetCustomerById(System.Int32? id)
         {
             var result = customerService.GetCustomerById(id);
             return result;
@@ -65,7 +65,7 @@ namespace QAMS.Controllers
         /// </summary>
         /// <param name="customer"></param>
         [HttpPost("savecustomer")]
-        public ActionResult<System.Boolean> SaveCustomer(Customer customer)
+        public ActionResult<System.Boolean> SaveCustomer([FromBody]CustomerRegistration customer)
         {
             var result = customerService.SaveCustomer(customer);
             return result;
@@ -76,7 +76,7 @@ namespace QAMS.Controllers
         /// </summary>
         /// <param name="customer"></param>
         [HttpPost("updatecustomer")]
-        public ActionResult<System.Boolean> UpdateCustomer(Customer customer)
+        public ActionResult<System.Boolean> UpdateCustomer([FromBody]CustomerRegistration customer)
         {
             var result = customerService.UpdateCustomer(customer);
             return result;

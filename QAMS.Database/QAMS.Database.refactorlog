@@ -112,4 +112,25 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="DOCUMENT_ACTION" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="a4483c50-74eb-4951-9066-46c795cd9dc1" ChangeDateTime="06/08/2024 10:56:15">
+    <Property Name="ElementName" Value="[dbo].[ChangeContolActionPlan_PSY].[CATID_PSY]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ChangeContolActionPlan_PSY]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="InitiativeId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="1d08f05a-301e-4b76-9942-5361595c791e" ChangeDateTime="06/08/2024 10:57:02">
+    <Property Name="ElementName" Value="[dbo].[ChangeContolActionPlan_PSY].[WORKFLOW_ID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ChangeContolActionPlan_PSY]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="WorkflowId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="df5dac0d-b21b-49b8-a65a-ae7b314ff805" ChangeDateTime="06/08/2024 10:57:08">
+    <Property Name="ElementName" Value="[dbo].[ChangeContolActionPlan_PSY].[WORKFLOW_TYPE]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[ChangeContolActionPlan_PSY]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="WorkflowName" />
+  </Operation>
 </Operations>
