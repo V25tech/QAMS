@@ -26,14 +26,14 @@ namespace QAMS.Admin.Data
     // Comment
     public class ChangeContolActionPlanData : IChangeContolActionPlanData
     {
-        
+
         private readonly DataAccessHelper dataAccessHelper;
-        
+
         public ChangeContolActionPlanData(DataAccessHelper dataAccessHelper)
         {
             this.dataAccessHelper = dataAccessHelper;
         }
-        
+
         public DataSet GetAllChangeContolActionPlan(RequestContext requestContext)
         {
             try
@@ -49,7 +49,7 @@ namespace QAMS.Admin.Data
                 throw;
             }
         }
-        
+
         public DataSet GetChangeContolActionPlanByChangeContolActionPlanId(System.Int32? changeContolActionPlanId)
         {
             try
@@ -62,7 +62,7 @@ namespace QAMS.Admin.Data
                 throw;
             }
         }
-        
+
         public bool SaveChangeContolActionPlan(ChangeContolActionPlan changeContolActionPlan)
         {
             try
@@ -95,7 +95,7 @@ namespace QAMS.Admin.Data
                 throw;
             }
         }
-        
+
         public bool UpdateChangeContolActionPlan(ChangeContolActionPlan changeContolActionPlan)
         {
             try
@@ -128,7 +128,7 @@ namespace QAMS.Admin.Data
                 throw;
             }
         }
-        
+
         public bool DeleteChangeContolActionPlanByChangeContolActionPlanId(System.Int32? changeContolActionPlanId)
         {
             try
@@ -141,12 +141,12 @@ namespace QAMS.Admin.Data
                 throw;
             }
         }
-        
+
         public bool DeleteAllChangeContolActionPlan(List<int> changeContolActionPlanIds)
         {
             try
             {
-                var result = dataAccessHelper.ExecuteStoredProcedure(ChangeContolActionPlanConstants.USP_ChangeContolActionPlan_PSY_DELETE_ALL, ChangeContolActionPlanConstants.ChangeContolActionPlanId, DbType.String, string.Join(',',  changeContolActionPlanIds), ExecutionType.NonQuery);
+                var result = dataAccessHelper.ExecuteStoredProcedure(ChangeContolActionPlanConstants.USP_ChangeContolActionPlan_PSY_DELETE_ALL, ChangeContolActionPlanConstants.ChangeContolActionPlanId, DbType.String, string.Join(',', changeContolActionPlanIds), ExecutionType.NonQuery);
                 return (Convert.ToInt32(result) >= 0);
             }
             catch (System.Exception ex)
@@ -154,7 +154,7 @@ namespace QAMS.Admin.Data
                 throw;
             }
         }
-        
+
         public DataSet GetChangeContolActionPlanByDepartmentId(System.Int32? id)
         {
             try
@@ -167,7 +167,7 @@ namespace QAMS.Admin.Data
                 throw;
             }
         }
-        
+
         public DataSet GetChangeContolActionPlanByUserId(System.Int32? id)
         {
             try
@@ -180,7 +180,24 @@ namespace QAMS.Admin.Data
                 throw;
             }
         }
-        
+        public DataSet GetActionPlanByIntIdandWorkId(int p_IntId, int p_WorkId)
+        {
+            try
+            {
+                DataSet dataset = (DataSet)dataAccessHelper.ExecuteStoredProcedure(ChangeContolActionPlanConstants.USP_ActionPlan_PSY_GET_BY_INITD_AND_WORK_ID,
+                                  new List<SqlParameter>
+                                  {
+                                  new SqlParameter("@IntId", DbType.Int32) { Value = p_IntId },
+                                  new SqlParameter("@WorkId", DbType.Int32) { Value = p_WorkId }
+                                  },ExecutionType.Dataset);
+                return dataset;
+            }
+            catch (System.Exception ex)
+            {
+                throw;
+            }
+        }
+
         public DataSet GetChangeContolActionPlanByUserGroupId(System.Int32? id)
         {
             try
@@ -193,7 +210,7 @@ namespace QAMS.Admin.Data
                 throw;
             }
         }
-        
+
         public bool DeleteChangeContolActionPlanByDepartmentId(System.Int32? id)
         {
             try
@@ -206,7 +223,7 @@ namespace QAMS.Admin.Data
                 throw;
             }
         }
-        
+
         public bool DeleteChangeContolActionPlanByUserId(System.Int32? id)
         {
             try
@@ -219,7 +236,7 @@ namespace QAMS.Admin.Data
                 throw;
             }
         }
-        
+
         public bool DeleteChangeContolActionPlanByUserGroupId(System.Int32? id)
         {
             try

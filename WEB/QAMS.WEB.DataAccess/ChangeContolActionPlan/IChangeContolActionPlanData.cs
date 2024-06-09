@@ -38,7 +38,10 @@ namespace QAMS.WEB.Data
         DataSet GetChangeContolActionPlanByDepartmentId(System.Int32? id);
         
         DataSet GetChangeContolActionPlanByUserId(System.Int32? id);
-        
+
+        DataSet GetActionPlanByIntIdandWorkId(int p_IntId, int p_WorkId);
+
+
         DataSet GetChangeContolActionPlanByUserGroupId(System.Int32? id);
         
         bool DeleteChangeContolActionPlanByDepartmentId(System.Int32? id);

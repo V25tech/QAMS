@@ -51,12 +51,12 @@ namespace QAMS.Admin.Services
                         changeContolActionPlanData.CreatedDate = DatatypeConverter.SetDateTime(row[ChangeContolActionPlanConstants.CreatedDate.TrimAt()]);
                         changeContolActionPlanData.ModifiedBy = Convert.ToString(row[ChangeContolActionPlanConstants.ModifiedBy.TrimAt()]);
                         changeContolActionPlanData.ModifiedDate = DatatypeConverter.SetDateTime(row[ChangeContolActionPlanConstants.ModifiedDate.TrimAt()]);
-                        changeContolActionPlanData.WorkflowId = Convert.ToInt32("WorkflowId_PSY");
-                        changeContolActionPlanData.WorkflowName = Convert.ToString("WorkflowName_PSY");
-                        changeContolActionPlanData.InitiativeId = Convert.ToInt32("InitiativeId_PSY");
-                        changeContolActionPlanData.InitiativeName= Convert.ToString("InitiativeName_PSY");
-                        changeContolActionPlanData.IsReviewed = Convert.ToBoolean("IsReviewed_PSY");
-                        changeContolActionPlanData.IsApproved = Convert.ToBoolean("IsApproved_PSY");
+                        changeContolActionPlanData.WorkflowId = Convert.ToInt32(row["WorkflowId"]);
+                        changeContolActionPlanData.WorkflowName = Convert.ToString(row["WorkflowName"]);
+                        changeContolActionPlanData.InitiativeId = Convert.ToInt32(row["InitiativeId"]);
+                        changeContolActionPlanData.InitiativeName= Convert.ToString(row["InitiativeName"]);
+                        changeContolActionPlanData.IsReviewed = Convert.ToBoolean(row["IsReviewed_PSY"]);
+                        changeContolActionPlanData.IsApproved = Convert.ToBoolean(row["IsApproved_PSY"]);
                         result.Add(changeContolActionPlanData);
                     }
                 }

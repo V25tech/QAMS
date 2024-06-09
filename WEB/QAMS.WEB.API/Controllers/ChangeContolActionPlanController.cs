@@ -126,7 +126,14 @@ namespace QAMS.Controllers
             var result = changeContolActionPlanService.GetChangeContolActionPlanByUserId(id);
             return result;
         }
-        
+
+        [HttpGet("getActionPlanByIntIdandWorkId")]
+        public ActionResult<List<ChangeContolActionPlan>> GeActionPlanByIntIdandWorkId(int p_IntId,int p_WorkId)
+        {
+            var result = changeContolActionPlanService.GetActionPlanByIntIdandWorkId(p_IntId,p_WorkId);
+            return result;
+        }
+
         /// <summary>
         /// 
         /// </summary>

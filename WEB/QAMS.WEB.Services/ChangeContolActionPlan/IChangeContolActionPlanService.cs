@@ -35,7 +35,9 @@ namespace QAMS.Admin.Services
         List<ChangeContolActionPlan> GetChangeContolActionPlanByUserId(System.Int32? id);
         
         List<ChangeContolActionPlan> GetChangeContolActionPlanByUserGroupId(System.Int32? id);
-        
+
+        List<ChangeContolActionPlan> GetActionPlanByIntIdandWorkId(int p_IntId, int p_WorkId);
+
         bool DeleteChangeContolActionPlanByDepartmentId(System.Int32? id);
         
         bool DeleteChangeContolActionPlanByUserId(System.Int32? id);
