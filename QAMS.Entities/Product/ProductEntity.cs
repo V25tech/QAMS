@@ -12,136 +12,18 @@ namespace QAMS.Admin.Entities
     using System;
     using System.Collections.Generic;
     using QAMS.Common.Entities;
-    
-    
+
     // Comment
     public class Product
     {
-        
-        private System.Int32? idField;
-        
-        private string nameField;
-        
-        private string codeField;
-        
-        private string chemicalnameField;
-        
-        private System.Boolean? isactiveField;
-        
-        private string createdbyField;
-        
-        private DateTime? createddateField;
-        
-        private string modifiedbyField;
-        
-        private DateTime? modifieddateField;
-        
-        public System.Int32? Id
-        {
-            get
-            {
-                return this.idField;
-            }
-            set
-            {
-                this.idField = value;
-            }
-        }
-        
-        public string Name
-        {
-            get
-            {
-                return this.nameField;
-            }
-            set
-            {
-                this.nameField = value;
-            }
-        }
-        
-        public string Code
-        {
-            get
-            {
-                return this.codeField;
-            }
-            set
-            {
-                this.codeField = value;
-            }
-        }
-        
-        public string ChemicalName
-        {
-            get
-            {
-                return this.chemicalnameField;
-            }
-            set
-            {
-                this.chemicalnameField = value;
-            }
-        }
-        
-        public System.Boolean? IsActive
-        {
-            get
-            {
-                return this.isactiveField;
-            }
-            set
-            {
-                this.isactiveField = value;
-            }
-        }
-        
-        public string CreatedBy
-        {
-            get
-            {
-                return this.createdbyField;
-            }
-            set
-            {
-                this.createdbyField = value;
-            }
-        }
-        
-        public DateTime? CreatedDate
-        {
-            get
-            {
-                return this.createddateField;
-            }
-            set
-            {
-                this.createddateField = value;
-            }
-        }
-        
-        public string ModifiedBy
-        {
-            get
-            {
-                return this.modifiedbyField;
-            }
-            set
-            {
-                this.modifiedbyField = value;
-            }
-        }
-        
-        public DateTime? ModifiedDate
-        {
-            get
-            {
-                return this.modifieddateField;
-            }
-            set
-            {
-                this.modifieddateField = value;
-            }
-        }
+        public System.Int32? id { get; set; }
+        public string name { get; set; }
+        public string code { get; set; }
+        public string chemicalName { get; set; }
+        public System.Boolean? IsActive { get; set; }
+        public string createdBy { get; set; }
+        public DateTime? createdDate { get; set; }
+        public string modifiedBy { get; set; }
+        public DateTime? modifiedDate { get; set; }
     }
 }

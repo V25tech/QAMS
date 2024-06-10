@@ -30,16 +30,16 @@ namespace QAMS.Admin.Services
             {
                 StringBuilder validationMessages = new StringBuilder();
                 ValidationHelper validationHelper = new ValidationHelper();
-                validationMessages.Append(validationHelper.NullCheckValidator(product.Name, nameof(product.Name)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(product.Name,150, nameof(product.Name)));
-                validationMessages.Append(validationHelper.NullCheckValidator(product.Code, nameof(product.Code)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(product.Code,150, nameof(product.Code)));
-                validationMessages.Append(validationHelper.NullCheckValidator(product.ChemicalName, nameof(product.ChemicalName)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(product.ChemicalName,150, nameof(product.ChemicalName)));
-                validationMessages.Append(validationHelper.NullCheckValidator(product.CreatedBy, nameof(product.CreatedBy)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(product.CreatedBy,150, nameof(product.CreatedBy)));
-                validationMessages.Append(validationHelper.NullCheckValidator(product.ModifiedBy, nameof(product.ModifiedBy)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(product.ModifiedBy,150, nameof(product.ModifiedBy)));
+                validationMessages.Append(validationHelper.NullCheckValidator(product.name, nameof(product.name)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(product.name,150, nameof(product.name)));
+                validationMessages.Append(validationHelper.NullCheckValidator(product.code, nameof(product.code)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(product.code,150, nameof(product.code)));
+                validationMessages.Append(validationHelper.NullCheckValidator(product.chemicalName, nameof(product.chemicalName)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(product.chemicalName,150, nameof(product.chemicalName)));
+                validationMessages.Append(validationHelper.NullCheckValidator(product.createdBy, nameof(product.createdBy)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(product.createdBy,150, nameof(product.createdBy)));
+                validationMessages.Append(validationHelper.NullCheckValidator(product.modifiedBy, nameof(product.modifiedBy)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(product.modifiedBy,150, nameof(product.modifiedBy)));
                 if (!String.IsNullOrEmpty(validationMessages.ToString()))
                 {
                     return Convert.ToString(validationMessages.Remove(validationMessages.ToString().LastIndexOf(','),1));
