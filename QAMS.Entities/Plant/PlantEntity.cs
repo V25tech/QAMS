@@ -50,7 +50,7 @@ namespace QAMS.Admin.Entities
             }
         }
         
-        public string name
+        public string plantName
         {
             get
             {

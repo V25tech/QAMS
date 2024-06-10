@@ -81,16 +81,20 @@ export class PlantListComponent {
     } else {
 
 
-      const RegPlant: RegPlant = {
+      const regPlant: RegPlant = {
         code: this.regPlantForm.value.plantCode,
         plantName: this.regPlantForm.value.plantName,
         address: this.regPlantForm.value.address,
         comment: this.regPlantForm.value.comments
       };
-
+      debugger;
+      this.PlantListService.insertPlantDetails(regPlant).subscribe((data: any) => {
+      //  console.log('Form submitted!', customerRegistration);
+        this.messageService.add({ severity: 'success', summary: 'Customer Registration Saved Successfull', detail: 'Message Content' });
+      });
       
-      console.log('Form submitted!',RegPlant);
-      this.messageService.add({ severity: 'success', summary: ' Plant Registered Successfully', detail: 'Message Content' });
+     // console.log('Form submitted!',RegPlant);
+      //this.messageService.add({ severity: 'success', summary: ' Plant Registered Successfully', detail: 'Message Content' });
     }
   }
 
