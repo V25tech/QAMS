@@ -30,18 +30,16 @@ export class MarketRegistrationComponent {
     if (this. marketRegistrationForm.invalid) {
       this.messageService.add({ severity: 'error', summary: 'Form is invalid!', detail: 'Message Content' });
       return; // Prevent form submission
-    } else {
-
-
-      const customerRegistration: MarketRegistration = {
+    } 
+    else {
+      const mktRegistration: MarketRegistration = {
         name: this. marketRegistrationForm.value.name,
         uniqueCode: this. marketRegistrationForm.value.uniqueCode,
-        remarks: this. marketRegistrationForm.value.remarks,
-       
+        remarks: this. marketRegistrationForm.value.remarks,       
       };
-
-      // Submit the  Market Registration object to your service or backend
-      this.messageService.add({ severity: 'success', summary: 'Market Registration Saved Successfull', detail: 'Message Content' });
+      this.marketRegistration.insertMarketData(mktRegistration).subscribe((data: any) => {        
+      this.messageService.add({ severity: 'success', summary: 'market Registration Saved Successfull', detail: 'Message Content' });
+        });    
   }
    }
 }

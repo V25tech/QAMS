@@ -30,13 +30,13 @@ namespace QAMS.Admin.Services
             {
                 StringBuilder validationMessages = new StringBuilder();
                 ValidationHelper validationHelper = new ValidationHelper();
-                validationMessages.Append(validationHelper.NullCheckValidator(market.Name, nameof(market.Name)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(market.Name,150, nameof(market.Name)));
-                validationMessages.Append(validationHelper.NullCheckValidator(market.Code, nameof(market.Code)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(market.Code,150, nameof(market.Code)));
+                validationMessages.Append(validationHelper.NullCheckValidator(market.name, nameof(market.name)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(market.name,150, nameof(market.name)));
+                validationMessages.Append(validationHelper.NullCheckValidator(market.uniqueCode, nameof(market.uniqueCode)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(market.uniqueCode, 150, nameof(market.uniqueCode)));
                 validationMessages.Append(validationHelper.LengthCheckValidator(market.Remark,150, nameof(market.Remark)));
-                validationMessages.Append(validationHelper.NullCheckValidator(market.CreatedBy, nameof(market.CreatedBy)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(market.CreatedBy,150, nameof(market.CreatedBy)));
+                validationMessages.Append(validationHelper.NullCheckValidator(market.createdBy, nameof(market.createdBy)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(market.createdBy,150, nameof(market.createdBy)));
                 validationMessages.Append(validationHelper.NullCheckValidator(market.ModifiedBy, nameof(market.ModifiedBy)));
                 validationMessages.Append(validationHelper.LengthCheckValidator(market.ModifiedBy,150, nameof(market.ModifiedBy)));
                 if (!String.IsNullOrEmpty(validationMessages.ToString()))

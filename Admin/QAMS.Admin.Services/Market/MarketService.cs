@@ -67,6 +67,8 @@ namespace QAMS.Admin.Services
         {
             try
             {
+                market.createdBy = "admin";
+                market.ModifiedBy="admin";
                 String validationMessages = MarketValidator.IsValidMarket(market);
                 if (validationMessages.Length <= 0)
                 {
