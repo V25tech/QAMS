@@ -30,8 +30,8 @@ namespace QAMS.Admin.Services
             {
                 StringBuilder validationMessages = new StringBuilder();
                 ValidationHelper validationHelper = new ValidationHelper();
-                validationMessages.Append(validationHelper.NullCheckValidator(equipment.Name, nameof(equipment.Name)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(equipment.Name,150, nameof(equipment.Name)));
+                validationMessages.Append(validationHelper.NullCheckValidator(equipment.equipmentName, nameof(equipment.equipmentName)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(equipment.equipmentName, 150, nameof(equipment.equipmentName)));
                 validationMessages.Append(validationHelper.NullCheckValidator(equipment.EquipmentId, nameof(equipment.EquipmentId)));
                 validationMessages.Append(validationHelper.LengthCheckValidator(equipment.EquipmentId,150, nameof(equipment.EquipmentId)));
                 validationMessages.Append(validationHelper.NullCheckValidator(equipment.Make, nameof(equipment.Make)));

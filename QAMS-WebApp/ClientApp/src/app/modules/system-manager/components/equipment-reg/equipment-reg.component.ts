@@ -56,8 +56,13 @@ export class EquipmentRegComponent {
       };
 
       // Submit the  Equipment Registration object to your service or backend
-      console.log('Form submitted!', equipmentRegistration);
-      this.messageService.add({ severity: 'success', summary: 'Equipment Registration Saved Successfull', detail: 'Message Content' });
+      debugger;
+
+      this.equipmentRegService.insertCustomerDetails(equipmentRegistration).subscribe((data: any) => {
+        console.log('Form submitted!', equipmentRegistration);
+        this.messageService.add({ severity: 'success', summary: 'Equipment Registration Saved Successfull', detail: 'Message Content' });
+        
+      });
   }
   }
 }

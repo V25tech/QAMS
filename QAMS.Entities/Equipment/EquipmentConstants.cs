@@ -19,7 +19,9 @@ namespace QAMS.Admin.Entities
         public const string Id = "@Id_PSY";
         
         public const string Name = "@Name_PSY";
-        
+
+        public const string Department = "@department_PSY";
+
         public const string EquipmentId = "@EquipmentId_PSY";
         
         public const string Make = "@Make_PSY";

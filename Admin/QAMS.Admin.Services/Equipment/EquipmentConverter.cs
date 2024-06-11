@@ -38,7 +38,8 @@ namespace QAMS.Admin.Services
                         DataRow row = dataset.Tables[0].Rows[i];
                         equipmentData = new Equipment();
                         equipmentData.Id = DatatypeConverter.SetIntValue(row[EquipmentConstants.Id.TrimAt()]);
-                        equipmentData.Name = Convert.ToString(row[EquipmentConstants.Name.TrimAt()]);
+                        equipmentData.equipmentName = Convert.ToString(row[EquipmentConstants.Name.TrimAt()]);
+                        equipmentData.department = Convert.ToString(row[EquipmentConstants.Department.TrimAt()]);
                         equipmentData.EquipmentId = Convert.ToString(row[EquipmentConstants.EquipmentId.TrimAt()]);
                         equipmentData.Make = Convert.ToString(row[EquipmentConstants.Make.TrimAt()]);
                         equipmentData.Model = Convert.ToString(row[EquipmentConstants.Model.TrimAt()]);
@@ -87,7 +88,7 @@ namespace QAMS.Admin.Services
                     {
                         row = dataTable.NewRow();
                         row[EquipmentConstants.Id.TrimAt()] = equipments[i].Id;
-                        row[EquipmentConstants.Name.TrimAt()] = equipments[i].Name;
+                        row[EquipmentConstants.Name.TrimAt()] = equipments[i].equipmentName;
                         row[EquipmentConstants.EquipmentId.TrimAt()] = equipments[i].EquipmentId;
                         row[EquipmentConstants.Make.TrimAt()] = equipments[i].Make;
                         row[EquipmentConstants.Model.TrimAt()] = equipments[i].Model;
