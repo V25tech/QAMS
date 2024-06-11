@@ -66,10 +66,10 @@ namespace QAMS.Admin.Data
             try
             {
                 List<SqlParameter> sqlparms = new List<SqlParameter>();
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = DepartmentConstants.Name, Value = department.Name });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = DepartmentConstants.Code, Value = department.Code });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = DepartmentConstants.CreatedBy, Value = department.CreatedBy });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = DepartmentConstants.ModifiedBy, Value = department.ModifiedBy });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = DepartmentConstants.Name, Value = department.department });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = DepartmentConstants.Code, Value = department.departmentCode });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = DepartmentConstants.CreatedBy, Value = department.initiatedBy });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = DepartmentConstants.ModifiedBy, Value = department.modifiedBy });
                 Object result = dataAccessHelper.ExecuteStoredProcedure(DepartmentConstants.USP_Department_PSY_INSERT, sqlparms, ExecutionType.Scalar);
                 return (Convert.ToInt32(result) > 0);
             }
@@ -84,10 +84,10 @@ namespace QAMS.Admin.Data
             try
             {
                 List<SqlParameter> sqlparms = new List<SqlParameter>();
-                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = DepartmentConstants.Id, Value = department.Id });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = DepartmentConstants.Name, Value = department.Name });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = DepartmentConstants.Code, Value = department.Code });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = DepartmentConstants.ModifiedBy, Value = department.ModifiedBy });
+                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = DepartmentConstants.Id, Value = department.id });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = DepartmentConstants.Name, Value = department.department });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = DepartmentConstants.Code, Value = department.departmentCode });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = DepartmentConstants.ModifiedBy, Value = department.modifiedBy });
                 Object result = dataAccessHelper.ExecuteStoredProcedure(DepartmentConstants.USP_Department_PSY_UPDATE, sqlparms, ExecutionType.Scalar);
                 return (Convert.ToInt32(result) > 0);
             }

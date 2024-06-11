@@ -39,7 +39,7 @@ namespace QAMS.Controllers
         /// This method is used to Get List of Department
         /// </summary>
         /// <param name="requestContext"></param>
-        [HttpPost()]
+        [HttpPost("GetAllDepartment")]
         public ActionResult<ResponseContext<Department>> GetAllDepartment(RequestContext requestContext)
         {
             var result = departmentService.GetAllDepartment(requestContext);

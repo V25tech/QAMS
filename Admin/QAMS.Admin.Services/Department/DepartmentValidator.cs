@@ -30,14 +30,14 @@ namespace QAMS.Admin.Services
             {
                 StringBuilder validationMessages = new StringBuilder();
                 ValidationHelper validationHelper = new ValidationHelper();
-                validationMessages.Append(validationHelper.NullCheckValidator(department.Name, nameof(department.Name)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(department.Name,150, nameof(department.Name)));
-                validationMessages.Append(validationHelper.NullCheckValidator(department.Code, nameof(department.Code)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(department.Code,150, nameof(department.Code)));
-                validationMessages.Append(validationHelper.NullCheckValidator(department.CreatedBy, nameof(department.CreatedBy)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(department.CreatedBy,150, nameof(department.CreatedBy)));
-                validationMessages.Append(validationHelper.NullCheckValidator(department.ModifiedBy, nameof(department.ModifiedBy)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(department.ModifiedBy,150, nameof(department.ModifiedBy)));
+                validationMessages.Append(validationHelper.NullCheckValidator(department.department, nameof(department.department)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(department.department, 150, nameof(department.department)));
+                validationMessages.Append(validationHelper.NullCheckValidator(department.departmentCode, nameof(department.departmentCode)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(department.departmentCode, 150, nameof(department.departmentCode)));
+                validationMessages.Append(validationHelper.NullCheckValidator(department.initiatedBy, nameof(department.initiatedBy)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(department.initiatedBy, 150, nameof(department.initiatedBy)));
+                validationMessages.Append(validationHelper.NullCheckValidator(department.modifiedBy, nameof(department.modifiedBy)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(department.modifiedBy, 150, nameof(department.modifiedBy)));
                 if (!String.IsNullOrEmpty(validationMessages.ToString()))
                 {
                     return Convert.ToString(validationMessages.Remove(validationMessages.ToString().LastIndexOf(','),1));

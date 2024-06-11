@@ -12,108 +12,35 @@ namespace QAMS.Admin.Entities
     using System;
     using System.Collections.Generic;
     using QAMS.Common.Entities;
-    
-    
+
+
     // Comment
     public class Department
     {
-        
-        private System.Int32? idField;
-        
-        private string nameField;
-        
-        private string codeField;
-        
-        private string createdbyField;
-        
-        private DateTime? createddateField;
-        
-        private string modifiedbyField;
-        
-        private DateTime? modifieddateField;
-        
-        public System.Int32? Id
-        {
-            get
-            {
-                return this.idField;
-            }
-            set
-            {
-                this.idField = value;
-            }
-        }
-        
-        public string Name
-        {
-            get
-            {
-                return this.nameField;
-            }
-            set
-            {
-                this.nameField = value;
-            }
-        }
-        
-        public string Code
-        {
-            get
-            {
-                return this.codeField;
-            }
-            set
-            {
-                this.codeField = value;
-            }
-        }
-        
-        public string CreatedBy
-        {
-            get
-            {
-                return this.createdbyField;
-            }
-            set
-            {
-                this.createdbyField = value;
-            }
-        }
-        
-        public DateTime? CreatedDate
-        {
-            get
-            {
-                return this.createddateField;
-            }
-            set
-            {
-                this.createddateField = value;
-            }
-        }
-        
-        public string ModifiedBy
-        {
-            get
-            {
-                return this.modifiedbyField;
-            }
-            set
-            {
-                this.modifiedbyField = value;
-            }
-        }
-        
-        public DateTime? ModifiedDate
-        {
-            get
-            {
-                return this.modifieddateField;
-            }
-            set
-            {
-                this.modifieddateField = value;
-            }
-        }
+
+        //private System.Int32? idField;
+
+
+
+        public System.Int32? id { get; set; }
+
+
+
+        public string department{ get; set; }
+
+
+        public string departmentCode { get; set; }
+
+
+        public string initiatedBy { get; set; }
+
+
+        public DateTime? date { get; set; }
+
+
+        public string modifiedBy { get; set; }
+
+        public DateTime? modifiedDate { get; set; }
+
     }
 }
