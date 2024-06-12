@@ -67,6 +67,9 @@ namespace QAMS.Admin.Services
         {
             try
             {
+                userGroup.createdBy = "admin";
+                userGroup.modifiedBy= "admin";
+                userGroup.roles = "Admin";
                 String validationMessages = UserGroupValidator.IsValidUserGroup(userGroup);
                 if (validationMessages.Length <= 0)
                 {
