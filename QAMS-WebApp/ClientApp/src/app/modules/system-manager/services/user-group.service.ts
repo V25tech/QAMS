@@ -53,6 +53,7 @@ export class UserGroupService {
     //return this.http.post(this.apiUrl + '/customer/savecustomer', settings,{  });    
   }
   getProductsSmall() {
+
     return Promise.resolve(this.getProductsData().slice(0, 10));
 }
 }
