@@ -66,7 +66,7 @@ namespace QAMS.Admin.Data
             try
             {
                 List<SqlParameter> sqlparms = new List<SqlParameter>();
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = DepartmentConstants.Name, Value = department.department });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = DepartmentConstants.Name, Value = department.departmentName });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = DepartmentConstants.Code, Value = department.departmentCode });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = DepartmentConstants.CreatedBy, Value = department.initiatedBy });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = DepartmentConstants.ModifiedBy, Value = department.modifiedBy });
@@ -85,7 +85,7 @@ namespace QAMS.Admin.Data
             {
                 List<SqlParameter> sqlparms = new List<SqlParameter>();
                 sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = DepartmentConstants.Id, Value = department.id });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = DepartmentConstants.Name, Value = department.department });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = DepartmentConstants.Name, Value = department.departmentName });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = DepartmentConstants.Code, Value = department.departmentCode });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = DepartmentConstants.ModifiedBy, Value = department.modifiedBy });
                 Object result = dataAccessHelper.ExecuteStoredProcedure(DepartmentConstants.USP_Department_PSY_UPDATE, sqlparms, ExecutionType.Scalar);

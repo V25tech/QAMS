@@ -3,6 +3,8 @@ import { EquipmentRegistrationService } from '../../services/equipment-registrat
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { EquipmentRegistration } from 'src/app/models/equipmentRegistration.model';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-equipment-reg',
@@ -12,7 +14,7 @@ import { EquipmentRegistration } from 'src/app/models/equipmentRegistration.mode
 })
 export class EquipmentRegComponent {
   equipmentRegForm!: FormGroup;
-  constructor(private fb: FormBuilder, private messageService: MessageService, 
+  constructor(private fb: FormBuilder,private router: Router, private messageService: MessageService, 
     private equipmentRegService: EquipmentRegistrationService, private cdr: ChangeDetectorRef) { }
     ngOnInit(): void {
       this.equipmentRegForm = this.fb.group({
@@ -63,6 +65,11 @@ export class EquipmentRegComponent {
         this.messageService.add({ severity: 'success', summary: 'Equipment Registration Saved Successfull', detail: 'Message Content' });
         
       });
+      this.router.navigateByUrl('/equipments');
   }
+  
+  }
+  backToEquip(){
+    this.router.navigateByUrl('/equipments');
   }
 }

@@ -30,8 +30,8 @@ namespace QAMS.Admin.Services
             {
                 StringBuilder validationMessages = new StringBuilder();
                 ValidationHelper validationHelper = new ValidationHelper();
-                validationMessages.Append(validationHelper.NullCheckValidator(department.department, nameof(department.department)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(department.department, 150, nameof(department.department)));
+                validationMessages.Append(validationHelper.NullCheckValidator(department.departmentName, nameof(department.departmentName)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(department.departmentName, 150, nameof(department.departmentName)));
                 validationMessages.Append(validationHelper.NullCheckValidator(department.departmentCode, nameof(department.departmentCode)));
                 validationMessages.Append(validationHelper.LengthCheckValidator(department.departmentCode, 150, nameof(department.departmentCode)));
                 validationMessages.Append(validationHelper.NullCheckValidator(department.initiatedBy, nameof(department.initiatedBy)));

@@ -38,7 +38,7 @@ namespace QAMS.Admin.Services
                         DataRow row = dataset.Tables[0].Rows[i];
                         departmentData = new Department();
                         departmentData.id = DatatypeConverter.SetIntValue(row[DepartmentConstants.Id.TrimAt()]);
-                        departmentData.department = Convert.ToString(row[DepartmentConstants.Name.TrimAt()]);
+                        departmentData.departmentName = Convert.ToString(row[DepartmentConstants.Name.TrimAt()]);
                         departmentData.departmentCode = Convert.ToString(row[DepartmentConstants.Code.TrimAt()]);
                         departmentData.initiatedBy = Convert.ToString(row[DepartmentConstants.CreatedBy.TrimAt()]);
                         departmentData.date = DatatypeConverter.SetDateTime(row[DepartmentConstants.CreatedDate.TrimAt()]);

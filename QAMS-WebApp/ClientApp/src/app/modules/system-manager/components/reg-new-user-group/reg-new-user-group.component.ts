@@ -47,7 +47,6 @@ export class RegNewUserGroupComponent {
         remarks: this.userGroupForm.value.remarks,
         
       };
-
       debugger;
 
       this.UserGroupService.insertCustomerDetails(RegUserGroup).subscribe((data: any) => {
@@ -55,6 +54,7 @@ export class RegNewUserGroupComponent {
         this.messageService.add({ severity: 'success', summary: 'User Group Registration Saved Successfull', detail: 'Message Content' });
         
       });
+      this.router.navigateByUrl('/user-groups');
     }
   }
   backToUsers(){

@@ -26,7 +26,7 @@ namespace QAMS.Admin.Entities
 
 
 
-        public string department{ get; set; }
+        public string departmentName { get; set; }
 
 
         public string departmentCode { get; set; }
