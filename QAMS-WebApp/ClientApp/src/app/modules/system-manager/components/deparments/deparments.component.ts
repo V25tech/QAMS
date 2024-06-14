@@ -68,7 +68,12 @@ export class DeparmentsComponent {
       this.DepartmentsService.insertDepartmentDetails(RegNewdepartment).subscribe((data: any) => {
         console.log('Form submitted!', RegNewdepartment);
         this.messageService.add({ severity: 'success', summary: 'New department Registered Successfully', detail: 'Message Content' });
-        this.router.navigate(['/departments']);  // Navigate to the grid page
+        //this.router.navigate(['/departments']);  // Navigate to the grid page
+        setTimeout(() => {
+          this.closeNavBar();
+        }, 1000);
+    
+       
       });
     }
   }

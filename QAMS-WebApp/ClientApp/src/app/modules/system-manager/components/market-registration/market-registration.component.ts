@@ -4,6 +4,7 @@ import { MessageService } from 'primeng/api';
 import { BatchLotServicesService } from '../../services/batch-lot-services.service';
 import { MarketRegistrationService } from '../../services/market-registration.service';
 import { MarketRegistration } from 'src/app/models/marketRegistration.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-market-registration',
@@ -13,7 +14,7 @@ import { MarketRegistration } from 'src/app/models/marketRegistration.model';
 })
 export class MarketRegistrationComponent {
   marketRegistrationForm!: FormGroup;
-  constructor(private fb: FormBuilder, private messageService: MessageService, 
+  constructor(private fb: FormBuilder,private router: Router, private messageService: MessageService, 
     private marketRegistration: MarketRegistrationService, private cdr: ChangeDetectorRef) { }
     ngOnInit(): void {
       this.marketRegistrationForm = this.fb.group({
@@ -39,7 +40,14 @@ export class MarketRegistrationComponent {
       };
       this.marketRegistration.insertMarketData(mktRegistration).subscribe((data: any) => {        
       this.messageService.add({ severity: 'success', summary: 'market Registration Saved Successfull', detail: 'Message Content' });
-        });    
+           
+        setTimeout(() => {
+          this.backToMarkets();
+        }, 1000);
+      });  
   }
    }
+   backToMarkets(){
+    this.router.navigateByUrl('/markets');
+  }
 }

@@ -64,8 +64,10 @@ export class EquipmentRegComponent {
         console.log('Form submitted!', equipmentRegistration);
         this.messageService.add({ severity: 'success', summary: 'Equipment Registration Saved Successfull', detail: 'Message Content' });
         
+        setTimeout(() => {
+          this.backToEquip();
+        }, 1000);
       });
-      this.router.navigateByUrl('/equipments');
   }
   
   }

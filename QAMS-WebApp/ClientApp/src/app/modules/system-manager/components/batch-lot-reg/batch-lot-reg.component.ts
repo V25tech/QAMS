@@ -54,14 +54,18 @@ constructor(private fb: FormBuilder, private messageService: MessageService,priv
         otherDetails: this. batchLotParticularsForm.value.otherDetails
       };
 
-      this.batchLotService.insertBatchDetails(BatchLotParticulars).subscribe((data: any) => {        
+      this.batchLotService.insertBatchDetails(BatchLotParticulars).subscribe((data: any) => {   
+        console.log('Form submitted!', BatchLotParticulars);     
         this.messageService.add({ severity: 'success', summary: 'Batch/Lot Particulars Saved Successfull', detail: 'Message Content' });
-          });    
-
+            
+          setTimeout(() => {
+            this.backToBatchLot();
+          }, 1000);
+        });  
       
       // Submit the Batch/Lot Particular object to your service or backend
-      console.log('Form submitted!', BatchLotParticulars);
-      this.messageService.add({ severity: 'success', summary: 'Batch/Lot Particulars Saved Successfull', detail: 'Message Content' });
+      // console.log('Form submitted!', BatchLotParticulars);
+      // this.messageService.add({ severity: 'success', summary: 'Batch/Lot Particulars Saved Successfull', detail: 'Message Content' });
     }
   }
   

@@ -53,8 +53,10 @@ export class RegNewUserGroupComponent {
         console.log('Form submitted!', RegUserGroup);
         this.messageService.add({ severity: 'success', summary: 'User Group Registration Saved Successfull', detail: 'Message Content' });
         
+        setTimeout(() => {
+          this.backToUsers();
+        }, 1000);
       });
-      this.router.navigateByUrl('/user-groups');
     }
   }
   backToUsers(){

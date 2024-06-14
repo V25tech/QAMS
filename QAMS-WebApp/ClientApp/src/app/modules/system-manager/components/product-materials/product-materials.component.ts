@@ -93,7 +93,11 @@ export class ProductMaterialsComponent {
 
       this.ProductsService.insertProducttDetails(regProduct).subscribe((data: any) => {        
         this.messageService.add({ severity: 'success', summary: 'Products Registration Saved Successfull', detail: 'Message Content' });
-          });    
+           
+          setTimeout(() => {
+            this.closeNavBar();
+          }, 1000);
+        });  
         }
       }
 

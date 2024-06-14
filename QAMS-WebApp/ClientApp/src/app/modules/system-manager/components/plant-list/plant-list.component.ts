@@ -91,7 +91,11 @@ export class PlantListComponent {
       this.PlantListService.insertPlantDetails(regPlant).subscribe((data: any) => {
       //  console.log('Form submitted!', customerRegistration);
         this.messageService.add({ severity: 'success', summary: 'Customer Registration Saved Successfull', detail: 'Message Content' });
-      });
+
+        setTimeout(() => {
+        this.closeNavBar();
+      }, 1000);
+    });
       
      // console.log('Form submitted!',RegPlant);
       //this.messageService.add({ severity: 'success', summary: ' Plant Registered Successfully', detail: 'Message Content' });

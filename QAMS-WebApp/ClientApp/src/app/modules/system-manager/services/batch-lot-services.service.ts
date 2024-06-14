@@ -32,7 +32,8 @@ export class BatchLotServicesService {
   insertBatchDetails(settings: BatchLotParticulars) {
     debugger;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post(this.apiUrl+ '/batchdetails/savebatchdetails', settings, { headers })
+    return this.http.post(this.apiUrl+ '/batchdetails/savebatchdetails', settings, { headers });
+
     //return this.http.post(this.apiUrl + '/customer/savecustomer', settings,{  });    
   }
 }
