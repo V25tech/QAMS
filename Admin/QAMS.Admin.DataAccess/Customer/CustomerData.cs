@@ -73,8 +73,8 @@ namespace QAMS.Admin.Data
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.City, Value = customer.city });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.State, Value = customer.state });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.Country, Value = customer.country });
-                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = CustomerConstants.Zipcode, Value = customer.zipcode });
-                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = CustomerConstants.Fax, Value = customer.fax });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.Zipcode, Value = customer.zipcode });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.Fax, Value = customer.fax });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.Email, Value = customer.email });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.Remark, Value = customer.remark });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.CreatedBy, Value = customer.createdBy });
