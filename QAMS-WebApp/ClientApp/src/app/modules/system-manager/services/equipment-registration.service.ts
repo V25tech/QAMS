@@ -36,4 +36,13 @@ export class EquipmentRegistrationService {
     //return this.http.post(this.apiUrl + '/customer/savecustomer', settings,{  });    
   }
 
+  updateEquipmentDetails(settings: EquipmentRegistration) {
+    debugger;
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    return this.http.post(this.apiUrl+ '/equipment/updateequipment', settings, { headers })
+
+    //return this.http.post(this.apiUrl + '/customer/savecustomer', settings,{  });    
+  }
+
 }

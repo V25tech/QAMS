@@ -44,6 +44,7 @@ export class EquipmentRegComponent {
 
 
       const equipmentRegistration: EquipmentRegistration = {
+        id: this. equipmentRegForm.value.id,
         equipmentName: this. equipmentRegForm.value.equipmentName,
         equipmentId: this. equipmentRegForm.value.equipmentId,
         make: this. equipmentRegForm.value.make,
@@ -73,5 +74,42 @@ export class EquipmentRegComponent {
   }
   backToEquip(){
     this.router.navigateByUrl('/equipments');
+  }
+  navigateToEditEquipment(){
+    if (this. equipmentRegForm.invalid) {
+      this.messageService.add({ severity: 'error', summary: 'Form is invalid!', detail: 'Message Content' });
+      return; // Prevent form submission
+    } else {
+
+
+      const equipmentRegistration: EquipmentRegistration = {
+        id: this. equipmentRegForm.value.id,
+        equipmentName: this. equipmentRegForm.value.equipmentName,
+        equipmentId: this. equipmentRegForm.value.equipmentId,
+        make: this. equipmentRegForm.value.make,
+        model: this. equipmentRegForm.value.model,
+        serialNumber: this. equipmentRegForm.value.serialNumber,
+        installedLocation: this. equipmentRegForm.value.installedLocation,
+        department: this. equipmentRegForm.value.department,
+        installedOn: this. equipmentRegForm.value.installedOn,
+        warranty: this. equipmentRegForm.value.warranty,
+        suppliedBy: this. equipmentRegForm.value.suppliedBy,
+        software: this. equipmentRegForm.value.software
+      };
+
+      // Submit the  Equipment Registration object to your service or backend
+      debugger;
+
+      this.equipmentRegService.updateEquipmentDetails(equipmentRegistration).subscribe((data: any) => {
+        console.log('Form submitted!', equipmentRegistration);
+        this.messageService.add({ severity: 'success', summary: 'Equipment Registration Saved Successfull', detail: 'Message Content' });
+        
+        setTimeout(() => {
+          this.backToEquip();
+        }, 1000);
+      });
+  }
+  
+  
   }
 }

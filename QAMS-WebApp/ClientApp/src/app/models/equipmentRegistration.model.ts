@@ -1,4 +1,5 @@
 export interface EquipmentRegistration {
+    id:any,
     equipmentName:string,
     equipmentId:string,
     make:string,
