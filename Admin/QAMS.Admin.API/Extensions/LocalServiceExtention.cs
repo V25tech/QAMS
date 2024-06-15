@@ -52,6 +52,8 @@ namespace QAMS.Admin.API.Extensions
             serviceCollection.AddScoped<IPlantData, PlantData>();
             serviceCollection.AddScoped<IProductService, ProductService>();
             serviceCollection.AddScoped<IProductData, ProductData>();
+            serviceCollection.AddScoped<IBatchDetailsService, BatchDetailsService>();
+            serviceCollection.AddScoped<IBatchDetailsData, BatchDetailsData>();
             
         }
     }
