@@ -5,12 +5,10 @@ import { Observable } from 'rxjs';
 @Injectable({
     providedIn: 'root'
 })
-export class LoginService {
+export class Hod_ReviewService {
+
+    private apiUrl = 'QAMS_API';
 
     constructor(private http: HttpClient) { }
-
-    getLoginUserInfo() {
-        return { userName: 'JohnSmith', userId: 23 };
-    }
 
 }

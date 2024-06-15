@@ -245,7 +245,7 @@
 
        
         <div *ngIf="selectedReviewOptions==='hodReview'" class="col-lg-7">
-          <app-hod-review></app-hod-review>
+          <app-hod-review [changeControl]="changeControl"></app-hod-review>
         </div>
         <div *ngIf="selectedReviewOptions==='qaReview'" class="col-lg-7">
           <app-qa-review></app-qa-review>
