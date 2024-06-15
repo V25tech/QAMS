@@ -23,7 +23,9 @@ namespace QAMS.Admin.Entities
         private string nameField;
         
         private string equipmentidField;
-        
+
+        private string departmentField;
+
         private string makeField;
         
         private string modelField;
@@ -62,7 +64,7 @@ namespace QAMS.Admin.Entities
             }
         }
         
-        public string Name
+        public string equipmentName
         {
             get
             {
@@ -73,7 +75,20 @@ namespace QAMS.Admin.Entities
                 this.nameField = value;
             }
         }
-        
+
+        public string department
+        {
+            get
+            {
+                return this.departmentField;
+            }
+            set
+            {
+                this.departmentField = value;
+            }
+        }
+
+
         public string EquipmentId
         {
             get

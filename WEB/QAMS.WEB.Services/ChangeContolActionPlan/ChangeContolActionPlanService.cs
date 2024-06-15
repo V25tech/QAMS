@@ -153,7 +153,21 @@ namespace QAMS.Admin.Services
                 throw;
             }
         }
-        
+
+        public List<ChangeContolActionPlan> GetActionPlanByIntIdandWorkId(int p_IntId, int p_WorkId)
+        {
+            try
+            {
+                DataSet dataset = changeContolActionPlanData.GetActionPlanByIntIdandWorkId(p_IntId,p_WorkId);
+                List<ChangeContolActionPlan> result = ChangeContolActionPlanConverter.SetAllChangeContolActionPlan(dataset);
+                return result;
+            }
+            catch (System.Exception ex)
+            {
+                throw;
+            }
+        }
+
         public List<ChangeContolActionPlan> GetChangeContolActionPlanByUserGroupId(System.Int32? id)
         {
             try

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace QAMS.Admin.Entities
+namespace QAMS.WEB.Entities
 {
     using System;
     using System.Collections.Generic;
@@ -15,20 +15,20 @@ namespace QAMS.Admin.Entities
     
     
     // Comment
-    public class Plant
+    public class BatchDetails
     {
         
         private System.Int32? idField;
         
-        private string nameField;
+        private string batchidField;
         
-        private string codeField;
+        private string materialField;
         
-        private System.Int32? revisionField;
+        private string arnumberField;
         
-        private string addressField;
+        private string initiatedbyField;
         
-        private string commentField;
+        private DateTime? initiatedonField;
         
         private string createdbyField;
         
@@ -38,7 +38,7 @@ namespace QAMS.Admin.Entities
         
         private DateTime? modifieddateField;
         
-        public System.Int32? id
+        public System.Int32? Id
         {
             get
             {
@@ -50,67 +50,67 @@ namespace QAMS.Admin.Entities
             }
         }
         
-        public string plantName
+        public string BatchId
         {
             get
             {
-                return this.nameField;
+                return this.batchidField;
             }
             set
             {
-                this.nameField = value;
+                this.batchidField = value;
             }
         }
         
-        public string code
+        public string Material
         {
             get
             {
-                return this.codeField;
+                return this.materialField;
             }
             set
             {
-                this.codeField = value;
+                this.materialField = value;
             }
         }
         
-        public System.Int32? revision
+        public string ARNumber
         {
             get
             {
-                return this.revisionField;
+                return this.arnumberField;
             }
             set
             {
-                this.revisionField = value;
+                this.arnumberField = value;
             }
         }
         
-        public string address
+        public string InitiatedBy
         {
             get
             {
-                return this.addressField;
+                return this.initiatedbyField;
             }
             set
             {
-                this.addressField = value;
+                this.initiatedbyField = value;
             }
         }
         
-        public string comment
+        public DateTime? InitiatedOn
         {
             get
             {
-                return this.commentField;
+                return this.initiatedonField;
             }
             set
             {
-                this.commentField = value;
+                this.initiatedonField = value;
             }
         }
         
-        public string createdBy
+        public string CreatedBy
         {
             get
             {
@@ -122,7 +122,7 @@ namespace QAMS.Admin.Entities
             }
         }
         
-        public DateTime? createdDate
+        public DateTime? CreatedDate
         {
             get
             {

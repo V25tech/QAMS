@@ -67,6 +67,9 @@ namespace QAMS.Admin.Services
         {
             try
             {
+                department.initiatedBy = "Admin";
+                department.modifiedBy = "admin";
+               
                 String validationMessages = DepartmentValidator.IsValidDepartment(department);
                 if (validationMessages.Length <= 0)
                 {

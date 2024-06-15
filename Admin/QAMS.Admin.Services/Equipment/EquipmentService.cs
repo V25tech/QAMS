@@ -67,6 +67,9 @@ namespace QAMS.Admin.Services
         {
             try
             {
+               
+                equipment.CreatedBy = "Admin";
+                equipment.ModifiedBy = "Admin";
                 String validationMessages = EquipmentValidator.IsValidEquipment(equipment);
                 if (validationMessages.Length <= 0)
                 {

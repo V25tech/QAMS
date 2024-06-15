@@ -18,30 +18,31 @@ namespace QAMS.Admin.Services
     using QAMS.Common.Entities;
     using QAMS.Admin.Entities;
     using QAMS.Admin.Data;
-    
-    
+    using QAMS.WEB.Entities;
+
+
     // Comment
-    public class MarketService : IMarketService
+    public class BatchDetailsService : IBatchDetailsService
     {
         
-        private readonly IMarketData marketData;
+        private readonly IBatchDetailsData batchDetailsData;
         
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="marketData"></param>
-        public MarketService(IMarketData marketData)
+        /// <param name="batchDetailsData"></param>
+        public BatchDetailsService(IBatchDetailsData batchDetailsData)
         {
-            this.marketData = marketData;
+            this.batchDetailsData = batchDetailsData;
         }
         
-        public ResponseContext<Market> GetAllMarket(RequestContext requestContext)
+        public ResponseContext<BatchDetails> GetAllBatchDetails(RequestContext requestContext)
         {
             try
             {
-                DataSet dataset = marketData.GetAllMarket(requestContext);
-                List<Market> result = MarketConverter.SetAllMarket(dataset);
-                return new ResponseContext<Market>() { RowCount = CommonConverter.SetRowsCount(dataset), Response = result };
+                DataSet dataset = batchDetailsData.GetAllBatchDetails(requestContext);
+                List<BatchDetails> result = BatchDetailsConverter.SetAllBatchDetails(dataset);
+                return new ResponseContext<BatchDetails>() { RowCount = CommonConverter.SetRowsCount(dataset), Response = result };
             }
             catch (System.Exception ex)
             {
@@ -49,12 +50,12 @@ namespace QAMS.Admin.Services
             }
         }
         
-        public Market GetMarketById(System.Int32? id)
+        public BatchDetails GetBatchDetailsById(System.Int32? id)
         {
             try
             {
-                DataSet dataset = marketData.GetMarketById(id);
-                Market result = MarketConverter.SetMarket(dataset);
+                DataSet dataset = batchDetailsData.GetBatchDetailsById(id);
+                BatchDetails result = BatchDetailsConverter.SetBatchDetails(dataset);
                 return result;
             }
             catch (System.Exception ex)
@@ -63,16 +64,14 @@ namespace QAMS.Admin.Services
             }
         }
         
-        public bool SaveMarket(Market market)
+        public bool SaveBatchDetails(BatchDetails batchDetails)
         {
             try
             {
-                market.createdBy = "admin";
-                market.ModifiedBy="admin";
-                String validationMessages = MarketValidator.IsValidMarket(market);
+                String validationMessages = BatchDetailsValidator.IsValidBatchDetails(batchDetails);
                 if (validationMessages.Length <= 0)
                 {
-                    var result = marketData.SaveMarket(market);
+                    var result = batchDetailsData.SaveBatchDetails(batchDetails);
                     return result;
                 }
                 throw new System.Exception(validationMessages);
@@ -83,14 +82,14 @@ namespace QAMS.Admin.Services
             }
         }
         
-        public bool UpdateMarket(Market market)
+        public bool UpdateBatchDetails(BatchDetails batchDetails)
         {
             try
             {
-                String validationMessages = MarketValidator.IsValidMarket(market);
+                String validationMessages = BatchDetailsValidator.IsValidBatchDetails(batchDetails);
                 if (validationMessages.Length <= 0)
                 {
-                    bool result = marketData.UpdateMarket(market);
+                    bool result = batchDetailsData.UpdateBatchDetails(batchDetails);
                     return result;
                 }
                 throw new System.Exception(validationMessages);
@@ -101,11 +100,11 @@ namespace QAMS.Admin.Services
             }
         }
         
-        public bool DeleteMarketById(System.Int32? id)
+        public bool DeleteBatchDetailsById(System.Int32? id)
         {
             try
             {
-                return marketData.DeleteMarketById(id);
+                return batchDetailsData.DeleteBatchDetailsById(id);
             }
             catch (System.Exception ex)
             {
@@ -113,11 +112,11 @@ namespace QAMS.Admin.Services
             }
         }
         
-        public bool DeleteAllMarket(List<int> ids)
+        public bool DeleteAllBatchDetails(List<int> ids)
         {
             try
             {
-                return marketData.DeleteAllMarket(ids);
+                return batchDetailsData.DeleteAllBatchDetails(ids);
             }
             catch (System.Exception ex)
             {

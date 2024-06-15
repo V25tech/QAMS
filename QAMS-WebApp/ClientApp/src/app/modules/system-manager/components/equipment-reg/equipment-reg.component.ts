@@ -3,6 +3,8 @@ import { EquipmentRegistrationService } from '../../services/equipment-registrat
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { EquipmentRegistration } from 'src/app/models/equipmentRegistration.model';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-equipment-reg',
@@ -12,7 +14,7 @@ import { EquipmentRegistration } from 'src/app/models/equipmentRegistration.mode
 })
 export class EquipmentRegComponent {
   equipmentRegForm!: FormGroup;
-  constructor(private fb: FormBuilder, private messageService: MessageService, 
+  constructor(private fb: FormBuilder,private router: Router, private messageService: MessageService, 
     private equipmentRegService: EquipmentRegistrationService, private cdr: ChangeDetectorRef) { }
     ngOnInit(): void {
       this.equipmentRegForm = this.fb.group({
@@ -56,8 +58,20 @@ export class EquipmentRegComponent {
       };
 
       // Submit the  Equipment Registration object to your service or backend
-      console.log('Form submitted!', equipmentRegistration);
-      this.messageService.add({ severity: 'success', summary: 'Equipment Registration Saved Successfull', detail: 'Message Content' });
+      debugger;
+
+      this.equipmentRegService.insertCustomerDetails(equipmentRegistration).subscribe((data: any) => {
+        console.log('Form submitted!', equipmentRegistration);
+        this.messageService.add({ severity: 'success', summary: 'Equipment Registration Saved Successfull', detail: 'Message Content' });
+        
+        setTimeout(() => {
+          this.backToEquip();
+        }, 1000);
+      });
   }
+  
+  }
+  backToEquip(){
+    this.router.navigateByUrl('/equipments');
   }
 }

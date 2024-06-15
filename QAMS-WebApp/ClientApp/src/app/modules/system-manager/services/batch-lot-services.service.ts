@@ -21,7 +21,19 @@ export class BatchLotServicesService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.put<BatchLotParticulars>(this.apiUrl, settings, { headers });
   }
+  // getBatchLotData(): Observable<any> {
+  //   return this.http.get('assets/json/SystemManager/batchLotParticulars.json');
+  // }
+
   getBatchLotData(): Observable<any> {
-    return this.http.get('assets/json/SystemManager/batchLotParticulars.json');
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post(this.apiUrl+'/batchdetails/GetAllBatchDetails',"{\"pageNumber\":1,\"pageSize\":100,\"planId\":1}", { headers });
+  }
+  insertBatchDetails(settings: BatchLotParticulars) {
+    debugger;
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post(this.apiUrl+ '/batchdetails/savebatchdetails', settings, { headers });
+
+    //return this.http.post(this.apiUrl + '/customer/savecustomer', settings,{  });    
   }
 }

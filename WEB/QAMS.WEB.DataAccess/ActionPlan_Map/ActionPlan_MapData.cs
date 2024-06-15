@@ -70,8 +70,8 @@ namespace QAMS.WEB.Data
                 sqlparms.Add(new SqlParameter { DbType = DbType.Boolean, ParameterName = ActionPlan_MapConstants.IsReviewed, Value = actionPlan_Map.IsReviewed });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Boolean, ParameterName = ActionPlan_MapConstants.IsActionPlan, Value = actionPlan_Map.IsActionPlan });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Boolean, ParameterName = ActionPlan_MapConstants.initId, Value = actionPlan_Map.initId });
-                sqlparms.Add(new SqlParameter { DbType = DbType.Boolean, ParameterName = ActionPlan_MapConstants.DocumentAction, Value = actionPlan_Map.DocumentAction });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ActionPlan_MapConstants.DocumentCategory, Value = actionPlan_Map.DocumentCategory });
+                sqlparms.Add(new SqlParameter { DbType = DbType.Xml, ParameterName = ActionPlan_MapConstants.DocumentAction, Value = actionPlan_Map.DocumentAction });
+                sqlparms.Add(new SqlParameter { DbType = DbType.Xml, ParameterName = ActionPlan_MapConstants.DocumentCategory, Value = actionPlan_Map.DocumentCategory });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ActionPlan_MapConstants.CreatedBy, Value = actionPlan_Map.CreatedBy });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ActionPlan_MapConstants.ModifiedBy, Value = actionPlan_Map.ModifiedBy });
                 Object result = dataAccessHelper.ExecuteStoredProcedure(ActionPlan_MapConstants.USP_ActionPlan_Map_PSY_INSERT, sqlparms, ExecutionType.Scalar);

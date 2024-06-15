@@ -66,7 +66,8 @@ namespace QAMS.Admin.Data
             try
             {
                 List<SqlParameter> sqlparms = new List<SqlParameter>();
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = EquipmentConstants.Name, Value = equipment.Name });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = EquipmentConstants.Name, Value = equipment.equipmentName });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = EquipmentConstants.Department, Value = equipment.department });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = EquipmentConstants.EquipmentId, Value = equipment.EquipmentId });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = EquipmentConstants.Make, Value = equipment.Make });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = EquipmentConstants.Model, Value = equipment.Model });
@@ -94,7 +95,7 @@ namespace QAMS.Admin.Data
             {
                 List<SqlParameter> sqlparms = new List<SqlParameter>();
                 sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = EquipmentConstants.Id, Value = equipment.Id });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = EquipmentConstants.Name, Value = equipment.Name });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = EquipmentConstants.Name, Value = equipment.equipmentName });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = EquipmentConstants.EquipmentId, Value = equipment.EquipmentId });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = EquipmentConstants.Make, Value = equipment.Make });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = EquipmentConstants.Model, Value = equipment.Model });

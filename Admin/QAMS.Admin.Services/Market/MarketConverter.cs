@@ -37,12 +37,12 @@ namespace QAMS.Admin.Services
                     {
                         DataRow row = dataset.Tables[0].Rows[i];
                         marketData = new Market();
-                        marketData.Id = DatatypeConverter.SetIntValue(row[MarketConstants.Id.TrimAt()]);
-                        marketData.Name = Convert.ToString(row[MarketConstants.Name.TrimAt()]);
-                        marketData.Code = Convert.ToString(row[MarketConstants.Code.TrimAt()]);
+                        marketData.id = DatatypeConverter.SetIntValue(row[MarketConstants.Id.TrimAt()]);
+                        marketData.name = Convert.ToString(row[MarketConstants.Name.TrimAt()]);
+                        marketData.uniqueCode = Convert.ToString(row[MarketConstants.Code.TrimAt()]);
                         marketData.Remark = Convert.ToString(row[MarketConstants.Remark.TrimAt()]);
-                        marketData.CreatedBy = Convert.ToString(row[MarketConstants.CreatedBy.TrimAt()]);
-                        marketData.CreatedDate = DatatypeConverter.SetDateTime(row[MarketConstants.CreatedDate.TrimAt()]);
+                        marketData.createdBy = Convert.ToString(row[MarketConstants.CreatedBy.TrimAt()]);
+                        marketData.createdDate = DatatypeConverter.SetDateTime(row[MarketConstants.CreatedDate.TrimAt()]);
                         marketData.ModifiedBy = Convert.ToString(row[MarketConstants.ModifiedBy.TrimAt()]);
                         marketData.ModifiedDate = DatatypeConverter.SetDateTime(row[MarketConstants.ModifiedDate.TrimAt()]);
                         result.Add(marketData);

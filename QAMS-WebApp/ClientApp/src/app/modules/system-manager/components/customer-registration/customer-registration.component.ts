@@ -4,6 +4,7 @@ import { MessageService } from 'primeng/api';
 import { BatchLotServicesService } from '../../services/batch-lot-services.service';
 import { CustomerRegistration } from 'src/app/models/customerRegistration.model';
 import { CustomerRegistrationService } from '../../services/customer-registration.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-customer-registration',
   templateUrl: './customer-registration.component.html',
@@ -14,7 +15,7 @@ export class CustomerRegistrationComponent {
 
   customerRegistrationForm!: FormGroup;
   // CustomerRegistrationService: any;
-  constructor(private fb: FormBuilder, private messageService: MessageService, private customerService:CustomerRegistrationService,
+  constructor(private fb: FormBuilder,private router: Router, private messageService: MessageService, private customerService:CustomerRegistrationService,
     private batchLotService: BatchLotServicesService, private cdr: ChangeDetectorRef) { }
     ngOnInit(): void {
       this.customerRegistrationForm = this.fb.group({
@@ -62,12 +63,13 @@ export class CustomerRegistrationComponent {
         console.log('Form submitted!', customerRegistration);
         this.messageService.add({ severity: 'success', summary: 'Customer Registration Saved Successfull', detail: 'Message Content' });
         
-      });
-
-      this.customerService.insertCustomerDetails(customerRegistration)
-      // Submit the  Customer Registration object to your service or backend
-      console.log('Form submitted!', customerRegistration);
-      this.messageService.add({ severity: 'success', summary: 'Customer Registration Saved Successfull', detail: 'Message Content' });
+        setTimeout(() => {
+          this.backToCustomers();
+        }, 1000);
+      });  
   }
+}
+backToCustomers(){
+  this.router.navigateByUrl('/customers');
 }
 }

@@ -66,10 +66,10 @@ namespace QAMS.Admin.Data
             try
             {
                 List<SqlParameter> sqlparms = new List<SqlParameter>();
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = MarketConstants.Name, Value = market.Name });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = MarketConstants.Code, Value = market.Code });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = MarketConstants.Name, Value = market.name });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = MarketConstants.Code, Value = market.uniqueCode });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = MarketConstants.Remark, Value = market.Remark });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = MarketConstants.CreatedBy, Value = market.CreatedBy });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = MarketConstants.CreatedBy, Value = market.createdBy });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = MarketConstants.ModifiedBy, Value = market.ModifiedBy });
                 Object result = dataAccessHelper.ExecuteStoredProcedure(MarketConstants.USP_Market_PSY_INSERT, sqlparms, ExecutionType.Scalar);
                 return (Convert.ToInt32(result) > 0);
@@ -85,9 +85,9 @@ namespace QAMS.Admin.Data
             try
             {
                 List<SqlParameter> sqlparms = new List<SqlParameter>();
-                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = MarketConstants.Id, Value = market.Id });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = MarketConstants.Name, Value = market.Name });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = MarketConstants.Code, Value = market.Code });
+                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = MarketConstants.Id, Value = market.id });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = MarketConstants.Name, Value = market.name });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = MarketConstants.Code, Value = market.uniqueCode });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = MarketConstants.Remark, Value = market.Remark });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = MarketConstants.ModifiedBy, Value = market.ModifiedBy });
                 Object result = dataAccessHelper.ExecuteStoredProcedure(MarketConstants.USP_Market_PSY_UPDATE, sqlparms, ExecutionType.Scalar);

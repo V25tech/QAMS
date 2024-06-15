@@ -67,6 +67,8 @@ namespace QAMS.Admin.Services
         {
             try
             {
+                plant.createdBy = "admin";
+                plant.ModifiedBy = "admin";
                 String validationMessages = PlantValidator.IsValidPlant(plant);
                 if (validationMessages.Length <= 0)
                 {

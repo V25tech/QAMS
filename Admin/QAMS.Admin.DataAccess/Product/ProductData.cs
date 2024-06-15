@@ -66,12 +66,12 @@ namespace QAMS.Admin.Data
             try
             {
                 List<SqlParameter> sqlparms = new List<SqlParameter>();
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ProductConstants.Name, Value = product.Name });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ProductConstants.Code, Value = product.Code });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ProductConstants.ChemicalName, Value = product.ChemicalName });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ProductConstants.Name, Value = product.name });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ProductConstants.Code, Value = product.code });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ProductConstants.ChemicalName, Value = product.chemicalName });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Boolean, ParameterName = ProductConstants.IsActive, Value = product.IsActive });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ProductConstants.CreatedBy, Value = product.CreatedBy });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ProductConstants.ModifiedBy, Value = product.ModifiedBy });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ProductConstants.CreatedBy, Value = product.createdBy });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ProductConstants.ModifiedBy, Value = product.modifiedBy });
                 Object result = dataAccessHelper.ExecuteStoredProcedure(ProductConstants.USP_Product_PSY_INSERT, sqlparms, ExecutionType.Scalar);
                 return (Convert.ToInt32(result) > 0);
             }
@@ -86,12 +86,12 @@ namespace QAMS.Admin.Data
             try
             {
                 List<SqlParameter> sqlparms = new List<SqlParameter>();
-                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = ProductConstants.Id, Value = product.Id });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ProductConstants.Name, Value = product.Name });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ProductConstants.Code, Value = product.Code });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ProductConstants.ChemicalName, Value = product.ChemicalName });
+                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = ProductConstants.Id, Value = product.id });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ProductConstants.Name, Value = product.name });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ProductConstants.Code, Value = product.code });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ProductConstants.ChemicalName, Value = product.chemicalName });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Boolean, ParameterName = ProductConstants.IsActive, Value = product.IsActive });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ProductConstants.ModifiedBy, Value = product.ModifiedBy });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ProductConstants.ModifiedBy, Value = product.modifiedBy });
                 Object result = dataAccessHelper.ExecuteStoredProcedure(ProductConstants.USP_Product_PSY_UPDATE, sqlparms, ExecutionType.Scalar);
                 return (Convert.ToInt32(result) > 0);
             }

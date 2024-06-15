@@ -38,7 +38,7 @@ namespace QAMS.Admin.Services
                         DataRow row = dataset.Tables[0].Rows[i];
                         plantData = new Plant();
                         plantData.id = DatatypeConverter.SetIntValue(row[PlantConstants.Id.TrimAt()]);
-                        plantData.name = Convert.ToString(row[PlantConstants.Name.TrimAt()]);
+                        plantData.plantName = Convert.ToString(row[PlantConstants.Name.TrimAt()]);
                         plantData.code = Convert.ToString(row[PlantConstants.Code.TrimAt()]);
                         plantData.revision = DatatypeConverter.SetIntValue(row[PlantConstants.Revision.TrimAt()]);
                         plantData.address = Convert.ToString(row[PlantConstants.Address.TrimAt()]);

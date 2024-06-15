@@ -12,7 +12,7 @@
             <div class="col mt-2 table-landing ">
                     <p-table #dt dataKey="id" [value]="plantDatasource" [paginator]="true" [rows]="10"
                         [rowsPerPageOptions]="[10, 25, 50]" [showCurrentPageReport]="true"
-                        [globalFilterFields]="['code','name', 'createdBy', 'createdDate']"
+                        [globalFilterFields]="['code','plantName', 'createdBy', 'createdDate']"
 
                         tableStyleClass="table table-striped">
                         <ng-template pTemplate="caption">
@@ -27,7 +27,7 @@
                             <tr>
                                 <th style="width:40px" class="lh-lg">S.No</th>
                                 <th pSortableColumn="code">Plant Code <p-columnFilter type="text" field="code" display="menu"></p-columnFilter></th>
-                                <th pSortableColumn="name">Plant Name<p-columnFilter type="text" field="name" display="menu"></p-columnFilter></th>
+                                <th pSortableColumn="plantName">Plant Name<p-columnFilter type="text" field="plantName" display="menu"></p-columnFilter></th>
                                 <th pSortableColumn="createdBy">Initiated By <p-columnFilter type="text" field="createdBy" display="menu"></p-columnFilter></th>
                                 <th pSortableColumn="createdDate">Initiated On <p-columnFilter type="date" field="createdDate" display="menu"></p-columnFilter> </th>
                                 <th class="text-center">Actions</th>
@@ -40,7 +40,7 @@
                                 
                                 <td class="idname">
                                   {{plantList.code}}</td>
-                                  <td>{{plantList.name}}</td>
+                                  <td>{{plantList.plantName}}</td>
                                   <td>{{plantList.createdBy}}</td>
                                 <td>{{plantList.createdDate}}</td>
                              

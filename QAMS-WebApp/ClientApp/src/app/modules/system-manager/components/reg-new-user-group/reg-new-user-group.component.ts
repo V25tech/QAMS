@@ -20,6 +20,8 @@ export class RegNewUserGroupComponent {
     private UserGroupService: UserGroupService, private cdr: ChangeDetectorRef) { }
   ngOnInit() :void {
     this.userGroupForm = this.fb.group({
+      name: ['', Validators.required],
+      code: ['', Validators.required],
       remarks: ['', Validators.required],
      
     
@@ -40,13 +42,21 @@ export class RegNewUserGroupComponent {
 
 
       const RegUserGroup: RegUserGroup = {
-       remarks: this.userGroupForm.value.remarks
+        name: this.userGroupForm.value.name,
+        code: this.userGroupForm.value.code,
+        remarks: this.userGroupForm.value.remarks,
         
       };
+      debugger;
 
-      
-      console.log('Form submitted!', RegUserGroup);
-      this.messageService.add({ severity: 'success', summary: ' User Group Added Successfully', detail: 'Message Content' });
+      this.UserGroupService.insertCustomerDetails(RegUserGroup).subscribe((data: any) => {
+        console.log('Form submitted!', RegUserGroup);
+        this.messageService.add({ severity: 'success', summary: 'User Group Registration Saved Successfull', detail: 'Message Content' });
+        
+        setTimeout(() => {
+          this.backToUsers();
+        }, 1000);
+      });
     }
   }
   backToUsers(){

@@ -59,7 +59,8 @@ namespace QAMS.Admin.Entities
         public const string Id = "@Id_PSY";
         
         public const string USP_ChangeContolActionPlan_PSY_By_Id_GET = "dbo.USP_ChangeContolActionPlan_PSY_By_Id_GET";
-        
+        public const string USP_ActionPlan_PSY_GET_BY_INITD_AND_WORK_ID = "dbo.USP_ActionPlan_PSY_GET_BY_INITD_AND_WORK_ID";
+
         public const string USP_ChangeContolActionPlan_PSY_By_Id_DELETE = "dbo.USP_ChangeContolActionPlan_PSY_By_Id_DELETE";
     }
 }

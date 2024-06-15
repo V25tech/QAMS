@@ -37,15 +37,15 @@ namespace QAMS.Admin.Services
                     {
                         DataRow row = dataset.Tables[0].Rows[i];
                         productData = new Product();
-                        productData.Id = DatatypeConverter.SetIntValue(row[ProductConstants.Id.TrimAt()]);
-                        productData.Name = Convert.ToString(row[ProductConstants.Name.TrimAt()]);
-                        productData.Code = Convert.ToString(row[ProductConstants.Code.TrimAt()]);
-                        productData.ChemicalName = Convert.ToString(row[ProductConstants.ChemicalName.TrimAt()]);
+                        productData.id = DatatypeConverter.SetIntValue(row[ProductConstants.Id.TrimAt()]);
+                        productData.name = Convert.ToString(row[ProductConstants.Name.TrimAt()]);
+                        productData.code = Convert.ToString(row[ProductConstants.Code.TrimAt()]);
+                        productData.chemicalName = Convert.ToString(row[ProductConstants.ChemicalName.TrimAt()]);
                         productData.IsActive = DatatypeConverter.SetBoolValue(row[ProductConstants.IsActive.TrimAt()]);
-                        productData.CreatedBy = Convert.ToString(row[ProductConstants.CreatedBy.TrimAt()]);
-                        productData.CreatedDate = DatatypeConverter.SetDateTime(row[ProductConstants.CreatedDate.TrimAt()]);
-                        productData.ModifiedBy = Convert.ToString(row[ProductConstants.ModifiedBy.TrimAt()]);
-                        productData.ModifiedDate = DatatypeConverter.SetDateTime(row[ProductConstants.ModifiedDate.TrimAt()]);
+                        productData.createdBy = Convert.ToString(row[ProductConstants.CreatedBy.TrimAt()]);
+                        productData.createdDate = DatatypeConverter.SetDateTime(row[ProductConstants.CreatedDate.TrimAt()]);
+                        productData.modifiedBy = Convert.ToString(row[ProductConstants.ModifiedBy.TrimAt()]);
+                        productData.modifiedDate = DatatypeConverter.SetDateTime(row[ProductConstants.ModifiedDate.TrimAt()]);
                         result.Add(productData);
                     }
                 }

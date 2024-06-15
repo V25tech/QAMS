@@ -26,4 +26,14 @@ export class EquipmentRegistrationService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post(this.apiUrl+'/equipment/GetAllEquipment',"{\"pageNumber\":1,\"pageSize\":100,\"planId\":1}", { headers });
   }
+
+  insertCustomerDetails(settings: EquipmentRegistration) {
+    debugger;
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    return this.http.post(this.apiUrl+ '/equipment/saveequipment', settings, { headers })
+
+    //return this.http.post(this.apiUrl + '/customer/savecustomer', settings,{  });    
+  }
+
 }

@@ -66,7 +66,7 @@ namespace QAMS.Admin.Data
             try
             {
                 List<SqlParameter> sqlparms = new List<SqlParameter>();
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = PlantConstants.Name, Value = plant.name });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = PlantConstants.Name, Value = plant.plantName });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = PlantConstants.Code, Value = plant.code });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = PlantConstants.Revision, Value = plant.revision });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = PlantConstants.Address, Value = plant.address });
@@ -88,7 +88,7 @@ namespace QAMS.Admin.Data
             {
                 List<SqlParameter> sqlparms = new List<SqlParameter>();
                 sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = PlantConstants.Id, Value = plant.id });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = PlantConstants.Name, Value = plant.name });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = PlantConstants.Name, Value = plant.plantName });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = PlantConstants.Code, Value = plant.code });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = PlantConstants.Revision, Value = plant.revision });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = PlantConstants.Address, Value = plant.address });

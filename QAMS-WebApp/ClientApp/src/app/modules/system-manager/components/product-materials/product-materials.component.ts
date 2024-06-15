@@ -84,18 +84,24 @@ export class ProductMaterialsComponent {
     } else {
 
 
-      const RegProduct: RegProduct = {
+      const regProduct: RegProduct = {
         code: this.regProductForm.value.uniqueCode,
         name: this.regProductForm.value.name,
         chemicalName: this.regProductForm.value.chemicalName,
 
       };
 
+      this.ProductsService.insertProducttDetails(regProduct).subscribe((data: any) => {        
+        this.messageService.add({ severity: 'success', summary: 'Products Registration Saved Successfull', detail: 'Message Content' });
+           
+          setTimeout(() => {
+            this.closeNavBar();
+          }, 1000);
+        });  
+        }
+      }
 
-      console.log('Form submitted!', RegProduct);
-      this.messageService.add({ severity: 'success', summary: ' Products/Materials Registered Successfully', detail: 'Message Content' });
-    }
-  }
+
 
   selectStatusType(event: any) {
     this.selectedStatusValue = event.target.value;
