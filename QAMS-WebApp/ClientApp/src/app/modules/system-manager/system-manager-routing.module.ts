@@ -25,6 +25,7 @@ const routes: Routes = [
   {path: 'system-manager', redirectTo: 'security-settings', pathMatch: 'full' },
   {path: 'security-settings', component: SecuritySettingsComponent, canActivate: [AuthGuard] },
   {path:'equipment-registration',component:EquipmentRegComponent, canActivate: [AuthGuard]},
+  {path:'edit-equipment-registration',component:EquipmentRegComponent, canActivate: [AuthGuard]},
   {path:'reg-batch-lot-particulars',component: BatchLotRegComponent, canActivate: [AuthGuard]},
   {path:'market-registration',component:MarketRegistrationComponent,canActivate: [AuthGuard]},
   {path:'markets',component:MarketsComponent,canActivate: [AuthGuard]},

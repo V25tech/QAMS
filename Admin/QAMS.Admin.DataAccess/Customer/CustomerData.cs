@@ -95,7 +95,7 @@ namespace QAMS.Admin.Data
                 List<SqlParameter> sqlparms = new List<SqlParameter>();
                 sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = CustomerConstants.Id, Value = customer.Id });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.Name, Value = customer.name });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.Code, Value = customer.GetHashCode });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.Code, Value = customer.uniqueCode });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.ContactName, Value = customer.contactName });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.Address, Value = customer.address });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerConstants.City, Value = customer.city });

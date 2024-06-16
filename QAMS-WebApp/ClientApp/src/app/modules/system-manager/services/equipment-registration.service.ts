@@ -27,22 +27,18 @@ export class EquipmentRegistrationService {
     return this.http.post(this.apiUrl+'/equipment/GetAllEquipment',"{\"pageNumber\":1,\"pageSize\":100,\"planId\":1}", { headers });
   }
 
-  insertCustomerDetails(settings: EquipmentRegistration) {
-    debugger;
+  insertCustomerDetails(settings: EquipmentRegistration) {    
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-
-    return this.http.post(this.apiUrl+ '/equipment/saveequipment', settings, { headers })
-
-    //return this.http.post(this.apiUrl + '/customer/savecustomer', settings,{  });    
+    return this.http.post(this.apiUrl+ '/equipment/saveequipment', settings, { headers })    
   }
 
-  updateEquipmentDetails(settings: EquipmentRegistration) {
-    debugger;
+  updateEquipmentDetails(settings: EquipmentRegistration) {    
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-
-    return this.http.post(this.apiUrl+ '/equipment/updateequipment', settings, { headers })
-
-    //return this.http.post(this.apiUrl + '/customer/savecustomer', settings,{  });    
+    return this.http.post(this.apiUrl+ '/equipment/updateequipment', settings, { headers })       
+  }
+  GetEquipmentById(equipmentId: number)  {
+    //const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.get(this.apiUrl+'/equipment/'+ equipmentId);    
   }
 
 }

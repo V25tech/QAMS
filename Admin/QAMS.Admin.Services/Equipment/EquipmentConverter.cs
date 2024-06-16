@@ -39,7 +39,7 @@ namespace QAMS.Admin.Services
                         equipmentData = new Equipment();
                         equipmentData.Id = DatatypeConverter.SetIntValue(row[EquipmentConstants.Id.TrimAt()]);
                         equipmentData.equipmentName = Convert.ToString(row[EquipmentConstants.Name.TrimAt()]);
-                        equipmentData.department = Convert.ToString(row[EquipmentConstants.Department.TrimAt()]);
+                        equipmentData.department = Convert.ToString(row[EquipmentConstants.DepartmentId.TrimAt()]);
                         equipmentData.EquipmentId = Convert.ToString(row[EquipmentConstants.EquipmentId.TrimAt()]);
                         equipmentData.Make = Convert.ToString(row[EquipmentConstants.Make.TrimAt()]);
                         equipmentData.Model = Convert.ToString(row[EquipmentConstants.Model.TrimAt()]);
