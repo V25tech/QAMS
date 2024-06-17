@@ -52,7 +52,7 @@ export class DeparmentsComponent {
        this.id = Number.parseInt(params['Id']);
        let splitItesms = this.id;
        debugger;        
-       this.GetEquipmentDetailsbyId(this.id);
+       this.GetDepartmentDetailsbyId(this.id);
      })
      this.DepartmentsService.getDepartmentsData().subscribe((data: any) => {
       debugger
@@ -82,7 +82,7 @@ export class DeparmentsComponent {
  backToEquip(){
    this.router.navigateByUrl('/departments');
  }
- GetEquipmentDetailsbyId(id:number)
+ GetDepartmentDetailsbyId(id:number)
  {
    this.DepartmentsService.GetDepartmentById(id).subscribe((res:any) => {
      debugger;
@@ -173,7 +173,7 @@ export class DeparmentsComponent {
     if(id!=0)
       {
         this.editMode=true;
-       this.GetEquipmentDetailsbyId(id);       
+       this.GetDepartmentDetailsbyId(id);       
       }
       
   }
