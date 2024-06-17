@@ -24,7 +24,7 @@ export class NetworkInterceptor implements HttpInterceptor {
       //   'Content-Type':  'application/json',
       //   'Authorization': 'my-auth-token'
       // })
-      //headers: request.headers.set('Content-Type', 'application/json'),
+      headers: request.headers.set('Content-Type', 'application/json'),
       url: request.url.replace('QAMS_API', this.api_url).replace('ADMIN_API', this.admin_api_url)
       
     });

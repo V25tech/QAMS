@@ -42,6 +42,7 @@ import { DossierPrintRequestComponent } from './components/dossier-print-request
 import { CcAuditTrailsComponent } from './components/cc-audit-trails/cc-audit-trails.component';
 import { TagModule } from 'primeng/tag';
 import { ClosureCCComponent } from './components/change-control-workflow/forms/closure-cc/closure-cc.component';
+import { ActionPlanComponent } from '../shared-components/action-plan.component/action-plan.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { ClosureCCComponent } from './components/change-control-workflow/forms/c
     DocumentsComponent,
     ActivitiesComponent,
     HODReviewComponent,
+    ActionPlanComponent,
     QAReviewComponent,
     WorkItemsWorkflowComponent,
     WorkItemsComponent,
