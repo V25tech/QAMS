@@ -30,4 +30,13 @@ export class DepartmentsService {
 
     //return this.http.post(this.apiUrl + '/customer/savecustomer', settings,{  });    
   }
+  updateDepartmentDetails(settings: RegNewdepartment) {    
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post(this.apiUrl+ '/department/updatedepartment', settings, { headers })       
+  }
+  GetDepartmentById(departmentId: number)  {
+    //const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.get(this.apiUrl+'/department/'+ departmentId);    
+  }
+
 }
