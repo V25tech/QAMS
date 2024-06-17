@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-between align-items-center bg-white shadow-dark px-3">
     <h4 class="page-title flex-grow-1 labelStyles">Departments</h4>
-    <button type="button" class="btn btn-create rounded-pill initiative " (click)="visibleSidebar = true">+ New
+    <button type="button" class="btn btn-create rounded-pill initiative " (click)="Openvisiblesidebar(0)">+ New
         department</button>
 </div>
 <div class="gx-15">
@@ -25,15 +25,16 @@
                     <ng-template pTemplate="header">
                         <tr>
                             <th style="width:140px;"  class="lh-lg">S.No</th>
-
-                            <th pSortableColumn="departmentName" style="width:40%">Department<p-columnFilter type="text"
+                            <th pSortableColumn="departmentCode" style="width:20%">Department Code<p-columnFilter type="text"
+                                field="departmentCode" display="menu"></p-columnFilter></th>
+                            <th pSortableColumn="departmentName" style="width:20%">Department<p-columnFilter type="text"
                                     field="departmentName" display="menu"></p-columnFilter></th>
-                            <th pSortableColumn="initiatedBy" style="width:40%">Initiated By <p-columnFilter type="text"
+                            <th pSortableColumn="initiatedBy" style="width:20%">Initiated By <p-columnFilter type="text"
                                     field="initiatedBy" display="menu"></p-columnFilter></th>
-                            <th pSortableColumn="initiatedOn" style="width:40%">Initiated On <p-columnFilter type="date"
+                            <th pSortableColumn="initiatedOn" style="width:20%">Initiated On <p-columnFilter type="date"
                                     field="date" display="menu"></p-columnFilter> </th>
-
-
+                                    <th pSortableColumn="Actions" style="width:10%">Actions <p-columnFilter type="text"
+                                        field="Actions" display="menu"></p-columnFilter> </th>
 
                         </tr>
                     </ng-template>
@@ -43,24 +44,17 @@
                             <td>{{departments.id}}</td>
                             <td>{{departments.departmentName}}</td>
                             <td>{{departments.initiatedBy}}</td>
-                            <td>{{departments.date}}</td>
-
-                            <td class="text-center">
-                                    
+                            <td>{{departments.date | date:'yyyy-MM-dd'}}</td>
+                            <td class="text-center">                                    
                                 <a class="me-2">
-                                    <i class="bi bi-pencil-square" (click)="navigateToEditDepartment(departments.id)"></i>
+                                    <i class="bi bi-pencil-square" (click)="Openvisiblesidebar(departments.id)"></i>
                                     </a>
                                 </td>
-
                         </tr>
-
                     </ng-template>
                 </p-table>
-
-
             </div>
         </div>
-
     </div>
 </div>
 <p-sidebar [(visible)]="visibleSidebar" position="right" [baseZIndex]="30000">

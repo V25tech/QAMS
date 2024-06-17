@@ -45,8 +45,8 @@ export class DeparmentsComponent {
   ) { }
 
   ngOnInit(): void {
-   
-    this.BuildEquipForm();
+   debugger;
+    this.BuildDepartmentForm();
      this.cdr.detectChanges();
      this.route.queryParams.subscribe(params => {
        this.id = Number.parseInt(params['Id']);
@@ -61,7 +61,7 @@ export class DeparmentsComponent {
     }); 
    }
  cancelClick(){
-   this.router.navigateByUrl('/equipments');
+   this.router.navigateByUrl('/departments');
  }
  saveControlChange(ccValue: RegNewdepartment) {
    this.DepartmentsService.insertDepartmentDetails(ccValue).subscribe((data: any) => {
@@ -80,7 +80,7 @@ export class DeparmentsComponent {
    }, er => console.log(er));
  }
  backToEquip(){
-   this.router.navigateByUrl('/equipments');
+   this.router.navigateByUrl('/departments');
  }
  GetEquipmentDetailsbyId(id:number)
  {
@@ -94,7 +94,7 @@ export class DeparmentsComponent {
      }
    }, er => console.log(er));    
  }
- BuildEquipForm(){
+ BuildDepartmentForm(){
   this.regDepartmentsForm = this.fb.group({
     departmentName: ['', Validators.required],
     departmentCode: ['', Validators.required]
@@ -110,18 +110,7 @@ export class DeparmentsComponent {
     else {
       this.saveControlChange(ccEquipValue);
     }
-  }
-
-  // ngOnInit() {
-    
-  //   this.DepartmentsService.getDepartmentsData().subscribe((data: any) => {
-  //     debugger
-  //     this.departmentsDataSource = data.response;
-  //     this.departmentsDataSource.forEach(dataSource => (dataSource.date = new Date(dataSource.date)));
-  //   });  
-  // }
-
-  // regDepartments() {
+  }  
     if (this.regDepartmentsForm.invalid) {
       this.messageService.add({ severity: 'error', summary: 'Form is invalid!', detail: 'Message Content' });
       return; // Prevent form submission
@@ -175,6 +164,17 @@ export class DeparmentsComponent {
     // Your implementation
   }
   navigateToEditDepartment(id:number){    
-    this.router.navigateByUrl('/edit-equipment-registration?Id='+id);
+    this.router.navigateByUrl('/department?Id='+id);
+  }
+  Openvisiblesidebar(id:number)
+  {    
+    this.visibleSidebar = true;
+    this.BuildDepartmentForm();
+    if(id!=0)
+      {
+        this.editMode=true;
+       this.GetEquipmentDetailsbyId(id);       
+      }
+      
   }
 }
