@@ -22,13 +22,10 @@ interface PageEvent {
 export class DeparmentsComponent {
   regDepartmentsForm!: FormGroup;
   departmentsDataSource: Departments[] = [];
-  //update code starts here
   id:number=0;
   editMode: boolean = false;
-  equipmentReg: RegNewdepartment;
-  editCCValue: RegNewdepartment;
-  //mainForm: FormGroup;
-
+  departmentReg: RegNewdepartment;
+  editDepartValue: RegNewdepartment;  
   dataresp: any = [];
   first: number = 0;
   rows: number = 10;
@@ -66,31 +63,31 @@ export class DeparmentsComponent {
  saveControlChange(ccValue: RegNewdepartment) {
    this.DepartmentsService.insertDepartmentDetails(ccValue).subscribe((data: any) => {
      console.log('Form submitted!', ccValue);
-     this.messageService.add({ severity: 'success', summary: 'Equipment Registration Saved Successfull', detail: 'Message Content' });
+     this.messageService.add({ severity: 'success', summary: 'Department Saved Successfull', detail: 'Message Content' });
      setTimeout(() => {
-       this.backToEquip();
+       this.backToDepartment();
      }, 1000);
    });    
  }
  updateControlChange(ccValue: RegNewdepartment) {
    console.log(JSON.stringify(ccValue))
-   this.DepartmentsService.updateDepartmentDetails(this.editCCValue).subscribe(res => {
+   this.DepartmentsService.updateDepartmentDetails(this.editDepartValue).subscribe(res => {
      console.log(res);
-     this.backToEquip();
+     this.backToDepartment();
    }, er => console.log(er));
  }
- backToEquip(){
+ backToDepartment(){
    this.router.navigateByUrl('/departments');
  }
  GetDepartmentDetailsbyId(id:number)
  {
    this.DepartmentsService.GetDepartmentById(id).subscribe((res:any) => {
      debugger;
-     this.equipmentReg = res;
-     let ccValue: RegNewdepartment = res; //JSON.parse(ccValueStr) ?? null;
-     this.editCCValue = ccValue;
-     if (ccValue) {
-       this.regDepartmentsForm.patchValue(ccValue);
+     this.departmentReg = res;
+     let departValue: RegNewdepartment = res; //JSON.parse(ccValueStr) ?? null;
+     this.editDepartValue = departValue;
+     if (departValue) {
+       this.regDepartmentsForm.patchValue(departValue);
      }
    }, er => console.log(er));    
  }
@@ -103,12 +100,12 @@ export class DeparmentsComponent {
  regDepartments(){
   if (this.regDepartmentsForm.valid) {
     console.log(this.regDepartmentsForm.value);
-    let ccEquipValue: RegNewdepartment = this.regDepartmentsForm.value;
+    let departValue: RegNewdepartment = this.regDepartmentsForm.value;
     if (this.editMode) {
-      this.updateControlChange(ccEquipValue);
+      this.updateControlChange(departValue);
     }    
     else {
-      this.saveControlChange(ccEquipValue);
+      this.saveControlChange(departValue);
     }
   }  
     if (this.regDepartmentsForm.invalid) {
@@ -119,20 +116,18 @@ export class DeparmentsComponent {
         departmentName: this.regDepartmentsForm.value.departmentName,
         departmentCode: this.regDepartmentsForm.value.departmentCode
       };
-
       this.DepartmentsService.insertDepartmentDetails(RegNewdepartment).subscribe((data: any) => {
         console.log('Form submitted!', RegNewdepartment);
         this.messageService.add({ severity: 'success', summary: 'New department Registered Successfully', detail: 'Message Content' });
-        //this.router.navigate(['/departments']);  // Navigate to the grid page
+        
         setTimeout(() => {
           this.closeNavBar();
-        }, 1000);
-    
+        }, 1000);   
        
       });
     }
   }
-//update code edns here
+
   clear(table: Table) {
     table.clear();
   }
@@ -174,7 +169,6 @@ export class DeparmentsComponent {
       {
         this.editMode=true;
        this.GetDepartmentDetailsbyId(id);       
-      }
-      
+      }      
   }
 }

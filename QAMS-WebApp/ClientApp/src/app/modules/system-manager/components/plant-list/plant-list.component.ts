@@ -26,10 +26,8 @@ export class PlantListComponent {
 
   id:number=0;
   editMode: boolean = false;
-  equipmentReg: RegPlant;
-  editCCValue: RegPlant;
-  //mainForm: FormGroup;
-
+  plantReg: RegPlant;
+  editPlantValue: RegPlant; 
 
   dataresp: any = [];
   first: number = 0;
@@ -41,7 +39,7 @@ export class PlantListComponent {
 
   ngOnInit() :void {
 
-    this.BuildEquipForm();
+    this.BuildPlantForm();
     this.cdr.detectChanges();
     this.route.queryParams.subscribe(params => {
       this.id = Number.parseInt(params['Id']);
@@ -69,7 +67,7 @@ saveControlChange(ccValue: RegPlant) {
 }
 updateControlChange(ccValue: RegPlant) {
   console.log(JSON.stringify(ccValue))
-  this.PlantListService.UpdatePlantDetails(this.editCCValue).subscribe(res => {
+  this.PlantListService.UpdatePlantDetails(this.editPlantValue).subscribe(res => {
     console.log(res);
     this.backToPlant();
   }, er => console.log(er));
@@ -79,17 +77,17 @@ backToPlant(){
 }
 GetPlantDetailsbyId(id:number)
 {
-  this.PlantListService.GetPlantById(id).subscribe((res:any) => {
+  this.PlantListService.GetPlantById(id).subscribe((result:any) => {
     debugger;
-    this.equipmentReg = res;
-    let ccValue: RegPlant = res; //JSON.parse(ccValueStr) ?? null;
-    this.editCCValue = ccValue;
-    if (ccValue) {
-      this.regPlantForm.patchValue(ccValue);
+    this.plantReg = result;
+    let plantValue: RegPlant = result; //JSON.parse(ccValueStr) ?? null;
+    this.editPlantValue = plantValue;
+    if (plantValue) {
+      this.regPlantForm.patchValue(plantValue);
     }
   }, er => console.log(er));    
 }
-BuildEquipForm(){
+BuildPlantForm(){
   this.regPlantForm = this.fb.group({
     plantCode: ['', Validators.required],
     plantName: ['', Validators.required],
@@ -102,12 +100,12 @@ BuildEquipForm(){
 regDepartments(){
  if (this.regPlantForm.valid) {
    console.log(this.regPlantForm.value);
-   let ccEquipValue: RegPlant = this.regPlantForm.value;
+   let plantValue: RegPlant = this.regPlantForm.value;
    if (this.editMode) {
-     this.updateControlChange(ccEquipValue);
+     this.updateControlChange(plantValue);
    }    
    else {
-     this.saveControlChange(ccEquipValue);
+     this.saveControlChange(plantValue);
    }
    this.PlantListService.getplantData().subscribe((data: any) => {
     this.plantDatasource = data.response;    
@@ -171,7 +169,7 @@ regDepartments(){
   {    
     debugger;
     this.visibleSidebar = true;
-    this.BuildEquipForm();
+    this.BuildPlantForm();
     if(id!=0)
       {
         this.editMode=true;
