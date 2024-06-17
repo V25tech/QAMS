@@ -24,4 +24,12 @@ export class PlantListService {
 
     //return this.http.post(this.apiUrl + '/customer/savecustomer', settings,{  });    
   }
+  UpdatePlantDetails(settings: RegPlant) {    
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post(this.apiUrl+ '/plant/updateplant', settings, { headers })       
+  }
+  GetPlantById(plantId: number)  {
+    //const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.get(this.apiUrl+'/plant/'+ plantId);    
+  }
 }

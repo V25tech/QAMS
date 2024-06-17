@@ -16,3 +16,23 @@ export enum ActionPlansEnum {
     Investigation = 15,
     CAPAInitiation = 16
 }
+
+// Constants for descriptions of each step
+export const ActionPlansEnum_DESCRIPTIONS = {
+    [ActionPlansEnum.ControlLoginInitiation]: "Control Login Initiation",
+    [ActionPlansEnum.HODReview]: "HOD Review",
+    [ActionPlansEnum.QAReview]: "QA Review",
+    [ActionPlansEnum.CFTReview]: "CFT Review",
+    [ActionPlansEnum.CustomerNotification]: "Customer Notification",
+    [ActionPlansEnum.QADecision]: "QA Decision",
+    [ActionPlansEnum.ActionPlan]: "Action Plan.",
+    [ActionPlansEnum.FinalClosure]: "Final Closure",
+    [ActionPlansEnum.ExtensionofTargetDate]: "ExtensionOf Target Date",
+    [ActionPlansEnum.WorkTransfer]: "Work Transfer.",
+    [ActionPlansEnum.DossierPrint]: "Dossier Print",
+    [ActionPlansEnum.AuditTrials]: "Audit Trials",
+    [ActionPlansEnum.Reports]: "Reports",
+    [ActionPlansEnum.DeviationInitiation]: "Deviation Initiation",
+    [ActionPlansEnum.Investigation]: "Investigation",
+    [ActionPlansEnum.CAPAInitiation]: "Corrective and Preventive Action Initiation"
+}

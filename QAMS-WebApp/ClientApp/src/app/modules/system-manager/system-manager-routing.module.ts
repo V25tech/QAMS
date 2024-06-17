@@ -44,6 +44,7 @@ const routes: Routes = [
   {path:'departments',component:DeparmentsComponent,canActivate: [AuthGuard]},
   {path:'edit-department',component:DeparmentsComponent, canActivate: [AuthGuard]},
   {path:'plants',component:PlantListComponent,canActivate: [AuthGuard]},
+  {path:'edit-plants',component:PlantListComponent, canActivate: [AuthGuard]},
   {path:'reset-pwd',component:ResetLoginPasswordComponent,canActivate: [AuthGuard]},
   {path:'products-materials',component:ProductMaterialsComponent,canActivate: [AuthGuard]},
   {path:'equipments',component:EquipmentsComponent, canActivate: [AuthGuard]},

@@ -37,10 +37,10 @@ export class ChangecontrolsComponent {
 
   ngOnInit() {
 
-    this.changeControlsService.getAllChangeControlbyPlant(2).subscribe(res =>{
-      console.log(res);
-    })
-
+    // this.changeControlsService.getAllChangeControlbyPlant(2).subscribe(res =>{
+    //   console.log(res);
+    // })
+    
     this.loginInitiateService.getData().subscribe((data: any) => {
       this.ccInitiateDatasource = data;
       this.ccInitiateDatasource.forEach(dataSource=>dataSource.date = new Date(dataSource.date))
