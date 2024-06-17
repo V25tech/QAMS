@@ -2,7 +2,7 @@
 
 <div class="d-flex justify-content-between align-items-center bg-white shadow-dark px-3">
     <h4 class="page-title flex-grow-1 labelStyles">Plants List</h4>
-    <button type="button" class="btn btn-create rounded-pill initiative " (click)="visibleSidebar = true">+ Add
+    <button type="button" class="btn btn-create rounded-pill initiative " (click)="Openvisiblesidebar(0)">+ Add
         Plant</button>
 </div>
 <div class="gx-15">
@@ -37,17 +37,17 @@
                         <ng-template pTemplate="body" let-plantList let-i="rowIndex" #templatesTable>
                             <tr>
                                 <td>{{i+1}}</td>
-                                <td>{{plantList.plantId}}</td>
+                                <!-- <td>{{plantList.plantId}}</td> -->
                                 <td class="idname">
                                   {{plantList.code}}</td>
                                   <td>{{plantList.plantName}}</td>
                                   <td>{{plantList.createdBy}}</td>
-                                <td>{{plantList.createdDate}}</td>
+                                <td>{{plantList.createdDate | date:'yyyy-MM-dd'}}</td>
                              
                                 <td class="text-center">
                                     
                                         <a class="me-2">
-                                            <i class="bi bi-pencil-square"(click)="navigateToEditPlant(plantList.plantId)"></i>
+                                            <i class="bi bi-pencil-square"(click)="Openvisiblesidebar(plantList.id)"></i>
                                             </a>
                                         </td>
                             </tr>

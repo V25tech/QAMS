@@ -47,7 +47,7 @@ export class PlantListComponent {
       this.id = Number.parseInt(params['Id']);
       let splitItesms = this.id;
       debugger;        
-      this.GetEquipmentDetailsbyId(this.id);
+      this.GetPlantDetailsbyId(this.id);
     })
     this.PlantListService.getplantData().subscribe((data: any) => {
      debugger
@@ -56,14 +56,14 @@ export class PlantListComponent {
    }); 
   }
 cancelClick(){
-  this.router.navigateByUrl('/equipments');
+  this.router.navigateByUrl('/plants');
 }
 saveControlChange(ccValue: RegPlant) {
   this.PlantListService.insertPlantDetails(ccValue).subscribe((data: any) => {
     console.log('Form submitted!', ccValue);
-    this.messageService.add({ severity: 'success', summary: 'Equipment Registration Saved Successfull', detail: 'Message Content' });
+    this.messageService.add({ severity: 'success', summary: 'Plan Saved Successfull', detail: 'Message Content' });
     setTimeout(() => {
-      this.backToEquip();
+      this.backToPlant();
     }, 1000);
   });    
 }
@@ -71,13 +71,13 @@ updateControlChange(ccValue: RegPlant) {
   console.log(JSON.stringify(ccValue))
   this.PlantListService.UpdatePlantDetails(this.editCCValue).subscribe(res => {
     console.log(res);
-    this.backToEquip();
+    this.backToPlant();
   }, er => console.log(er));
 }
-backToEquip(){
-  this.router.navigateByUrl('/equipments');
+backToPlant(){
+  this.router.navigateByUrl('/plants');
 }
-GetEquipmentDetailsbyId(id:number)
+GetPlantDetailsbyId(id:number)
 {
   this.PlantListService.GetPlantById(id).subscribe((res:any) => {
     debugger;
@@ -110,8 +110,7 @@ regDepartments(){
      this.saveControlChange(ccEquipValue);
    }
    this.PlantListService.getplantData().subscribe((data: any) => {
-    this.plantDatasource = data.response;
-    // this.plantDatasource.forEach(dataSource=>dataSource.createdDate = new Date(dataSource.createdDate))
+    this.plantDatasource = data.response;    
   });
  }
 }
@@ -155,23 +154,30 @@ regDepartments(){
         comment: this.regPlantForm.value.comments
       };
       debugger;
-      this.PlantListService.insertPlantDetails(regPlant).subscribe((data: any) => {
-      //  console.log('Form submitted!', customerRegistration);
-        this.messageService.add({ severity: 'success', summary: 'Customer Registration Saved Successfull', detail: 'Message Content' });
+      this.PlantListService.insertPlantDetails(regPlant).subscribe((data: any) => {      
+        this.messageService.add({ severity: 'success', summary: 'Plant Saved Successfull', detail: 'Message Content' });
 
         setTimeout(() => {
         this.closeNavBar();
       }, 1000);
     });
-      
-     // console.log('Form submitted!',RegPlant);
-      //this.messageService.add({ severity: 'success', summary: ' Plant Registered Successfully', detail: 'Message Content' });
     }
   }
 
   navigateToEditPlant(id:number){    
     this.router.navigateByUrl('/plants?Id='+id);
   }
-
+  Openvisiblesidebar(id:number)
+  {    
+    debugger;
+    this.visibleSidebar = true;
+    this.BuildEquipForm();
+    if(id!=0)
+      {
+        this.editMode=true;
+       this.GetPlantDetailsbyId(id);       
+      }
+      
+  }
 
 }
