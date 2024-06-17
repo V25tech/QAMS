@@ -14,56 +14,78 @@ import { Router } from '@angular/router';
 })
 export class MarketRegistrationComponent {
   marketRegistrationForm!: FormGroup;
-  mainForm: FormGroup;
+  id:number=0;
+  marketReg: MarketRegistration;
   editMode: boolean = false;
   editCCValue: MarketRegistration;
+  route: any;
+  MarketRegistrationService: any;
+  // mainForm: FormGroup;
   constructor(private fb: FormBuilder,private router: Router, private messageService: MessageService, 
     private marketRegistration: MarketRegistrationService, private cdr: ChangeDetectorRef ,private primengConfig: PrimeNGConfig,) { }
     ngOnInit(): void {
-      this.marketRegistrationForm = this.fb.group({
-        name: ['', Validators.required],
-        uniqueCode: ['', Validators.required],
-        remarks: [''],
-      });
+      this.BuildEquipForm();
       this.cdr.detectChanges();
-    }
-  cancelClick(){
-    
-   }
-   registerMarket(){
-    if (this. marketRegistrationForm.invalid) {
-      this.messageService.add({ severity: 'error', summary: 'Form is invalid!', detail: 'Message Content' });
-      return; // Prevent form submission
-    } 
-    else {
-      const mktRegistration: MarketRegistration = {
-        name: this. marketRegistrationForm.value.name,
-        uniqueCode: this. marketRegistrationForm.value.uniqueCode,
-        remarks: this. marketRegistrationForm.value.remarks,       
-      };
-      if (!this.editMode) {
-        this.editMode=true;
-      this.marketRegistration.insertMarketData(mktRegistration).subscribe((data: any) => {        
-      this.messageService.add({ severity: 'success', summary: 'market Registration Saved Successfull', detail: 'Message Content' });
-      this.editMode=false;
-        setTimeout(() => {
-          this.backToMarkets();
-        }, 1000);
-      });  
-    }
-    else{
-      this.marketRegistration.updateMarketDetails(mktRegistration).subscribe((data: any) => {        
-        this.messageService.add({ severity: 'success', summary: 'market Registration updated Successfull', detail: 'Message Content' });
-             
-          setTimeout(() => {
-            this.backToMarkets();
-          }, 1000);
-        });
+      this.route.queryParams.subscribe((params: { [x: string]: string; }) => {
+        this.id = Number.parseInt(params['Id']);
+        let splitItesms = this.id;
+        debugger;        
+        this.GetMarketDetailsbyId(this.id);
+      })
       
     }
-  }
-   }
-   backToMarkets(){
+  cancelClick(){
     this.router.navigateByUrl('/markets');
   }
+  saveControlChange(ccValue: MarketRegistration) {
+    this.MarketRegistrationService.insertCustomerDetails(ccValue).subscribe((data: any) => {
+      console.log('Form submitted!', ccValue);
+      this.messageService.add({ severity: 'success', summary: 'Markets Registration Saved Successfull', detail: 'Message Content' });
+      setTimeout(() => {
+        this.backToMarkets();
+      }, 1000);
+    });    
+  }
+  updateControlChange(ccValue: MarketRegistration) {
+    console.log(JSON.stringify(ccValue))
+    this.MarketRegistrationService.updateMarketDetails(this.editCCValue).subscribe((res: any) => {
+      console.log(res);
+      this.backToMarkets();
+    }, (er: any) => console.log(er));
+  }
+  backToMarkets(){
+    this.router.navigateByUrl('/markets');
+  }
+  GetMarketDetailsbyId(id:number)
+  {
+    this.MarketRegistrationService.GetMarketById(id).subscribe((res:any) => {
+      debugger;
+      this.marketReg = res;
+      let ccValue: MarketRegistration = res; //JSON.parse(ccValueStr) ?? null;
+      this.editCCValue = ccValue;
+      if (ccValue) {
+        this.marketRegistrationForm.patchValue(ccValue);
+      }
+    }, (er: any) => console.log(er));    
+  }
+  BuildEquipForm(){
+    this.marketRegistrationForm = this.fb.group({
+      name: ['', Validators.required],
+      uniqueCode: ['', Validators.required],
+      remarks: ['', Validators.required],
+    });
+  }
+  registerMarket(){
+    if (this.marketRegistrationForm.valid) {
+      console.log(this.marketRegistrationForm.value);
+      let ccEquipValue: MarketRegistration = this.marketRegistrationForm.value;
+      if (this.editMode) {
+        this.updateControlChange(ccEquipValue);
+      }    
+    else {
+      this.saveControlChange(ccEquipValue);
+    }
+  }
+ 
+} 
 }

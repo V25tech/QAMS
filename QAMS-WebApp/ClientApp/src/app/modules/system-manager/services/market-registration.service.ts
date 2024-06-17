@@ -28,5 +28,9 @@ export class MarketRegistrationService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post(this.apiUrl+ '/market/savemarket', settings, { headers });      
   }
+  GetMarketById(marketId: number)  {
+    //const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.get(this.apiUrl+'/market/'+ marketId);    
+  }
 }
 

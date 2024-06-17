@@ -28,6 +28,7 @@ const routes: Routes = [
   {path:'edit-equipment-registration',component:EquipmentRegComponent, canActivate: [AuthGuard]},
   {path:'reg-batch-lot-particulars',component: BatchLotRegComponent, canActivate: [AuthGuard]},
   {path:'market-registration',component:MarketRegistrationComponent,canActivate: [AuthGuard]},
+  {path:'edit-market-registration',component:MarketRegistrationComponent, canActivate: [AuthGuard]},
   {path:'markets',component:MarketsComponent,canActivate: [AuthGuard]},
   {path:'customer-registration',component:CustomerRegistrationComponent,canActivate: [AuthGuard]},
   {path:'edit-customer-registration',component:CustomerRegistrationComponent, canActivate: [AuthGuard]},
