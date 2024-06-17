@@ -40,11 +40,17 @@
                     <ng-template pTemplate="body" let-departments let-i="rowIndex" #templatesTable>
                         <tr>
                             <td>{{i+1}}</td>
-
+                            <td>{{departments.id}}</td>
                             <td>{{departments.departmentName}}</td>
                             <td>{{departments.initiatedBy}}</td>
                             <td>{{departments.date}}</td>
 
+                            <td class="text-center">
+                                    
+                                <a class="me-2">
+                                    <i class="bi bi-pencil-square" (click)="navigateToEditDepartment(departments.id)"></i>
+                                    </a>
+                                </td>
 
                         </tr>
 
