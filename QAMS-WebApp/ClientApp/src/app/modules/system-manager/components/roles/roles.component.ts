@@ -2,10 +2,10 @@ import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Table } from 'primeng/table';
 import { NewRoleService } from '../../services/new-role.service';
-import { NewRole } from 'src/app/models/newRole.model';
+import { CAPAModel, ChangeControlModel, DeviationModel, NewRole, Role } from 'src/app/models/newRole.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
-import { RegNewRole } from 'src/app/models/newRole.model';
+//import { RegNewRole } from 'src/app/models/newRole.model';
 
 interface PageEvent {
   first?: any;
@@ -55,10 +55,16 @@ export class RolesComponent {
     } else {
 
 
-      const RegNewRole: RegNewRole = {
-        newRole: this.newRoleForm.value.newRole,
-        description: this.newRoleForm.value.description
-
+      const RegNewRole: Role = {
+        name: this.newRoleForm.value.newRole,
+        description: this.newRoleForm.value.description,
+        createdBy: '',
+        createdDate: undefined,
+        modifiedBy: '',
+        modifiedDate: undefined,
+        changeControlRoles: new ChangeControlModel,
+        deviationRoles: new DeviationModel,
+        capaRoles: new CAPAModel
       };
 
 

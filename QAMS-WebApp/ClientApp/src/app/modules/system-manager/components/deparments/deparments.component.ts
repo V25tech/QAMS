@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Table } from 'primeng/table';
 import { Departments, RegNewdepartment } from 'src/app/models/departments.model';
@@ -22,6 +22,12 @@ interface PageEvent {
 export class DeparmentsComponent {
   regDepartmentsForm!: FormGroup;
   departmentsDataSource: Departments[] = [];
+  //update code starts here
+  id:number=0;
+  editMode: boolean = false;
+  equipmentReg: RegNewdepartment;
+  editCCValue: RegNewdepartment;
+  //mainForm: FormGroup;
 
   dataresp: any = [];
   first: number = 0;
@@ -32,30 +38,90 @@ export class DeparmentsComponent {
   constructor(
     private fb: FormBuilder,
     private router: Router,
+    private route: ActivatedRoute,
     protected messageService: MessageService,
     private DepartmentsService: DepartmentsService,
     private cdr: ChangeDetectorRef
   ) { }
 
-  ngOnInit() {
-    this.regDepartmentsForm = this.fb.group({
-      departmentName: ['', Validators.required],
-      departmentCode: ['', Validators.required]
-    });
-
-    this.DepartmentsService.getDepartmentsData().subscribe((data: any) => {
+  ngOnInit(): void {
+   
+    this.BuildEquipForm();
+     this.cdr.detectChanges();
+     this.route.queryParams.subscribe(params => {
+       this.id = Number.parseInt(params['Id']);
+       let splitItesms = this.id;
+       debugger;        
+       this.GetEquipmentDetailsbyId(this.id);
+     })
+     this.DepartmentsService.getDepartmentsData().subscribe((data: any) => {
       debugger
       this.departmentsDataSource = data.response;
       this.departmentsDataSource.forEach(dataSource => (dataSource.date = new Date(dataSource.date)));
-    });
-
-
-  
-
-    
+    }); 
+   }
+ cancelClick(){
+   this.router.navigateByUrl('/equipments');
+ }
+ saveControlChange(ccValue: RegNewdepartment) {
+   this.DepartmentsService.insertDepartmentDetails(ccValue).subscribe((data: any) => {
+     console.log('Form submitted!', ccValue);
+     this.messageService.add({ severity: 'success', summary: 'Equipment Registration Saved Successfull', detail: 'Message Content' });
+     setTimeout(() => {
+       this.backToEquip();
+     }, 1000);
+   });    
+ }
+ updateControlChange(ccValue: RegNewdepartment) {
+   console.log(JSON.stringify(ccValue))
+   this.DepartmentsService.updateDepartmentDetails(this.editCCValue).subscribe(res => {
+     console.log(res);
+     this.backToEquip();
+   }, er => console.log(er));
+ }
+ backToEquip(){
+   this.router.navigateByUrl('/equipments');
+ }
+ GetEquipmentDetailsbyId(id:number)
+ {
+   this.DepartmentsService.GetDepartmentById(id).subscribe((res:any) => {
+     debugger;
+     this.equipmentReg = res;
+     let ccValue: RegNewdepartment = res; //JSON.parse(ccValueStr) ?? null;
+     this.editCCValue = ccValue;
+     if (ccValue) {
+       this.regDepartmentsForm.patchValue(ccValue);
+     }
+   }, er => console.log(er));    
+ }
+ BuildEquipForm(){
+  this.regDepartmentsForm = this.fb.group({
+    departmentName: ['', Validators.required],
+    departmentCode: ['', Validators.required]
+  });
+ }
+ regDepartments(){
+  if (this.regDepartmentsForm.valid) {
+    console.log(this.regDepartmentsForm.value);
+    let ccEquipValue: RegNewdepartment = this.regDepartmentsForm.value;
+    if (this.editMode) {
+      this.updateControlChange(ccEquipValue);
+    }    
+    else {
+      this.saveControlChange(ccEquipValue);
+    }
   }
 
-  regDepartments() {
+  // ngOnInit() {
+    
+  //   this.DepartmentsService.getDepartmentsData().subscribe((data: any) => {
+  //     debugger
+  //     this.departmentsDataSource = data.response;
+  //     this.departmentsDataSource.forEach(dataSource => (dataSource.date = new Date(dataSource.date)));
+  //   });  
+  // }
+
+  // regDepartments() {
     if (this.regDepartmentsForm.invalid) {
       this.messageService.add({ severity: 'error', summary: 'Form is invalid!', detail: 'Message Content' });
       return; // Prevent form submission
@@ -77,7 +143,7 @@ export class DeparmentsComponent {
       });
     }
   }
-
+//update code edns here
   clear(table: Table) {
     table.clear();
   }
@@ -107,5 +173,8 @@ export class DeparmentsComponent {
 
   goToSetFunctionalProfile() {
     // Your implementation
+  }
+  navigateToEditDepartment(id:number){    
+    this.router.navigateByUrl('/edit-equipment-registration?Id='+id);
   }
 }

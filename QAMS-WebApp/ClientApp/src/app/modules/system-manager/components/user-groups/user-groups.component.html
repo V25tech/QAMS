@@ -40,6 +40,7 @@
                         <ng-template pTemplate="body" let-userGroup let-i="rowIndex" #templatesTable>
                             <tr>
                                 <td>{{i+1}}</td>
+                                <td>{{userGroup?.id}}</td>
                                 <td>{{userGroup?.name}}</td>
                                 <td class="idname">{{userGroup?.code}}</td>
                                 <td>{{userGroup?.createdBy}}</td>
@@ -49,7 +50,7 @@
                                 <td class="text-center">
                                     
                                         <a class="me-2">
-                                            <i class="bi bi-pencil-square"></i>
+                                            <i class="bi bi-pencil-square"  (click)="navigateToEditUsergroup(userGroup?.id)"></i>
                                             </a>
                                             
                                 </td>

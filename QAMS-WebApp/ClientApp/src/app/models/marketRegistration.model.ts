@@ -1,4 +1,5 @@
 export interface MarketRegistration {
+    id:any
     name:string
     uniqueCode:string
     remarks:string

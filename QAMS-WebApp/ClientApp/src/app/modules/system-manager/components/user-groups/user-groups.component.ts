@@ -65,7 +65,9 @@ export class UserGroupsComponent {
     this.router.navigateByUrl('/reg-new-user-group');
   }
   
- 
+  navigateToEditUsergroup(id:number){    
+    this.router.navigateByUrl('/reg-new-user-group?Id='+id);
+  }
   
 
 }

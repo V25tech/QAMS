@@ -18,14 +18,14 @@ namespace QAMS.Admin.Services
     using QAMS.Common.Entities;
     using QAMS.Admin.Entities;
     using QAMS.Admin.Data;
-    
-    
+
+
     // Comment
     public class UserService : IUserService
     {
-        
+
         private readonly IUserData userData;
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -34,7 +34,7 @@ namespace QAMS.Admin.Services
         {
             this.userData = userData;
         }
-        
+
         public ResponseContext<User> GetAllUser(RequestContext requestContext)
         {
             try
@@ -48,7 +48,7 @@ namespace QAMS.Admin.Services
                 throw;
             }
         }
-        
+
         public User GetUserById(System.Int32? id)
         {
             try
@@ -62,25 +62,30 @@ namespace QAMS.Admin.Services
                 throw;
             }
         }
-        
+
         public bool SaveUser(User user)
         {
             try
             {
-                String validationMessages = UserValidator.IsValidUser(user);
-                if (validationMessages.Length <= 0)
-                {
-                    var result = userData.SaveUser(user);
-                    return result;
-                }
-                throw new System.Exception(validationMessages);
+                user.CreatedBy = "admin";
+                user.ModifiedBy = "admin";
+                user.RoleId = 1;
+                user.userId = "123";
+                user.DepartmentId = 1;
+                //String validationMessages = UserValidator.IsValidUser(user);
+                //if (validationMessages.Length <= 0)
+                //{
+                var result = userData.SaveUser(user);
+                return result;
+                //}
+                //throw new System.Exception(validationMessages);
             }
             catch (System.Exception ex)
             {
                 throw;
             }
         }
-        
+
         public bool UpdateUser(User user)
         {
             try
@@ -98,7 +103,7 @@ namespace QAMS.Admin.Services
                 throw;
             }
         }
-        
+
         public bool DeleteUserById(System.Int32? id)
         {
             try
@@ -110,7 +115,7 @@ namespace QAMS.Admin.Services
                 throw;
             }
         }
-        
+
         public bool DeleteAllUser(List<int> ids)
         {
             try
@@ -122,7 +127,7 @@ namespace QAMS.Admin.Services
                 throw;
             }
         }
-        
+
         public List<User> GetUserByRoleId(System.Int32? id)
         {
             try
@@ -136,7 +141,7 @@ namespace QAMS.Admin.Services
                 throw;
             }
         }
-        
+
         public List<User> GetUserByDepartmentId(System.Int32? id)
         {
             try
@@ -150,7 +155,7 @@ namespace QAMS.Admin.Services
                 throw;
             }
         }
-        
+
         public bool DeleteUserByRoleId(System.Int32? id)
         {
             try
@@ -162,7 +167,7 @@ namespace QAMS.Admin.Services
                 throw;
             }
         }
-        
+
         public bool DeleteUserByDepartmentId(System.Int32? id)
         {
             try

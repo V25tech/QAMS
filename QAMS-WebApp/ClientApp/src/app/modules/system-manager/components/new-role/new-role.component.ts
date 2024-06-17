@@ -1,10 +1,10 @@
 import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { NewRoleService } from '../../services/new-role.service';
-import { NewRole } from 'src/app/models/newRole.model';
+import { CAPAModel, ChangeControlModel, DeviationModel, NewRole, Role } from 'src/app/models/newRole.model';
 import { FormBuilder, FormGroup, FormArray, Validators, FormControl } from '@angular/forms';
 import { MessageService } from 'primeng/api';
-import { RegNewRole } from 'src/app/models/newRole.model';
+//import { RegNewRole } from 'src/app/models/newRole.model';
 
 
 export interface Parent {
@@ -83,9 +83,16 @@ export class NewRoleComponent implements OnInit {
       this.messageService.add({ severity: 'error', summary: 'Form is invalid!', detail: 'Message Content' });
       return; // Prevent form submission
     } else {
-      const RegNewRole: RegNewRole = {
-        newRole: this.RoleForm.value.newRole,
-        description: this.RoleForm.value.description
+      const RegNewRole: Role = {
+        name: this.RoleForm.value.newRole,
+        description: this.RoleForm.value.description,
+        createdBy: '',
+        createdDate: undefined,
+        modifiedBy: '',
+        modifiedDate: undefined,
+        changeControlRoles: new ChangeControlModel,
+        deviationRoles: new DeviationModel,
+        capaRoles: new CAPAModel
       };
       console.log('Form submitted!', RegNewRole);
       this.messageService.add({ severity: 'success', summary: ' New Role Registered Successfully', detail: 'Message Content' });

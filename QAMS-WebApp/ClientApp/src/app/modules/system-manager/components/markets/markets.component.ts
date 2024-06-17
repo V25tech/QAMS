@@ -63,4 +63,7 @@ export class MarketsComponent {
   goToRegPage(){
     this.router.navigateByUrl('/market-registration');
   }
+  navigateToEditMarket(id:number){    
+    this.router.navigateByUrl('/edit-market-registration?Id='+id);
+  }
 }

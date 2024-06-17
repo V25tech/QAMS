@@ -20,21 +20,41 @@ namespace QAMS.Admin.Entities
 
         public int? Id { get; set; }
         public string Type { get; set; }
-        public bool HODReview { get; set; }
-        public bool QAReview { get; set; }
-        public bool CFTReview { get; set; }
-        public bool CustomerNotification { get; set; }
-        public bool QADecision { get; set; }
-        public bool ActionPlan { get; set; }
-        public bool FinalClosure { get; set; }
-        public bool ExtensionOfTargetDate { get; set; }
 
-        public bool WorkTransfer { get; set; }
+        public RoleGroup RoleGroup { get; set; }
+        public RoleType RoleType { get; set; }      
 
-        public bool DossierPrint { get; set; }
 
-        public bool AuditTrails { get; set; }
-
-        public bool Reports { get; set; }
+       
     }
+
+    public enum RoleType
+    {
+        ControlLoginInitiation = 1,
+        HODReview = 2,
+        QAReview = 3,
+        CFTReview = 4,
+        CustomerNotification = 5,
+        QADecision = 6,
+        ActionPlan = 7,
+        FinalClosure = 8,
+        ExtensionOfTargetDate = 9,
+        WorkTransfer = 10,
+        DossierPrint = 11,
+        AuditTrials = 12,
+        ReportsPrepared = 13
+    }
+
+    public enum RoleGroup
+    {
+        ChangeControls = 1,
+        Deviations = 2,
+        CPA = 3,
+        SysytemManager = 4      
+    }
+
+
+
+
+
 }

@@ -1,5 +1,5 @@
 export interface UserGroup{
-    id?:Int16Array,
+    id?:any,
     code?:string,
     name?:string,
     roles?:string,

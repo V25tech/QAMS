@@ -63,4 +63,7 @@ export class CustomersComponent {
   goToRegPage(){
     this.router.navigateByUrl('/customer-registration');
   }
+  navigateToEditCustomers(id:number){
+    this.router.navigateByUrl('/edit-customer-registration?Id='+id);
+  }
 }

@@ -60,8 +60,8 @@ export class EquipmentsComponent {
     this.rows = event.rows;
   }
 
-  goToEquipments(){
-    this.router.navigateByUrl('/equipments')
+  navigateToEditEquipment(id:number){    
+    this.router.navigateByUrl('/edit-equipment-registration?Id='+id);
   }
 
   goToRegPage(){

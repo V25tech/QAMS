@@ -35,8 +35,8 @@ namespace QAMS.Admin.Services
                 validationMessages.Append(validationHelper.LengthCheckValidator(user.Plants,150, nameof(user.Plants)));
                 validationMessages.Append(validationHelper.NullCheckValidator(user.LastName, nameof(user.LastName)));
                 validationMessages.Append(validationHelper.LengthCheckValidator(user.LastName,150, nameof(user.LastName)));
-                validationMessages.Append(validationHelper.NullCheckValidator(user.EmployeeId, nameof(user.EmployeeId)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(user.EmployeeId,150, nameof(user.EmployeeId)));
+                validationMessages.Append(validationHelper.NullCheckValidator(user.employeeId, nameof(user.employeeId)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(user.employeeId,150, nameof(user.employeeId)));
                 validationMessages.Append(validationHelper.NullCheckValidator(user.Password, nameof(user.Password)));
                 validationMessages.Append(validationHelper.LengthCheckValidator(user.Password,150, nameof(user.Password)));
                 validationMessages.Append(validationHelper.NullCheckValidator(user.CreatedBy, nameof(user.CreatedBy)));

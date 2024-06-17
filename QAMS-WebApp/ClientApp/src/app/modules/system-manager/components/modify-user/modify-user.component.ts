@@ -35,6 +35,9 @@ export class ModifyUserComponent {
     private modifyUserService: ModifyUserService, private cdr: ChangeDetectorRef) { }
 
   ngOnInit() :void {
+    //* update code starts   //
+
+    //  update code ends * //
     this.modifyUserForm = this.fb.group({
       userId: ['', Validators.required],
       role: ['', Validators.required],
@@ -44,19 +47,13 @@ export class ModifyUserComponent {
     
     });    
     this.modifyUserService.getUserData().subscribe((data: any) => {
-      this.modifyUserDatasource = data.response;
-      // this.modifyUserDatasource.forEach(dataSource=>dataSource.createdDate = new Date(dataSource.createdDate))
-    });
-     
+      this.modifyUserDatasource = data.response;      
+    });     
   }
   roleDetails=[
     { name: 'Administrator', code: 'Administrator' },
     { name: 'Reviewer ', code: 'Reviewer' }
    ]
-
-  
- 
-
   clear(table: Table) {
     table.clear();
   }
@@ -92,19 +89,28 @@ export class ModifyUserComponent {
       return; // Prevent form submission
     } else {
 
-
-      const RegModifyUser: RegModifyUser = {
+debugger;
+      const RegModifyUserInfo: RegModifyUser = {
         userId: this.modifyUserForm.value.userId,
         role: this.modifyUserForm.value.role,
         department: this.modifyUserForm.value.department,
         employeeId: this.modifyUserForm.value.employeeId,
         email: this.modifyUserForm.value.email
-      };
-
-      
-      console.log('Form submitted!', RegModifyUser);
-      this.messageService.add({ severity: 'success', summary: ' User Modified Successfully', detail: 'Message Content' });
+      };   
+      this.saveControlChange(RegModifyUserInfo);
+     // console.log('Form submitted!', RegModifyUserInfo);
+      //this.messageService.add({ severity: 'success', summary: ' User Modified Successfully', detail: 'Message Content' });
     }
+  }
+
+  saveControlChange(ccValue: RegModifyUser) {
+    this.modifyUserService.insertUserDetails(ccValue).subscribe((data: any) => {
+      console.log('Form submitted!', ccValue);
+      this.messageService.add({ severity: 'success', summary: 'Usergroup Registration Saved Successfull', detail: 'Message Content' });
+      setTimeout(() => {
+        //this.backToUsers();
+      }, 1000);
+    });    
   }
   selectStatusType(event:any){
     this.selectedStatusValue = event.target.value;
@@ -123,6 +129,4 @@ export class ModifyUserComponent {
        this.selectedIndex = index;
         this.selectedStatusFlag = !this.selectedStatusFlag;
      }
-
-
 }

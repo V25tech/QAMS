@@ -1,10 +1,10 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MessageService } from 'primeng/api';
+import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { BatchLotServicesService } from '../../services/batch-lot-services.service';
 import { MarketRegistrationService } from '../../services/market-registration.service';
 import { MarketRegistration } from 'src/app/models/marketRegistration.model';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-market-registration',
@@ -14,40 +14,76 @@ import { Router } from '@angular/router';
 })
 export class MarketRegistrationComponent {
   marketRegistrationForm!: FormGroup;
-  constructor(private fb: FormBuilder,private router: Router, private messageService: MessageService, 
-    private marketRegistration: MarketRegistrationService, private cdr: ChangeDetectorRef) { }
+  id:number=0;
+  marketReg: MarketRegistration;
+  editMode: boolean = false;
+  editCCValue: MarketRegistration;  
+  constructor(private fb: FormBuilder,private router: Router, private messageService: MessageService, private route: ActivatedRoute,
+    private marketRegistration: MarketRegistrationService, private cdr: ChangeDetectorRef ,private primengConfig: PrimeNGConfig,) { }
     ngOnInit(): void {
-      this.marketRegistrationForm = this.fb.group({
-        name: ['', Validators.required],
-        uniqueCode: ['', Validators.required],
-        remarks: [''],
-      });
+      this.BuildEquipForm();
       this.cdr.detectChanges();
+      this.route.queryParams.subscribe(params => {
+        this.id = Number.parseInt(params['Id']);
+        let splitItesms = this.id;
+        debugger;        
+        this.GetMarketDetailsbyId(this.id);
+      })
+      
     }
   cancelClick(){
-    
-   }
-   registerMarket(){
-    if (this. marketRegistrationForm.invalid) {
-      this.messageService.add({ severity: 'error', summary: 'Form is invalid!', detail: 'Message Content' });
-      return; // Prevent form submission
-    } 
-    else {
-      const mktRegistration: MarketRegistration = {
-        name: this. marketRegistrationForm.value.name,
-        uniqueCode: this. marketRegistrationForm.value.uniqueCode,
-        remarks: this. marketRegistrationForm.value.remarks,       
-      };
-      this.marketRegistration.insertMarketData(mktRegistration).subscribe((data: any) => {        
-      this.messageService.add({ severity: 'success', summary: 'market Registration Saved Successfull', detail: 'Message Content' });
-           
-        setTimeout(() => {
-          this.backToMarkets();
-        }, 1000);
-      });  
-  }
-   }
-   backToMarkets(){
     this.router.navigateByUrl('/markets');
   }
+  saveControlChange(ccValue: MarketRegistration) {
+    this.marketRegistration.insertMarketData(ccValue).subscribe((data: any) => {
+      console.log('Form submitted!', ccValue);
+      this.messageService.add({ severity: 'success', summary: 'Markets Registration Saved Successfull', detail: 'Message Content' });
+      setTimeout(() => {
+        this.backToMarkets();
+      }, 1000);
+    });    
+  }
+  updateControlChange(ccValue: MarketRegistration) {
+    console.log(JSON.stringify(ccValue))
+    this.marketRegistration.updateMarketDetails(this.editCCValue).subscribe((res: any) => {
+      console.log(res);
+      this.backToMarkets();
+    }, (er: any) => console.log(er));
+  }
+  backToMarkets(){
+    this.router.navigateByUrl('/markets');
+  }
+  GetMarketDetailsbyId(id:number)
+  {
+    debugger;
+    this.marketRegistration.GetMarketById(id).subscribe((res:any) => {
+      
+      this.marketReg = res;
+      let ccValue: MarketRegistration = res; //JSON.parse(ccValueStr) ?? null;
+      this.editCCValue = ccValue;
+      if (ccValue) {
+        this.marketRegistrationForm.patchValue(ccValue);
+      }
+    }, (er: any) => console.log(er));    
+  }
+  BuildEquipForm(){
+    this.marketRegistrationForm = this.fb.group({
+      name: ['', Validators.required],
+      uniqueCode: ['', Validators.required],
+      remarks: ['', Validators.required],
+    });
+  }
+  registerMarket(){
+    if (this.marketRegistrationForm.valid) {
+      console.log(this.marketRegistrationForm.value);
+      let ccEquipValue: MarketRegistration = this.marketRegistrationForm.value;
+      if (this.editMode) {
+        this.updateControlChange(ccEquipValue);
+      }    
+    else {
+      this.saveControlChange(ccEquipValue);
+    }
+  }
+ 
+} 
 }

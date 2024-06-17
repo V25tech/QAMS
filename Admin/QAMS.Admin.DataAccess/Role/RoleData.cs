@@ -70,7 +70,7 @@ namespace QAMS.Admin.Data
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = RoleConstants.Description, Value = role.Description });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = RoleConstants.CreatedBy, Value = role.CreatedBy });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = RoleConstants.ModifiedBy, Value = role.ModifiedBy });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = RoleConstants.RuleMetadata, Value = role.roleMetadata });
+                //sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = RoleConstants.RuleMetadata, Value = role.roleMetadata });
                 Object result = dataAccessHelper.ExecuteStoredProcedure(RoleConstants.USP_Role_PSY_INSERT, sqlparms, ExecutionType.Scalar);
                 return (Convert.ToInt32(result) > 0);
             }
@@ -85,7 +85,7 @@ namespace QAMS.Admin.Data
             try
             {
                 List<SqlParameter> sqlparms = new List<SqlParameter>();
-                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = RoleConstants.Id, Value = role.Id });
+               // sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = RoleConstants.Id, Value = role.Id });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = RoleConstants.Name, Value = role.Name });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = RoleConstants.Description, Value = role.Description });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = RoleConstants.ModifiedBy, Value = role.ModifiedBy });
