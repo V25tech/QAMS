@@ -56,4 +56,13 @@ export class UserGroupService {
 
     return Promise.resolve(this.getProductsData().slice(0, 10));
 }
+UpdateUserGroupDetails(settings: RegUserGroup) {    
+  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  return this.http.post(this.apiUrl+ '/usergroup/updateusergroup', settings, { headers })       
+}
+GetUserGroupById(usergroupId: number)  {
+  //const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  return this.http.get(this.apiUrl+'/usergroup/'+ usergroupId);    
+}
+
 }

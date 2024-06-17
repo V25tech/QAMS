@@ -37,6 +37,7 @@ const routes: Routes = [
   {path: 'roles', component: RolesComponent, canActivate: [AuthGuard] },
   {path:'users',component:ModifyUserComponent,canActivate: [AuthGuard]},
   {path:'user-groups',component:UserGroupsComponent,canActivate: [AuthGuard]},
+  {path:'edit-user-group-registration',component:CustomerRegistrationComponent, canActivate: [AuthGuard]},
   {path:'reg-new-user-group',component:RegNewUserGroupComponent,canActivate: [AuthGuard]},
   {path:'plant-assignment-users',component:PlantAssignmentUsersComponent ,canActivate: [AuthGuard]},
   {path:'reg-plant-assignment-user',component:RegPlantAssignmentUserComponent,canActivate: [AuthGuard]},
