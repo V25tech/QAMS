@@ -4,7 +4,7 @@ import { MessageService } from 'primeng/api';
 import { BatchLotServicesService } from '../../services/batch-lot-services.service';
 import { CustomerRegistration } from 'src/app/models/customerRegistration.model';
 import { CustomerRegistrationService } from '../../services/customer-registration.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-customer-registration',
   templateUrl: './customer-registration.component.html',
@@ -18,17 +18,17 @@ export class CustomerRegistrationComponent {
   editMode: boolean = false;
   customerReg: CustomerRegistration;
   editCCValue: CustomerRegistration;
-  route: any;
+  
   // CustomerRegistrationService: any;
-  constructor(private fb: FormBuilder,private router: Router, private messageService: MessageService, private customerService:CustomerRegistrationService,
+  constructor(private fb: FormBuilder,private router: Router, private messageService: MessageService, private route: ActivatedRoute, private customerService:CustomerRegistrationService,
     private batchLotService: BatchLotServicesService, private cdr: ChangeDetectorRef) { }
     ngOnInit(): void {
       this.BuildCustomerForm();
       this.cdr.detectChanges();
-      this.route.queryParams.subscribe((params: { [x: string]: string; }) => {
-        this.id = Number.parseInt(params['Id']);
+
+      this.route.queryParams.subscribe(params => {   this.id = Number.parseInt(params['Id']);
         let splitItesms = this.id;
-        debugger;        
+        debugger;
         this.GetCustomerById(this.id);
       })
       
@@ -68,8 +68,7 @@ export class CustomerRegistrationComponent {
     }, (er: any) => console.log(er));    
   }
   BuildCustomerForm()
-  {
-      
+  {      
       this.customerRegistrationForm = this.fb.group({
         name: ['', Validators.required],
         uniqueCode: ['', Validators.required],
@@ -86,23 +85,6 @@ export class CustomerRegistrationComponent {
      
       this.cdr.detectChanges();
     }
-  
-  
-
-
-      // const customerRegistration: CustomerRegistration = {
-      //   name: this. customerRegistrationForm.value.name,
-      //   uniqueCode: this. customerRegistrationForm.value.uniqueCode,
-      //   contactName: this. customerRegistrationForm.value.contactName,
-      //   address: this. customerRegistrationForm.value.address,
-      //   city: this. customerRegistrationForm.value.city,
-      //   state: this. customerRegistrationForm.value.state,
-      //   country: this. customerRegistrationForm.value.country,
-      //   zipCode: this. customerRegistrationForm.value.zipCode,
-      //   fax: this. customerRegistrationForm.value.fax,
-      //   email: this. customerRegistrationForm.value.email,
-      //   remarks: this. customerRegistrationForm.value.remarks
-      // };
       debugger: any;
       customerRegistration(){
         if (this.customerRegistrationForm.valid) {
