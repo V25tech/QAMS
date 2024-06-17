@@ -10,239 +10,60 @@
 namespace QAMS.Admin.Entities
 {
     using System;
-    using System.Collections.Generic;
-    using QAMS.Common.Entities;
+
 
 
     // Comment
     public class User
     {
 
-        private System.Int32? idField;
-
-        private System.Int32? roleidField;
-
-        private System.Int32? useridField;
-
-        private string firstnameField;
-
-        private string plantsField;
-
-        private string lastnameField;
-
-        private System.Int32? departmentidField;
-
-        private string employeeidField;
-
-        private System.Int32? emailidField;
-
-        private string passwordField;
-
-        private System.Boolean? isactiveField;
-
-        private System.Boolean? forgotloginpasswordField;
-
-        private string createdbyField;
-
-        private DateTime? createddateField;
-
-        private string modifiedbyField;
-
-        private DateTime? modifieddateField;
-
-        public System.Int32? Id
-        {
-            get
-            {
-                return this.idField;
-            }
-            set
-            {
-                this.idField = value;
-            }
-        }
-
-        public System.Int32? RoleId
-        {
-            get
-            {
-                return this.roleidField;
-            }
-            set
-            {
-                this.roleidField = value;
-            }
-        }
-        public string roleName { get; set; }
-        public System.Int32? UserId
-        {
-            get
-            {
-                return this.useridField;
-            }
-            set
-            {
-                this.useridField = value;
-            }
-        }
-
-        public string FirstName
-        {
-            get
-            {
-                return this.firstnameField;
-            }
-            set
-            {
-                this.firstnameField = value;
-            }
-        }
-
-        public string Plants
-        {
-            get
-            {
-                return this.plantsField;
-            }
-            set
-            {
-                this.plantsField = value;
-            }
-        }
-
-        public string LastName
-        {
-            get
-            {
-                return this.lastnameField;
-            }
-            set
-            {
-                this.lastnameField = value;
-            }
-        }
-
-        public System.Int32? DepartmentId
-        {
-            get
-            {
-                return this.departmentidField;
-            }
-            set
-            {
-                this.departmentidField = value;
-            }
-        }
-
-        public string Department { get; set; }
 
 
-        public string EmployeeId
-        {
-            get
-            {
-                return this.employeeidField;
-            }
-            set
-            {
-                this.employeeidField = value;
-            }
-        }
+        public System.Int32? Id { get; set; }
+        public System.Int32? RoleId { get; set; }
+        public string role { get; set; }
+        public string userId { get; set; }
+        public string userName { get; set; }
+        public string FirstName { get; set; }
 
-        public System.Int32? EmailId
-        {
-            get
-            {
-                return this.emailidField;
-            }
-            set
-            {
-                this.emailidField = value;
-            }
-        }
+        public string Plants { get; set; }
 
-        public string Password
-        {
-            get
-            {
-                return this.passwordField;
-            }
-            set
-            {
-                this.passwordField = value;
-            }
-        }
 
-        public System.Boolean? IsActive
-        {
-            get
-            {
-                return this.isactiveField;
-            }
-            set
-            {
-                this.isactiveField = value;
-            }
-        }
+        public string LastName { get; set; }
 
-        public System.Boolean? ForgotLoginPassword
-        {
-            get
-            {
-                return this.forgotloginpasswordField;
-            }
-            set
-            {
-                this.forgotloginpasswordField = value;
-            }
-        }
 
-        public string CreatedBy
-        {
-            get
-            {
-                return this.createdbyField;
-            }
-            set
-            {
-                this.createdbyField = value;
-            }
-        }
 
-        public DateTime? CreatedDate
-        {
-            get
-            {
-                return this.createddateField;
-            }
-            set
-            {
-                this.createddateField = value;
-            }
-        }
+        public System.Int32? DepartmentId { get; set; }
 
-        public string ModifiedBy
-        {
-            get
-            {
-                return this.modifiedbyField;
-            }
-            set
-            {
-                this.modifiedbyField = value;
-            }
-        }
 
-        public DateTime? ModifiedDate
-        {
-            get
-            {
-                return this.modifieddateField;
-            }
-            set
-            {
-                this.modifieddateField = value;
-            }
-        }
+
+        public string department { get; set; }
+
+
+        public string employeeId { get; set; }
+
+
+        public string email { get; set; }
+
+
+        public string Password { get; set; }
+
+
+        public System.Boolean? IsActive { get; set; }
+
+
+        public System.Boolean? ForgotLoginPassword { get; set; }
+
+
+        public string CreatedBy { get; set; }
+
+
+        public DateTime? CreatedDate { get; set; }
+
+        public string ModifiedBy { get; set; }
+
+
+        public DateTime? ModifiedDate { get; set; }
+
     }
 }

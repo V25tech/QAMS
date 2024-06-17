@@ -17,9 +17,7 @@ export class MarketRegistrationComponent {
   id:number=0;
   marketReg: MarketRegistration;
   editMode: boolean = false;
-  editCCValue: MarketRegistration;
-  //MarketRegistrationService: any;
-  // mainForm: FormGroup;
+  editCCValue: MarketRegistration;  
   constructor(private fb: FormBuilder,private router: Router, private messageService: MessageService, private route: ActivatedRoute,
     private marketRegistration: MarketRegistrationService, private cdr: ChangeDetectorRef ,private primengConfig: PrimeNGConfig,) { }
     ngOnInit(): void {
