@@ -30,6 +30,7 @@ const routes: Routes = [
   {path:'market-registration',component:MarketRegistrationComponent,canActivate: [AuthGuard]},
   {path:'markets',component:MarketsComponent,canActivate: [AuthGuard]},
   {path:'customer-registration',component:CustomerRegistrationComponent,canActivate: [AuthGuard]},
+  {path:'edit-customer-registration',component:CustomerRegistrationComponent, canActivate: [AuthGuard]},
   {path:'customers',component:CustomersComponent,canActivate: [AuthGuard]},
   {path:'new-role',component:NewRoleComponent,canActivate: [AuthGuard] },
   {path: 'roles', component: RolesComponent, canActivate: [AuthGuard] },

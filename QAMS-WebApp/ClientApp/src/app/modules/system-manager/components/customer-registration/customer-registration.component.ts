@@ -14,10 +14,62 @@ import { Router } from '@angular/router';
 export class CustomerRegistrationComponent {
 
   customerRegistrationForm!: FormGroup;
+  id:number=0;
+  editMode: boolean = false;
+  customerReg: CustomerRegistration;
+  editCCValue: CustomerRegistration;
+  route: any;
   // CustomerRegistrationService: any;
   constructor(private fb: FormBuilder,private router: Router, private messageService: MessageService, private customerService:CustomerRegistrationService,
     private batchLotService: BatchLotServicesService, private cdr: ChangeDetectorRef) { }
     ngOnInit(): void {
+      this.BuildCustomerForm();
+      this.cdr.detectChanges();
+      this.route.queryParams.subscribe((params: { [x: string]: string; }) => {
+        this.id = Number.parseInt(params['Id']);
+        let splitItesms = this.id;
+        debugger;        
+        this.GetCustomerById(this.id);
+      })
+      
+    }
+  cancelClick(){
+    this.router.navigateByUrl('/customers');
+  }
+  saveControlChange(ccValue: CustomerRegistration) {
+    this.customerService.insertCustomerDetails(ccValue).subscribe((data: any) => {
+      console.log('Form submitted!', ccValue);
+      this.messageService.add({ severity: 'success', summary: 'Customer Registration Saved Successfull', detail: 'Message Content' });
+      setTimeout(() => {
+        this.backToCustomers();
+      }, 1000);
+    });    
+  }
+  updateControlChange(ccValue: CustomerRegistration) {
+    console.log(JSON.stringify(ccValue))
+    this.customerService.updateCustomerDetails(this.editCCValue).subscribe((res: any) => {
+      console.log(res);
+      this.backToCustomers();
+    }, (er: any) => console.log(er));
+  }
+  backToCustomers(){
+    this.router.navigateByUrl('/customers');
+  }
+  GetCustomerById(id:number)
+  {
+    this.customerService.GetCustomerById(id).subscribe((res:any) => {
+      debugger;
+      this.customerReg = res;
+      let ccValue: CustomerRegistration = res; //JSON.parse(ccValueStr) ?? null;
+      this.editCCValue = ccValue;
+      if (ccValue) {
+        this.customerRegistrationForm.patchValue(ccValue);
+      }
+    }, (er: any) => console.log(er));    
+  }
+  BuildCustomerForm()
+  {
+      
       this.customerRegistrationForm = this.fb.group({
         name: ['', Validators.required],
         uniqueCode: ['', Validators.required],
@@ -34,42 +86,35 @@ export class CustomerRegistrationComponent {
      
       this.cdr.detectChanges();
     }
-  cancelClick(){
-    
-  }
-  customerRegistration(){
-    if (this. customerRegistrationForm.invalid) {
-      this.messageService.add({ severity: 'error', summary: 'Form is invalid!', detail: 'Message Content' });
-      return; // Prevent form submission
-    } else {
+  
+  
 
 
-      const customerRegistration: CustomerRegistration = {
-        name: this. customerRegistrationForm.value.name,
-        uniqueCode: this. customerRegistrationForm.value.uniqueCode,
-        contactName: this. customerRegistrationForm.value.contactName,
-        address: this. customerRegistrationForm.value.address,
-        city: this. customerRegistrationForm.value.city,
-        state: this. customerRegistrationForm.value.state,
-        country: this. customerRegistrationForm.value.country,
-        zipCode: this. customerRegistrationForm.value.zipCode,
-        fax: this. customerRegistrationForm.value.fax,
-        email: this. customerRegistrationForm.value.email,
-        remarks: this. customerRegistrationForm.value.remarks
-      };
-      debugger;
-
-      this.customerService.insertCustomerDetails(customerRegistration).subscribe((data: any) => {
-        console.log('Form submitted!', customerRegistration);
-        this.messageService.add({ severity: 'success', summary: 'Customer Registration Saved Successfull', detail: 'Message Content' });
-        
-        setTimeout(() => {
-          this.backToCustomers();
-        }, 1000);
-      });  
-  }
-}
-backToCustomers(){
-  this.router.navigateByUrl('/customers');
-}
+      // const customerRegistration: CustomerRegistration = {
+      //   name: this. customerRegistrationForm.value.name,
+      //   uniqueCode: this. customerRegistrationForm.value.uniqueCode,
+      //   contactName: this. customerRegistrationForm.value.contactName,
+      //   address: this. customerRegistrationForm.value.address,
+      //   city: this. customerRegistrationForm.value.city,
+      //   state: this. customerRegistrationForm.value.state,
+      //   country: this. customerRegistrationForm.value.country,
+      //   zipCode: this. customerRegistrationForm.value.zipCode,
+      //   fax: this. customerRegistrationForm.value.fax,
+      //   email: this. customerRegistrationForm.value.email,
+      //   remarks: this. customerRegistrationForm.value.remarks
+      // };
+      debugger: any;
+      customerRegistration(){
+        if (this.customerRegistrationForm.valid) {
+          console.log(this.customerRegistrationForm.value);
+          let ccCustomerValue: CustomerRegistration = this.customerRegistrationForm.value;
+          if (this.editMode) {
+            this.updateControlChange(ccCustomerValue);
+          }    
+        else {
+          this.saveControlChange(ccCustomerValue);
+        }
+      }
+    }
+   
 }

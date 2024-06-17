@@ -1,4 +1,5 @@
 export interface CustomerRegistration {
+    id:any,
     name:string
     uniqueCode:string
     contactName:string
