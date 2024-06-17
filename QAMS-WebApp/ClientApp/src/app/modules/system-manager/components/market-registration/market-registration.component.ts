@@ -4,7 +4,7 @@ import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { BatchLotServicesService } from '../../services/batch-lot-services.service';
 import { MarketRegistrationService } from '../../services/market-registration.service';
 import { MarketRegistration } from 'src/app/models/marketRegistration.model';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-market-registration',
@@ -18,15 +18,14 @@ export class MarketRegistrationComponent {
   marketReg: MarketRegistration;
   editMode: boolean = false;
   editCCValue: MarketRegistration;
-  route: any;
-  MarketRegistrationService: any;
+  //MarketRegistrationService: any;
   // mainForm: FormGroup;
-  constructor(private fb: FormBuilder,private router: Router, private messageService: MessageService, 
+  constructor(private fb: FormBuilder,private router: Router, private messageService: MessageService, private route: ActivatedRoute,
     private marketRegistration: MarketRegistrationService, private cdr: ChangeDetectorRef ,private primengConfig: PrimeNGConfig,) { }
     ngOnInit(): void {
       this.BuildEquipForm();
       this.cdr.detectChanges();
-      this.route.queryParams.subscribe((params: { [x: string]: string; }) => {
+      this.route.queryParams.subscribe(params => {
         this.id = Number.parseInt(params['Id']);
         let splitItesms = this.id;
         debugger;        
@@ -38,7 +37,7 @@ export class MarketRegistrationComponent {
     this.router.navigateByUrl('/markets');
   }
   saveControlChange(ccValue: MarketRegistration) {
-    this.MarketRegistrationService.insertCustomerDetails(ccValue).subscribe((data: any) => {
+    this.marketRegistration.insertMarketData(ccValue).subscribe((data: any) => {
       console.log('Form submitted!', ccValue);
       this.messageService.add({ severity: 'success', summary: 'Markets Registration Saved Successfull', detail: 'Message Content' });
       setTimeout(() => {
@@ -48,7 +47,7 @@ export class MarketRegistrationComponent {
   }
   updateControlChange(ccValue: MarketRegistration) {
     console.log(JSON.stringify(ccValue))
-    this.MarketRegistrationService.updateMarketDetails(this.editCCValue).subscribe((res: any) => {
+    this.marketRegistration.updateMarketDetails(this.editCCValue).subscribe((res: any) => {
       console.log(res);
       this.backToMarkets();
     }, (er: any) => console.log(er));
@@ -58,8 +57,9 @@ export class MarketRegistrationComponent {
   }
   GetMarketDetailsbyId(id:number)
   {
-    this.MarketRegistrationService.GetMarketById(id).subscribe((res:any) => {
-      debugger;
+    debugger;
+    this.marketRegistration.GetMarketById(id).subscribe((res:any) => {
+      
       this.marketReg = res;
       let ccValue: MarketRegistration = res; //JSON.parse(ccValueStr) ?? null;
       this.editCCValue = ccValue;
