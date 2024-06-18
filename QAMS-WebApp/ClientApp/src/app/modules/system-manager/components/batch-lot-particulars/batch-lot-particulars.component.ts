@@ -65,7 +65,7 @@ export class BatchLotParticularsComponent {
   }
 
   navigateToEditEquipment(id:number){    
-    this.router.navigateByUrl('/edit-batch-lot-particular-registration?Id='+id);
+    this.router.navigateByUrl('/reg-batch-lot-particulars?Id='+id);
   }
 
 }
