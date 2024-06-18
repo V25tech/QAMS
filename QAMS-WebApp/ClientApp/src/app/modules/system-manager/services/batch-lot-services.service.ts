@@ -34,7 +34,14 @@ export class BatchLotServicesService {
     debugger;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post(this.apiUrl+ '/batchdetails/savebatchdetails', settings, { headers });
-
     //return this.http.post(this.apiUrl + '/customer/savecustomer', settings,{  });    
+  }  
+ UpdateBatchDetails(settings: BatchLotParticulars) {    
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post(this.apiUrl+ '/batchdetails/updatebatchdetails', settings, { headers })      
+  }
+  GetBatchDetailsById(batchLotParticularsId: number)  {
+    //const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.get(this.apiUrl+'/batchdetails/'+ batchLotParticularsId);    
   }
 }

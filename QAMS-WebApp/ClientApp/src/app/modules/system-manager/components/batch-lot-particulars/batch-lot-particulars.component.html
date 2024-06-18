@@ -26,17 +26,14 @@
                         <ng-template pTemplate="header">
                             <tr>
                                 <th style="width:40px" class="lh-lg">S.No</th>
-                                <th pSortableColumn="batchId" style="width:20%">Batch No./Lot No.
-                                    
+                                <th pSortableColumn="batchId" style="width:20%">Batch No./Lot No.                                    
                                     <p-columnFilter type="text" field="batchId" display="menu"></p-columnFilter>
                                     </th>
                                 <th pSortableColumn="productMaterial" style="width:20%">Product/Material <p-columnFilter type="text" field="productMaterial" display="menu"></p-columnFilter></th>
                                 <th pSortableColumn="arno">A.R.No. <p-columnFilter type="text" field="arno" display="menu"></p-columnFilter></th>
                                 <th pSortableColumn="initiatedBy">Initiated By<p-columnFilter type="text" field="initiatedBy" display="menu"></p-columnFilter> </th>
-                                <th pSortableColumn="initiatedOn">Initiated On<p-columnFilter type="date" field="date" display="menu"></p-columnFilter> </th>
+                                <th pSortableColumn="initiatedOn">Initiated On<p-columnFilter type="date" field="date" display="menu"></p-columnFilter> </th>                              
                                
-                               
-
                             </tr>
                         </ng-template>
                         <ng-template pTemplate="body" let-batchLotType let-i="rowIndex" #templatesTable>
