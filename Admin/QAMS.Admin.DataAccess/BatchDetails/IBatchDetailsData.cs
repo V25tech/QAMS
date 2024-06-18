@@ -24,7 +24,7 @@ namespace QAMS.Admin.Data
     public interface IBatchDetailsData
     {
         
-        DataSet GetAllBatchDetails(RequestContext requestContext);
+        DataSet GetAllBatchDetails();
         
         DataSet GetBatchDetailsById(System.Int32? id);
         

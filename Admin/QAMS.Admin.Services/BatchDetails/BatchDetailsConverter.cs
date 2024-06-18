@@ -25,7 +25,7 @@ namespace QAMS.Admin.Services
     // Comment
     public static class BatchDetailsConverter
     {
-        
+
         public static List<BatchDetails> SetAllBatchDetails(DataSet dataset)
         {
             try
@@ -40,8 +40,8 @@ namespace QAMS.Admin.Services
                         batchDetailsData = new BatchDetails();
                         batchDetailsData.Id = DatatypeConverter.SetIntValue(row[BatchDetailsConstants.Id.TrimAt()]);
                         batchDetailsData.BatchId = Convert.ToString(row[BatchDetailsConstants.BatchId.TrimAt()]);
-                        batchDetailsData.Material = Convert.ToString(row[BatchDetailsConstants.Material.TrimAt()]);
-                        batchDetailsData.ARNumber = Convert.ToString(row[BatchDetailsConstants.ARNumber.TrimAt()]);
+                        batchDetailsData.productMaterial = Convert.ToString(row[BatchDetailsConstants.Material.TrimAt()]);
+                        batchDetailsData.arno = Convert.ToString(row[BatchDetailsConstants.ARNumber.TrimAt()]);
                         batchDetailsData.InitiatedBy = Convert.ToString(row[BatchDetailsConstants.InitiatedBy.TrimAt()]);
                         batchDetailsData.InitiatedOn = DatatypeConverter.SetDateTime(row[BatchDetailsConstants.InitiatedOn.TrimAt()]);
                         batchDetailsData.CreatedBy = Convert.ToString(row[BatchDetailsConstants.CreatedBy.TrimAt()]);
@@ -58,7 +58,7 @@ namespace QAMS.Admin.Services
                 throw;
             }
         }
-        
+
         public static BatchDetails SetBatchDetails(DataSet dataset)
         {
             var result = SetAllBatchDetails(dataset);
