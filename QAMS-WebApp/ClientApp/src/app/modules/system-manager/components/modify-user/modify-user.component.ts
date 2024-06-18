@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Table } from 'primeng/table';
 import { ModifyUser } from 'src/app/models/modifyUser.model';
 import { ModifyUserService } from '../../services/modify-user.service';
@@ -22,6 +22,14 @@ interface PageEvent {
 export class ModifyUserComponent {
   modifyUserForm!: FormGroup;
   modifyUserDatasource: ModifyUser[]=[];
+
+
+    //update code starts here
+    id:number=0;
+    editMode: boolean = false;
+    userReg: RegModifyUser;
+    editCCValue: RegModifyUser;
+    //mainForm: FormGroup;
   selectRoleOption: any = "Administrator";
   dataresp: any = [];
   first: number = 0;
@@ -31,13 +39,60 @@ export class ModifyUserComponent {
   selectedStatusFlag:boolean=true;
   selectedStatusValue:any;
   selectedStatusIndex:any;
-  constructor(private fb: FormBuilder,private router: Router,protected messageService:MessageService,
+  constructor(private fb: FormBuilder,private router: Router,protected messageService:MessageService,  private route: ActivatedRoute,
     private modifyUserService: ModifyUserService, private cdr: ChangeDetectorRef) { }
 
   ngOnInit() :void {
-    //* update code starts   //
+   
+    this.BuildUserForm();
+    this.cdr.detectChanges();
+    this.route.queryParams.subscribe(params => {
+      this.id = Number.parseInt(params['Id']);
+      let splitItesms = this.id;
+      debugger;        
+      this.GetUserDetailsbyId(this.id);
+    })
 
-    //  update code ends * //
+    this.modifyUserService.getUserData().subscribe((data: any) => {
+      this.modifyUserDatasource = data.response;
+      this.modifyUserDatasource.forEach(dataSource => (dataSource.createdDate = new Date(dataSource.createdDate)));      
+    }); 
+  }
+    cancelClick(){
+      this.router.navigateByUrl('/users');
+    }
+    saveControlChange(ccValue: RegModifyUser) {
+      this.modifyUserService.insertUserDetails(ccValue).subscribe((data: any) => {
+        console.log('Form submitted!', ccValue);
+        this.messageService.add({ severity: 'success', summary: 'Usergroup Registration Saved Successfull', detail: 'Message Content' });
+        setTimeout(() => {
+          //this.backToUsers();
+        }, 1000);
+      });    
+    }
+    updateControlChange(ccValue: RegModifyUser) {
+      console.log(JSON.stringify(ccValue))
+      this.modifyUserService.updateUserDetails(this.editCCValue).subscribe(res => {
+        console.log(res);
+        this.backToUser();
+      }, er => console.log(er));
+    }
+    backToUser(){
+      this.router.navigateByUrl('/users');
+    }
+    GetUserDetailsbyId(id:number)
+    {
+      this.modifyUserService.GetUserById(id).subscribe((res:any) => {
+        debugger;
+        this.userReg = res;
+        let ccValue: RegModifyUser = res; //JSON.parse(ccValueStr) ?? null;
+        this.editCCValue = ccValue;
+        if (ccValue) {
+          this.modifyUserForm.patchValue(ccValue);
+        }
+      }, er => console.log(er));    
+    }
+    BuildUserForm(){
     this.modifyUserForm = this.fb.group({
       userId: ['', Validators.required],
       role: ['', Validators.required],
@@ -46,9 +101,7 @@ export class ModifyUserComponent {
       email: ['', Validators.required]
     
     });    
-    this.modifyUserService.getUserData().subscribe((data: any) => {
-      this.modifyUserDatasource = data.response;      
-    });     
+        
   }
   roleDetails=[
     { name: 'Administrator', code: 'Administrator' },
@@ -103,15 +156,7 @@ debugger;
     }
   }
 
-  saveControlChange(ccValue: RegModifyUser) {
-    this.modifyUserService.insertUserDetails(ccValue).subscribe((data: any) => {
-      console.log('Form submitted!', ccValue);
-      this.messageService.add({ severity: 'success', summary: 'Usergroup Registration Saved Successfull', detail: 'Message Content' });
-      setTimeout(() => {
-        //this.backToUsers();
-      }, 1000);
-    });    
-  }
+ 
   selectStatusType(event:any){
     this.selectedStatusValue = event.target.value;
     if(event.target.value ==="Active"){
@@ -129,4 +174,19 @@ debugger;
        this.selectedIndex = index;
         this.selectedStatusFlag = !this.selectedStatusFlag;
      }
+     navigateToEditUser(id:number){    
+      this.router.navigateByUrl('/edit-user-registration?Id='+id);
+    }
+
+    Openvisiblesidebar(id:number)
+    {    
+      this.visibleSidebar = true;
+      this.BuildUserForm();
+      if(id!=0)
+        {
+          this.editMode=true;
+         this.GetUserDetailsbyId(id);       
+        }
+        
+    }
 }

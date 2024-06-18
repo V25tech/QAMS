@@ -50,6 +50,8 @@ const routes: Routes = [
   {path:'edit-products-materials',component:ProductMaterialsComponent, canActivate: [AuthGuard]},
   {path:'equipments',component:EquipmentsComponent, canActivate: [AuthGuard]},
   {path:'batch-lot-particulars',component:BatchLotParticularsComponent, canActivate: [AuthGuard]},
+  {path:'edit-users-registration',component:ModifyUserComponent, canActivate: [AuthGuard]},
+
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

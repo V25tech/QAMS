@@ -30,7 +30,7 @@ export class BatchLotParticularsComponent {
 
   ngOnInit() {
     this.batchLotServicesService.getBatchLotData().subscribe((data: any) => {
-      this.batchLotDatasource = data;
+      this.batchLotDatasource = data.Response;
       this.batchLotDatasource.forEach(dataSource=>dataSource.date = new Date(dataSource.date))
     });
      
