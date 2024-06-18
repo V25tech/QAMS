@@ -33,7 +33,7 @@
                                 <th pSortableColumn="arno">A.R.No. <p-columnFilter type="text" field="arno" display="menu"></p-columnFilter></th>
                                 <th pSortableColumn="initiatedBy">Initiated By<p-columnFilter type="text" field="initiatedBy" display="menu"></p-columnFilter> </th>
                                 <th pSortableColumn="initiatedOn">Initiated On<p-columnFilter type="date" field="date" display="menu"></p-columnFilter> </th>                              
-                               
+                                <th pSortableColumn="Actions" style="width:10%">Actions <p-columnFilter type="text" field="Actions" display="menu"></p-columnFilter> </th>
                             </tr>
                         </ng-template>
                         <ng-template pTemplate="body" let-batchLotType let-i="rowIndex" #templatesTable>
@@ -46,6 +46,11 @@
                                 <td>{{batchLotType.initiatedBy}}</td>
                                 <td>{{batchLotType.initiatedOn | date: 'MM/dd/yyyy'}}</td>
                                 
+                                <td class="text-center">                                    
+                                    <a class="me-2">
+                                        <i class="bi bi-pencil-square" (click)="navigateToEditEquipment(batchLotType.batchId)"></i>
+                                        </a>
+                                    </td>
                                
                             </tr>
 
