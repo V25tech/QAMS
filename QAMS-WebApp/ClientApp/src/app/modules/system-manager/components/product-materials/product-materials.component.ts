@@ -44,18 +44,20 @@ export class ProductMaterialsComponent {
   ngOnInit(): void {
 
 
-    this.BuildEquipForm();
+    this.BuildMaterialForm();
     this.cdr.detectChanges();
+    debugger;       
     this.route.queryParams.subscribe(params => {
       this.id = Number.parseInt(params['Id']);
       let splitItesms = this.id;
-      debugger;        
+       
       this.GetProductsDetailsbyId(this.id);
     })
 
    
     this.ProductsService.getProductsData().subscribe((data: any) => {      
       this.productsDatasource = data.response;
+      debugger;
       this.productsDatasource.forEach(dataSource => (dataSource.createdDate = new Date(dataSource.createdDate)));
     });
   }
@@ -94,7 +96,7 @@ export class ProductMaterialsComponent {
       }
     }, er => console.log(er));    
   }
-  BuildEquipForm(){
+  BuildMaterialForm(){
     this.regProductForm = this.fb.group({
       uniqueCode: ['', Validators.required],
       name: ['', Validators.required],
@@ -197,13 +199,12 @@ export class ProductMaterialsComponent {
   {    
     debugger;
     this.visibleSidebar = true;
-    this.BuildEquipForm();
+    this.BuildMaterialForm();
     if(id!=0)
       {
         this.editMode=true;
        this.GetProductsDetailsbyId(id);       
-      }
-      
+      }      
   }
   //update code ends here
 }
