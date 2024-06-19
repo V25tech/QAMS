@@ -137,19 +137,9 @@ namespace QAMS.WEB.Entities
                 this.remarksField = value;
             }
         }
-        
-        public string CreatedBy
-        {
-            get
-            {
-                return this.createdbyField;
-            }
-            set
-            {
-                this.createdbyField = value;
-            }
-        }
-        
+
+        public int CreatedBy{ get; set; }
+
         public DateTime? CreatedDate
         {
             get
@@ -161,19 +151,9 @@ namespace QAMS.WEB.Entities
                 this.createddateField = value;
             }
         }
-        
-        public string ModifiedBy
-        {
-            get
-            {
-                return this.modifiedbyField;
-            }
-            set
-            {
-                this.modifiedbyField = value;
-            }
-        }
-        
+
+        public int ModifiedBy { get; set; }
+
         public DateTime? ModifiedDate
         {
             get

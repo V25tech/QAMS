@@ -24,8 +24,8 @@ namespace QAMS.Controllers
     /// Comment
     /// </summary>
     [ApiController()]
-    [Route("api/changecontolactionplan")]
-    public class ChangeContolActionPlanController : ControllerBase
+    [Route("api/actionplan")]
+    public class ActionPlanController : ControllerBase
     {
         
         private readonly IChangeContolActionPlanService changeContolActionPlanService;
@@ -34,7 +34,7 @@ namespace QAMS.Controllers
         /// 
         /// </summary>
         /// <param name="changeContolActionPlanService"></param>
-        public ChangeContolActionPlanController(IChangeContolActionPlanService changeContolActionPlanService)
+        public ActionPlanController(IChangeContolActionPlanService changeContolActionPlanService)
         {
             this.changeContolActionPlanService = changeContolActionPlanService;
         }

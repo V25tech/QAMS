@@ -34,10 +34,10 @@ namespace QAMS.Admin.Services
                 validationMessages.Append(validationHelper.LengthCheckValidator(changeContolActionPlan.Type,250, nameof(changeContolActionPlan.Type)));
                 validationMessages.Append(validationHelper.LengthCheckValidator(changeContolActionPlan.Description,250, nameof(changeContolActionPlan.Description)));
                 validationMessages.Append(validationHelper.LengthCheckValidator(changeContolActionPlan.Remarks,150, nameof(changeContolActionPlan.Remarks)));
-                validationMessages.Append(validationHelper.NullCheckValidator(changeContolActionPlan.CreatedBy, nameof(changeContolActionPlan.CreatedBy)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(changeContolActionPlan.CreatedBy,150, nameof(changeContolActionPlan.CreatedBy)));
-                validationMessages.Append(validationHelper.NullCheckValidator(changeContolActionPlan.ModifiedBy, nameof(changeContolActionPlan.ModifiedBy)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(changeContolActionPlan.ModifiedBy,150, nameof(changeContolActionPlan.ModifiedBy)));
+                //validationMessages.Append(validationHelper.NullCheckValidator(changeContolActionPlan.CreatedBy, nameof(changeContolActionPlan.CreatedBy)));
+                //validationMessages.Append(validationHelper.LengthCheckValidator(changeContolActionPlan.CreatedBy,150, nameof(changeContolActionPlan.CreatedBy)));
+                //validationMessages.Append(validationHelper.NullCheckValidator(changeContolActionPlan.ModifiedBy, nameof(changeContolActionPlan.ModifiedBy)));
+                //validationMessages.Append(validationHelper.LengthCheckValidator(changeContolActionPlan.ModifiedBy,150, nameof(changeContolActionPlan.ModifiedBy)));
                 if (!String.IsNullOrEmpty(validationMessages.ToString()))
                 {
                     return Convert.ToString(validationMessages.Remove(validationMessages.ToString().LastIndexOf(','),1));

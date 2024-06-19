@@ -8,8 +8,8 @@
 @ApprovedUserGroup int,
 @TargetDate_PSY DateTime,
 @Remarks_PSY NVarChar(150),
-@CreatedBy_PSY NVarChar(150),
-@ModifiedBy_PSY NVarChar(150),
+@CreatedBy_PSY int,
+@ModifiedBy_PSY int,
 @WorkflowId int,@WorkflowName varchar(200),@InitiativeId int,@InitiativeName varchar(200),
 @IsReviewed bit,@IsApproved bit
  AS 
