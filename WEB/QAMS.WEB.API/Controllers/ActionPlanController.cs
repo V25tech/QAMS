@@ -65,7 +65,7 @@ namespace QAMS.Controllers
         /// This Method is used to Save ChangeContolActionPlan
         /// </summary>
         /// <param name="changeContolActionPlan"></param>
-        [HttpPost("savechangecontolactionplan")]
+        [HttpPost("saveactionplan")]
         public ActionResult<System.Boolean> SaveChangeContolActionPlan(ChangeContolActionPlan changeContolActionPlan)
         {
             var result = changeContolActionPlanService.SaveChangeContolActionPlan(changeContolActionPlan);
@@ -76,7 +76,7 @@ namespace QAMS.Controllers
         /// This Method is used to update ChangeContolActionPlan
         /// </summary>
         /// <param name="changeContolActionPlan"></param>
-        [HttpPost("updatechangecontolactionplan")]
+        [HttpPost("updateactionplan")]
         public ActionResult<System.Boolean> UpdateChangeContolActionPlan(ChangeContolActionPlan changeContolActionPlan)
         {
             var result = changeContolActionPlanService.UpdateChangeContolActionPlan(changeContolActionPlan);
@@ -87,7 +87,7 @@ namespace QAMS.Controllers
         /// This Method is used to Delete ChangeContolActionPlan By Id changeContolActionPlanId
         /// </summary>
         /// <param name="changeContolActionPlanId"></param>
-        [HttpDelete("{changeContolActionPlanId}")]
+        [HttpDelete("{getActionPlanById}")]
         public ActionResult<bool> DeleteChangeContolActionPlanByChangeContolActionPlanId(System.Int32? changeContolActionPlanId)
         {
             var result = changeContolActionPlanService.DeleteChangeContolActionPlanByChangeContolActionPlanId(changeContolActionPlanId);
