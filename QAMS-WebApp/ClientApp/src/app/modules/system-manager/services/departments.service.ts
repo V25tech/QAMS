@@ -17,9 +17,8 @@ export class DepartmentsService {
 
 
   getDepartmentsData(): Observable<any> {
-    debugger
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post(this.apiUrl+'/department/GetAllDepartment',"{  \"pageNumber\": 1,  \"pageSize\": 100,  \"planId\": 1}", { headers });
+    debugger    
+    return this.http.post(this.apiUrl+'/department/GetAllDepartment',"{  \"pageNumber\": 1,  \"pageSize\": 100,  \"planId\": 1}");
   }
 
   insertDepartmentDetails(settings: RegNewdepartment) {
@@ -28,7 +27,7 @@ export class DepartmentsService {
 
     return this.http.post(this.apiUrl+ '/department/savedepartment', settings, { headers })
 
-    //return this.http.post(this.apiUrl + '/customer/savecustomer', settings,{  });    
+      
   }
   updateDepartmentDetails(settings: RegNewdepartment) {    
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });

@@ -6,6 +6,7 @@ import { ModifyUserService } from '../../services/modify-user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { RegModifyUser } from 'src/app/models/modifyUser.model';
+import { NewRoleService } from '../../services/new-role.service';
 interface PageEvent {
   first?: any;
   rows?: any;
@@ -39,11 +40,11 @@ export class ModifyUserComponent {
   selectedStatusFlag:boolean=true;
   selectedStatusValue:any;
   selectedStatusIndex:any;
-  constructor(private fb: FormBuilder,private router: Router,protected messageService:MessageService,  private route: ActivatedRoute,
+  roleDetails: any;
+  constructor(private fb: FormBuilder,private router: Router,protected messageService:MessageService,  private route: ActivatedRoute,private roleService : NewRoleService,
     private modifyUserService: ModifyUserService, private cdr: ChangeDetectorRef) { }
 
-  ngOnInit() :void {
-   
+  ngOnInit() :void {   
     this.BuildUserForm();
     this.cdr.detectChanges();
     this.route.queryParams.subscribe(params => {
@@ -51,12 +52,13 @@ export class ModifyUserComponent {
       let splitItesms = this.id;
       debugger;        
       this.GetUserDetailsbyId(this.id);
+      this.GetRoleDetails();
     })
-
     this.modifyUserService.getUserData().subscribe((data: any) => {
       this.modifyUserDatasource = data.response;
       this.modifyUserDatasource.forEach(dataSource => (dataSource.createdDate = new Date(dataSource.createdDate)));      
     }); 
+    
   }
     cancelClick(){
       this.router.navigateByUrl('/users');
@@ -80,6 +82,7 @@ export class ModifyUserComponent {
     backToUser(){
       this.router.navigateByUrl('/users');
     }
+  
     GetUserDetailsbyId(id:number)
     {
       this.modifyUserService.GetUserById(id).subscribe((res:any) => {
@@ -98,15 +101,14 @@ export class ModifyUserComponent {
       role: ['', Validators.required],
       department: ['', Validators.required],
       employeeId: ['', Validators.required],
-      email: ['', Validators.required]
-    
+      email: ['', Validators.required]    
     });    
         
   }
-  roleDetails=[
-    { name: 'Administrator', code: 'Administrator' },
-    { name: 'Reviewer ', code: 'Reviewer' }
-   ]
+  // roleDetails=[
+  //   { name: 'Administrator', code: 'Administrator' },
+  //   { name: 'Reviewer ', code: 'Reviewer' }
+  //  ]
   clear(table: Table) {
     table.clear();
   }
@@ -150,13 +152,17 @@ debugger;
         employeeId: this.modifyUserForm.value.employeeId,
         email: this.modifyUserForm.value.email
       };   
-      this.saveControlChange(RegModifyUserInfo);
-     // console.log('Form submitted!', RegModifyUserInfo);
-      //this.messageService.add({ severity: 'success', summary: ' User Modified Successfully', detail: 'Message Content' });
+      this.saveControlChange(RegModifyUserInfo);     
     }
   }
 
- 
+  GetRoleDetails()
+  {
+    debugger;
+    this.roleService.getnewRoleData().subscribe((data: any) => {
+      this.roleDetails = data.response;    
+  });
+}   
   selectStatusType(event:any){
     this.selectedStatusValue = event.target.value;
     if(event.target.value ==="Active"){
