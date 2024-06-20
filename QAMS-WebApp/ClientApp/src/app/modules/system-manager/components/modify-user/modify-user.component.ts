@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { RegModifyUser } from 'src/app/models/modifyUser.model';
 import { NewRoleService } from '../../services/new-role.service';
+import { DepartmentsService } from '../../services/departments.service';
 interface PageEvent {
   first?: any;
   rows?: any;
@@ -41,7 +42,8 @@ export class ModifyUserComponent {
   selectedStatusValue:any;
   selectedStatusIndex:any;
   roleDetails: any;
-  constructor(private fb: FormBuilder,private router: Router,protected messageService:MessageService,  private route: ActivatedRoute,private roleService : NewRoleService,
+  departmentsDataSource: any;
+  constructor(private fb: FormBuilder,private router: Router,protected messageService:MessageService,  private route: ActivatedRoute,private roleService : NewRoleService,private DepartmentsService : DepartmentsService,
     private modifyUserService: ModifyUserService, private cdr: ChangeDetectorRef) { }
 
   ngOnInit() :void {   
@@ -50,9 +52,10 @@ export class ModifyUserComponent {
     this.route.queryParams.subscribe(params => {
       this.id = Number.parseInt(params['Id']);
       let splitItesms = this.id;
-      debugger;        
+      //debugger;        
       this.GetUserDetailsbyId(this.id);
       this.GetRoleDetails();
+      this.GetDepartments();
     })
     this.modifyUserService.getUserData().subscribe((data: any) => {
       this.modifyUserDatasource = data.response;
@@ -82,6 +85,13 @@ export class ModifyUserComponent {
     backToUser(){
       this.router.navigateByUrl('/users');
     }
+  GetDepartments()
+  {
+    this.DepartmentsService.getDepartmentsData().subscribe((data: any) => {
+      debugger
+      this.departmentsDataSource = data.response;      
+    }); 
+   }
   
     GetUserDetailsbyId(id:number)
     {
