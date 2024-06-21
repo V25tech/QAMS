@@ -53,7 +53,18 @@ export class ActionPlanFormComponent implements OnInit {
         private actionPlanService: ActionPlanService) { }
 
     ngOnInit(): void {
+        this.primeConfig.ripple = true;
+        
         this.commonService.buildLoginUserInfo();
+        this.loadUsersAndUserGroups();
+
+        this.buildMainForm();
+        this.route.queryParams.subscribe(params => {
+            this.id = params['id'];
+        });
+    }
+
+    loadUsersAndUserGroups(){
         this.userService.getUserData().subscribe(p => {
             this.usersDetails = p.response;
             console.log(p);
@@ -62,11 +73,6 @@ export class ActionPlanFormComponent implements OnInit {
         this.userGroupService.getUserData().subscribe(p => {
             this.userGroupDetails = p.response;
             console.log(p);
-        });
-        this.primeConfig.ripple = true;
-        this.buildMainForm();
-        this.route.queryParams.subscribe(params => {
-            this.id = params['id'];
         });
     }
 
