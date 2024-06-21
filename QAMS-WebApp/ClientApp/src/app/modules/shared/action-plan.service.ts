@@ -17,12 +17,12 @@ export class ActionPlanService {
         return this.http.get('assets/json/actionPlans.json');
     }
 
-    saveChangeControlActionPlans(actionPlan: ActionPlanModel) {
-        return this.http.post(this.apiUrl + '/changecontolactionplan/savechangecontolactionplan', JSON.stringify(actionPlan));
+    saveActionPlans(actionPlan: ActionPlanModel) {
+        return this.http.post(this.apiUrl + '/actionplan/saveactionplan', JSON.stringify(actionPlan));
     }
 
-    updateChangeControlActionPlans(actionPlan: ActionPlanModel) {
-        return this.http.post(this.apiUrl + '/changecontolactionplan/?', JSON.stringify(actionPlan));
+    updateActionPlans(actionPlan: ActionPlanModel) {
+        return this.http.post(this.apiUrl + '/actionplan/updateactionplan', JSON.stringify(actionPlan));
     }
 
     getChangeControlById(actionPlanId: number) {

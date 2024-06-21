@@ -3,7 +3,7 @@ import { FormGroup, FormControl, FormBuilder, Validators, FormArray } from '@ang
 import { ActivatedRoute } from '@angular/router';
 import { PrimeNGConfig } from 'primeng/api';
 import { ActionPlanInput, ActionPlanModel } from 'src/app/models/action-plan.model';
-import { ActionPlanService } from 'src/app/modules/change-controls/services/action-plan.service';
+import { ActionPlanService } from 'src/app/modules/shared/action-plan.service';
 import { CommonService } from 'src/app/modules/shared/common.service';
 import { ModifyUserService } from '../../system-manager/services/modify-user.service';
 import { UserGroupService } from '../../system-manager/services/user-group.service';
@@ -54,7 +54,7 @@ export class ActionPlanFormComponent implements OnInit {
 
     ngOnInit(): void {
         this.primeConfig.ripple = true;
-        
+
         this.commonService.buildLoginUserInfo();
         this.loadUsersAndUserGroups();
 
@@ -64,16 +64,14 @@ export class ActionPlanFormComponent implements OnInit {
         });
     }
 
-    loadUsersAndUserGroups(){
+    loadUsersAndUserGroups() {
         this.userService.getUserData().subscribe(p => {
-            this.usersDetails = p.response;
-            console.log(p);
-        });
+            this.usersDetails = p?.response;
+        }, er => console.log(er));
 
         this.userGroupService.getUserData().subscribe(p => {
-            this.userGroupDetails = p.response;
-            console.log(p);
-        });
+            this.userGroupDetails = p?.response;
+        }, er => console.log(er));
     }
 
     ngAfterViewInit() {
@@ -97,16 +95,6 @@ export class ActionPlanFormComponent implements OnInit {
         this.mainForm.get('assignTo').valueChanges.subscribe(value => {
             this.mainForm.get('assignedUser').setValue(0);
             this.mainForm.get('assignedUserGroup').setValue(0);
-
-            // if (value === 'userGroup') {
-            //     this.mainForm.get('assignedUserGroup').enable();
-            //     this.mainForm.get('assignedUserGroup').setValue('');
-            //     this.mainForm.get('assignedUser').disable();
-            // } else if (value === 'user') {
-            //     this.mainForm.get('assignedUser').enable();
-            //     this.mainForm.get('assignedUser').setValue('');
-            //     this.mainForm.get('assignedUserGroup').disable();
-            // }
         });
     }
 
@@ -126,7 +114,7 @@ export class ActionPlanFormComponent implements OnInit {
         actionPlan.targetDate = new Date(actionPlan.targetDate).toISOString();
 
         console.log(JSON.stringify(actionPlan))
-        this.actionPlanService.saveChangeControlActionPlans(actionPlan).subscribe(res => {
+        this.actionPlanService.saveActionPlans(actionPlan).subscribe(res => {
             console.log(res);
             this.closeNavBar();
         }, er => console.log(er));
