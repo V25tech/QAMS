@@ -30,8 +30,10 @@ export class BatchLotParticularsComponent {
 
   ngOnInit() {
     this.batchLotServicesService.getBatchLotData().subscribe((data: any) => {
-      this.batchLotDatasource = data;
-      this.batchLotDatasource.forEach(dataSource=>dataSource.date = new Date(dataSource.date))
+      debugger;
+      this.batchLotDatasource = data.response;
+
+      //this.batchLotDatasource.forEach(dataSource=>dataSource.date = new Date(dataSource.date))
     });
      
   }
@@ -62,5 +64,8 @@ export class BatchLotParticularsComponent {
     this.rows = event.rows;
   }
 
-  
+  navigateToEditEquipment(id:number){    
+    this.router.navigateByUrl('/reg-batch-lot-particulars?Id='+id);
+  }
+
 }

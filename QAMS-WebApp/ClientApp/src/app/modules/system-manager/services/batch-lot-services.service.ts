@@ -9,7 +9,7 @@ import { SecuritySettings } from 'src/app/models/SecuritySettings.model';
 })
 export class BatchLotServicesService {
 
-  private apiUrl = 'your-api-url/batch-Lot'; // Replace with your actual API URL
+  private apiUrl = 'ADMIN_API'; // Replace with your actual API URL
 
   constructor(private http: HttpClient) { }
 
@@ -26,14 +26,22 @@ export class BatchLotServicesService {
   // }
 
   getBatchLotData(): Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post(this.apiUrl+'/batchdetails/GetAllBatchDetails',"{\"pageNumber\":1,\"pageSize\":100,\"planId\":1}", { headers });
+    debugger;
+   // const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.get(this.apiUrl+'/batchdetails/GetAllBatchDetails');
   }
   insertBatchDetails(settings: BatchLotParticulars) {
     debugger;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post(this.apiUrl+ '/batchdetails/savebatchdetails', settings, { headers });
-
     //return this.http.post(this.apiUrl + '/customer/savecustomer', settings,{  });    
+  }  
+ UpdateBatchDetails(settings: BatchLotParticulars) {    
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post(this.apiUrl+ '/batchdetails/updatebatchdetails', settings, { headers })      
+  }
+  GetBatchDetailsById(batchLotParticularsId: number)  {
+    //const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.get(this.apiUrl+'/batchdetails/'+ batchLotParticularsId);    
   }
 }

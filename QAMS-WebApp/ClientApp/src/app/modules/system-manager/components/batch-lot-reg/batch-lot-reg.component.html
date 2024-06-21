@@ -9,7 +9,7 @@
  <div class="px-4 py-4">
         <div class="row">
           <div class="col">
-            <form [formGroup]="batchLotParticularsForm!" (ngSubmit)="registerBatchLotParticulars()">
+            <form [formGroup]="batchLotParticularsForm!" (ngSubmit)="RegisterBatchLotParticulars()">
                 <div class="p-5 bg-white shadow-dark rounded-2">
                      <div class="form-group row">
                         
@@ -97,7 +97,7 @@
                      <div class="d-flex mt-4 justify-content-end">
                         <button type="button" class="btn btn-default rounded-pill me-3" (click)="backToBatchLot()">Cancel</button>
                         <button type="button" class="btn btn-primary rounded-pill me-3"
-                          (click)="registerBatchLotParticulars()">Submit</button>
+                          (click)="RegisterBatchLotParticulars()">Submit</button>
                       </div>
             </form>
             <p-toast></p-toast>

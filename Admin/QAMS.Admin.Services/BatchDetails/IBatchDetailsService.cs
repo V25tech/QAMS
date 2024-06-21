@@ -24,7 +24,7 @@ namespace QAMS.Admin.Services
     public interface IBatchDetailsService
     {
         
-        ResponseContext<BatchDetails> GetAllBatchDetails(RequestContext requestContext);
+        ResponseContext<BatchDetails> GetAllBatchDetails();
         
         BatchDetails GetBatchDetailsById(System.Int32? id);
         

@@ -36,11 +36,11 @@ namespace QAMS.Admin.Services
             this.batchDetailsData = batchDetailsData;
         }
         
-        public ResponseContext<BatchDetails> GetAllBatchDetails(RequestContext requestContext)
+        public ResponseContext<BatchDetails> GetAllBatchDetails()
         {
             try
             {
-                DataSet dataset = batchDetailsData.GetAllBatchDetails(requestContext);
+                DataSet dataset = batchDetailsData.GetAllBatchDetails();
                 List<BatchDetails> result = BatchDetailsConverter.SetAllBatchDetails(dataset);
                 return new ResponseContext<BatchDetails>() { RowCount = CommonConverter.SetRowsCount(dataset), Response = result };
             }

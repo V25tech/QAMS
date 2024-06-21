@@ -47,9 +47,9 @@ namespace QAMS.Admin.Services
                         changeContolActionPlanData.AssignedUserGroup = DatatypeConverter.SetIntValue(row[ChangeContolActionPlanConstants.AssignedUserGroup.TrimAt()]);
                         changeContolActionPlanData.TargetDate = DatatypeConverter.SetDateTime(row[ChangeContolActionPlanConstants.TargetDate.TrimAt()]);
                         changeContolActionPlanData.Remarks = Convert.ToString(row[ChangeContolActionPlanConstants.Remarks.TrimAt()]);
-                        changeContolActionPlanData.CreatedBy = Convert.ToString(row[ChangeContolActionPlanConstants.CreatedBy.TrimAt()]);
+                        changeContolActionPlanData.CreatedBy = Convert.ToInt32(row[ChangeContolActionPlanConstants.CreatedBy.TrimAt()]);
                         changeContolActionPlanData.CreatedDate = DatatypeConverter.SetDateTime(row[ChangeContolActionPlanConstants.CreatedDate.TrimAt()]);
-                        changeContolActionPlanData.ModifiedBy = Convert.ToString(row[ChangeContolActionPlanConstants.ModifiedBy.TrimAt()]);
+                        changeContolActionPlanData.ModifiedBy = Convert.ToInt32(row[ChangeContolActionPlanConstants.ModifiedBy.TrimAt()]);
                         changeContolActionPlanData.ModifiedDate = DatatypeConverter.SetDateTime(row[ChangeContolActionPlanConstants.ModifiedDate.TrimAt()]);
                         changeContolActionPlanData.WorkflowId = Convert.ToInt32(row["WorkflowId"]);
                         changeContolActionPlanData.WorkflowName = Convert.ToString(row["WorkflowName"]);

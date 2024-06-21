@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-between align-items-center bg-white shadow-dark px-3">
     <h4 class="page-title flex-grow-1 labelStyles">Product/Material Name Details</h4>
-    <button type="button" class="btn btn-create rounded-pill initiative " (click)="showProductsForm = true">+ New
+    <button type="button" class="btn btn-create rounded-pill initiative " (click)="Openvisiblesidebar(0)">+ New
         Product/Material
     </button>
 </div>
@@ -61,7 +61,7 @@
 
 
                             <td>{{products?.createdBy}}</td>
-                            <td>{{products?.createdDate}}</td>
+                            <td>{{products?.createdDate | date:'yyyy-MM-dd'}}</td>
 
                             <td><span pInputText pTooltip="Change Status" tooltipPosition="top" role="button"
                                     tabindex="0" (click)="showStatusForm = true;openFlyout(i)"
@@ -72,7 +72,7 @@
                             </td>
                             <td class="text-center">
                                 <a class="me-2" (click)="showProductsForm = true">
-                                    <i class="bi bi-pencil-square" ></i>
+                                    <i class="bi bi-pencil-square" (click)="Openvisiblesidebar(products?.id)" ></i>
                                 </a>
                             </td>
                         </tr>

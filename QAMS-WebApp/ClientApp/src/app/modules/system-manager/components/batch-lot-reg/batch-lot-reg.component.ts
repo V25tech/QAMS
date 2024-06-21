@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { BatchLotServicesService } from '../../services/batch-lot-services.service';
 import { BatchLotParticulars } from 'src/app/models/BatchLotParticulars.model';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-batch-lot-reg',
@@ -13,10 +13,62 @@ import { Router } from '@angular/router';
 })
 export class BatchLotRegComponent implements OnInit{
   batchLotParticularsForm!: FormGroup;
+  //update code starts here
+  id:number=0;
+editMode: boolean = false;
+batchlotparticularsReg: BatchLotParticulars;
+editCCValue: BatchLotParticulars;
+//mainForm: FormGroup;
   materialDetails:any[]=[];
-constructor(private fb: FormBuilder, private messageService: MessageService,private router: Router, 
+constructor(private fb: FormBuilder, private messageService: MessageService,private router: Router, private route:ActivatedRoute,
   private batchLotService: BatchLotServicesService, private cdr: ChangeDetectorRef) { }
   ngOnInit(): void {
+
+     
+    this.BuildBatchlotForm();
+    this.cdr.detectChanges();
+    this.route.queryParams.subscribe(params => {
+      this.id = Number.parseInt(params['Id']);
+      let splitItesms = this.id;
+      debugger;        
+      this.GetBatchlotDetailsbyId(this.id);
+    })
+  }
+  cancelClick(){
+    this.router.navigateByUrl('/batch-lot-particulars');
+  }
+  saveControlChange(ccValue: BatchLotParticulars) {
+    this.batchLotService.insertBatchDetails(ccValue).subscribe((data: any) => {
+      console.log('Form submitted!', ccValue);
+      this.messageService.add({ severity: 'success', summary: 'Batch Lot Particulars Registration Saved Successfull', detail: 'Message Content' });
+      setTimeout(() => {
+        this.backToBatchLot();
+      }, 1000);
+    });    
+  }
+  updateControlChange(ccValue: BatchLotParticulars) {
+    console.log(JSON.stringify(ccValue))
+    this.batchLotService.updateBatchLotDetails(this.editCCValue).subscribe(res => {
+      console.log(res);
+      this.backToBatchLot();
+    }, er => console.log(er));
+  }
+  backToBatchLot(){
+    this.router.navigateByUrl('/batch-lot-particulars')
+  }
+  GetBatchlotDetailsbyId(id:number)
+  {
+    this.batchLotService.GetBatchDetailsById(id).subscribe((res:any) => {
+      debugger;
+      this.batchlotparticularsReg = res;
+      let ccValue: BatchLotParticulars = res; //JSON.parse(ccValueStr) ?? null;
+      this.editCCValue = ccValue;
+      if (ccValue) {
+        this.batchLotParticularsForm.patchValue(ccValue);
+      }
+    }, er => console.log(er));    
+  }
+  BuildBatchlotForm(){
     this.batchLotParticularsForm = this.fb.group({
       batchType: ['', Validators.required],
       productMaterial: ['', Validators.required],
@@ -36,48 +88,24 @@ constructor(private fb: FormBuilder, private messageService: MessageService,priv
   dates: Date[] | undefined;
   selectedMaterialValue:any;
   displayBasic: boolean = false;
-  registerBatchLotParticulars() {
-    if (this. batchLotParticularsForm.invalid) {
-      this.messageService.add({ severity: 'error', summary: 'Form is invalid!', detail: 'Message Content' });
-      return; // Prevent form submission
-    } else {
 
-
-      const BatchLotParticulars: BatchLotParticulars = {
-        batchType: this. batchLotParticularsForm.value.batchType,
-        productMaterial: this. batchLotParticularsForm.value.productMaterial,
-        batchLotNo: this. batchLotParticularsForm.value.batchLotNo,
-        batchLotSize: this. batchLotParticularsForm.value.batchLotSize,
-        manufacturingDate: this. batchLotParticularsForm.value.manufacturingDate,
-        expiryDate: this. batchLotParticularsForm.value.expiryDate,
-        arno: this. batchLotParticularsForm.value.arno,
-        otherDetails: this. batchLotParticularsForm.value.otherDetails
-      };
-
-      this.batchLotService.insertBatchDetails(BatchLotParticulars).subscribe((data: any) => {   
-        console.log('Form submitted!', BatchLotParticulars);     
-        this.messageService.add({ severity: 'success', summary: 'Batch/Lot Particulars Saved Successfull', detail: 'Message Content' });
-            
-          setTimeout(() => {
-            this.backToBatchLot();
-          }, 1000);
-        });  
-      
-      // Submit the Batch/Lot Particular object to your service or backend
-      // console.log('Form submitted!', BatchLotParticulars);
-      // this.messageService.add({ severity: 'success', summary: 'Batch/Lot Particulars Saved Successfull', detail: 'Message Content' });
+  RegisterBatchLotParticulars() {
+    if (this.batchLotParticularsForm.valid) {
+      console.log(this.batchLotParticularsForm.value);
+      let ccBatchlotValue: BatchLotParticulars = this.batchLotParticularsForm.value;
+      if (this.editMode) {
+        this.updateControlChange(ccBatchlotValue);
+      }    
+      else {
+        this.saveControlChange(ccBatchlotValue);
+      }
     }
-  }
-  
-  selectMaterial(event: any) {
-    this.selectedMaterialValue = event.target.value;
-    this.displayBasic = true;
-    this.cdr.detectChanges();
-  }
-
-  backToBatchLot(){
-    this.router.navigateByUrl('/batch-lot-particulars')
-
-  }
-
 }
+selectMaterial(event: any) {
+  this.selectedMaterialValue = event.target.value;
+  this.displayBasic = true;
+  this.cdr.detectChanges();
+}
+}
+
+

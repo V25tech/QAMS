@@ -33,10 +33,10 @@ namespace QAMS.Admin.Services
                 ValidationHelper validationHelper = new ValidationHelper();
                 validationMessages.Append(validationHelper.NullCheckValidator(batchDetails.BatchId, nameof(batchDetails.BatchId)));
                 validationMessages.Append(validationHelper.LengthCheckValidator(batchDetails.BatchId,150, nameof(batchDetails.BatchId)));
-                validationMessages.Append(validationHelper.NullCheckValidator(batchDetails.Material, nameof(batchDetails.Material)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(batchDetails.Material,150, nameof(batchDetails.Material)));
-                validationMessages.Append(validationHelper.NullCheckValidator(batchDetails.ARNumber, nameof(batchDetails.ARNumber)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(batchDetails.ARNumber,150, nameof(batchDetails.ARNumber)));
+                validationMessages.Append(validationHelper.NullCheckValidator(batchDetails.productMaterial, nameof(batchDetails.productMaterial)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(batchDetails.productMaterial,150, nameof(batchDetails.productMaterial)));
+                validationMessages.Append(validationHelper.NullCheckValidator(batchDetails.arno, nameof(batchDetails.arno)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(batchDetails.arno,150, nameof(batchDetails.arno)));
                 validationMessages.Append(validationHelper.NullCheckValidator(batchDetails.InitiatedBy, nameof(batchDetails.InitiatedBy)));
                 validationMessages.Append(validationHelper.LengthCheckValidator(batchDetails.InitiatedBy,150, nameof(batchDetails.InitiatedBy)));
                 validationMessages.Append(validationHelper.LengthCheckValidator(batchDetails.CreatedBy,100, nameof(batchDetails.CreatedBy)));

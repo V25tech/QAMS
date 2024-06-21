@@ -75,8 +75,8 @@ namespace QAMS.Admin.Data
                 sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = ChangeContolActionPlanConstants.AssignedUserGroup, Value = changeContolActionPlan.AssignedUserGroup });
                 sqlparms.Add(new SqlParameter { DbType = DbType.DateTime, ParameterName = ChangeContolActionPlanConstants.TargetDate, Value = changeContolActionPlan.TargetDate });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeContolActionPlanConstants.Remarks, Value = changeContolActionPlan.Remarks });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeContolActionPlanConstants.CreatedBy, Value = changeContolActionPlan.CreatedBy });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = ChangeContolActionPlanConstants.ModifiedBy, Value = changeContolActionPlan.ModifiedBy });
+                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = ChangeContolActionPlanConstants.CreatedBy, Value = changeContolActionPlan.CreatedBy });
+                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = ChangeContolActionPlanConstants.ModifiedBy, Value = changeContolActionPlan.ModifiedBy });
 
                 sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = "@ApprovedUser_PSY", Value = changeContolActionPlan.ApprovedUser });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = "@ApprovedUserGroup", Value = changeContolActionPlan.ApprovedUserGroup });

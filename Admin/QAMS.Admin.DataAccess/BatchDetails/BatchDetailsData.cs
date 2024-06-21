@@ -33,13 +33,13 @@ namespace QAMS.Admin.Data
             this.dataAccessHelper = dataAccessHelper;
         }
         
-        public DataSet GetAllBatchDetails(RequestContext requestContext)
+        public DataSet GetAllBatchDetails()
         {
             try
             {
                 List<SqlParameter> sqlparms = new List<SqlParameter>();
-                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = RequestContextConstants.PageNumber, Value = requestContext.PageNumber });
-                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = RequestContextConstants.PageSize, Value = requestContext.PageSize });
+                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = RequestContextConstants.PageNumber, Value = 1});
+                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = RequestContextConstants.PageSize, Value = 100 });
                 DataSet dataset = (DataSet)dataAccessHelper.ExecuteStoredProcedure(BatchDetailsConstants.USP_BatchDetails_PSY_GET_ALL, sqlparms, ExecutionType.Dataset);
                 return dataset;
             }
@@ -68,8 +68,8 @@ namespace QAMS.Admin.Data
             {
                 List<SqlParameter> sqlparms = new List<SqlParameter>();
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = BatchDetailsConstants.BatchId, Value = batchDetails.BatchId });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = BatchDetailsConstants.Material, Value = batchDetails.Material });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = BatchDetailsConstants.ARNumber, Value = batchDetails.ARNumber });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = BatchDetailsConstants.Material, Value = batchDetails.productMaterial });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = BatchDetailsConstants.ARNumber, Value = batchDetails.arno });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = BatchDetailsConstants.InitiatedBy, Value = batchDetails.InitiatedBy });
                 sqlparms.Add(new SqlParameter { DbType = DbType.DateTime, ParameterName = BatchDetailsConstants.InitiatedOn, Value = batchDetails.InitiatedOn });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = BatchDetailsConstants.CreatedBy, Value = batchDetails.CreatedBy });
@@ -90,8 +90,8 @@ namespace QAMS.Admin.Data
                 List<SqlParameter> sqlparms = new List<SqlParameter>();
                 sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = BatchDetailsConstants.Id, Value = batchDetails.Id });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = BatchDetailsConstants.BatchId, Value = batchDetails.BatchId });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = BatchDetailsConstants.Material, Value = batchDetails.Material });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = BatchDetailsConstants.ARNumber, Value = batchDetails.ARNumber });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = BatchDetailsConstants.Material, Value = batchDetails.productMaterial });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = BatchDetailsConstants.ARNumber, Value = batchDetails.arno });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = BatchDetailsConstants.InitiatedBy, Value = batchDetails.InitiatedBy });
                 sqlparms.Add(new SqlParameter { DbType = DbType.DateTime, ParameterName = BatchDetailsConstants.InitiatedOn, Value = batchDetails.InitiatedOn });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = BatchDetailsConstants.ModifiedBy, Value = batchDetails.ModifiedBy });

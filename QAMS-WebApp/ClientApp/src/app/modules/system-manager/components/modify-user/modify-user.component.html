@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-between align-items-center bg-white shadow-dark px-3">
     <h4 class="page-title flex-grow-1 labelStyles">Users</h4>
-    <button type="button" class="btn btn-create rounded-pill initiative " (click)="visibleSidebar = true">+ Add
+    <button type="button" class="btn btn-create rounded-pill initiative "  (click)="Openvisiblesidebar(0)">+ Add
         User</button>
 </div>
 <div class="gx-15">
@@ -75,7 +75,7 @@
                             </td>
                             <td class="text-center">
 
-                                <a class="me-3" pInputText pTooltip="Edit" tooltipPosition="top" (click)="visibleSidebar = true">
+                                <a class="me-3" pInputText pTooltip="Edit" tooltipPosition="top"  (click)="Openvisiblesidebar(modifyUser.id)">
                                     <i class="bi bi-pencil-square"></i>
                                 </a>
                                 <a  class="me-3"  [routerLink]="['/reg-plant-assignment-user']" pInputText pTooltip="Assign to Plant"
@@ -145,7 +145,15 @@
             <div class="form-group row">
                 <label for="department" class="col-md-4 col-form-label">Department</label>
                 <div class="col-md-7">
-                    <input class="form-control" rows="4" formControlName="department" />
+                    <!-- <input class="form-control" rows="4" formControlName="department" /> -->
+
+                    <div class="col-md-7  ">
+                        <select name="department" class="form-select"  formControlName="department">
+                            <option *ngFor="let selecteddepart of departmentsDataSource" [value]="selecteddepart.code">
+                                {{selecteddepart.departmentName}}
+                            </option>
+                        </select>
+                    </div>
 
 
                 </div>

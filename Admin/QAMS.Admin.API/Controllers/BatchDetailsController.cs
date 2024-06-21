@@ -38,15 +38,15 @@ namespace QAMS.Controllers
         {
             this.batchDetailsService = batchDetailsService;
         }
-        
+
         /// <summary>
         /// This method is used to Get List of BatchDetails
         /// </summary>
         /// <param name="requestContext"></param>
-        [HttpPost()]
-        public ActionResult<ResponseContext<BatchDetails>> GetAllBatchDetails(RequestContext requestContext)
+        [HttpGet("GetAllBatchDetails")]
+        public ActionResult<ResponseContext<BatchDetails>> GetAllBatchDetails()
         {
-            var result = batchDetailsService.GetAllBatchDetails(requestContext);
+            var result = batchDetailsService.GetAllBatchDetails();
             return result;
         }
         

@@ -10,7 +10,7 @@ export class NewRoleService {
   private apiUrl = 'ADMIN_API';
   constructor(private http: HttpClient) { }
   getnewRoleData(): Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post(this.apiUrl+'/role/GetAllRole',"{\"pageNumber\":1,\"pageSize\":100}", { headers });
+    //const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post(this.apiUrl+'/role/GetAllRole',"{\"pageNumber\":1,\"pageSize\":100}");
   }
 }

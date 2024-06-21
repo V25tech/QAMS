@@ -10,152 +10,52 @@
 namespace QAMS.WEB.Entities
 {
     using System;
-    using System.Collections.Generic;
-    using QAMS.Common.Entities;
-    
-    
+
+
     // Comment
     public class BatchDetails
     {
-        
-        private System.Int32? idField;
-        
-        private string batchidField;
-        
-        private string materialField;
-        
-        private string arnumberField;
-        
-        private string initiatedbyField;
-        
-        private DateTime? initiatedonField;
-        
-        private string createdbyField;
-        
-        private DateTime? createddateField;
-        
-        private string modifiedbyField;
-        
-        private DateTime? modifieddateField;
-        
-        public System.Int32? Id
-        {
-            get
-            {
-                return this.idField;
-            }
-            set
-            {
-                this.idField = value;
-            }
-        }
-        
-        public string BatchId
-        {
-            get
-            {
-                return this.batchidField;
-            }
-            set
-            {
-                this.batchidField = value;
-            }
-        }
-        
-        public string Material
-        {
-            get
-            {
-                return this.materialField;
-            }
-            set
-            {
-                this.materialField = value;
-            }
-        }
-        
-        public string ARNumber
-        {
-            get
-            {
-                return this.arnumberField;
-            }
-            set
-            {
-                this.arnumberField = value;
-            }
-        }
-        
-        public string InitiatedBy
-        {
-            get
-            {
-                return this.initiatedbyField;
-            }
-            set
-            {
-                this.initiatedbyField = value;
-            }
-        }
-        
-        public DateTime? InitiatedOn
-        {
-            get
-            {
-                return this.initiatedonField;
-            }
-            set
-            {
-                this.initiatedonField = value;
-            }
-        }
-        
-        public string CreatedBy
-        {
-            get
-            {
-                return this.createdbyField;
-            }
-            set
-            {
-                this.createdbyField = value;
-            }
-        }
-        
-        public DateTime? CreatedDate
-        {
-            get
-            {
-                return this.createddateField;
-            }
-            set
-            {
-                this.createddateField = value;
-            }
-        }
-        
-        public string ModifiedBy
-        {
-            get
-            {
-                return this.modifiedbyField;
-            }
-            set
-            {
-                this.modifiedbyField = value;
-            }
-        }
-        
-        public DateTime? ModifiedDate
-        {
-            get
-            {
-                return this.modifieddateField;
-            }
-            set
-            {
-                this.modifieddateField = value;
-            }
-        }
+
+       
+
+        public System.Int32? Id { get; set; }
+      
+
+        public string BatchId { get; set; }
+
+        public string batchType { get; set; }
+
+
+        public string productMaterial { get; set; }
+
+        public string batchLotNo { get; set; }
+
+        public string batchLotSize { get; set; }
+
+        public string manufacturingDate { get; set; }
+
+
+
+
+
+        public string arno { get; set; }
+      
+
+        public string InitiatedBy { get; set; }
+       
+
+        public DateTime? InitiatedOn { get; set; }
+      
+
+        public string CreatedBy { get; set; }
+     
+
+        public DateTime? CreatedDate { get; set; }
+     
+        public string otherDetails { get; set; }
+        public string ModifiedBy { get; set; }
+       
+        public DateTime? ModifiedDate { get; set; }
+      
     }
 }

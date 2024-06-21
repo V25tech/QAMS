@@ -42,12 +42,16 @@ const routes: Routes = [
   {path:'plant-assignment-users',component:PlantAssignmentUsersComponent ,canActivate: [AuthGuard]},
   {path:'reg-plant-assignment-user',component:RegPlantAssignmentUserComponent,canActivate: [AuthGuard]},
   {path:'departments',component:DeparmentsComponent,canActivate: [AuthGuard]},
-  {path:'edit-department',component:CustomerRegistrationComponent, canActivate: [AuthGuard]},
+  {path:'edit-department',component:DeparmentsComponent, canActivate: [AuthGuard]},
   {path:'plants',component:PlantListComponent,canActivate: [AuthGuard]},
+  {path:'edit-plants',component:PlantListComponent, canActivate: [AuthGuard]},
   {path:'reset-pwd',component:ResetLoginPasswordComponent,canActivate: [AuthGuard]},
   {path:'products-materials',component:ProductMaterialsComponent,canActivate: [AuthGuard]},
+  {path:'edit-products-materials',component:ProductMaterialsComponent, canActivate: [AuthGuard]},
   {path:'equipments',component:EquipmentsComponent, canActivate: [AuthGuard]},
   {path:'batch-lot-particulars',component:BatchLotParticularsComponent, canActivate: [AuthGuard]},
+  {path:'edit-users-registration',component:ModifyUserComponent, canActivate: [AuthGuard]},
+
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

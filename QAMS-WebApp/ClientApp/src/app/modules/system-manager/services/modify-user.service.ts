@@ -19,4 +19,12 @@ export class ModifyUserService {
     debugger;
     return this.http.post(this.apiUrl+ '/user/saveuser', settings)    
   }
+  updateUserDetails(settings: RegModifyUser) {    
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post(this.apiUrl+ '/user/updateuser', settings, { headers })       
+  }
+  GetUserById(userId: number)  {
+    //const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.get(this.apiUrl+'/user/'+ userId);    
+  }
 }
