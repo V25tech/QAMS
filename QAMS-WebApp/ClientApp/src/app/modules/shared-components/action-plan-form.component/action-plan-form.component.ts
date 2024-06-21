@@ -5,13 +5,15 @@ import { PrimeNGConfig } from 'primeng/api';
 import { ActionPlanInput, ActionPlanModel } from 'src/app/models/action-plan.model';
 import { ActionPlanService } from 'src/app/modules/change-controls/services/action-plan.service';
 import { CommonService } from 'src/app/modules/shared/common.service';
+import { ModifyUserService } from '../../system-manager/services/modify-user.service';
+import { UserGroupService } from '../../system-manager/services/user-group.service';
 
 @Component({
     selector: 'action-plan-form',
-    templateUrl: './action-plan.component.html',
-    styleUrls: ['./action-plan.component.scss']
+    templateUrl: './action-plan-form.component.html',
+    styleUrls: ['./action-plan-form.component.scss']
 })
-export class ActionPlanComponent implements OnInit {
+export class ActionPlanFormComponent implements OnInit {
 
     @Input() actionPlanInput: ActionPlanInput;
     @Input() initiativeId: number;
@@ -35,8 +37,8 @@ export class ActionPlanComponent implements OnInit {
     ]
 
     usersDetails = [
-        { name: 'User 1', code: 'User1', id: 1 },
-        { name: 'User 2', code: 'User2', id: 2 }
+        { firstName: 'User 1', code: 'User1', id: 1 },
+        { userName: 'User 2', code: 'User2', id: 2 }
     ]
 
     mainForm: FormGroup;
@@ -46,14 +48,31 @@ export class ActionPlanComponent implements OnInit {
         private fb: FormBuilder,
         private route: ActivatedRoute,
         private commonService: CommonService,
+        private userService: ModifyUserService,
+        private userGroupService: UserGroupService,
         private actionPlanService: ActionPlanService) { }
 
     ngOnInit(): void {
-        this.commonService.buildLoginUserInfo();
         this.primeConfig.ripple = true;
+        
+        this.commonService.buildLoginUserInfo();
+        this.loadUsersAndUserGroups();
+
         this.buildMainForm();
         this.route.queryParams.subscribe(params => {
             this.id = params['id'];
+        });
+    }
+
+    loadUsersAndUserGroups(){
+        this.userService.getUserData().subscribe(p => {
+            this.usersDetails = p.response;
+            console.log(p);
+        });
+
+        this.userGroupService.getUserData().subscribe(p => {
+            this.userGroupDetails = p.response;
+            console.log(p);
         });
     }
 
@@ -102,7 +121,7 @@ export class ActionPlanComponent implements OnInit {
         actionPlan.initiativeId = this.initiativeId; //this.changeControl.changeControlId;
         actionPlan.initiativeName = this.initiativeName; //this.changeControl.changeControlUniqueCode;
         actionPlan.changeContolActionPlanId = 0;
-        
+
         actionPlan.createdDate = new Date().toISOString();
         actionPlan.targetDate = new Date(actionPlan.targetDate).toISOString();
 
