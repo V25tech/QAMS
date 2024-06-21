@@ -113,8 +113,22 @@ export class ModifyUserComponent {
       employeeId: ['', Validators.required],
       email: ['', Validators.required]    
     });    
-        
+    this.modifyUserForm.get('role').valueChanges.subscribe(value => {
+      console.log('Selected role:', value);
+      this.selectRoleOption = value;
+      this.cdr.detectChanges();
+    });
   }
+  selectRole(event: Event): void {
+    debugger
+    console.log(this.modifyUserForm.value.role);
+    const selectElement = event.target as HTMLSelectElement;
+    console.log('Selected role (from event):', selectElement.value);
+    this.selectRoleOption = selectElement.value;
+    this.cdr.detectChanges();
+    // Note: This method is not necessary if you're using the reactive form approach
+  }
+
   // roleDetails=[
   //   { name: 'Administrator', code: 'Administrator' },
   //   { name: 'Reviewer ', code: 'Reviewer' }
@@ -132,10 +146,10 @@ export class ModifyUserComponent {
     this.isOpen = !this.isOpen;
     this.cdr.detectChanges();
   }
-  selectRole(event:any){
-    this.selectRoleOption = event.target.value;
-    this.cdr.detectChanges();
-   }
+  // selectRole(event:any){
+  //   this.selectRoleOption = event.target.value;
+  //   this.cdr.detectChanges();
+  //  }
 
 
   onPageChange(event: PageEvent) {
