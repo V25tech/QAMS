@@ -134,11 +134,11 @@
             <div class="form-group row">
                 <label for="role" class="col-md-4 col-form-label">Role</label>
                 <div class="col-md-7  ">
-                    <select name="status" class="form-select" (change)="selectRole($event)" formControlName="role">
-                        <option *ngFor="let selectedRoleDetails of roleDetails" [value]="selectedRoleDetails.code">
-                            {{selectedRoleDetails.name}}
+                    <select class="form-select" (change)="selectRole($event)" formControlName="role">
+                        <option *ngFor="let selectedRoleDetails of roleDetails" [value]="selectedRoleDetails.name">
+                          {{ selectedRoleDetails.name }}
                         </option>
-                    </select>
+                      </select>
                 </div>
             </div>
 
