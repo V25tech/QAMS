@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { EquipmentRegistration } from 'src/app/models/equipmentRegistration.model';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DepartmentsService } from '../../services/departments.service';
 
 
 @Component({
@@ -18,10 +19,12 @@ export class EquipmentRegComponent {
   editMode: boolean = false;
   equipmentReg: EquipmentRegistration;
   editCCValue: EquipmentRegistration;
+  selecteddepart:any="";
+  departmentsDataSource: any;
   //mainForm: FormGroup;
-  constructor(private fb: FormBuilder,private router: Router, private messageService: MessageService, private route: ActivatedRoute,
+  constructor(private fb: FormBuilder,private router: Router, private messageService: MessageService,private route: ActivatedRoute,
     
-    private equipmentRegService: EquipmentRegistrationService, private cdr: ChangeDetectorRef) { }
+    private equipmentRegService: EquipmentRegistrationService, private DepartmentsService : DepartmentsService,  private cdr: ChangeDetectorRef) { }
     ngOnInit(): void {
      
      this.BuildEquipForm();
@@ -31,13 +34,38 @@ export class EquipmentRegComponent {
         let splitItesms = this.id;
         debugger;        
         this.GetEquipmentDetailsbyId(this.id);
+        this.GetDepartments();
       })
+
+      this.equipmentRegForm.get('department').valueChanges.subscribe(value => {
+        console.log('Selected department:', value);
+        debugger;
+        this.selecteddepart = value;
+        this.cdr.detectChanges();
+      }); 
       
     }
+    selectDepartment(event: Event): void {
+      debugger
+      console.log(this.equipmentRegForm.value.department);
+      const selectElement = event.target as HTMLSelectElement;
+      console.log('Selected department (from event):', selectElement.value);
+      this.selecteddepart = selectElement.value;
+      this.cdr.detectChanges();
+      // Note: This method is not necessary if you're using the reactive form approach
+    }
+    GetDepartments()
+    {
+      this.DepartmentsService.getDepartmentsData().subscribe((data: any) => {
+        debugger
+        this.departmentsDataSource = data.response;      
+      }); 
+     }  
   cancelClick(){
     this.router.navigateByUrl('/equipments');
   }
   saveControlChange(ccValue: EquipmentRegistration) {
+    debugger;
     this.equipmentRegService.insertCustomerDetails(ccValue).subscribe((data: any) => {
       console.log('Form submitted!', ccValue);
       this.messageService.add({ severity: 'success', summary: 'Equipment Registration Saved Successfull', detail: 'Message Content' });
@@ -84,21 +112,7 @@ export class EquipmentRegComponent {
       software: ['']
     });
 
-  //   this.equipmentRegForm = this.fb.group({
-  //  // const equipmentRegistration: EquipmentRegistration = {
-  //     id: this.equipmentRegForm.value.id,
-  //     equipmentName: this. equipmentRegForm.value.equipmentName,
-  //     equipmentId: this. equipmentRegForm.value.equipmentId,
-  //     make: this. equipmentRegForm.value.make,
-  //     model: this. equipmentRegForm.value.model,
-  //     serialNumber: this. equipmentRegForm.value.serialNumber,
-  //     installedLocation: this. equipmentRegForm.value.installedLocation,
-  //     department: this. equipmentRegForm.value.department,
-  //     installedOn: this. equipmentRegForm.value.installedOn,
-  //     warranty: this. equipmentRegForm.value.warranty,
-  //     suppliedBy: this. equipmentRegForm.value.suppliedBy,
-  //     software: this. equipmentRegForm.value.software
-  //   });
+  
     
   }
   registerEquipment(){
