@@ -24,15 +24,13 @@ interface PageEvent {
 export class ModifyUserComponent {
   modifyUserForm!: FormGroup;
   modifyUserDatasource: ModifyUser[]=[];
-
-
     //update code starts here
-    id:number=0;
-    editMode: boolean = false;
-    userReg: RegModifyUser;
-    editCCValue: RegModifyUser;
-    //mainForm: FormGroup;
+  id:number=0;
+  editMode: boolean = false;
+  userReg: RegModifyUser;
+  editCCValue: RegModifyUser;   
   selectRoleOption: any = "Administrator";
+  selecteddepart:any="";
   dataresp: any = [];
   first: number = 0;
   rows: number = 10;
@@ -51,8 +49,7 @@ export class ModifyUserComponent {
     this.cdr.detectChanges();
     this.route.queryParams.subscribe(params => {
       this.id = Number.parseInt(params['Id']);
-      let splitItesms = this.id;
-      //debugger;        
+      let splitItesms = this.id;           
       this.GetUserDetailsbyId(this.id);
       this.GetRoleDetails();
       this.GetDepartments();
@@ -70,8 +67,7 @@ export class ModifyUserComponent {
       this.modifyUserService.insertUserDetails(ccValue).subscribe((data: any) => {
         console.log('Form submitted!', ccValue);
         this.messageService.add({ severity: 'success', summary: 'Usergroup Registration Saved Successfull', detail: 'Message Content' });
-        setTimeout(() => {
-          //this.backToUsers();
+        setTimeout(() => {        
         }, 1000);
       });    
     }
@@ -91,8 +87,7 @@ export class ModifyUserComponent {
       debugger
       this.departmentsDataSource = data.response;      
     }); 
-   }
-  
+   }  
     GetUserDetailsbyId(id:number)
     {
       this.modifyUserService.GetUserById(id).subscribe((res:any) => {
@@ -118,6 +113,15 @@ export class ModifyUserComponent {
       this.selectRoleOption = value;
       this.cdr.detectChanges();
     });
+
+    this.modifyUserForm.get('department').valueChanges.subscribe(value => {
+      console.log('Selected department:', value);
+      debugger;
+      this.selecteddepart = value;
+      this.cdr.detectChanges();
+    });
+
+
   }
   selectRole(event: Event): void {
     debugger
@@ -128,11 +132,15 @@ export class ModifyUserComponent {
     this.cdr.detectChanges();
     // Note: This method is not necessary if you're using the reactive form approach
   }
-
-  // roleDetails=[
-  //   { name: 'Administrator', code: 'Administrator' },
-  //   { name: 'Reviewer ', code: 'Reviewer' }
-  //  ]
+  selectDepartment(event: Event): void {
+    debugger
+    console.log(this.modifyUserForm.value.department);
+    const selectElement = event.target as HTMLSelectElement;
+    console.log('Selected department (from event):', selectElement.value);
+    this.selecteddepart = selectElement.value;
+    this.cdr.detectChanges();
+    // Note: This method is not necessary if you're using the reactive form approach
+  }
   clear(table: Table) {
     table.clear();
   }
@@ -146,12 +154,6 @@ export class ModifyUserComponent {
     this.isOpen = !this.isOpen;
     this.cdr.detectChanges();
   }
-  // selectRole(event:any){
-  //   this.selectRoleOption = event.target.value;
-  //   this.cdr.detectChanges();
-  //  }
-
-
   onPageChange(event: PageEvent) {
     this.first = event.first;
     this.rows = event.rows;
@@ -167,8 +169,6 @@ export class ModifyUserComponent {
       this.messageService.add({ severity: 'error', summary: 'Form is invalid!', detail: 'Message Content' });
       return; // Prevent form submission
     } else {
-
-debugger;
       const RegModifyUserInfo: RegModifyUser = {
         userId: this.modifyUserForm.value.userId,
         role: this.modifyUserForm.value.role,
@@ -207,7 +207,6 @@ debugger;
      navigateToEditUser(id:number){    
       this.router.navigateByUrl('/edit-user-registration?Id='+id);
     }
-
     Openvisiblesidebar(id:number)
     {    
       this.visibleSidebar = true;
@@ -216,7 +215,6 @@ debugger;
         {
           this.editMode=true;
          this.GetUserDetailsbyId(id);       
-        }
-        
+        }        
     }
 }
