@@ -77,8 +77,7 @@ backToPlant(){
 }
 GetPlantDetailsbyId(id:number)
 {
-  this.PlantListService.GetPlantById(id).subscribe((result:any) => {
-    debugger;
+  this.PlantListService.GetPlantById(id).subscribe((result:any) => {   
     this.plantReg = result;
     let plantValue: RegPlant = result; //JSON.parse(ccValueStr) ?? null;
     this.editPlantValue = plantValue;
@@ -166,8 +165,7 @@ regDepartments(){
     this.router.navigateByUrl('/plants?Id='+id);
   }
   Openvisiblesidebar(id:number)
-  {    
-    debugger;
+  {       
     this.visibleSidebar = true;
     this.BuildPlantForm();
     if(id!=0)

@@ -12,13 +12,12 @@ import { ActivatedRoute, Router } from '@angular/router';
   providers: [MessageService]
 })
 export class BatchLotRegComponent implements OnInit{
-  batchLotParticularsForm!: FormGroup;
-  //update code starts here
-  id:number=0;
+batchLotParticularsForm!: FormGroup;  
+id:number=0;
 editMode: boolean = false;
 batchlotparticularsReg: BatchLotParticulars;
-editCCValue: BatchLotParticulars;
-//mainForm: FormGroup;
+editBatchValue: BatchLotParticulars;
+
   materialDetails:any[]=[];
 constructor(private fb: FormBuilder, private messageService: MessageService,private router: Router, private route:ActivatedRoute,
   private batchLotService: BatchLotServicesService, private cdr: ChangeDetectorRef) { }
@@ -48,7 +47,7 @@ constructor(private fb: FormBuilder, private messageService: MessageService,priv
   }
   updateControlChange(ccValue: BatchLotParticulars) {
     console.log(JSON.stringify(ccValue))
-    this.batchLotService.updateBatchLotDetails(this.editCCValue).subscribe(res => {
+    this.batchLotService.updateBatchLotDetails(this.editBatchValue).subscribe(res => {
       console.log(res);
       this.backToBatchLot();
     }, er => console.log(er));
@@ -61,10 +60,10 @@ constructor(private fb: FormBuilder, private messageService: MessageService,priv
     this.batchLotService.GetBatchDetailsById(id).subscribe((res:any) => {
       debugger;
       this.batchlotparticularsReg = res;
-      let ccValue: BatchLotParticulars = res; //JSON.parse(ccValueStr) ?? null;
-      this.editCCValue = ccValue;
-      if (ccValue) {
-        this.batchLotParticularsForm.patchValue(ccValue);
+      let batchValue: BatchLotParticulars = res; //JSON.parse(ccValueStr) ?? null;
+      this.editBatchValue = batchValue;
+      if (batchValue) {
+        this.batchLotParticularsForm.patchValue(batchValue);
       }
     }, er => console.log(er));    
   }
