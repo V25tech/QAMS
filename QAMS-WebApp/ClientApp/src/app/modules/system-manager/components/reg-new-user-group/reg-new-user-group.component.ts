@@ -17,7 +17,7 @@ export class RegNewUserGroupComponent {
   id:number=0;
   editMode: boolean = false;
   usergroupReg: RegUserGroup;
-  editCCValue: RegUserGroup;
+  editUserValue: RegUserGroup;
   sourceProducts!: Product[];
   targetProducts!: Product[];
   constructor(private fb: FormBuilder,private router: Router,protected messageService:MessageService, private route: ActivatedRoute,
@@ -28,26 +28,24 @@ export class RegNewUserGroupComponent {
     this.route.queryParams.subscribe(params => {
       this.id = Number.parseInt(params['Id']);
       let splitItesms = this.id;
-      debugger;        
       this.GetUsergroupDetailsbyId(this.id);
-    })
-    
+    })    
   }
 cancelClick(){
   this.router.navigateByUrl('/user-groups');
 }
-saveControlChange(ccValue: RegUserGroup) {
-  this.UserGroupService.insertCustomerDetails(ccValue).subscribe((data: any) => {
-    console.log('Form submitted!', ccValue);
+saveControlChange(userValue: RegUserGroup) {
+  this.UserGroupService.insertCustomerDetails(userValue).subscribe((data: any) => {
+    //console.log('Form submitted!', userValue);
     this.messageService.add({ severity: 'success', summary: 'Usergroup Registration Saved Successfull', detail: 'Message Content' });
     setTimeout(() => {
       this.backToUsers();
     }, 1000);
   });    
 }
-updateControlChange(ccValue: RegUserGroup) {
-  console.log(JSON.stringify(ccValue))
-  this.UserGroupService.UpdateUserGroupDetails(this.editCCValue).subscribe(res => {
+updateControlChange(userValue: RegUserGroup) {
+  console.log(JSON.stringify(userValue))
+  this.UserGroupService.UpdateUserGroupDetails(this.editUserValue).subscribe(res => {
     console.log(res);
     this.backToUsers();
   }, er => console.log(er));
@@ -57,13 +55,12 @@ backToUsers(){
 }
 GetUsergroupDetailsbyId(id:number)
 {
-  this.UserGroupService.GetUserGroupById(id).subscribe((res:any) => {
-    debugger;
+  this.UserGroupService.GetUserGroupById(id).subscribe((res:any) => {    
     this.usergroupReg = res;
-    let ccValue: RegUserGroup = res; //JSON.parse(ccValueStr) ?? null;
-    this.editCCValue = ccValue;
-    if (ccValue) {
-      this.userGroupForm.patchValue(ccValue);
+    let userValue: RegUserGroup = res; //JSON.parse(ccValueStr) ?? null;
+    this.editUserValue = userValue;
+    if (userValue) {
+      this.userGroupForm.patchValue(userValue);
     }
   }, er => console.log(er));    
 }
@@ -72,9 +69,7 @@ BuildUsergroupForm()
   this.userGroupForm = this.fb.group({
     name: ['', Validators.required],
     code: ['', Validators.required],
-    remarks: ['', Validators.required],
-   
-  
+    remarks: ['', Validators.required],    
   });
 }
 
@@ -82,12 +77,12 @@ BuildUsergroupForm()
   regUserGroup(){
     if (this.userGroupForm.valid) {
       console.log(this.userGroupForm.value);
-      let ccusergroupValue: RegUserGroup = this.userGroupForm.value;
+      let usergroupValue: RegUserGroup = this.userGroupForm.value;
       if (this.editMode) {
-        this.updateControlChange(ccusergroupValue);
+        this.updateControlChange(usergroupValue);
       }    
       else {
-        this.saveControlChange(ccusergroupValue);
+        this.saveControlChange(usergroupValue);
       }
     }
   }  
