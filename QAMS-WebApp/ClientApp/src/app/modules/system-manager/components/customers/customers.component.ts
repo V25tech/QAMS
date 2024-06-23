@@ -30,14 +30,9 @@ export class CustomersComponent {
     this.customerRegistrationService.getCustomerData().subscribe((data: any) => {
       this.customerDatasource = data.response;
       this.customerDatasource.forEach(dataSource=>dataSource.createdDate = new Date(dataSource.createdDate))
-    });
-     
+    });     
   }
-
-
- 
- 
-
+  
   clear(table: Table) {
     table.clear();
   }

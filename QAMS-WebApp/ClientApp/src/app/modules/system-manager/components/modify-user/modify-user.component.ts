@@ -23,12 +23,11 @@ interface PageEvent {
 })
 export class ModifyUserComponent {
   modifyUserForm!: FormGroup;
-  modifyUserDatasource: ModifyUser[]=[];
-    //update code starts here
+  modifyUserDatasource: ModifyUser[]=[];    
   id:number=0;
   editMode: boolean = false;
   userReg: RegModifyUser;
-  editCCValue: RegModifyUser;   
+  editUserValue: RegModifyUser;   
   selectRoleOption: any = "Administrator";
   selecteddepart:any="";
   dataresp: any = [];
@@ -63,17 +62,17 @@ export class ModifyUserComponent {
     cancelClick(){
       this.router.navigateByUrl('/users');
     }
-    saveControlChange(ccValue: RegModifyUser) {
-      this.modifyUserService.insertUserDetails(ccValue).subscribe((data: any) => {
-        console.log('Form submitted!', ccValue);
+    saveControlChange(userValue: RegModifyUser) {
+      this.modifyUserService.insertUserDetails(userValue).subscribe((data: any) => {
+        console.log('Form submitted!', userValue);
         this.messageService.add({ severity: 'success', summary: 'Usergroup Registration Saved Successfull', detail: 'Message Content' });
         setTimeout(() => {        
         }, 1000);
       });    
     }
-    updateControlChange(ccValue: RegModifyUser) {
-      console.log(JSON.stringify(ccValue))
-      this.modifyUserService.updateUserDetails(this.editCCValue).subscribe(res => {
+    updateControlChange(userValue: RegModifyUser) {
+      console.log(JSON.stringify(userValue))
+      this.modifyUserService.updateUserDetails(this.editUserValue).subscribe(res => {
         console.log(res);
         this.backToUser();
       }, er => console.log(er));
@@ -93,10 +92,10 @@ export class ModifyUserComponent {
       this.modifyUserService.GetUserById(id).subscribe((res:any) => {
         debugger;
         this.userReg = res;
-        let ccValue: RegModifyUser = res; //JSON.parse(ccValueStr) ?? null;
-        this.editCCValue = ccValue;
-        if (ccValue) {
-          this.modifyUserForm.patchValue(ccValue);
+        let userValue: RegModifyUser = res; //JSON.parse(ccValueStr) ?? null;
+        this.editUserValue = userValue;
+        if (userValue) {
+          this.modifyUserForm.patchValue(userValue);
         }
       }, er => console.log(er));    
     }
@@ -124,7 +123,7 @@ export class ModifyUserComponent {
 
   }
   selectRole(event: Event): void {
-    debugger
+    //debugger
     console.log(this.modifyUserForm.value.role);
     const selectElement = event.target as HTMLSelectElement;
     console.log('Selected role (from event):', selectElement.value);
@@ -133,7 +132,7 @@ export class ModifyUserComponent {
     // Note: This method is not necessary if you're using the reactive form approach
   }
   selectDepartment(event: Event): void {
-    debugger
+    //debugger
     console.log(this.modifyUserForm.value.department);
     const selectElement = event.target as HTMLSelectElement;
     console.log('Selected department (from event):', selectElement.value);
