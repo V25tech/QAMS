@@ -8,14 +8,14 @@
     <div class="row">
         <div class="col">
 
-            <form [formGroup]="RoleForm!" (ngSubmit)="saveRoleClick()">
+            <form [formGroup]="RoleForm!" (ngSubmit)="saveRoleClick(roleInfo)">
                 <div class="p-3 bg-white shadow-dark rounded-2">
                     <h5 class="page-card-title border-bottom">Basic Info</h5>
                     <div class="px-4 pt-4 pb-2">
                         <div class="form-group row">
                             <label for="name" class="col-sm-12 col-md-3 col-form-label">Role Name</label>
                             <div class="col-sm-10 col-md-4">
-                                <input class="form-control" rows="4" id="name" placeholder="Role Name" />
+                                <input class="form-control" rows="4" id="name" placeholder="Role Name" formControlName="name" />
                             </div>
                         </div>
 
@@ -37,82 +37,82 @@
                             <div class="row mt-3 px-4">
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="controlLoginInitiation">
+                                        <input class="form-check-input" type="checkbox" ng-checked="changeCntrl.controlLoginInitiation" id="controlLoginInitiation">
                                         <label class="form-check-label" for="controlLoginInitiation">Control Login
                                             Initiation</label>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="hodReviewCC">
+                                        <input class="form-check-input" type="checkbox" ng-checked="changeCntrl.hodReview" id="hodReviewCC">
                                         <label class="form-check-label" for="hodReviewCC">HOD Review</label>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="qaReview">
+                                        <input class="form-check-input" type="checkbox" ng-checked="changeCntrl.qaReview" id="qaReview">
                                         <label class="form-check-label" for="qaReview">QA Review</label>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="cftReview">
+                                        <input class="form-check-input" type="checkbox" ng-checked="changeCntrl.cftReview" id="cftReview">
                                         <label class="form-check-label" for="cftReview">CFT Review</label>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="customerNotification">
+                                        <input class="form-check-input" type="checkbox" ng-checked="changeCntrl.customerNotification" id="customerNotification">
                                         <label class="form-check-label" for="customerNotification">Customer
                                             Notification</label>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="qaDecision">
+                                        <input class="form-check-input" type="checkbox" ng-checked="changeCntrl.qaDecision" id="qaDecision">
                                         <label class="form-check-label" for="qaDecision">QA Decision</label>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="actionPlan">
+                                        <input class="form-check-input" type="checkbox" ng-checked="changeCntrl.actionPlan" id="actionPlan">
                                         <label class="form-check-label" for="actionPlan">Action Plan</label>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="finalClosure">
+                                        <input class="form-check-input" type="checkbox" id="finalClosure" ng-checked="changeCntrl.finalClosure">
                                         <label class="form-check-label" for="finalClosure">Final Closure</label>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="extensionOfTargetDate">
+                                        <input class="form-check-input" type="checkbox" id="extensionOfTargetDate" ng-checked="changeCntrl.extensionOfTargetDate">
                                         <label class="form-check-label" for="extensionOfTargetDate">Extension of Target
                                             Date</label>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="workTransfer">
+                                        <input class="form-check-input" type="checkbox" id="workTransfer" ng-checked="changeCntrl.workTransfer"> 
                                         <label class="form-check-label" for="workTransfer">Work Transfer</label>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="dossierPrint">
+                                        <input class="form-check-input" type="checkbox" id="dossierPrint" ng-checked="changeCntrl.dossierPrint">
                                         <label class="form-check-label" for="dossierPrint">Dossier Print</label>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="auditTrials">
+                                        <input class="form-check-input" type="checkbox" id="auditTrials" ng-checked="changeCntrl.auditTrials">
                                         <label class="form-check-label" for="auditTrials">Audit Trials</label>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="reports">
+                                        <input class="form-check-input" type="checkbox" id="reports" ng-checked="changeCntrl.reports">
                                         <label class="form-check-label" for="reports">Reports</label>
                                     </div>
                                 </div>
@@ -124,88 +124,88 @@
                             <div class="row mt-3 px-4">
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="deviationInitiation">
+                                        <input class="form-check-input" type="checkbox" id="deviationInitiation" ng-checked="deviationCntrl.deviationInitiation">
                                         <label class="form-check-label" for="deviationInitiation">Deviation
                                             Initiation</label>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="hodReviewD">
+                                        <input class="form-check-input" type="checkbox" id="hodReviewD" ng-checked="deviationCntrl.hodReview_Deviation">
                                         <label class="form-check-label" for="hodReviewD">HOD Review</label>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="qaReviewD">
+                                        <input class="form-check-input" type="checkbox" id="qaReviewD" ng-checked="deviationCntrl.qaReview_Deviation">
                                         <label class="form-check-label" for="qaReviewD">QA Review</label>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="cftReviewD">
+                                        <input class="form-check-input" type="checkbox" id="cftReviewD" ng-checked="deviationCntrl.cftReview_Deviation">
                                         <label class="form-check-label" for="cftReviewD">CFT Review</label>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="customerNotificationD">
+                                        <input class="form-check-input" type="checkbox" id="customerNotificationD" ng-checked="deviationCntrl.customerNotification_Deviation">
                                         <label class="form-check-label" for="customerNotificationD">Customer
                                             Notification</label>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="investigationD">
+                                        <input class="form-check-input" type="checkbox" id="investigationD" ng-checked="deviationCntrl.investigation">
                                         <label class="form-check-label" for="investigationD">Investigation</label>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="qaDecisionD">
+                                        <input class="form-check-input" type="checkbox" id="qaDecisionD" ng-checked="deviationCntrl.qaDecision_Deviation">
                                         <label class="form-check-label" for="qaDecisionD">QA Decision</label>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="actionPlanD">
+                                        <input class="form-check-input" type="checkbox" id="actionPlanD" ng-checked="deviationCntrl.actionPlan_Deviation">
                                         <label class="form-check-label" for="actionPlanD">Action Plan</label>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="finalClosureQAD">
+                                        <input class="form-check-input" type="checkbox" id="finalClosureQAD" ng-checked="deviationCntrl.finalClosure_QA">
                                         <label class="form-check-label" for="finalClosureQAD">Final Closure (QA)</label>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="extensionOfTargetDateD">
+                                        <input class="form-check-input" type="checkbox" id="extensionOfTargetDateD" ng-checked="deviationCntrl.extensionOfTargetDate_Deviation"> 
                                         <label class="form-check-label" for="extensionOfTargetDateD">Extension of Target
                                             Date</label>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="workTransferD">
+                                        <input class="form-check-input" type="checkbox" id="workTransferD" ng-checked="deviationCntrl.workTransfer_Deviation">
                                         <label class="form-check-label" for="workTransferD">Work Transfer</label>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="dossierPrintD">
+                                        <input class="form-check-input" type="checkbox" id="dossierPrintD" ng-checked="deviationCntrl.dossierPrint_Deviation">
                                         <label class="form-check-label" for="dossierPrintD">Dossier Print</label>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="auditTrialsD">
+                                        <input class="form-check-input" type="checkbox" id="auditTrialsD" ng-checked="deviationCntrl.auditTrials_Deviation">
                                         <label class="form-check-label" for="auditTrialsD">Dossier Print</label>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="reportsD">
+                                        <input class="form-check-input" type="checkbox" id="reportsD" ng-checked="deviationCntrl.reports_Deviation">
                                         <label class="form-check-label" for="reportsD">Dossier Print</label>
                                     </div>
                                 </div>
@@ -218,76 +218,76 @@
                             <div class="row mt-3 px-4">
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="capaInitiation">
+                                        <input class="form-check-input" type="checkbox" id="capaInitiation" ng-checked="CAPACntrl.capaInitiation">
                                         <label class="form-check-label" for="capaInitiation">CAPA Initiation</label>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="hodReviewC">
+                                        <input class="form-check-input" type="checkbox" id="hodReviewC" ng-checked="capaInitiation.qaReview_CAPA">
                                         <label class="form-check-label" for="hodReviewC">HOD Review</label>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="qaReviewC">
+                                        <input class="form-check-input" type="checkbox" id="qaReviewC" ng-checked="CAPACntrl.qaReview_CAPA">
                                         <label class="form-check-label" for="qaReviewC">QA Review</label>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="cftReviewC">
+                                        <input class="form-check-input" type="checkbox" id="cftReviewC" ng-checked="CAPACntrl.cftReview_CAPA">
                                         <label class="form-check-label" for="cftReviewC">CFT Review</label>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="qaDecisionC">
+                                        <input class="form-check-input" type="checkbox" id="qaDecisionC" ng-checked="CAPACntrl.qaDecision_CAPA">
                                         <label class="form-check-label" for="qaDecisionC">QA Decision</label>
                                     </div>
                                 </div>
 
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="actionPlanC">
+                                        <input class="form-check-input" type="checkbox" id="actionPlanC" ng-checked="CAPACntrl.actionPlan_CAPA">
                                         <label class="form-check-label" for="actionPlanC">Action Plan</label>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="finalClosureQAC">
+                                        <input class="form-check-input" type="checkbox" id="finalClosureQAC" ng-checked="CAPACntrl.finalClosure_QA_CAPA">
                                         <label class="form-check-label" for="finalClosureQAC">Final Closure
                                             (QA)</label>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="extensionOfTargetDateC">
+                                        <input class="form-check-input" type="checkbox" id="extensionOfTargetDateC" ng-checked="CAPACntrl.extensionOfTargetDate_CAPA">
                                         <label class="form-check-label" for="extensionOfTargetDateC">Extension of
                                             Target Date</label>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="workTransferC">
+                                        <input class="form-check-input" type="checkbox" id="workTransferC" ng-checked="CAPACntrl.workTransfer_CAPA">
                                         <label class="form-check-label" for="workTransferC">Work Transfer</label>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="dossierPrintC">
+                                        <input class="form-check-input" type="checkbox" id="dossierPrintC" ng-checked="CAPACntrl.dossierPrint_CAPA">
                                         <label class="form-check-label" for="dossierPrintC">Dossier Print</label>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="auditTrialsC">
+                                        <input class="form-check-input" type="checkbox" id="auditTrialsC"ng-checked="CAPACntrl.auditTrials_CAPA">
                                         <label class="form-check-label" for="auditTrialsC">Audit Trials</label>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-3 col-sm-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="reportsC">
+                                        <input class="form-check-input" type="checkbox" id="reportsC"ng-checked="CAPACntrl.reports_CAPA">
                                         <label class="form-check-label" for="reportsC">Reports</label>
                                     </div>
                                 </div>
@@ -310,7 +310,7 @@
                 <button type="button" class="btn btn-default rounded-pill me-3" (click)="backToRoles()">Cancel</button>
 
                 <button type="button" class="btn btn-primary rounded-pill me-2"
-                    (click)="saveRoleClick()">Submit</button>
+                    (click)="saveRoleClick(roleInfo)">Submit</button>
             </div>
 
         </div>
