@@ -20,19 +20,14 @@ export class RegPlantAssignmentUserComponent {
   ngOnInit() :void {
     this.plantUserForm = this.fb.group({
       remarks: ['', Validators.required],
-     
-    
     });
-   
-    // this.sourceProducts="abcd";
     this.PlantAssignmentUsersService.getProductsSmall().then(products => {
       this.sourceProducts = products;
       this.cdr.markForCheck();
   });
   this.targetProducts = [];
 }
-regPlantUser() {
-  
+regPlantUser() {  
       this.messageService.add({ severity: 'success', summary: ' Plant Assignment is Successfully Registrated', detail: 'Message Content' });
     }
   

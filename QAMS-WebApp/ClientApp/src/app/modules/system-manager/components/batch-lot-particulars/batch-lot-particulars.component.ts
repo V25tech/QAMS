@@ -29,17 +29,12 @@ export class BatchLotParticularsComponent {
     private batchLotServicesService: BatchLotServicesService, private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
-    this.batchLotServicesService.getBatchLotData().subscribe((data: any) => {
-      debugger;
+    this.batchLotServicesService.getBatchLotData().subscribe((data: any) => {      
       this.batchLotDatasource = data.response;
-
       //this.batchLotDatasource.forEach(dataSource=>dataSource.date = new Date(dataSource.date))
-    });
-     
+    });     
   }
-
-
- 
+   
   Initiation() {
     this.router.navigateByUrl('/reg-batch-lot-particulars');
   }

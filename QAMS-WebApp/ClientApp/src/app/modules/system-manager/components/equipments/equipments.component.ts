@@ -23,8 +23,7 @@ export class EquipmentsComponent {
   first: number = 0;
   rows: number = 10;
   isOpen: boolean = false;
-  selectedIndex: any;
-  
+  selectedIndex: any;  
   constructor(private router: Router,
     private equipmentRegistrationService: EquipmentRegistrationService, private cdr: ChangeDetectorRef) { }
 
@@ -32,13 +31,8 @@ export class EquipmentsComponent {
     this.equipmentRegistrationService.getEquipData().subscribe((data: any) => {
       this.equipmentDatasource = data.response;
       this.equipmentDatasource.forEach(dataSource=>dataSource.createdDate = new Date(dataSource.createdDate))
-    });
-     
-  }
-
-
- 
- 
+    });     
+  } 
 
   clear(table: Table) {
     table.clear();
@@ -53,7 +47,6 @@ export class EquipmentsComponent {
     this.isOpen = !this.isOpen;
     this.cdr.detectChanges();
   }
-
  
   onPageChange(event: PageEvent) {
     this.first = event.first;

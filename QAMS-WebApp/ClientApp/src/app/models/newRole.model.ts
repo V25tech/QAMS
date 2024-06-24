@@ -40,7 +40,8 @@ export class ChangeControlModel {
     extensionOfTargetDate_Deviation: boolean;
     workTransfer_Deviation: boolean;
     dossierPrint_Deviation: boolean;
-  
+    auditTrials_Deviation: boolean;
+    reports_Deviation: boolean;
    
   }
   export class CAPAModel {
@@ -55,8 +56,7 @@ export class ChangeControlModel {
     workTransfer_CAPA: boolean;
     dossierPrint_CAPA: boolean;
     auditTrials_CAPA: boolean;
-    reports_CAPA: boolean;  
-    
+    reports_CAPA: boolean;      
   }
   
   export class Role {

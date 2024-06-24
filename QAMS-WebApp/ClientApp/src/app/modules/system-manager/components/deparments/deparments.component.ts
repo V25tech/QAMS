@@ -41,18 +41,15 @@ export class DeparmentsComponent {
     private cdr: ChangeDetectorRef
   ) { }
 
-  ngOnInit(): void {
-   debugger;
+  ngOnInit(): void {   
     this.BuildDepartmentForm();
      this.cdr.detectChanges();
      this.route.queryParams.subscribe(params => {
        this.id = Number.parseInt(params['Id']);
-       let splitItesms = this.id;
-       debugger;        
+       let splitItesms = this.id;             
        this.GetDepartmentDetailsbyId(this.id);
      })
-     this.DepartmentsService.getDepartmentsData().subscribe((data: any) => {
-      debugger
+     this.DepartmentsService.getDepartmentsData().subscribe((data: any) => {     
       this.departmentsDataSource = data.response;
       this.departmentsDataSource.forEach(dataSource => (dataSource.date = new Date(dataSource.date)));
     }); 
@@ -81,8 +78,7 @@ export class DeparmentsComponent {
  }
  GetDepartmentDetailsbyId(id:number)
  {
-   this.DepartmentsService.GetDepartmentById(id).subscribe((res:any) => {
-     debugger;
+   this.DepartmentsService.GetDepartmentById(id).subscribe((res:any) => {     
      this.departmentReg = res;
      let departValue: RegNewdepartment = res; //JSON.parse(ccValueStr) ?? null;
      this.editDepartValue = departValue;
@@ -122,8 +118,7 @@ export class DeparmentsComponent {
         
         setTimeout(() => {
           this.closeNavBar();
-        }, 1000);   
-       
+        }, 1000);  
       });
     }
   }

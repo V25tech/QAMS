@@ -26,9 +26,7 @@ export class ProductMaterialsComponent {
  id:number=0;
  editMode: boolean = false;
  equipmentReg: RegProduct;
- editCCValue: RegProduct;
- //mainForm: FormGroup;
-
+ editProductsValue: RegProduct;
   selectRoleOption: any = "Administrator";
   dataresp: any = [];
   first: number = 0;
@@ -43,21 +41,17 @@ export class ProductMaterialsComponent {
 
   ngOnInit(): void {
 
-
     this.BuildMaterialForm();
-    this.cdr.detectChanges();
-    debugger;       
+    this.cdr.detectChanges();    
     this.route.queryParams.subscribe(params => {
       this.id = Number.parseInt(params['Id']);
-      let splitItesms = this.id;
-       
+      let splitItesms = this.id;       
       this.GetProductsDetailsbyId(this.id);
     })
 
    
     this.ProductsService.getProductsData().subscribe((data: any) => {      
-      this.productsDatasource = data.response;
-      debugger;
+      this.productsDatasource = data.response;      
       this.productsDatasource.forEach(dataSource => (dataSource.createdDate = new Date(dataSource.createdDate)));
     });
   }
@@ -65,18 +59,18 @@ export class ProductMaterialsComponent {
   cancelClick(){
     this.router.navigateByUrl('/equipments');
   }
-  saveControlChange(ccValue: RegProduct) {
-    this.ProductsService.insertProductDetails(ccValue).subscribe((data: any) => {
-      console.log('Form submitted!', ccValue);
+  saveControlChange(prodValue: RegProduct) {
+    this.ProductsService.insertProductDetails(prodValue).subscribe((data: any) => {
+      console.log('Form submitted!', prodValue);
       this.messageService.add({ severity: 'success', summary: 'Equipment Registration Saved Successfull', detail: 'Message Content' });
       setTimeout(() => {
         this.backToEquip();
       }, 1000);
     });    
   }
-  updateControlChange(ccValue: RegProduct) {
-    console.log(JSON.stringify(ccValue))
-    this.ProductsService.UpdateProductDetails(this.editCCValue).subscribe(res => {
+  updateControlChange(prodValue: RegProduct) {
+    console.log(JSON.stringify(prodValue))
+    this.ProductsService.UpdateProductDetails(this.editProductsValue).subscribe(res => {
       console.log(res);
       this.backToEquip();
     }, er => console.log(er));
@@ -87,12 +81,11 @@ export class ProductMaterialsComponent {
   GetProductsDetailsbyId(id:number)
   {
     this.ProductsService.GetProductById(id).subscribe((res:any) => {
-      debugger;
       this.equipmentReg = res;
-      let ccValue: RegProduct = res; //JSON.parse(ccValueStr) ?? null;
-      this.editCCValue = ccValue;
-      if (ccValue) {
-        this.regProductForm.patchValue(ccValue);
+      let prodMatValue: RegProduct = res; //JSON.parse(ccValueStr) ?? null;
+      this.editProductsValue = prodMatValue;
+      if (prodMatValue) {
+        this.regProductForm.patchValue(prodMatValue);
       }
     }, er => console.log(er));    
   }
@@ -101,18 +94,17 @@ export class ProductMaterialsComponent {
       uniqueCode: ['', Validators.required],
       name: ['', Validators.required],
       chemicalName: ['', Validators.required],
-
     });
   }
   regProduct() {
     if (this.regProductForm.valid) {
       console.log(this.regProductForm.value);
-      let ccEquipValue: RegProduct = this.regProductForm.value;
+      let productMaterial: RegProduct = this.regProductForm.value;
       if (this.editMode) {
-        this.updateControlChange(ccEquipValue);
+        this.updateControlChange(productMaterial);
       }    
       else {
-        this.saveControlChange(ccEquipValue);
+        this.saveControlChange(productMaterial);
       }
     }
 
@@ -121,13 +113,10 @@ export class ProductMaterialsComponent {
       this.messageService.add({ severity: 'error', summary: 'Form is invalid!', detail: 'Message Content' });
       return; // Prevent form submission
     } else {
-
-
       const regProduct: RegProduct = {
         code: this.regProductForm.value.uniqueCode,
         name: this.regProductForm.value.name,
         chemicalName: this.regProductForm.value.chemicalName,
-
       };
 
       this.ProductsService.insertProductDetails(regProduct).subscribe((data: any) => {        
@@ -157,7 +146,6 @@ export class ProductMaterialsComponent {
     this.selectRoleOption = event.target.value;
     this.cdr.detectChanges();
   }
-
 
   onPageChange(event: PageEvent) {
     this.first = event.first;
@@ -197,7 +185,6 @@ export class ProductMaterialsComponent {
   }
   Openvisiblesidebar(id:number)
   {    
-    debugger;
     this.visibleSidebar = true;
     this.BuildMaterialForm();
     if(id!=0)
@@ -206,5 +193,4 @@ export class ProductMaterialsComponent {
        this.GetProductsDetailsbyId(id);       
       }      
   }
-  //update code ends here
 }

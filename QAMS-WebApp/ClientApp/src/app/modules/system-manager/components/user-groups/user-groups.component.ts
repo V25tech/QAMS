@@ -37,11 +37,7 @@ export class UserGroupsComponent {
       //this.userGroupDatasource.forEach(dataSource=> dataSource.date = new Date(dataSource.date))
     });
   }
-   
   
-  
- 
-
   clear(table: Table) {
     table.clear();
   }

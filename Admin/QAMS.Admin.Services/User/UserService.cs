@@ -10,9 +10,6 @@
 namespace QAMS.Admin.Services
 {
     using System;
-    using System.Text;
-    using System.IO;
-    using System.Linq;
     using System.Data;
     using System.Collections.Generic;
     using QAMS.Common.Entities;
