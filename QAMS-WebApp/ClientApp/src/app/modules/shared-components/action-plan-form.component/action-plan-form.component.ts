@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, FormArray } from '@angular/forms'
 import { ActivatedRoute } from '@angular/router';
-import { PrimeNGConfig } from 'primeng/api';
+import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { ActionPlanInput, ActionPlanModel } from 'src/app/models/action-plan.model';
 import { ActionPlanService } from 'src/app/modules/shared/action-plan.service';
 import { CommonService } from 'src/app/modules/shared/common.service';
@@ -11,20 +11,21 @@ import { UserGroupService } from '../../system-manager/services/user-group.servi
 @Component({
     selector: 'action-plan-form',
     templateUrl: './action-plan-form.component.html',
-    styleUrls: ['./action-plan-form.component.scss']
+    styleUrls: ['./action-plan-form.component.scss'],
+    providers: [MessageService]
 })
 export class ActionPlanFormComponent implements OnInit {
-
-    @Input() actionPlanInput: ActionPlanInput;
     @Input() initiativeId: number;
     @Input() initiativeName: string;
     @Input() visibleSidebar2: boolean;
     @Output() visibleSidebar2Change: EventEmitter<boolean> = new EventEmitter<boolean>();
+    @Output() refreshEvent = new EventEmitter();
 
 
     selectedDate: string = "10/11/2024";
     defaultRadioBtn = 0;
     id: any;
+    actionPlanInput: ActionPlanInput;
 
     plantTypeDetails: any = [];
     inChargeDepartmentDetails = [
@@ -38,7 +39,7 @@ export class ActionPlanFormComponent implements OnInit {
 
     usersDetails = [
         { firstName: 'User 1', code: 'User1', id: 1 },
-        { userName: 'User 2', code: 'User2', id: 2 }
+        { firstName: 'User 2', code: 'User2', id: 2 }
     ]
 
     mainForm: FormGroup;
@@ -47,6 +48,7 @@ export class ActionPlanFormComponent implements OnInit {
         private cdr: ChangeDetectorRef,
         private fb: FormBuilder,
         private route: ActivatedRoute,
+        private messageService: MessageService,
         private commonService: CommonService,
         private userService: ModifyUserService,
         private userGroupService: UserGroupService,
@@ -62,6 +64,11 @@ export class ActionPlanFormComponent implements OnInit {
         this.route.queryParams.subscribe(params => {
             this.id = params['id'];
         });
+
+        this.commonService.actionPlanInputObservable.subscribe((p: ActionPlanInput) => {
+            this.actionPlanInput = p;
+            this.plantTypeDetails = p.plantTypeDetails;
+        })
     }
 
     loadUsersAndUserGroups() {
@@ -75,7 +82,6 @@ export class ActionPlanFormComponent implements OnInit {
     }
 
     ngAfterViewInit() {
-        this.plantTypeDetails = this.actionPlanInput?.plantTypeDetails;
         this.cdr.detectChanges();
     }
 
@@ -98,7 +104,7 @@ export class ActionPlanFormComponent implements OnInit {
         });
     }
 
-    onSubmit() {
+    onSubmit(next = false) {
         let actionPlan: ActionPlanModel = this.mainForm.value;
         actionPlan.createdBy = this.commonService.LogginedUserId.toString();
         actionPlan.modifiedBy = actionPlan.createdBy;
@@ -106,8 +112,8 @@ export class ActionPlanFormComponent implements OnInit {
         actionPlan.isReviewed = false;
         actionPlan.workflowId = this.actionPlanInput.workflowId;  // ActionPlansEnum.HODReview;
         actionPlan.workflowName = this.actionPlanInput.workflowName;// "HODReview";
-        actionPlan.initiativeId = this.initiativeId; //this.changeControl.changeControlId;
-        actionPlan.initiativeName = this.initiativeName; //this.changeControl.changeControlUniqueCode;
+        actionPlan.initiativeId = this.actionPlanInput.initiativeId; //this.changeControl.changeControlId;
+        actionPlan.initiativeName = this.actionPlanInput.initiativeName; //this.changeControl.changeControlUniqueCode;
         actionPlan.changeContolActionPlanId = 0;
 
         actionPlan.createdDate = new Date().toISOString();
@@ -116,10 +122,15 @@ export class ActionPlanFormComponent implements OnInit {
         console.log(JSON.stringify(actionPlan))
         this.actionPlanService.saveActionPlans(actionPlan).subscribe(res => {
             console.log(res);
-            this.closeNavBar();
+
+            this.refreshEvent.emit(this.actionPlanInput.workflowId);
+            this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Action Plan Initiated Successfully' });
+            this.buildMainForm();
+            if (!next) {
+                this.closeNavBar();
+            }
         }, er => console.log(er));
     }
-
 
     closeNavBar() {
         this.visibleSidebar2 = false;

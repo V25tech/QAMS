@@ -1,17 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { LoginService } from './login.service';
+import { ActionPlanInput } from 'src/app/models/action-plan.model';
 
 @Injectable({
     providedIn: 'root'
 })
 export class CommonService {
 
-    constructor(private http: HttpClient, private loginService: LoginService) { }
-
     LogginedUserame: string;
     LogginedUserId: number;
+    actionPlanInputSubject = new BehaviorSubject<ActionPlanInput>(null);
+    actionPlanInputObservable = this.actionPlanInputSubject.asObservable();
+
+    constructor(private http: HttpClient, private loginService: LoginService) { }
 
     buildLoginUserInfo() {
         let userInfo = this.loginService.getLoginUserInfo();
@@ -19,4 +22,8 @@ export class CommonService {
         this.LogginedUserame = userInfo.userName;
     }
 
+
+    setActionPlanInput(actionPlanInput: ActionPlanInput) {
+        this.actionPlanInputSubject.next(actionPlanInput);
+    }
 }

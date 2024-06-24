@@ -7,15 +7,18 @@
     </span></div>
   <div *ngIf="selectedReviewOptions ==='qaReview'"><span class="status rounded-pill status-returned ">QA PENDING
     </span></div>
-    <div *ngIf="selectedReviewOptions ==='cftReview'"><span class="status rounded-pill status-returned ">CFT PENDING
+  <div *ngIf="selectedReviewOptions ==='cftReview'"><span class="status rounded-pill status-returned ">CFT PENDING
     </span></div>
-  <div *ngIf="selectedReviewOptions ==='customerNotification'"><span class="status rounded-pill status-returned ">CUSTOMER NOTFICATION PENDING
+  <div *ngIf="selectedReviewOptions ==='customerNotification'"><span
+      class="status rounded-pill status-returned ">CUSTOMER NOTFICATION PENDING
     </span></div>
-    <div *ngIf="selectedReviewOptions ==='qaDecision'"><span class="status rounded-pill status-returned ">QA DECISION PENDING
+  <div *ngIf="selectedReviewOptions ==='qaDecision'"><span class="status rounded-pill status-returned ">QA DECISION
+      PENDING
     </span></div>
-    <div *ngIf="selectedReviewOptions ==='actionPlan'"><span class="status rounded-pill status-returned ">ACTION PLAN PENDING
+  <div *ngIf="selectedReviewOptions ==='actionPlan'"><span class="status rounded-pill status-returned ">ACTION PLAN
+      PENDING
     </span></div>
-    <div *ngIf="selectedReviewOptions ==='closure'"><span class="status rounded-pill status-returned ">CLOSURE 
+  <div *ngIf="selectedReviewOptions ==='closure'"><span class="status rounded-pill status-returned ">CLOSURE
     </span></div>
 </div>
 
@@ -43,7 +46,8 @@
       <div class="step-counter"></div>
       <div class="step-name" (click)="selectProgressBar('qaReview')">QA Review</div>
     </div>
-    <div class="stepper-item" [ngClass]="{'active': selectedReviewOptions ==='cftReview', 
+    <div class="stepper-item"
+      [ngClass]="{'active': selectedReviewOptions ==='cftReview', 
     'completed' : selectedReviewOptions === 'customerNotification' || selectedReviewOptions === 'qaDecision'  
     || selectedReviewOptions === 'actionPlan'|| selectedReviewOptions==='closure',
   '':selectedReviewOptions==='initiation' || selectedReviewOptions==='hodReview'|| selectedReviewOptions==='qaReview'}">
@@ -56,21 +60,22 @@
    '': selectedReviewOptions==='initiation'||selectedReviewOptions==='hodReview' ||selectedReviewOptions==='qaReview'
    || selectedReviewOptions==='cftReview'}">
       <div class="step-counter"></div>
-      <div class="step-name"(click)="selectProgressBar('customerNotification')">Customer Notification</div>
+      <div class="step-name" (click)="selectProgressBar('customerNotification')">Customer Notification</div>
     </div>
     <div class="stepper-item" [ngClass]="{'active': selectedReviewOptions === 'qaDecision', 
     'completed':selectedReviewOptions === 'actionPlan' || selectedReviewOptions === 'closure','':
     selectedReviewOptions==='initiation'|| selectedReviewOptions==='hodReview'|| selectedReviewOptions==='qaReview'|| selectedReviewOptions==='cftReview'
   ||selectedReviewOptions==='customerNotification'}">
       <div class="step-counter"></div>
-      <div class="step-name"(click)="selectProgressBar('qaDecision')">QA Decision</div>
+      <div class="step-name" (click)="selectProgressBar('qaDecision')">QA Decision</div>
     </div>
-    <div class="stepper-item" [ngClass]="{'active': selectedReviewOptions === 'actionPlan', 
+    <div class="stepper-item"
+      [ngClass]="{'active': selectedReviewOptions === 'actionPlan', 
     'completed':selectedReviewOptions === 'closure',
     '':selectedReviewOptions==='initiation' || selectedReviewOptions==='hodReview'|| selectedReviewOptions==='qaReview'
     ||selectedReviewOptions==='cftReview'||selectedReviewOptions==='customerNotification'||selectedReviewOptions==='qaDecision'}">
       <div class="step-counter"></div>
-      <div class="step-name"(click)="selectProgressBar('actionPlan')">Action Plan</div>
+      <div class="step-name" (click)="selectProgressBar('actionPlan')">Action Plan</div>
     </div>
     <div class="stepper-item" [ngClass]="{'active': selectedReviewOptions === 'closure', 
   '':selectedReviewOptions==='initiation' || selectedReviewOptions==='hodReview'
@@ -87,10 +92,12 @@
     <p-tabPanel header="General">
       <div class="row">
         <!-- <div class="col-lg-5 "> -->
-          <div [ngClass]="{'col-lg-12 ': selectedReviewOptions === 'initiation', 'col-lg-5 ': selectedReviewOptions !== 'initiation'}">
+        <div
+          [ngClass]="{'col-lg-12 ': selectedReviewOptions === 'initiation', 'col-lg-5 ': selectedReviewOptions !== 'initiation'}">
           <div class="w-100 summary-tab">
             <p-tabView>
-              <p-tabPanel  header="Request Details" *ngIf="changeControl && changeControl.requestDetails" class="mr-3 tab-styles">
+              <p-tabPanel header="Request Details" *ngIf="changeControl && changeControl.requestDetails"
+                class="mr-3 tab-styles">
                 <div class="bg-white px-2">
                   <div class="d-flex mb-3 mt-3" *ngIf="changeControl.requestDetails.reference == 'External'">
                     <span class="col-lg-5 mr-5 small text-color">External Reference</span>
@@ -112,22 +119,22 @@
                     <span class="col-lg-5 mr-5 small text-color">Batch No./Lot Details.</span>
                     <span>{{changeControl.requestDetails.batchNoLotDetails}}</span>
                   </div>
-                  <div class="d-flex mb-3" *ngIf="changeControl.requestDetails.dateofInitiation"> 
-                    <span class="col-lg-5 mr-5 small text-color">Date of Initiation</span> 
+                  <div class="d-flex mb-3" *ngIf="changeControl.requestDetails.dateofInitiation">
+                    <span class="col-lg-5 mr-5 small text-color">Date of Initiation</span>
                     <span class="small">{{changeControl.requestDetails.dateofInitiation}}</span>
                   </div>
-                  <div class="d-flex mb-3" *ngIf="changeControl.requestDetails.targetDateofClosure"> 
-                    <span class="col-lg-5 mr-5 small text-color">Target Date of Closure</span> 
+                  <div class="d-flex mb-3" *ngIf="changeControl.requestDetails.targetDateofClosure">
+                    <span class="col-lg-5 mr-5 small text-color">Target Date of Closure</span>
                     <span class="small">{{changeControl.requestDetails.targetDateofClosure}}</span>
                   </div>
-                  <div class="d-flex  mb-3" *ngIf="changeControl.requestDetails.market"> 
+                  <div class="d-flex  mb-3" *ngIf="changeControl.requestDetails.market">
                     <span class="col-lg-5 mr-5 small text-color">Market</span>
                     <span class="small">{{changeControl.requestDetails.market}}</span>
                   </div>
                   <div class="d-flex  mb-3 " *ngIf="changeControl.requestDetails.customer">
-                    <span class="col-lg-5 mr-5 small text-color">Customer</span> 
+                    <span class="col-lg-5 mr-5 small text-color">Customer</span>
                     <span class="small">{{changeControl.requestDetails.customer}}</span>
-                  </div>                  
+                  </div>
                 </div>
               </p-tabPanel>
 
@@ -145,7 +152,8 @@
                     <span class="col-lg-5 mr-5 small text-color">Document</span>
                     <span>{{changeControl.changeDetails.document}}</span>
                   </div>
-                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.changeDetails.changesRelatedTo == 'Facility/Utility'">
+                  <div class="d-flex mb-3 mt-3"
+                    *ngIf="changeControl.changeDetails.changesRelatedTo == 'Facility/Utility'">
                     <span class="col-lg-5 mr-5 small text-color">Facility/Utility</span>
                     <span>{{changeControl.changeDetails.facilityUtility}}</span>
                   </div>
@@ -161,7 +169,8 @@
                     <span class="col-lg-5 mr-5 small text-color">Testing</span>
                     <span>{{changeControl.changeDetails.testing}}</span>
                   </div>
-                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.changeDetails.changesRelatedTo == 'Supplier/Service Provider'">
+                  <div class="d-flex mb-3 mt-3"
+                    *ngIf="changeControl.changeDetails.changesRelatedTo == 'Supplier/Service Provider'">
                     <span class="col-lg-5 mr-5 small text-color">Supplier/Service Provider</span>
                     <span>{{changeControl.changeDetails.supplierServiceProvider}}</span>
                   </div>
@@ -169,31 +178,38 @@
                     <span class="col-lg-5 mr-5 small text-color">Others</span>
                     <span>{{changeControl.changeDetails.others}}</span>
                   </div>
-                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.changeDetails.changesRelatedTo == 'New Product & Existing Product'">
+                  <div class="d-flex mb-3 mt-3"
+                    *ngIf="changeControl.changeDetails.changesRelatedTo == 'New Product & Existing Product'">
                     <span class="col-lg-5 mr-5 small text-color">Products</span>
                     <span>{{changeControl.changeDetails.products}}</span>
                   </div>
-                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.changeDetails.changesRelatedTo == 'New Product & Existing Product'">
+                  <div class="d-flex mb-3 mt-3"
+                    *ngIf="changeControl.changeDetails.changesRelatedTo == 'New Product & Existing Product'">
                     <span class="col-lg-5 mr-5 small text-color">Element Impurities Assesment</span>
                     <span>{{changeControl.changeDetails.impurityAssesment}}</span>
-                  </div>                 
-                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.changeDetails.changesRelatedTo == 'New Product & Existing Product' && changeControl.changeDetails.impurityAssesment == 'no'">
+                  </div>
+                  <div class="d-flex mb-3 mt-3"
+                    *ngIf="changeControl.changeDetails.changesRelatedTo == 'New Product & Existing Product' && changeControl.changeDetails.impurityAssesment == 'no'">
                     <span class="col-lg-5 mr-5 small text-color">Element Impurities Assesment Reason</span>
                     <span>{{changeControl.changeDetails.impurityReason}}</span>
                   </div>
-                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.changeDetails.changesRelatedTo == 'New Product & Existing Product'">
+                  <div class="d-flex mb-3 mt-3"
+                    *ngIf="changeControl.changeDetails.changesRelatedTo == 'New Product & Existing Product'">
                     <span class="col-lg-5 mr-5 small text-color">Nitrosamine Impurities Assesment</span>
                     <span>{{changeControl.changeDetails.nitrosamineAssesment}}</span>
                   </div>
-                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.changeDetails.changesRelatedTo == 'New Product & Existing Product' && changeControl.changeDetails.nitrosamineAssesment == 'no' ">
+                  <div class="d-flex mb-3 mt-3"
+                    *ngIf="changeControl.changeDetails.changesRelatedTo == 'New Product & Existing Product' && changeControl.changeDetails.nitrosamineAssesment == 'no' ">
                     <span class="col-lg-5 mr-5 small text-color">Nitrosamine Impurities Assesment Reason</span>
                     <span>{{changeControl.changeDetails.nitrosamineReason}}</span>
                   </div>
-                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.changeDetails.changesRelatedTo == 'New Product & Existing Product'">
+                  <div class="d-flex mb-3 mt-3"
+                    *ngIf="changeControl.changeDetails.changesRelatedTo == 'New Product & Existing Product'">
                     <span class="col-lg-5 mr-5 small text-color">Genotoxic Impurities Assesment</span>
                     <span>{{changeControl.changeDetails.genotoxicAssesment}}</span>
                   </div>
-                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.changeDetails.changesRelatedTo == 'New Product & Existing Product' && changeControl.changeDetails.genotoxicAssesment == 'no' ">
+                  <div class="d-flex mb-3 mt-3"
+                    *ngIf="changeControl.changeDetails.changesRelatedTo == 'New Product & Existing Product' && changeControl.changeDetails.genotoxicAssesment == 'no' ">
                     <span class="col-lg-5 mr-5 small text-color">Genotoxic Impurities Assesment Reason</span>
                     <span>{{changeControl.changeDetails.genatoxicReason}}</span>
                   </div>
@@ -209,25 +225,30 @@
                   <div class="d-flex mb-3 ">
                     <span class="col-lg-5 mr-5 small text-color">Justification for Proposed Change</span>
                     <span class="small">{{changeControl.changeDetails?.justificationForProposedChange}}</span>
-                  </div>                  
+                  </div>
                 </div>
               </p-tabPanel>
 
-              <p-tabPanel header="Impact Details" *ngIf="changeControl && changeControl.impactAssessmentDetails" class="mr-3">
+              <p-tabPanel header="Impact Details" *ngIf="changeControl && changeControl.impactAssessmentDetails"
+                class="mr-3">
                 <div class="bg-white">
-                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.impactAssessmentDetails.isChangeImpactProductMaterial != 'Yes'">
+                  <div class="d-flex mb-3 mt-3"
+                    *ngIf="changeControl.impactAssessmentDetails.isChangeImpactProductMaterial != 'Yes'">
                     <span class="col-lg-5 mr-5 small text-color">Does the Change Impact Product/Material Quality</span>
                     <span>{{changeControl.impactAssessmentDetails.isChangeImpactProductMaterial}}</span>
                   </div>
-                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.impactAssessmentDetails.isChangeImpactProductMaterial == 'Yes'">
+                  <div class="d-flex mb-3 mt-3"
+                    *ngIf="changeControl.impactAssessmentDetails.isChangeImpactProductMaterial == 'Yes'">
                     <span class="col-lg-5 mr-5 small text-color">Impact Product/Materials</span>
                     <span>{{changeControl.impactAssessmentDetails.impactProductOrMaterials}}</span>
                   </div>
-                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.impactAssessmentDetails.isAnyProceduresImpacted != 'Yes'">
+                  <div class="d-flex mb-3 mt-3"
+                    *ngIf="changeControl.impactAssessmentDetails.isAnyProceduresImpacted != 'Yes'">
                     <span class="col-lg-5 mr-5 small text-color">Are any Procedures Impacted</span>
                     <span>{{changeControl.impactAssessmentDetails.isAnyProceduresImpacted}}</span>
                   </div>
-                  <div class="d-flex mb-3 mt-3" *ngIf="changeControl.impactAssessmentDetails.isAnyProceduresImpacted == 'Yes'">
+                  <div class="d-flex mb-3 mt-3"
+                    *ngIf="changeControl.impactAssessmentDetails.isAnyProceduresImpacted == 'Yes'">
                     <span class="col-lg-5 mr-5 small text-color">Impacted Procedures</span>
                     <span>{{changeControl.impactAssessmentDetails.impactedProcedures}}</span>
                   </div>
@@ -243,29 +264,29 @@
 
         </div>
 
-       
-        <div *ngIf="selectedReviewOptions==='hodReview'" class="col-lg-7">
+
+        <div *ngIf="changeControl && selectedReviewOptions==='hodReview'" class="col-lg-7">
           <app-hod-review [changeControl]="changeControl"></app-hod-review>
         </div>
-        <div *ngIf="selectedReviewOptions==='qaReview'" class="col-lg-7">
-          <app-qa-review></app-qa-review>
+        <div *ngIf="changeControl && selectedReviewOptions==='qaReview'" class="col-lg-7">
+          <app-qa-review [changeControl]="changeControl"></app-qa-review>
         </div>
         <div *ngIf="selectedReviewOptions==='cftReview'" class="col-lg-7">
-          <app-cft-review></app-cft-review>
-       </div>
-       <div  *ngIf="selectedReviewOptions==='customerNotification'"class="col-lg-7">
-             <app-customer-notification></app-customer-notification>
-       </div>
-       <div  *ngIf="selectedReviewOptions==='qaDecision'"class="col-lg-7">
-             <app-qa-decision></app-qa-decision>
-       </div>
-       <div  *ngIf="selectedReviewOptions==='actionPlan'"class="col-lg-7">
-        <app-action-plans-review></app-action-plans-review>            
-  </div>
-  <div  *ngIf="selectedReviewOptions==='closure'"class="col-lg-7">
-    <app-closure-cc></app-closure-cc>            
-</div>
-       
+          <app-cft-review [changeControl]="changeControl"></app-cft-review>
+        </div>
+        <div *ngIf="selectedReviewOptions==='customerNotification'" class="col-lg-7">
+          <app-customer-notification></app-customer-notification>
+        </div>
+        <div *ngIf="selectedReviewOptions==='qaDecision'" class="col-lg-7">
+          <app-qa-decision></app-qa-decision>
+        </div>
+        <div *ngIf="selectedReviewOptions==='actionPlan'" class="col-lg-7">
+          <app-action-plans-review></app-action-plans-review>
+        </div>
+        <div *ngIf="selectedReviewOptions==='closure'" class="col-lg-7">
+          <app-closure-cc></app-closure-cc>
+        </div>
+
       </div>
     </p-tabPanel>
     <p-tabPanel header="Documents">
