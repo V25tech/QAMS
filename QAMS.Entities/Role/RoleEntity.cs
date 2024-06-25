@@ -17,17 +17,17 @@ namespace QAMS.Admin.Entities
     public class Role 
     {
 
-        public string Name { get; set; }
+        public string name { get; set; }
 
-        public string Description { get; set; }
+        public string description { get; set; }
 
-        public string CreatedBy { get; set; }
+        public string createdBy { get; set; }
 
-        public DateTime? CreatedDate { get; set; }
+        public DateTime? createdDate { get; set; }
 
-        public string ModifiedBy { get; set; }
+        public string modifiedBy { get; set; }
 
-        public DateTime? ModifiedDate { get; set; }
+        public DateTime? modifiedDate { get; set; }
 
 
         public ChangeControlRoles ChangeControlRoles { get; set; }

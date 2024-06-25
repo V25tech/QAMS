@@ -36,8 +36,7 @@ export class EquipmentRegistrationService {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post(this.apiUrl+ '/equipment/updateequipment', settings, { headers })       
   }
-  GetEquipmentById(equipmentId: number)  {
-    //const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  GetEquipmentById(equipmentId: number)  {    
     return this.http.get(this.apiUrl+'/equipment/'+ equipmentId);    
   }
 

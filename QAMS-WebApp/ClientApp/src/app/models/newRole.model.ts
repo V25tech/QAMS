@@ -11,52 +11,52 @@ export interface NewRole{
 //     description?:string
 // }
 export class ChangeControlModel {
-    controlLoginInitiation: boolean;
-    hodReview: boolean;
-    qaReview: boolean;
-    cftReview: boolean;
-    customerNotification: boolean;
-    qaDecision: boolean;
-    actionPlan: boolean;
-    finalClosure: boolean;
-    extensionOfTargetDate: boolean;
-    workTransfer: boolean;
-    dossierPrint: boolean;
-    auditTrials: boolean;
-    reports: boolean;
+    controlLoginInitiation: boolean=false;
+    hodReview: boolean=false;
+    qaReview: boolean=false;
+    cftReview: boolean=false;
+    customerNotification: boolean=false;
+    qaDecision: boolean=false;
+    actionPlan: boolean=false;
+    finalClosure: boolean=false;
+    extensionOfTargetDate: boolean=false;
+    workTransfer: boolean=false;
+    dossierPrint: boolean=false;
+    auditTrials: boolean=false;
+    reports: boolean=false;
   
    
   }
   export class DeviationModel {
-    deviationInitiation: boolean;
-    hodReview_Deviation: boolean;
-    qaReview_Deviation: boolean;
-    cftReview_Deviation: boolean;
-    customerNotification_Deviation: boolean;
-    investigation: boolean;
-    qaDecision_Deviation: boolean;
-    actionPlan_Deviation: boolean;
-    finalClosure_QA: boolean;
-    extensionOfTargetDate_Deviation: boolean;
-    workTransfer_Deviation: boolean;
-    dossierPrint_Deviation: boolean;
-    auditTrials_Deviation: boolean;
-    reports_Deviation: boolean;
+    deviationInitiation: boolean=false;
+    hodReview_Deviation: boolean=false;
+    qaReview_Deviation: boolean=false;
+    cftReview_Deviation: boolean=false;
+    customerNotification_Deviation: boolean=false;
+    investigation: boolean=false;
+    qaDecision_Deviation: boolean=false;
+    actionPlan_Deviation: boolean=false;
+    finalClosure_QA: boolean=false;
+    extensionOfTargetDate_Deviation: boolean=false;
+    workTransfer_Deviation: boolean=false;
+    dossierPrint_Deviation: boolean=false;
+    auditTrials_Deviation: boolean=false;
+    reports_Deviation: boolean=false;
    
   }
   export class CAPAModel {
-    capaInitiation: boolean;
-    hodReview_CAPA: boolean;
-    qaReview_CAPA: boolean;
-    cftReview_CAPA: boolean;
-    qaDecision_CAPA: boolean;
-    actionPlan_CAPA: boolean;
-    finalClosure_QA_CAPA: boolean;
-    extensionOfTargetDate_CAPA: boolean;
-    workTransfer_CAPA: boolean;
-    dossierPrint_CAPA: boolean;
-    auditTrials_CAPA: boolean;
-    reports_CAPA: boolean;      
+    capaInitiation: boolean=false;
+    hodReview_CAPA: boolean=false;
+    qaReview_CAPA: boolean=false;
+    cftReview_CAPA: boolean=false;
+    qaDecision_CAPA: boolean=false;
+    actionPlan_CAPA: boolean=false;
+    finalClosure_QA_CAPA: boolean=false;
+    extensionOfTargetDate_CAPA: boolean=false;
+    workTransfer_CAPA: boolean=false;
+    dossierPrint_CAPA: boolean=false;
+    auditTrials_CAPA: boolean=false;
+    reports_CAPA: boolean=false;      
   }
   
   export class Role {

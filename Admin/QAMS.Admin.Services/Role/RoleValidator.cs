@@ -18,29 +18,29 @@ namespace QAMS.Admin.Services
     using Newtonsoft.Json;
     using QAMS.Admin.Entities;
     using VAMLIbrary.Core.Validators;
-    
-    
+
+
     // Comment
     public static class RoleValidator
     {
-        
+
         public static string IsValidRole(Role role)
         {
             try
             {
                 StringBuilder validationMessages = new StringBuilder();
                 ValidationHelper validationHelper = new ValidationHelper();
-                validationMessages.Append(validationHelper.NullCheckValidator(role.Name, nameof(role.Name)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(role.Name,150, nameof(role.Name)));
-                validationMessages.Append(validationHelper.NullCheckValidator(role.Description, nameof(role.Description)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(role.Description,150, nameof(role.Description)));
-                validationMessages.Append(validationHelper.NullCheckValidator(role.CreatedBy, nameof(role.CreatedBy)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(role.CreatedBy,150, nameof(role.CreatedBy)));
-                validationMessages.Append(validationHelper.NullCheckValidator(role.ModifiedBy, nameof(role.ModifiedBy)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(role.ModifiedBy,150, nameof(role.ModifiedBy)));
+                validationMessages.Append(validationHelper.NullCheckValidator(role.name, nameof(role.name)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(role.name, 150, nameof(role.name)));
+                validationMessages.Append(validationHelper.NullCheckValidator(role.description, nameof(role.description)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(role.description, 150, nameof(role.description)));
+                validationMessages.Append(validationHelper.NullCheckValidator(role.createdBy, nameof(role.createdBy)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(role.createdBy, 150, nameof(role.createdBy)));
+                // validationMessages.Append(validationHelper.NullCheckValidator(role.modifiedBy, nameof(role.modifiedBy)));
+                // validationMessages.Append(validationHelper.LengthCheckValidator(role.modifiedBy,150, nameof(role.modifiedBy)));
                 if (!String.IsNullOrEmpty(validationMessages.ToString()))
                 {
-                    return Convert.ToString(validationMessages.Remove(validationMessages.ToString().LastIndexOf(','),1));
+                    return Convert.ToString(validationMessages.Remove(validationMessages.ToString().LastIndexOf(','), 1));
                 }
                 else
                 {

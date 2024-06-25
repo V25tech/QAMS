@@ -38,12 +38,12 @@ namespace QAMS.Admin.Services
                         DataRow row = dataset.Tables[0].Rows[i];
                         roleData = new Role();
                         //roleData.Id = DatatypeConverter.SetIntValue(row[RoleConstants.Id.TrimAt()]);
-                        roleData.Name = Convert.ToString(row[RoleConstants.Name.TrimAt()]);
-                        roleData.Description = Convert.ToString(row[RoleConstants.Description.TrimAt()]);
-                        roleData.CreatedBy = Convert.ToString(row[RoleConstants.CreatedBy.TrimAt()]);
-                        roleData.CreatedDate = DatatypeConverter.SetDateTime(row[RoleConstants.CreatedDate.TrimAt()]);
-                        roleData.ModifiedBy = Convert.ToString(row[RoleConstants.ModifiedBy.TrimAt()]);
-                        roleData.ModifiedDate = DatatypeConverter.SetDateTime(row[RoleConstants.ModifiedDate.TrimAt()]);
+                        roleData.name = Convert.ToString(row[RoleConstants.Name.TrimAt()]);
+                        roleData.description = Convert.ToString(row[RoleConstants.Description.TrimAt()]);
+                        roleData.createdBy = Convert.ToString(row[RoleConstants.CreatedBy.TrimAt()]);
+                        roleData.createdDate = DatatypeConverter.SetDateTime(row[RoleConstants.CreatedDate.TrimAt()]);
+                        roleData.modifiedBy = Convert.ToString(row[RoleConstants.ModifiedBy.TrimAt()]);
+                        roleData.modifiedDate = DatatypeConverter.SetDateTime(row[RoleConstants.ModifiedDate.TrimAt()]);
                         if (row["DOCUMENT"] != null && row["DOCUMENT"] != "")
                         {
                           //  roleData = JsonConvert.DeserializeObject<Role>(Convert.ToString(row["DOCUMENT"]));

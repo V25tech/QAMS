@@ -123,7 +123,7 @@ export class ModifyUserComponent {
 
   }
   selectRole(event: Event): void {
-    //debugger
+  
     console.log(this.modifyUserForm.value.role);
     const selectElement = event.target as HTMLSelectElement;
     console.log('Selected role (from event):', selectElement.value);
@@ -132,7 +132,7 @@ export class ModifyUserComponent {
     // Note: This method is not necessary if you're using the reactive form approach
   }
   selectDepartment(event: Event): void {
-    //debugger
+  
     console.log(this.modifyUserForm.value.department);
     const selectElement = event.target as HTMLSelectElement;
     console.log('Selected department (from event):', selectElement.value);

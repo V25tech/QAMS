@@ -68,6 +68,8 @@ namespace QAMS.Admin.Services
         {
             try
             {
+                role.createdBy = "admin";
+                role.createdDate= DateTime.Now;
                 String validationMessages = RoleValidator.IsValidRole(role);
                 string roleMetadata = JsonConvert.SerializeObject(role, Formatting.Indented);
                // role.roleMetadata = roleMetadata;

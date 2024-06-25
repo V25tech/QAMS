@@ -18,29 +18,75 @@ export class NewRoleComponent implements OnInit {
   RoleForm!: FormGroup;
 
   
-  roleInfo:Role;
-  changeCntrl: ChangeControlModel;
-  deviationCntrl : DeviationModel;
-  CAPACntrl:CAPAModel;
+  roleInfo=new Role();
+  changeCntrl=new ChangeControlModel();
+  deviationCntrl =new DeviationModel();
+  CAPACntrl=new CAPAModel();
   constructor(private fb: FormBuilder, private router: Router, protected messageService: MessageService,  
     private NewRoleService: NewRoleService, private cdr: ChangeDetectorRef) { }
 
-  ngOnInit() {
+  ngOnInit() 
+  {
   
-
+    this.changeCntrl = new ChangeControlModel(); // Default value (can be true or false based on your logic)
+    this.deviationCntrl=new DeviationModel();
+    this.CAPACntrl=new CAPAModel();
     this.RoleForm = this.fb.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
-      parents: []
       
-    });
+      
+      ChangeControlModel: this.fb.group({
+        controlLoginInitiation: [this.changeCntrl.controlLoginInitiation], // Default value (can be true or false based on your logic)
+        hodReview: [this.changeCntrl.hodReview],
+        qaReview:[this.changeCntrl.qaReview],
+        cftReview:[this.changeCntrl.cftReview],
+        customerNotification:[this.changeCntrl.customerNotification],
+        qaDecision:[this.changeCntrl.qaDecision],
+        actionPlan:[this.changeCntrl.actionPlan],
+        finalClosure:[this.changeCntrl.finalClosure],
+        extensionOfTargetDate:[this.changeCntrl.extensionOfTargetDate],
+        workTransfer:[this.changeCntrl.workTransfer],
+        dossierPrint:[this.changeCntrl.dossierPrint],
+        auditTrials:[this.changeCntrl.auditTrials],
+        reports:[this.changeCntrl.reports]
+        })   ,
+      //});
+      DeviationModel :this.fb.group({
+        deviationInitiation:[this.deviationCntrl.deviationInitiation],
+        hodReview_Deviation:[this.deviationCntrl.hodReview_Deviation],
+        qaReview_Deviation:[this.deviationCntrl.qaDecision_Deviation],
+        cftReview_Deviation:[this.deviationCntrl.cftReview_Deviation],
+        customerNotification_Deviation:[this.deviationCntrl.customerNotification_Deviation],
+        investigation:[this.deviationCntrl.investigation],
+        qaDecision_Deviation:[this.deviationCntrl.qaDecision_Deviation],
+        actionPlan_Deviation:[this.deviationCntrl.actionPlan_Deviation],
+        finalClosure_QA:[this.deviationCntrl.finalClosure_QA],
+        extensionOfTargetDate_Deviation:[this.deviationCntrl.extensionOfTargetDate_Deviation],
+        dossierPrint_Deviation:[this.deviationCntrl.dossierPrint_Deviation],
+        auditTrials_Deviation:[this.deviationCntrl.auditTrials_Deviation],
+        reports_Deviation:[this.deviationCntrl.reports_Deviation],
+        workTransfer_Deviation:[this.deviationCntrl.workTransfer_Deviation]
+      }),
+    //}    
+    CAPAModel :this.fb.group({
+      capaInitiation:[this.CAPACntrl.capaInitiation],
+      hodReview_CAPA:[this.CAPACntrl.hodReview_CAPA],
+      qaReview_CAPA:[this.CAPACntrl.qaReview_CAPA],
+      cftReview_CAPA:[this.CAPACntrl.cftReview_CAPA],
+      qaDecision_CAPA:[this.CAPACntrl.qaDecision_CAPA],
+      actionPlan_CAPA:[this.CAPACntrl.actionPlan_CAPA],
+      finalClosure_QA_CAPA:[this.CAPACntrl.finalClosure_QA_CAPA],
+      extensionOfTargetDate_CAPA:[this.CAPACntrl.extensionOfTargetDate_CAPA],
+      workTransfer_CAPA:[this.CAPACntrl.workTransfer_CAPA],
+      dossierPrint_CAPA:[this.CAPACntrl.dossierPrint_CAPA],
+      auditTrials_CAPA:[this.CAPACntrl.auditTrials_CAPA],
+      reports_CAPA:[this.CAPACntrl.reports_CAPA]
+    })
+    })
   }
-
-
-
-
-
-
+  
+  
   saveRoleClick(roleValue: Role) {
     debugger;
     if (this.RoleForm.invalid) {
@@ -48,19 +94,20 @@ export class NewRoleComponent implements OnInit {
       return; // Prevent form submission
     } else {
       const RegNewRole: Role = {
-        name: this.RoleForm.value.newRole,
+        name: this.RoleForm.value.name,
         description: this.RoleForm.value.description,
         createdBy: '',
         createdDate: undefined,
         modifiedBy: '',
         modifiedDate: undefined,
-        changeControlRoles: new ChangeControlModel,
-        deviationRoles: new DeviationModel,
-        capaRoles: new CAPAModel
+        changeControlRoles: this.RoleForm.value.ChangeControlModel,
+        deviationRoles: this.RoleForm.value.DeviationModel,
+        capaRoles: this.RoleForm.value.CAPAModel
       };
-      roleValue.changeControlRoles=this.changeCntrl;
-      roleValue.deviationRoles=this.deviationCntrl;
-      roleValue.capaRoles=this.CAPACntrl;
+      roleValue=RegNewRole;
+      roleValue.changeControlRoles=RegNewRole.changeControlRoles;
+      roleValue.deviationRoles=RegNewRole.deviationRoles;
+      roleValue.capaRoles=RegNewRole.capaRoles;
       this.NewRoleService.insertNewRoleDetails(roleValue).subscribe((data: any) => {
         console.log('New Role submitted!', roleValue);
         this.messageService.add({ severity: 'success', summary: 'New Role Saved Successfull', detail: 'Message Content' });

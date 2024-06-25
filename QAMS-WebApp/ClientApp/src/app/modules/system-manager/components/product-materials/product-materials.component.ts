@@ -40,7 +40,6 @@ export class ProductMaterialsComponent {
     private ProductsService: ProductsService, private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-
     this.BuildMaterialForm();
     this.cdr.detectChanges();    
     this.route.queryParams.subscribe(params => {
