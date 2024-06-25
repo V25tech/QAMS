@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ActionPlanModel } from 'src/app/models/action-plan.model';
 
@@ -27,6 +27,10 @@ export class ActionPlanService {
 
     getChangeControlById(actionPlanId: number) {
         return this.http.get(this.apiUrl + '/changecontolactionplan/' + actionPlanId);
+    }
+
+    getActionsplansByInitIdAndWorkId(init_id: number, work_id: number) {    
+        return this.http.get(`${this.apiUrl}/actionplan/getActionPlanByIntIdandWorkId?p_IntId=${init_id}&p_WorkId=${work_id}`);
     }
 
 }

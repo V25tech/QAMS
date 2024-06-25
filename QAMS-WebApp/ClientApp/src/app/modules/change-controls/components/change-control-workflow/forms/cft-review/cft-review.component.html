@@ -11,22 +11,24 @@
             <div class="d-flex justify-content-between align-items-center p-3">
                 <h6 class="mb-0">Action Plans</h6>
 
-                <button type="button" class="btn btn-create btn-add rounded-circle" (click)="visibleSidebar2 = true">+
+                <button type="button" class="btn btn-create btn-add rounded-circle" (click)="setActionPlanInput()">+
                 </button>
             </div>
             <div class="action-plans-block px-3 ">
-                <div class="d-flex brd-dashed bg-white flex-column rounded p-3 mb-2">
+                <p *ngIf="!action_plans">Loading action plans..</p>
+                <p *ngIf="action_plans?.length == 0">No action plans found.</p>
+                <div *ngFor="let actionplan of action_plans; let i=index"
+                    class="d-flex brd-dashed bg-white flex-column rounded p-3 mb-2">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h6 class="mb-2">CC-PL01-24-0001/DM1/W1</h6>
-                        <span class="badge text-bg-secondary">SOP</span>
+                        <h6 class="mb-2">ActionPlan/W{{actionplan?.changeContolActionPlanId}}</h6>
+                        <span class="badge text-bg-secondary">{{actionplan?.type}}</span>
                     </div>
                     <div class="d-flex justify-content-between align-items-center">
-                        <p class="m-0">GTP shall be revised to make in line
-                            with pharmacopoeia's</p>
+                        <p class="m-0">{{actionplan?.description}}</p>
                     </div>
                 </div>
 
-                <div class="d-flex brd-dashed bg-white flex-column rounded p-3">
+                <!-- <div class="d-flex brd-dashed bg-white flex-column rounded p-3">
                     <div class="d-flex justify-content-between align-items-center">
                         <h6 class="mb-2">CC-PL01-24-0001/DM1/W1</h6>
                         <span class="badge text-bg-secondary">SOP</span>
@@ -35,7 +37,7 @@
                         <p class="m-0">GTP shall be revised to make in line
                             with pharmacopoeia's</p>
                     </div>
-                </div>
+                </div> -->
 
             </div>
         </div>
@@ -70,95 +72,4 @@
     </div>
 </div>
 
-<p-sidebar [(visible)]="visibleSidebar2" position="right" [baseZIndex]="30000">
-    <div class="panel-header">
-        <div class="d-flex justify-content-between align-items-center w-100 p-2">
-            <h5 class="text-white px-3 py-4 m-0">New Action Plan </h5>
-            <a class="p-2" (click)="closeNavBar()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="#ffffff" viewBox="0 0 16 16">
-                    <path
-                        d="M7.293 8L3.146 3.854a.5.5 0 1 1 .708-.708L8 7.293l4.146-4.147a.5.5 0 0 1 .708.708L8.707 8l4.147 4.146a.5.5 0 0 1-.708.708L8 8.707l-4.146 4.147a.5.5 0 0 1-.708-.708z" />
-                </svg></a>
-
-        </div>
-    </div>
-    <div class="d-flex flex-column py-3 px-4">
-        <div class="form-group row">
-            <label for="Internal Reference" class="col-md-4 col-form-label">Plan Type</label>
-            <div class="col-md-7 drp-styles ">
-                <select name="status" class="form-select" (change)="selectPlantType($event)">
-                    <option *ngFor="let selectedPlantTypeDetails of plantTypeDetails" [value]="selectedPlantTypeDetails.code">
-                        {{selectedPlantTypeDetails.name}}
-                    </option>
-                </select>
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="Description" class="col-md-4 col-form-label">Description</label>
-            <div class="col-md-7">
-                <textarea class="form-control" rows="4" name="Description" form="usrform">
-                  </textarea>
-                  
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="Internal Reference" class="col-md-4 col-form-label">In-Charge Department</label>
-            <div class="col-lg-7 drp-styles ">
-                <select name="status" class="form-select" (change)="selectIncharge($event)">
-                    <option *ngFor="let selectedInchargeDetails of inChargeDepartmentDetails" [value]="selectedInchargeDetails.code">
-                        {{selectedInchargeDetails.name}}
-                    </option>
-                </select> 
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="Assign to" class="col-md-4 col-form-label">Assign to </label>
-
-            <div class="col-lg-8 d-flex">
-                <div class="me-3">
-                    <input type="radio" id="usergroup" name="radiobtn" value="0"
-                        checked class="form-check-input user-group-radio-btn" (change)="selectAssignToGroup($event)">
-                    <label class="p-2 " for="usergroup">User Group</label>
-                </div>
-                <div class="">
-                    <input type="radio" class="form-check-input user-group-radio-btn" id="user" name="radiobtn" value="1" (change)="selectAssignToGroup($event)">
-                    <label class="p-2 " for="user">User</label>
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group row ">
-            <label for="Internal Reference" class="col-md-4 col-form-label">Select User Group</label>
-            <div class="col-lg-7">
-                <select name="status" class="form-select" (change)="selectUserGroup($event)">
-                    <option *ngFor="let selectedUserGroupDetails of userGroupDetails" [value]="selectedUserGroupDetails.code">
-                        {{selectedUserGroupDetails.name}}
-                    </option>
-                </select> 
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="Target Date of Closure" class="col-md-4 col-form-label">Target Date</label>
-            <div class="col-lg-7">
-                <input type="date" class="form-control" id="targetDate" name="" [(ngModel)]="selectedDate"
-                    placeholder="10/11/2024" />
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="Review" class="col-md-4 col-form-label">Review/Remarks</label>
-            <div class="col-lg-7  border-styles">
-                <textarea rows="4" class="form-control" name="comment" form="usrform"></textarea>
-            </div>
-        </div>
-    </div>
-    <div class="d-flex justify-content-end mt-4">
-        <button type="button"
-            class="btn btn-outline-primary rounded-pill me-3">Cancel</button>
-        <button type="button" class="btn btn-outline-primary rounded-pill me-3 save-btn">Save & Add
-            New</button>
-        <button type="button" class="btn btn-primary rounded-pill me-2">Save</button>
-    </div>
-</p-sidebar>
+<action-plan-form [(visibleSidebar2)]="visibleSidebar2" (refreshEvent)="refresh($event)"></action-plan-form>

@@ -50,12 +50,23 @@
         <div class="mt-4 bg-contrast pb-3 rounded">
             <div class="d-flex justify-content-between align-items-center p-3">
                 <h6 class="mb-0">Action Plans</h6>
-
-                <button type="button" class="btn btn-create btn-add rounded-circle" (click)="visibleSidebar2 = true">+
+                <button type="button" class="btn btn-create btn-add rounded-circle" (click)="setActionPlanInput()">+
                 </button>
             </div>
             <div class="action-plans-block px-3 ">
-                <div class="d-flex brd-dashed bg-white flex-column rounded p-3 mb-2">
+                <p *ngIf="!action_plans">Loading action plans..</p>
+                <p *ngIf="action_plans?.length == 0">No action plans found.</p>
+                <div *ngFor="let actionplan of action_plans; let i=index"
+                    class="d-flex brd-dashed bg-white flex-column rounded p-3 mb-2">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h6 class="mb-2">ActionPlan/W{{actionplan?.changeContolActionPlanId}}</h6>
+                        <span class="badge text-bg-secondary">{{actionplan?.type}}</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p class="m-0">{{actionplan?.description}}</p>
+                    </div>
+                </div>
+                <!-- <div class="d-flex brd-dashed bg-white flex-column rounded p-3">
                     <div class="d-flex justify-content-between align-items-center">
                         <h6 class="mb-2">CC-PL01-24-0001/DM1/W1</h6>
                         <span class="badge text-bg-secondary">SOP</span>
@@ -64,18 +75,7 @@
                         <p class="m-0">GTP shall be revised to make in line
                             with pharmacopoeia's</p>
                     </div>
-                </div>
-
-                <div class="d-flex brd-dashed bg-white flex-column rounded p-3">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h6 class="mb-2">CC-PL01-24-0001/DM1/W1</h6>
-                        <span class="badge text-bg-secondary">SOP</span>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <p class="m-0">GTP shall be revised to make in line
-                            with pharmacopoeia's</p>
-                    </div>
-                </div>
+                </div> -->
 
             </div>
         </div>
@@ -83,49 +83,41 @@
         <div class="mt-4 bg-contrast pb-3 rounded">
             <div class="d-flex justify-content-between align-items-center p-3">
                 <h6 class="mb-0">Risk Assesment Action Plan</h6>
-
-                <button type="button" class="btn btn-create btn-add rounded-circle" (click)="visibleSidebar3 = true">+
+                <button type="button" class="btn btn-create btn-add rounded-circle"
+                    (click)="setRiskAssessmentActionPlanInput()">+
                 </button>
             </div>
             <div class="action-plans-block px-3 ">
-                <div class="d-flex brd-dashed bg-white flex-column rounded p-3 mb-2">
+                <p *ngIf="!risk_assesment_action_plans">Loading risk assement action plans..</p>
+                <p *ngIf="risk_assesment_action_plans?.length == 0">No risk assement action plans found.</p>
+                <div *ngFor="let actionplan of risk_assesment_action_plans; let i=index"
+                    class="d-flex brd-dashed bg-white flex-column rounded p-3 mb-2">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h6 class="mb-2">CC-PL01-24-0001/DM1/W1</h6>
-                        <span class="badge text-bg-secondary">SOP</span>
+                        <h6 class="mb-2">ActionPlan/W{{actionplan?.changeContolActionPlanId}}</h6>
+                        <span class="badge text-bg-secondary">{{actionplan?.type}}</span>
                     </div>
                     <div class="d-flex justify-content-between align-items-center">
-                        <p class="m-0">GTP shall be revised to make in line
-                            with pharmacopoeia's</p>
-                    </div>
-                </div>
-
-                <div class="d-flex brd-dashed bg-white flex-column rounded p-3">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h6 class="mb-2">CC-PL01-24-0001/DM1/W1</h6>
-                        <span class="badge text-bg-secondary">SOP</span>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <p class="m-0">GTP shall be revised to make in line
-                            with pharmacopoeia's</p>
+                        <p class="m-0">{{actionplan?.description}}</p>
                     </div>
                 </div>
-
             </div>
         </div>
         <div class="form-group row col-lg-12">
             <label for="classificationOfChange" class="col-md-4 col-sm-12 col-form-label mt-2">
-                Classification of  Change </label>
+                Classification of Change </label>
 
             <div class="col-lg-6 d-flex radio-styles ">
                 <div class="form-check mt-3 ms-2">
-                    <input class="form-check-input" type="radio" id="major" name="classification" value="major" checked (change)="selectClassification($event)">
+                    <input class="form-check-input" type="radio" id="major" name="classification" value="major" checked
+                        (change)="selectClassification($event)">
                     <label class="form-check-label" for="major">Major</label>
                 </div>
                 <div class="form-check ms-4 mt-3">
-                    <input class="form-check-input" type="radio" id="minor" name="classification" value="minor" (change)="selectClassification($event)">
+                    <input class="form-check-input" type="radio" id="minor" name="classification" value="minor"
+                        (change)="selectClassification($event)">
                     <label class="form-check-label" for="minor">Minor</label>
                 </div>
-               
+
             </div>
         </div>
 
@@ -136,26 +128,28 @@
 
             <div class="col-lg-6 d-flex radio-styles ">
                 <div class="form-check ">
-                    <input class="form-check-input" type="radio" id="yes" name="Procedures" value="yes" checked (change)="selectImpactProcedures($event)">
+                    <input class="form-check-input" type="radio" id="yes" name="Procedures" value="yes" checked
+                        (change)="selectImpactProcedures($event)">
                     <label class="form-check-label" for="yes">yes</label>
                 </div>
                 <div class="form-check ms-4">
-                    <input class="form-check-input" type="radio" id="No" name="Procedures" value="No" (change)="selectImpactProcedures($event)">
+                    <input class="form-check-input" type="radio" id="No" name="Procedures" value="No"
+                        (change)="selectImpactProcedures($event)">
                     <label class="form-check-label" for="yes">No</label>
                 </div>
                 <div class="form-check ms-4">
-                    <input class="form-check-input" type="radio" id="na" name="Procedures" value="Not Applicable" (change)="selectImpactProcedures($event)">
+                    <input class="form-check-input" type="radio" id="na" name="Procedures" value="Not Applicable"
+                        (change)="selectImpactProcedures($event)">
                     <label class="form-check-label" for="yes">Not Applicable</label>
                 </div>
             </div>
             <div *ngIf=" changeImpactProcedure">
-             <div class="col-lg-12">
+                <div class="col-lg-12">
                     <div class="form-group row">
                         <label for="impactedProcedures" class="col-md-4 col-sm-12 col-form-label">
                             Procedures/Drawings/Associated Formats impacted as a Result of Change</label>
                         <div class="col-md-6 ">
-                            <textarea class="form-control input-width" name="Impact Procedures"
-                                placeholder="">
+                            <textarea class="form-control input-width" name="Impact Procedures" placeholder="">
                                     </textarea>
                         </div>
                     </div>
@@ -170,26 +164,28 @@
 
             <div class="col-lg-6 d-flex radio-styles ">
                 <div class="form-check ">
-                    <input class="form-check-input" type="radio" id="yes" name="regulatory" value="yes" checked (change)="selectCustomerCommitment($event)">
+                    <input class="form-check-input" type="radio" id="yes" name="regulatory" value="yes" checked
+                        (change)="selectCustomerCommitment($event)">
                     <label class="form-check-label" for="yes">yes</label>
                 </div>
                 <div class="form-check ms-4">
-                    <input class="form-check-input" type="radio" id="No" name="regulatory" value="No" (change)="selectCustomerCommitment($event)">
+                    <input class="form-check-input" type="radio" id="No" name="regulatory" value="No"
+                        (change)="selectCustomerCommitment($event)">
                     <label class="form-check-label" for="yes">No</label>
                 </div>
                 <div class="form-check ms-4">
-                    <input class="form-check-input" type="radio" id="na" name="regulatory" value="Not Applicable" (change)="selectCustomerCommitment($event)">
+                    <input class="form-check-input" type="radio" id="na" name="regulatory" value="Not Applicable"
+                        (change)="selectCustomerCommitment($event)">
                     <label class="form-check-label" for="yes">Not Applicable</label>
                 </div>
             </div>
             <div *ngIf="selectCommitment">
-             <div class="col-lg-12">
+                <div class="col-lg-12">
                     <div class="form-group row">
                         <label for="Impacted Procedures" class="col-md-4 col-sm-12 col-form-label">
                             Impacted Regulatory/Customer Commitment(s)</label>
                         <div class="col-md-6 ">
-                            <textarea class="form-control input-width" name="Impact Procedures"
-                                placeholder="">
+                            <textarea class="form-control input-width" name="Impact Procedures" placeholder="">
                                     </textarea>
                         </div>
                     </div>
@@ -203,197 +199,11 @@
         </div>
 
         <div class="mt-4 d-flex justify-content-end">
-            <button type="button"
-                class="btn btn-default rounded-pill me-3">Cancel</button>
+            <button type="button" class="btn btn-default rounded-pill me-3">Cancel</button>
             <button type="button" class="btn btn-outline-primary rounded-pill me-3">Save</button>
-            <button type="button"
-                class="btn btn-primary rounded-pill me-3">Submit</button>
+            <button type="button" class="btn btn-primary rounded-pill me-3">Submit</button>
         </div>
     </div>
 </div>
 
-<p-sidebar [(visible)]="visibleSidebar2" position="right" [baseZIndex]="30000">
-    <div class="panel-header">
-        <div class="d-flex justify-content-between align-items-center w-100 p-2">
-            <h5 class="text-white px-3 py-4 m-0">New Action Plan </h5>
-            <a class="p-2" (click)="closeNavBar()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="#ffffff" viewBox="0 0 16 16">
-                    <path
-                        d="M7.293 8L3.146 3.854a.5.5 0 1 1 .708-.708L8 7.293l4.146-4.147a.5.5 0 0 1 .708.708L8.707 8l4.147 4.146a.5.5 0 0 1-.708.708L8 8.707l-4.146 4.147a.5.5 0 0 1-.708-.708z" />
-                </svg></a>
-
-        </div>
-    </div>
-    <div class="d-flex flex-column py-3 px-4">
-        <div class="form-group row">
-            <label for="Plan Type" class="col-md-4 col-form-label">Plan Type</label>
-            <div class="col-md-7 drp-styles ">
-                <select name="status" class="form-select" (change)="selectPlantType($event)">
-                    <option *ngFor="let selectedPlantTypeDetails of plantTypeDetails" [value]="selectedPlantTypeDetails.code">
-                        {{selectedPlantTypeDetails.name}}
-                    </option>
-                </select>
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="Description" class="col-md-4 col-form-label">Description</label>
-            <div class="col-md-7">
-                <textarea class="form-control" rows="4" name="Description" form="usrform">
-                  </textarea>
-                  
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="In-Charge Department" class="col-md-4 col-form-label">In-Charge Department</label>
-            <div class="col-lg-7 drp-styles ">
-                <select name="status" class="form-select" (change)="selectIncharge($event)">
-                    <option *ngFor="let selectedInchargeDetails of inChargeDepartmentDetails" [value]="selectedInchargeDetails.code">
-                        {{selectedInchargeDetails.name}}
-                    </option>
-                </select> 
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="Assign to" class="col-md-4 col-form-label">Assign to </label>
-
-            <div class="col-lg-8 d-flex">
-                <div class="me-3">
-                    <input type="radio" id="usergroup" name="radiobtn" value="0"
-                        checked class="form-check-input user-group-radio-btn" (change)="selectAssignToGroup($event)">
-                    <label class="p-2 " for="usergroup">User Group</label>
-                </div>
-                <div class="">
-                    <input type="radio" class="form-check-input user-group-radio-btn" id="user" name="radiobtn" value="1" (change)="selectAssignToGroup($event)">
-                    <label class="p-2 " for="user">User</label>
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group row ">
-            <label for="Select User Group" class="col-md-4 col-form-label">Select User Group</label>
-            <div class="col-lg-7">
-                <select name="status" class="form-select" (change)="selectUserGroup($event)">
-                    <option *ngFor="let selectedUserGroupDetails of userGroupDetails" [value]="selectedUserGroupDetails.code">
-                        {{selectedUserGroupDetails.name}}
-                    </option>
-                </select> 
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="Target Date of Closure" class="col-md-4 col-form-label">Target Date</label>
-            <div class="col-lg-7">
-                <input type="date" class="form-control" id="targetDate" name="" [(ngModel)]="selectedDate"
-                    placeholder="10/11/2024" />
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="Review" class="col-md-4 col-form-label">Review/Remarks</label>
-            <div class="col-lg-7  border-styles">
-                <textarea rows="4" class="form-control" name="comment" form="usrform"></textarea>
-            </div>
-        </div>
-    </div>
-    <div class="d-flex justify-content-end mt-4">
-        <button type="button"
-            class="btn btn-outline-primary rounded-pill me-3">Cancel</button>
-        <button type="button" class="btn btn-outline-primary rounded-pill me-3 save-btn">Save & Add
-            New</button>
-        <button type="button" class="btn btn-primary rounded-pill me-2">Save</button>
-    </div>
-</p-sidebar>
-
-<p-sidebar [(visible)]="visibleSidebar3" position="right" [baseZIndex]="30000">
-    <div class="panel-header">
-        <div class="d-flex justify-content-between align-items-center w-100 p-2">
-            <h5 class="text-white px-3 py-4 m-0">New Action Plan </h5>
-            <a class="p-2" (click)="closeAdditionalNavBar()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="#ffffff" viewBox="0 0 16 16">
-                    <path
-                        d="M7.293 8L3.146 3.854a.5.5 0 1 1 .708-.708L8 7.293l4.146-4.147a.5.5 0 0 1 .708.708L8.707 8l4.147 4.146a.5.5 0 0 1-.708.708L8 8.707l-4.146 4.147a.5.5 0 0 1-.708-.708z" />
-                </svg></a>
-
-        </div>
-    </div>
-    <div class="d-flex flex-column py-3 px-4">
-        <div class="form-group row">
-            <label for="Plan Type" class="col-md-4 col-form-label">Plan Type</label>
-            <div class="col-md-7 drp-styles ">
-                <select name="status" class="form-select" (change)="selectPlantType($event)">
-                    <option *ngFor="let selectedAdditionalPlantTypeDetails of additionalActionPlanType" [value]="selectedAdditionalPlantTypeDetails.code">
-                        {{selectedAdditionalPlantTypeDetails.name}}
-                    </option>
-                </select>
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="Description" class="col-md-4 col-form-label">Description</label>
-            <div class="col-md-7">
-                <textarea class="form-control" rows="4" name="Description" form="usrform">
-                  </textarea>
-                  
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="In-Charge Department" class="col-md-4 col-form-label">In-Charge Department</label>
-            <div class="col-lg-7 drp-styles ">
-                <select name="status" class="form-select" (change)="selectIncharge($event)">
-                    <option *ngFor="let selectedInchargeDetails of inChargeDepartmentDetails" [value]="selectedInchargeDetails.code">
-                        {{selectedInchargeDetails.name}}
-                    </option>
-                </select> 
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <label for="Assign to" class="col-md-4 col-form-label">Assign to </label>
-
-            <div class="col-lg-8 d-flex">
-                <div class="me-3">
-                    <input type="radio" id="usergroup" name="radiobtn" value="0"
-                        checked class="form-check-input user-group-radio-btn" (change)="selectAssignToGroup($event)">
-                    <label class="p-2 " for="usergroup">User Group</label>
-                </div>
-                <div class="">
-                    <input type="radio" class="form-check-input user-group-radio-btn" id="user" name="radiobtn" value="1" (change)="selectAssignToGroup($event)">
-                    <label class="p-2 " for="user">User</label>
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group row ">
-            <label for="Select User Group" class="col-md-4 col-form-label">Select User Group</label>
-            <div class="col-lg-7">
-                <select name="status" class="form-select" (change)="selectUserGroup($event)">
-                    <option *ngFor="let selectedUserGroupDetails of userGroupDetails" [value]="selectedUserGroupDetails.code">
-                        {{selectedUserGroupDetails.name}}
-                    </option>
-                </select> 
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="Target Date of Closure" class="col-md-4 col-form-label">Target Date</label>
-            <div class="col-lg-7">
-                <input type="date" class="form-control" id="targetDate" name="" [(ngModel)]="selectedDate"
-                    placeholder="10/11/2024" />
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="Review" class="col-md-4 col-form-label">Review/Remarks</label>
-            <div class="col-lg-7  border-styles">
-                <textarea rows="4" class="form-control" name="comment" form="usrform"></textarea>
-            </div>
-        </div>
-    </div>
-    <div class="d-flex justify-content-end mt-4">
-        <button type="button"
-            class="btn btn-outline-primary rounded-pill me-3">Cancel</button>
-        <button type="button" class="btn btn-outline-primary rounded-pill me-3 save-btn">Save & Add
-            New</button>
-        <button type="button" class="btn btn-primary rounded-pill me-2">Save</button>
-    </div>
-</p-sidebar>
+<action-plan-form [(visibleSidebar2)]="visibleSidebar2" (refreshEvent)="refresh($event)"></action-plan-form>

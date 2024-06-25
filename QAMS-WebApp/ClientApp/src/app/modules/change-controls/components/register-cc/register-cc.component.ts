@@ -139,7 +139,8 @@ export class RegisterCCComponent implements OnInit {
 
     console.log(JSON.stringify(ccValue))
     this.changeControlsService.saveChangeControlRegistration(ccValue).subscribe(res => {
-      console.log(res);
+      //console.log(res);
+      this.show();
       this.backToCCClick();
     }, er => console.log(er));
   }
@@ -153,7 +154,8 @@ export class RegisterCCComponent implements OnInit {
 
     console.log(JSON.stringify(ccValue))
     this.changeControlsService.updateChangeControlRegistration(this.editCCValue).subscribe(res => {
-      console.log(res);
+      //console.log(res);
+      this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Change Control Login Updated Successfully' });
       this.backToCCClick();
     }, er => console.log(er));
   }
