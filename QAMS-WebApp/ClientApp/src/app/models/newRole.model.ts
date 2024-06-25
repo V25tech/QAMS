@@ -1,5 +1,5 @@
 export interface NewRole{
-    
+    // id:any,
     name?:string,
     description?:string,
     createdBy?:string,

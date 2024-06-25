@@ -99,7 +99,9 @@ export class RolesComponent {
   goToSetFunctionalProfile() {
 
   }
-
+  navigateToEditRoles(id:number){
+    this.router.navigateByUrl('/new-role');
+  }
 
 }
 

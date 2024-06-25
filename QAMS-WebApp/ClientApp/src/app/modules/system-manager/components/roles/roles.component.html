@@ -42,7 +42,7 @@
                     <ng-template pTemplate="body" let-newRole let-i="rowIndex" #templatesTable>
                         <tr>
                             <td>{{i+1}}</td>
-
+                            <!-- <td>{{newRole.id}}</td> -->
                             <td>{{newRole.name}}</td>
                             <td>{{newRole.description}}</td>
                             <td>{{newRole.createdBy}}</td>
@@ -53,7 +53,7 @@
                                     <a class="me-2">
                                         <i class="bi bi-pencil-square"></i>
                                         </a>
-                                    <!-- <a><i class="bi bi-person-fill-gear" (click)="goToSetFunctionalProfile()"></i></a> -->
+                                     <a><i class="bi bi-person-fill-gear" (click)="navigateToEditRoles(newRole.name)"></i></a> 
 
 
                                 </div>

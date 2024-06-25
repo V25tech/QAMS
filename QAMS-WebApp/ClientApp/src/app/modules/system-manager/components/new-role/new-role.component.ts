@@ -14,14 +14,74 @@ import { MessageService } from 'primeng/api';
 })
 export class NewRoleComponent implements OnInit {
   RoleForm!: FormGroup;
+// updated code starts here
+
+    id:number=0;
+   editMode: boolean = false;
+   roleReg: NewRole;
+   editCCValue: NewRole;
+   
+
   roleInfo=new Role();
   changeCntrl=new ChangeControlModel();
   deviationCntrl =new DeviationModel();
   CAPACntrl=new CAPAModel();
-  constructor(private fb: FormBuilder, private router: Router, protected messageService: MessageService,  
+  route: any;
+  constructor(private fb: FormBuilder, private router: Router, protected messageService: MessageService, 
     private NewRoleService: NewRoleService, private cdr: ChangeDetectorRef) { }
-  ngOnInit() 
-  {  
+  ngOnInit() :void{
+   
+
+    this.BuildRoleForm();
+    this.cdr.detectChanges();
+    this.route.queryParams.subscribe((params: { [x: string]: string; }) => {
+      this.id = Number.parseInt(params['Id']);
+      let splitItesms = this.id;
+      debugger;        
+      this.GetRoleById(this.id);
+    })
+    
+  }
+cancelClick(){
+  this.router.navigateByUrl('/roles');
+}
+saveControlChange(ccValue: NewRole) {
+  // this.NewRoleService.insertNewRoleDetails(ccValue).subscribe((data: any) => {
+  //   console.log('Form submitted!', ccValue);
+  //   this.messageService.add({ severity: 'success', summary: 'Role Registration Saved Successfull', detail: 'Message Content' });
+  //   setTimeout(() => {
+  //     this.backToRoles();
+  //   }, 1000);
+  // });    
+}
+updateControlChange(ccValue: NewRole) {
+  console.log(JSON.stringify(ccValue))
+  // this.NewRoleService.updateRoleDetails(this.editCCValue).subscribe((res: any) => {
+  //   console.log(res);
+  //   this.backToRoles();
+  // }, (er: any) => console.log(er));
+}
+backToRoles(){
+  this.router.navigateByUrl('/roles');
+}
+GetRoleById(id:number)
+{
+  this.NewRoleService.GetRoleById(id).subscribe((res:any) => {
+    debugger;
+    this.roleReg = res;
+    let ccValue: NewRole = res; //JSON.parse(ccValueStr) ?? null;
+    this.editCCValue = ccValue;
+    if (ccValue) {
+      this.RoleForm.patchValue(ccValue);
+    }
+  }, (er: any) => console.log(er));    
+}
+BuildRoleForm()
+{
+
+
+
+
     this.changeCntrl = new ChangeControlModel(); // Default value (can be true or false based on your logic)
     this.deviationCntrl=new DeviationModel();
     this.CAPACntrl=new CAPAModel();
@@ -75,7 +135,21 @@ export class NewRoleComponent implements OnInit {
     })
     })
   }
-  
+  debugger: any;
+  roleRegistration(){
+    if (this.RoleForm.valid) {
+      console.log(this.RoleForm.value);
+      let ccRoleValue: NewRole = this.RoleForm.value;
+      if (this.editMode) {
+        this.updateControlChange(ccRoleValue);
+      }    
+    else {
+      this.saveControlChange(ccRoleValue);
+    }
+  }
+}
+
+//updated code ends here
   
   saveRoleClick(roleValue: Role) {
     debugger;
@@ -106,7 +180,7 @@ export class NewRoleComponent implements OnInit {
       });       
     }
   }  
-  backToRoles() {
-    this.router.navigateByUrl('/roles');
-  }
+  // backToRoles() {
+  //    this.router.navigateByUrl('/roles');
+  //  }
 }
