@@ -84,7 +84,7 @@ export class ModifyUserComponent {
   GetDepartments()
   {
     this.DepartmentsService.getDepartmentsData().subscribe((data: any) => {
-      debugger
+      //debugger
       this.departmentsDataSource = data.response;      
     }); 
    }  
@@ -106,7 +106,9 @@ export class ModifyUserComponent {
       role: ['', Validators.required],
       department: ['', Validators.required],
       employeeId: ['', Validators.required],
-      email: ['', Validators.required]    
+      email: ['', Validators.required] ,
+      userName: ['', Validators.required] 
+
     });    
     this.modifyUserForm.get('role').valueChanges.subscribe(value => {
       console.log('Selected role:', value);

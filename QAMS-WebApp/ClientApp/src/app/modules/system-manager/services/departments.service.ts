@@ -17,7 +17,7 @@ export class DepartmentsService {
 
 
   getDepartmentsData(): Observable<any> {
-    debugger    
+    //debugger    
     return this.http.post(this.apiUrl+'/department/GetAllDepartment',"{  \"pageNumber\": 1,  \"pageSize\": 100,  \"planId\": 1}");
   }
 

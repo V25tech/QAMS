@@ -55,6 +55,7 @@ namespace QAMS.Admin.Services
                         userData.CreatedDate = DatatypeConverter.SetDateTime(row[UserConstants.CreatedDate.TrimAt()]);
                         userData.ModifiedBy = Convert.ToString(row[UserConstants.ModifiedBy.TrimAt()]);
                         userData.ModifiedDate = DatatypeConverter.SetDateTime(row[UserConstants.ModifiedDate.TrimAt()]);
+                        userData.userName = userData.FirstName + " " + userData.LastName;
                         result.Add(userData);
                     }
                 }
