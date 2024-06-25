@@ -11,31 +11,23 @@ import { MessageService } from 'primeng/api';
   templateUrl: './new-role.component.html',
   styleUrls: ['./new-role.component.scss'],
   providers: [MessageService]
-
 })
-
 export class NewRoleComponent implements OnInit {
   RoleForm!: FormGroup;
-
-  
   roleInfo=new Role();
   changeCntrl=new ChangeControlModel();
   deviationCntrl =new DeviationModel();
   CAPACntrl=new CAPAModel();
   constructor(private fb: FormBuilder, private router: Router, protected messageService: MessageService,  
     private NewRoleService: NewRoleService, private cdr: ChangeDetectorRef) { }
-
   ngOnInit() 
-  {
-  
+  {  
     this.changeCntrl = new ChangeControlModel(); // Default value (can be true or false based on your logic)
     this.deviationCntrl=new DeviationModel();
     this.CAPACntrl=new CAPAModel();
     this.RoleForm = this.fb.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
-      
-      
       ChangeControlModel: this.fb.group({
         controlLoginInitiation: [this.changeCntrl.controlLoginInitiation], // Default value (can be true or false based on your logic)
         hodReview: [this.changeCntrl.hodReview],
@@ -50,8 +42,7 @@ export class NewRoleComponent implements OnInit {
         dossierPrint:[this.changeCntrl.dossierPrint],
         auditTrials:[this.changeCntrl.auditTrials],
         reports:[this.changeCntrl.reports]
-        })   ,
-      //});
+        })   ,      
       DeviationModel :this.fb.group({
         deviationInitiation:[this.deviationCntrl.deviationInitiation],
         hodReview_Deviation:[this.deviationCntrl.hodReview_Deviation],
@@ -68,7 +59,6 @@ export class NewRoleComponent implements OnInit {
         reports_Deviation:[this.deviationCntrl.reports_Deviation],
         workTransfer_Deviation:[this.deviationCntrl.workTransfer_Deviation]
       }),
-    //}    
     CAPAModel :this.fb.group({
       capaInitiation:[this.CAPACntrl.capaInitiation],
       hodReview_CAPA:[this.CAPACntrl.hodReview_CAPA],
@@ -119,6 +109,4 @@ export class NewRoleComponent implements OnInit {
   backToRoles() {
     this.router.navigateByUrl('/roles');
   }
-
-
 }

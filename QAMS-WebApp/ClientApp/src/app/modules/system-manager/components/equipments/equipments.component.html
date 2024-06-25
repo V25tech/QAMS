@@ -26,7 +26,7 @@
                         <ng-template pTemplate="header">
                             <tr>
                                 <th style="width:40px" class="lh-lg">S.No</th>
-                                <th pSortableColumn="id" style="width:20%">Equipment ID<p-columnFilter type="text" field="id" display="menu"></p-columnFilter></th>
+                                <!-- <th pSortableColumn="id" style="width:20%">Equipment ID<p-columnFilter type="text" field="id" display="menu"></p-columnFilter></th> -->
                                 <th pSortableColumn="name" style="width:20%"> Equipment Name<p-columnFilter type="text" field="name" display="menu"></p-columnFilter></th>
                                 <th pSortableColumn="model" style="width:20%">Model<p-columnFilter type="text" field="model" display="menu"></p-columnFilter></th>
                                 <th pSortableColumn="make" style="width:20%">make <p-columnFilter type="text" field="make" display="menu"></p-columnFilter></th>
@@ -41,8 +41,8 @@
                         <ng-template pTemplate="body" let-equipInitiationType let-i="rowIndex" #templatesTable>
                             <tr>
                                 <td>{{i+1}}</td>
-                                <td class="idname">
-                                        {{equipInitiationType.id}}</td>
+                                <!-- <td class="idname">
+                                        {{equipInitiationType.id}}</td> -->
                                 <td>{{equipInitiationType.equipmentName}}</td>
                                 <td>{{equipInitiationType.model}}</td>
                                 <td>{{equipInitiationType.make}}</td>
