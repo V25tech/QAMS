@@ -2,7 +2,8 @@ export interface Departments{
     id?:number,
     department?:string,
     initiatedBy?:string,
-    date:string | Date
+    date:string | Date,
+    departmentCode:string
 
     
 }
