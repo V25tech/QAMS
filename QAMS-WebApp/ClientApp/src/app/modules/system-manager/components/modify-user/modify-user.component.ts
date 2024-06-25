@@ -54,6 +54,7 @@ export class ModifyUserComponent {
       this.GetDepartments();
     })
     this.modifyUserService.getUserData().subscribe((data: any) => {
+      debugger;
       this.modifyUserDatasource = data.response;
       this.modifyUserDatasource.forEach(dataSource => (dataSource.createdDate = new Date(dataSource.createdDate)));      
     }); 
@@ -180,8 +181,7 @@ export class ModifyUserComponent {
   }
 
   GetRoleDetails()
-  {
-    debugger;
+  {   
     this.roleService.getnewRoleData().subscribe((data: any) => {
       this.roleDetails = data.response;    
   });
