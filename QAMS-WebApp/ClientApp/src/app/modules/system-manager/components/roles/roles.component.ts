@@ -38,6 +38,7 @@ export class RolesComponent {
 
 
     });
+    debugger;
     this.NewRoleService.getnewRoleData().subscribe((data: any) => {
       this.newRoleDataSource = data.response;
       //this.newRoleDataSource.forEach(dataSource => (dataSource.createdDate = new Date(dataSource.createdDate)))
@@ -56,6 +57,7 @@ export class RolesComponent {
 
 
       const RegNewRole: Role = {
+        id: this.newRoleForm.value.id,
         name: this.newRoleForm.value.newRole,
         description: this.newRoleForm.value.description,
         createdBy: '',
@@ -66,8 +68,6 @@ export class RolesComponent {
         deviationRoles: new DeviationModel,
         capaRoles: new CAPAModel
       };
-
-
       console.log('Form submitted!', RegNewRole);
       this.messageService.add({ severity: 'success', summary: ' New Role Registered Successfully', detail: 'Message Content' });
     }
@@ -100,6 +100,7 @@ export class RolesComponent {
 
   }
   navigateToEditRoles(id:number){
+    debugger;
     this.router.navigateByUrl('/new-role');
   }
 

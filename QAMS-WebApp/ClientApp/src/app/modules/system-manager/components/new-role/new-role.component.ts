@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NewRoleService } from '../../services/new-role.service';
 import { CAPAModel, ChangeControlModel, DeviationModel, NewRole, Role } from 'src/app/models/newRole.model';
 import { FormBuilder, FormGroup, FormArray, Validators, FormControl } from '@angular/forms';
@@ -26,15 +26,16 @@ export class NewRoleComponent implements OnInit {
   changeCntrl=new ChangeControlModel();
   deviationCntrl =new DeviationModel();
   CAPACntrl=new CAPAModel();
-  route: any;
-  constructor(private fb: FormBuilder, private router: Router, protected messageService: MessageService, 
+  
+  constructor(private fb: FormBuilder, private router: Router,  private route: ActivatedRoute,protected messageService: MessageService, 
     private NewRoleService: NewRoleService, private cdr: ChangeDetectorRef) { }
   ngOnInit() :void{
    
 
     this.BuildRoleForm();
     this.cdr.detectChanges();
-    this.route.queryParams.subscribe((params: { [x: string]: string; }) => {
+    //this.route.queryParams.subscribe((params: { [x: string]: string; }) => {
+      this.route.queryParams.subscribe(params => {
       this.id = Number.parseInt(params['Id']);
       let splitItesms = this.id;
       debugger;        
@@ -158,6 +159,7 @@ BuildRoleForm()
       return; // Prevent form submission
     } else {
       const RegNewRole: Role = {
+        id:this.RoleForm.value.id,
         name: this.RoleForm.value.name,
         description: this.RoleForm.value.description,
         createdBy: '',

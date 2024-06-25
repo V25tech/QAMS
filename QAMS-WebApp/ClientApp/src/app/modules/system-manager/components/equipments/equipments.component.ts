@@ -54,7 +54,7 @@ export class EquipmentsComponent {
     this.rows = event.rows;
   }
 
-  navigateToEditEquipment(id:number){    
+  navigateToEditEquipment(id:number){        
     this.router.navigateByUrl('/edit-equipment-registration?Id='+id);
   }
 

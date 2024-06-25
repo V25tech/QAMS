@@ -37,7 +37,7 @@ namespace QAMS.Admin.Services
                     {
                         DataRow row = dataset.Tables[0].Rows[i];
                         roleData = new Role();
-                        //roleData.Id = DatatypeConverter.SetIntValue(row[RoleConstants.Id.TrimAt()]);
+                        roleData.id = (int)DatatypeConverter.SetIntValue(row[RoleConstants.Id.TrimAt()]);
                         roleData.name = Convert.ToString(row[RoleConstants.Name.TrimAt()]);
                         roleData.description = Convert.ToString(row[RoleConstants.Description.TrimAt()]);
                         roleData.createdBy = Convert.ToString(row[RoleConstants.CreatedBy.TrimAt()]);

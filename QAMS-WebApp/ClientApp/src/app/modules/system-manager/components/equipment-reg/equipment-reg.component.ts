@@ -25,18 +25,15 @@ export class EquipmentRegComponent {
   constructor(private fb: FormBuilder,private router: Router, private messageService: MessageService,private route: ActivatedRoute,
     
     private equipmentRegService: EquipmentRegistrationService, private DepartmentsService : DepartmentsService,  private cdr: ChangeDetectorRef) { }
-    ngOnInit(): void {
-     
+    ngOnInit(): void {     
      this.BuildEquipForm();
       this.cdr.detectChanges();
       this.route.queryParams.subscribe(params => {
         this.id = Number.parseInt(params['Id']);
-        let splitItesms = this.id;
-        debugger;        
+        let splitItesms = this.id;            
         this.GetEquipmentDetailsbyId(this.id);
         this.GetDepartments();
       })
-
       this.equipmentRegForm.get('department').valueChanges.subscribe(value => {
         console.log('Selected department:', value);
         debugger;
