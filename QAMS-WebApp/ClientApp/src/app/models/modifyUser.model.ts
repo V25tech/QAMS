@@ -1,14 +1,16 @@
 export interface ModifyUser{
     id?:string,
     roleId?:string,
-    userId?:string,
+    userName?:string;
     departmentId?:string,
     createdBy?:string,
     createdDate:string | Date,
     
 }
 export interface RegModifyUser{
-    userName?:string;
+    firstname?:string;
+    lastname?:string;
+  
     userId?:string,
     role?:string,
     category?:string,

@@ -69,5 +69,7 @@ namespace QAMS.Admin.Entities
         public const string USP_User_PSY_By_Id_GET = "dbo.USP_User_PSY_By_Id_GET";
         
         public const string USP_User_PSY_By_Id_DELETE = "dbo.USP_User_PSY_By_Id_DELETE";
+
+        public const string UseName = "UserName_PSY";
     }
 }

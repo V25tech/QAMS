@@ -79,6 +79,8 @@ namespace QAMS.Admin.Data
                 sqlparms.Add(new SqlParameter { DbType = DbType.Boolean, ParameterName = UserConstants.ForgotLoginPassword, Value = user.ForgotLoginPassword });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = UserConstants.CreatedBy, Value = user.CreatedBy });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = UserConstants.ModifiedBy, Value = user.ModifiedBy });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = UserConstants.UseName, Value = user.userName });
+
                 Object result = dataAccessHelper.ExecuteStoredProcedure(UserConstants.USP_User_PSY_INSERT, sqlparms, ExecutionType.Scalar);
                 return (Convert.ToInt32(result) > 0);
             }

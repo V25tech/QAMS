@@ -67,7 +67,8 @@ export class ModifyUserComponent {
       this.modifyUserService.insertUserDetails(userValue).subscribe((data: any) => {
         console.log('Form submitted!', userValue);
         this.messageService.add({ severity: 'success', summary: 'Usergroup Registration Saved Successfull', detail: 'Message Content' });
-        setTimeout(() => {        
+        setTimeout(() => {  
+          this.backToUser();      
         }, 1000);
       });    
     }
@@ -77,6 +78,9 @@ export class ModifyUserComponent {
         console.log(res);
         this.backToUser();
       }, er => console.log(er));
+
+
+      
     }
     backToUser(){
       this.router.navigateByUrl('/users');
@@ -102,12 +106,14 @@ export class ModifyUserComponent {
     }
     BuildUserForm(){
     this.modifyUserForm = this.fb.group({
+      firstname: ['', Validators.required],
+      lastname: ['', Validators.required],
       userId: ['', Validators.required],
       role: ['', Validators.required],
       department: ['', Validators.required],
       employeeId: ['', Validators.required],
       email: ['', Validators.required] ,
-      userName: ['', Validators.required] 
+    
 
     });    
     this.modifyUserForm.get('role').valueChanges.subscribe(value => {
@@ -172,12 +178,19 @@ export class ModifyUserComponent {
       return; // Prevent form submission
     } else {
       const RegModifyUserInfo: RegModifyUser = {
+        firstname: this.modifyUserForm.value.firstname,
+        lastname: this.modifyUserForm.value.lastname,
         userId: this.modifyUserForm.value.userId,
         role: this.modifyUserForm.value.role,
         department: this.modifyUserForm.value.department,
         employeeId: this.modifyUserForm.value.employeeId,
         email: this.modifyUserForm.value.email
       };   
+
+      setTimeout(() => {
+        this.closeNavBar();
+      }, 1000); 
+      
       this.saveControlChange(RegModifyUserInfo);     
     }
   }

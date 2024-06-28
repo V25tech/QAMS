@@ -28,8 +28,11 @@
                                 <p-sortIcon field="userId"></p-sortIcon>
                                 <p-columnFilter type="text" field="id" display="menu"></p-columnFilter>
                             </th> -->
-                            <th pSortableColumn="userName">User Name<p-columnFilter type="text" field="userName"
+                            <th pSortableColumn="firstName">User Name<p-columnFilter type="text" field="firstName"
                                     display="menu"></p-columnFilter></th>
+
+                            <th pSortableColumn="userId">User Id<p-columnFilter type="text" field="userId"
+                                        display="menu"></p-columnFilter></th>
 
                             <th pSortableColumn="roleName">Role <p-columnFilter type="text" field="roleName"
                                     display="menu"></p-columnFilter></th>
@@ -61,7 +64,8 @@
                             <td>{{i+1}}</td>
                             <!-- <td class="idname">
                                 {{modifyUser.id}}</td> -->
-                            <td>{{modifyUser.firstName}}</td>
+                            <td>{{modifyUser.userName}}</td>
+                            <td>{{modifyUser.userId}}</td>
                             <td>{{modifyUser.role}}</td>
                             <td>{{modifyUser.department}}</td>
                             <td>{{modifyUser.createdBy}}</td>
@@ -116,13 +120,27 @@
         <div class="d-flex flex-column py-3 px-4">
 
             <div class="form-group row">
+                <label for="fName" class="col-md-4 col-form-label">First Name</label>
+                <div class="col-md-7">
+                    <input class="form-control" rows="4" id="fName" formControlName="firstname" />
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="lName" class="col-md-4 col-form-label">  Last Name</label>
+                <div class="col-md-7">
+                    <input class="form-control" rows="4" id="lName" formControlName="lastname" />
+                </div>
+            </div>
+
+            <!-- <div class="form-group row">
                 <label for="userName" class="col-md-4 col-form-label">User Name</label>
                 <div class="col-md-7">
                     <input class="form-control" rows="4" id="userName" formControlName="userName" />
-
-
                 </div>
-            </div>
+            </div> -->
+
+
             <div class="form-group row">
                 <label for="userId" class="col-md-4 col-form-label">User ID</label>
                 <div class="col-md-7">

@@ -67,6 +67,7 @@ namespace QAMS.Admin.Services
         {
             product.createdBy = "admin";
             product.modifiedBy = "admin";
+            product.code = "admin";
             try
             {
                 String validationMessages = ProductValidator.IsValidProduct(product);

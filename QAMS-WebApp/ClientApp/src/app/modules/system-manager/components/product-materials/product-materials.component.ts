@@ -183,7 +183,8 @@ export class ProductMaterialsComponent {
     this.router.navigateByUrl('/edit-equipment-registration?Id='+id);
   }
   Openvisiblesidebar(id:number)
-  {    
+  {   
+    debugger 
     this.visibleSidebar = true;
     this.BuildMaterialForm();
     if(id!=0)
