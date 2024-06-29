@@ -12,9 +12,9 @@ export interface RegModifyUser{
     lastname?:string;
   
     userId?:string,
-    role?:string,
+    roleid?:string,
     category?:string,
-    department?:string,
+    departmentid?:string,
     employeeId?:string,
     email?:string
 

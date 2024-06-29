@@ -152,8 +152,8 @@
             <div class="form-group row">
                 <label for="role" class="col-md-4 col-form-label">Role</label>
                 <div class="col-md-7  ">
-                    <select class="form-select" (change)="selectRole($event)" formControlName="role">
-                        <option *ngFor="let selectedRoleDetails of roleDetails" [value]="selectedRoleDetails.name">
+                    <select class="form-select" (change)="selectRole($event)" formControlName="roleid">
+                        <option *ngFor="let selectedRoleDetails of roleDetails" [value]="selectedRoleDetails.id">
                           {{ selectedRoleDetails.name }}
                         </option>
                       </select>
@@ -166,8 +166,8 @@
                     <!-- <input class="form-control" rows="4" formControlName="department" /> -->
 
                     <div class="col-md-7  ">
-                        <select name="department" class="form-select" (change)="selectDepartment($event)"  formControlName="department">
-                            <option *ngFor="let selecteddepart of departmentsDataSource" [value]="selecteddepart.departmentName">
+                        <select name="department" class="form-select" (change)="selectDepartment($event)"  formControlName="departmentid">
+                            <option *ngFor="let selecteddepart of departmentsDataSource" [value]="selecteddepart.id">
                                 {{selecteddepart.departmentName}}
                             </option>
                         </select>

@@ -61,8 +61,8 @@ regPlantUser()
   } else {
     const RegModifyUserInfo: RegModifyUser = {
       userId: this.modifyUserForm.value.userId,
-      role: this.modifyUserForm.value.role,
-      department: this.modifyUserForm.value.department,
+      roleid: this.modifyUserForm.value.roleid,
+      departmentid: this.modifyUserForm.value.departmentid,
       employeeId: this.modifyUserForm.value.employeeId,
       email: this.modifyUserForm.value.email
     };   

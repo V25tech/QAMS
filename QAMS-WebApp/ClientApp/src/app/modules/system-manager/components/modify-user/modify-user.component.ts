@@ -88,7 +88,7 @@ export class ModifyUserComponent {
   GetDepartments()
   {
     this.DepartmentsService.getDepartmentsData().subscribe((data: any) => {
-      //debugger
+      debugger
       this.departmentsDataSource = data.response;      
     }); 
    }  
@@ -109,20 +109,20 @@ export class ModifyUserComponent {
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
       userId: ['', Validators.required],
-      role: ['', Validators.required],
-      department: ['', Validators.required],
+      roleid: ['', Validators.required],
+      departmentid: ['', Validators.required],
       employeeId: ['', Validators.required],
       email: ['', Validators.required] ,
     
 
     });    
-    this.modifyUserForm.get('role').valueChanges.subscribe(value => {
+    this.modifyUserForm.get('roleid').valueChanges.subscribe(value => {
       console.log('Selected role:', value);
       this.selectRoleOption = value;
       this.cdr.detectChanges();
     });
 
-    this.modifyUserForm.get('department').valueChanges.subscribe(value => {
+    this.modifyUserForm.get('departmentid').valueChanges.subscribe(value => {
       console.log('Selected department:', value);
       debugger;
       this.selecteddepart = value;
@@ -133,7 +133,7 @@ export class ModifyUserComponent {
   }
   selectRole(event: Event): void {
   
-    console.log(this.modifyUserForm.value.role);
+    console.log(this.modifyUserForm.value.roleid);
     const selectElement = event.target as HTMLSelectElement;
     console.log('Selected role (from event):', selectElement.value);
     this.selectRoleOption = selectElement.value;
@@ -142,7 +142,7 @@ export class ModifyUserComponent {
   }
   selectDepartment(event: Event): void {
   
-    console.log(this.modifyUserForm.value.department);
+    console.log(this.modifyUserForm.value.departmentid);
     const selectElement = event.target as HTMLSelectElement;
     console.log('Selected department (from event):', selectElement.value);
     this.selecteddepart = selectElement.value;
@@ -181,8 +181,8 @@ export class ModifyUserComponent {
         firstname: this.modifyUserForm.value.firstname,
         lastname: this.modifyUserForm.value.lastname,
         userId: this.modifyUserForm.value.userId,
-        role: this.modifyUserForm.value.role,
-        department: this.modifyUserForm.value.department,
+        roleid: this.modifyUserForm.value.roleid,
+        departmentid: this.modifyUserForm.value.departmentid,
         employeeId: this.modifyUserForm.value.employeeId,
         email: this.modifyUserForm.value.email
       };   
@@ -198,6 +198,7 @@ export class ModifyUserComponent {
   GetRoleDetails()
   {   
     this.roleService.getnewRoleData().subscribe((data: any) => {
+      debugger
       this.roleDetails = data.response;    
   });
 }   

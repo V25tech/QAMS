@@ -66,8 +66,8 @@ namespace QAMS.Admin.Services
             {
                 user.CreatedBy = "admin";
                 user.ModifiedBy = "admin";
-                user.RoleId = 2;               
-                user.DepartmentId = 3;
+                //user.RoleId = 2;               
+                //user.DepartmentId = 3;
                 //user.FirstName = user.LastName = user.userName;
                 user.userName = user.FirstName + user.LastName;
                 //String validationMessages = UserValidator.IsValidUser(user);

@@ -38,13 +38,13 @@ namespace QAMS.Admin.Services
                         DataRow row = dataset.Tables[0].Rows[i];
                         userData = new User();
                         userData.Id = DatatypeConverter.SetIntValue(row[UserConstants.Id.TrimAt()]);
-                        userData.RoleId = DatatypeConverter.SetIntValue(row[UserConstants.RoleId.TrimAt()]);
+                        userData.roleid = DatatypeConverter.SetIntValue(row[UserConstants.RoleId.TrimAt()]);
                         userData.role = Convert.ToString(row["RoleName"]);
                         userData.userId = Convert.ToString(row[UserConstants.UserId.TrimAt()]);
                         userData.FirstName = Convert.ToString(row[UserConstants.FirstName.TrimAt()]);
                         userData.Plants = Convert.ToString(row[UserConstants.Plants.TrimAt()]);
                         userData.LastName = Convert.ToString(row[UserConstants.LastName.TrimAt()]);
-                        userData.DepartmentId = DatatypeConverter.SetIntValue(row[UserConstants.DepartmentId.TrimAt()]);
+                        userData.departmentid = DatatypeConverter.SetIntValue(row[UserConstants.DepartmentId.TrimAt()]);
                         userData.department = Convert.ToString(row["Department"]);
                         userData.employeeId = Convert.ToString(row[UserConstants.EmployeeId.TrimAt()]);
                         userData.email = Convert.ToString(row[UserConstants.EmailId.TrimAt()]);
@@ -90,12 +90,12 @@ namespace QAMS.Admin.Services
                     {
                         row = dataTable.NewRow();
                         row[UserConstants.Id.TrimAt()] = users[i].Id;
-                        row[UserConstants.RoleId.TrimAt()] = users[i].RoleId;
+                        row[UserConstants.RoleId.TrimAt()] = users[i].roleid;
                         row[UserConstants.UserId.TrimAt()] = users[i].userId;
                         row[UserConstants.FirstName.TrimAt()] = users[i].FirstName;
                         row[UserConstants.Plants.TrimAt()] = users[i].Plants;
                         row[UserConstants.LastName.TrimAt()] = users[i].LastName;
-                        row[UserConstants.DepartmentId.TrimAt()] = users[i].DepartmentId;
+                        row[UserConstants.DepartmentId.TrimAt()] = users[i].departmentid;
                         row[UserConstants.EmployeeId.TrimAt()] = users[i].employeeId;
                         row[UserConstants.EmailId.TrimAt()] = users[i].email;
                         row[UserConstants.Password.TrimAt()] = users[i].Password;

@@ -20,7 +20,7 @@ namespace QAMS.Admin.Entities
 
 
         public System.Int32? Id { get; set; }
-        public System.Int32? RoleId { get; set; }
+        public System.Int32? roleid { get; set; }
         public string role { get; set; }
         public string userId { get; set; }
         public string userName { get; set; }
@@ -33,7 +33,7 @@ namespace QAMS.Admin.Entities
 
 
 
-        public System.Int32? DepartmentId { get; set; }
+        public System.Int32? departmentid { get; set; }
 
 
 
