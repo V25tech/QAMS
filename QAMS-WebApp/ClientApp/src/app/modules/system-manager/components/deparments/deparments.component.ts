@@ -57,9 +57,9 @@ export class DeparmentsComponent {
  cancelClick(){
    this.router.navigateByUrl('/departments');
  }
- saveControlChange(ccValue: RegNewdepartment) {
-   this.DepartmentsService.insertDepartmentDetails(ccValue).subscribe((data: any) => {
-     console.log('Form submitted!', ccValue);
+ saveControlChange(departValue: RegNewdepartment) {
+   this.DepartmentsService.insertDepartmentDetails(departValue).subscribe((data: any) => {
+     console.log('Form submitted!', departValue);
      this.messageService.add({ severity: 'success', summary: 'Department Saved Successfull', detail: 'Message Content' });
      setTimeout(() => {
        this.backToDepartment();
@@ -80,7 +80,7 @@ export class DeparmentsComponent {
  {
    this.DepartmentsService.GetDepartmentById(id).subscribe((res:any) => {     
      this.departmentReg = res;
-     let departValue: RegNewdepartment = res; //JSON.parse(ccValueStr) ?? null;
+     let departValue: RegNewdepartment = res; 
      this.editDepartValue = departValue;
      if (departValue) {
        this.regDepartmentsForm.patchValue(departValue);
@@ -128,7 +128,6 @@ export class DeparmentsComponent {
   }
 
   @ViewChild('dt') dt: Table | undefined;
-
   applyFilterGlobal($event: any, stringVal: any) {
     this.dt!.filterGlobal(($event.target as HTMLInputElement).value, stringVal);
   }
@@ -145,7 +144,6 @@ export class DeparmentsComponent {
   }
 
   visibleSidebar: any;
-
   closeNavBar() {
     this.visibleSidebar = false;
   }

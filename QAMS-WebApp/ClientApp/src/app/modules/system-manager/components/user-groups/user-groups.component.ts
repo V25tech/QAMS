@@ -37,7 +37,7 @@ export class UserGroupsComponent {
       //this.userGroupDatasource.forEach(dataSource=> dataSource.date = new Date(dataSource.date))
     });
   }
-  
+
   clear(table: Table) {
     table.clear();
   }
@@ -50,8 +50,7 @@ export class UserGroupsComponent {
     this.selectedIndex = index;
     this.isOpen = !this.isOpen;
     this.cdr.detectChanges();
-  }
-  
+  }  
 
   onPageChange(event: PageEvent) {
     this.first = event.first;
@@ -63,7 +62,6 @@ export class UserGroupsComponent {
   
   navigateToEditUsergroup(id:number){    
     this.router.navigateByUrl('/reg-new-user-group?Id='+id);
-  }
-  
+  } 
 
 }

@@ -23,12 +23,10 @@ export class PlantListComponent {
   regPlantForm!: FormGroup;
   plantDatasource: PlantList[]=[];
   selectRoleOption: any = "Administrator";
-
   id:number=0;
   editMode: boolean = false;
   plantReg: RegPlant;
   editPlantValue: RegPlant; 
-
   dataresp: any = [];
   first: number = 0;
   rows: number = 10;
@@ -38,7 +36,6 @@ export class PlantListComponent {
     private PlantListService: PlantListService, private cdr: ChangeDetectorRef) { }
 
   ngOnInit() :void {
-
     this.BuildPlantForm();
     this.cdr.detectChanges();
     this.route.queryParams.subscribe(params => {
@@ -56,17 +53,17 @@ export class PlantListComponent {
 cancelClick(){
   this.router.navigateByUrl('/plants');
 }
-saveControlChange(ccValue: RegPlant) {
-  this.PlantListService.insertPlantDetails(ccValue).subscribe((data: any) => {
-    console.log('Form submitted!', ccValue);
+saveControlChange(plantValue: RegPlant) {
+  this.PlantListService.insertPlantDetails(plantValue).subscribe((data: any) => {
+    console.log('Form submitted!', plantValue);
     this.messageService.add({ severity: 'success', summary: 'Plan Saved Successfull', detail: 'Message Content' });
     setTimeout(() => {
       this.backToPlant();
     }, 1000);
   });    
 }
-updateControlChange(ccValue: RegPlant) {
-  console.log(JSON.stringify(ccValue))
+updateControlChange(plantValue: RegPlant) {
+  console.log(JSON.stringify(plantValue))
   this.PlantListService.UpdatePlantDetails(this.editPlantValue).subscribe(res => {
     console.log(res);
     this.backToPlant();
@@ -92,8 +89,6 @@ BuildPlantForm(){
     plantName: ['', Validators.required],
     address: ['', Validators.required],
     comments: ['', Validators.required]
-    
-  
   });
 }
 regDepartments(){
@@ -142,8 +137,6 @@ regDepartments(){
       this.messageService.add({ severity: 'error', summary: 'Form is invalid!', detail: 'Message Content' });
       return; // Prevent form submission
     } else {
-
-
       const regPlant: RegPlant = {
         code: this.regPlantForm.value.plantCode,
         plantName: this.regPlantForm.value.plantName,

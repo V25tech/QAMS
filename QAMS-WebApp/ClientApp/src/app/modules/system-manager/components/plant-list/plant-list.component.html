@@ -37,15 +37,12 @@
                         <ng-template pTemplate="body" let-plantList let-i="rowIndex" #templatesTable>
                             <tr>
                                 <td>{{i+1}}</td>
-                                <!-- <td>{{plantList.plantId}}</td> -->
                                 <td class="idname">
                                   {{plantList.code}}</td>
                                   <td>{{plantList.plantName}}</td>
                                   <td>{{plantList.createdBy}}</td>
-                                <td>{{plantList.createdDate | date:'yyyy-MM-dd'}}</td>
-                             
-                                <td class="text-center">
-                                    
+                                <td>{{plantList.createdDate | date:'yyyy-MM-dd'}}</td>                             
+                                <td class="text-center">                                    
                                         <a class="me-2">
                                             <i class="bi bi-pencil-square"(click)="Openvisiblesidebar(plantList.id)"></i>
                                             </a>

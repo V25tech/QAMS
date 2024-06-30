@@ -35,8 +35,7 @@ cancelClick(){
   this.router.navigateByUrl('/user-groups');
 }
 saveControlChange(userValue: RegUserGroup) {
-  this.UserGroupService.insertCustomerDetails(userValue).subscribe((data: any) => {
-    //console.log('Form submitted!', userValue);
+  this.UserGroupService.insertCustomerDetails(userValue).subscribe((data: any) => {    
     this.messageService.add({ severity: 'success', summary: 'Usergroup Registration Saved Successfull', detail: 'Message Content' });
     setTimeout(() => {
       this.backToUsers();
@@ -57,7 +56,7 @@ GetUsergroupDetailsbyId(id:number)
 {
   this.UserGroupService.GetUserGroupById(id).subscribe((res:any) => {    
     this.usergroupReg = res;
-    let userValue: RegUserGroup = res; //JSON.parse(ccValueStr) ?? null;
+    let userValue: RegUserGroup = res; 
     this.editUserValue = userValue;
     if (userValue) {
       this.userGroupForm.patchValue(userValue);
@@ -71,9 +70,7 @@ BuildUsergroupForm()
     code: ['', Validators.required],
     remarks: ['', Validators.required],    
   });
-}
-
-  
+}  
   regUserGroup(){
     if (this.userGroupForm.valid) {
       console.log(this.userGroupForm.value);
