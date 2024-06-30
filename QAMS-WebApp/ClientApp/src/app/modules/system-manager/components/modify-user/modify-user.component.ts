@@ -77,10 +77,7 @@ export class ModifyUserComponent {
       this.modifyUserService.updateUserDetails(this.editUserValue).subscribe(res => {
         console.log(res);
         this.backToUser();
-      }, er => console.log(er));
-
-
-      
+      }, er => console.log(er));      
     }
     backToUser(){
       this.router.navigateByUrl('/users');
@@ -88,14 +85,14 @@ export class ModifyUserComponent {
   GetDepartments()
   {
     this.DepartmentsService.getDepartmentsData().subscribe((data: any) => {
-      debugger
+      //debugger
       this.departmentsDataSource = data.response;      
     }); 
    }  
     GetUserDetailsbyId(id:number)
     {
       this.modifyUserService.GetUserById(id).subscribe((res:any) => {
-        debugger;
+        //debugger;
         this.userReg = res;
         let userValue: RegModifyUser = res; //JSON.parse(ccValueStr) ?? null;
         this.editUserValue = userValue;
@@ -124,15 +121,12 @@ export class ModifyUserComponent {
 
     this.modifyUserForm.get('departmentid').valueChanges.subscribe(value => {
       console.log('Selected department:', value);
-      debugger;
+      //debugger;
       this.selecteddepart = value;
       this.cdr.detectChanges();
     });
-
-
   }
-  selectRole(event: Event): void {
-  
+  selectRole(event: Event): void {  
     console.log(this.modifyUserForm.value.roleid);
     const selectElement = event.target as HTMLSelectElement;
     console.log('Selected role (from event):', selectElement.value);
@@ -140,8 +134,7 @@ export class ModifyUserComponent {
     this.cdr.detectChanges();
     // Note: This method is not necessary if you're using the reactive form approach
   }
-  selectDepartment(event: Event): void {
-  
+  selectDepartment(event: Event): void {  
     console.log(this.modifyUserForm.value.departmentid);
     const selectElement = event.target as HTMLSelectElement;
     console.log('Selected department (from event):', selectElement.value);
@@ -186,11 +179,9 @@ export class ModifyUserComponent {
         employeeId: this.modifyUserForm.value.employeeId,
         email: this.modifyUserForm.value.email
       };   
-
       setTimeout(() => {
         this.closeNavBar();
-      }, 1000); 
-      
+      }, 1000);       
       this.saveControlChange(RegModifyUserInfo);     
     }
   }
@@ -198,7 +189,7 @@ export class ModifyUserComponent {
   GetRoleDetails()
   {   
     this.roleService.getnewRoleData().subscribe((data: any) => {
-      debugger
+      //debugger
       this.roleDetails = data.response;    
   });
 }   

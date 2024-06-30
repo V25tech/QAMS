@@ -14,34 +14,26 @@ import { MessageService } from 'primeng/api';
 })
 export class NewRoleComponent implements OnInit {
   RoleForm!: FormGroup;
-// updated code starts here
-
-    id:number=0;
-   editMode: boolean = false;
-   roleReg: NewRole;
-   editCCValue: NewRole;
-   
-
+  id:number=0;
+  editMode: boolean = false;
+  roleReg: NewRole;
+  editCCValue: NewRole;
   roleInfo=new Role();
   changeCntrl=new ChangeControlModel();
   deviationCntrl =new DeviationModel();
-  CAPACntrl=new CAPAModel();
-  
+  CAPACntrl=new CAPAModel();  
   constructor(private fb: FormBuilder, private router: Router,  private route: ActivatedRoute,protected messageService: MessageService, 
     private NewRoleService: NewRoleService, private cdr: ChangeDetectorRef) { }
-  ngOnInit() :void{
-   
+  ngOnInit() :void{   
 
     this.BuildRoleForm();
-    this.cdr.detectChanges();
-    //this.route.queryParams.subscribe((params: { [x: string]: string; }) => {
+    this.cdr.detectChanges();   
       this.route.queryParams.subscribe(params => {
       this.id = Number.parseInt(params['Id']);
       let splitItesms = this.id;
       debugger;        
       this.GetRoleById(this.id);
-    })
-    
+    })    
   }
 cancelClick(){
   this.router.navigateByUrl('/roles');
@@ -67,22 +59,17 @@ backToRoles(){
 }
 GetRoleById(id:number)
 {
-  this.NewRoleService.GetRoleById(id).subscribe((res:any) => {
-    debugger;
+  this.NewRoleService.GetRoleById(id).subscribe((res:any) => {   
     this.roleReg = res;
-    let ccValue: NewRole = res; //JSON.parse(ccValueStr) ?? null;
-    this.editCCValue = ccValue;
-    if (ccValue) {
-      this.RoleForm.patchValue(ccValue);
+    let roleValue: NewRole = res; 
+    this.editCCValue = roleValue;
+    if (roleValue) {
+      this.RoleForm.patchValue(roleValue);
     }
   }, (er: any) => console.log(er));    
 }
 BuildRoleForm()
 {
-
-
-
-
     this.changeCntrl = new ChangeControlModel(); // Default value (can be true or false based on your logic)
     this.deviationCntrl=new DeviationModel();
     this.CAPACntrl=new CAPAModel();
@@ -136,7 +123,7 @@ BuildRoleForm()
     })
     })
   }
-  debugger: any;
+  //debugger: any;
   roleRegistration(){
     if (this.RoleForm.valid) {
       console.log(this.RoleForm.value);
@@ -150,7 +137,7 @@ BuildRoleForm()
   }
 }
 
-//updated code ends here
+
   
   saveRoleClick(roleValue: Role) {
     debugger;

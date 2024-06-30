@@ -11,25 +11,17 @@ export class PlantListService {
   private apiUrl = 'ADMIN_API';
 
   constructor(private http: HttpClient) { }
- 
-  getplantData(): Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post(this.apiUrl+'/plant/GetAllPlant',"{\"pageNumber\":1,\"pageSize\":100}", { headers });
+   
+  getplantData(): Observable<any> {    
+    return this.http.post(this.apiUrl+'/plant/GetAllPlant',"{\"pageNumber\":1,\"pageSize\":100}");
   }
-  insertPlantDetails(settings: RegPlant) {
-    debugger;
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-
-    return this.http.post(this.apiUrl+ '/plant/saveplant', settings, { headers })
-
-    //return this.http.post(this.apiUrl + '/customer/savecustomer', settings,{  });    
+  insertPlantDetails(settings: RegPlant) {    
+    return this.http.post(this.apiUrl+ '/plant/saveplant', settings)      
   }
-  UpdatePlantDetails(settings: RegPlant) {    
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post(this.apiUrl+ '/plant/updateplant', settings, { headers })       
+  UpdatePlantDetails(settings: RegPlant) {  
+    return this.http.post(this.apiUrl+ '/plant/updateplant', settings)       
   }
-  GetPlantById(plantId: number)  {
-    //const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  GetPlantById(plantId: number)  {    
     return this.http.get(this.apiUrl+'/plant/'+ plantId);    
   }
 }

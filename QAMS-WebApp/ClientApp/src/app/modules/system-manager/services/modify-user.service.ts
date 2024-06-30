@@ -11,20 +11,16 @@ export class ModifyUserService {
   private apiUrl = 'ADMIN_API';
 
   constructor(private http: HttpClient) { }
-  getUserData(): Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post(this.apiUrl+ '/user/GetAllUser',"{\"pageNumber\":1,\"pageSize\":100}", { headers });
+  getUserData(): Observable<any> {    
+    return this.http.post(this.apiUrl+ '/user/GetAllUser',"{\"pageNumber\":1,\"pageSize\":100}");
   }
-  insertUserDetails(settings: RegModifyUser) {
-    debugger;
+  insertUserDetails(settings: RegModifyUser) {    
     return this.http.post(this.apiUrl+ '/user/saveuser', settings)    
   }
-  updateUserDetails(settings: RegModifyUser) {    
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post(this.apiUrl+ '/user/updateuser', settings, { headers })       
+  updateUserDetails(settings: RegModifyUser) { 
+    return this.http.post(this.apiUrl+ '/user/updateuser', settings)       
   }
-  GetUserById(userId: number)  {
-    //const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  GetUserById(userId: number)  {    
     return this.http.get(this.apiUrl+'/user/'+ userId);    
   }
 }
