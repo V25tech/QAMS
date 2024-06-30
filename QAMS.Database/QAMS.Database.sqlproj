@@ -226,6 +226,13 @@
     <Build Include="dbo\Stored Procedures\USP_ActionPlan_Map_PSY_DELETE.sql" />
     <Build Include="dbo\Stored Procedures\USP_MASTER_DATA.sql" />
     <Build Include="dbo\Stored Procedures\USP_ActionPlan_PSY_GET_BY_INITD_AND_WORK_ID.sql" />
+    <Build Include="dbo\Tables\newdocument_PSY.sql" />
+    <Build Include="dbo\Stored Procedures\USP_newdocument_PSY_UPDATE.sql" />
+    <Build Include="dbo\Stored Procedures\USP_newdocument_PSY_INSERT.sql" />
+    <Build Include="dbo\Stored Procedures\USP_newdocument_PSY_GET_ALL.sql" />
+    <Build Include="dbo\Stored Procedures\USP_newdocument_PSY_GET.sql" />
+    <Build Include="dbo\Stored Procedures\USP_newdocument_PSY_DELETE_ALL.sql" />
+    <Build Include="dbo\Stored Procedures\USP_newdocument_PSY_DELETE.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="QAMS.Database.refactorlog" />

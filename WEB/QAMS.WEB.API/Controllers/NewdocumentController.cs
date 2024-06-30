@@ -5,6 +5,10 @@ namespace QAMS.WEB.API.Controllers
     using QAMS.Admin.Entities;
     using QAMS.Sheet1.Services;
     using QAMS.Common.Entities;
+    using Microsoft.AspNetCore.Http;
+    using System.IO;
+    using System.Threading.Tasks;
+    using System;
 
     /// <summary>
     /// Comment
@@ -46,7 +50,34 @@ namespace QAMS.WEB.API.Controllers
             var result = newdocumentService.GetNewdocumentBynd(nd);
             return result;
         }
-        
+
+        [HttpPost("upload")]
+        public async Task<IActionResult> UploadFile(IFormFile file)
+        {
+            try
+            {
+                string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = file.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(fileStream);
+                }
+
+                return Ok(new { message = "File uploaded successfully.", filePath });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred while uploading the file: {ex.Message}");
+            }
+        }
+
         /// <summary>
         /// This Method is used to Save newdocument
         /// </summary>
