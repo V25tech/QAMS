@@ -1,8 +1,9 @@
 ﻿  CREATE PROCEDURE [dbo].[USP_newdocument_PSY_INSERT] @title_PSY NVarChar(150),
 @description_PSY NVarChar(150),
-@uploadfile_PSY NVarChar(100),
+@uploadfile_PSY NVarChar(150),
 @CreatedBy_PSY NVarChar(100),
-@ModifiedBy_PSY NVarChar(100) 
+@ModifiedBy_PSY NVarChar(100),
+@ParentId_PSY int
  AS 
  BEGIN 
   BEGIN TRY 
@@ -15,7 +16,7 @@ uploadfile_PSY,
 CreatedBy_PSY,
 CreatedDate_PSY,
 ModifiedBy_PSY,
-ModifiedDate_PSY)
+ModifiedDate_PSY,ParentControlId_PSY)
  VALUES 
 (@title_PSY,
 @description_PSY,
@@ -23,7 +24,7 @@ ModifiedDate_PSY)
 @CreatedBy_PSY,
  GetDate() ,
 @ModifiedBy_PSY,
- GetDate() );
+ GetDate(),@ParentId_PSY );
  SELECT @ID = @@IDENTITY; 
  select @ID 
   

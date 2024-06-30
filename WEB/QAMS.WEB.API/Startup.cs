@@ -18,6 +18,9 @@ using Serilog.Events;
 using Serilog.Filters;
 using VAMLIbrary.Core;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
+using QAMS.Services;
+using QAMS.WEB.Services;
+using QAMS.WEB.Data;
 
 namespace QAMS.WEB.API
 {
@@ -38,12 +41,15 @@ namespace QAMS.WEB.API
             services.AddControllers();
             string xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
             services.AddSwaggerService(xmlFile);
+           
 
             RegisterSerilogProvider(services);
 
             services.RegisterDatabaseProvider(Configuration);
             services.AddSingleton<ExceptionHelper>();
             services.RegisterLocalServices();
+            services.AddScoped<INewdocumentService, NewdocumentService>();
+            services.AddScoped<INewdocumentData, NewdocumentData>();
 
             services.AddCors(option =>
             {

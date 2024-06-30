@@ -1,6 +1,6 @@
 
 
-namespace QAMS.Sheet1.Services
+namespace QAMS.Services
 {
     using System.Collections.Generic;
     using QAMS.Admin.Entities;

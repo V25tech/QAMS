@@ -42,134 +42,57 @@ namespace QAMS.Admin.Entities
 
         public int ParentControlId
         {
-            get
-            {
-                return this.changeControlIdField;
-            }
-            set
-            {
-                this.changeControlIdField = value;
-            }
+            get; set;
         }
 
         public System.Int32? nd
         {
-            get
-            {
-                return this.ndField;
-            }
-            set
-            {
-                this.ndField = value;
-            }
+            get; set;
         }
         
         public string title
         {
-            get
-            {
-                return this.titleField;
-            }
-            set
-            {
-                this.titleField = value;
-            }
+            get; set;
         }
         
         public string description
         {
-            get
-            {
-                return this.descriptionField;
-            }
-            set
-            {
-                this.descriptionField = value;
-            }
+            get; set;
         }
         
         public string uploadfile
         {
-            get
-            {
-                return this.uploadfileField;
-            }
-            set
-            {
-                this.uploadfileField = value;
-            }
+            get; set;
         }
         
         public string CreatedBy
         {
-            get
-            {
-                return this.createdbyField;
-            }
-            set
-            {
-                this.createdbyField = value;
-            }
+            get; set;
         }
         
         public DateTime? CreatedDate
         {
-            get
-            {
-                return this.createddateField;
-            }
-            set
-            {
-                this.createddateField = value;
-            }
+            get; set;
         }
         
         public string ModifiedBy
         {
-            get
-            {
-                return this.modifiedbyField;
-            }
-            set
-            {
-                this.modifiedbyField = value;
-            }
+            get; set;
         }
         
         public DateTime? ModifiedDate
         {
-            get
-            {
-                return this.modifieddateField;
-            }
-            set
-            {
-                this.modifieddateField = value;
-            }
+            get; set;
         }
 
-        public string Category
-        {
-            get
-            {
-                return this.CategoryField;
-            }
-            set
-            {
-                this.CategoryField = value;
-            }
-        }
+        //public string Category
+        //{
+        //    get; set;
+        //}
 
-        public int CatId
-        {
-            get
-            {
-                return this.catIdField;
-            }
-            set
-            {
-                this.CatId = value;
-            }
-        }
+        //public int CatId
+        //{
+        //    get; set;
+        //}
     }
 }

@@ -3,7 +3,7 @@ namespace QAMS.WEB.API.Controllers
     using System.Collections.Generic;
     using Microsoft.AspNetCore.Mvc;
     using QAMS.Admin.Entities;
-    using QAMS.Sheet1.Services;
+    using QAMS.Services;
     using QAMS.Common.Entities;
     using Microsoft.AspNetCore.Http;
     using System.IO;
@@ -83,7 +83,7 @@ namespace QAMS.WEB.API.Controllers
         /// </summary>
         /// <param name="newdocument"></param>
         [HttpPost("savenewdocument")]
-        public ActionResult<bool> Savenewdocument(NewDocument newdocument)
+        public ActionResult<System.Boolean> Savenewdocument1(NewDocument newdocument)
         {
             var result = newdocumentService.SaveNewdocument(newdocument);
             return result;

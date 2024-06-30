@@ -64,16 +64,16 @@ namespace QAMS.WEB.Data
                     new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.uploadfile, Value = newdocument.uploadfile },
                     new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.CreatedBy, Value = newdocument.CreatedBy },
                     new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.ModifiedBy, Value = newdocument.ModifiedBy },
-                    new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.Category, Value = newdocument.Category },
-                    new SqlParameter { DbType = DbType.Int16, ParameterName = NewDocumentConstants.CatId, Value = newdocument.CatId },
-                    new SqlParameter { DbType = DbType.Int16, ParameterName = NewDocumentConstants.ChangeControlId, Value = newdocument.ParentControlId }
+                    //new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.Category, Value = newdocument.Category },
+                    //new SqlParameter { DbType = DbType.Int16, ParameterName = NewDocumentConstants.CatId, Value = newdocument.CatId },
+                    new SqlParameter { DbType = DbType.Int16, ParameterName = "@ParentId_PSY", Value = newdocument.ParentControlId }
                 };
                 Object result = dataAccessHelper.ExecuteStoredProcedure(NewDocumentConstants.USP_newdocument_PSY_INSERT, sqlparms, ExecutionType.Scalar);
                 return (Convert.ToInt32(result) > 0);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
         
