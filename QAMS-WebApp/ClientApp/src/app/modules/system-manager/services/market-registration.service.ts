@@ -16,20 +16,15 @@ export class MarketRegistrationService {
     return this.http.get<MarketRegistration>(this.apiUrl);
   }
   updateMarketDetails(settings: MarketRegistration): Observable<MarketRegistration> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.put<MarketRegistration>(this.apiUrl, settings, { headers });
+    return this.http.put<MarketRegistration>(this.apiUrl, settings);
   }
   getMarketData(): Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post(this.apiUrl+'/market/GetAllMarket',"{  \"pageNumber\": 1,  \"pageSize\": 100,  \"planId\": 1}", { headers });
+    return this.http.post(this.apiUrl+'/market/GetAllMarket',"{  \"pageNumber\": 1,  \"pageSize\": 100,  \"planId\": 1}");
   }
-  insertMarketData(settings: MarketRegistration) {
-    debugger;
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post(this.apiUrl+ '/market/savemarket', settings, { headers });      
+  insertMarketData(settings: MarketRegistration) {   
+    return this.http.post(this.apiUrl+ '/market/savemarket', settings);      
   }
   GetMarketById(marketId: number)  {
-    //const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.get(this.apiUrl+'/market/'+ marketId);    
   }
 }

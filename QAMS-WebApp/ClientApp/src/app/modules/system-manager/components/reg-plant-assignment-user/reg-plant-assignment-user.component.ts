@@ -69,8 +69,7 @@ regPlantUser()
     this.updateControlChange(RegModifyUserInfo);     
   }
 }
-    //   this.messageService.add({ severity: 'success', summary: ' Plant Assignment is Successfully Registrated', detail: 'Message Content' });
-    // }
+    
   
     updateControlChange(userValue: RegModifyUser) {
       console.log(JSON.stringify(userValue))

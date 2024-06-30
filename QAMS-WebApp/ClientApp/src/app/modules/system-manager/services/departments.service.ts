@@ -10,28 +10,18 @@ import { RegNewdepartment } from 'src/app/models/departments.model';
 export class DepartmentsService {
   
   private apiUrl ='ADMIN_API' ; // Replace with your actual API URL
-
   constructor(private http: HttpClient) { }
 
-
-
-
-  getDepartmentsData(): Observable<any> {
-    //debugger    
+  getDepartmentsData(): Observable<any> {     
     return this.http.post(this.apiUrl+'/department/GetAllDepartment',"{  \"pageNumber\": 1,  \"pageSize\": 100,  \"planId\": 1}");
   }
 
   insertDepartmentDetails(settings: RegNewdepartment) {
-    debugger;
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-
-    return this.http.post(this.apiUrl+ '/department/savedepartment', settings, { headers })
-
-      
+  return this.http.post(this.apiUrl+ '/department/savedepartment', settings)      
   }
   updateDepartmentDetails(settings: RegNewdepartment) {    
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post(this.apiUrl+ '/department/updatedepartment', settings, { headers })       
+    //const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post(this.apiUrl+ '/department/updatedepartment', settings)       
   }
   GetDepartmentById(departmentId: number)  {
     //const headers = new HttpHeaders({ 'Content-Type': 'application/json' });

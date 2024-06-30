@@ -17,19 +17,16 @@ id:number=0;
 editMode: boolean = false;
 batchlotparticularsReg: BatchLotParticulars;
 editBatchValue: BatchLotParticulars;
-
-  materialDetails:any[]=[];
+materialDetails:any[]=[];
 constructor(private fb: FormBuilder, private messageService: MessageService,private router: Router, private route:ActivatedRoute,
   private batchLotService: BatchLotServicesService, private cdr: ChangeDetectorRef) { }
-  ngOnInit(): void {
-
-     
+  ngOnInit(): void {     
     this.BuildBatchlotForm();
     this.cdr.detectChanges();
     this.route.queryParams.subscribe(params => {
       this.id = Number.parseInt(params['Id']);
       let splitItesms = this.id;
-      debugger;        
+      //debugger;        
       this.GetBatchlotDetailsbyId(this.id);
     })
   }
@@ -58,9 +55,9 @@ constructor(private fb: FormBuilder, private messageService: MessageService,priv
   GetBatchlotDetailsbyId(id:number)
   {
     this.batchLotService.GetBatchDetailsById(id).subscribe((res:any) => {
-      debugger;
+     // debugger;
       this.batchlotparticularsReg = res;
-      let batchValue: BatchLotParticulars = res; //JSON.parse(ccValueStr) ?? null;
+      let batchValue: BatchLotParticulars = res; 
       this.editBatchValue = batchValue;
       if (batchValue) {
         this.batchLotParticularsForm.patchValue(batchValue);

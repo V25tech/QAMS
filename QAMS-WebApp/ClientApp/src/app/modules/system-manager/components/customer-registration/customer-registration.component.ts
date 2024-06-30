@@ -12,23 +12,19 @@ import { ActivatedRoute, Router } from '@angular/router';
   providers: [MessageService]
 })
 export class CustomerRegistrationComponent {
-
   customerRegistrationForm!: FormGroup;
   id:number=0;
   editMode: boolean = false;
   customerReg: CustomerRegistration;
-  editCCValue: CustomerRegistration;
-  
-  // CustomerRegistrationService: any;
+  editCustValue: CustomerRegistration;
   constructor(private fb: FormBuilder,private router: Router, private messageService: MessageService, private route: ActivatedRoute, private customerService:CustomerRegistrationService,
     private batchLotService: BatchLotServicesService, private cdr: ChangeDetectorRef) { }
     ngOnInit(): void {
       this.BuildCustomerForm();
       this.cdr.detectChanges();
-
       this.route.queryParams.subscribe(params => {   this.id = Number.parseInt(params['Id']);
         let splitItesms = this.id;
-        debugger;
+        //debugger;
         this.GetCustomerById(this.id);
       })
       
@@ -45,9 +41,9 @@ export class CustomerRegistrationComponent {
       }, 1000);
     });    
   }
-  updateControlChange(ccValue: CustomerRegistration) {
-    console.log(JSON.stringify(ccValue))
-    this.customerService.updateCustomerDetails(this.editCCValue).subscribe((res: any) => {
+  updateControlChange(custValue: CustomerRegistration) {
+    console.log(JSON.stringify(custValue))
+    this.customerService.updateCustomerDetails(this.editCustValue).subscribe((res: any) => {
       console.log(res);
       this.backToCustomers();
     }, (er: any) => console.log(er));
@@ -58,12 +54,12 @@ export class CustomerRegistrationComponent {
   GetCustomerById(id:number)
   {
     this.customerService.GetCustomerById(id).subscribe((res:any) => {
-      debugger;
+      //debugger;
       this.customerReg = res;
-      let ccValue: CustomerRegistration = res; //JSON.parse(ccValueStr) ?? null;
-      this.editCCValue = ccValue;
-      if (ccValue) {
-        this.customerRegistrationForm.patchValue(ccValue);
+      let custValue: CustomerRegistration = res;
+      this.editCustValue = custValue;
+      if (custValue) {
+        this.customerRegistrationForm.patchValue(custValue);
       }
     }, (er: any) => console.log(er));    
   }
@@ -85,18 +81,17 @@ export class CustomerRegistrationComponent {
      
       this.cdr.detectChanges();
     }
-      debugger: any;
+     // debugger: any;
       customerRegistration(){
         if (this.customerRegistrationForm.valid) {
           console.log(this.customerRegistrationForm.value);
-          let ccCustomerValue: CustomerRegistration = this.customerRegistrationForm.value;
+          let CustomerValue: CustomerRegistration = this.customerRegistrationForm.value;
           if (this.editMode) {
-            this.updateControlChange(ccCustomerValue);
+            this.updateControlChange(CustomerValue);
           }    
         else {
-          this.saveControlChange(ccCustomerValue);
+          this.saveControlChange(CustomerValue);
         }
       }
-    }
-   
+    }   
 }

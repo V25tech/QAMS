@@ -19,27 +19,17 @@ export class CustomerRegistrationService {
     return this.http.get<CustomerRegistration>(this.apiUrl);
   }
 
-  updateCustomerDetails(settings: CustomerRegistration): Observable<CustomerRegistration> {
-   
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.put<CustomerRegistration>(this.apiUrl, settings, { headers });
+  updateCustomerDetails(settings: CustomerRegistration): Observable<CustomerRegistration> {   
+    return this.http.put<CustomerRegistration>(this.apiUrl, settings);
   }
   insertCustomerDetails(settings: CustomerRegistration) {
-    
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-
-    return this.http.post(this.apiUrl+ '/customer/savecustomer', settings, { headers })
-
-     
+    return this.http.post(this.apiUrl+ '/customer/savecustomer', settings)     
   }
-  getCustomerData(): Observable<any> {
-   
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post(this.apiUrl+'/customer/GetAllCustomer',"{\"pageNumber\":1,\"pageSize\":100,\"planId\":1}", { headers });
+  getCustomerData(): Observable<any> {       
+    return this.http.post(this.apiUrl+'/customer/GetAllCustomer',"{\"pageNumber\":1,\"pageSize\":100,\"planId\":1}");
   }
 
-  GetCustomerById(customerId: number)  {
-    //const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  GetCustomerById(customerId: number)  {    
     return this.http.get(this.apiUrl+'/customer/'+ customerId);    
   }
 }
