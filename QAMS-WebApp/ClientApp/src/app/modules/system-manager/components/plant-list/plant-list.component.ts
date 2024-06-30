@@ -83,7 +83,7 @@ GetPlantDetailsbyId(id:number)
 }
 BuildPlantForm(){
   this.regPlantForm = this.fb.group({
-    plantCode: ['', Validators.required],
+    code: ['', Validators.required],
     plantName: ['', Validators.required],
     address: ['', Validators.required],
     comments: ['', Validators.required]
