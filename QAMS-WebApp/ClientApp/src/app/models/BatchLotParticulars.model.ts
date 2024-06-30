@@ -15,7 +15,7 @@ export interface BatchLot {
   productMaterial:string,
   arNo: string,
   initiatedBy: string,
-  date: string|Date
-  
+  date: string|Date,
+  id:string
 };
 

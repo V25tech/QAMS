@@ -90,12 +90,13 @@ export class ProductMaterialsComponent {
   }
   BuildMaterialForm(){
     this.regProductForm = this.fb.group({
-      uniqueCode: ['', Validators.required],
+      code: ['', Validators.required],
       name: ['', Validators.required],
       chemicalName: ['', Validators.required],
     });
   }
   regProduct() {
+    debugger;
     if (this.regProductForm.valid) {
       console.log(this.regProductForm.value);
       let productMaterial: RegProduct = this.regProductForm.value;
@@ -108,25 +109,25 @@ export class ProductMaterialsComponent {
     }
 
 
-    if (this.regProductForm.invalid) {
-      this.messageService.add({ severity: 'error', summary: 'Form is invalid!', detail: 'Message Content' });
-      return; // Prevent form submission
-    } else {
-      const regProduct: RegProduct = {
-        code: this.regProductForm.value.uniqueCode,
-        name: this.regProductForm.value.name,
-        chemicalName: this.regProductForm.value.chemicalName,
-      };
+    // if (this.regProductForm.invalid) {
+    //   this.messageService.add({ severity: 'error', summary: 'Form is invalid!', detail: 'Message Content' });
+    //   return; // Prevent form submission
+    // } else {
+    //   const regProduct: RegProduct = {
+    //     code: this.regProductForm.value.code,
+    //     name: this.regProductForm.value.name,
+    //     chemicalName: this.regProductForm.value.chemicalName,
+    //   };
 
-      this.ProductsService.insertProductDetails(regProduct).subscribe((data: any) => {        
-        this.messageService.add({ severity: 'success', summary: 'Products Registration Saved Successfull', detail: 'Message Content' });
+    //   this.ProductsService.insertProductDetails(regProduct).subscribe((data: any) => {        
+    //     this.messageService.add({ severity: 'success', summary: 'Products Registration Saved Successfull', detail: 'Message Content' });
            
-          setTimeout(() => {
-            this.closeNavBar();
-          }, 1000);
-        });  
-        }
-      }
+    //       setTimeout(() => {
+    //         this.closeNavBar();
+    //       }, 1000);
+    //     });  
+    //     }
+       }
 
   clear(table: Table) {
     table.clear();

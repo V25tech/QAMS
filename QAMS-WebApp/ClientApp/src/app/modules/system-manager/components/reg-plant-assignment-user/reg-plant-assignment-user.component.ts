@@ -27,19 +27,17 @@ export class RegPlantAssignmentUserComponent {
     this.plantUserForm = this.fb.group({
       remarks: ['', Validators.required],
     });
+
+    this.cdr.detectChanges();
+    this.route.queryParams.subscribe(params => {
+      this.id = Number.parseInt(params['Id']);
+      let splitItesms = this.id;           
+      this.GetUserDetailsbyId(this.id);    
+    })
     this.PlantAssignmentUsersService.getProductsSmall().then(products => {
       this.sourceProducts = products;
       this.cdr.markForCheck();
-  });
-  this.targetProducts = [];
-
-  //this.BuildUserForm();
-  this.cdr.detectChanges();
-  this.route.queryParams.subscribe(params => {
-    this.id = Number.parseInt(params['Id']);
-    let splitItesms = this.id;           
-    this.GetUserDetailsbyId(this.id);
-  })
+  });  
 }
 GetUserDetailsbyId(id:number)
     {

@@ -29,6 +29,10 @@ export class EquipmentRegComponent {
       this.cdr.detectChanges();
       this.route.queryParams.subscribe(params => {
         this.id = Number.parseInt(params['Id']);
+        if(this.id!=0)
+          {
+            this.editMode=true;                 
+          }      
         let splitItesms = this.id;            
         this.GetEquipmentDetailsbyId(this.id);
         this.GetDepartments();
@@ -49,7 +53,8 @@ export class EquipmentRegComponent {
     }
     GetDepartments()
     {
-      this.DepartmentsService.getDepartmentsData().subscribe((data: any) => {        
+      this.DepartmentsService.getDepartmentsData().subscribe((data: any) => { 
+        debugger;       
         this.departmentsDataSource = data.response;      
       }); 
      }  
@@ -104,6 +109,7 @@ export class EquipmentRegComponent {
     
   }
   registerEquipment(){
+    debugger;
     if (this.equipmentRegForm.valid) {
       console.log(this.equipmentRegForm.value);
       let equipValue: EquipmentRegistration = this.equipmentRegForm.value;
