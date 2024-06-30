@@ -42,21 +42,16 @@ export class UserGroupService {
   getUserData(): Observable<any> {   
     return this.http.post(this.apiUrl+ '/usergroup/getallusergroups',"{\"pageNumber\":1,\"pageSize\":100}");
   }
-  insertCustomerDetails(settings: RegUserGroup) {
-    debugger;
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post(this.apiUrl+ '/usergroup/saveusergroup', settings, { headers })   
+  insertCustomerDetails(settings: RegUserGroup) {  
+    return this.http.post(this.apiUrl+ '/usergroup/saveusergroup', settings)   
   }
   getProductsSmall() {
-
     return Promise.resolve(this.getProductsData().slice(0, 10));
 }
 UpdateUserGroupDetails(settings: RegUserGroup) {    
-  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-  return this.http.post(this.apiUrl+ '/usergroup/updateusergroup', settings, { headers })       
+  return this.http.post(this.apiUrl+ '/usergroup/updateusergroup', settings)       
 }
 GetUserGroupById(usergroupId: number)  {
-  //const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   return this.http.get(this.apiUrl+'/usergroup/'+ usergroupId);    
 }
 

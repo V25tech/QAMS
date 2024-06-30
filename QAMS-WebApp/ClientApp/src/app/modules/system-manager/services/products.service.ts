@@ -17,20 +17,15 @@ export class ProductsService {
     return this.http.post(this.apiUrl+'/product/GetAllProduct',"{\"pageNumber\":1,\"pageSize\":100}", { headers });
   }
 
-  insertProductDetails(settings: RegProduct) {
-    debugger;
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post(this.apiUrl+ '/product/saveproduct', settings, { headers });
-      
+  insertProductDetails(settings: RegProduct) {   
+    return this.http.post(this.apiUrl+ '/product/saveproduct', settings);      
   }
 
 
-  UpdateProductDetails(settings: RegProduct) {    
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post(this.apiUrl+ '/product/updateproduct', settings, { headers })       
+  UpdateProductDetails(settings: RegProduct) {       
+    return this.http.post(this.apiUrl+ '/product/updateproduct', settings)       
   }
-  GetProductById(productId: number)  {
-    //const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  GetProductById(productId: number)  {    
     return this.http.get(this.apiUrl+'/product/'+ productId);    
   }
 }

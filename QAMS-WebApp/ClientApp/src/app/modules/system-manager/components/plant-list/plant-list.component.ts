@@ -40,12 +40,10 @@ export class PlantListComponent {
     this.cdr.detectChanges();
     this.route.queryParams.subscribe(params => {
       this.id = Number.parseInt(params['Id']);
-      let splitItesms = this.id;
-      debugger;        
+      let splitItesms = this.id;          
       this.GetPlantDetailsbyId(this.id);
     })
-    this.PlantListService.getplantData().subscribe((data: any) => {
-     debugger
+    this.PlantListService.getplantData().subscribe((data: any) => {     
      this.plantDatasource = data.response;
      this.plantDatasource.forEach(dataSource => (dataSource.createdDate = new Date(dataSource.createdDate)));
    }); 
@@ -76,7 +74,7 @@ GetPlantDetailsbyId(id:number)
 {
   this.PlantListService.GetPlantById(id).subscribe((result:any) => {   
     this.plantReg = result;
-    let plantValue: RegPlant = result; //JSON.parse(ccValueStr) ?? null;
+    let plantValue: RegPlant = result; 
     this.editPlantValue = plantValue;
     if (plantValue) {
       this.regPlantForm.patchValue(plantValue);
@@ -105,9 +103,7 @@ regDepartments(){
     this.plantDatasource = data.response;    
   });
  }
-}
-
-    //update code ends here
+}    
   clear(table: Table) {
     table.clear();
   }
@@ -115,14 +111,11 @@ regDepartments(){
   applyFilterGlobal($event: any, stringVal: any) {
     this.dt!.filterGlobal(($event.target as HTMLInputElement).value, stringVal);
   }
-
   toggleMenu(index: any) {
     this.selectedIndex = index;
     this.isOpen = !this.isOpen;
     this.cdr.detectChanges();
   }
- 
-
 
   onPageChange(event: PageEvent) {
     this.first = event.first;
@@ -135,7 +128,7 @@ regDepartments(){
   regPlant() {
     if (this.regPlantForm.invalid) {
       this.messageService.add({ severity: 'error', summary: 'Form is invalid!', detail: 'Message Content' });
-      return; // Prevent form submission
+      return; 
     } else {
       const regPlant: RegPlant = {
         code: this.regPlantForm.value.plantCode,
@@ -165,8 +158,7 @@ regDepartments(){
       {
         this.editMode=true;
        this.GetPlantDetailsbyId(id);       
-      }
-      
+      }      
   }
 
 }

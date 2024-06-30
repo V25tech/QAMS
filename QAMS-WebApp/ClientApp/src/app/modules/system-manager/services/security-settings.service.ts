@@ -15,8 +15,7 @@ export class SecuritySettingsService {
     return this.http.get<SecuritySettings>(this.apiUrl);
   }
 
-  updateSecuritySettings(settings: SecuritySettings): Observable<SecuritySettings> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.put<SecuritySettings>(this.apiUrl, settings, { headers });
+  updateSecuritySettings(settings: SecuritySettings): Observable<SecuritySettings> {    
+    return this.http.put<SecuritySettings>(this.apiUrl, settings);
   }
 }
