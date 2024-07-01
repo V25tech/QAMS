@@ -19,19 +19,19 @@ namespace QAMS.Admin.Data
     using QAMS.Admin.Entities;
     using VAMLibrary.Core;
     using VAMLibrary.Core.Common;
-    
-    
+
+
     // Comment
     public class RoleData : IRoleData
     {
-        
+
         private readonly DataAccessHelper dataAccessHelper;
-        
+
         public RoleData(DataAccessHelper dataAccessHelper)
         {
             this.dataAccessHelper = dataAccessHelper;
         }
-        
+
         public DataSet GetAllRole(RequestContext requestContext)
         {
             try
@@ -47,7 +47,7 @@ namespace QAMS.Admin.Data
                 throw;
             }
         }
-        
+
         public DataSet GetRoleById(System.Int32? id)
         {
             try
@@ -60,7 +60,7 @@ namespace QAMS.Admin.Data
                 throw;
             }
         }
-        
+
         public bool SaveRole(Role role)
         {
             try
@@ -70,7 +70,7 @@ namespace QAMS.Admin.Data
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = RoleConstants.Description, Value = role.description });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = RoleConstants.CreatedBy, Value = role.createdBy });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = RoleConstants.ModifiedBy, Value = role.modifiedBy });
-                //sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = RoleConstants.RuleMetadata, Value = role.roleMetadata });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = RoleConstants.RuleMetadata, Value = role.roleMetadata });
                 Object result = dataAccessHelper.ExecuteStoredProcedure(RoleConstants.USP_Role_PSY_INSERT, sqlparms, ExecutionType.Scalar);
                 return (Convert.ToInt32(result) > 0);
             }
@@ -79,13 +79,13 @@ namespace QAMS.Admin.Data
                 throw;
             }
         }
-        
+
         public bool UpdateRole(Role role)
         {
             try
             {
                 List<SqlParameter> sqlparms = new List<SqlParameter>();
-               // sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = RoleConstants.Id, Value = role.Id });
+                // sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = RoleConstants.Id, Value = role.Id });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = RoleConstants.Name, Value = role.name });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = RoleConstants.Description, Value = role.description });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = RoleConstants.ModifiedBy, Value = role.modifiedBy });
@@ -97,7 +97,7 @@ namespace QAMS.Admin.Data
                 throw;
             }
         }
-        
+
         public bool DeleteRoleById(System.Int32? id)
         {
             try
@@ -110,12 +110,12 @@ namespace QAMS.Admin.Data
                 throw;
             }
         }
-        
+
         public bool DeleteAllRole(List<int> ids)
         {
             try
             {
-                var result = dataAccessHelper.ExecuteStoredProcedure(RoleConstants.USP_Role_PSY_DELETE_ALL, RoleConstants.Id, DbType.String, string.Join(',',  ids), ExecutionType.NonQuery);
+                var result = dataAccessHelper.ExecuteStoredProcedure(RoleConstants.USP_Role_PSY_DELETE_ALL, RoleConstants.Id, DbType.String, string.Join(',', ids), ExecutionType.NonQuery);
                 return (Convert.ToInt32(result) >= 0);
             }
             catch (System.Exception ex)
