@@ -70,13 +70,13 @@ cancelClick(){
 }
 
 saveControlChange(ccValue: PlantAssignmentUsers) {
-  // this.PlantAssignmentUsersService.insertPlantAssignmentData(ccValue).subscribe((data: any) => {
-  //   console.log('Form submitted!', ccValue);
-  //   this.messageService.add({ severity: 'success', summary: 'Plant user Registration Saved Successfull', detail: 'Message Content' });
+  //  this.PlantAssignmentUsersService.insertPlantAssignmentData(ccValue).subscribe((data: any) => {
+  //    console.log('Form submitted!', ccValue);
+  //    this.messageService.add({ severity: 'success', summary: 'Plant user Registration Saved Successfull', detail: 'Message Content' });
   //   setTimeout(() => {
-  //     this.backToPlantUsers();
+  //      this.backToPlantUsers();
   //   }, 1000);
-  // });    
+  //  });    
 }
 
 updateControlChange(userValue: RegModifyUser) {
@@ -129,18 +129,18 @@ regPlantUser()
     //   this.messageService.add({ severity: 'success', summary: ' Plant Assignment is Successfully Registrated', detail: 'Message Content' });
     // }
   
-    updateControlChange(userValue: RegModifyUser) {
-      console.log(JSON.stringify(userValue))
-      this.modifyUserService.updateUserDetails(this.editUserValue).subscribe(res => {
-        console.log(res);
-        //this.backToUser();
-      }, er => console.log(er));
-    }
+    // updateControlChange(userValue: RegModifyUser) {
+    //   console.log(JSON.stringify(userValue))
+    //   this.modifyUserService.updateUserDetails(this.editUserValue).subscribe(res => {
+    //     console.log(res);
+    //     //this.backToUser();
+    //   }, er => console.log(er));
+    // }
  
   
 
-  backToPlantUsers(){
-    this.router.navigateByUrl('/plant-assignment-users');
-  }
+  // backToPlantUsers(){
+  //   this.router.navigateByUrl('/plant-assignment-users');
+  // }
 
 }
