@@ -15,6 +15,7 @@ namespace QAMS.Admin.Services
     using QAMS.Common.Entities;
     using QAMS.Admin.Entities;
     using QAMS.Admin.Data;
+    using Newtonsoft.Json;
 
 
     // Comment
@@ -89,6 +90,8 @@ namespace QAMS.Admin.Services
             try
             {
                 String validationMessages = UserValidator.IsValidUser(user);
+                string plantMetadata = JsonConvert.SerializeObject(user.Plants, Formatting.Indented);
+                user.Plants = plantMetadata;
                 if (validationMessages.Length <= 0)
                 {
                     bool result = userData.UpdateUser(user);

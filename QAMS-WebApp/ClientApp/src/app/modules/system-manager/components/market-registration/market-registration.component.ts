@@ -17,7 +17,7 @@ export class MarketRegistrationComponent {
   id:number=0;
   marketReg: MarketRegistration;
   editMode: boolean = false;
-  editCCValue: MarketRegistration;  
+  editMktValue: MarketRegistration;  
   constructor(private fb: FormBuilder,private router: Router, private messageService: MessageService, private route: ActivatedRoute,
     private marketRegistration: MarketRegistrationService, private cdr: ChangeDetectorRef ,private primengConfig: PrimeNGConfig,) { }
     ngOnInit(): void {
@@ -45,7 +45,7 @@ export class MarketRegistrationComponent {
   }
   updateControlChange(ccValue: MarketRegistration) {
     console.log(JSON.stringify(ccValue))
-    this.marketRegistration.updateMarketDetails(this.editCCValue).subscribe((res: any) => {
+    this.marketRegistration.updateMarketDetails(this.editMktValue).subscribe((res: any) => {
       console.log(res);
       this.backToMarkets();
     }, (er: any) => console.log(er));
@@ -56,13 +56,12 @@ export class MarketRegistrationComponent {
   GetMarketDetailsbyId(id:number)
   {
     debugger;
-    this.marketRegistration.GetMarketById(id).subscribe((res:any) => {
-      
+    this.marketRegistration.GetMarketById(id).subscribe((res:any) => {      
       this.marketReg = res;
-      let ccValue: MarketRegistration = res; //JSON.parse(ccValueStr) ?? null;
-      this.editCCValue = ccValue;
-      if (ccValue) {
-        this.marketRegistrationForm.patchValue(ccValue);
+      let marketValue: MarketRegistration = res; 
+      this.editMktValue = marketValue;
+      if (marketValue) {
+        this.marketRegistrationForm.patchValue(marketValue);
       }
     }, (er: any) => console.log(er));    
   }
@@ -76,12 +75,12 @@ export class MarketRegistrationComponent {
   registerMarket(){
     if (this.marketRegistrationForm.valid) {
       console.log(this.marketRegistrationForm.value);
-      let ccEquipValue: MarketRegistration = this.marketRegistrationForm.value;
+      let mktEquipValue: MarketRegistration = this.marketRegistrationForm.value;
       if (this.editMode) {
-        this.updateControlChange(ccEquipValue);
+        this.updateControlChange(mktEquipValue);
       }    
     else {
-      this.saveControlChange(ccEquipValue);
+      this.saveControlChange(mktEquipValue);
     }
   }
  

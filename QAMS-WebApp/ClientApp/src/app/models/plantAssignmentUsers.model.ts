@@ -4,4 +4,4 @@ export interface PlantAssignmentUsers{
    role?:string,
     date:string | Date,
     
-}
+};

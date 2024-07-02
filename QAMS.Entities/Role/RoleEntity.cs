@@ -27,6 +27,8 @@ namespace QAMS.Admin.Entities
 
         public string modifiedBy { get; set; }
 
+        public string roleMetadata { get; set; }
+
         public DateTime? modifiedDate { get; set; }
 
 
