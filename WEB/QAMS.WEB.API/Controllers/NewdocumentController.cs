@@ -88,7 +88,43 @@ namespace QAMS.WEB.API.Controllers
             var result = newdocumentService.SaveNewdocument(newdocument);
             return result;
         }
-        
+        [HttpPost("uploadandsave")]
+        public async Task<IActionResult> UploadAndSaveFile(IFormFile file, [FromBody] NewDocument newDocument)
+        {
+            try
+            {
+                // Handle file upload
+                string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                string uniqueFileName = file.FileName;
+                newDocument.uploadfile = uniqueFileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(fileStream);
+                }
+
+                // Handle saving new document details
+                var result = newdocumentService.SaveNewdocument(newDocument);
+
+                if (!result)
+                {
+                    return StatusCode(500, "An error occurred while saving the document details.");
+                }
+
+                return Ok(new { message = "File uploaded and document details saved successfully.", filePath });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred: {ex.Message}");
+            }
+        }
+
         /// <summary>
         /// This Method is used to update newdocument
         /// </summary>
