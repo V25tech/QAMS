@@ -18,8 +18,9 @@ namespace QAMS.Admin.Services
     using QAMS.Common.Entities;
     using QAMS.Admin.Entities;
     using QAMS.Admin.Data;
-    
-    
+    using Newtonsoft.Json;
+
+
     // Comment
     public class UserGroupService : IUserGroupService
     {
@@ -55,6 +56,7 @@ namespace QAMS.Admin.Services
             {
                 DataSet dataset = userGroupData.GetUserGroupById(id);
                 UserGroup result = UserGroupConverter.SetUserGroup(dataset);
+
                 return result;
             }
             catch (System.Exception ex)
@@ -70,6 +72,7 @@ namespace QAMS.Admin.Services
                 userGroup.createdBy = "admin";
                 userGroup.modifiedBy= "admin";
                 userGroup.roles = "Admin";
+                userGroup.userMetdata = GetSelectedUsers(userGroup.selectedUsers);               
                 String validationMessages = UserGroupValidator.IsValidUserGroup(userGroup);
                 if (validationMessages.Length <= 0)
                 {
@@ -83,7 +86,30 @@ namespace QAMS.Admin.Services
                 throw;
             }
         }
-        
+
+        private string GetSelectedUsers(List<User> selectedUsers)
+        {
+            try
+            {
+                string jsonValue = string.Empty;
+                List<UserMapping> usermap = new List<UserMapping>();
+                UserMapping umap = new UserMapping();
+                foreach (User user in selectedUsers)
+                {
+                    umap.id = user.Id;
+                    umap.name = user.userName;
+                    usermap.Add(umap);
+                }
+                jsonValue = JsonConvert.SerializeObject(usermap, Formatting.Indented);
+                return jsonValue;
+            }
+            catch
+            {
+                throw;
+            }
+
+        }
+
         public bool UpdateUserGroup(UserGroup userGroup)
         {
             try

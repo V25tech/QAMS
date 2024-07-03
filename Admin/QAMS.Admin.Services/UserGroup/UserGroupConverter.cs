@@ -41,11 +41,12 @@ namespace QAMS.Admin.Services
                         userGroupData.name = Convert.ToString(row[UserGroupConstants.Name.TrimAt()]);
                         userGroupData.code = Convert.ToString(row[UserGroupConstants.Code.TrimAt()]);
                         userGroupData.roles = Convert.ToString(row[UserGroupConstants.Roles.TrimAt()]);
-                        userGroupData.revision = DatatypeConverter.SetIntValue(row[UserGroupConstants.Revision.TrimAt()]);
+                        userGroupData.remarks = Convert.ToString(row[UserGroupConstants.Remarks.TrimAt()]);
                         userGroupData.createdBy = Convert.ToString(row[UserGroupConstants.CreatedBy.TrimAt()]);
                         userGroupData.createdDate = DatatypeConverter.SetDateTime(row[UserGroupConstants.CreatedDate.TrimAt()]);
                         userGroupData.modifiedBy = Convert.ToString(row[UserGroupConstants.ModifiedBy.TrimAt()]);
-                        userGroupData.modifiedDate = DatatypeConverter.SetDateTime(row[UserGroupConstants.ModifiedDate.TrimAt()]);
+                        userGroupData.modifiedDate = DatatypeConverter.SetDateTime(row[UserGroupConstants.ModifiedDate.TrimAt()]);  
+                        //userGroupData.UserMapping = JsonConvert.DeserializeObject<UserMapping>(Convert.ToString(row["userMetadata"]));
                         result.Add(userGroupData);
                     }
                 }

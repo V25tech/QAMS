@@ -69,9 +69,10 @@ namespace QAMS.Admin.Data
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = UserGroupConstants.Name, Value = userGroup.name });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = UserGroupConstants.Code, Value = userGroup.code });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = UserGroupConstants.Roles, Value = userGroup.roles });
-                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = UserGroupConstants.Revision, Value = userGroup.revision });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = UserGroupConstants.Remarks, Value = userGroup.remarks });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = UserGroupConstants.CreatedBy, Value = userGroup.createdBy });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = UserGroupConstants.ModifiedBy, Value = userGroup.modifiedBy });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = UserGroupConstants.userMetadata, Value = userGroup.userMetdata });
                 Object result = dataAccessHelper.ExecuteStoredProcedure(UserGroupConstants.USP_UserGroup_PSY_INSERT, sqlparms, ExecutionType.Scalar);
                 return (Convert.ToInt32(result) > 0);
             }

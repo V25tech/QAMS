@@ -25,13 +25,17 @@ namespace QAMS.Admin.Entities
         public const string Roles = "@Roles_PSY";
         
         public const string Revision = "@Revision_PSY";
-        
+
+        public const string Remarks = "@Remarks_PSY";
+
         public const string CreatedBy = "@CreatedBy_PSY";
         
         public const string CreatedDate = "@CreatedDate_PSY";
         
         public const string ModifiedBy = "@ModifiedBy_PSY";
-        
+
+        public const string userMetadata = "@userMetadata";
+
         public const string ModifiedDate = "@ModifiedDate_PSY";
         
         public const string USP_UserGroup_PSY_GET_ALL = "dbo.USP_UserGroup_PSY_GET_ALL";

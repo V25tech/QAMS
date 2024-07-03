@@ -1,3 +1,5 @@
+import { ModifyUser, RegModifyUser } from "./modifyUser.model"
+
 export interface UserGroup{
     id?:any,
     code?:string,
@@ -13,6 +15,6 @@ export interface UserGroup{
 export interface RegUserGroup{
     name?:string,
     code?:string,
-    remarks?:string
-    
+    remarks?:string,
+    selectedUsers?:ModifyUser[]
 }

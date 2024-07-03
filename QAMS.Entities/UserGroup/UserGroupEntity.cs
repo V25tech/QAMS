@@ -10,136 +10,54 @@
 namespace QAMS.Admin.Entities
 {
     using System;
+    using System.Collections.Generic;
 
 
     // Comment
     public class UserGroup
     {
         
-        private System.Int32? idField;
+       
         
-        private string nameField;
+        public System.Int32? id { get; set; }
         
-        private string codeField;
         
-        private string rolesField;
+        public string name { get; set; }
+       
+
+        public string code { get; set; }
+      
         
-        private System.Int32? revisionField;
+        public string roles { get;set; }
+     
         
-        private string createdbyField;
+        public string revision { get; set; }
+     
         
-        private DateTime? createddateField;
+        public string createdBy { get; set; }
+     
         
-        private string modifiedbyField;
+        public DateTime? createdDate { get; set; }
+      
         
-        private DateTime? modifieddateField;
+        public string modifiedBy { get; set; }
+       
         
-        public System.Int32? id
-        {
-            get
-            {
-                return this.idField;
-            }
-            set
-            {
-                this.idField = value;
-            }
-        }
-        
-        public string name
-        {
-            get
-            {
-                return this.nameField;
-            }
-            set
-            {
-                this.nameField = value;
-            }
-        }
-        
-        public string code
-        {
-            get
-            {
-                return this.codeField;
-            }
-            set
-            {
-                this.codeField = value;
-            }
-        }
-        
-        public string roles
-        {
-            get
-            {
-                return this.rolesField;
-            }
-            set
-            {
-                this.rolesField = value;
-            }
-        }
-        
-        public System.Int32? revision
-        {
-            get
-            {
-                return this.revisionField;
-            }
-            set
-            {
-                this.revisionField = value;
-            }
-        }
-        
-        public string createdBy
-        {
-            get
-            {
-                return this.createdbyField;
-            }
-            set
-            {
-                this.createdbyField = value;
-            }
-        }
-        
-        public DateTime? createdDate
-        {
-            get
-            {
-                return this.createddateField;
-            }
-            set
-            {
-                this.createddateField = value;
-            }
-        }
-        
-        public string modifiedBy
-        {
-            get
-            {
-                return this.modifiedbyField;
-            }
-            set
-            {
-                this.modifiedbyField = value;
-            }
-        }
-        
-        public DateTime? modifiedDate
-        {
-            get
-            {
-                return this.modifieddateField;
-            }
-            set
-            {
-                this.modifieddateField = value;
-            }
-        }
+        public DateTime? modifiedDate { get; set; }
+
+        public string remarks { get; set; }
+
+        public List<User> selectedUsers { get; set; }
+
+        //public UserMapping UserMapping { get; set; }
+        public string userMetdata { get; set; }
+       
+    }
+
+    public class UserMapping
+    {
+        public System.Int32? id { get; set; } = 0;
+
+        public string name { get; set; }
     }
 }

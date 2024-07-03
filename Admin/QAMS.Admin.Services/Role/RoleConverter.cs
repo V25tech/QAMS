@@ -46,7 +46,7 @@ namespace QAMS.Admin.Services
                         roleData.modifiedDate = DatatypeConverter.SetDateTime(row[RoleConstants.ModifiedDate.TrimAt()]);
                         if (row["DOCUMENT"] != null && row["DOCUMENT"] != "")
                         {
-                          //  roleData = JsonConvert.DeserializeObject<Role>(Convert.ToString(row["DOCUMENT"]));
+                            roleData = JsonConvert.DeserializeObject<Role>(Convert.ToString(row["DOCUMENT"]));
                         }
                         result.Add(roleData);
                     }

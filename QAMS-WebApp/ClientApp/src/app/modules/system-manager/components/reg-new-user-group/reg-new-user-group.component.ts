@@ -32,8 +32,8 @@ export class RegNewUserGroupComponent {
     this.cdr.detectChanges();
     this.route.queryParams.subscribe(params => {
       this.id = Number.parseInt(params['Id']);
-      let splitItesms = this.id;
-      this.GetUsergroupDetailsbyId(this.id);
+      let splitItesms = this.id;      
+      this.GetUsergroupDetailsbyId(this.id);    
     })    
   }
   GetUserDetails()
@@ -49,6 +49,7 @@ cancelClick(){
 }
 saveControlChange(userValue: RegUserGroup) {
   debugger;
+  userValue.selectedUsers=this.tmodifyUserDatasource;
   this.UserGroupService.insertCustomerDetails(userValue).subscribe((data: any) => {    
     this.messageService.add({ severity: 'success', summary: 'Usergroup Registration Saved Successfull', detail: 'Message Content' });
     setTimeout(() => {
@@ -68,6 +69,7 @@ backToUsers(){
 }
 GetUsergroupDetailsbyId(id:number)
 {
+  debugger;
   this.UserGroupService.GetUserGroupById(id).subscribe((res:any) => {    
     this.usergroupReg = res;
     let userValue: RegUserGroup = res; 
@@ -82,7 +84,8 @@ BuildUsergroupForm()
   this.userGroupForm = this.fb.group({
     name: ['', Validators.required],
     code: ['', Validators.required],
-    remarks: ['', Validators.required],    
+    remarks: ['', Validators.required],
+    tmodifyUserDatasource:['',Validators.required] 
   });
 }  
   regUserGroup(){
