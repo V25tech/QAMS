@@ -54,7 +54,7 @@ export class CustomerRegistrationComponent {
   GetCustomerById(id:number)
   {
     this.customerService.GetCustomerById(id).subscribe((res:any) => {
-      //debugger;
+      debugger;
       this.customerReg = res;
       let custValue: CustomerRegistration = res;
       this.editCustValue = custValue;

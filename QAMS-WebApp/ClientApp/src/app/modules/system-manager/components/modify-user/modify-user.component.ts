@@ -46,13 +46,15 @@ export class ModifyUserComponent {
   ngOnInit() :void {   
     this.BuildUserForm();
     this.cdr.detectChanges();
-    this.route.queryParams.subscribe(params => {
-      this.id = Number.parseInt(params['Id']);
-      let splitItesms = this.id;           
-      this.GetUserDetailsbyId(this.id);
-      this.GetRoleDetails();
-      this.GetDepartments();
-    })
+    this.GetRoleDetails();
+    this.GetDepartments();
+     this.route.queryParams.subscribe(params => {
+       this.id = Number.parseInt(params['Id']);
+       let splitItesms = this.id; 
+       if (this.id) {
+        this.GetUserDetailsbyId(this.id);
+            }  
+     })
     this.modifyUserService.getUserData().subscribe((data: any) => {
       debugger;
       this.modifyUserDatasource = data.response;
@@ -189,7 +191,7 @@ export class ModifyUserComponent {
   GetRoleDetails()
   {   
     this.roleService.getnewRoleData().subscribe((data: any) => {
-      //debugger
+      debugger
       this.roleDetails = data.response;    
   });
 }   

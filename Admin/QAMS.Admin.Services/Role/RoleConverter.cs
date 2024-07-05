@@ -37,17 +37,18 @@ namespace QAMS.Admin.Services
                     {
                         DataRow row = dataset.Tables[0].Rows[i];
                         roleData = new Role();
-                        roleData.id = (int)DatatypeConverter.SetIntValue(row[RoleConstants.Id.TrimAt()]);
+                        if (row["DOCUMENT"] != null && row["DOCUMENT"] != "")
+                        {
+                            roleData = JsonConvert.DeserializeObject<Role>(Convert.ToString(row["DOCUMENT"]));
+                        }
+                        roleData.id = Convert.ToString(row[RoleConstants.Id.TrimAt()]);
                         roleData.name = Convert.ToString(row[RoleConstants.Name.TrimAt()]);
                         roleData.description = Convert.ToString(row[RoleConstants.Description.TrimAt()]);
                         roleData.createdBy = Convert.ToString(row[RoleConstants.CreatedBy.TrimAt()]);
                         roleData.createdDate = DatatypeConverter.SetDateTime(row[RoleConstants.CreatedDate.TrimAt()]);
                         roleData.modifiedBy = Convert.ToString(row[RoleConstants.ModifiedBy.TrimAt()]);
                         roleData.modifiedDate = DatatypeConverter.SetDateTime(row[RoleConstants.ModifiedDate.TrimAt()]);
-                        if (row["DOCUMENT"] != null && row["DOCUMENT"] != "")
-                        {
-                            roleData = JsonConvert.DeserializeObject<Role>(Convert.ToString(row["DOCUMENT"]));
-                        }
+                       
                         result.Add(roleData);
                     }
                 }

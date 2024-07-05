@@ -72,6 +72,7 @@ backToPlant(){
 }
 GetPlantDetailsbyId(id:number)
 {
+  debugger;
   this.PlantListService.GetPlantById(id).subscribe((result:any) => {   
     this.plantReg = result;
     let plantValue: RegPlant = result; 
