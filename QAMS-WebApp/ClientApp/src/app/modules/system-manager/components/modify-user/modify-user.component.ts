@@ -94,7 +94,7 @@ export class ModifyUserComponent {
     GetUserDetailsbyId(id:number)
     {
       this.modifyUserService.GetUserById(id).subscribe((res:any) => {
-        //debugger;
+        debugger;
         this.userReg = res;
         let userValue: RegModifyUser = res; //JSON.parse(ccValueStr) ?? null;
         this.editUserValue = userValue;
@@ -105,8 +105,8 @@ export class ModifyUserComponent {
     }
     BuildUserForm(){
     this.modifyUserForm = this.fb.group({
-      firstname: ['', Validators.required],
-      lastname: ['', Validators.required],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
       userId: ['', Validators.required],
       roleid: ['', Validators.required],
       departmentid: ['', Validators.required],
