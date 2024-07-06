@@ -19,16 +19,16 @@ export class NetworkInterceptor implements HttpInterceptor {
     //console.log('Outgoing HTTP request', request);
 
     const final_request = request.clone({
-      
+
       // headers: new HttpHeaders({
       //   'Content-Type':  'application/json',
       //   'Authorization': 'my-auth-token'
       // })
-      headers: request.headers.set('Content-Type', 'application/json'),
+      headers: request.url.indexOf('uploadandsave') > 0 ? request.headers : request.headers.set('Content-Type', 'application/json'),
       url: request.url.replace('QAMS_API', this.api_url).replace('ADMIN_API', this.admin_api_url)
-      
+
     });
-    
+
     // return next.handle(request).pipe(
     //   tap((event: HttpEvent<any>) => {
     //     console.log('Incoming HTTP response', event);

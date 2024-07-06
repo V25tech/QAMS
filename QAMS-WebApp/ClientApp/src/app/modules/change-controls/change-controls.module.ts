@@ -25,7 +25,7 @@ import { ChangeControlsRoutingModule } from './change-controls-routing.module';
 import { ChangecontrolsComponent } from './components/changecontrols/changecontrols.component';
 import { RegisterCCComponent } from './components/register-cc/register-cc.component';
 import { ChangeControlWorkflowComponent } from './components/change-control-workflow/change-control-workflow.component';
-import { DocumentsComponent } from './components/change-control-workflow/tabs/documents/documents.component';
+import { DocumentsComponent } from '../shared-components/documents/documents.component';
 import { ActivitiesComponent } from './components/change-control-workflow/tabs/activities/activities.component';
 import { HODReviewComponent } from './components/change-control-workflow/forms/hod-review/hod-review.component';
 import { QAReviewComponent } from './components/change-control-workflow/forms/qa-review/qa-review.component';

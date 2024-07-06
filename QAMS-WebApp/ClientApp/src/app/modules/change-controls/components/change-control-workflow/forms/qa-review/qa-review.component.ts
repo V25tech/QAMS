@@ -3,9 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { PrimeNGConfig } from 'primeng/api';
 import { ActionPlanInput, ActionPlanModel } from 'src/app/models/action-plan.model';
 import { CC_Model } from 'src/app/models/changecontrol.model';
-import { ActionPlansEnum, ActionPlansEnum_DESCRIPTIONS } from 'src/app/modules/shared/action-plan-enums';
-import { ActionPlanService } from 'src/app/modules/shared/action-plan.service';
-import { CommonService } from 'src/app/modules/shared/common.service';
+import { ActionPlansEnum, ActionPlansEnum_DESCRIPTIONS } from 'src/app/modules/shared-services/action-plan-enums';
+import { ActionPlanService } from 'src/app/modules/shared-services/action-plan.service';
+import { CommonService } from 'src/app/modules/shared-services/common.service';
 
 @Component({
   selector: 'app-qa-review',

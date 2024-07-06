@@ -12,19 +12,19 @@ export class ModifyUserService {
 
   constructor(private http: HttpClient) { }
   getUserData(): Observable<any> {    
-    debugger;
+    
     return this.http.post(this.apiUrl+ '/user/GetAllUser',"{\"pageNumber\":1,\"pageSize\":100}");
   }
   insertUserDetails(settings: RegModifyUser) {  
-    debugger;  
+      
     return this.http.post(this.apiUrl+ '/user/saveuser', settings)    
   }
   updateUserDetails(settings: RegModifyUser) { 
-    debugger;
+    
     return this.http.post(this.apiUrl+ '/user/updateuser', settings)       
   }
   GetUserById(userId: number)  {    
-    debugger;
+    
     return this.http.get(this.apiUrl+'/user/'+ userId);    
   }
 }

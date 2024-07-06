@@ -9,6 +9,7 @@ namespace QAMS.WEB.API.Controllers
     using System.IO;
     using System.Threading.Tasks;
     using System;
+    using System.Reflection;
 
     /// <summary>
     /// Comment
@@ -17,9 +18,9 @@ namespace QAMS.WEB.API.Controllers
     [Route("api/newdocument")]
     public class NewdocumentController : ControllerBase
     {
-        
+
         private readonly INewdocumentService newdocumentService;
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -28,7 +29,7 @@ namespace QAMS.WEB.API.Controllers
         {
             this.newdocumentService = newdocumentService;
         }
-        
+
         /// <summary>
         /// This method is used to Get List of newdocument
         /// </summary>
@@ -39,7 +40,7 @@ namespace QAMS.WEB.API.Controllers
             var result = newdocumentService.GetAllNewdocument(requestContext);
             return result;
         }
-        
+
         /// <summary>
         /// This method is used to Get newdocument By Id nd
         /// </summary>
@@ -51,66 +52,69 @@ namespace QAMS.WEB.API.Controllers
             return result;
         }
 
-        [HttpPost("upload")]
-        public async Task<IActionResult> UploadFile(IFormFile file)
-        {
-            try
-            {
-                string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
-                if (!Directory.Exists(uploadsFolder))
-                {
-                    Directory.CreateDirectory(uploadsFolder);
-                }
+        //[HttpPost("upload")]
+        //public async Task<IActionResult> UploadFile(IFormFile file)
+        //{
+        //    try
+        //    {
+        //        string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
+        //        if (!Directory.Exists(uploadsFolder))
+        //        {
+        //            Directory.CreateDirectory(uploadsFolder);
+        //        }
 
-                string uniqueFileName = file.FileName;
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+        //        string uniqueFileName = file.FileName;
+        //        string filePath = Path.Combine(uploadsFolder, uniqueFileName);
 
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    await file.CopyToAsync(fileStream);
-                }
+        //        using (var fileStream = new FileStream(filePath, FileMode.Create))
+        //        {
+        //            await file.CopyToAsync(fileStream);
+        //        }
 
-                return Ok(new { message = "File uploaded successfully.", filePath });
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, $"An error occurred while uploading the file: {ex.Message}");
-            }
-        }
+        //        return Ok(new { message = "File uploaded successfully.", filePath });
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return StatusCode(500, $"An error occurred while uploading the file: {ex.Message}");
+        //    }
+        //}
 
-        /// <summary>
-        /// This Method is used to Save newdocument
-        /// </summary>
-        /// <param name="newdocument"></param>
-        [HttpPost("savenewdocument")]
-        public ActionResult<System.Boolean> Savenewdocument1(NewDocument newdocument)
-        {
-            var result = newdocumentService.SaveNewdocument(newdocument);
-            return result;
-        }
+        ///// <summary>
+        ///// This Method is used to Save newdocument
+        ///// </summary>
+        ///// <param name="newdocument"></param>
+        //[HttpPost("savenewdocument")]
+        //public ActionResult<System.Boolean> Savenewdocument1(NewDocument newdocument)
+        //{
+        //    var result = newdocumentService.SaveNewdocument(newdocument);
+        //    return result;
+        //}
+
         [HttpPost("uploadandsave")]
-        public async Task<IActionResult> UploadAndSaveFile(IFormFile file, [FromBody] NewDocument newDocument)
+        public async Task<IActionResult> UploadAndSaveFile([FromForm] Document newDocument)
         {
+            if (newDocument.file == null || newDocument.file.Length == 0)
+                return BadRequest("File not selected");
+
             try
             {
                 // Handle file upload
                 string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
-                if (!Directory.Exists(uploadsFolder))
-                {
-                    Directory.CreateDirectory(uploadsFolder);
-                }
 
-                string uniqueFileName = file.FileName;
-                newDocument.uploadfile = uniqueFileName;
+                if (!Directory.Exists(uploadsFolder)) Directory.CreateDirectory(uploadsFolder);
+
+
+                string uniqueFileName = newDocument.file.FileName;
+                newDocument.uploadfileName = uniqueFileName;
                 string filePath = Path.Combine(uploadsFolder, uniqueFileName);
 
                 using (var fileStream = new FileStream(filePath, FileMode.Create))
                 {
-                    await file.CopyToAsync(fileStream);
+                    await newDocument.file.CopyToAsync(fileStream);
                 }
 
                 // Handle saving new document details
-                var result = newdocumentService.SaveNewdocument(newDocument);
+                var result = newdocumentService.SaveNewdocument(new NewDocument());
 
                 if (!result)
                 {
@@ -125,6 +129,8 @@ namespace QAMS.WEB.API.Controllers
             }
         }
 
+
+
         /// <summary>
         /// This Method is used to update newdocument
         /// </summary>
@@ -135,7 +141,7 @@ namespace QAMS.WEB.API.Controllers
             var result = newdocumentService.UpdateNewdocument(newdocument);
             return result;
         }
-        
+
         /// <summary>
         /// This Method is used to Delete newdocument By Id nd
         /// </summary>
@@ -146,7 +152,7 @@ namespace QAMS.WEB.API.Controllers
             var result = newdocumentService.DeleteNewdocumentBynd(nd);
             return result;
         }
-        
+
         /// <summary>
         /// This Method is used to Delete newdocument By Multiple ids nds
         /// </summary>

@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PrimeNGConfig } from 'primeng/api';
-import { DocumentsComponent } from './tabs/documents/documents.component';
+import { DocumentsComponent } from '../../../shared-components/documents/documents.component';
 import { ChangeControlsService } from '../../services/change-controls.service';
 import { CC_Model } from 'src/app/models/changecontrol.model';
 

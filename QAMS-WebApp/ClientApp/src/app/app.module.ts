@@ -27,7 +27,7 @@ import { CapaModule } from './modules/capa/capa.module';
 import { CapaRoutingModule } from './modules/capa/capa-routing.module';
 import { MarketComplaintsRoutingModule } from './modules/market-complaints/market-complaints-routing.module';
 import { MarketComplaintsModule } from './modules/market-complaints/market-complaints.module';
-import { NetworkInterceptor } from './modules/shared/network-interceptor.service';
+import { NetworkInterceptor } from './modules/shared-services/network-interceptor.service';
 
 
 

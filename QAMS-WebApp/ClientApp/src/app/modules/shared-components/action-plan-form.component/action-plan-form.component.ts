@@ -3,8 +3,8 @@ import { FormGroup, FormControl, FormBuilder, Validators, FormArray } from '@ang
 import { ActivatedRoute } from '@angular/router';
 import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { ActionPlanInput, ActionPlanModel } from 'src/app/models/action-plan.model';
-import { ActionPlanService } from 'src/app/modules/shared/action-plan.service';
-import { CommonService } from 'src/app/modules/shared/common.service';
+import { ActionPlanService } from 'src/app/modules/shared-services/action-plan.service';
+import { CommonService } from 'src/app/modules/shared-services/common.service';
 import { ModifyUserService } from '../../system-manager/services/modify-user.service';
 import { UserGroupService } from '../../system-manager/services/user-group.service';
 
@@ -67,7 +67,7 @@ export class ActionPlanFormComponent implements OnInit {
 
         this.commonService.actionPlanInputObservable.subscribe((p: ActionPlanInput) => {
             this.actionPlanInput = p;
-            this.plantTypeDetails = p.plantTypeDetails;
+            this.plantTypeDetails = p?.plantTypeDetails??[];
         })
     }
 

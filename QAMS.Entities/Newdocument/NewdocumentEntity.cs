@@ -9,36 +9,44 @@
 
 namespace QAMS.Admin.Entities
 {
+    using Microsoft.AspNetCore.Http;
     using System;
     using System.Collections.Generic;
-   // using PolicySummary.Common.Entities;
-    
-    
+    // using PolicySummary.Common.Entities;
+
+    public class Document
+    {
+        public string title { get; set; }
+
+        public string description { get; set; }
+
+        public string uploadfileName { get; set; }
+
+        public IFormFile file { get; set; }
+
+
+        public string initiativeId { get; set; }
+        public int ParentControlId { get { return Convert.ToInt32(this.initiativeId); } }
+
+        public string initiativeType { get; set; }
+
+
+        public string CreatedBy { get; set; }
+        public int CreatedById { get { return Convert.ToInt32(this.CreatedBy); } }
+
+        public DateTime? CreatedDate { get; set; }
+
+        public string ModifiedBy { get; set; }
+
+        public int ModifiedById { get { return Convert.ToInt32(this.ModifiedBy); } }
+
+        public DateTime? ModifiedDate { get; set; }
+    }
+
+
     // Comment
     public class NewDocument
     {
-        
-        private System.Int32? ndField;
-        
-        private string titleField;
-        
-        private string descriptionField;
-        
-        private string uploadfileField;
-        
-        private string createdbyField;
-        
-        private DateTime? createddateField;
-        
-        private string modifiedbyField;
-
-        private string CategoryField;
-        
-        private DateTime? modifieddateField;
-
-        private int catIdField;
-
-        private int changeControlIdField;
 
         public int ParentControlId
         {
@@ -49,50 +57,46 @@ namespace QAMS.Admin.Entities
         {
             get; set;
         }
-        
+
         public string title
         {
             get; set;
         }
-        
+
         public string description
         {
             get; set;
         }
-        
+
         public string uploadfile
         {
             get; set;
         }
-        
+
+        public IFormFile file
+        {
+            get; set;
+        }
+
         public string CreatedBy
         {
             get; set;
         }
-        
+
         public DateTime? CreatedDate
         {
             get; set;
         }
-        
+
         public string ModifiedBy
         {
             get; set;
         }
-        
+
         public DateTime? ModifiedDate
         {
             get; set;
         }
 
-        //public string Category
-        //{
-        //    get; set;
-        //}
-
-        //public int CatId
-        //{
-        //    get; set;
-        //}
     }
 }

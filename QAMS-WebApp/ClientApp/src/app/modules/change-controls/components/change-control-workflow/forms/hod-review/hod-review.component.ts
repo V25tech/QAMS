@@ -5,9 +5,9 @@ import { ActionPlanInput, ActionPlanModel } from 'src/app/models/action-plan.mod
 import { CC_Model } from 'src/app/models/changecontrol.model';
 import { Hod_ReviewService } from 'src/app/modules/change-controls/services/hod-review.service';
 import { ActionPlanFormComponent } from 'src/app/modules/shared-components/action-plan-form.component/action-plan-form.component';
-import { ActionPlansEnum, ActionPlansEnum_DESCRIPTIONS } from 'src/app/modules/shared/action-plan-enums';
-import { ActionPlanService } from 'src/app/modules/shared/action-plan.service';
-import { CommonService } from 'src/app/modules/shared/common.service';
+import { ActionPlansEnum, ActionPlansEnum_DESCRIPTIONS } from 'src/app/modules/shared-services/action-plan-enums';
+import { ActionPlanService } from 'src/app/modules/shared-services/action-plan.service';
+import { CommonService } from 'src/app/modules/shared-services/common.service';
 
 @Component({
   selector: 'app-hod-review',
