@@ -97,13 +97,13 @@ namespace QAMS.Admin.Data
                 List<SqlParameter> sqlparms = new List<SqlParameter>();
                 sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = UserConstants.Id, Value = user.Id });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = UserConstants.RoleId, Value = user.roleid });
-                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = UserConstants.UserId, Value = user.userId });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = UserConstants.UserId, Value = user.userId });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = UserConstants.FirstName, Value = user.FirstName });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = UserConstants.Plants, Value = user.Plants });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = UserConstants.Plants, Value = user.roleid.ToString() });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = UserConstants.LastName, Value = user.LastName });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = UserConstants.DepartmentId, Value = user.departmentid });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = UserConstants.EmployeeId, Value = user.employeeId });
-                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = UserConstants.EmailId, Value = user.email });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = UserConstants.EmailId, Value = user.email });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = UserConstants.Password, Value = user.Password });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Boolean, ParameterName = UserConstants.IsActive, Value = user.IsActive });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Boolean, ParameterName = UserConstants.ForgotLoginPassword, Value = user.ForgotLoginPassword });

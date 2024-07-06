@@ -10,7 +10,7 @@ export interface ModifyUser{
 export interface RegModifyUser{
     firstname?:string;
     lastname?:string;
-    username?:string;
+    userName?:string;
     userId?:string,
     roleid?:string,
     category?:string,

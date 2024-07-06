@@ -29,48 +29,41 @@ export class RegPlantAssignmentUserComponent {
   constructor(private fb: FormBuilder,private router: Router,protected messageService:MessageService,
     private PlantAssignmentUsersService: PlantAssignmentUsersService,private PlantListService: PlantListService,private route: ActivatedRoute, private modifyUserService: ModifyUserService, private cdr: ChangeDetectorRef) { }
   ngOnInit() :void {
+    
     this.BuildplantForm();
       this.cdr.detectChanges();
       this.route.queryParams.subscribe(params => {
         this.id = Number.parseInt(params['Id']);
-        let splitItesms = this.id;
-        debugger;        
+        let splitItesms = this.id;               
         this.GetUserDetailsbyId(this.id);
-      })
-
-    
-    debugger;
-
-  this.PlantListService.getplantData().subscribe((data: any) => {
-    debugger
-    this.sourceProducts = data.response;
-    this.cdr.markForCheck();
-  }); 
+        this.GetPlantsInfo();
+      })   
+ 
   this.targetProducts = [];
     // this.plantUserForm = this.fb.group({
     //   targetProducts: ['', Validators.required],
     // });
 
-    this.cdr.detectChanges();
-    this.route.queryParams.subscribe(params => {
-      this.id = Number.parseInt(params['Id']);
-      let splitItesms = this.id;           
-      this.GetUserDetailsbyId(this.id);    
-    })
+   
     this.PlantAssignmentUsersService.getProductsSmall().then(products => {
       this.sourceProducts = products;
       this.cdr.markForCheck();
   });  
 }
-
+GetPlantsInfo()
+{    
+  this.PlantListService.getplantData().subscribe((data: any) => {
+    debugger
+    this.sourceProducts = data.response;
+    //this.cdr.markForCheck();
+  }); 
+}
 cancelClick(){
   this.router.navigateByUrl('/users');
 }
-
-
-
 updateControlChange(userValue: RegModifyUser) {
   console.log(JSON.stringify(userValue))
+  debugger;
   this.modifyUserService.updateUserDetails(this.editUserValue).subscribe(res => {
     console.log(res);
     
@@ -83,21 +76,32 @@ backToPlantUsers(){
 
 GetUserDetailsbyId(id:number)
     {
-      this.modifyUserService.GetUserById(id).subscribe((res:any) => {
-        debugger;
+      this.modifyUserService.GetUserById(id).subscribe((res:any) => {      
         this.userReg = res;
-        let userValue: RegModifyUser = res; //JSON.parse(ccValueStr) ?? null;
+        let userValue: RegModifyUser = res; 
         this.editUserValue = userValue;
+        debugger;
         if (userValue) {
-          //this.sourceProducts.patchValue(userValue);
+          this.plantUserForm.patchValue(userValue);
+          this.SetPlantIds(userValue.plantid);
         }
       }, er => console.log(er));    
     }
-
+    SetPlantIds(users:string)
+    {
+      debugger;
+      // Step 1: Split the comma-separated string into an array of IDs
+      const plantIds = users.split(',').map(id => id.trim());
+      //this.tmodifyUserDatasource=this.modifyUserDatasource.filter(map=>map.id==users);
+      // Step 2 & 3: Filter modifyUserDatasource based on userIds and update tmodifyUserDatasource
+      this.targetProducts = this.sourceProducts.filter(map => plantIds.includes(map.id.toString()));
+      this.plantUserForm.patchValue(this.targetProducts);
+    }
     BuildplantForm(){
         this.plantUserForm = this.fb.group({
-          userid:['',Validators.required],
-          username:['',Validators.required]
+          userId:['',Validators.required],
+          userName:['',Validators.required]
+          //targetProducts: ['', Validators.required]       
          // plantid:['', Validators.required]         
       });
     }
@@ -115,9 +119,8 @@ regPlantUser()
   } else {
     const RegModifyUserInfo: RegModifyUser = {
       userId: this.plantUserForm.value.userId,
-      username:this.plantUserForm.value.username,
-      plantid:this.getProductIds()
-    
+      userName:this.plantUserForm.value.userName,
+      plantid:this.getProductIds()    
     };   
     this.updateControlChange(RegModifyUserInfo);     
   }

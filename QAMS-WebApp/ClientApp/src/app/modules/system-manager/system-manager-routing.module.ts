@@ -52,6 +52,7 @@ const routes: Routes = [
   {path:'equipments',component:EquipmentsComponent, canActivate: [AuthGuard]},
   {path:'batch-lot-particulars',component:BatchLotParticularsComponent, canActivate: [AuthGuard]},
   {path:'edit-users-registration',component:ModifyUserComponent, canActivate: [AuthGuard]},
+  {path:'app-reg-plant-assignment-user',component:RegPlantAssignmentUserComponent,canActivate:[AuthGuard]},
 
 ];
 @NgModule({

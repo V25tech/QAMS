@@ -225,4 +225,8 @@ export class ModifyUserComponent {
          this.GetUserDetailsbyId(id);       
         }        
     }
+    navigateToPlanAssociation(id:number){  
+          
+      this.router.navigateByUrl('/app-reg-plant-assignment-user?Id='+id);
+    }
 }

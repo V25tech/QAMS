@@ -42,7 +42,7 @@ namespace QAMS.Admin.Services
                         userData.role = Convert.ToString(row["RoleName"]);
                         userData.userId = Convert.ToString(row[UserConstants.UserId.TrimAt()]);
                         userData.FirstName = Convert.ToString(row[UserConstants.FirstName.TrimAt()]);
-                        userData.Plants = Convert.ToString(row[UserConstants.Plants.TrimAt()]);
+                        userData.plantid = Convert.ToString(row[UserConstants.Plants.TrimAt()]);
                         userData.LastName = Convert.ToString(row[UserConstants.LastName.TrimAt()]);
                         userData.departmentid = DatatypeConverter.SetIntValue(row[UserConstants.DepartmentId.TrimAt()]);
                         userData.department = Convert.ToString(row["Department"]);

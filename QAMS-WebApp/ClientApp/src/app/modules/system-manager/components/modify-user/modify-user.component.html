@@ -82,7 +82,7 @@
                                 <a class="me-3" pInputText pTooltip="Edit" tooltipPosition="top"  (click)="Openvisiblesidebar(modifyUser.id)">
                                     <i class="bi bi-pencil-square"></i>
                                 </a>
-                                <a  class="me-3"  [routerLink]="['/reg-plant-assignment-user']" pInputText pTooltip="Assign to Plant"
+                                <a  class="me-3"  (click)="navigateToPlanAssociation(modifyUser.id)" pInputText pTooltip="Assign to Plant"
                                     tooltipPosition="top">
                                     <i class="bi bi-building-add"></i>
                                 </a>

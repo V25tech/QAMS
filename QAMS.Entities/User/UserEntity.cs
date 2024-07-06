@@ -28,6 +28,8 @@ namespace QAMS.Admin.Entities
 
         public string Plants { get; set; }
 
+        public string plantid {  get; set; }
+
 
         public string LastName { get; set; }
 
