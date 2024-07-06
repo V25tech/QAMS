@@ -46,7 +46,7 @@ namespace QAMS.Admin.Services
                         userGroupData.createdDate = DatatypeConverter.SetDateTime(row[UserGroupConstants.CreatedDate.TrimAt()]);
                         userGroupData.modifiedBy = Convert.ToString(row[UserGroupConstants.ModifiedBy.TrimAt()]);
                         userGroupData.modifiedDate = DatatypeConverter.SetDateTime(row[UserGroupConstants.ModifiedDate.TrimAt()]);  
-                        //userGroupData.UserMapping = JsonConvert.DeserializeObject<UserMapping>(Convert.ToString(row["userMetadata"]));
+                        userGroupData.selectedUsers = Convert.ToString(row[UserGroupConstants.userMetadata.TrimAt()]);
                         result.Add(userGroupData);
                     }
                 }

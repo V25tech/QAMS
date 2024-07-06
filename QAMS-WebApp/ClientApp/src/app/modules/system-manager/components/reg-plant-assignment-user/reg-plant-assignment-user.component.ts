@@ -16,19 +16,20 @@ import { PlantAssignmentUsers } from 'src/app/models/plantAssignmentUsers.model'
   providers: [MessageService]
 })
 export class RegPlantAssignmentUserComponent {
-  modifyUserForm!: FormGroup;
+  
   plantUserForm!: FormGroup;
   sourceProducts!: Product[];
   targetProducts!: Product[];
   editUserValue: RegModifyUser; 
   userReg: RegModifyUser;
   id: number;
+  plantIds:string;
   editCCValue: PlantAssignmentUsers;  
 
   constructor(private fb: FormBuilder,private router: Router,protected messageService:MessageService,
     private PlantAssignmentUsersService: PlantAssignmentUsersService,private PlantListService: PlantListService,private route: ActivatedRoute, private modifyUserService: ModifyUserService, private cdr: ChangeDetectorRef) { }
   ngOnInit() :void {
-    this.BuildEquipForm();
+    this.BuildplantForm();
       this.cdr.detectChanges();
       this.route.queryParams.subscribe(params => {
         this.id = Number.parseInt(params['Id']);
@@ -39,19 +40,16 @@ export class RegPlantAssignmentUserComponent {
 
     
     debugger;
-  //   this.PlantAssignmentUsersService.getProductsSmall().then(products => {
-  //     this.sourceProducts = products;
-  //     this.cdr.markForCheck();
-  // });
+
   this.PlantListService.getplantData().subscribe((data: any) => {
     debugger
     this.sourceProducts = data.response;
     this.cdr.markForCheck();
   }); 
   this.targetProducts = [];
-    this.plantUserForm = this.fb.group({
-      remarks: ['', Validators.required],
-    });
+    // this.plantUserForm = this.fb.group({
+    //   targetProducts: ['', Validators.required],
+    // });
 
     this.cdr.detectChanges();
     this.route.queryParams.subscribe(params => {
@@ -69,21 +67,13 @@ cancelClick(){
   this.router.navigateByUrl('/users');
 }
 
-saveControlChange(ccValue: PlantAssignmentUsers) {
-  //  this.PlantAssignmentUsersService.insertPlantAssignmentData(ccValue).subscribe((data: any) => {
-  //    console.log('Form submitted!', ccValue);
-  //    this.messageService.add({ severity: 'success', summary: 'Plant user Registration Saved Successfull', detail: 'Message Content' });
-  //   setTimeout(() => {
-  //      this.backToPlantUsers();
-  //   }, 1000);
-  //  });    
-}
+
 
 updateControlChange(userValue: RegModifyUser) {
   console.log(JSON.stringify(userValue))
   this.modifyUserService.updateUserDetails(this.editUserValue).subscribe(res => {
     console.log(res);
-    //this.backToUser();
+    
   }, er => console.log(er));
 }
 
@@ -99,48 +89,39 @@ GetUserDetailsbyId(id:number)
         let userValue: RegModifyUser = res; //JSON.parse(ccValueStr) ?? null;
         this.editUserValue = userValue;
         if (userValue) {
-          this.modifyUserForm.patchValue(userValue);
+          //this.sourceProducts.patchValue(userValue);
         }
       }, er => console.log(er));    
     }
 
-    BuildEquipForm(){
+    BuildplantForm(){
         this.plantUserForm = this.fb.group({
-          remarks: ['', Validators.required],       
+          userid:['',Validators.required],
+          username:['',Validators.required]
+         // plantid:['', Validators.required]         
       });
     }
-    
+    getProductIds(): string {
+      // Extract IDs using map and join them with comma
+      return this.targetProducts.map(product => product.id).join(',');
+    }
+     
 regPlantUser() 
 {  
-  if (this.modifyUserForm.invalid) {
+  debugger;
+  if (this.plantUserForm.invalid) {
     this.messageService.add({ severity: 'error', summary: 'Form is invalid!', detail: 'Message Content' });
     return; // Prevent form submission
   } else {
     const RegModifyUserInfo: RegModifyUser = {
-      userId: this.modifyUserForm.value.userId,
-      roleid: this.modifyUserForm.value.role,
-      departmentid: this.modifyUserForm.value.department,
-      employeeId: this.modifyUserForm.value.employeeId,
-      email: this.modifyUserForm.value.email
+      userId: this.plantUserForm.value.userId,
+      username:this.plantUserForm.value.username,
+      plantid:this.getProductIds()
+    
     };   
     this.updateControlChange(RegModifyUserInfo);     
   }
 }
-    //   this.messageService.add({ severity: 'success', summary: ' Plant Assignment is Successfully Registrated', detail: 'Message Content' });
-    // }
-  
-    // updateControlChange(userValue: RegModifyUser) {
-    //   console.log(JSON.stringify(userValue))
-    //   this.modifyUserService.updateUserDetails(this.editUserValue).subscribe(res => {
-    //     console.log(res);
-    //     //this.backToUser();
-    //   }, er => console.log(er));
-    // }
- 
-  
-
-  // backToPlantUsers(){
-  //   this.router.navigateByUrl('/plant-assignment-users');
-  // }
+   
 
 }

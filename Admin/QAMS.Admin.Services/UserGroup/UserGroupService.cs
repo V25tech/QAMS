@@ -72,7 +72,7 @@ namespace QAMS.Admin.Services
                 userGroup.createdBy = "admin";
                 userGroup.modifiedBy= "admin";
                 userGroup.roles = "Admin";
-                userGroup.userMetdata = GetSelectedUsers(userGroup.selectedUsers);               
+                userGroup.userMetdata = userGroup.selectedUsers;//GetSelectedUsers(userGroup.selectedUsers);               
                 String validationMessages = UserGroupValidator.IsValidUserGroup(userGroup);
                 if (validationMessages.Length <= 0)
                 {

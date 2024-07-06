@@ -47,7 +47,7 @@ namespace QAMS.Admin.Entities
 
         public string remarks { get; set; }
 
-        public List<User> selectedUsers { get; set; }
+        public string selectedUsers { get; set; }
 
         //public UserMapping UserMapping { get; set; }
         public string userMetdata { get; set; }

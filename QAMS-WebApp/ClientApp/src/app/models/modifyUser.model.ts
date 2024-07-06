@@ -10,12 +10,13 @@ export interface ModifyUser{
 export interface RegModifyUser{
     firstname?:string;
     lastname?:string;
-  
+    username?:string;
     userId?:string,
     roleid?:string,
     category?:string,
     departmentid?:string,
     employeeId?:string,
-    email?:string
+    email?:string,
+    plantid?:string
 
 }

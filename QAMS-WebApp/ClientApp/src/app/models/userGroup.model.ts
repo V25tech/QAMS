@@ -16,5 +16,5 @@ export interface RegUserGroup{
     name?:string,
     code?:string,
     remarks?:string,
-    selectedUsers?:ModifyUser[]
+    selectedUsers?:string
 }
