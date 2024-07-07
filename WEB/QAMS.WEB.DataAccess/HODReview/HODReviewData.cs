@@ -105,16 +105,10 @@ namespace QAMS.Sheet1.Data
             {
                 List<SqlParameter> sqlparms = new List<SqlParameter>();
                 sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = HODReviewConstants.HodId, Value = hODReview.HodId });
-                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = HODReviewConstants.InitiativeId, Value = hODReview.InitiativeId });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = HODReviewConstants.InitiativeName, Value = hODReview.InitiativeName });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Boolean, ParameterName = HODReviewConstants.IsSave, Value = hODReview.IsSave });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = HODReviewConstants.Comments, Value = hODReview.Comments });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = HODReviewConstants.Status, Value = hODReview.Status });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = HODReviewConstants.UpdatedBy, Value = hODReview.UpdatedBy });
-                sqlparms.Add(new SqlParameter { DbType = DbType.DateTime, ParameterName = HODReviewConstants.UpdatedDate, Value = hODReview.UpdatedDate });
-                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = HODReviewConstants.Plant, Value = hODReview.Plant });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = HODReviewConstants.HODDocument, Value = hODReview.HODDocument });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = HODReviewConstants.ModifiedBy, Value = hODReview.ModifiedBy });
                 Object result = dataAccessHelper.ExecuteStoredProcedure(HODReviewConstants.USP_HODReview_PSY_UPDATE, sqlparms, ExecutionType.Scalar);
                 return (Convert.ToInt32(result) > 0);
             }
