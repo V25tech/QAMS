@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[HODReview_PSY] (
     [InitiativeId_PSY]   INT            NULL,
     [InitiativeName_PSY] NVARCHAR (200) NULL,
-    [IsSave_PSY]         NVARCHAR (1)   NULL,
+    [IsSave_PSY]         BIT   NULL,
     [Comments_PSY]       NVARCHAR (500) NULL,
     [Status_PSY]         NVARCHAR (100) NULL,
     [CreatedBy_PSY]      INT            NULL,

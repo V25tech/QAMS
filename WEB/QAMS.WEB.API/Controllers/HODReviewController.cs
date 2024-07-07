@@ -59,7 +59,18 @@ namespace QAMS.Controllers
             var result = hODReviewService.GetHODReviewByHodId(hodId);
             return result;
         }
-        
+
+        /// <summary>
+        /// This method is used to Get HODReview By Id hodId
+        /// </summary>
+        /// <param name="hodId"></param>
+        [HttpGet("{init}")]
+        public ActionResult<HODReview> GetHODReviewByInit(System.Int32? initId)
+        {
+            var result = hODReviewService.GetHODReviewByInit(initId);
+            return result;
+        }
+
         /// <summary>
         /// This Method is used to Save HODReview
         /// </summary>

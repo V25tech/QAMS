@@ -26,7 +26,9 @@ namespace QAMS.Sheet1.Services
         ResponseContext<HODReview> GetAllHODReview(RequestContext requestContext);
         
         HODReview GetHODReviewByHodId(System.Int32? hodId);
-        
+
+        HODReview GetHODReviewByInit(System.Int32? initId);
+
         bool SaveHODReview(HODReview hODReview);
         
         bool UpdateHODReview(HODReview hODReview);

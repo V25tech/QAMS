@@ -26,7 +26,9 @@ namespace QAMS.Sheet1.Data
         DataSet GetAllHODReview(RequestContext requestContext);
         
         DataSet GetHODReviewByHodId(System.Int32? hodId);
-        
+
+        DataSet GetHODReviewByInit(System.Int32? initId);
+
         bool SaveHODReview(HODReview hODReview);
         
         bool UpdateHODReview(HODReview hODReview);

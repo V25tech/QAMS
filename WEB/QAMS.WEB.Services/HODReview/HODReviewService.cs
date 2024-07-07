@@ -63,7 +63,20 @@ namespace QAMS.Sheet1.Services
                 throw;
             }
         }
-        
+        public HODReview GetHODReviewByInit(System.Int32? initId)
+        {
+            try
+            {
+                DataSet dataset = hODReviewData.GetHODReviewByInit(initId);
+                HODReview result = HODReviewConverter.SetHODReview(dataset);
+                return result;
+            }
+            catch (System.Exception ex)
+            {
+                throw;
+            }
+        }
+
         public bool SaveHODReview(HODReview hODReview)
         {
             try
