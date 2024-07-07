@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[ActionPlanReview]
 (
-	[Id] INT NOT NULL PRIMARY KEY,
+	[APId] INT NOT NULL PRIMARY KEY IDENTITY,
 	[InitiativeId] INT NULL, 
     [InitiativeName] VARCHAR(200) NULL, 
     [IsSave] BIT NULL, 

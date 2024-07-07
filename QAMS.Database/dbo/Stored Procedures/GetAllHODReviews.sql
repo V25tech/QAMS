@@ -2,7 +2,7 @@
 AS
 BEGIN
     SELECT 
-        Id,
+        HodId,
         InitiativeId,
         InitiativeName,
         IsSave,

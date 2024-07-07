@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[QAReview]
 (
-	[Id] INT NOT NULL PRIMARY KEY,
+	[QAId] INT NOT NULL PRIMARY KEY IDENTITY,
 	[InitiativeId] INT NULL, 
     [InitiativeName] VARCHAR(200) NULL, 
     [IsSave] BIT NULL, 

@@ -14,7 +14,7 @@ BEGIN
         UpdatedBy = @UpdatedBy,
         UpdatedDate = GETDATE()
     WHERE
-        Id = @HodId;
+        HodId = @HodId;
 
         SELECT @HodId;
 END;
