@@ -171,4 +171,117 @@ namespace QAMS.WEB.Entities
             }
         }
     }
+    public class QAReview
+    {
+        public bool ClassificationOfChange { get; set; }
+        public bool ImpactOnProcFormats { get; set; }
+        public string ProcedureFormat { get; set; }
+        public bool IsRegularCustomer { get; set; }
+        public string ImpactCommitment { get; set; }
+        public string ReviewComments { get; set; }
+        public int InitiativeId { get; set; }
+        public string InitiativeName { get; set; }
+        public bool IsSave { get; set; }
+        public string Status { get; set; }
+        public int CreatedBy { get; set; }
+        public int UpdatedBy { get; set; }
+        public string CreatedDate { get; set; }
+        public string UpdatedDate { get; set; }
+        public int Plant { get; set; }
+    }
+
+    public  class CFTReview
+    {
+        public int InitiativeId { get; set; }
+        public string InitiativeName { get; set; }
+        public bool IsSave { get; set; }
+        public bool IsProposedChange { get; set; }
+        public string Remarks { get; set; }
+        public string Status { get; set; }
+        public int CreatedBy { get; set; }
+        public int UpdatedBy { get; set; }
+        public string CreatedDate { get; set; }
+        public string UpdatedDate { get; set; }
+         public int Plant { get; set; }
+    }
+    public class HODReview
+    {
+        public int InitiativeId { get; set; }
+        public string InitiativeName { get; set; }
+        public bool IsSave { get; set; }
+        public string Comments { get; set; }
+        public string Status { get; set; }
+        public int CreatedBy { get; set; }
+        public int UpdatedBy { get; set; }
+        public string CreatedDate { get; set; }
+        public string UpdatedDate { get; set; }
+        public int Plant { get; set; }
+    }
+    public class CustomerNotification
+    {
+        public int InitiativeId { get; set; }
+        public string InitiativeName { get; set; }
+        public bool IsSave { get; set; }
+        public string Comments { get; set; }
+        public bool IsProposedChanges { get; set; }
+        public string Remarks { get; set; }
+        public string Status { get; set; }
+        public int CreatedBy { get; set; }
+        public int UpdatedBy { get; set; }
+        public string CreatedDate { get; set; }
+        public string UpdatedDate { get; set; }
+        public int Plant { get; set; }
+    }
+    public class QADecision
+    {
+        public string Comments { get; set; }
+        public int InitiativeId { get; set; }
+        public string InitiativeName { get; set; }
+        public bool IsSave { get; set; }
+        public bool IsReviewedActions { get; set; }
+        public string Remarks { get; set; }
+        public string Status { get; set; }
+        public int CreatedBy { get; set; }
+        public int UpdatedBy { get; set; }
+        public string CreatedDate { get; set; }
+        public string UpdatedDate { get; set; }
+        public int Plant { get; set; }
+    }
+    public class ActionPlanReview
+    {
+        public int InitiativeId { get; set; }
+        public string InitiativeName { get; set; }
+        public bool IsSave { get; set; }
+
+        public string Comments { get; set; }
+        public string ActionPlanReviewComments { get; set; }
+        public bool Decision { get; set; } // Approve-true, Return-false
+        public string Remarks { get; set; }
+        public string Status { get; set; }
+        public int CreatedBy { get; set; }
+        public int UpdatedBy { get; set; }
+        public string CreatedDate { get; set; }
+        public string UpdatedDate { get; set; }
+        public int Plant { get; set; }
+    }
+
+    public class Closure
+    {
+        public int InitiativeId { get; set; }
+        public string InitiativeName { get; set; }
+        public bool IsSave { get; set; }
+        public bool IsAllDocumentsApprovedEff { get; set; }
+        public bool TrainingCompleted { get; set; }
+        public bool IsApprovedChangesEff { get; set; }
+        public bool IsIdentifiedActions { get; set; }
+        public string Decision { get; set; }
+        public string ImplementEffChanges { get; set; }
+        public string Status { get; set; }
+        public int CreatedBy { get; set; }
+        public int UpdatedBy { get; set; }
+        public string CreatedDate { get; set; }
+        public string UpdatedDate { get; set; }
+        public int Plant { get; set; }
+
+    }
 }
