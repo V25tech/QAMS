@@ -275,6 +275,13 @@
     <Build Include="dbo\Stored Procedures\USP_ActionPlanReview_PSY_GET.sql" />
     <Build Include="dbo\Stored Procedures\USP_ActionPlanReview_PSY_DELETE_ALL.sql" />
     <Build Include="dbo\Stored Procedures\USP_ActionPlanReview_PSY_DELETE.sql" />
+    <Build Include="dbo\Stored Procedures\USP_QAReview_PSY_UPDATE.sql" />
+    <Build Include="dbo\Stored Procedures\USP_QADecision_PSY_UPDATE.sql" />
+    <Build Include="dbo\Stored Procedures\USP_HODReview_PSY_UPDATE.sql" />
+    <Build Include="dbo\Stored Procedures\USP_CustomerNotification_PSY_UPDATE.sql" />
+    <Build Include="dbo\Stored Procedures\USP_Closure_PSY_UPDATE.sql" />
+    <Build Include="dbo\Stored Procedures\USP_CFTReview_PSY_UPDATE.sql" />
+    <Build Include="dbo\Stored Procedures\USP_ActionPlanReview_PSY_UPDATE.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="QAMS.Database.refactorlog" />
