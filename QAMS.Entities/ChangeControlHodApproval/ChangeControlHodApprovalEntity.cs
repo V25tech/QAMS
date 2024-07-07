@@ -206,7 +206,6 @@ namespace QAMS.WEB.Entities
     }
     public class HODReview
     {
-        public int HodId { get; set; }
         public int InitiativeId { get; set; }
         public string InitiativeName { get; set; }
         public bool IsSave { get; set; }

@@ -133,46 +133,4 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="WorkflowName" />
   </Operation>
-  <Operation Name="Rename Refactor" Key="994f9f42-c050-4738-9717-642d256a5b72" ChangeDateTime="07/07/2024 13:33:53">
-    <Property Name="ElementName" Value="[dbo].[HODReview].[Id]" />
-    <Property Name="ElementType" Value="SqlSimpleColumn" />
-    <Property Name="ParentElementName" Value="[dbo].[HODReview]" />
-    <Property Name="ParentElementType" Value="SqlTable" />
-    <Property Name="NewName" Value="HodId" />
-  </Operation>
-  <Operation Name="Rename Refactor" Key="105f7705-c592-4f60-94ba-fe35d1c52b59" ChangeDateTime="07/07/2024 13:34:36">
-    <Property Name="ElementName" Value="[dbo].[QAReview].[Id]" />
-    <Property Name="ElementType" Value="SqlSimpleColumn" />
-    <Property Name="ParentElementName" Value="[dbo].[QAReview]" />
-    <Property Name="ParentElementType" Value="SqlTable" />
-    <Property Name="NewName" Value="QAId" />
-  </Operation>
-  <Operation Name="Rename Refactor" Key="f30c7bb4-28d7-4bc1-895b-446647890d69" ChangeDateTime="07/07/2024 13:35:26">
-    <Property Name="ElementName" Value="[dbo].[CFTReview].[Id]" />
-    <Property Name="ElementType" Value="SqlSimpleColumn" />
-    <Property Name="ParentElementName" Value="[dbo].[CFTReview]" />
-    <Property Name="ParentElementType" Value="SqlTable" />
-    <Property Name="NewName" Value="CFTId" />
-  </Operation>
-  <Operation Name="Rename Refactor" Key="5d3a3363-c836-431b-aa18-a821d3027d04" ChangeDateTime="07/07/2024 13:36:59">
-    <Property Name="ElementName" Value="[dbo].[QADecision].[Id]" />
-    <Property Name="ElementType" Value="SqlSimpleColumn" />
-    <Property Name="ParentElementName" Value="[dbo].[QADecision]" />
-    <Property Name="ParentElementType" Value="SqlTable" />
-    <Property Name="NewName" Value="QADId" />
-  </Operation>
-  <Operation Name="Rename Refactor" Key="46636779-af1b-45b0-82eb-5420469832bc" ChangeDateTime="07/07/2024 13:38:03">
-    <Property Name="ElementName" Value="[dbo].[CustomerNotification].[Id]" />
-    <Property Name="ElementType" Value="SqlSimpleColumn" />
-    <Property Name="ParentElementName" Value="[dbo].[CustomerNotification]" />
-    <Property Name="ParentElementType" Value="SqlTable" />
-    <Property Name="NewName" Value="CNId" />
-  </Operation>
-  <Operation Name="Rename Refactor" Key="ee5153a7-1977-42b0-84de-4a7d89a62fa5" ChangeDateTime="07/07/2024 13:38:43">
-    <Property Name="ElementName" Value="[dbo].[ActionPlanReview].[Id]" />
-    <Property Name="ElementType" Value="SqlSimpleColumn" />
-    <Property Name="ParentElementName" Value="[dbo].[ActionPlanReview]" />
-    <Property Name="ParentElementType" Value="SqlTable" />
-    <Property Name="NewName" Value="APId" />
-  </Operation>
 </Operations>

@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[HODReview]
 (
-	[HodId] INT NOT NULL PRIMARY KEY IDENTITY, 
+	[Id] INT NOT NULL PRIMARY KEY, 
     [InitiativeId] INT NULL, 
     [InitiativeName] VARCHAR(200) NULL, 
     [IsSave] BIT NULL, 

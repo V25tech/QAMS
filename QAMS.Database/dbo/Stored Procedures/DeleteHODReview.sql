@@ -3,5 +3,5 @@
 AS
 BEGIN
     DELETE FROM HODReview
-    WHERE HodId = @HodId;
+    WHERE Id = @HodId;
 END;

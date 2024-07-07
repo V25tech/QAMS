@@ -3,7 +3,7 @@
 AS
 BEGIN
     SELECT 
-        HodId,
+        Id,
         InitiativeId,
         InitiativeName,
         IsSave,
@@ -17,5 +17,5 @@ BEGIN
     FROM 
         HODReview
     WHERE 
-        HodId = @HodId;
+        Id = @HodId;
 END;
