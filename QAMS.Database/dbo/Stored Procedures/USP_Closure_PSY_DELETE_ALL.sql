@@ -1,0 +1,10 @@
+﻿  CREATE PROCEDURE [dbo].[USP_Closure_PSY_DELETE_ALL] @CId_PSY nvarchar(max)  
+ AS 
+ BEGIN 
+  BEGIN TRY 
+ DELETE FROM [dbo].[Closure_PSY] WHERE [CId_PSY] IN (select value from STRING_SPLIT(@CId_PSY, ',')) 
+  END TRY 
+ BEGIN CATCH 
+ SELECT ERROR_MESSAGE(); 
+ END CATCH 
+ END

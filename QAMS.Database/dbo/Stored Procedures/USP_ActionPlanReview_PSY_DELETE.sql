@@ -1,0 +1,10 @@
+﻿  CREATE PROCEDURE [dbo].[USP_ActionPlanReview_PSY_DELETE] @APId_PSY int 
+ AS 
+ BEGIN 
+  BEGIN TRY 
+ DELETE FROM [dbo].[ActionPlanReview_PSY]  WHERE [APId_PSY] IN (@APId_PSY) 
+  END TRY 
+ BEGIN CATCH 
+ SELECT ERROR_MESSAGE(); 
+ END CATCH 
+ END
