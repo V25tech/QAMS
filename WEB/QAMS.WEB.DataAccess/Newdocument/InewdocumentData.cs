@@ -12,9 +12,9 @@ namespace QAMS.WEB.Data
         
         DataSet GetNewdocumentBynd(System.Int32? nd);
         
-        bool SaveNewdocument(NewDocument newdocument);
+        bool SaveNewdocument(Document Document);
         
-        bool UpdateNewdocument(NewDocument newdocument);
+        bool UpdateNewdocument(Document Document);
         
         bool DeleteNewdocumentBynd(System.Int32? nd);
         

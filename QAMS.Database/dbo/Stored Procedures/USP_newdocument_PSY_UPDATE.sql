@@ -9,7 +9,7 @@
  UPDATE [dbo].[newdocument_PSY] SET title_PSY=@title_PSY,
 description_PSY=@description_PSY,
 uploadfile_PSY=@uploadfile_PSY,
-ModifiedBy_PSY=@ModifiedBy_PSY WHERE  [nd_PSY] = @nd_PSY ;  select @nd_PSY; 
+ModifiedBy_PSY=@ModifiedBy_PSY WHERE  newId_PSY = @nd_PSY ;  select @nd_PSY; 
   
   END TRY 
  BEGIN CATCH 

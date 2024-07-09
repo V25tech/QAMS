@@ -25,13 +25,13 @@ namespace QAMS.WEB.Services
             this.newdocumentData = newdocumentData;
         }
         
-        public ResponseContext<NewDocument> GetAllNewdocument(RequestContext requestContext)
+        public ResponseContext<Document> GetAllNewdocument(RequestContext requestContext)
         {
             try
             {
                 DataSet dataset = newdocumentData.GetAllNewdocument(requestContext);
-                List<NewDocument> result = newdocumentConverter.SetAllnewdocument(dataset);
-                return new ResponseContext<NewDocument>() { RowCount = CommonConverter.SetRowsCount(dataset), Response = result };
+                List<Document> result = newdocumentConverter.SetAllnewdocument(dataset);
+                return new ResponseContext<Document>() { RowCount = CommonConverter.SetRowsCount(dataset), Response = result };
             }
             catch (System.Exception)
             {
@@ -39,12 +39,12 @@ namespace QAMS.WEB.Services
             }
         }
         
-        public NewDocument GetNewdocumentBynd(int? nd)
+        public Document GetNewdocumentBynd(int? nd)
         {
             try
             {
                 DataSet dataset = newdocumentData.GetNewdocumentBynd(nd);
-                NewDocument result = newdocumentConverter.Setnewdocument(dataset);
+                Document result = newdocumentConverter.Setnewdocument(dataset);
                 return result;
             }
             catch (System.Exception)
@@ -53,7 +53,7 @@ namespace QAMS.WEB.Services
             }
         }
         
-        public bool SaveNewdocument(NewDocument newdocument)
+        public bool SaveNewdocument(Document newdocument)
         {
             try
             {
@@ -71,7 +71,7 @@ namespace QAMS.WEB.Services
             }
         }
         
-        public bool UpdateNewdocument(NewDocument newdocument)
+        public bool UpdateNewdocument(Document newdocument)
         {
             try
             {

@@ -2,7 +2,7 @@
  AS 
  BEGIN 
  BEGIN TRY 
- SELECT nd_PSY,
+ SELECT newId_PSY,
 title_PSY,
 description_PSY,
 uploadfile_PSY,
@@ -12,7 +12,7 @@ ModifiedBy_PSY,
 ModifiedDate_PSY  
  ,count(*) over() as TotalRows 
  FROM [dbo].[newdocument_PSY] WITH (NOLOCK) 
- Order by [nd_PSY]  
+ Order by newId_PSY  
  OFFSET @PageSize * (@PageNumber - 1) ROWS 
   FETCH NEXT @PageSize ROWS ONLY; 
   END TRY 

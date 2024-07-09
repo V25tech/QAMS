@@ -11,7 +11,7 @@ namespace QAMS.WEB.Services
     public static class newdocumentValidator
     {
 
-        public static string IsValidnewdocument(NewDocument newdocument)
+        public static string IsValidnewdocument(Document newdocument)
         {
             try
             {
@@ -21,8 +21,8 @@ namespace QAMS.WEB.Services
                 validationMessages.Append(validationHelper.LengthCheckValidator(newdocument.title, 150, nameof(newdocument.title)));
                 validationMessages.Append(validationHelper.NullCheckValidator(newdocument.description, nameof(newdocument.description)));
                 validationMessages.Append(validationHelper.LengthCheckValidator(newdocument.description, 150, nameof(newdocument.description)));
-                validationMessages.Append(validationHelper.NullCheckValidator(newdocument.uploadfile, nameof(newdocument.uploadfile)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(newdocument.uploadfile, 150, nameof(newdocument.uploadfile)));
+                validationMessages.Append(validationHelper.NullCheckValidator(newdocument.uploadfileName, nameof(newdocument.uploadfileName)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(newdocument.uploadfileName, 150, nameof(newdocument.uploadfileName)));
                 validationMessages.Append(validationHelper.LengthCheckValidator(newdocument.CreatedBy, 100, nameof(newdocument.CreatedBy)));
                 validationMessages.Append(validationHelper.LengthCheckValidator(newdocument.ModifiedBy, 100, nameof(newdocument.ModifiedBy)));
                 if (!String.IsNullOrEmpty(validationMessages.ToString()))

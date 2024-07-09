@@ -13,22 +13,22 @@ namespace QAMS.WEB.Services
     public static class newdocumentConverter
     {
         
-        public static List<NewDocument> SetAllnewdocument(DataSet dataset)
+        public static List<Document> SetAllnewdocument(DataSet dataset)
         {
             try
             {
-                List<NewDocument> result = new List<NewDocument>();
-                NewDocument newdocumentData;
+                List<Document> result = new List<Document>();
+                Document newdocumentData;
                 if (dataset != null && dataset.Tables.Count > 0 && dataset.Tables[0].Rows.Count > 0)
                 {
                     for (int i = 0; (i < dataset.Tables[0].Rows.Count); i++)
                     {
                         DataRow row = dataset.Tables[0].Rows[i];
-                        newdocumentData = new NewDocument();
-                        newdocumentData.nd = DatatypeConverter.SetIntValue(row[NewDocumentConstants.nd.TrimAt()]);
+                        newdocumentData = new Document();
+                        newdocumentData.NewId = DatatypeConverter.SetIntValue(row[NewDocumentConstants.nd.TrimAt()]).Value;
                         newdocumentData.title = Convert.ToString(row[NewDocumentConstants.title.TrimAt()]);
                         newdocumentData.description = Convert.ToString(row[NewDocumentConstants.description.TrimAt()]);
-                        newdocumentData.uploadfile = Convert.ToString(row[NewDocumentConstants.uploadfile.TrimAt()]);
+                        newdocumentData.uploadfileName = Convert.ToString(row[NewDocumentConstants.uploadfile.TrimAt()]);
                         newdocumentData.CreatedBy = Convert.ToString(row[NewDocumentConstants.CreatedBy.TrimAt()]);
                         newdocumentData.CreatedDate = DatatypeConverter.SetDateTime(row[NewDocumentConstants.CreatedDate.TrimAt()]);
                         newdocumentData.ModifiedBy = Convert.ToString(row[NewDocumentConstants.ModifiedBy.TrimAt()]);
@@ -44,7 +44,7 @@ namespace QAMS.WEB.Services
             }
         }
         
-        public static NewDocument Setnewdocument(DataSet dataset)
+        public static Document Setnewdocument(DataSet dataset)
         {
             var result = SetAllnewdocument(dataset);
             if (result.Count > 0)

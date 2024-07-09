@@ -133,4 +133,11 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="WorkflowName" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="27f28239-2fb2-4b07-a0f8-043c6e436220" ChangeDateTime="07/09/2024 14:49:10">
+    <Property Name="ElementName" Value="[dbo].[newdocument_PSY].[nd_PSY]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[newdocument_PSY]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="newId_PSY" />
+  </Operation>
 </Operations>

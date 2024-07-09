@@ -2,15 +2,16 @@
  AS 
  BEGIN 
  BEGIN TRY 
-  SELECT nd_PSY,
+  SELECT newId_PSY,
 title_PSY,
 description_PSY,
 uploadfile_PSY,
 CreatedBy_PSY,
 CreatedDate_PSY,
 ModifiedBy_PSY,
-ModifiedDate_PSY 
-  FROM [dbo].[newdocument_PSY] WITH (NOLOCK) where [nd_PSY] = @nd_PSY   
+ModifiedDate_PSY,InitiativeType 
+  FROM [dbo].[newdocument_PSY] WITH (NOLOCK) 
+  where newId_PSY = @nd_PSY   
  END TRY 
  BEGIN CATCH 
   SELECT ERROR_MESSAGE(); 

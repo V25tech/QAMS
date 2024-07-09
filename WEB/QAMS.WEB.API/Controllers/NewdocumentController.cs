@@ -35,7 +35,7 @@ namespace QAMS.WEB.API.Controllers
         /// </summary>
         /// <param name="requestContext"></param>
         [HttpPost()]
-        public ActionResult<ResponseContext<NewDocument>> GetAllnewdocument(RequestContext requestContext)
+        public ActionResult<ResponseContext<Document>> GetAllnewdocument(RequestContext requestContext)
         {
             var result = newdocumentService.GetAllNewdocument(requestContext);
             return result;
@@ -46,7 +46,7 @@ namespace QAMS.WEB.API.Controllers
         /// </summary>
         /// <param name="nd"></param>
         [HttpGet("{nd}")]
-        public ActionResult<NewDocument> GetnewdocumentBynd(System.Int32? nd)
+        public ActionResult<Document> GetnewdocumentBynd(System.Int32? nd)
         {
             var result = newdocumentService.GetNewdocumentBynd(nd);
             return result;
@@ -114,7 +114,7 @@ namespace QAMS.WEB.API.Controllers
                 }
 
                 // Handle saving new document details
-                var result = newdocumentService.SaveNewdocument(new NewDocument());
+                var result = newdocumentService.SaveNewdocument(newDocument);
 
                 if (!result)
                 {
@@ -136,7 +136,7 @@ namespace QAMS.WEB.API.Controllers
         /// </summary>
         /// <param name="newdocument"></param>
         [HttpPost("updatenewdocument")]
-        public ActionResult<bool> UpdateNewdocument(NewDocument newdocument)
+        public ActionResult<bool> UpdateNewdocument(Document newdocument)
         {
             var result = newdocumentService.UpdateNewdocument(newdocument);
             return result;

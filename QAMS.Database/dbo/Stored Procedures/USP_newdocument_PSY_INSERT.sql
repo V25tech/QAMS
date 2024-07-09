@@ -3,7 +3,8 @@
 @uploadfile_PSY NVarChar(150),
 @CreatedBy_PSY NVarChar(100),
 @ModifiedBy_PSY NVarChar(100),
-@ParentId_PSY int
+@ParentId_PSY int,
+@InitiativeType varchar(250)
  AS 
  BEGIN 
   BEGIN TRY 
@@ -16,7 +17,7 @@ uploadfile_PSY,
 CreatedBy_PSY,
 CreatedDate_PSY,
 ModifiedBy_PSY,
-ModifiedDate_PSY,ParentControlId_PSY)
+ModifiedDate_PSY,ParentControlId_PSY,InitiativeType)
  VALUES 
 (@title_PSY,
 @description_PSY,
@@ -24,7 +25,7 @@ ModifiedDate_PSY,ParentControlId_PSY)
 @CreatedBy_PSY,
  GetDate() ,
 @ModifiedBy_PSY,
- GetDate(),@ParentId_PSY );
+ GetDate(),@ParentId_PSY,@InitiativeType );
  SELECT @ID = @@IDENTITY; 
  select @ID 
   

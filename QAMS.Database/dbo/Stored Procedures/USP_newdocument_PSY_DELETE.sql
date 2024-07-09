@@ -2,7 +2,7 @@
  AS 
  BEGIN 
   BEGIN TRY 
- DELETE FROM [dbo].[newdocument_PSY]  WHERE [nd_PSY] IN (@nd_PSY) 
+ DELETE FROM [dbo].[newdocument_PSY]  WHERE newId_PSY IN (@nd_PSY) 
   END TRY 
  BEGIN CATCH 
  SELECT ERROR_MESSAGE(); 

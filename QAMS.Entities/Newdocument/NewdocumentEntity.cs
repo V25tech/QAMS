@@ -41,6 +41,8 @@ namespace QAMS.Admin.Entities
         public int ModifiedById { get { return Convert.ToInt32(this.ModifiedBy); } }
 
         public DateTime? ModifiedDate { get; set; }
+
+        public int NewId { get; set; }
     }
 
 
