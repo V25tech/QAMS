@@ -11,7 +11,10 @@ namespace QAMS.WEB.Data
         DataSet GetAllNewdocument(RequestContext requestContext);
         
         DataSet GetNewdocumentBynd(System.Int32? nd);
-        
+
+        DataSet GetNewdocumentByParent(int? p_parentId, string p_Type);
+
+
         bool SaveNewdocument(Document Document);
         
         bool UpdateNewdocument(Document Document);

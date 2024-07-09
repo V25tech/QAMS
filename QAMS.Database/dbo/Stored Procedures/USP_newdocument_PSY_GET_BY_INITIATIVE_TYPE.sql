@@ -11,7 +11,7 @@ uploadfile_PSY,
 CreatedBy_PSY,
 CreatedDate_PSY,
 ModifiedBy_PSY,
-ModifiedDate_PSY,InitiativeType,ParentControlId_PSY 
+ModifiedDate_PSY,InitiativeType,ParentControlId_PSY,uploadfile_PSY 
   FROM [dbo].[newdocument_PSY] WITH (NOLOCK) 
   where ParentControlId_PSY=@PARENT_ID AND InitiativeType=@INIT_TYPE
  END TRY 

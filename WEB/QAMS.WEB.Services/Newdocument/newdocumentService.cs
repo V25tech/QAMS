@@ -38,7 +38,21 @@ namespace QAMS.WEB.Services
                 throw;
             }
         }
-        
+
+        public Document GetNewdocumentByParent(int? p_parentId, string p_Type)
+        {
+            try
+            {
+                DataSet dataset = newdocumentData.GetNewdocumentByParent(p_parentId, p_Type);
+                Document result = newdocumentConverter.Setnewdocument(dataset);
+                return result;
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+        }
+
         public Document GetNewdocumentBynd(int? nd)
         {
             try

@@ -3,6 +3,7 @@
 namespace QAMS.Services
 {
     using System.Collections.Generic;
+    using System.Data;
     using QAMS.Admin.Entities;
     using QAMS.Common.Entities;
 
@@ -14,7 +15,10 @@ namespace QAMS.Services
         ResponseContext<Document> GetAllNewdocument(RequestContext requestContext);
         
         Document GetNewdocumentBynd(int? nd);
-        
+
+        Document GetNewdocumentByParent(int? p_parentId, string p_Type);
+
+
         bool SaveNewdocument(Document newdocument);
         
         bool UpdateNewdocument(Document newdocument);

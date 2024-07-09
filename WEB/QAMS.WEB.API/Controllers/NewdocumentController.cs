@@ -52,6 +52,13 @@ namespace QAMS.WEB.API.Controllers
             return result;
         }
 
+        [HttpGet("getdocbyparent")]
+        public ActionResult<Document> GetNewdocumentByParent(int p_parentId, string p_Type)
+        {
+            var result = newdocumentService.GetNewdocumentByParent(p_parentId, p_Type);
+            return result;
+        }
+
         //[HttpPost("upload")]
         //public async Task<IActionResult> UploadFile(IFormFile file)
         //{

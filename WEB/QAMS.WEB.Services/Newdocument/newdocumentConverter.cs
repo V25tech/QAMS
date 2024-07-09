@@ -25,7 +25,7 @@ namespace QAMS.WEB.Services
                     {
                         DataRow row = dataset.Tables[0].Rows[i];
                         newdocumentData = new Document();
-                        newdocumentData.NewId = DatatypeConverter.SetIntValue(row[NewDocumentConstants.nd.TrimAt()]).Value;
+                        newdocumentData.NewId = DatatypeConverter.SetIntValue(row["newId_PSY"]).Value;
                         newdocumentData.title = Convert.ToString(row[NewDocumentConstants.title.TrimAt()]);
                         newdocumentData.description = Convert.ToString(row[NewDocumentConstants.description.TrimAt()]);
                         newdocumentData.uploadfileName = Convert.ToString(row[NewDocumentConstants.uploadfile.TrimAt()]);
@@ -33,6 +33,7 @@ namespace QAMS.WEB.Services
                         newdocumentData.CreatedDate = DatatypeConverter.SetDateTime(row[NewDocumentConstants.CreatedDate.TrimAt()]);
                         newdocumentData.ModifiedBy = Convert.ToString(row[NewDocumentConstants.ModifiedBy.TrimAt()]);
                         newdocumentData.ModifiedDate = DatatypeConverter.SetDateTime(row[NewDocumentConstants.ModifiedDate.TrimAt()]);
+                        newdocumentData.uploadfileName = row["uploadfile_PSY"].ToString();
                         result.Add(newdocumentData);
                     }
                 }

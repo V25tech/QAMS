@@ -52,7 +52,24 @@ namespace QAMS.WEB.Data
                 throw;
             }
         }
-        
+        public DataSet GetNewdocumentByParent(int? p_parentId,string p_Type)
+        {
+            try
+            {
+                List<SqlParameter> sqlparms = new()
+                {
+                    new SqlParameter { DbType = DbType.Int32, ParameterName = "@PARENT_ID", Value = p_parentId},
+                    new SqlParameter { DbType = DbType.String, ParameterName = "@INIT_TYPE", Value = p_Type }
+                };
+                DataSet dataset = (DataSet)dataAccessHelper.ExecuteStoredProcedure("dbo.USP_newdocument_PSY_GET_BY_INITIATIVE_TYPE", sqlparms, ExecutionType.Dataset);
+                return dataset;
+            }
+            catch (System.Exception)
+            {
+                throw;
+            }
+        }
+
         public bool SaveNewdocument(Document newdocument)
         {
             try
@@ -66,7 +83,8 @@ namespace QAMS.WEB.Data
                     new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.ModifiedBy, Value = newdocument.ModifiedBy },
                     //new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.Category, Value = newdocument.Category },
                     //new SqlParameter { DbType = DbType.Int16, ParameterName = NewDocumentConstants.CatId, Value = newdocument.CatId },
-                    new SqlParameter { DbType = DbType.Int16, ParameterName = "@ParentId_PSY", Value = newdocument.ParentControlId }
+                    new SqlParameter { DbType = DbType.Int16, ParameterName = "@ParentId_PSY", Value = newdocument.ParentControlId },
+                    new SqlParameter { DbType = DbType.String, ParameterName = "@InitiativeType", Value = newdocument.initiativeType }
                 };
                 Object result = dataAccessHelper.ExecuteStoredProcedure(NewDocumentConstants.USP_newdocument_PSY_INSERT, sqlparms, ExecutionType.Scalar);
                 return (Convert.ToInt32(result) > 0);
