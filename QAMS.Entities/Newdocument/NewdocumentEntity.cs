@@ -99,6 +99,7 @@ namespace QAMS.Admin.Entities
         {
             get; set;
         }
+        public string ParentType { get; set; }
 
     }
 }

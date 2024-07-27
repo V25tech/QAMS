@@ -25,13 +25,13 @@ namespace QAMS.WEB.Services
             this.newdocumentData = newdocumentData;
         }
         
-        public ResponseContext<Document> GetAllNewdocument(RequestContext requestContext)
+        public ResponseContext<NewDocument> GetAllNewdocument(RequestContext requestContext)
         {
             try
             {
                 DataSet dataset = newdocumentData.GetAllNewdocument(requestContext);
-                List<Document> result = newdocumentConverter.SetAllnewdocument(dataset);
-                return new ResponseContext<Document>() { RowCount = CommonConverter.SetRowsCount(dataset), Response = result };
+                List<NewDocument> result = newdocumentConverter.SetAllnewdocument(dataset);
+                return new ResponseContext<NewDocument>() { RowCount = CommonConverter.SetRowsCount(dataset), Response = result };
             }
             catch (System.Exception)
             {
@@ -39,12 +39,12 @@ namespace QAMS.WEB.Services
             }
         }
 
-        public Document GetNewdocumentByParent(int? p_parentId, string p_Type)
+        public List<NewDocument> GetNewdocumentByParent(int? p_parentId, string p_Type)
         {
             try
             {
                 DataSet dataset = newdocumentData.GetNewdocumentByParent(p_parentId, p_Type);
-                Document result = newdocumentConverter.Setnewdocument(dataset);
+                List<NewDocument> result = newdocumentConverter.SetnewdocumentParent(dataset);
                 return result;
             }
             catch (System.Exception)
@@ -53,12 +53,12 @@ namespace QAMS.WEB.Services
             }
         }
 
-        public Document GetNewdocumentBynd(int? nd)
+        public NewDocument GetNewdocumentBynd(int? nd)
         {
             try
             {
                 DataSet dataset = newdocumentData.GetNewdocumentBynd(nd);
-                Document result = newdocumentConverter.Setnewdocument(dataset);
+                NewDocument result = newdocumentConverter.Setnewdocument(dataset);
                 return result;
             }
             catch (System.Exception)
@@ -67,7 +67,7 @@ namespace QAMS.WEB.Services
             }
         }
         
-        public bool SaveNewdocument(Document newdocument)
+        public bool SaveNewdocument(NewDocument newdocument)
         {
             try
             {
@@ -85,7 +85,7 @@ namespace QAMS.WEB.Services
             }
         }
         
-        public bool UpdateNewdocument(Document newdocument)
+        public bool UpdateNewdocument(NewDocument newdocument)
         {
             try
             {

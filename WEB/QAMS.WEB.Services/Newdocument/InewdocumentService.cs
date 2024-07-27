@@ -12,16 +12,16 @@ namespace QAMS.Services
     public interface INewdocumentService
     {
         
-        ResponseContext<Document> GetAllNewdocument(RequestContext requestContext);
+        ResponseContext<NewDocument> GetAllNewdocument(RequestContext requestContext);
+
+        NewDocument GetNewdocumentBynd(int? nd);
+
+        List<NewDocument> GetNewdocumentByParent(int? p_parentId, string p_Type);
+
+
+        bool SaveNewdocument(NewDocument newdocument);
         
-        Document GetNewdocumentBynd(int? nd);
-
-        Document GetNewdocumentByParent(int? p_parentId, string p_Type);
-
-
-        bool SaveNewdocument(Document newdocument);
-        
-        bool UpdateNewdocument(Document newdocument);
+        bool UpdateNewdocument(NewDocument newdocument);
         
         bool DeleteNewdocumentBynd(int? nd);
         

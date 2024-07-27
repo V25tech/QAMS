@@ -15,9 +15,9 @@ namespace QAMS.WEB.Data
         DataSet GetNewdocumentByParent(int? p_parentId, string p_Type);
 
 
-        bool SaveNewdocument(Document Document);
+        bool SaveNewdocument(NewDocument Document);
         
-        bool UpdateNewdocument(Document Document);
+        bool UpdateNewdocument(NewDocument Document);
         
         bool DeleteNewdocumentBynd(System.Int32? nd);
         

@@ -13,27 +13,27 @@ namespace QAMS.WEB.Services
     public static class newdocumentConverter
     {
         
-        public static List<Document> SetAllnewdocument(DataSet dataset)
+        public static List<NewDocument> SetAllnewdocument(DataSet dataset)
         {
             try
             {
-                List<Document> result = new List<Document>();
-                Document newdocumentData;
+                List<NewDocument> result = new List<NewDocument>();
+                NewDocument newdocumentData;
                 if (dataset != null && dataset.Tables.Count > 0 && dataset.Tables[0].Rows.Count > 0)
                 {
                     for (int i = 0; (i < dataset.Tables[0].Rows.Count); i++)
                     {
                         DataRow row = dataset.Tables[0].Rows[i];
-                        newdocumentData = new Document();
-                        newdocumentData.NewId = DatatypeConverter.SetIntValue(row["newId_PSY"]).Value;
+                        newdocumentData = new NewDocument();
+                        newdocumentData.nd = DatatypeConverter.SetIntValue(row["newId_PSY"]).Value;
                         newdocumentData.title = Convert.ToString(row[NewDocumentConstants.title.TrimAt()]);
                         newdocumentData.description = Convert.ToString(row[NewDocumentConstants.description.TrimAt()]);
-                        newdocumentData.uploadfileName = Convert.ToString(row[NewDocumentConstants.uploadfile.TrimAt()]);
+                        newdocumentData.uploadfile = Convert.ToString(row[NewDocumentConstants.uploadfile.TrimAt()]);
                         newdocumentData.CreatedBy = Convert.ToString(row[NewDocumentConstants.CreatedBy.TrimAt()]);
                         newdocumentData.CreatedDate = DatatypeConverter.SetDateTime(row[NewDocumentConstants.CreatedDate.TrimAt()]);
                         newdocumentData.ModifiedBy = Convert.ToString(row[NewDocumentConstants.ModifiedBy.TrimAt()]);
                         newdocumentData.ModifiedDate = DatatypeConverter.SetDateTime(row[NewDocumentConstants.ModifiedDate.TrimAt()]);
-                        newdocumentData.uploadfileName = row["uploadfile_PSY"].ToString();
+                        newdocumentData.uploadfile = row["uploadfile_PSY"].ToString();
                         result.Add(newdocumentData);
                     }
                 }
@@ -45,7 +45,7 @@ namespace QAMS.WEB.Services
             }
         }
         
-        public static Document Setnewdocument(DataSet dataset)
+        public static NewDocument Setnewdocument(DataSet dataset)
         {
             var result = SetAllnewdocument(dataset);
             if (result.Count > 0)
@@ -53,6 +53,11 @@ namespace QAMS.WEB.Services
                 return result.FirstOrDefault();
             }
             return null;
+        }
+        public static List<NewDocument> SetnewdocumentParent(DataSet dataset)
+        {
+            var result = SetAllnewdocument(dataset);
+            return result;
         }
     }
 }

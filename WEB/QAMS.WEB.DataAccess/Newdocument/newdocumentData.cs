@@ -70,7 +70,7 @@ namespace QAMS.WEB.Data
             }
         }
 
-        public bool SaveNewdocument(Document newdocument)
+        public bool SaveNewdocument(NewDocument newdocument)
         {
             try
             {
@@ -78,13 +78,13 @@ namespace QAMS.WEB.Data
                 {
                     new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.title, Value = newdocument.title },
                     new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.description, Value = newdocument.description },
-                    new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.uploadfile, Value = newdocument.uploadfileName },
+                    new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.uploadfile, Value = newdocument.uploadfile },
                     new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.CreatedBy, Value = newdocument.CreatedBy },
                     new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.ModifiedBy, Value = newdocument.ModifiedBy },
                     //new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.Category, Value = newdocument.Category },
                     //new SqlParameter { DbType = DbType.Int16, ParameterName = NewDocumentConstants.CatId, Value = newdocument.CatId },
                     new SqlParameter { DbType = DbType.Int16, ParameterName = "@ParentId_PSY", Value = newdocument.ParentControlId },
-                    new SqlParameter { DbType = DbType.String, ParameterName = "@InitiativeType", Value = newdocument.initiativeType }
+                    new SqlParameter { DbType = DbType.String, ParameterName = "@InitiativeType", Value = newdocument.ParentType }
                 };
                 Object result = dataAccessHelper.ExecuteStoredProcedure(NewDocumentConstants.USP_newdocument_PSY_INSERT, sqlparms, ExecutionType.Scalar);
                 return (Convert.ToInt32(result) > 0);
@@ -95,16 +95,16 @@ namespace QAMS.WEB.Data
             }
         }
         
-        public bool UpdateNewdocument(Document newdocument)
+        public bool UpdateNewdocument(NewDocument newdocument)
         {
             try
             {
                 List<SqlParameter> sqlparms = new()
                 {
-                    new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.nd, Value = newdocument.NewId },
+                    new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.nd, Value = newdocument.nd },
                     new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.title, Value = newdocument.title },
                     new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.description, Value = newdocument.description },
-                    new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.uploadfile, Value = newdocument.uploadfileName },
+                    new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.uploadfile, Value = newdocument.uploadfile },
                     new SqlParameter { DbType = DbType.String, ParameterName = NewDocumentConstants.ModifiedBy, Value = newdocument.ModifiedBy },
                     new SqlParameter { DbType = DbType.Int16, ParameterName = NewDocumentConstants.ChangeControlId, Value = newdocument.ParentControlId }
                 };

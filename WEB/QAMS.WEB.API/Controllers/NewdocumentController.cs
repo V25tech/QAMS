@@ -35,7 +35,7 @@ namespace QAMS.WEB.API.Controllers
         /// </summary>
         /// <param name="requestContext"></param>
         [HttpPost()]
-        public ActionResult<ResponseContext<Document>> GetAllnewdocument(RequestContext requestContext)
+        public ActionResult<ResponseContext<NewDocument>> GetAllnewdocument(RequestContext requestContext)
         {
             var result = newdocumentService.GetAllNewdocument(requestContext);
             return result;
@@ -46,14 +46,14 @@ namespace QAMS.WEB.API.Controllers
         /// </summary>
         /// <param name="nd"></param>
         [HttpGet("{nd}")]
-        public ActionResult<Document> GetnewdocumentBynd(System.Int32? nd)
+        public ActionResult<NewDocument> GetnewdocumentBynd(System.Int32? nd)
         {
             var result = newdocumentService.GetNewdocumentBynd(nd);
             return result;
         }
 
         [HttpGet("getdocbyparent")]
-        public ActionResult<Document> GetNewdocumentByParent(int p_parentId, string p_Type)
+        public ActionResult<List<NewDocument>> GetNewdocumentByParent(int p_parentId, string p_Type)
         {
             var result = newdocumentService.GetNewdocumentByParent(p_parentId, p_Type);
             return result;
@@ -98,7 +98,7 @@ namespace QAMS.WEB.API.Controllers
         //}
 
         [HttpPost("uploadandsave")]
-        public async Task<IActionResult> UploadAndSaveFile([FromForm] Document newDocument)
+        public async Task<IActionResult> UploadAndSaveFile([FromForm] NewDocument newDocument)
         {
             if (newDocument.file == null || newDocument.file.Length == 0)
                 return BadRequest("File not selected");
@@ -112,7 +112,7 @@ namespace QAMS.WEB.API.Controllers
 
 
                 string uniqueFileName = newDocument.file.FileName;
-                newDocument.uploadfileName = uniqueFileName;
+                newDocument.uploadfile = uniqueFileName;
                 string filePath = Path.Combine(uploadsFolder, uniqueFileName);
 
                 using (var fileStream = new FileStream(filePath, FileMode.Create))
@@ -143,7 +143,7 @@ namespace QAMS.WEB.API.Controllers
         /// </summary>
         /// <param name="newdocument"></param>
         [HttpPost("updatenewdocument")]
-        public ActionResult<bool> UpdateNewdocument(Document newdocument)
+        public ActionResult<bool> UpdateNewdocument(NewDocument newdocument)
         {
             var result = newdocumentService.UpdateNewdocument(newdocument);
             return result;
