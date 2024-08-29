@@ -76,7 +76,6 @@ namespace QAMS.Controllers
         /// </summary>
         /// <param name="changeControlRegistration"></param>
         [HttpPost("savechangecontrolregistration")]
-
         public ActionResult<bool> SaveChangeControlRegistration(ChangeControlRegistration changeControlRegistration)
         {
             var result = changeControlRegistrationService.SaveChangeControlRegistration(changeControlRegistration);

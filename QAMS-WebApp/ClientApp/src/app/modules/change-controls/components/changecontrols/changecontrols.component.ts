@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginInitiateService } from '../../services/login-initiate.service';
 import { Table } from 'primeng/table';
-import { ChangeControls } from 'src/app/models/changecontrol.model';
+import { CC_Model, ChangeControls } from 'src/app/models/changecontrol.model';
 import { ChangeControlsService } from '../../services/change-controls.service';
 
 interface PageEvent {
@@ -17,7 +17,8 @@ interface PageEvent {
   styleUrls: ['./changecontrols.component.scss']
 })
 export class ChangecontrolsComponent {
-  ccInitiateDatasource: ChangeControls[]=[];
+  //ccInitiateDatasource: ChangeControls[]=[];
+  ccInitiateDatasource: CC_Model[]=[];
   selectedCCInitiatedDataSource: any = [];
   dataresp: any = [];
   first: number = 0;
@@ -37,14 +38,16 @@ export class ChangecontrolsComponent {
 
   ngOnInit() {
 
-    // this.changeControlsService.getAllChangeControlbyPlant(2).subscribe(res =>{
-    //   console.log(res);
-    // })
+    this.changeControlsService.getAllChangeControlbyPlant(3).subscribe((res:any) =>{
+      this.ccInitiateDatasource = res.response;
+      console.log(this.ccInitiateDatasource);
+      //this.ccInitiateDatasource.forEach(dataSource=>dataSource.date = new Date(dataSource.date))
+    })
     
-    this.loginInitiateService.getData().subscribe((data: any) => {
-      this.ccInitiateDatasource = data;
-      this.ccInitiateDatasource.forEach(dataSource=>dataSource.date = new Date(dataSource.date))
-    });
+    // this.loginInitiateService.getData().subscribe((data: any) => {
+    //   this.ccInitiateDatasource = data;
+    //   this.ccInitiateDatasource.forEach(dataSource=>dataSource.date = new Date(dataSource.date))
+    // });
      
   }
 

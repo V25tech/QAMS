@@ -92,3 +92,8 @@ export interface CCAuditTrails {
     revision?: string,
     dateExtended?: string
 }
+export interface RequestContext {
+    PageNumber : number,
+    PageSize:number,
+    planId:number
+}

@@ -80,7 +80,14 @@ namespace QAMS.WEB.Services
         {
             try
             {
+                RequestContext context = new RequestContext();
+                context.planId = changeControlRegistration.PlantId.Value; context.PageSize = 100; context.PageNumber = 1;
+                int id = GetAllChangeControlbyPlant(context).Response.Count();
+                id++;
+                changeControlRegistration.ChangeControlUniqueCode = $"PROV-CC-PL{id}-{DateTime.Now.Date.Day}-{DateTime.Now.Year}";
+                changeControlRegistration.Status = "In Progress";
                 changeControlRegistration.Category = Category.ChangeControl;
+                changeControlRegistration.InitiatingDepartment_PSY = changeControlRegistration.requestDetails.initiatingDepartment;
                 String validationMessages = ChangeControlRegistrationValidator.IsValidChangeControlRegistration(changeControlRegistration);
                 if (validationMessages.Length <= 0)
                 {

@@ -125,10 +125,11 @@ export class RegisterCCComponent implements OnInit {
   }
 
   saveControlChange(ccValue: CC_Model) {
+    debugger
     ccValue.changeControlId = 0;
     ccValue.catId = 0;
     ccValue.registeredby = 1234;
-    ccValue.changeControlUniqueCode = this.editCCValue.changeControlUniqueCode + 'E';
+    // ccValue.changeControlUniqueCode = this.editCCValue.changeControlUniqueCode + 'E';
     ccValue.status = '';
     ccValue.createdBy = 'Creator';
     ccValue.modifiedBy = 'Modifier';
