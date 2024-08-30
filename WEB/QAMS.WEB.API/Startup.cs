@@ -21,6 +21,8 @@ using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 using QAMS.Services;
 using QAMS.WEB.Services;
 using QAMS.WEB.Data;
+using QAMS.Sheet1.Services;
+using QAMS.Sheet1.Data;
 
 namespace QAMS.WEB.API
 {
@@ -50,7 +52,8 @@ namespace QAMS.WEB.API
             services.RegisterLocalServices();
             services.AddScoped<INewdocumentService, NewdocumentService>();
             services.AddScoped<INewdocumentData, NewdocumentData>();
-
+            services.AddScoped<IHODReviewService, HODReviewService>();
+            services.AddScoped<IHODReviewData, HODReviewData>();
             services.AddCors(option =>
             {
                 option.AddDefaultPolicy(

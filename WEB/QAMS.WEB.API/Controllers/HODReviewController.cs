@@ -64,7 +64,7 @@ namespace QAMS.Controllers
         /// This method is used to Get HODReview By Id hodId
         /// </summary>
         /// <param name="hodId"></param>
-        [HttpGet("{init}")]
+        [HttpGet("gethodreviewbyintid")]
         public ActionResult<HODReview> GetHODReviewByInit(System.Int32? initId)
         {
             var result = hODReviewService.GetHODReviewByInit(initId);

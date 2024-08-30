@@ -50,7 +50,7 @@
                         <ng-template pTemplate="body" let-ccinitiationType let-i="rowIndex" #templatesTable>
                             <tr>
                                 <td>{{i+1}}</td>
-                                <td><a class="idname" (click)="NavToCCWorkflow(ccinitiationType.id)">
+                                <td><a class="idname" (click)="NavToCCWorkflow(ccinitiationType.changeControlId)">
                                         {{ccinitiationType.changeControlUniqueCode}}</a></td>
                                 <td>{{ccinitiationType.initiatingDepartment_PSY}}</td>
                                 <td>{{ccinitiationType.registeredby}}</td>

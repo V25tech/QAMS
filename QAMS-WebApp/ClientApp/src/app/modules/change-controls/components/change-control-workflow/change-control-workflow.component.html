@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-between align-items-center bg-white shadow-dark px-3">
   <div class="workItemWrapper">
     <a (click)="navToChangeControls()" class=" me-2"><i class="fa-solid fa-arrow-left back-icon"></i></a>
-    <h4 class="page-title flex-grow-1"> {{id}}</h4>
+    <h4 class="page-title flex-grow-1"> {{changeControl.changeControlUniqueCode}}</h4>
   </div>
   <div *ngIf="selectedReviewOptions ==='hodReview'"><span class="status rounded-pill status-returned ">HOD PENDING
     </span></div>

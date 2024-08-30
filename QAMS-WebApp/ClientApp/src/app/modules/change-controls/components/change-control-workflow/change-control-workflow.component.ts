@@ -54,6 +54,7 @@ export class ChangeControlWorkflowComponent implements OnInit {
   getChangeControlById(changeControlId: number) {
     this.changeControlsService.getChangeControlById(changeControlId).subscribe(res => {
       this.changeControl = res;
+      console.log(this.changeControl);
     }, er => console.log(er));
   }
 

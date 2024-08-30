@@ -83,7 +83,7 @@ namespace QAMS.Sheet1.Data
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = HODReviewConstants.InitiativeName, Value = hODReview.InitiativeName });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Boolean, ParameterName = HODReviewConstants.IsSave, Value = hODReview.IsSave });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = HODReviewConstants.Comments, Value = hODReview.Comments });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = HODReviewConstants.Status, Value = hODReview.Status });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = HODReviewConstants.Status, Value = "In Progress" });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = HODReviewConstants.CreatedBy, Value = hODReview.CreatedBy });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = HODReviewConstants.UpdatedBy, Value = hODReview.UpdatedBy });
                 sqlparms.Add(new SqlParameter { DbType = DbType.DateTime, ParameterName = HODReviewConstants.UpdatedDate, Value = hODReview.UpdatedDate });

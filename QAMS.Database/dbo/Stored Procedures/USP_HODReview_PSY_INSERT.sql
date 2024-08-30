@@ -7,7 +7,6 @@
 @UpdatedBy_PSY Int,
 @UpdatedDate_PSY DateTime,
 @Plant_PSY Int,
-@HodId_PSY Int,
 @HODDocument_PSY Xml,
 @ModifiedBy_PSY NVarChar(100) 
  AS 
@@ -26,7 +25,6 @@ UpdatedBy_PSY,
 CreatedDate_PSY,
 UpdatedDate_PSY,
 Plant_PSY,
-HodId_PSY,
 HODDocument_PSY,
 ModifiedBy_PSY,
 ModifiedDate_PSY)
@@ -41,7 +39,6 @@ ModifiedDate_PSY)
  GetDate() ,
 @UpdatedDate_PSY,
 @Plant_PSY,
-@HodId_PSY,
 @HODDocument_PSY,
 @ModifiedBy_PSY,
  GetDate() );

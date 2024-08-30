@@ -5,7 +5,7 @@
             <div class="reviews mt-3">
 
                 <label class="review approve-review" for="approve">
-                    <input type="radio" name="review" id="approve" />
+                    <input type="radio" name="review" id="approve" (click)="approvehod()" [checked]="isapprove" />
                     <div class="review-content">
                         <div class="review-details">
                             <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15">
@@ -17,8 +17,8 @@
                     </div>
                 </label>
 
-                <label class="review return-review" for="return">
-                    <input type="radio" id="return" name="review" />
+                <label class="review return-review" for="return" >
+                    <input type="radio" id="return" name="review" (click)="returnhod()" [checked]="isreturn" />
                     <div class="review-content">
 
                         <div class="review-details">
@@ -31,8 +31,8 @@
                     </div>
                 </label>
 
-                <label class="review reject-review" for="reject">
-                    <input type="radio" id="reject" name="review" />
+                <label class="review reject-review" for="reject" >
+                    <input type="radio" id="reject" name="review" (click)="rejecthod()" [checked]="isreject" />
                     <div class="review-content">
 
                         <div class="review-details">
@@ -85,13 +85,15 @@
         <div class="form-group mt-3 px-1">
             <label for="comments">Review Comments</label>
             <textarea class="form-control mt-2 text-muted review-styles" id="comments"
-                placeholder="Enter review comments here" rows="3"></textarea>
+                placeholder="Enter review comments here" rows="3" [(ngModel)]="objhod.comments"></textarea>
         </div>
 
         <div class="mt-4 d-flex justify-content-end">
             <button type="button" class="btn btn-default rounded-pill me-3">Cancel</button>
-            <button type="button" class="btn btn-outline-primary rounded-pill me-3">Save</button>
-            <button type="button" class="btn btn-primary rounded-pill me-3">Submit</button>
+            <div *ngIf="objhod.status=='In Progress'">
+            <button type="button" class="btn btn-outline-primary rounded-pill me-3" (click)="savehod(objhod)" [disabled]="objhod.isSave">Save</button>
+            <button type="button" class="btn btn-primary rounded-pill me-3" (click)="submithod(objhod)" [disabled]="!isapprove && !isreject && !isreturn">Submit</button>
+        </div>
         </div>
     </div>
 </div>
