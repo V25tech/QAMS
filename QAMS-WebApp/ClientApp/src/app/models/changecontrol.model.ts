@@ -113,4 +113,26 @@ export interface HodReview {
     modifiedBy?: string;
     modifiedDate?: Date | null;
   }
+  export interface QAReview {
+    classificationOfChange?: boolean | null;
+    impactOnProcFormats?: boolean | null;
+    procedureFormat?: string | null;
+    isRegularCustomer?: boolean | null;
+    impactCommitment?: string | null;
+    reviewComments?: string | null;
+    initiativeId?: number | null;
+    initiativeName?: string | null;
+    isSave?: boolean | null;
+    status?: string | null;
+    createdBy?: number | null;
+    updatedBy?: number | null;
+    createdDate?: Date | null;
+    updatedDate?: Date | null;
+    plant?: number | null;
+    qaId?: number | null;
+    qaDocument?: string | null;
+    modifiedBy?: string | null;
+    modifiedDate?: Date | null;
+  }
+  
     

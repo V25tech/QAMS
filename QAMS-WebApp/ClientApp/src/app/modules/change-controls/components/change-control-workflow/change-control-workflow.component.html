@@ -3,7 +3,7 @@
     <a (click)="navToChangeControls()" class=" me-2"><i class="fa-solid fa-arrow-left back-icon"></i></a>
     <h4 class="page-title flex-grow-1"> {{changeControl.changeControlUniqueCode}}</h4>
   </div>
-  <div *ngIf="selectedReviewOptions ==='hodReview'"><span class="status rounded-pill status-returned ">HOD PENDING
+  <div *ngIf="selectedReviewOptions ==='hodReview'"><span class="status rounded-pill status-returned ">HOD-{{hodstatus}}
     </span></div>
   <div *ngIf="selectedReviewOptions ==='qaReview'"><span class="status rounded-pill status-returned ">QA PENDING
     </span></div>

@@ -2,7 +2,7 @@ import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PrimeNGConfig } from 'primeng/api';
 import { ActionPlanInput, ActionPlanModel } from 'src/app/models/action-plan.model';
-import { CC_Model } from 'src/app/models/changecontrol.model';
+import { CC_Model, QAReview } from 'src/app/models/changecontrol.model';
 import { ActionPlansEnum, ActionPlansEnum_DESCRIPTIONS } from 'src/app/modules/shared-services/action-plan-enums';
 import { ActionPlanService } from 'src/app/modules/shared-services/action-plan.service';
 import { CommonService } from 'src/app/modules/shared-services/common.service';
@@ -15,7 +15,7 @@ import { CommonService } from 'src/app/modules/shared-services/common.service';
 export class QAReviewComponent implements OnInit {
 
   @Input('changeControl') changeControl: CC_Model;
-
+  objqa: QAReview ={};
   selectPlantTypeOption: any = "SOP";
   selectInChargeOption: any = "Quality Control";
   selectUserGroupDetails: any = "User Group1";

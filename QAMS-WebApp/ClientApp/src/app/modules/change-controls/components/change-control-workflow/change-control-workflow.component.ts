@@ -4,6 +4,7 @@ import { PrimeNGConfig } from 'primeng/api';
 import { DocumentsComponent } from '../../../shared-components/documents/documents.component';
 import { ChangeControlsService } from '../../services/change-controls.service';
 import { CC_Model } from 'src/app/models/changecontrol.model';
+import { Hod_ReviewService } from '../../services/hod-review.service';
 
 @Component({
   selector: 'app-change-control-workflow',
@@ -19,13 +20,14 @@ export class ChangeControlWorkflowComponent implements OnInit {
   defaultRadioBtn = 0;
   selectedReviewOptions: string = "hodReview";
   id: any;
-  changeControl: CC_Model;
+  changeControl: CC_Model; hodstatus="PENDING";
 
   constructor(private primeConfig: PrimeNGConfig,
     private cdr: ChangeDetectorRef,
     private route: ActivatedRoute,
     private router: Router,
-    private changeControlsService: ChangeControlsService
+    private changeControlsService: ChangeControlsService,
+    private hodservice:Hod_ReviewService
   ) { }
 
   ngOnInit(): void {
@@ -41,6 +43,7 @@ export class ChangeControlWorkflowComponent implements OnInit {
       let splitItesms = this.id.split('-');
       let changeControlId = Number.parseInt(splitItesms[splitItesms.length - 1]);
       this.getChangeControlById(changeControlId);
+      this.gethodreviewstatus(changeControlId);
     })
   }
   selectProgressBar(text: any) {
@@ -57,6 +60,12 @@ export class ChangeControlWorkflowComponent implements OnInit {
       console.log(this.changeControl);
     }, er => console.log(er));
   }
-
+  gethodreviewstatus(changeControlId: number){
+    this.hodservice.gethodreviewbyintid(changeControlId).subscribe((data:any)=>{
+      if(data!=null || undefined){
+        this.hodstatus=data.status;
+      }
+    })
+  }
 
 }
