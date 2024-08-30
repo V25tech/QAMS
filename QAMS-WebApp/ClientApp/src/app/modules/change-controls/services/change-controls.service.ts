@@ -16,14 +16,13 @@ export class ChangeControlsService {
   constructor(private http: HttpClient) { }
   requestOptionsForUpload: any = {
     headers: new HttpHeaders()
-};
+  };
   getActionPlansbyChangeControlId(id: number): Observable<any> {
     //const url = `${this.apiUrl}/${id}`;
     return this.http.get('assets/json/actionPlans.json');
   }
 
   saveChangeControlRegistration(ccValue: CC_Model) {
-    
     return this.http.post(this.apiUrl + '/changecontrolregistration/savechangecontrolregistration', JSON.stringify(ccValue));
   }
 
@@ -32,16 +31,13 @@ export class ChangeControlsService {
   }
 
   getChangeControlById(changeControlId: number) {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.get(this.apiUrl + '/changecontrolregistration/' + changeControlId);
   }
 
   getAllChangeControlbyPlant(plantId: number) {
-    
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    this.context.planId=plantId;
 
-  //return this.http.get(`${this.apiUrl}/changecontrolregistration/GetAllChangeControlbyPlant`, { this.context, headers });
-  return this.http.post(this.apiUrl + '/changecontrolregistration/GetAllChangeControlbyPlant',this.context,this.requestOptionsForUpload)
+    this.context.planId = plantId;
+    //return this.http.get(`${this.apiUrl}/changecontrolregistration/GetAllChangeControlbyPlant`, { this.context, headers });
+    return this.http.post(this.apiUrl + '/changecontrolregistration/GetAllChangeControlbyPlant', this.context, this.requestOptionsForUpload)
   }
 }
