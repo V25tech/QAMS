@@ -38,7 +38,7 @@ export class RolesComponent {
 
 
     });
-    debugger;
+    
     this.NewRoleService.getnewRoleData().subscribe((data: any) => {
       this.newRoleDataSource = data.response;
       //this.newRoleDataSource.forEach(dataSource => (dataSource.createdDate = new Date(dataSource.createdDate)))
@@ -100,7 +100,7 @@ export class RolesComponent {
 
   }
   navigateToEditRoles(id:number){
-    debugger;
+    
     this.router.navigateByUrl('/new-role');
   }
 

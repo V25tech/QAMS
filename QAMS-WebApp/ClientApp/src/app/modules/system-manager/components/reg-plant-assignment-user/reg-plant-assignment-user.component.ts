@@ -53,7 +53,7 @@ export class RegPlantAssignmentUserComponent {
 GetPlantsInfo()
 {    
   this.PlantListService.getplantData().subscribe((data: any) => {
-    debugger
+    
     this.sourceProducts = data.response;
     //this.cdr.markForCheck();
   }); 
@@ -63,7 +63,7 @@ cancelClick(){
 }
 updateControlChange(userValue: RegModifyUser) {
   console.log(JSON.stringify(userValue))
-  debugger;
+  
   this.modifyUserService.updateUserDetails(this.editUserValue).subscribe(res => {
     console.log(res);
     
@@ -80,7 +80,7 @@ GetUserDetailsbyId(id:number)
         this.userReg = res;
         let userValue: RegModifyUser = res; 
         this.editUserValue = userValue;
-        debugger;
+        
         if (userValue) {
           this.plantUserForm.patchValue(userValue);
           this.SetPlantIds(userValue.plantid);
@@ -89,7 +89,7 @@ GetUserDetailsbyId(id:number)
     }
     SetPlantIds(users:string)
     {
-      debugger;
+      
       // Step 1: Split the comma-separated string into an array of IDs
       const plantIds = users.split(',').map(id => id.trim());
       //this.tmodifyUserDatasource=this.modifyUserDatasource.filter(map=>map.id==users);
@@ -112,7 +112,7 @@ GetUserDetailsbyId(id:number)
      
 regPlantUser() 
 {  
-  debugger;
+  
   if (this.plantUserForm.invalid) {
     this.messageService.add({ severity: 'error', summary: 'Form is invalid!', detail: 'Message Content' });
     return; // Prevent form submission

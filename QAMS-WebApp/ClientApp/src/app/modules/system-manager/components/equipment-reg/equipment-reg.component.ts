@@ -31,7 +31,7 @@ export class EquipmentRegComponent {
         this.id = Number.parseInt(params['Id']);
         if(this.id)
           {
-            debugger;
+            
             this.editMode=true;                 
           }      
         let splitItesms = this.id;            
@@ -55,7 +55,7 @@ export class EquipmentRegComponent {
     GetDepartments()
     {
       this.DepartmentsService.getDepartmentsData().subscribe((data: any) => { 
-        debugger;       
+               
         this.departmentsDataSource = data.response;      
       }); 
      }  
@@ -63,7 +63,7 @@ export class EquipmentRegComponent {
     this.router.navigateByUrl('/equipments');
   }
   saveControlChange(ccValue: EquipmentRegistration) {    
-    debugger;
+    
     this.equipmentRegService.insertCustomerDetails(ccValue).subscribe((data: any) => {
       console.log('Form submitted!', ccValue);
       this.messageService.add({ severity: 'success', summary: 'Equipment Registration Saved Successfull', detail: 'Message Content' });
@@ -85,7 +85,7 @@ export class EquipmentRegComponent {
   GetEquipmentDetailsbyId(id:number)
   {
     this.equipmentRegService.GetEquipmentById(id).subscribe((res:any) => {
-      debugger;
+      
       this.equipmentReg = res;
       let eqValue: EquipmentRegistration = res; 
       this.editEQValue = eqValue;
@@ -112,7 +112,7 @@ export class EquipmentRegComponent {
     
   }
   registerEquipment(){
-    debugger;
+    
     if (this.equipmentRegForm.valid) {
       console.log(this.equipmentRegForm.value);
       let equipValue: EquipmentRegistration = this.equipmentRegForm.value;

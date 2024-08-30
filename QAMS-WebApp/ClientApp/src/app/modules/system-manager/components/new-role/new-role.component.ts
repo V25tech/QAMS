@@ -31,7 +31,7 @@ export class NewRoleComponent implements OnInit {
       this.route.queryParams.subscribe(params => {
       this.id = Number.parseInt(params['Id']);
       let splitItesms = this.id;
-      debugger;        
+              
       this.GetRoleById(this.id);
     })    
   }
@@ -123,7 +123,7 @@ BuildRoleForm()
     })
     })
   }
-  //debugger: any;
+  //: any;
   roleRegistration(){
     if (this.RoleForm.valid) {
       console.log(this.RoleForm.value);
@@ -140,7 +140,7 @@ BuildRoleForm()
 
   
   saveRoleClick(roleValue: Role) {
-    debugger;
+    
     if (this.RoleForm.invalid) {
       this.messageService.add({ severity: 'error', summary: 'Form is invalid!', detail: 'Message Content' });
       return; // Prevent form submission

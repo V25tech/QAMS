@@ -96,7 +96,7 @@ export class ProductMaterialsComponent {
     });
   }
   regProduct() {
-    debugger;
+    
     if (this.regProductForm.valid) {
       console.log(this.regProductForm.value);
       let productMaterial: RegProduct = this.regProductForm.value;
@@ -185,7 +185,7 @@ export class ProductMaterialsComponent {
   }
   Openvisiblesidebar(id:number)
   {   
-    debugger 
+     
     this.visibleSidebar = true;
     this.BuildMaterialForm();
     if(id!=0)

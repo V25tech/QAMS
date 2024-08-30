@@ -23,7 +23,7 @@ export class ChangeControlsService {
   }
 
   saveChangeControlRegistration(ccValue: CC_Model) {
-    debugger
+    
     return this.http.post(this.apiUrl + '/changecontrolregistration/savechangecontrolregistration', JSON.stringify(ccValue));
   }
 
@@ -37,7 +37,7 @@ export class ChangeControlsService {
   }
 
   getAllChangeControlbyPlant(plantId: number) {
-    debugger
+    
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     this.context.planId=plantId;
 

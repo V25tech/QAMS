@@ -13,11 +13,11 @@ export class QA_ReviewService {
     constructor(private http: HttpClient) { }
 
     saveQAReview(ccValue: QAReview) {
-        debugger
+        
         return this.http.post(this.apiUrl + '/qareview/saveqareview', JSON.stringify(ccValue));
       }
       updateQAReview(ccValue: QAReview) {
-        debugger
+        
         return this.http.post(this.apiUrl + '/qareview/updateqareview', JSON.stringify(ccValue));
       }
       getqareviewbyintid(changeControlId: number) {

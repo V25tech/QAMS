@@ -40,7 +40,7 @@ export class PlantAssignmentUsersService
     return this.http.get('assets/json/SystemManager/planAssignmentUsers.json');
   }
   insertPlantAssignmentData(settings: PlantAssignmentUsersService) {
-    debugger;
+    
     //const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
    // return this.http.post(this.apiUrl+ '/market/savemarket', settings, { headers });      
   }

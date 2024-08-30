@@ -13,11 +13,11 @@ export class Hod_ReviewService {
     constructor(private http: HttpClient) { }
 
     saveHodReview(ccValue: HodReview) {
-        debugger
+        
         return this.http.post(this.apiUrl + '/hodreview/savehodreview', JSON.stringify(ccValue));
       }
       updateHodReview(ccValue: HodReview) {
-        debugger
+        
         return this.http.post(this.apiUrl + '/hodreview/updatehodreview', JSON.stringify(ccValue));
       }
       gethodreviewbyintid(changeControlId: number) {

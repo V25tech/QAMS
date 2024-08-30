@@ -24,7 +24,7 @@ export class CustomerRegistrationComponent {
       this.cdr.detectChanges();
       this.route.queryParams.subscribe(params => {   this.id = Number.parseInt(params['Id']);
         let splitItesms = this.id;
-        //debugger;
+        //
         this.GetCustomerById(this.id);
       })
       
@@ -54,7 +54,7 @@ export class CustomerRegistrationComponent {
   GetCustomerById(id:number)
   {
     this.customerService.GetCustomerById(id).subscribe((res:any) => {
-      debugger;
+      
       this.customerReg = res;
       let custValue: CustomerRegistration = res;
       this.editCustValue = custValue;
@@ -81,7 +81,7 @@ export class CustomerRegistrationComponent {
      
       this.cdr.detectChanges();
     }
-     // debugger: any;
+     // : any;
       customerRegistration(){
         if (this.customerRegistrationForm.valid) {
           console.log(this.customerRegistrationForm.value);

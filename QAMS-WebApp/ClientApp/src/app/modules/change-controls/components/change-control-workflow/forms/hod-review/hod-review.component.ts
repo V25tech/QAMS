@@ -58,7 +58,7 @@ export class HODReviewComponent implements OnInit {
         this.objhod.status="In Progress";
       }else{
       this.objhod=data; }
-      debugger
+      
       if(data==null || undefined){
         
       }
@@ -125,7 +125,7 @@ export class HODReviewComponent implements OnInit {
     });
   }
   approvehod(){
-    debugger
+    
     this.isapprove=true;
     this.isreject=false;
     this.isreturn=false;

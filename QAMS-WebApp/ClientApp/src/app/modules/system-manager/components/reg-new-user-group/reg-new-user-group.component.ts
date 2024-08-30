@@ -42,7 +42,7 @@ export class RegNewUserGroupComponent {
   GetUserDetails()
   {
     this.modifyUserService.getUserData().subscribe((data: any) => {
-      debugger;
+      
       this.modifyUserDatasource = data.response;
       this.modifyUserDatasource.forEach(dataSource => (dataSource.createdDate = new Date(dataSource.createdDate)));      
     }); 
@@ -51,7 +51,7 @@ cancelClick(){
   this.router.navigateByUrl('/user-groups');
 }
 saveControlChange(userValue: RegUserGroup) {
-  debugger;
+  
   //userValue.selectedUsers=this.GetUserDetails();
   this.UserGroupService.insertCustomerDetails(userValue).subscribe((data: any) => {    
     this.messageService.add({ severity: 'success', summary: 'Usergroup Registration Saved Successfull', detail: 'Message Content' });
@@ -61,7 +61,7 @@ saveControlChange(userValue: RegUserGroup) {
   });    
 }
 updateControlChange(userValue: RegUserGroup) {
-  debugger;
+  
   console.log(JSON.stringify(userValue))
   this.UserGroupService.UpdateUserGroupDetails(this.editUserValue).subscribe(res => {
     console.log(res);
@@ -73,7 +73,7 @@ backToUsers(){
 }
 GetUsergroupDetailsbyId(id:number)
 {
-  debugger;
+  
   this.UserGroupService.GetUserGroupById(id).subscribe((res:any) => {    
     this.usergroupReg = res;
     let userValue: RegUserGroup = res; 
@@ -86,7 +86,7 @@ GetUsergroupDetailsbyId(id:number)
 }
 SetUserIds(users:string)
 {
-  debugger;
+  
   // Step 1: Split the comma-separated string into an array of IDs
   const userIds = users.split(',').map(id => id.trim());
   //this.tmodifyUserDatasource=this.modifyUserDatasource.filter(map=>map.id==users);
@@ -109,7 +109,7 @@ getUserIds(): string {
   return this.tmodifyUserDatasource.map(user => user.id).join(',');
 }  
   regUserGroup(){
-    debugger;
+    
     if (this.userGroupForm.valid) {
       console.log(this.userGroupForm.value);
       let usergroupValue: RegUserGroup = this.userGroupForm.value;

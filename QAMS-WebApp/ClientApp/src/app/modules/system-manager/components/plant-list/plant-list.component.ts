@@ -72,7 +72,7 @@ backToPlant(){
 }
 GetPlantDetailsbyId(id:number)
 {
-  debugger;
+  
   this.PlantListService.GetPlantById(id).subscribe((result:any) => {   
     this.plantReg = result;
     let plantValue: RegPlant = result; 
@@ -137,7 +137,7 @@ regDepartments(){
         address: this.regPlantForm.value.address,
         comment: this.regPlantForm.value.comments
       };
-      debugger;
+      
       this.PlantListService.insertPlantDetails(regPlant).subscribe((data: any) => {      
         this.messageService.add({ severity: 'success', summary: 'Plant Saved Successfull', detail: 'Message Content' });
 

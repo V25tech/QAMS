@@ -125,7 +125,7 @@ export class RegisterCCComponent implements OnInit {
   }
 
   saveControlChange(ccValue: CC_Model) {
-    debugger
+    
     ccValue.changeControlId = 0;
     ccValue.catId = 0;
     ccValue.registeredby = 1234;

@@ -56,7 +56,7 @@ export class ModifyUserComponent {
             }  
      })
     this.modifyUserService.getUserData().subscribe((data: any) => {
-      debugger;
+      
       this.modifyUserDatasource = data.response;
       this.modifyUserDatasource.forEach(dataSource => (dataSource.createdDate = new Date(dataSource.createdDate)));      
     }); 
@@ -87,14 +87,14 @@ export class ModifyUserComponent {
   GetDepartments()
   {
     this.DepartmentsService.getDepartmentsData().subscribe((data: any) => {
-      //debugger
+      //
       this.departmentsDataSource = data.response;      
     }); 
    }  
     GetUserDetailsbyId(id:number)
     {
       this.modifyUserService.GetUserById(id).subscribe((res:any) => {
-        debugger;
+        
         this.userReg = res;
         let userValue: RegModifyUser = res; //JSON.parse(ccValueStr) ?? null;
         this.editUserValue = userValue;
@@ -123,7 +123,7 @@ export class ModifyUserComponent {
 
     this.modifyUserForm.get('departmentid').valueChanges.subscribe(value => {
       console.log('Selected department:', value);
-      //debugger;
+      //
       this.selecteddepart = value;
       this.cdr.detectChanges();
     });
@@ -191,7 +191,7 @@ export class ModifyUserComponent {
   GetRoleDetails()
   {   
     this.roleService.getnewRoleData().subscribe((data: any) => {
-      debugger
+      
       this.roleDetails = data.response;    
   });
 }   

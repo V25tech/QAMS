@@ -26,7 +26,7 @@ export class MarketRegistrationComponent {
       this.route.queryParams.subscribe(params => {
         this.id = Number.parseInt(params['Id']);
         let splitItesms = this.id;
-        debugger;        
+                
         this.GetMarketDetailsbyId(this.id);
       })
       
@@ -55,7 +55,7 @@ export class MarketRegistrationComponent {
   }
   GetMarketDetailsbyId(id:number)
   {
-    debugger;
+    
     this.marketRegistration.GetMarketById(id).subscribe((res:any) => {      
       this.marketReg = res;
       let marketValue: MarketRegistration = res; 
