@@ -286,6 +286,7 @@
     <Build Include="dbo\Stored Procedures\USP_newdocument_PSY_GET_BY_INITIATIVE_TYPE.sql" />
     <Build Include="dbo\Stored Procedures\USP_QAReview_PSY_GET_BY_INIT.sql" />
     <Build Include="dbo\Stored Procedures\USP_CFTReview_PSY_GET_BY_INIT.sql" />
+    <Build Include="dbo\Stored Procedures\USP_CustomerNotification_PSY_GET_BY_INIT.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="QAMS.Database.refactorlog" />
