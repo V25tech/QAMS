@@ -61,6 +61,20 @@ namespace QAMS.Admin.Services
             }
         }
 
+        public User GetUserByUserName(User userInfo)
+        {
+            try
+            {
+                DataSet dataset = userData.GetUserByUserName(userInfo);
+                User result = UserConverter.SetUser(dataset);
+                return result;
+            }
+            catch (System.Exception ex)
+            {
+                throw;
+            }
+        }
+
         public bool SaveUser(User user)
         {
             try
@@ -179,6 +193,11 @@ namespace QAMS.Admin.Services
             {
                 throw;
             }
+        }
+
+        public User GetUserByUserName(RequestContext requestContext)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -26,7 +26,9 @@ namespace QAMS.Admin.Services
         ResponseContext<User> GetAllUser(RequestContext requestContext);
         
         User GetUserById(System.Int32? id);
-        
+
+        User GetUserByUserName(User user);
+
         bool SaveUser(User user);
         
         bool UpdateUser(User user);
@@ -42,5 +44,7 @@ namespace QAMS.Admin.Services
         bool DeleteUserByRoleId(System.Int32? id);
         
         bool DeleteUserByDepartmentId(System.Int32? id);
+
+      //  User GetUserByUserName(User user);
     }
 }

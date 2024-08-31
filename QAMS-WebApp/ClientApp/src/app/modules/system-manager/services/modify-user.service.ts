@@ -27,4 +27,8 @@ export class ModifyUserService {
     
     return this.http.get(this.apiUrl+'/user/'+ userId);    
   }
+  GetUserByuserName(settings: RegModifyUser)  {    
+    
+    return this.http.get(this.apiUrl+'/user/GetUserByUserName'+ settings);    
+  }
 }

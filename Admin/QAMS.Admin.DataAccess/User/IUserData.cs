@@ -17,30 +17,31 @@ namespace QAMS.Admin.Data
     using Newtonsoft.Json;
     using QAMS.Common.Entities;
     using QAMS.Admin.Entities;
-    
-    
+
+
     // Comment
     public interface IUserData
     {
-        
+
         DataSet GetAllUser(RequestContext requestContext);
-        
+
         DataSet GetUserById(System.Int32? id);
-        
+
+        DataSet GetUserByUserName(User user);
         bool SaveUser(User user);
-        
+
         bool UpdateUser(User user);
-        
+
         bool DeleteUserById(System.Int32? id);
-        
+
         bool DeleteAllUser(List<int> ids);
-        
+
         DataSet GetUserByRoleId(System.Int32? id);
-        
+
         DataSet GetUserByDepartmentId(System.Int32? id);
-        
+
         bool DeleteUserByRoleId(System.Int32? id);
-        
+
         bool DeleteUserByDepartmentId(System.Int32? id);
     }
 }

@@ -60,7 +60,20 @@ namespace QAMS.Admin.Data
                 throw;
             }
         }
-        
+
+        public DataSet GetUserByUserName(User user)
+        {
+            try
+            {
+                DataSet dataset = (DataSet)dataAccessHelper.ExecuteStoredProcedure(UserConstants.USP_User_PSY_GET_NAME, UserConstants.Id, DbType.Int32, user, ExecutionType.Dataset);
+                return dataset;
+            }
+            catch (System.Exception ex)
+            {
+                throw;
+            }
+        }
+
         public bool SaveUser(User user)
         {
             try
