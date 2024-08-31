@@ -60,7 +60,20 @@ namespace QAMS.Sheet1.Data
                 throw;
             }
         }
-        
+
+        public DataSet GetCFTReviewByInitId(System.Int32? initId)
+        {
+            try
+            {
+                DataSet dataset = (DataSet)dataAccessHelper.ExecuteStoredProcedure("dbo.USP_CFTReview_PSY_GET_BY_INIT", "@Init_PSY", DbType.Int32, cFTId, ExecutionType.Dataset);
+                return dataset;
+            }
+            catch (System.Exception ex)
+            {
+                throw;
+            }
+        }
+
         public bool SaveCFTReview(CFTReview cFTReview)
         {
             try
