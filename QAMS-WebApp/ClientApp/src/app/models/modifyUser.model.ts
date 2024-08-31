@@ -17,6 +17,7 @@ export interface RegModifyUser{
     departmentid?:string,
     employeeId?:string,
     email?:string,
-    plantid?:string
+    plantid?:string,
+    password?:string
 
 }

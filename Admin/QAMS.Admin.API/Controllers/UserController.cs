@@ -56,7 +56,19 @@ namespace QAMS.Controllers
             var result = userService.GetUserById(id);
             return result;
         }
-        
+
+        /// <summary>
+        /// This method is used to Get User By Id id
+        /// </summary>
+        /// <param name="id"></param>
+        [HttpGet("{username}")]
+        public ActionResult<User> GetUserByUserName(User user)
+        {
+
+            var result = userService.GetUserByUserName(user);
+            return result;
+        }
+
         /// <summary>
         /// This Method is used to Save User
         /// </summary>
