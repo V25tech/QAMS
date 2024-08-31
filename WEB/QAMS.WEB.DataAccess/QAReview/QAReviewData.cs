@@ -60,7 +60,20 @@ namespace QAMS.Sheet1.Data
                 throw;
             }
         }
-        
+
+        public DataSet GetQAReviewByInitId(System.Int32? initId)
+        {
+            try
+            {
+                DataSet dataset = (DataSet)dataAccessHelper.ExecuteStoredProcedure("USP_QAReview_PSY_GET_BY_INIT", "@Init_PSY", DbType.Int32, initId, ExecutionType.Dataset);
+                return dataset;
+            }
+            catch (System.Exception ex)
+            {
+                throw;
+            }
+        }
+
         public bool SaveQAReview(QAReview qAReview)
         {
             try
@@ -68,6 +81,7 @@ namespace QAMS.Sheet1.Data
                 List<SqlParameter> sqlparms = new List<SqlParameter>();
                 sqlparms.Add(new SqlParameter { DbType = DbType.Boolean, ParameterName = QAReviewConstants.ImpactOnProcFormats, Value = qAReview.ImpactOnProcFormats });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = QAReviewConstants.ProcedureFormat, Value = qAReview.ProcedureFormat });
+                sqlparms.Add(new SqlParameter { DbType = DbType.Boolean, ParameterName = "@ClassificationOfChange_PSY", Value = qAReview.ClassificationOfChange });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Boolean, ParameterName = QAReviewConstants.IsRegularCustomer, Value = qAReview.IsRegularCustomer });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = QAReviewConstants.ImpactCommitment, Value = qAReview.ImpactCommitment });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = QAReviewConstants.ReviewComments, Value = qAReview.ReviewComments });
@@ -98,18 +112,14 @@ namespace QAMS.Sheet1.Data
                 sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = QAReviewConstants.QAId, Value = qAReview.QAId });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Boolean, ParameterName = QAReviewConstants.ImpactOnProcFormats, Value = qAReview.ImpactOnProcFormats });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = QAReviewConstants.ProcedureFormat, Value = qAReview.ProcedureFormat });
+                sqlparms.Add(new SqlParameter { DbType = DbType.Boolean, ParameterName = "@ClassificationOfChange_PSY", Value = qAReview.ClassificationOfChange });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Boolean, ParameterName = QAReviewConstants.IsRegularCustomer, Value = qAReview.IsRegularCustomer });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = QAReviewConstants.ImpactCommitment, Value = qAReview.ImpactCommitment });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = QAReviewConstants.ReviewComments, Value = qAReview.ReviewComments });
-                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = QAReviewConstants.InitiativeId, Value = qAReview.InitiativeId });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = QAReviewConstants.InitiativeName, Value = qAReview.InitiativeName });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Boolean, ParameterName = QAReviewConstants.IsSave, Value = qAReview.IsSave });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = QAReviewConstants.Status, Value = qAReview.Status });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = QAReviewConstants.UpdatedBy, Value = qAReview.UpdatedBy });
                 sqlparms.Add(new SqlParameter { DbType = DbType.DateTime, ParameterName = QAReviewConstants.UpdatedDate, Value = qAReview.UpdatedDate });
-                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = QAReviewConstants.Plant, Value = qAReview.Plant });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = QAReviewConstants.QaDocument, Value = qAReview.QaDocument });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = QAReviewConstants.ModifiedBy, Value = qAReview.ModifiedBy });
                 Object result = dataAccessHelper.ExecuteStoredProcedure(QAReviewConstants.USP_QAReview_PSY_UPDATE, sqlparms, ExecutionType.Scalar);
                 return (Convert.ToInt32(result) > 0);
             }

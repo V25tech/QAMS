@@ -21,6 +21,12 @@ namespace QAMS.WEB.Services
         public static System.Boolean? SetBoolValue(object val)
         {
             if (val is DBNull) return null;
+            if (val is string strVal)
+            {
+                // Handle string representations of boolean values
+                if (strVal == "0") return false;
+                if (strVal == "1") return true;
+            }
             return Convert.ToBoolean(val);
         }
 

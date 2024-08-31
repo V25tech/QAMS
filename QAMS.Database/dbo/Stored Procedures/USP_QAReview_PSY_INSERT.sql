@@ -1,5 +1,6 @@
 ﻿  CREATE PROCEDURE [dbo].[USP_QAReview_PSY_INSERT] @ImpactOnProcFormats_PSY bit,
 @ProcedureFormat_PSY NVarChar(150),
+@ClassificationOfChange_PSY bit,
 @IsRegularCustomer_PSY bit,
 @ImpactCommitment_PSY NVarChar(500),
 @ReviewComments_PSY NVarChar(500),
@@ -11,7 +12,6 @@
 @UpdatedBy_PSY Int,
 @UpdatedDate_PSY DateTime,
 @Plant_PSY Int,
-@QAId_PSY Int,
 @QaDocument_PSY Xml,
 @ModifiedBy_PSY NVarChar(100) 
  AS 
@@ -21,7 +21,7 @@
  DECLARE @ID INT 
  INSERT INTO [dbo].[QAReview_PSY] 
  (ImpactOnProcFormats_PSY,
-ProcedureFormat_PSY,
+ProcedureFormat_PSY,ClassificationOfChange_PSY,
 IsRegularCustomer_PSY,
 ImpactCommitment_PSY,
 ReviewComments_PSY,
@@ -34,13 +34,13 @@ UpdatedBy_PSY,
 CreatedDate_PSY,
 UpdatedDate_PSY,
 Plant_PSY,
-QAId_PSY,
 QaDocument_PSY,
 ModifiedBy_PSY,
 ModifiedDate_PSY)
  VALUES 
 (@ImpactOnProcFormats_PSY,
 @ProcedureFormat_PSY,
+@ClassificationOfChange_PSY,
 @IsRegularCustomer_PSY,
 @ImpactCommitment_PSY,
 @ReviewComments_PSY,
@@ -53,7 +53,6 @@ ModifiedDate_PSY)
  GetDate() ,
 @UpdatedDate_PSY,
 @Plant_PSY,
-@QAId_PSY,
 @QaDocument_PSY,
 @ModifiedBy_PSY,
  GetDate() );

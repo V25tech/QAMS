@@ -59,7 +59,14 @@ namespace QAMS.Controllers
             var result = qAReviewService.GetQAReviewByQAId(qAId);
             return result;
         }
-        
+
+        [HttpGet("getqareviewbyintid")]
+        public ActionResult<QAReview> GetQAReviewByInitId(System.Int32? initId)
+        {
+            var result = qAReviewService.GetQAReviewByInitId(initId);
+            return result;
+        }
+
         /// <summary>
         /// This Method is used to Save QAReview
         /// </summary>

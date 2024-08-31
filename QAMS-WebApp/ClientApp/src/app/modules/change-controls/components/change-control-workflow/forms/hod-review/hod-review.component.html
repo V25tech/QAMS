@@ -52,7 +52,7 @@
                 <h6 class="mb-0">Action Plans</h6>
 
                 <button type="button" class="btn btn-create btn-add rounded-circle"
-                    (click)="setActionPlanInput()">+
+                    (click)="setActionPlanInput()" *ngIf="objhod.status=='In Progress'">+
                 </button>
             </div>
             <div class="action-plans-block px-3 ">

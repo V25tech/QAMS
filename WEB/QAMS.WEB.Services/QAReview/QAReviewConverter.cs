@@ -38,7 +38,7 @@ namespace QAMS.Sheet1.Services
                     {
                         DataRow row = dataset.Tables[0].Rows[i];
                         qAReviewData = new QAReview();
-                        qAReviewData.ClassificationOfChange = DatatypeConverter.SetBoolValue(row[QAReviewConstants.ClassificationOfChange.TrimAt()]);
+                        qAReviewData.ClassificationOfChange = DatatypeConverter.SetBoolValue(row[QAReviewConstants.ClassificationOfChange.Trim('@')]);
                         qAReviewData.ImpactOnProcFormats = DatatypeConverter.SetBoolValue(row[QAReviewConstants.ImpactOnProcFormats.TrimAt()]);
                         qAReviewData.ProcedureFormat = Convert.ToString(row[QAReviewConstants.ProcedureFormat.TrimAt()]);
                         qAReviewData.IsRegularCustomer = DatatypeConverter.SetBoolValue(row[QAReviewConstants.IsRegularCustomer.TrimAt()]);

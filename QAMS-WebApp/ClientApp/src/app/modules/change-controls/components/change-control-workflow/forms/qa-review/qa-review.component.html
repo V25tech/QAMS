@@ -5,7 +5,7 @@
             <div class="reviews mt-3">
 
                 <label class="review approve-review" for="approve">
-                    <input type="radio" name="review" id="approve" />
+                    <input type="radio" name="review" id="approve" (click)="approveqa()" [checked]="isapprove"/>
                     <div class="review-content">
                         <div class="review-details">
                             <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15 15">
@@ -18,7 +18,7 @@
                 </label>
 
                 <label class="review return-review" for="return">
-                    <input type="radio" id="return" name="review" />
+                    <input type="radio" id="return" name="review" (click)="returnqa()" [checked]="isreturn"/>
                     <div class="review-content">
 
                         <div class="review-details">
@@ -32,7 +32,7 @@
                 </label>
 
                 <label class="review reject-review" for="reject">
-                    <input type="radio" id="reject" name="review" />
+                    <input type="radio" id="reject" name="review" (click)="rejectqa()" [checked]="isreject"/>
                     <div class="review-content">
 
                         <div class="review-details">
@@ -109,12 +109,12 @@
             <div class="col-lg-6 d-flex radio-styles ">
                 <div class="form-check mt-3 ms-2">
                     <input class="form-check-input" type="radio" id="major" name="classification" value="major" checked
-                        (change)="selectClassification($event)">
+                        (change)="selectClassification($event)" [(ngModel)]="classificationValue">
                     <label class="form-check-label" for="major">Major</label>
                 </div>
                 <div class="form-check ms-4 mt-3">
                     <input class="form-check-input" type="radio" id="minor" name="classification" value="minor"
-                        (change)="selectClassification($event)">
+                        (change)="selectClassification($event)"  [(ngModel)]="classificationValue">
                     <label class="form-check-label" for="minor">Minor</label>
                 </div>
 
@@ -129,17 +129,17 @@
             <div class="col-lg-6 d-flex radio-styles ">
                 <div class="form-check ">
                     <input class="form-check-input" type="radio" id="yes" name="Procedures" value="yes" checked
-                        (change)="selectImpactProcedures($event)">
+                        (change)="selectImpactProcedures($event)" [(ngModel)]="proceduresValue">
                     <label class="form-check-label" for="yes">yes</label>
                 </div>
                 <div class="form-check ms-4">
-                    <input class="form-check-input" type="radio" id="No" name="Procedures" value="No"
-                        (change)="selectImpactProcedures($event)">
+                    <input class="form-check-input" type="radio" id="No" name="Procedures" value="no"
+                        (change)="selectImpactProcedures($event)" [(ngModel)]="proceduresValue">
                     <label class="form-check-label" for="yes">No</label>
                 </div>
                 <div class="form-check ms-4">
-                    <input class="form-check-input" type="radio" id="na" name="Procedures" value="Not Applicable"
-                        (change)="selectImpactProcedures($event)">
+                    <input class="form-check-input" type="radio" id="na" name="Procedures" value="na"
+                        (change)="selectImpactProcedures($event)" [(ngModel)]="proceduresValue">
                     <label class="form-check-label" for="yes">Not Applicable</label>
                 </div>
             </div>
@@ -149,7 +149,7 @@
                         <label for="impactedProcedures" class="col-md-4 col-sm-12 col-form-label">
                             Procedures/Drawings/Associated Formats impacted as a Result of Change</label>
                         <div class="col-md-6 ">
-                            <textarea class="form-control input-width" name="Impact Procedures" placeholder="">
+                            <textarea class="form-control input-width" name="Impact Procedures" placeholder="" [(ngModel)]="objqa.procedureFormat">
                                     </textarea>
                         </div>
                     </div>
@@ -165,17 +165,17 @@
             <div class="col-lg-6 d-flex radio-styles ">
                 <div class="form-check ">
                     <input class="form-check-input" type="radio" id="yes" name="regulatory" value="yes" checked
-                        (change)="selectCustomerCommitment($event)">
+                        (change)="selectCustomerCommitment($event)" [(ngModel)]="commitmentvalue">
                     <label class="form-check-label" for="yes">yes</label>
                 </div>
                 <div class="form-check ms-4">
                     <input class="form-check-input" type="radio" id="No" name="regulatory" value="No"
-                        (change)="selectCustomerCommitment($event)">
+                        (change)="selectCustomerCommitment($event)" [(ngModel)]="commitmentvalue">
                     <label class="form-check-label" for="yes">No</label>
                 </div>
                 <div class="form-check ms-4">
                     <input class="form-check-input" type="radio" id="na" name="regulatory" value="Not Applicable"
-                        (change)="selectCustomerCommitment($event)">
+                        (change)="selectCustomerCommitment($event)" [(ngModel)]="commitmentvalue">
                     <label class="form-check-label" for="yes">Not Applicable</label>
                 </div>
             </div>
@@ -185,7 +185,7 @@
                         <label for="Impacted Procedures" class="col-md-4 col-sm-12 col-form-label">
                             Impacted Regulatory/Customer Commitment(s)</label>
                         <div class="col-md-6 ">
-                            <textarea class="form-control input-width" name="Impact Procedures" placeholder="">
+                            <textarea class="form-control input-width" name="Impact Procedures" placeholder="" [(ngModel)]="objqa.impactCommitment">
                                     </textarea>
                         </div>
                     </div>
@@ -195,13 +195,15 @@
         <div class="form-group mt-3 px-1">
             <label for="comments">Review Comments</label>
             <textarea class="form-control mt-2 text-muted review-styles" id="comments"
-                placeholder="Enter review comments here" rows="3"></textarea>
+                placeholder="Enter review comments here" rows="3" [(ngModel)]="objqa.reviewComments"></textarea>
         </div>
 
         <div class="mt-4 d-flex justify-content-end">
             <button type="button" class="btn btn-default rounded-pill me-3">Cancel</button>
-            <button type="button" class="btn btn-outline-primary rounded-pill me-3">Save</button>
-            <button type="button" class="btn btn-primary rounded-pill me-3">Submit</button>
+            <div *ngIf="objqa.status=='In Progress'">
+            <button type="button" class="btn btn-outline-primary rounded-pill me-3" (click)="saveqareview(objqa)" [disabled]="objqa.isSave">Save</button>
+            <button type="button" class="btn btn-primary rounded-pill me-3" (click)="submitqa(objqa)" [disabled]="!isapprove && !isreject && !isreturn">Submit</button>
+        </div>
         </div>
     </div>
 </div>

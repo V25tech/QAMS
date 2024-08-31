@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { PrimeNGConfig } from 'primeng/api';
 import { ActionPlanInput, ActionPlanModel } from 'src/app/models/action-plan.model';
 import { CC_Model, QAReview } from 'src/app/models/changecontrol.model';
+import { QA_ReviewService } from 'src/app/modules/change-controls/services/QA_ReviewService';
 import { ActionPlansEnum, ActionPlansEnum_DESCRIPTIONS } from 'src/app/modules/shared-services/action-plan-enums';
 import { ActionPlanService } from 'src/app/modules/shared-services/action-plan.service';
 import { CommonService } from 'src/app/modules/shared-services/common.service';
@@ -15,7 +16,15 @@ import { CommonService } from 'src/app/modules/shared-services/common.service';
 export class QAReviewComponent implements OnInit {
 
   @Input('changeControl') changeControl: CC_Model;
-  objqa: QAReview ={};
+  objqa: QAReview ={ classificationOfChange:true,impactOnProcFormats:true,
+    status:'In Progress',
+    isRegularCustomer:true};
+    isapprove=false;isreturn=false;isreject=false;
+  classificationValue: string = this.objqa.classificationOfChange ? 'major' : 'minor';
+  impactOnProcedures: boolean = true;
+  proceduresValue: string = this.impactOnProcedures ? 'yes' : 'no';
+  selectCommitment: boolean = true;
+  commitmentvalue:string=this.selectCommitment ? 'yes' : 'No';
   selectPlantTypeOption: any = "SOP";
   selectInChargeOption: any = "Quality Control";
   selectUserGroupDetails: any = "User Group1";
@@ -23,14 +32,15 @@ export class QAReviewComponent implements OnInit {
   selectedDate: string = "10/11/2024";
   defaultRadioBtn = 0;
   id: any;
-  classificationValue: string = '';
+  //classificationValue: string = '';
   changeImpactProcedure: boolean = true;
-  selectCommitment: boolean = true;
+  
   selectAdditionalPlanValue: string = "";
   selectedAdditionalPlanTypeVal: string = '';
   constructor(private primeConfig: PrimeNGConfig,
     private actionPlanService: ActionPlanService,
     private commonService: CommonService,
+    private qaservice : QA_ReviewService,
     private cdr: ChangeDetectorRef, private route: ActivatedRoute) { }
 
   plantTypeDetails = [
@@ -65,6 +75,8 @@ export class QAReviewComponent implements OnInit {
       this.id = params['id'];
       let splitItesms = this.id.split('-');
       this.changeControlId = Number.parseInt(splitItesms[splitItesms.length - 1]);
+      this.getqareviewbyinit();
+      
       this.loadActionPlans();
       this.loadRiskAssessmentActionPlans();
     })
@@ -118,18 +130,25 @@ export class QAReviewComponent implements OnInit {
     this.visibleSidebar2 = false;
   }
 
+  // Maps to get the string representation from boolean
+  getClassificationValue(): string {
+    return this.objqa.classificationOfChange ? 'major' : 'minor';
+  }
+
+  // Maps to get the boolean representation from the selected string
   selectClassification(event: any) {
-    this.classificationValue = event.target.value;
+    this.objqa.classificationOfChange = event.target.value === 'major';
+    this.classificationValue = event.target.value; // Update classificationValue
+    console.log('Selected classification:', this.objqa.classificationOfChange);
   }
   selectImpactProcedures(event: any) {
-    if (event.target.value === 'No') {
-      this.changeImpactProcedure = false;
-    } else if (event.target.value === 'Not Applicable') {
-      this.changeImpactProcedure = false;
-    }
-    else {
-      this.changeImpactProcedure = true;
-    }
+    // Update boolean property based on selected value
+    this.impactOnProcedures = event.target.value === 'yes';
+    // Update proceduresValue to keep ngModel in sync
+    this.proceduresValue = event.target.value;
+    this.changeImpactProcedure=this.impactOnProcedures;
+    this.objqa.impactOnProcFormats=this.impactOnProcedures;
+    console.log('Impact on Procedures:', this.impactOnProcedures);
   }
   selectCustomerCommitment(event: any) {
     if (event.target.value === 'No') {
@@ -140,6 +159,78 @@ export class QAReviewComponent implements OnInit {
     else {
       this.selectCommitment = true;
     }
+    this.objqa.isRegularCustomer=this.selectCommitment;
   }
+  saveqareview(objqa:QAReview){
+   debugger
+   if(objqa.qaId > 0){
+    this.updateqareview(objqa);
+   } else {
+   objqa.initiativeId=this.id;objqa.initiativeName='ChangeControl';
+   objqa.isSave=false; objqa.plant=3; objqa.status='In Progress';
+   objqa.createdBy=1234; objqa.updatedBy=1234;
+   this.qaservice.saveQAReview(objqa).subscribe((data:any)=>{
+    alert('saved successfully');
+   });
+  }
+  }
+  getqareviewbyinit(){
+    debugger
+    this.qaservice.getqareviewbyintid(this.id).subscribe((data:any)=>{
+      if(data==null){
+        this.classificationValue = this.objqa.classificationOfChange ? 'major' : 'minor';
+        this.proceduresValue = this.impactOnProcedures ? 'yes' : 'no';
+      }
+      else{
+        this.objqa=data;
+        this.classificationValue=this.objqa.classificationOfChange ? 'major' : 'minor';
+        this.proceduresValue=this.objqa.impactOnProcFormats ? 'yes' : 'no';
+        this.changeImpactProcedure=this.objqa.impactOnProcFormats;
+        this.commitmentvalue=this.objqa.isRegularCustomer ? 'yes' : 'No';
+      }
+    });
+  }
+  updateqareview(objqa: QAReview) {
+    this.qaservice.updateQAReview(objqa).subscribe((data:any)=>{
+      alert('updated qa review');
+    });
+  }
+  approveqa(){
+    
+    this.isapprove=true;
+    this.isreject=false;
+    this.isreturn=false;
+    this.objqa.isSave=true;
+    this.cdr.detectChanges();
+  }
+  rejectqa(){
+    this.isapprove=false;
+    this.isreject=true;
+    this.isreturn=false;
+    this.objqa.isSave=true;
+    this.cdr.detectChanges();
+  }
+  returnqa(){
+    this.isapprove=false;
+    this.isreject=false;
+    this.isreturn=true;
+    this.objqa.isSave=true;
+    this.cdr.detectChanges();
+  }
+  submitqa(objqa:QAReview){
+    objqa.isSave=true;
+    objqa.updatedBy=1234;
+    if(this.isapprove){
+      objqa.status="Approve";
+    } else if(this.isreject){
+      objqa.status="Reject";
+      }else if(this.isreturn){
+        objqa.status="Return";
+        }
+    this.qaservice.updateQAReview(objqa).subscribe((data:any)=>{
 
+    });
+  }
 }
+
+

@@ -26,7 +26,9 @@ namespace QAMS.Sheet1.Data
         DataSet GetAllQAReview(RequestContext requestContext);
         
         DataSet GetQAReviewByQAId(System.Int32? qAId);
-        
+
+        DataSet GetQAReviewByInitId(System.Int32? initId);
+
         bool SaveQAReview(QAReview qAReview);
         
         bool UpdateQAReview(QAReview qAReview);

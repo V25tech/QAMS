@@ -54,6 +54,8 @@ namespace QAMS.WEB.API
             services.AddScoped<INewdocumentData, NewdocumentData>();
             services.AddScoped<IHODReviewService, HODReviewService>();
             services.AddScoped<IHODReviewData, HODReviewData>();
+            services.AddScoped<IQAReviewService, QAReviewService>();
+            services.AddScoped<IQAReviewData, QAReviewData>();
             services.AddCors(option =>
             {
                 option.AddDefaultPolicy(
