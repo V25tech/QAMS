@@ -63,7 +63,21 @@ namespace QAMS.Sheet1.Services
                 throw;
             }
         }
-        
+
+        public CFTReview GetCFTReviewByInitId(System.Int32? initId)
+        {
+            try
+            {
+                DataSet dataset = cFTReviewData.GetCFTReviewByInitId(initId);
+                CFTReview result = CFTReviewConverter.SetCFTReview(dataset);
+                return result;
+            }
+            catch (System.Exception ex)
+            {
+                throw;
+            }
+        }
+
         public bool SaveCFTReview(CFTReview cFTReview)
         {
             try

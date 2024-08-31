@@ -26,7 +26,9 @@ namespace QAMS.Sheet1.Services
         ResponseContext<CFTReview> GetAllCFTReview(RequestContext requestContext);
         
         CFTReview GetCFTReviewByCFTId(System.Int32? cFTId);
-        
+
+        CFTReview GetCFTReviewByInitId(System.Int32? initId);
+
         bool SaveCFTReview(CFTReview cFTReview);
         
         bool UpdateCFTReview(CFTReview cFTReview);

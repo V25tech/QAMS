@@ -26,7 +26,10 @@ namespace QAMS.Sheet1.Data
         DataSet GetAllCFTReview(RequestContext requestContext);
         
         DataSet GetCFTReviewByCFTId(System.Int32? cFTId);
-        
+
+        DataSet GetCFTReviewByInitId(System.Int32? initId);
+
+
         bool SaveCFTReview(CFTReview cFTReview);
         
         bool UpdateCFTReview(CFTReview cFTReview);

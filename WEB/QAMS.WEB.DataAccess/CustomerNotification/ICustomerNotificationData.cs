@@ -26,7 +26,9 @@ namespace QAMS.Sheet1.Data
         DataSet GetAllCustomerNotification(RequestContext requestContext);
         
         DataSet GetCustomerNotificationByCNId(System.Int32? cNId);
-        
+        DataSet GetCustomerNotificationByInitId(System.Int32? initId);
+
+
         bool SaveCustomerNotification(CustomerNotification customerNotification);
         
         bool UpdateCustomerNotification(CustomerNotification customerNotification);

@@ -63,7 +63,20 @@ namespace QAMS.Sheet1.Services
                 throw;
             }
         }
-        
+        public CustomerNotification GetCustomerNotificationByInitId(System.Int32? initId)
+        {
+            try
+            {
+                DataSet dataset = customerNotificationData.GetCustomerNotificationByInitId(initId);
+                CustomerNotification result = CustomerNotificationConverter.SetCustomerNotification(dataset);
+                return result;
+            }
+            catch (System.Exception ex)
+            {
+                throw;
+            }
+        }
+
         public bool SaveCustomerNotification(CustomerNotification customerNotification)
         {
             try

@@ -26,7 +26,8 @@ namespace QAMS.Sheet1.Services
         ResponseContext<CustomerNotification> GetAllCustomerNotification(RequestContext requestContext);
         
         CustomerNotification GetCustomerNotificationByCNId(System.Int32? cNId);
-        
+        CustomerNotification GetCustomerNotificationByInitId(System.Int32? initId);
+
         bool SaveCustomerNotification(CustomerNotification customerNotification);
         
         bool UpdateCustomerNotification(CustomerNotification customerNotification);
