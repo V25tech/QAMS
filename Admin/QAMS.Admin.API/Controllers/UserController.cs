@@ -61,7 +61,7 @@ namespace QAMS.Controllers
         /// This method is used to Get User By Id id
         /// </summary>
         /// <param name="id"></param>
-        [HttpGet("{username}")]
+        [HttpPost("GetUserByUserName")]
         public ActionResult<User> GetUserByUserName(User user)
         {
 
