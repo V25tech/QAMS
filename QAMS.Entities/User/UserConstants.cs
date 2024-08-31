@@ -75,5 +75,9 @@ namespace QAMS.Admin.Entities
         public const string USP_User_PSY_By_Id_DELETE = "dbo.USP_User_PSY_By_Id_DELETE";
 
         public const string UseName = "UserName_PSY";
+
+        public const string password = "@Password_PSY";
+
+        public const string user_id = "@UserId_PSY";
     }
 }
