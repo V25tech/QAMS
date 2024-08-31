@@ -93,8 +93,6 @@ namespace QAMS.Sheet1.Data
             {
                 List<SqlParameter> sqlparms = new List<SqlParameter>();
                 sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = CFTReviewConstants.CFTId, Value = cFTReview.CFTId });
-                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = CFTReviewConstants.InitiativeId, Value = cFTReview.InitiativeId });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CFTReviewConstants.InitiativeName, Value = cFTReview.InitiativeName });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Boolean, ParameterName = CFTReviewConstants.IsSave, Value = cFTReview.IsSave });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CFTReviewConstants.Remarks, Value = cFTReview.Remarks });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CFTReviewConstants.Status, Value = cFTReview.Status });
@@ -103,7 +101,6 @@ namespace QAMS.Sheet1.Data
                 sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = CFTReviewConstants.Plant, Value = cFTReview.Plant });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Boolean, ParameterName = CFTReviewConstants.IsProposedChange, Value = cFTReview.IsProposedChange });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CFTReviewConstants.CFTDocument, Value = cFTReview.CFTDocument });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CFTReviewConstants.ModifiedBy, Value = cFTReview.ModifiedBy });
                 Object result = dataAccessHelper.ExecuteStoredProcedure(CFTReviewConstants.USP_CFTReview_PSY_UPDATE, sqlparms, ExecutionType.Scalar);
                 return (Convert.ToInt32(result) > 0);
             }
