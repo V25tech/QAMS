@@ -33,7 +33,7 @@ namespace QAMS.Sheet1.Services
                 validationMessages.Append(validationHelper.LengthCheckValidator(cFTReview.InitiativeName,200, nameof(cFTReview.InitiativeName)));
                 validationMessages.Append(validationHelper.LengthCheckValidator(cFTReview.Remarks,500, nameof(cFTReview.Remarks)));
                 validationMessages.Append(validationHelper.LengthCheckValidator(cFTReview.Status,100, nameof(cFTReview.Status)));
-                validationMessages.Append(validationHelper.LengthCheckValidator(cFTReview.CFTDocument,0, nameof(cFTReview.CFTDocument)));
+                validationMessages.Append(validationHelper.LengthCheckValidator(cFTReview.CFTDocument,1000, nameof(cFTReview.CFTDocument)));
                 validationMessages.Append(validationHelper.LengthCheckValidator(cFTReview.ModifiedBy,100, nameof(cFTReview.ModifiedBy)));
                 if (!String.IsNullOrEmpty(validationMessages.ToString()))
                 {

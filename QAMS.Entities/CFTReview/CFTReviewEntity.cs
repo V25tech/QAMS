@@ -25,7 +25,9 @@ namespace QAMS.Entities
         private System.Boolean? issaveField;
         
         private string remarksField;
-        
+
+        private string commentsField;
+
         private string statusField;
         
         private System.Int32? createdbyField;
@@ -83,7 +85,19 @@ namespace QAMS.Entities
                 this.issaveField = value;
             }
         }
-        
+
+        public string Comments
+        {
+            get
+            {
+                return this.commentsField;
+            }
+            set
+            {
+                this.commentsField = value;
+            }
+        }
+
         public string Remarks
         {
             get

@@ -16,9 +16,9 @@ export class CftReviewService {
     return this.http.post(this.apiUrl + '/cftreview/savecftreview', JSON.stringify(cftReview));
   }
   updateCftReview(cftReview: CftReview) {
-    return this.http.post(this.apiUrl + '/cftreview/updateCftreview', JSON.stringify(cftReview));
+    return this.http.post(this.apiUrl + '/cftreview/updatecftreview', JSON.stringify(cftReview));
   }
   getCftreviewbyintid(changeControlId: number) {
-    return this.http.get(this.apiUrl + '/cftreview/getCftreviewbyintid?initId=' + changeControlId);
+    return this.http.get(this.apiUrl + '/cftreview/getcftreviewbyinit?initId=' + changeControlId);
   }
 }

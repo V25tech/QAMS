@@ -70,7 +70,9 @@ export class CftReviewComponent {
 
 
   loadCftReview() {
-
+    this.cftReviewService.getCftreviewbyintid(this.changeControlId).subscribe( (data)=> {
+      this.cftreview=data;
+    }, err => console.log(err))
   }
 
   refresh(event: any) {
@@ -89,6 +91,7 @@ export class CftReviewComponent {
     this.commonService.setActionPlanInput(actionPlanInput);
   }
 
+
   saveCFTReview() {
     this.cftreview.isSave = false;
     this.cftreview.initiativeId = this.changeControlId;
@@ -98,11 +101,13 @@ export class CftReviewComponent {
     this.cftreview.updatedBy = 1234;
     this.cftReviewService.saveCftReview(this.cftreview).subscribe((data: any) => {
       console.log(data);
-    });
+    }, er => console.log(er));
   }
 
   submit(){
-
+    this.cftReviewService.updateCftReview(this.cftreview).subscribe((data: any) => {
+      console.log(data);
+    }, er => console.log(er));
   }
 
   closeNavBar() {

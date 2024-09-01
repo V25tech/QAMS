@@ -20,6 +20,6 @@ export class CustomerNotificationReviewService {
     return this.http.post(this.apiUrl + '/customernotification/updatecustomernotification', JSON.stringify(cnReview));
   }
   getCustomerNotificationReviewByintid(changeControlId: number) {
-    return this.http.get(this.apiUrl + '/customernotification/getCftreviewbyintid?initId=' + changeControlId);
+    return this.http.get(this.apiUrl + '/customernotification/getcustnotification?initId=' + changeControlId);
   }
 }

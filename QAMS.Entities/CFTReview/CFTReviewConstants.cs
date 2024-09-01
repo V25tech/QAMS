@@ -23,7 +23,9 @@ namespace QAMS.Entities
         public const string IsSave = "@IsSave_PSY";
         
         public const string Remarks = "@Remarks_PSY";
-        
+
+        public const string Comments = "@Comments_PSY";
+
         public const string Status = "@Status_PSY";
         
         public const string CreatedBy = "@CreatedBy_PSY";

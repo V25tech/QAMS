@@ -19,7 +19,7 @@ export class CustomerNotificationComponent {
   defaultRadioBtn = 0;
   id: any;
   changeControlId: number = 0;
-  cnReview: CustomerNotificationReview ={};
+  cnReview: CustomerNotificationReview = {};
 
   constructor(private primeConfig: PrimeNGConfig,
     private cdr: ChangeDetectorRef,
@@ -45,8 +45,10 @@ export class CustomerNotificationComponent {
   }
 
 
-  loadCusterNotificationReview(){
-
+  loadCusterNotificationReview() {
+    this.cnReviewService.getCustomerNotificationReviewByintid(this.changeControlId).subscribe((data: any) => {
+      this.cnReview = data;
+    }, er => console.log(er));
   }
 
   saveCusterNotificationReview() {
@@ -58,11 +60,13 @@ export class CustomerNotificationComponent {
     this.cnReview.updatedBy = 1234;
     this.cnReviewService.saveCustomerNotificationReview(this.cnReview).subscribe((data: any) => {
       console.log(data);
-    });
+    }, er => console.log(er));
   }
 
-  submit(){
-
+  submit() {
+    this.cnReviewService.updateCustomerNotificationReview(this.cnReview).subscribe((data: any) => {
+      console.log(data);
+    }, er => console.log(er));
   }
 
   visibleSidebar2: any;

@@ -83,6 +83,7 @@ namespace QAMS.Sheet1.Data
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CFTReviewConstants.InitiativeName, Value = cFTReview.InitiativeName });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Boolean, ParameterName = CFTReviewConstants.IsSave, Value = cFTReview.IsSave });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CFTReviewConstants.Remarks, Value = cFTReview.Remarks });
+                //sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CFTReviewConstants.Comments, Value = cFTReview.Comments });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CFTReviewConstants.Status, Value = cFTReview.Status });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = CFTReviewConstants.CreatedBy, Value = cFTReview.CreatedBy });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = CFTReviewConstants.UpdatedBy, Value = cFTReview.UpdatedBy });
