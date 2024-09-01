@@ -69,6 +69,8 @@ namespace QAMS.Sheet1.Services
             try
             {
                 String validationMessages = CustomerNotificationValidator.IsValidCustomerNotification(customerNotification);
+                customerNotification.CreatedDate =  DateTime.Now;
+                customerNotification.UpdatedDate = DateTime.Now;
                 if (validationMessages.Length <= 0)
                 {
                     var result = customerNotificationData.SaveCustomerNotification(customerNotification);

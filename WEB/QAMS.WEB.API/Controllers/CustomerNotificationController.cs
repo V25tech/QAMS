@@ -53,10 +53,10 @@ namespace QAMS.Controllers
         /// This method is used to Get CustomerNotification By Id cNId
         /// </summary>
         /// <param name="cNId"></param>
-        [HttpGet("{cNId}")]
-        public ActionResult<CustomerNotification> GetCustomerNotificationByCNId(System.Int32? cNId)
+        [HttpGet("{cnId}")]
+        public ActionResult<CustomerNotification> GetCustomerNotificationByCNId(System.Int32? cnId)
         {
-            var result = customerNotificationService.GetCustomerNotificationByCNId(cNId);
+            var result = customerNotificationService.GetCustomerNotificationByCNId(cnId);
             return result;
         }
         

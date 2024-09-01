@@ -2,7 +2,9 @@ import { ChangeDetectorRef, Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PrimeNGConfig } from 'primeng/api';
 import { ActionPlanInput, ActionPlanModel } from 'src/app/models/action-plan.model';
+import { CftReview } from 'src/app/models/cft-review.model';
 import { CC_Model } from 'src/app/models/changecontrol.model';
+import { CftReviewService } from 'src/app/modules/change-controls/services/cft-review.service';
 import { ActionPlansEnum, ActionPlansEnum_DESCRIPTIONS } from 'src/app/modules/shared-services/action-plan-enums';
 import { ActionPlanService } from 'src/app/modules/shared-services/action-plan.service';
 import { CommonService } from 'src/app/modules/shared-services/common.service';
@@ -25,6 +27,7 @@ export class CftReviewComponent {
   id: any;
 
   actionPlanInput: ActionPlanInput
+  cftreview: CftReview = {};
   visibleSidebar2: any;
   action_plans: ActionPlanModel[];
   changeControlId: number = 0;
@@ -33,6 +36,7 @@ export class CftReviewComponent {
     private cdr: ChangeDetectorRef,
     private commonService: CommonService,
     private actionPlanService: ActionPlanService,
+    private cftReviewService: CftReviewService,
     private route: ActivatedRoute) { }
   plantTypeDetails = [
     { name: 'Documentation', code: 'Documentation' },
@@ -54,6 +58,7 @@ export class CftReviewComponent {
       let splitItesms = this.id.split('-');
       this.changeControlId = Number.parseInt(splitItesms[splitItesms.length - 1]);
       this.loadActionPlans();
+      this.loadCftReview();
     })
   }
 
@@ -61,6 +66,11 @@ export class CftReviewComponent {
     this.actionPlanService.getActionsplansByInitIdAndWorkId(this.changeControlId, ActionPlansEnum.CC_CFT_REVIEW_AP).subscribe((p: any) => {
       this.action_plans = p;
     }, er => console.log(er));
+  }
+
+
+  loadCftReview() {
+
   }
 
   refresh(event: any) {
@@ -77,6 +87,22 @@ export class CftReviewComponent {
 
     this.visibleSidebar2 = true;
     this.commonService.setActionPlanInput(actionPlanInput);
+  }
+
+  saveCFTReview() {
+    this.cftreview.isSave = false;
+    this.cftreview.initiativeId = this.changeControlId;
+    this.cftreview.initiativeName = "ChangeControl";
+    this.cftreview.plant = 3;
+    this.cftreview.createdBy = 1234;
+    this.cftreview.updatedBy = 1234;
+    this.cftReviewService.saveCftReview(this.cftreview).subscribe((data: any) => {
+      console.log(data);
+    });
+  }
+
+  submit(){
+
   }
 
   closeNavBar() {

@@ -70,7 +70,7 @@ namespace QAMS.Sheet1.Data
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerNotificationConstants.InitiativeName, Value = customerNotification.InitiativeName });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Boolean, ParameterName = CustomerNotificationConstants.IsSave, Value = customerNotification.IsSave });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerNotificationConstants.Comments, Value = customerNotification.Comments });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerNotificationConstants.Status, Value = customerNotification.Status });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerNotificationConstants.Status, Value = "In Progress" });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = CustomerNotificationConstants.CreatedBy, Value = customerNotification.CreatedBy });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = CustomerNotificationConstants.UpdatedBy, Value = customerNotification.UpdatedBy });
                 sqlparms.Add(new SqlParameter { DbType = DbType.DateTime, ParameterName = CustomerNotificationConstants.UpdatedDate, Value = customerNotification.UpdatedDate });

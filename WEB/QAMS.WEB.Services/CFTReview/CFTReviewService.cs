@@ -69,6 +69,8 @@ namespace QAMS.Sheet1.Services
             try
             {
                 String validationMessages = CFTReviewValidator.IsValidCFTReview(cFTReview);
+                cFTReview.CreatedDate = DateTime.Now;
+                cFTReview.UpdatedDate = DateTime.Now;
                 if (validationMessages.Length <= 0)
                 {
                     var result = cFTReviewData.SaveCFTReview(cFTReview);

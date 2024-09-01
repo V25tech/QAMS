@@ -54,7 +54,7 @@
                                         {{ccinitiationType.changeControlUniqueCode}}</a></td>
                                 <td>{{ccinitiationType.initiatingDepartment_PSY}}</td>
                                 <td>{{ccinitiationType.registeredby}}</td>
-                                <td>{{ccinitiationType.date | date: 'MM/dd/yyyy'}}</td>
+                                <td>{{ccinitiationType.createdDate | date: 'MM/dd/yyyy'}}</td>
                                 <td><span class="status rounded-pill"
                                         [ngClass]="getStatusClass(ccinitiationType['status'])">{{ccinitiationType.status}}
                                     </span></td>
