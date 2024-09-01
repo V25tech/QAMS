@@ -26,7 +26,9 @@ namespace QAMS.Sheet1.Data
         DataSet GetAllClosure(RequestContext requestContext);
         
         DataSet GetClosureByCId(System.Int32? cId);
-        
+
+        DataSet GetClosureByInitId(System.Int32? initId);
+
         bool SaveClosure(Closure closure);
         
         bool UpdateClosure(Closure closure);

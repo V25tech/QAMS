@@ -59,7 +59,13 @@ namespace QAMS.Controllers
             var result = closureService.GetClosureByCId(cId);
             return result;
         }
-        
+        [HttpGet("getclosurebyInitId")]
+        public ActionResult<Closure> GetClosureByInitId(System.Int32? initId)
+        {
+            var result = closureService.GetClosureByInitId(initId);
+            return result;
+        }
+
         /// <summary>
         /// This Method is used to Save Closure
         /// </summary>

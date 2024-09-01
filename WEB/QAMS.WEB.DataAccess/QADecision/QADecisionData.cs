@@ -60,7 +60,20 @@ namespace QAMS.Sheet1.Data
                 throw;
             }
         }
-        
+
+        public DataSet GetQADecisionByInitId(System.Int32? initId)
+        {
+            try
+            {
+                DataSet dataset = (DataSet)dataAccessHelper.ExecuteStoredProcedure("dbo.USP_QADecision_PSY_GET_BY_INIT", "@Init_PSY", DbType.Int32, initId, ExecutionType.Dataset);
+                return dataset;
+            }
+            catch (System.Exception ex)
+            {
+                throw;
+            }
+        }
+
         public bool SaveQADecision(QADecision qADecision)
         {
             try
@@ -94,18 +107,13 @@ namespace QAMS.Sheet1.Data
             {
                 List<SqlParameter> sqlparms = new List<SqlParameter>();
                 sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = QADecisionConstants.QADId, Value = qADecision.QADId });
-                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = QADecisionConstants.InitiativeId, Value = qADecision.InitiativeId });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = QADecisionConstants.InitiativeName, Value = qADecision.InitiativeName });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Boolean, ParameterName = QADecisionConstants.IsSave, Value = qADecision.IsSave });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = QADecisionConstants.Comments, Value = qADecision.Comments });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = QADecisionConstants.Status, Value = qADecision.Status });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = QADecisionConstants.UpdatedBy, Value = qADecision.UpdatedBy });
-                sqlparms.Add(new SqlParameter { DbType = DbType.DateTime, ParameterName = QADecisionConstants.UpdatedDate, Value = qADecision.UpdatedDate });
-                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = QADecisionConstants.Plant, Value = qADecision.Plant });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Boolean, ParameterName = QADecisionConstants.IsReviewedActions, Value = qADecision.IsReviewedActions });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = QADecisionConstants.Remarks, Value = qADecision.Remarks });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = QADecisionConstants.CNDocument, Value = qADecision.CNDocument });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = QADecisionConstants.ModifiedBy, Value = qADecision.ModifiedBy });
                 Object result = dataAccessHelper.ExecuteStoredProcedure(QADecisionConstants.USP_QADecision_PSY_UPDATE, sqlparms, ExecutionType.Scalar);
                 return (Convert.ToInt32(result) > 0);
             }

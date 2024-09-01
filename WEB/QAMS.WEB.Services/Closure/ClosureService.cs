@@ -63,7 +63,21 @@ namespace QAMS.Sheet1.Services
                 throw;
             }
         }
-        
+
+        public Closure GetClosureByInitId(System.Int32? initId)
+        {
+            try
+            {
+                DataSet dataset = closureData.GetClosureByInitId(initId);
+                Closure result = ClosureConverter.SetClosure(dataset);
+                return result;
+            }
+            catch (System.Exception ex)
+            {
+                throw;
+            }
+        }
+
         public bool SaveClosure(Closure closure)
         {
             try

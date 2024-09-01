@@ -60,7 +60,20 @@ namespace QAMS.Sheet1.Data
                 throw;
             }
         }
-        
+
+        public DataSet GetClosureByInitId(System.Int32? initId)
+        {
+            try
+            {
+                DataSet dataset = (DataSet)dataAccessHelper.ExecuteStoredProcedure("dbo.USP_Closure_PSY_GET_BY_INIT", "@Init_PSY", DbType.Int32, initId, ExecutionType.Dataset);
+                return dataset;
+            }
+            catch (System.Exception ex)
+            {
+                throw;
+            }
+        }
+
         public bool SaveClosure(Closure closure)
         {
             try

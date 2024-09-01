@@ -26,7 +26,10 @@ namespace QAMS.Sheet1.Data
         DataSet GetAllQADecision(RequestContext requestContext);
         
         DataSet GetQADecisionByQADId(System.Int32? qADId);
-        
+
+        DataSet GetQADecisionByInitId(System.Int32? initId);
+
+
         bool SaveQADecision(QADecision qADecision);
         
         bool UpdateQADecision(QADecision qADecision);

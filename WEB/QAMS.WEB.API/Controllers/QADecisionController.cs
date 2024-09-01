@@ -59,7 +59,14 @@ namespace QAMS.Controllers
             var result = qADecisionService.GetQADecisionByQADId(qADId);
             return result;
         }
-        
+
+        [HttpGet("getqadecisionbyInitid")]
+        public ActionResult<QADecision> GetQADecisionByInitId(System.Int32? initId)
+        {
+            var result = qADecisionService.GetQADecisionByInitId(initId);
+            return result;
+        }
+
         /// <summary>
         /// This Method is used to Save QADecision
         /// </summary>

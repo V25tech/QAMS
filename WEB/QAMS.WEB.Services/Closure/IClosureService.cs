@@ -26,7 +26,9 @@ namespace QAMS.Sheet1.Services
         ResponseContext<Closure> GetAllClosure(RequestContext requestContext);
         
         Closure GetClosureByCId(System.Int32? cId);
-        
+        Closure GetClosureByInitId(System.Int32? initId);
+
+
         bool SaveClosure(Closure closure);
         
         bool UpdateClosure(Closure closure);

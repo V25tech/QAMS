@@ -26,7 +26,10 @@ namespace QAMS.Sheet1.Services
         ResponseContext<QADecision> GetAllQADecision(RequestContext requestContext);
         
         QADecision GetQADecisionByQADId(System.Int32? qADId);
-        
+
+        QADecision GetQADecisionByInitId(System.Int32? initId);
+
+
         bool SaveQADecision(QADecision qADecision);
         
         bool UpdateQADecision(QADecision qADecision);
