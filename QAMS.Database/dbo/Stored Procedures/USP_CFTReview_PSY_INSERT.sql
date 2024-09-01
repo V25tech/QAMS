@@ -8,7 +8,6 @@
 @UpdatedDate_PSY DateTime,
 @Plant_PSY Int,
 @IsProposedChange_PSY bit,
-@CFTId_PSY Int,
 @CFTDocument_PSY Xml,
 @ModifiedBy_PSY NVarChar(100) 
  AS 
@@ -28,7 +27,6 @@ CreatedDate_PSY,
 UpdatedDate_PSY,
 Plant_PSY,
 IsProposedChange_PSY,
-CFTId_PSY,
 CFTDocument_PSY,
 ModifiedBy_PSY,
 ModifiedDate_PSY)
@@ -44,7 +42,6 @@ ModifiedDate_PSY)
 @UpdatedDate_PSY,
 @Plant_PSY,
 @IsProposedChange_PSY,
-@CFTId_PSY,
 @CFTDocument_PSY,
 @ModifiedBy_PSY,
  GetDate() );

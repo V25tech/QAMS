@@ -26,7 +26,9 @@ namespace QAMS.Sheet1.Services
         ResponseContext<QAReview> GetAllQAReview(RequestContext requestContext);
         
         QAReview GetQAReviewByQAId(System.Int32? qAId);
-        
+
+        QAReview GetQAReviewByInitId(System.Int32? initId);
+
         bool SaveQAReview(QAReview qAReview);
         
         bool UpdateQAReview(QAReview qAReview);

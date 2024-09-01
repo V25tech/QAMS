@@ -59,7 +59,14 @@ namespace QAMS.Controllers
             var result = cFTReviewService.GetCFTReviewByCFTId(cFTId);
             return result;
         }
-        
+
+        [HttpGet("getcftreviewbyinit")]
+        public ActionResult<CFTReview> GetCFTReviewByInitId(System.Int32? initId)
+        {
+            var result = cFTReviewService.GetCFTReviewByInitId(initId);
+            return result;
+        }
+
         /// <summary>
         /// This Method is used to Save CFTReview
         /// </summary>

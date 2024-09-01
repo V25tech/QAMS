@@ -53,7 +53,11 @@ namespace QAMS.Admin.Entities
         public const string USP_User_PSY_GET_ALL = "dbo.USP_User_PSY_GET_ALL";
         
         public const string USP_User_PSY_GET = "dbo.USP_User_PSY_GET";
+
+        public const string USP_User_PSY_GET_NAME = "dbo.USP_User_PSY_GET_NAME";
+
         
+
         public const string USP_User_PSY_INSERT = "dbo.USP_User_PSY_INSERT";
         
         public const string USP_User_PSY_UPDATE = "dbo.USP_User_PSY_UPDATE";
@@ -71,5 +75,9 @@ namespace QAMS.Admin.Entities
         public const string USP_User_PSY_By_Id_DELETE = "dbo.USP_User_PSY_By_Id_DELETE";
 
         public const string UseName = "UserName_PSY";
+
+        public const string password = "@Password_PSY";
+
+        public const string user_id = "@UserId_PSY";
     }
 }

@@ -19,19 +19,19 @@ namespace QAMS.Admin.Data
     using QAMS.Admin.Entities;
     using VAMLibrary.Core;
     using VAMLibrary.Core.Common;
-    
-    
+
+
     // Comment
     public class UserData : IUserData
     {
-        
+
         private readonly DataAccessHelper dataAccessHelper;
-        
+
         public UserData(DataAccessHelper dataAccessHelper)
         {
             this.dataAccessHelper = dataAccessHelper;
         }
-        
+
         public DataSet GetAllUser(RequestContext requestContext)
         {
             try
@@ -47,7 +47,7 @@ namespace QAMS.Admin.Data
                 throw;
             }
         }
-        
+
         public DataSet GetUserById(System.Int32? id)
         {
             try
@@ -60,7 +60,23 @@ namespace QAMS.Admin.Data
                 throw;
             }
         }
-        
+
+        public DataSet GetUserByUserName(User user)
+        {
+            try
+            {
+                List<SqlParameter> sqlparms = new List<SqlParameter>();
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = UserConstants.user_id, Value = user.userName });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = UserConstants.password, Value = user.Password });
+                DataSet dataset = (DataSet)dataAccessHelper.ExecuteStoredProcedure(UserConstants.USP_User_PSY_GET_NAME, sqlparms, ExecutionType.Dataset);
+                return dataset;
+            }
+            catch (System.Exception ex)
+            {
+                throw;
+            }
+        }
+
         public bool SaveUser(User user)
         {
             try
@@ -89,7 +105,7 @@ namespace QAMS.Admin.Data
                 throw;
             }
         }
-        
+
         public bool UpdateUser(User user)
         {
             try
@@ -116,7 +132,7 @@ namespace QAMS.Admin.Data
                 throw;
             }
         }
-        
+
         public bool DeleteUserById(System.Int32? id)
         {
             try
@@ -129,12 +145,12 @@ namespace QAMS.Admin.Data
                 throw;
             }
         }
-        
+
         public bool DeleteAllUser(List<int> ids)
         {
             try
             {
-                var result = dataAccessHelper.ExecuteStoredProcedure(UserConstants.USP_User_PSY_DELETE_ALL, UserConstants.Id, DbType.String, string.Join(',',  ids), ExecutionType.NonQuery);
+                var result = dataAccessHelper.ExecuteStoredProcedure(UserConstants.USP_User_PSY_DELETE_ALL, UserConstants.Id, DbType.String, string.Join(',', ids), ExecutionType.NonQuery);
                 return (Convert.ToInt32(result) >= 0);
             }
             catch (System.Exception ex)
@@ -142,7 +158,7 @@ namespace QAMS.Admin.Data
                 throw;
             }
         }
-        
+
         public DataSet GetUserByRoleId(System.Int32? id)
         {
             try
@@ -155,7 +171,7 @@ namespace QAMS.Admin.Data
                 throw;
             }
         }
-        
+
         public DataSet GetUserByDepartmentId(System.Int32? id)
         {
             try
@@ -168,7 +184,7 @@ namespace QAMS.Admin.Data
                 throw;
             }
         }
-        
+
         public bool DeleteUserByRoleId(System.Int32? id)
         {
             try
@@ -181,7 +197,7 @@ namespace QAMS.Admin.Data
                 throw;
             }
         }
-        
+
         public bool DeleteUserByDepartmentId(System.Int32? id)
         {
             try

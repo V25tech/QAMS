@@ -59,7 +59,14 @@ namespace QAMS.Controllers
             var result = customerNotificationService.GetCustomerNotificationByCNId(cnId);
             return result;
         }
-        
+
+        [HttpGet("getcustnotification")]
+        public ActionResult<CustomerNotification> getcustnotificationByInit(System.Int32? initId)
+        {
+            var result = customerNotificationService.GetCustomerNotificationByInitId(initId);
+            return result;
+        }
+
         /// <summary>
         /// This Method is used to Save CustomerNotification
         /// </summary>

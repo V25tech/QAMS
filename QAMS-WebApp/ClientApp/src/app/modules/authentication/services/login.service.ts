@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
+import { CommonService } from '../../shared-services/common.service';
 
 const AUTH_STORAGE_KEY = 'isLoggedIn';
 
@@ -10,6 +11,7 @@ const AUTH_STORAGE_KEY = 'isLoggedIn';
 export class LoginService {
 
     private loginStatusChanged = new Subject<boolean>();
+    
   loginStatusChanged$ = this.loginStatusChanged.asObservable();
 
   private loggedIn = false;
@@ -26,16 +28,18 @@ export class LoginService {
   }
 
   
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private commonServ:CommonService) {}
 
   login(username: string, password: string) {
     //return this.http.post(`${this.baseUrl}/login`, { username, password });
-    const isValid = username === 'admin' && password === 'admin123';
-
-    if (isValid) {
+    //const isValid = username === 'admin' && password === 'admin123';
+    this.commonServ.LogginedUserame=username;
+    this.commonServ.Logginedpassword=password;
+    const isValid = username;
+    //if (isValid) {
       localStorage.setItem(AUTH_STORAGE_KEY, 'true');
       this.updateLoginStatus(true);
-    }
+    //}
 
     return isValid;
   }

@@ -60,7 +60,19 @@ namespace QAMS.Sheet1.Data
                 throw;
             }
         }
-        
+        public DataSet GetCustomerNotificationByInitId(System.Int32? initId)
+        {
+            try
+            {
+                DataSet dataset = (DataSet)dataAccessHelper.ExecuteStoredProcedure("dbo.USP_CustomerNotification_PSY_GET_BY_INIT", "@Init_PSY", DbType.Int32, initId, ExecutionType.Dataset);
+                return dataset;
+            }
+            catch (System.Exception ex)
+            {
+                throw;
+            }
+        }
+
         public bool SaveCustomerNotification(CustomerNotification customerNotification)
         {
             try
@@ -94,18 +106,13 @@ namespace QAMS.Sheet1.Data
             {
                 List<SqlParameter> sqlparms = new List<SqlParameter>();
                 sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = CustomerNotificationConstants.CNId, Value = customerNotification.CNId });
-                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = CustomerNotificationConstants.InitiativeId, Value = customerNotification.InitiativeId });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerNotificationConstants.InitiativeName, Value = customerNotification.InitiativeName });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Boolean, ParameterName = CustomerNotificationConstants.IsSave, Value = customerNotification.IsSave });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerNotificationConstants.Comments, Value = customerNotification.Comments });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerNotificationConstants.Status, Value = customerNotification.Status });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = CustomerNotificationConstants.UpdatedBy, Value = customerNotification.UpdatedBy });
-                sqlparms.Add(new SqlParameter { DbType = DbType.DateTime, ParameterName = CustomerNotificationConstants.UpdatedDate, Value = customerNotification.UpdatedDate });
-                sqlparms.Add(new SqlParameter { DbType = DbType.Int32, ParameterName = CustomerNotificationConstants.Plant, Value = customerNotification.Plant });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Boolean, ParameterName = CustomerNotificationConstants.IsProposedChange, Value = customerNotification.IsProposedChange });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerNotificationConstants.Remarks, Value = customerNotification.Remarks });
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerNotificationConstants.CNDocument, Value = customerNotification.CNDocument });
-                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = CustomerNotificationConstants.ModifiedBy, Value = customerNotification.ModifiedBy });
                 Object result = dataAccessHelper.ExecuteStoredProcedure(CustomerNotificationConstants.USP_CustomerNotification_PSY_UPDATE, sqlparms, ExecutionType.Scalar);
                 return (Convert.ToInt32(result) > 0);
             }

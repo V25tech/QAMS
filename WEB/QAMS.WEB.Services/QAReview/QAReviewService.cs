@@ -63,7 +63,20 @@ namespace QAMS.Sheet1.Services
                 throw;
             }
         }
-        
+        public QAReview GetQAReviewByInitId(System.Int32? initId)
+        {
+            try
+            {
+                DataSet dataset = qAReviewData.GetQAReviewByInitId(initId);
+                QAReview result = QAReviewConverter.SetQAReview(dataset);
+                return result;
+            }
+            catch (System.Exception ex)
+            {
+                throw;
+            }
+        }
+
         public bool SaveQAReview(QAReview qAReview)
         {
             try

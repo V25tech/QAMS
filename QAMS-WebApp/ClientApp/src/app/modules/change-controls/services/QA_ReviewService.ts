@@ -22,6 +22,6 @@ export class QA_ReviewService {
       }
       getqareviewbyintid(changeControlId: number) {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-        return this.http.get(this.apiUrl + '/qareview/gethodreviewbyintid?initId=' + changeControlId);
+        return this.http.get(this.apiUrl + '/qareview/getqareviewbyintid?initId=' + changeControlId);
       }
 }

@@ -10,7 +10,9 @@ import { ActionPlanInput } from 'src/app/models/action-plan.model';
 export class CommonService {
 
     LogginedUserame: string;
+    Logginedpassword: string;
     LogginedUserId: number;
+    plantId:number;
     actionPlanInputSubject = new BehaviorSubject<ActionPlanInput>(null);
     actionPlanInputObservable = this.actionPlanInputSubject.asObservable();
 
