@@ -50,7 +50,7 @@
         </div>
         <div class="form-group mt-3 px-1">
             <label for="comments">Review Comments</label>
-            <textarea class="form-control mt-2 text-muted review-styles" id="comments"
+            <textarea [(ngModel)] = "qaDecision.comments" class="form-control mt-2 text-muted review-styles" id="comments"
                 placeholder="Enter review comments here" rows="3"></textarea>
         </div>
         <div class="mt-4 bg-contrast pb-3 rounded">
@@ -96,15 +96,15 @@
 
                 <div class="col-lg-8 d-flex radio-styles align-items-center">
                     <div class="">
-                        <input type="radio" id="Yes" name="radiobtn" value="0">
+                        <input [(ngModel)] = "qaDecision.isReviewedActions" type="radio" id="Yes" name="radiobtn" [value]="true">
                         <label class="p-2 " for="yes">Yes</label>
                     </div>
                     <div class="rd-styles">
-                        <input type="radio" id="No" name="radiobtn" value="1">
+                        <input [(ngModel)] = "qaDecision.isReviewedActions" type="radio" id="No" name="radiobtn" [value]="false">
                         <label class="p-2 " for="No">No</label>
                     </div>
                     <div class="rd-styles">
-                        <input type="radio" id="Not Applicable" name="radiobtn" value="1">
+                        <input [(ngModel)] = "qaDecision.isReviewedActions" type="radio" id="Not Applicable" name="radiobtn" [value]="null">
                         <label class="p-2 " for="Not Applicable">Not Applicable</label>
                     </div>
                 </div>
@@ -115,14 +115,14 @@
 
         <div class="form-group mt-3 px-1">
             <label for="comments">Remarks/Reason</label>
-            <textarea class="form-control mt-2 text-muted review-styles" id="comments" placeholder="Enter Remarks here"
+            <textarea [(ngModel)] = "qaDecision.remarks" class="form-control mt-2 text-muted review-styles" id="comments" placeholder="Enter Remarks here"
                 rows="3"></textarea>
         </div>
 
         <div class="mt-4 d-flex justify-content-end">
             <button type="button" class="btn btn-default rounded-pill me-3">Cancel</button>
-            <button type="button" class="btn btn-outline-primary rounded-pill me-3">Save</button>
-            <button type="button" class="btn btn-primary rounded-pill me-3">Submit</button>
+            <button type="button" (click)="saveQADecision()" class="btn btn-outline-primary rounded-pill me-3">Save</button>
+            <button type="button" (click)="submit()" class="btn btn-primary rounded-pill me-3">Submit</button>
         </div>
     </div>
 </div>

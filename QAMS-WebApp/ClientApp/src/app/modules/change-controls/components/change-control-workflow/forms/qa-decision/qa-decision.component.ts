@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { PrimeNGConfig } from 'primeng/api';
 import { ActionPlanInput, ActionPlanModel } from 'src/app/models/action-plan.model';
 import { CC_Model } from 'src/app/models/changecontrol.model';
+import { QADecision } from 'src/app/models/qa-decision.model';
+import { QaDecisionService } from 'src/app/modules/change-controls/services/qa-decision.service';
 import { ActionPlansEnum, ActionPlansEnum_DESCRIPTIONS } from 'src/app/modules/shared-services/action-plan-enums';
 import { ActionPlanService } from 'src/app/modules/shared-services/action-plan.service';
 import { CommonService } from 'src/app/modules/shared-services/common.service';
@@ -41,12 +43,14 @@ export class QaDecisionComponent {
   visibleSidebar2: any;
   action_plans: ActionPlanModel[];
   changeControlId: number = 0;
+  qaDecision: QADecision = {};
 
 
   constructor(private primeConfig: PrimeNGConfig,
     private cdr: ChangeDetectorRef,
     private commonService: CommonService,
     private actionPlanService: ActionPlanService,
+    private qaDecisionService: QaDecisionService,
     private route: ActivatedRoute) { }
 
 
@@ -58,6 +62,7 @@ export class QaDecisionComponent {
       let splitItesms = this.id.split('-');
       this.changeControlId = Number.parseInt(splitItesms[splitItesms.length - 1]);
       this.loadActionPlans();
+      this.loadQADecision();
     })
     //this.setActionPlanInput();
   }
@@ -83,6 +88,30 @@ export class QaDecisionComponent {
 
     this.visibleSidebar2 = true;
     this.commonService.setActionPlanInput(actionPlanInput);
+  }
+
+  loadQADecision() {
+    this.qaDecisionService.getQaDecisionbyintid(this.changeControlId).subscribe((data: any) => {
+      this.qaDecision = data;
+    }, er => console.log(er));
+  }
+
+  saveQADecision() {
+    this.qaDecision.isSave = false;
+    this.qaDecision.initiativeId = this.changeControlId;
+    this.qaDecision.initiativeName = "ChangeControl";
+    this.qaDecision.plant = 3;
+    this.qaDecision.createdBy = 1234;
+    this.qaDecision.updatedBy = 1234;
+    this.qaDecisionService.saveQaDecision(this.qaDecision).subscribe((data: any) => {
+      console.log(data);
+    }, er => console.log(er));
+  }
+
+  submit() {
+    this.qaDecisionService.updateQaDecision(this.qaDecision).subscribe((data: any) => {
+      console.log(data);
+    }, er => console.log(er));
   }
 
   selectIncharge(event: any) {

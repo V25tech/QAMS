@@ -60,6 +60,8 @@ namespace QAMS.WEB.API
             services.AddScoped<ICustomerNotificationData, CustomerNotificationData>();
             services.AddScoped<IQAReviewService, QAReviewService>();
             services.AddScoped<IQAReviewData, QAReviewData>();
+            services.AddScoped<IQADecisionService, QADecisionService>();
+            services.AddScoped<IQADecisionData, QADecisionData>();
             services.AddCors(option =>
             {
                 option.AddDefaultPolicy(
