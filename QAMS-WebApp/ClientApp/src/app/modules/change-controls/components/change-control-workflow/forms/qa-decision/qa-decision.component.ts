@@ -109,6 +109,7 @@ export class QaDecisionComponent {
   }
 
   submit() {
+    this.qaDecision.isSave=true;
     this.qaDecisionService.updateQaDecision(this.qaDecision).subscribe((data: any) => {
       console.log(data);
     }, er => console.log(er));

@@ -105,6 +105,7 @@ export class CftReviewComponent {
   }
 
   submit(){
+    this.cftreview.isSave=true;
     this.cftReviewService.updateCftReview(this.cftreview).subscribe((data: any) => {
       console.log(data);
     }, er => console.log(er));

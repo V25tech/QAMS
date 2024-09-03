@@ -19,6 +19,6 @@ export class QaDecisionService {
     return this.http.post(this.apiUrl + '/qadecision/updateqadecision', JSON.stringify(cftReview));
   }
   getQaDecisionbyintid(changeControlId: number) {
-    return this.http.get(this.apiUrl + '/qadecision/getcftreviewbyinit?initId=' + changeControlId);
+    return this.http.get(this.apiUrl + '/qadecision/getqadecisionbyInitid?initId=' + changeControlId);
   }
 }

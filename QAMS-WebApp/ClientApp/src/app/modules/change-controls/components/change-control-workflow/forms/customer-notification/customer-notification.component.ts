@@ -64,6 +64,7 @@ export class CustomerNotificationComponent {
   }
 
   submit() {
+    this.cnReview.isSave=true;
     this.cnReviewService.updateCustomerNotificationReview(this.cnReview).subscribe((data: any) => {
       console.log(data);
     }, er => console.log(er));
