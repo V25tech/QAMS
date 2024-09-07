@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DefaultIterableDiffer, OnInit } from '@angular/core';
 import { LoginService } from './modules/authentication/services/login.service';
 
 @Component({
@@ -16,6 +16,7 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit() {
+    debugger
     this.loginService.loginStatusChanged$.subscribe((status: boolean) => {
       this.isLoggedIn = status;
     });

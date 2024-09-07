@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/modules/authentication/services/login.service';
+import { CommonService } from 'src/app/modules/shared-services/common.service';
 
 @Component({
   selector: 'app-header',
@@ -8,17 +9,24 @@ import { LoginService } from 'src/app/modules/authentication/services/login.serv
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-
-  constructor(private loginservice: LoginService, private router: Router){    
+  dropdownOpen = false;
+  loginuser:string='';
+  constructor(private loginservice: LoginService, private router: Router,private cmnservice:CommonService){    
   }
 
   logout(){
+    debugger
     this.loginservice.logout();
+    this.loginservice.updateLoginStatus(false);
+    localStorage.removeItem('loginuser');
     this.router.navigate(['/login']);
   }
 
  
   ngOnInit(): void {
-    
+    this.loginuser=this.cmnservice.getloginuser().userId;
+  }
+  toggleDropdown() {
+    this.dropdownOpen = !this.dropdownOpen;
   }
 }

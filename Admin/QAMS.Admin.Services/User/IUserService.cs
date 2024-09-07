@@ -27,6 +27,8 @@ namespace QAMS.Admin.Services
         
         User GetUserById(System.Int32? id);
 
+        User GetUserByUserName(string p_UserName);
+
         User GetUserByUserName(User user);
 
         bool SaveUser(User user);

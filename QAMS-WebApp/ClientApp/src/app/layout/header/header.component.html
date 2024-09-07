@@ -17,13 +17,13 @@
         <div class="d-lg-flex h-100 mx-lg-2 text-white">
           <div class="btn-group user-info-block" dropdown>
             <a id="button-basic" dropdownToggle type="button" class="dropdown-toggle"
-                    aria-controls="dropdown-basic">
-                    <span class="user-title">Dominic Keller</span>
+                    aria-controls="dropdown-basic" (click)="toggleDropdown()">
+                    <span class="user-title">{{loginuser}}</span>
                     <img src="../../../assets/images/user.png"  width="36" height="36" class="rounded-circle ms-2">
                      <span class="caret"></span>
           </a>
-            <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
-                role="menu" aria-labelledby="button-basic">
+            <ul id="dropdown-basic" class="dropdown-menu"
+                role="menu" aria-labelledby="button-basic" [class.show]="dropdownOpen">
               <li role="menuitem"><a class="dropdown-item" (click)="logout()">Sign out</a></li>
             </ul>
           </div>

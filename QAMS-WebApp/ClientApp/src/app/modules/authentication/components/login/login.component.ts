@@ -3,7 +3,9 @@ import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
 import { ModifyUserService } from 'src/app/modules/system-manager/services/modify-user.service';
 import { RegModifyUser } from 'src/app/models/modifyUser.model';
+import { MessageService } from 'primeng/api';
 import { CommonService } from 'src/app/modules/shared-services/common.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,13 +17,14 @@ export class LoginComponent {
   password: string = '';
   id:number=0;
 
-  userReg: RegModifyUser;
-  constructor(private router: Router, private loginService: LoginService,private modifyUserService: ModifyUserService,) {
+  userReg: RegModifyUser={};
+  constructor(private router: Router, private loginService: LoginService,
+    private modifyUserService: ModifyUserService,private commonServ:CommonService) {
     console.log('login component');    
   }
   ngOnInit() :void {       
     
-        this.GetUserDetailsbyId(this.id);         
+        //this.GetUserDetailsbyId(this.id);         
     
   }
  
@@ -29,6 +32,7 @@ export class LoginComponent {
   {
    this.modifyUserService.GetUserById(id).subscribe((res:any) => {      
       this.userReg = res;
+      debugger
       let userValue: RegModifyUser = res; //JSON.parse(ccValueStr) ?? null;
       
      // this.editUserValue = userValue;
@@ -36,21 +40,25 @@ export class LoginComponent {
     }, er => console.log(er));    
   }
   login() {   
-
-    this.userReg.userName=this.username;
-    this.userReg.password=this.password;
-    this.modifyUserService.GetUserByuserName(this.userReg).subscribe((res:any) => {      
+    this.modifyUserService.GetUserByuserName(this.username).subscribe((res:any) => {   
+      debugger 
+      if(res==null || res==undefined){
+       alert('invalid user name')
+      }  
       this.userReg = res;
-      let userValue: RegModifyUser = res; //JSON.parse(ccValueStr) ?? null;      
-     // this.editUserValue = userValue;     
+      if(this.userReg.password==this.password){
+       
+      if (this.loginService.login(true,this.userReg)) {
+        this.loginSuccess.emit();
+        this.router.navigate(['/home']);
+        
+      }
+    }
+      else{
+        alert('invalid password')
+      }
     }, er => console.log(er));        
     
-    if (this.loginService.login(this.username, this.password)) {
-      this.loginSuccess.emit();
-      this.router.navigate(['/QM']);
-    }
-    else{
-      window.alert('Invalid Username or password');
-    }
+   
   }
 }

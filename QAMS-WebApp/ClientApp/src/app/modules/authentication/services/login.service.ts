@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Subject } from 'rxjs';
+import { EMPTY, Subject } from 'rxjs';
 import { CommonService } from '../../shared-services/common.service';
+import { RegModifyUser } from 'src/app/models/modifyUser.model';
 
 const AUTH_STORAGE_KEY = 'isLoggedIn';
 
@@ -17,9 +18,16 @@ export class LoginService {
   private loggedIn = false;
 
   isLoggedIn(): boolean {  
+    debugger
     console.log('log servcice');
-  
-    return localStorage.getItem(AUTH_STORAGE_KEY) === 'true';;
+    const dd:RegModifyUser=this.commonServ.getloginuser();
+    if(dd && Object.keys(dd).length > 0){
+      return true;
+    }
+    else{
+      return false;
+    }
+    //return localStorage.getItem('loginuser')!=null && undefined;;
   }
 
   updateLoginStatus(status: boolean) {
@@ -30,18 +38,15 @@ export class LoginService {
   
   constructor(private http: HttpClient,private commonServ:CommonService) {}
 
-  login(username: string, password: string) {
-    //return this.http.post(`${this.baseUrl}/login`, { username, password });
-    //const isValid = username === 'admin' && password === 'admin123';
-    this.commonServ.LogginedUserame=username;
-    this.commonServ.Logginedpassword=password;
-    const isValid = username;
-    //if (isValid) {
-      localStorage.setItem(AUTH_STORAGE_KEY, 'true');
+  login(isvalid:boolean,reguser:RegModifyUser) {
+    if (isvalid) {
+      localStorage.setItem('loginuser', JSON.stringify(reguser));
       this.updateLoginStatus(true);
-    //}
+    }else {
+      this.updateLoginStatus(false);
+    }
 
-    return isValid;
+    return isvalid;
   }
 
   logout() {

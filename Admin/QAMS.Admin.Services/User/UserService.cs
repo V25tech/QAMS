@@ -60,6 +60,19 @@ namespace QAMS.Admin.Services
                 throw;
             }
         }
+        public User GetUserByUserName(string p_UserName)
+        {
+            try
+            {
+                DataSet dataset = userData.GetUserByUserName(p_UserName);
+                User result = UserConverter.SetUser(dataset);
+                return result;
+            }
+            catch (System.Exception ex)
+            {
+                throw;
+            }
+        }
 
         public User GetUserByUserName(User userInfo)
         {

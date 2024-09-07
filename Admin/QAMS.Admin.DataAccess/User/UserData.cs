@@ -61,6 +61,19 @@ namespace QAMS.Admin.Data
             }
         }
 
+        public DataSet GetUserByUserName(string p_UserName)
+        {
+            try
+            {
+                DataSet dataset = (DataSet)dataAccessHelper.ExecuteStoredProcedure("dbo.USP_User_PSY_GET_BY_USER_NAME", "@Userd_PSY", DbType.String, p_UserName, ExecutionType.Dataset);
+                return dataset;
+            }
+            catch (System.Exception ex)
+            {
+                throw;
+            }
+        }
+
         public DataSet GetUserByUserName(User user)
         {
             try

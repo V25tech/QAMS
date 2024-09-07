@@ -26,6 +26,7 @@ namespace QAMS.Admin.Data
         DataSet GetAllUser(RequestContext requestContext);
 
         DataSet GetUserById(System.Int32? id);
+        DataSet GetUserByUserName(string p_UserName);
 
         DataSet GetUserByUserName(User user);
         bool SaveUser(User user);

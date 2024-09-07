@@ -57,6 +57,13 @@ namespace QAMS.Controllers
             return result;
         }
 
+        [HttpGet("getuserbyname")]
+        public ActionResult<User> GetUserByUserName(string p_UserName)
+        {
+            var result = userService.GetUserByUserName(p_UserName);
+            return result;
+        }
+
         /// <summary>
         /// This method is used to Get User By Id id
         /// </summary>
