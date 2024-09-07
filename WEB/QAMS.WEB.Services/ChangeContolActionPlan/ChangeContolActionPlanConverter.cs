@@ -26,7 +26,7 @@ namespace QAMS.Admin.Services
     // Comment
     public static class ChangeContolActionPlanConverter
     {
-        
+
         public static List<ChangeContolActionPlan> SetAllChangeContolActionPlan(DataSet dataset)
         {
             try
@@ -54,7 +54,7 @@ namespace QAMS.Admin.Services
                         changeContolActionPlanData.WorkflowId = Convert.ToInt32(row["WorkflowId"]);
                         changeContolActionPlanData.WorkflowName = Convert.ToString(row["WorkflowName"]);
                         changeContolActionPlanData.InitiativeId = Convert.ToInt32(row["InitiativeId"]);
-                        changeContolActionPlanData.InitiativeName= Convert.ToString(row["InitiativeName"]);
+                        changeContolActionPlanData.InitiativeName = Convert.ToString(row["InitiativeName"]);
                         changeContolActionPlanData.IsReviewed = Convert.ToBoolean(row["IsReviewed_PSY"]);
                         changeContolActionPlanData.IsApproved = Convert.ToBoolean(row["IsApproved_PSY"]);
                         result.Add(changeContolActionPlanData);
@@ -67,7 +67,7 @@ namespace QAMS.Admin.Services
                 throw;
             }
         }
-        
+
         public static ChangeContolActionPlan SetChangeContolActionPlan(DataSet dataset)
         {
             var result = SetAllChangeContolActionPlan(dataset);
@@ -77,7 +77,16 @@ namespace QAMS.Admin.Services
             }
             return null;
         }
-        
+        public static List<ChangeContolActionPlan> SetChangeContolActionPlanByInitId(DataSet dataset)
+        {
+            var result = SetAllChangeContolActionPlan(dataset);
+            if (result.Count > 0)
+            {
+                return result;
+            }
+            return null;
+        }
+
         public static DataTable SetDataSet(List<ChangeContolActionPlan> changeContolActionPlans)
         {
             DataTable dataTable = new DataTable();
@@ -112,7 +121,7 @@ namespace QAMS.Admin.Services
                 throw;
             }
         }
-        
+
         private static void SetDataTableColumns(DataTable dataTable)
         {
             dataTable.TableName = "UT_ChangeContolActionPlan_PSY";

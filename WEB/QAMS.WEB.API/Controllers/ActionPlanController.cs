@@ -27,9 +27,9 @@ namespace QAMS.Controllers
     [Route("api/actionplan")]
     public class ActionPlanController : ControllerBase
     {
-        
+
         private readonly IChangeContolActionPlanService changeContolActionPlanService;
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -38,7 +38,7 @@ namespace QAMS.Controllers
         {
             this.changeContolActionPlanService = changeContolActionPlanService;
         }
-        
+
         /// <summary>
         /// This method is used to Get List of ChangeContolActionPlan
         /// </summary>
@@ -49,7 +49,7 @@ namespace QAMS.Controllers
             var result = changeContolActionPlanService.GetAllChangeContolActionPlan(requestContext);
             return result;
         }
-        
+
         /// <summary>
         /// This method is used to Get ChangeContolActionPlan By Id changeContolActionPlanId
         /// </summary>
@@ -60,7 +60,12 @@ namespace QAMS.Controllers
             var result = changeContolActionPlanService.GetChangeContolActionPlanByChangeContolActionPlanId(changeContolActionPlanId);
             return result;
         }
-        
+        [HttpGet("getactionplansbyinitid")]
+        public ActionResult<List<ChangeContolActionPlan>> GetChangeContolActionPlansByInitId(System.Int32? initId)
+        {
+            var result = changeContolActionPlanService.GetChangeContolActionPlansByInitId(initId);
+            return result;
+        }
         /// <summary>
         /// This Method is used to Save ChangeContolActionPlan
         /// </summary>
@@ -71,7 +76,7 @@ namespace QAMS.Controllers
             var result = changeContolActionPlanService.SaveChangeContolActionPlan(changeContolActionPlan);
             return result;
         }
-        
+
         /// <summary>
         /// This Method is used to update ChangeContolActionPlan
         /// </summary>
@@ -82,7 +87,7 @@ namespace QAMS.Controllers
             var result = changeContolActionPlanService.UpdateChangeContolActionPlan(changeContolActionPlan);
             return result;
         }
-        
+
         /// <summary>
         /// This Method is used to Delete ChangeContolActionPlan By Id changeContolActionPlanId
         /// </summary>
@@ -93,7 +98,7 @@ namespace QAMS.Controllers
             var result = changeContolActionPlanService.DeleteChangeContolActionPlanByChangeContolActionPlanId(changeContolActionPlanId);
             return result;
         }
-        
+
         /// <summary>
         /// This Method is used to Delete ChangeContolActionPlan By Multiple ids changeContolActionPlanIds
         /// </summary>
@@ -104,7 +109,7 @@ namespace QAMS.Controllers
             var result = changeContolActionPlanService.DeleteAllChangeContolActionPlan(changeContolActionPlanIds);
             return result;
         }
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -115,7 +120,7 @@ namespace QAMS.Controllers
             var result = changeContolActionPlanService.GetChangeContolActionPlanByDepartmentId(id);
             return result;
         }
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -128,9 +133,9 @@ namespace QAMS.Controllers
         }
 
         [HttpGet("getActionPlanByIntIdandWorkId")]
-        public ActionResult<List<ChangeContolActionPlan>> GeActionPlanByIntIdandWorkId(int p_IntId,int p_WorkId)
+        public ActionResult<List<ChangeContolActionPlan>> GeActionPlanByIntIdandWorkId(int p_IntId, int p_WorkId)
         {
-            var result = changeContolActionPlanService.GetActionPlanByIntIdandWorkId(p_IntId,p_WorkId);
+            var result = changeContolActionPlanService.GetActionPlanByIntIdandWorkId(p_IntId, p_WorkId);
             return result;
         }
 
@@ -144,7 +149,7 @@ namespace QAMS.Controllers
             var result = changeContolActionPlanService.GetChangeContolActionPlanByUserGroupId(id);
             return result;
         }
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -155,7 +160,7 @@ namespace QAMS.Controllers
             var result = changeContolActionPlanService.DeleteChangeContolActionPlanByDepartmentId(id);
             return result;
         }
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -166,7 +171,7 @@ namespace QAMS.Controllers
             var result = changeContolActionPlanService.DeleteChangeContolActionPlanByUserId(id);
             return result;
         }
-        
+
         /// <summary>
         /// 
         /// </summary>

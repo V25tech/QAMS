@@ -21,7 +21,9 @@ namespace QAMS.Admin.Services
         ResponseContext<ChangeContolActionPlan> GetAllChangeContolActionPlan(RequestContext requestContext);
         
         ChangeContolActionPlan GetChangeContolActionPlanByChangeContolActionPlanId(System.Int32? changeContolActionPlanId);
-        
+        List<ChangeContolActionPlan> GetChangeContolActionPlansByInitId(System.Int32? initId);
+
+
         bool SaveChangeContolActionPlan(ChangeContolActionPlan changeContolActionPlan);
         
         bool UpdateChangeContolActionPlan(ChangeContolActionPlan changeContolActionPlan);

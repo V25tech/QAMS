@@ -26,7 +26,9 @@ namespace QAMS.WEB.Data
         DataSet GetAllChangeContolActionPlan(RequestContext requestContext);
         
         DataSet GetChangeContolActionPlanByChangeContolActionPlanId(System.Int32? changeContolActionPlanId);
-        
+        DataSet GetChangeContolActionPlansByInitId(System.Int32? initId);
+
+
         bool SaveChangeContolActionPlan(ChangeContolActionPlan changeContolActionPlan);
         
         bool UpdateChangeContolActionPlan(ChangeContolActionPlan changeContolActionPlan);

@@ -65,7 +65,20 @@ namespace QAMS.Admin.Services
                 throw;
             }
         }
-        
+        public List<ChangeContolActionPlan> GetChangeContolActionPlansByInitId(System.Int32? initId)
+        {
+            try
+            {
+                DataSet dataset = changeContolActionPlanData.GetChangeContolActionPlansByInitId(initId);
+                List<ChangeContolActionPlan> result = ChangeContolActionPlanConverter.SetChangeContolActionPlanByInitId(dataset);
+                return result;
+            }
+            catch (System.Exception ex)
+            {
+                throw;
+            }
+        }
+
         public bool SaveChangeContolActionPlan(ChangeContolActionPlan changeContolActionPlan)
         {
             try
