@@ -16,7 +16,7 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit() {
-    debugger
+    
     this.loginService.loginStatusChanged$.subscribe((status: boolean) => {
       this.isLoggedIn = status;
     });

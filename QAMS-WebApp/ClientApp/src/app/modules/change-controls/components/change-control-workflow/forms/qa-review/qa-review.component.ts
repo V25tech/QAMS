@@ -162,7 +162,7 @@ export class QAReviewComponent implements OnInit {
     this.objqa.isRegularCustomer=this.selectCommitment;
   }
   saveqareview(objqa:QAReview){
-   debugger
+   
    if(objqa.qaId > 0){
     this.updateqareview(objqa);
    } else {
@@ -175,7 +175,7 @@ export class QAReviewComponent implements OnInit {
   }
   }
   getqareviewbyinit(){
-    debugger
+    
     this.qaservice.getqareviewbyintid(this.id).subscribe((data:any)=>{
       if(data==null){
         this.classificationValue = this.objqa.classificationOfChange ? 'major' : 'minor';

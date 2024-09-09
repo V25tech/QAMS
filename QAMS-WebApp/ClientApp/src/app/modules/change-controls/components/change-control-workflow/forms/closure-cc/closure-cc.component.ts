@@ -1,6 +1,8 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { Closure } from 'src/app/models/closure.model';
+import { ClosureService } from 'src/app/modules/change-controls/services/closure.service';
 
 @Component({
   selector: 'app-closure-cc',
@@ -9,40 +11,70 @@ import { ConfirmationService, MessageService } from 'primeng/api';
   providers: [ConfirmationService, MessageService]
 })
 export class ClosureCCComponent {
-  constructor( private cdr: ChangeDetectorRef,private confirmationService: ConfirmationService, 
-    private messageService: MessageService,private router: Router){
-
+  constructor(private cdr: ChangeDetectorRef,
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService,
+    private closureService: ClosureService,
+    private route: ActivatedRoute,
+    private router: Router) {
   }
-  
+
+  closure: Closure = {};
+  id: any;
+  changeControlId: number = 0;
   displayBasic: boolean = false;
-  selectedDecisionDetails:string="Implemented";
+  selectedDecisionDetails: string = "Implemented";
   decisionDetails = [
     { name: ' Implemented', code: ' Implemented' },
     { name: 'Partially Implemented ', code: 'Partially Implemented' },
     { name: 'Not Implemented ', code: 'Not Implemented' },
 
   ];
-  selectionDecision(event: any) {
-    
-    this.selectedDecisionDetails = event.target.value;
-    this.displayBasic = true;
-    this.cdr.detectChanges();
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      this.id = params['id'];
+      let splitItesms = this.id.split('-');
+      this.changeControlId = Number.parseInt(splitItesms[splitItesms.length - 1]);
+      this.loadClosure();
+    })
+  }
 
-}
-submitClosuer(){
-  this.confirmationService.confirm({
-    message: 'Are you sure that you want to Submit the Request?',
-    header: 'Confirmation',
-    icon: 'pi pi-exclamation-triangle',
-    accept: () => {
-      this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: 'You have accepted' });
-    },
-    reject: () => {
-      this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected' });
-    }
-  });
-}
-backToCCClick(){
-  this.router.navigateByUrl('/change-controls');
-}
+
+  loadClosure() {
+    this.closureService.getClosurebyintid(this.changeControlId).subscribe((data: any) => {
+      this.closure = data;
+    }, er => console.log(er));
+  }
+
+  saveClosure() {
+    debugger
+    this.closure.isSave = false;
+    this.closure.initiativeId = this.changeControlId;
+    this.closure.initiativeName = "ChangeControl";
+    this.closure.plant = 3;
+    this.closure.createdBy = 1234;
+    this.closure.updatedBy = 1234;
+    this.closureService.saveClosure(this.closure).subscribe((data: any) => {
+      console.log(data);
+    }, er => console.log(er));
+  }
+
+
+  submitClosuer() {
+    this.confirmationService.confirm({
+      message: 'Are you sure that you want to Submit the Request?',
+      header: 'Confirmation',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: 'You have accepted' });
+      },
+      reject: () => {
+        this.messageService.add({ severity: 'error', summary: 'Rejected', detail: 'You have rejected' });
+      }
+    });
+  }
+
+  backToCCClick() {
+    this.router.navigateByUrl('/change-controls');
+  }
 }

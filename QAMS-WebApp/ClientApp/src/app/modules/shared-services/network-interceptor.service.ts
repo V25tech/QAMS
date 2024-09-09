@@ -13,7 +13,7 @@ export class NetworkInterceptor implements HttpInterceptor {
   constructor() { }
 
   admin_api_url = 'http://localhost:54455/api';
-  api_url = 'http://localhost:5000/api';
+  api_url = 'http://localhost:54456/api';
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     //console.log('Outgoing HTTP request', request);

@@ -7,15 +7,15 @@
 
             <div class="col-lg-6 d-flex radio-styles ">
                 <div class="form-check mt-3 ms-2">
-                    <input class="form-check-input" type="radio" id="Yes" name="classification" value="major" checked>
+                    <input class="form-check-input" type="radio" [(ngModel)] = "closure.isAllDocumentsApprovedEff" id="Yes" [value]="true" name="classification" value="major">
                     <label class="form-check-label" for="Yes">Yes</label>
                 </div>
                 <div class="form-check ms-4 mt-3">
-                    <input class="form-check-input" type="radio" id="No" name="classification" value="minor">
+                    <input class="form-check-input" type="radio" [(ngModel)] = "closure.isAllDocumentsApprovedEff" id="No" [value]="false" name="classification" value="minor">
                     <label class="form-check-label" for="No">No</label>
                 </div>
                 <div class="form-check ms-4 mt-3">
-                    <input class="form-check-input" type="radio" id="Not Applicable" name="classification" value="minor">
+                    <input class="form-check-input" type="radio" [(ngModel)] = "closure.isAllDocumentsApprovedEff" id="Not Applicable" [value]="null" name="classification" value="minor">
                     <label class="form-check-label" for="Not Applicable">Not Applicable</label>
                 </div>
                
@@ -27,15 +27,15 @@
 
             <div class="col-lg-6 d-flex radio-styles ">
                 <div class="form-check mt-3 ms-2">
-                    <input class="form-check-input" type="radio" id="Yes" name="Training Completed"  checked>
+                    <input class="form-check-input" type="radio" [(ngModel)] = "closure.trainingCompleted" id="Yes" [value]="true" name="Training Completed"  checked>
                     <label class="form-check-label" for="Yes">Yes</label>
                 </div>
                 <div class="form-check ms-4 mt-3">
-                    <input class="form-check-input" type="radio" id="No" name="Training Completed">
+                    <input class="form-check-input" type="radio" [(ngModel)] = "closure.trainingCompleted"  id="No" [value]="false" name="Training Completed">
                     <label class="form-check-label" for="No">No</label>
                 </div>
                 <div class="form-check ms-4 mt-3">
-                    <input class="form-check-input" type="radio" id="Not Applicable" name="Training Completed">
+                    <input class="form-check-input" type="radio" [(ngModel)] = "closure.trainingCompleted"  id="Not Applicable" [value]="null" name="Training Completed">
                     <label class="form-check-label" for="Not Applicable">Not Applicable</label>
                 </div>
                
@@ -47,15 +47,15 @@
 
             <div class="col-lg-6 d-flex radio-styles ">
                 <div class="form-check mt-3 ms-2">
-                    <input class="form-check-input" type="radio" id="Yes" name="Approved Changes(s) Made Effective "  checked>
+                    <input class="form-check-input" type="radio" [(ngModel)] = "closure.isApprovedChangesEff"  id="Yes" [value]="true" name="Approved Changes(s) Made Effective ">
                     <label class="form-check-label" for="Yes">Yes</label>
                 </div>
                 <div class="form-check ms-4 mt-3">
-                    <input class="form-check-input" type="radio" id="No" name="Approved Changes(s) Made Effective " >
+                    <input class="form-check-input" type="radio" [(ngModel)] = "closure.isApprovedChangesEff"  id="No" [value]="false" name="Approved Changes(s) Made Effective " >
                     <label class="form-check-label" for="No">No</label>
                 </div>
                 <div class="form-check ms-4 mt-3">
-                    <input class="form-check-input" type="radio" id="Not Applicable" name="Approved Changes(s) Made Effective " >
+                    <input class="form-check-input" type="radio" [(ngModel)] = "closure.isApprovedChangesEff"  id="Not Applicable" [value]="null" name="Approved Changes(s) Made Effective " >
                     <label class="form-check-label" for="Not Applicable">Not Applicable</label>
                 </div>
                
@@ -67,15 +67,15 @@
 
             <div class="col-lg-6 d-flex radio-styles ">
                 <div class="form-check mt-3 ms-2">
-                    <input class="form-check-input" type="radio" id="Yes" name="All The Identified Actions are Completed" checked>
+                    <input class="form-check-input" type="radio" [(ngModel)] = "closure.isIdentifiedActions" id="Yes" [value]="true" name="All The Identified Actions are Completed">
                     <label class="form-check-label" for="Yes">Yes</label>
                 </div>
                 <div class="form-check ms-4 mt-3">
-                    <input class="form-check-input" type="radio" id="No" name="All The Identified Actions are Completed" >
+                    <input class="form-check-input" type="radio" [(ngModel)] = "closure.isIdentifiedActions" id="No" [value]="false" name="All The Identified Actions are Completed" >
                     <label class="form-check-label" for="No">No</label>
                 </div>
                 <div class="form-check ms-4 mt-3">
-                    <input class="form-check-input" type="radio" id="Not Applicable" name="All The Identified Actions are Completed" >
+                    <input class="form-check-input" type="radio" [(ngModel)] = "closure.isIdentifiedActions" id="Not Applicable" [value]="null" name="All The Identified Actions are Completed" >
                     <label class="form-check-label" for="Not Applicable">Not Applicable</label>
                 </div>
                
@@ -85,7 +85,7 @@
             <div class="form-group row">
                 <label for="Decision" class="col-sm-6 col-form-label">Decision</label>
                 <div class="col-md-6">
-                    <select name="status" class="form-select" (change)="selectionDecision($event)">
+                    <select name="status" class="form-select" [(ngModel)] = "closure.decision" >
                         <option *ngFor="let selectedDecisionDetails of decisionDetails" [value]="selectedDecisionDetails.code">
                             {{selectedDecisionDetails.name}}
                         </option>
@@ -96,14 +96,14 @@
         </div>
         <div class="form-group mt-2 px-1 col-lg-12 d-flex">
             <label for="effective" class="col-sm-6 col-form-label">Implementation and Effectiveness of Change</label>
-            <textarea class=" col-sm-6 ms-3 form-control mt-2 text-muted review-styles" id="effective"
+            <textarea [(ngModel)] = "closure.implementEffChanges"  class=" col-sm-6 ms-3 form-control mt-2 text-muted review-styles" id="effective"
                 placeholder="Enter text here" rows="3"></textarea>
         </div>
     </div>
     <div class="d-flex mt-4 justify-content-end">
         <button type="button" class="btn btn-default rounded-pill me-3" (click)="backToCCClick()">Cancel</button>
         
-        <button type="button" class="btn btn-primary rounded-pill me-3" (click)="submitClosuer()">Submit</button>
+        <button type="button" class="btn btn-primary rounded-pill me-3" (click)="saveClosure()">Submit</button>
       </div>
       <p-toast></p-toast>
     <p-confirmDialog>

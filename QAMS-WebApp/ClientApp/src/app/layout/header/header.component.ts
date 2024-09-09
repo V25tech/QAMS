@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout(){
-    debugger
+    
     this.loginservice.logout();
     this.loginservice.updateLoginStatus(false);
     localStorage.removeItem('loginuser');

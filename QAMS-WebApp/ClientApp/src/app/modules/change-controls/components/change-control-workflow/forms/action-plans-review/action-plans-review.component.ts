@@ -2,6 +2,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PrimeNGConfig } from 'primeng/api';
 import { ChangeControlsService } from '../../../../services/change-controls.service'
+import { ActionPlanReviewService } from 'src/app/modules/change-controls/services/actionplan-review.service';
 interface ActionPlan {
   id: string;
   description: string;
@@ -49,19 +50,28 @@ export class ActionPlansReviewComponent implements OnInit {
     { label: 'APPROVAL PENDING', value: 'Approval Pending' },
   ];
 
-  constructor(private primeConfig: PrimeNGConfig, private cdr: ChangeDetectorRef, private route: ActivatedRoute, private changeControlsService: ChangeControlsService) { }
+  changeControlId: number = 0;
+  constructor(private primeConfig: PrimeNGConfig, private cdr: ChangeDetectorRef,
+    private route: ActivatedRoute, private changeControlsService: ChangeControlsService,
+    private actionPlanReviewService: ActionPlanReviewService
+  ) { }
 
   ngOnInit(): void {
 
     this.primeConfig.ripple = true;
     this.route.queryParams.subscribe(params => {
       this.id = params['id'];
+      let splitItesms = this.id.split('-');
+      this.changeControlId = Number.parseInt(splitItesms[splitItesms.length - 1]);
+      this.loadActionPlans();
     })
 
-    this.changeControlsService.getActionPlansbyChangeControlId(this.id).subscribe((data: any) => {
+  }
+
+  loadActionPlans() {
+    this.actionPlanReviewService.getActionPlansbyintid(this.changeControlId).subscribe((data: any) => {
       this.actionPlansDatasource = data;
     });
-
   }
 
   closeNavBar() {

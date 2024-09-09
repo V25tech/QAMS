@@ -18,7 +18,7 @@ export class LoginService {
   private loggedIn = false;
 
   isLoggedIn(): boolean {  
-    debugger
+    
     console.log('log servcice');
     const dd:RegModifyUser=this.commonServ.getloginuser();
     if(dd && Object.keys(dd).length > 0){

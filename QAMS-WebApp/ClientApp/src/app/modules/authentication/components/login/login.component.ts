@@ -32,7 +32,7 @@ export class LoginComponent {
   {
    this.modifyUserService.GetUserById(id).subscribe((res:any) => {      
       this.userReg = res;
-      debugger
+      
       let userValue: RegModifyUser = res; //JSON.parse(ccValueStr) ?? null;
       
      // this.editUserValue = userValue;
@@ -41,7 +41,7 @@ export class LoginComponent {
   }
   login() {   
     this.modifyUserService.GetUserByuserName(this.username).subscribe((res:any) => {   
-      debugger 
+       
       if(res==null || res==undefined){
        alert('invalid user name')
       }  
