@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { PrimeNGConfig } from 'primeng/api';
 import { ChangeControlsService } from '../../../../services/change-controls.service'
 import { ActionPlanReviewService } from 'src/app/modules/change-controls/services/actionplan-review.service';
+import { ActionPlanModel } from 'src/app/models/action-plan.model';
 interface ActionPlan {
   id: string;
   description: string;
@@ -27,7 +28,7 @@ export class ActionPlansReviewComponent implements OnInit {
   id: any;
   actionPlanID = "";
   showActionPlans = true;
-  actionPlansDatasource: ActionPlan[] = [];
+  actionPlansDatasource: ActionPlanModel[] = [];
   plantTypeDetails = [
     { name: 'Documentation', code: 'Documentation' },
     { name: 'Deviations ', code: 'Deviations' }

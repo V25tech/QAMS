@@ -11,7 +11,7 @@
             <div class="d-flex justify-content-between align-items-center p-3">
                 <h6 class="mb-0">Action Plans</h6>
 
-                <button type="button" class="btn btn-create btn-add rounded-circle" (click)="setActionPlanInput()">+
+                <button type="button" *ngIf="cftreview.status=='In Progress'" (click)="setActionPlanInput()" class="btn btn-create btn-add rounded-circle" >+
                 </button>
             </div>
             <div class="action-plans-block px-3 ">

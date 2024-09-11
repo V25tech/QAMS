@@ -50,7 +50,7 @@
         <div class="mt-4 bg-contrast pb-3 rounded">
             <div class="d-flex justify-content-between align-items-center p-3">
                 <h6 class="mb-0">Action Plans</h6>
-                <button type="button" class="btn btn-create btn-add rounded-circle" (click)="setActionPlanInput()">+
+                <button type="button" *ngIf="objqa.status=='In Progress'" (click)="setActionPlanInput()" class="btn btn-create btn-add rounded-circle" >+
                 </button>
             </div>
             <div class="action-plans-block px-3 ">
@@ -83,7 +83,7 @@
         <div class="mt-4 bg-contrast pb-3 rounded">
             <div class="d-flex justify-content-between align-items-center p-3">
                 <h6 class="mb-0">Risk Assesment Action Plan</h6>
-                <button type="button" class="btn btn-create btn-add rounded-circle"
+                <button type="button"  *ngIf="objqa.status=='In Progress'"  class="btn btn-create btn-add rounded-circle"
                     (click)="setRiskAssessmentActionPlanInput()">+
                 </button>
             </div>

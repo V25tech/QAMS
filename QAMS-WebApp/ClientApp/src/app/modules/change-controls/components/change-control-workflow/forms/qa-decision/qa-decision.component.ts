@@ -30,7 +30,7 @@ export class QaDecisionComponent {
     { name: 'SOP', code: 'SOP' },
     { name: 'STP ', code: 'STP' }
   ]
-  
+
   inChargeDepartmentDetails = [
     { name: 'Quality Control', code: 'Quality Control' },
     { name: 'Quality Assurance ', code: 'Quality Assurance' }
@@ -43,7 +43,11 @@ export class QaDecisionComponent {
   visibleSidebar2: any;
   action_plans: ActionPlanModel[];
   changeControlId: number = 0;
-  qaDecision: QADecision = {};
+  qaDecision: QADecision = {
+    isReviewedActions: null,
+    remarks:'',
+    comments:''
+  };
 
 
   constructor(private primeConfig: PrimeNGConfig,
@@ -67,7 +71,7 @@ export class QaDecisionComponent {
     //this.setActionPlanInput();
   }
 
- 
+
   loadActionPlans() {
     this.actionPlanService.getActionsplansByInitIdAndWorkId(this.changeControlId, ActionPlansEnum.CC_QA_DECISION_AP).subscribe((p: any) => {
       this.action_plans = p;
@@ -93,7 +97,14 @@ export class QaDecisionComponent {
   loadQADecision() {
     this.qaDecisionService.getQaDecisionbyintid(this.changeControlId).subscribe((data: any) => {
       this.qaDecision = data;
-    }, er => console.log(er));
+    }, er => {
+      this.qaDecision = {
+        isReviewedActions: null,
+        remarks:'',
+        comments:''
+      };
+      console.log(er);
+    });
   }
 
   saveQADecision() {
@@ -109,7 +120,7 @@ export class QaDecisionComponent {
   }
 
   submit() {
-    this.qaDecision.isSave=true;
+    this.qaDecision.isSave = true;
     this.qaDecisionService.updateQaDecision(this.qaDecision).subscribe((data: any) => {
       console.log(data);
     }, er => console.log(er));

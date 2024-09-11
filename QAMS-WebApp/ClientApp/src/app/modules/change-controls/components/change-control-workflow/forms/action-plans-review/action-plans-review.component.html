@@ -7,10 +7,10 @@
 
             <div class="action-plans-block px-3 " >
                 <div  *ngFor="let actionPlan of actionPlansDatasource">
-                <div class="action-plans-item d-flex brd-dashed bg-white flex-column rounded p-3 mb-2" [ngClass]="getStatusClass(actionPlan['status'])">
+                <div class="action-plans-item d-flex brd-dashed bg-white flex-column rounded p-3 mb-2" [ngClass]="getStatusClass(actionPlan.type)">
                     <div class="d-flex justify-content-between align-items-center mb-2">
-                        <h6 class="mb-0 w-100"><a (click)="actionPlanClick(actionPlan.id)"> {{actionPlan.id}} </a> <span class="ms-2 badge text-bg-secondary">SOP</span> </h6>
-                        <span class="user-assigned">{{actionPlan.assignedTo}}</span>
+                        <h6 class="mb-0 w-100"><a (click)="actionPlanClick(actionPlan.changeContolActionPlanId)"> {{actionPlan.changeContolActionPlanId}} </a> <span class="ms-2 badge text-bg-secondary">{{actionPlan.type}}</span> </h6>
+                        <span class="user-assigned">{{actionPlan.assignedUser || actionPlan.assignedUserGroup}}</span>
                         <div class="dropdown" dropdown placement="bottom right">                           
                         <a class="mx-2 px-1" dropdownToggle > <i class="fa fa-ellipsis-v"></i></a>                       
                             <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu">
@@ -21,7 +21,7 @@
                         <!-- <span class="status-dot"  [ngClass]="getStatusClass(actionPlan['status'])">{{actionPlan.status}}</span>                         -->
                     </div>
                     <div class="d-flex justify-content-between align-items-center">
-                        <p class="m-0">GTP shall be revised to make in line with pharmacopoeia's</p>
+                        <p class="m-0">{{actionPlan.description}}</p>
                     </div>
                 </div>
             </div>
