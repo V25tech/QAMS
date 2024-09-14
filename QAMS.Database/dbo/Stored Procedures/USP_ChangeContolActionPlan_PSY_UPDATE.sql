@@ -10,7 +10,7 @@
 @Remarks_PSY NVarChar(150),
 @ModifiedBy_PSY int,
 @WorkflowId int,@WorkflowName varchar(200),@InitiativeId int,@InitiativeName varchar(200),
-@IsReviewed bit,@IsApproved bit
+@IsReviewed bit,@IsApproved bit,@IsSave_PSY bit,@ReviewStatusComment_PSY varchar(500),@APReviewComments varchar(500),@APRemarks varchar(500)
  AS 
  BEGIN 
   BEGIN TRY 
@@ -26,7 +26,8 @@ ApprovedUserGroup_PSY=@ApprovedUserGroup,
 TargetDate_PSY=@TargetDate_PSY,
 Remarks_PSY=@Remarks_PSY,
 ModifiedBy_PSY=@ModifiedBy_PSY,WorkflowId=@WorkflowId,WorkflowName=@WorkflowName,InitiativeId=@InitiativeId,InitiativeName=@InitiativeName,
-IsReviewed_PSY=@IsReviewed,IsApproved_PSY=@IsApproved
+IsReviewed_PSY=@IsReviewed,IsApproved_PSY=@IsApproved,IsSave_PSY=@IsSave_PSY,ReviewStatusComment_PSY=@ReviewStatusComment_PSY,
+APReviewComments=@APReviewComments,APRemarks=@APRemarks
 WHERE  [ChangeContolActionPlanId_PSY] = @ChangeContolActionPlanId_PSY ;  select @ChangeContolActionPlanId_PSY; 
   
   END TRY 

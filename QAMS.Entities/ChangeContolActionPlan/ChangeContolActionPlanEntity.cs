@@ -173,5 +173,9 @@ namespace QAMS.WEB.Entities
         public string WorkflowName { get; set; }
         public bool IsReviewed { get; set; }
         public bool IsApproved { get; set; }
+        public bool IsSave { get; set; }
+        public string ReviewStatusComment { get; set; }
+        public string APReviewComments { get; set; }
+        public string APRemarks { get; set; }
     }
 }

@@ -16,7 +16,8 @@ CreatedBy_PSY,
 CreatedDate_PSY,
 ModifiedBy_PSY,
 ModifiedDate_PSY,
-WorkflowId,WorkflowName,InitiativeId,InitiativeName,IsReviewed_PSY,IsApproved_PSY
+WorkflowId,WorkflowName,InitiativeId,InitiativeName,IsReviewed_PSY,IsApproved_PSY,
+IsSave_PSY,ReviewStatusComment_PSY,APReviewComments,APRemarks
  ,count(*) over() as TotalRows 
  FROM [dbo].[ChangeContolActionPlan_PSY] WITH (NOLOCK) 
  Order by [ChangeContolActionPlanId_PSY]  

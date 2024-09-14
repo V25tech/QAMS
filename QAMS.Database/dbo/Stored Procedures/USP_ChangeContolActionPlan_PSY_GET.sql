@@ -16,7 +16,8 @@ CreatedBy_PSY,
 CreatedDate_PSY,
 ModifiedBy_PSY,
 ModifiedDate_PSY,
-WorkflowId,WorkflowName,InitiativeId,InitiativeName,IsReviewed_PSY,IsApproved_PSY
+WorkflowId,WorkflowName,InitiativeId,InitiativeName,IsReviewed_PSY,IsApproved_PSY,
+IsSave_PSY,ReviewStatusComment_PSY,APReviewComments,APRemarks
   FROM [dbo].[ChangeContolActionPlan_PSY] WITH (NOLOCK) where [ChangeContolActionPlanId_PSY] = @ChangeContolActionPlanId_PSY   
  END TRY 
  BEGIN CATCH 

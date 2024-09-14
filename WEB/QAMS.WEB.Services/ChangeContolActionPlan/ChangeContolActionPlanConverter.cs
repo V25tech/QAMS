@@ -57,6 +57,10 @@ namespace QAMS.Admin.Services
                         changeContolActionPlanData.InitiativeName = Convert.ToString(row["InitiativeName"]);
                         changeContolActionPlanData.IsReviewed = Convert.ToBoolean(row["IsReviewed_PSY"]);
                         changeContolActionPlanData.IsApproved = Convert.ToBoolean(row["IsApproved_PSY"]);
+                        changeContolActionPlanData.IsSave = Convert.ToBoolean(row["IsSave_PSY"]);
+                        changeContolActionPlanData.ReviewStatusComment = Convert.ToString(row["ReviewStatusComment_PSY"]);
+                        changeContolActionPlanData.APReviewComments = Convert.ToString(row["APReviewComments"]);
+                        changeContolActionPlanData.APRemarks = Convert.ToString(row["APRemarks"]);
                         result.Add(changeContolActionPlanData);
                     }
                 }
