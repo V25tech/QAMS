@@ -73,7 +73,9 @@ export interface ChangeControlsDocument {
     id?: string,
     description?: string,
     uploadedBy?: string,
-    date: string | Date
+    date: string | Date,
+    parentControlId:number,
+    parentType ? : string
 }
 export interface WorkItems {
     id?: string,

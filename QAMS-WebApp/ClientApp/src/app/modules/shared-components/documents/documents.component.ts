@@ -54,19 +54,15 @@ export class DocumentsComponent implements OnInit {
   }
 
   onSubmit(): void {
+    debugger
     if (this.file) {
       const formData: FormData = new FormData();
       formData.append('file', this.file);
       formData.append('description', this.description);
       formData.append('title', this.title);
-      formData.append('initiativeId', this.initiativeId.toString());
-      formData.append('initiativeType', 'this.initiativeType');
+      formData.append('parentControlId', this.initiativeId.toString());
+      formData.append('parentType', 'ChangeControl');
       formData.append('CreatedBy', '123');
-      formData.append('ModifiedBy', '123');
-      formData.append('CreatedDate', new Date().toISOString());
-
-
-
       this.documentService.uploadAndSaveInfo(formData).subscribe(event => {
         console.log(event);
       }, er => console.log(er));

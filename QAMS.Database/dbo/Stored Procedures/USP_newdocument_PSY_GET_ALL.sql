@@ -9,7 +9,7 @@ uploadfile_PSY,
 CreatedBy_PSY,
 CreatedDate_PSY,
 ModifiedBy_PSY,
-ModifiedDate_PSY  
+ModifiedDate_PSY,ParentControlId_PSY,InitiativeType  
  ,count(*) over() as TotalRows 
  FROM [dbo].[newdocument_PSY] WITH (NOLOCK) 
  Order by newId_PSY  
