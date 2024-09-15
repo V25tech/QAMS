@@ -116,6 +116,7 @@ export class ActionPlansReviewComponent implements OnInit {
   actionPlanClick(id: any) {
     this.actionPlanID = id;
     this.showActionPlans = false;
+    
   }
   backToActionPlans() {
     this.actionPlanID = "";

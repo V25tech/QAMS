@@ -20,7 +20,11 @@ export interface ActionPlanModel {
     workflowId?: number,
     workflowName?: string,
     isReviewed?: boolean,
-    isApproved?: boolean
+    isApproved?: boolean,
+    isSave?: boolean,
+    reviewStatusComment?: string,
+    aPReviewComments?: string,
+    aPRemarks?: string
 }
 
 export class ActionPlanInput {
