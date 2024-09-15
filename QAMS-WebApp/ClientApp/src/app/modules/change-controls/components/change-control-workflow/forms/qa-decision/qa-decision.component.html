@@ -121,7 +121,7 @@
         <div class="mt-4 d-flex justify-content-end">
             <button type="button" class="btn btn-default rounded-pill me-3">Cancel</button>
             <button type="button" (click)="saveQADecision()"  [disabled]="qaDecision.isSave" class="btn btn-outline-primary rounded-pill me-3">Save</button>
-            <button type="button" (click)="submit()"  [disabled]="!qaDecision.isSave && !qaDecision.status" class="btn btn-primary rounded-pill me-3">Submit</button>
+            <button type="button" (click)="submit()"  [disabled]="qaDecision.isSave && qaDecision.status" class="btn btn-primary rounded-pill me-3">Submit</button>
         </div>
     </div>
 </div>

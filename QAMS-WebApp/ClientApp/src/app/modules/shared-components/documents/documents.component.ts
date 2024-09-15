@@ -57,10 +57,10 @@ export class DocumentsComponent implements OnInit {
     if (this.file) {
       const formData: FormData = new FormData();
       formData.append('file', this.file);
-      formData.append('description', 'this.description');
-      formData.append('title', 'this.title');
+      formData.append('description', this.description);
+      formData.append('title', this.title);
       formData.append('initiativeId', this.initiativeId.toString());
-      formData.append('initiativeType', 'initiativeType');
+      formData.append('initiativeType', 'this.initiativeType');
       formData.append('CreatedBy', '123');
       formData.append('ModifiedBy', '123');
       formData.append('CreatedDate', new Date().toISOString());

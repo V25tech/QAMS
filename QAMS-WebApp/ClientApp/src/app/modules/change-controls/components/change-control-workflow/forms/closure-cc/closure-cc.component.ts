@@ -19,7 +19,7 @@ export class ClosureCCComponent {
     private router: Router) {
   }
 
-  closure: Closure = {};
+  closure: Closure = this.getEmptyClosure();
   id: any;
   changeControlId: number = 0;
   displayBasic: boolean = false;
@@ -42,12 +42,25 @@ export class ClosureCCComponent {
 
   loadClosure() {
     this.closureService.getClosurebyintid(this.changeControlId).subscribe((data: any) => {
-      this.closure = data;
-    }, er => console.log(er));
+      this.closure = data?? this.getEmptyClosure();
+    }, er => {
+      console.log(er);
+      this.closure = this.getEmptyClosure();
+    });
+  }
+
+  getEmptyClosure() {
+    let cclousre: Closure = {
+      isApprovedChangesEff: null,
+      trainingCompleted:null,
+      isAllDocumentsApprovedEff:null,
+      isIdentifiedActions:null,
+    }
+    return cclousre;
   }
 
   saveClosure() {
-    
+
     this.closure.isSave = false;
     this.closure.initiativeId = this.changeControlId;
     this.closure.initiativeName = "ChangeControl";

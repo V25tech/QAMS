@@ -27,7 +27,7 @@ export class CftReviewComponent {
   id: any;
 
   actionPlanInput: ActionPlanInput
-  cftreview: CftReview = {};
+  cftreview: CftReview = this.getEmptyCftReview();
   visibleSidebar2: any;
   action_plans: ActionPlanModel[];
   changeControlId: number = 0;
@@ -65,14 +65,29 @@ export class CftReviewComponent {
   loadActionPlans() {
     this.actionPlanService.getActionsplansByInitIdAndWorkId(this.changeControlId, ActionPlansEnum.CC_CFT_REVIEW_AP).subscribe((p: any) => {
       this.action_plans = p;
+
     }, er => console.log(er));
   }
 
+  getEmptyCftReview() {
+    let ccft: CftReview = {
+      cftDocument: ''
+    }
+    return ccft;
+  }
 
   loadCftReview() {
-    this.cftReviewService.getCftreviewbyintid(this.changeControlId).subscribe( (data)=> {
-      this.cftreview=data;
-    }, err => console.log(err))
+    this.cftReviewService.getCftreviewbyintid(this.changeControlId).subscribe((data) => {
+      if (data) {
+        this.cftreview = data;
+      }
+      else {
+        this.cftreview = this.getEmptyCftReview();
+      }
+    }, err => {
+      console.log(err);
+      this.cftreview = this.getEmptyCftReview();
+    } )
   }
 
   refresh(event: any) {
@@ -104,8 +119,9 @@ export class CftReviewComponent {
     }, er => console.log(er));
   }
 
-  submit(){
-    this.cftreview.isSave=true;
+  submit() {
+    this.cftreview.isSave = true;
+    // this.cftReview
     this.cftReviewService.updateCftReview(this.cftreview).subscribe((data: any) => {
       console.log(data);
     }, er => console.log(er));
