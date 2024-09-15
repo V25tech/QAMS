@@ -47,7 +47,7 @@ export class ClosureCCComponent {
   }
 
   saveClosure() {
-    debugger
+    
     this.closure.isSave = false;
     this.closure.initiativeId = this.changeControlId;
     this.closure.initiativeName = "ChangeControl";

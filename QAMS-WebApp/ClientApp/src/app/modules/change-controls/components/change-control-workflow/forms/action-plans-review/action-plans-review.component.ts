@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PrimeNGConfig } from 'primeng/api';
+import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { ChangeControlsService } from '../../../../services/change-controls.service'
 import { ActionPlanReviewService } from 'src/app/modules/change-controls/services/actionplan-review.service';
 import { ActionPlanModel } from 'src/app/models/action-plan.model';
@@ -78,6 +78,8 @@ export class ActionPlansReviewComponent implements OnInit {
   updateActionPlan() {
     this.actionPlanReviewService.updateActionPlans(this.currentActionPlan).subscribe((data: any) => {
       console.log(data);
+      //this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Action plan updated successfully' });
+      this.backToActionPlans();
     }, er => console.log(er));
   }
 
@@ -107,6 +109,11 @@ export class ActionPlansReviewComponent implements OnInit {
     this.cdr.detectChanges();
   }
 
+  onApproveRetunrSelected(isApprove: boolean, isRetun: boolean) {
+    this.currentActionPlan.isApproved = isApprove;
+    this.currentActionPlan.isReviewed = isRetun;
+  }
+
   getStatusClass(status: string): string {
     if (status === 'Open') {
       return 'status-open';
@@ -126,7 +133,6 @@ export class ActionPlansReviewComponent implements OnInit {
   }
 
   actionPlanClick(acp: ActionPlanModel) {
-    debugger
     this.currentActionPlan = acp;
     this.showActionPlans = false;
 

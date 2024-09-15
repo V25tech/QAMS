@@ -50,7 +50,7 @@
                     </div>
                     <div class="form-group mt-3 px-1">
                         <label for="comments">Action Plan Executive Review Comments</label>
-                        <textarea [(ngModel)]="currentActionPlan.aPReviewComments" class="form-control mt-2 text-muted review-styles" id="comments"
+                        <textarea [(ngModel)]="currentActionPlan.apReviewComments" class="form-control mt-2 text-muted review-styles" id="comments"
                             placeholder="Enter review comments here" rows="3"></textarea>
                     </div>
                 
@@ -59,11 +59,11 @@
 
                         <div class="col-lg-8 d-flex">
                             <div class="me-3">
-                                <input type="radio" id="Approve" name="radiobtn" [value]="true" [(ngModel)]="currentActionPlan.isApproved">
+                                <input type="radio" id="Approve" name="radiobtn2" [value]="true" [(ngModel)]="currentActionPlan.isApproved" (ngModelChange)="onApproveRetunrSelected(true,false)">
                                 <label class="p-2 " for="Approve">Approve</label>
                             </div>
                             <div class="">
-                                <input type="radio" id="Return" name="radiobtn" [value]="true" [(ngModel)]="currentActionPlan.isReviewed">
+                                <input type="radio" id="Return" name="radiobtn" [value]="true" [(ngModel)]="currentActionPlan.isReviewed" (ngModelChange)="onApproveRetunrSelected(false,true)">
                                 <label class="p-2 " for="Return">Return</label>
                             </div>
                         </div>
@@ -75,7 +75,7 @@
                 
                     <div class="form-group mt-3 px-1">
                         <label for="comments">Remarks/Reason</label>
-                        <textarea [(ngModel)]="currentActionPlan.aPRemarks" class="form-control mt-2 text-muted review-styles" id="comments"
+                        <textarea [(ngModel)]="currentActionPlan.apRemarks" class="form-control mt-2 text-muted review-styles" id="comments"
                             placeholder="Enter Remarks here" rows="3"></textarea>
                     </div>
                     <div class="mt-4 d-flex justify-content-end">

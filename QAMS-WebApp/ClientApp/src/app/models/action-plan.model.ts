@@ -23,9 +23,9 @@ export interface ActionPlanModel {
     isApproved?: boolean,
     isSave?: boolean,
     reviewStatusComment?: string,
-    aPReviewComments?: string,
-    aPRemarks?: string
-    
+    apReviewComments?: string,
+    apRemarks?: string
+
 }
 
 export class ActionPlanInput {
