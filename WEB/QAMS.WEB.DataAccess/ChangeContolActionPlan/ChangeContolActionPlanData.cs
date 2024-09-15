@@ -205,7 +205,23 @@ namespace QAMS.Admin.Data
                                   {
                                   new SqlParameter("@IntId", DbType.Int32) { Value = p_IntId },
                                   new SqlParameter("@WorkId", DbType.Int32) { Value = p_WorkId }
-                                  },ExecutionType.Dataset);
+                                  }, ExecutionType.Dataset);
+                return dataset;
+            }
+            catch (System.Exception ex)
+            {
+                throw;
+            }
+        }
+        public DataSet GetActivitiesByInitiative(int p_IntId)
+        {
+            try
+            {
+                DataSet dataset = (DataSet)dataAccessHelper.ExecuteStoredProcedure("dbo.USP_GET_ACTIVITIES_BY_INITIATIVE",
+                                  new List<SqlParameter>
+                                  {
+                                  new SqlParameter("@INIT", DbType.Int32) { Value = p_IntId }
+                                  }, ExecutionType.Dataset);
                 return dataset;
             }
             catch (System.Exception ex)

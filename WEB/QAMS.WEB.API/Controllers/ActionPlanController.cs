@@ -66,6 +66,12 @@ namespace QAMS.Controllers
             var result = changeContolActionPlanService.GetChangeContolActionPlansByInitId(initId);
             return result;
         }
+        [HttpGet("getactivitiesbyinitid")]
+        public ActionResult<List<string>> GetActivitiesByInitiative(int p_IntId)
+        {
+            var result = changeContolActionPlanService.GetActivitiesByInitiative(p_IntId);
+            return result;
+        }
         /// <summary>
         /// This Method is used to Save ChangeContolActionPlan
         /// </summary>

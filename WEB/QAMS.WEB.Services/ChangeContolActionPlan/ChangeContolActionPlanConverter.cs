@@ -57,11 +57,42 @@ namespace QAMS.Admin.Services
                         changeContolActionPlanData.InitiativeName = Convert.ToString(row["InitiativeName"]);
                         changeContolActionPlanData.IsReviewed = Convert.ToBoolean(row["IsReviewed_PSY"]);
                         changeContolActionPlanData.IsApproved = Convert.ToBoolean(row["IsApproved_PSY"]);
-                        changeContolActionPlanData.IsSave = row["IsSave_PSY"] != DBNull.Value ? Convert.ToBoolean(row["IsSave_PSY"]) : false ;
+                        changeContolActionPlanData.IsSave = row["IsSave_PSY"] != DBNull.Value ? Convert.ToBoolean(row["IsSave_PSY"]) : false;
                         changeContolActionPlanData.ReviewStatusComment = row["ReviewStatusComment_PSY"] != DBNull.Value ? Convert.ToString(row["ReviewStatusComment_PSY"]) : string.Empty;
                         changeContolActionPlanData.APReviewComments = row["APReviewComments"] != DBNull.Value ? Convert.ToString(row["APReviewComments"]) : string.Empty;
-                        changeContolActionPlanData.APRemarks =row["APRemarks"] != DBNull.Value ? Convert.ToString(row["APRemarks"]) : string.Empty;
+                        changeContolActionPlanData.APRemarks = row["APRemarks"] != DBNull.Value ? Convert.ToString(row["APRemarks"]) : string.Empty;
                         result.Add(changeContolActionPlanData);
+                    }
+                }
+                return result;
+            }
+            catch (System.Exception ex)
+            {
+                throw;
+            }
+        }
+        public static List<string> SetActivities(DataSet dataSet)
+        {
+            var result = SetAllActivities(dataSet);
+            if (result.Count > 0)
+            {
+                return result;
+            }
+            return null;
+        }
+
+        private static List<string> SetAllActivities(DataSet dataset)
+        {
+            try
+            {
+                List<string> result = new List<string>();
+                if (dataset != null && dataset.Tables.Count > 0 && dataset.Tables[0].Rows.Count > 0)
+                {
+                    for (int i = 0; (i < dataset.Tables[0].Rows.Count); i = (i + 1))
+                    {
+                        DataRow row = dataset.Tables[0].Rows[i];
+                        string Activity = row["Activity_PSY"] != DBNull.Value ? Convert.ToString(row["Activity_PSY"]) : string.Empty;
+                        result.Add(Activity);
                     }
                 }
                 return result;

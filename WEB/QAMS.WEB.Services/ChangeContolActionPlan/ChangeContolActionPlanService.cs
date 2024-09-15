@@ -26,9 +26,9 @@ namespace QAMS.Admin.Services
     // Comment
     public class ChangeContolActionPlanService : IChangeContolActionPlanService
     {
-        
+
         private readonly IChangeContolActionPlanData changeContolActionPlanData;
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -37,7 +37,7 @@ namespace QAMS.Admin.Services
         {
             this.changeContolActionPlanData = changeContolActionPlanData;
         }
-        
+
         public ResponseContext<ChangeContolActionPlan> GetAllChangeContolActionPlan(RequestContext requestContext)
         {
             try
@@ -51,7 +51,7 @@ namespace QAMS.Admin.Services
                 throw;
             }
         }
-        
+
         public ChangeContolActionPlan GetChangeContolActionPlanByChangeContolActionPlanId(System.Int32? changeContolActionPlanId)
         {
             try
@@ -96,7 +96,7 @@ namespace QAMS.Admin.Services
                 throw;
             }
         }
-        
+
         public bool UpdateChangeContolActionPlan(ChangeContolActionPlan changeContolActionPlan)
         {
             try
@@ -114,7 +114,7 @@ namespace QAMS.Admin.Services
                 throw;
             }
         }
-        
+
         public bool DeleteChangeContolActionPlanByChangeContolActionPlanId(System.Int32? changeContolActionPlanId)
         {
             try
@@ -126,7 +126,7 @@ namespace QAMS.Admin.Services
                 throw;
             }
         }
-        
+
         public bool DeleteAllChangeContolActionPlan(List<int> changeContolActionPlanIds)
         {
             try
@@ -138,7 +138,7 @@ namespace QAMS.Admin.Services
                 throw;
             }
         }
-        
+
         public List<ChangeContolActionPlan> GetChangeContolActionPlanByDepartmentId(System.Int32? id)
         {
             try
@@ -152,7 +152,7 @@ namespace QAMS.Admin.Services
                 throw;
             }
         }
-        
+
         public List<ChangeContolActionPlan> GetChangeContolActionPlanByUserId(System.Int32? id)
         {
             try
@@ -171,8 +171,21 @@ namespace QAMS.Admin.Services
         {
             try
             {
-                DataSet dataset = changeContolActionPlanData.GetActionPlanByIntIdandWorkId(p_IntId,p_WorkId);
+                DataSet dataset = changeContolActionPlanData.GetActionPlanByIntIdandWorkId(p_IntId, p_WorkId);
                 List<ChangeContolActionPlan> result = ChangeContolActionPlanConverter.SetAllChangeContolActionPlan(dataset);
+                return result;
+            }
+            catch (System.Exception ex)
+            {
+                throw;
+            }
+        }
+        public List<string> GetActivitiesByInitiative(int p_IntId)
+        {
+            try
+            {
+                DataSet dataset = changeContolActionPlanData.GetActivitiesByInitiative(p_IntId);
+                List<string> result = ChangeContolActionPlanConverter.SetActivities(dataset);
                 return result;
             }
             catch (System.Exception ex)
@@ -194,7 +207,7 @@ namespace QAMS.Admin.Services
                 throw;
             }
         }
-        
+
         public bool DeleteChangeContolActionPlanByDepartmentId(System.Int32? id)
         {
             try
@@ -206,7 +219,7 @@ namespace QAMS.Admin.Services
                 throw;
             }
         }
-        
+
         public bool DeleteChangeContolActionPlanByUserId(System.Int32? id)
         {
             try
@@ -218,7 +231,7 @@ namespace QAMS.Admin.Services
                 throw;
             }
         }
-        
+
         public bool DeleteChangeContolActionPlanByUserGroupId(System.Int32? id)
         {
             try

@@ -42,6 +42,7 @@ namespace QAMS.WEB.Data
         DataSet GetChangeContolActionPlanByUserId(System.Int32? id);
 
         DataSet GetActionPlanByIntIdandWorkId(int p_IntId, int p_WorkId);
+        DataSet GetActivitiesByInitiative(int p_IntId);
 
 
         DataSet GetChangeContolActionPlanByUserGroupId(System.Int32? id);

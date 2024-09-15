@@ -291,6 +291,7 @@
     <Build Include="dbo\Stored Procedures\USP_Closure_PSY_GET_BY_INIT.sql" />
     <Build Include="dbo\Stored Procedures\USP_ChangeContolActionPlan_PSY_GET_BY_INIT.sql" />
     <Build Include="dbo\Stored Procedures\USP_User_PSY_GET_BY_USER_NAME.sql" />
+    <Build Include="dbo\Stored Procedures\USP_GET_ACTIVITIES_BY_INITIATIVE.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="QAMS.Database.refactorlog" />

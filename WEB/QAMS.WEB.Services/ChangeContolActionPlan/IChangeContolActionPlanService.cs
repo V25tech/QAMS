@@ -33,7 +33,9 @@ namespace QAMS.Admin.Services
         bool DeleteAllChangeContolActionPlan(List<int> changeContolActionPlanIds);
         
         List<ChangeContolActionPlan> GetChangeContolActionPlanByDepartmentId(System.Int32? id);
-        
+        List<string> GetActivitiesByInitiative(int p_IntId);
+
+
         List<ChangeContolActionPlan> GetChangeContolActionPlanByUserId(System.Int32? id);
         
         List<ChangeContolActionPlan> GetChangeContolActionPlanByUserGroupId(System.Int32? id);
