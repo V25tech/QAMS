@@ -43,11 +43,7 @@ export class QaDecisionComponent {
   visibleSidebar2: any;
   action_plans: ActionPlanModel[];
   changeControlId: number = 0;
-  qaDecision: QADecision = {
-    isReviewedActions: null,
-    remarks:'',
-    comments:''
-  };
+  qaDecision: QADecision = this.getEmptyQADecision();
 
 
   constructor(private primeConfig: PrimeNGConfig,
@@ -59,7 +55,6 @@ export class QaDecisionComponent {
 
 
   ngOnInit(): void {
-
     this.primeConfig.ripple = true;
     this.route.queryParams.subscribe(params => {
       this.id = params['id'];
@@ -96,15 +91,25 @@ export class QaDecisionComponent {
 
   loadQADecision() {
     this.qaDecisionService.getQaDecisionbyintid(this.changeControlId).subscribe((data: any) => {
-      this.qaDecision = data;
+      if (data) { this.qaDecision = data; }
+      else {
+        this.qaDecision = this.getEmptyQADecision();
+      }
+
     }, er => {
-      this.qaDecision = {
-        isReviewedActions: null,
-        remarks:'',
-        comments:''
-      };
+      this.qaDecision = this.getEmptyQADecision();
       console.log(er);
     });
+  }
+
+  getEmptyQADecision() {
+    let qa_decision: QADecision = {
+      isReviewedActions: null,
+      remarks: '',
+      comments: '',
+      status: ''
+    };
+    return qa_decision;
   }
 
   saveQADecision() {
@@ -121,6 +126,7 @@ export class QaDecisionComponent {
 
   submit() {
     this.qaDecision.isSave = true;
+    this.qaDecision.updatedBy =1234;
     this.qaDecisionService.updateQaDecision(this.qaDecision).subscribe((data: any) => {
       console.log(data);
     }, er => console.log(er));

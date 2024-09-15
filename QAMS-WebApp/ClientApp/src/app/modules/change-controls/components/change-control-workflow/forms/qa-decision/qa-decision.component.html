@@ -43,6 +43,7 @@
                         </div>
                     </div>
                 </label>
+                <!-- <input [hidden]="true" type="radio" [(ngModel)] = "qaDecision.status" id="return" name="review" value="" /> -->
             </div>
 
         </div>
@@ -55,7 +56,7 @@
             <div class="d-flex justify-content-between align-items-center p-3">
                 <h6 class="mb-0">Action Plans</h6>
 
-                <button type="button" *ngIf="qaDecision.status=='In Progress'"  (click)="setActionPlanInput()" class="btn btn-create btn-add rounded-circle">+
+                <button type="button" *ngIf="!qaDecision.status"  (click)="setActionPlanInput()" class="btn btn-create btn-add rounded-circle">+
                 </button>
             </div>
             <div class="action-plans-block px-3 ">
@@ -119,8 +120,8 @@
 
         <div class="mt-4 d-flex justify-content-end">
             <button type="button" class="btn btn-default rounded-pill me-3">Cancel</button>
-            <button type="button" (click)="saveQADecision()"  [disabled]="qaDecision.status" class="btn btn-outline-primary rounded-pill me-3">Save</button>
-            <button type="button" (click)="submit()"  [disabled]="qaDecision.status" class="btn btn-primary rounded-pill me-3">Submit</button>
+            <button type="button" (click)="saveQADecision()"  [disabled]="qaDecision.isSave" class="btn btn-outline-primary rounded-pill me-3">Save</button>
+            <button type="button" (click)="submit()"  [disabled]="!qaDecision.isSave && !qaDecision.status" class="btn btn-primary rounded-pill me-3">Submit</button>
         </div>
     </div>
 </div>
