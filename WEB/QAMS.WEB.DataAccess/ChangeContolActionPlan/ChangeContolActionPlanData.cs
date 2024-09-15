@@ -131,6 +131,10 @@ namespace QAMS.Admin.Data
                 sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = "@InitiativeName", Value = changeContolActionPlan.InitiativeName });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Boolean, ParameterName = "@IsReviewed", Value = changeContolActionPlan.IsReviewed });
                 sqlparms.Add(new SqlParameter { DbType = DbType.Boolean, ParameterName = "@IsApproved", Value = changeContolActionPlan.IsApproved });
+                sqlparms.Add(new SqlParameter { DbType = DbType.Boolean, ParameterName = "@IsSave_PSY", Value = changeContolActionPlan.IsSave });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = "@ReviewStatusComment_PSY", Value = changeContolActionPlan.ReviewStatusComment });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = "@APReviewComments", Value = changeContolActionPlan.APReviewComments });
+                sqlparms.Add(new SqlParameter { DbType = DbType.String, ParameterName = "@APRemarks", Value = changeContolActionPlan.APRemarks });
 
                 Object result = dataAccessHelper.ExecuteStoredProcedure(ChangeContolActionPlanConstants.USP_ChangeContolActionPlan_PSY_UPDATE, sqlparms, ExecutionType.Scalar);
                 return (Convert.ToInt32(result) > 0);
