@@ -26,7 +26,7 @@ export class ActionPlansReviewComponent implements OnInit {
   visibleMonitorPlan: any;
   defaultRadioBtn = 0;
   id: any;
-  actionPlanID = "";
+  currentActionPlan: ActionPlanModel = {};
   showActionPlans = true;
   actionPlansDatasource: ActionPlanModel[] = [];
   plantTypeDetails = [
@@ -75,6 +75,18 @@ export class ActionPlansReviewComponent implements OnInit {
     });
   }
 
+  updateActionPlan() {
+    this.actionPlanReviewService.updateActionPlans(this.currentActionPlan).subscribe((data: any) => {
+      console.log(data);
+    }, er => console.log(er));
+  }
+
+  submitActionPlan() {
+    this.currentActionPlan.isSave = true;
+    this.updateActionPlan();
+  }
+
+
   closeNavBar() {
     this.visibleSidebar2 = false;
   }
@@ -113,13 +125,16 @@ export class ActionPlansReviewComponent implements OnInit {
     }
   }
 
-  actionPlanClick(id: any) {
-    this.actionPlanID = id;
+  actionPlanClick(acp: ActionPlanModel) {
+    debugger
+    this.currentActionPlan = acp;
     this.showActionPlans = false;
-    
+
   }
   backToActionPlans() {
-    this.actionPlanID = "";
+    this.currentActionPlan = {};
     this.showActionPlans = true;
   }
+
+
 }

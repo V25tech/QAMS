@@ -25,6 +25,7 @@ export interface ActionPlanModel {
     reviewStatusComment?: string,
     aPReviewComments?: string,
     aPRemarks?: string
+    
 }
 
 export class ActionPlanInput {

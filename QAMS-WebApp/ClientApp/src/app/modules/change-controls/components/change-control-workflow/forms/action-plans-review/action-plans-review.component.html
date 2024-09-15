@@ -9,7 +9,7 @@
                 <div  *ngFor="let actionPlan of actionPlansDatasource">
                 <div class="action-plans-item d-flex brd-dashed bg-white flex-column rounded p-3 mb-2" [ngClass]="getStatusClass(actionPlan.type)">
                     <div class="d-flex justify-content-between align-items-center mb-2">
-                        <h6 class="mb-0 w-100"><a (click)="actionPlanClick(actionPlan.changeContolActionPlanId)"> {{actionPlan.initiativeName.replace('PROC','')}} </a> <span class="ms-2 badge text-bg-secondary">{{actionPlan.type}}</span> </h6>
+                        <h6 class="mb-0 w-100"><a (click)="actionPlanClick(actionPlan)"> {{actionPlan.initiativeName.replace('PROV-','')+'/W'+actionPlan.changeContolActionPlanId }} </a> <span class="ms-2 badge text-bg-secondary">{{actionPlan.type}}</span> </h6>
                         <span class="user-assigned">{{actionPlan.assignedUser || actionPlan.assignedUserGroup}}</span>
                         <div class="dropdown" dropdown placement="bottom right">                           
                         <a class="mx-2 px-1" dropdownToggle > <i class="fa fa-ellipsis-v"></i></a>                       
@@ -34,23 +34,23 @@
                 <div class="action-plans-item d-flex flex-column rounded">
                 <div class="d-flex justify-content-between align-items-center  mb-2"  >
                     <a class=" me-2" (click)="backToActionPlans()"><i class="fa-solid fa-arrow-left back-icon"></i></a>
-                    <h6 class="mb-0 w-100">{{actionPlanID}} <span class="ms-2 badge text-bg-secondary">SOP</span> </h6>
-                    <span class="user-assigned">Michael Chen</span>
+                    <h6 class="mb-0 w-100">{{currentActionPlan?.initiativeName.replace('PROV-','')+'/W'+currentActionPlan?.changeContolActionPlanId }} <span class="ms-2 badge text-bg-secondary">{{currentActionPlan.type}}</span> </h6>
+                    <span class="user-assigned">{{currentActionPlan.assignedUser|| currentActionPlan.assignedUserGroup}}</span>
                    
                 </div>
                 <div class="d-flex justify-content-between align-items-center pb-3 ms-3 border-bottom">
-                    <p class="m-0">GTP shall be revised to make in line with pharmacopoeia's</p>
+                    <p class="m-0">{{currentActionPlan.description}}</p>
                 </div>
             </div>
                 <div class="p-2">
                     <div class="form-group mt-2 px-1">
                         <label for="comments">Status Comments</label>
-                        <textarea class="form-control mt-2 text-muted review-styles" id="comments"
+                        <textarea [(ngModel)]="currentActionPlan.reviewStatusComment" class="form-control mt-2 text-muted review-styles" id="comments"
                             placeholder="Enter review comments here" rows="3"></textarea>
                     </div>
                     <div class="form-group mt-3 px-1">
                         <label for="comments">Action Plan Executive Review Comments</label>
-                        <textarea class="form-control mt-2 text-muted review-styles" id="comments"
+                        <textarea [(ngModel)]="currentActionPlan.aPReviewComments" class="form-control mt-2 text-muted review-styles" id="comments"
                             placeholder="Enter review comments here" rows="3"></textarea>
                     </div>
                 
@@ -59,12 +59,11 @@
 
                         <div class="col-lg-8 d-flex">
                             <div class="me-3">
-                                <input type="radio" id="Approve" name="radiobtn" value="0" [(ngModel)]="defaultRadioBtn"
-                                    [checked]="defaultRadioBtn===0? true: false">
+                                <input type="radio" id="Approve" name="radiobtn" [value]="true" [(ngModel)]="currentActionPlan.isApproved">
                                 <label class="p-2 " for="Approve">Approve</label>
                             </div>
                             <div class="">
-                                <input type="radio" id="Return" name="radiobtn" value="1" [(ngModel)]="defaultRadioBtn">
+                                <input type="radio" id="Return" name="radiobtn" [value]="true" [(ngModel)]="currentActionPlan.isReviewed">
                                 <label class="p-2 " for="Return">Return</label>
                             </div>
                         </div>
@@ -76,15 +75,14 @@
                 
                     <div class="form-group mt-3 px-1">
                         <label for="comments">Remarks/Reason</label>
-                        <textarea class="form-control mt-2 text-muted review-styles" id="comments"
+                        <textarea [(ngModel)]="currentActionPlan.aPRemarks" class="form-control mt-2 text-muted review-styles" id="comments"
                             placeholder="Enter Remarks here" rows="3"></textarea>
                     </div>
                     <div class="mt-4 d-flex justify-content-end">
                         <button type="button"
                             class="btn btn-default rounded-pill me-3" (click)="backToActionPlans()">Cancel</button>
-                        <button type="button" class="btn btn-outline-primary rounded-pill me-3">Save</button>
-                        <button type="button"
-                            class="btn btn-primary rounded-pill me-3">Submit</button>
+                        <button type="button" (click)="updateActionPlan()" [disabled]="currentActionPlan.isSave" class="btn btn-outline-primary rounded-pill me-3">Save</button>
+                        <button type="button" (click)="submitActionPlan()" [disabled]="currentActionPlan.isSave" class="btn btn-primary rounded-pill me-3">Submit</button>
                     </div>
                 </div>
             </div>
