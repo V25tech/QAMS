@@ -42,7 +42,7 @@ export class ClosureCCComponent {
 
   loadClosure() {
     this.closureService.getClosurebyintid(this.changeControlId).subscribe((data: any) => {
-      this.closure = data?? this.getEmptyClosure();
+      this.closure = data ?? this.getEmptyClosure();
     }, er => {
       console.log(er);
       this.closure = this.getEmptyClosure();
@@ -52,15 +52,14 @@ export class ClosureCCComponent {
   getEmptyClosure() {
     let cclousre: Closure = {
       isApprovedChangesEff: null,
-      trainingCompleted:null,
-      isAllDocumentsApprovedEff:null,
-      isIdentifiedActions:null,
+      trainingCompleted: null,
+      isAllDocumentsApprovedEff: null,
+      isIdentifiedActions: null,
     }
     return cclousre;
   }
 
   saveClosure() {
-
     this.closure.isSave = false;
     this.closure.initiativeId = this.changeControlId;
     this.closure.initiativeName = "ChangeControl";
@@ -68,7 +67,9 @@ export class ClosureCCComponent {
     this.closure.createdBy = 1234;
     this.closure.updatedBy = 1234;
     this.closureService.saveClosure(this.closure).subscribe((data: any) => {
-      console.log(data);
+      if (data) {
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Closure Updated Successfully' });
+      }
     }, er => console.log(er));
   }
 

@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PrimeNGConfig } from 'primeng/api';
+import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { ActionPlanInput, ActionPlanModel } from 'src/app/models/action-plan.model';
 import { CC_Model, QAReview } from 'src/app/models/changecontrol.model';
 import { QA_ReviewService } from 'src/app/modules/change-controls/services/QA_ReviewService';
@@ -11,20 +11,23 @@ import { CommonService } from 'src/app/modules/shared-services/common.service';
 @Component({
   selector: 'app-qa-review',
   templateUrl: './qa-review.component.html',
-  styleUrls: ['./qa-review.component.scss']
+  styleUrls: ['./qa-review.component.scss'],
+  providers: [MessageService]
 })
 export class QAReviewComponent implements OnInit {
 
   @Input('changeControl') changeControl: CC_Model;
-  objqa: QAReview ={ classificationOfChange:true,impactOnProcFormats:true,
-    status:'In Progress',
-    isRegularCustomer:true};
-    isapprove=false;isreturn=false;isreject=false;
+  objqa: QAReview = {
+    classificationOfChange: true, impactOnProcFormats: true,
+    status: 'In Progress',
+    isRegularCustomer: true
+  };
+  isapprove = false; isreturn = false; isreject = false;
   classificationValue: string = this.objqa.classificationOfChange ? 'major' : 'minor';
   impactOnProcedures: boolean = true;
   proceduresValue: string = this.impactOnProcedures ? 'yes' : 'no';
   selectCommitment: boolean = true;
-  commitmentvalue:string=this.selectCommitment ? 'yes' : 'No';
+  commitmentvalue: string = this.selectCommitment ? 'yes' : 'No';
   selectPlantTypeOption: any = "SOP";
   selectInChargeOption: any = "Quality Control";
   selectUserGroupDetails: any = "User Group1";
@@ -34,13 +37,14 @@ export class QAReviewComponent implements OnInit {
   id: any;
   //classificationValue: string = '';
   changeImpactProcedure: boolean = true;
-  
+
   selectAdditionalPlanValue: string = "";
   selectedAdditionalPlanTypeVal: string = '';
   constructor(private primeConfig: PrimeNGConfig,
     private actionPlanService: ActionPlanService,
     private commonService: CommonService,
-    private qaservice : QA_ReviewService,
+    private messageService: MessageService,
+    private qaservice: QA_ReviewService,
     private cdr: ChangeDetectorRef, private route: ActivatedRoute) { }
 
   plantTypeDetails = [
@@ -76,7 +80,7 @@ export class QAReviewComponent implements OnInit {
       let splitItesms = this.id.split('-');
       this.changeControlId = Number.parseInt(splitItesms[splitItesms.length - 1]);
       this.getqareviewbyinit();
-      
+
       this.loadActionPlans();
       this.loadRiskAssessmentActionPlans();
     })
@@ -114,7 +118,7 @@ export class QAReviewComponent implements OnInit {
     actionPlanInput.initiativeId = this.changeControlId;
     actionPlanInput.initiativeName = this.changeControl?.changeControlUniqueCode;
     actionPlanInput.plantTypeDetails = this.additionalActionPlanType;
-    
+
     this.visibleSidebar2 = true;
     this.commonService.setActionPlanInput(actionPlanInput);
   }
@@ -146,8 +150,8 @@ export class QAReviewComponent implements OnInit {
     this.impactOnProcedures = event.target.value === 'yes';
     // Update proceduresValue to keep ngModel in sync
     this.proceduresValue = event.target.value;
-    this.changeImpactProcedure=this.impactOnProcedures;
-    this.objqa.impactOnProcFormats=this.impactOnProcedures;
+    this.changeImpactProcedure = this.impactOnProcedures;
+    this.objqa.impactOnProcFormats = this.impactOnProcedures;
     console.log('Impact on Procedures:', this.impactOnProcedures);
   }
   selectCustomerCommitment(event: any) {
@@ -159,75 +163,82 @@ export class QAReviewComponent implements OnInit {
     else {
       this.selectCommitment = true;
     }
-    this.objqa.isRegularCustomer=this.selectCommitment;
+    this.objqa.isRegularCustomer = this.selectCommitment;
   }
-  saveqareview(objqa:QAReview){
-   
-   if(objqa.qaId > 0){
-    this.updateqareview(objqa);
-   } else {
-   objqa.initiativeId=this.id;objqa.initiativeName='ChangeControl';
-   objqa.isSave=false; objqa.plant=3; objqa.status='In Progress';
-   objqa.createdBy=1234; objqa.updatedBy=1234;
-   this.qaservice.saveQAReview(objqa).subscribe((data:any)=>{
-    alert('saved successfully');
-   });
+  saveqareview(objqa: QAReview) {
+    if (objqa.qaId > 0) {
+      this.updateqareview(objqa);
+    } else {
+      objqa.initiativeId = this.id;
+      objqa.initiativeName = 'ChangeControl';
+      objqa.isSave = false;
+      objqa.plant = 3;
+      objqa.status = 'In Progress';
+      objqa.createdBy = 1234; 
+      objqa.updatedBy = 1234;
+      this.qaservice.saveQAReview(objqa).subscribe((data: any) => {
+        //alert('saved successfully');
+        if (data) {
+          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'QA Review Updated Successfully' });
+        }
+      });
+    }
   }
-  }
-  getqareviewbyinit(){
-    
-    this.qaservice.getqareviewbyintid(this.id).subscribe((data:any)=>{
-      if(data==null){
+  getqareviewbyinit() {
+
+    this.qaservice.getqareviewbyintid(this.id).subscribe((data: any) => {
+      if (data == null) {
         this.classificationValue = this.objqa.classificationOfChange ? 'major' : 'minor';
         this.proceduresValue = this.impactOnProcedures ? 'yes' : 'no';
       }
-      else{
-        this.objqa=data;
-        this.classificationValue=this.objqa.classificationOfChange ? 'major' : 'minor';
-        this.proceduresValue=this.objqa.impactOnProcFormats ? 'yes' : 'no';
-        this.changeImpactProcedure=this.objqa.impactOnProcFormats;
-        this.commitmentvalue=this.objqa.isRegularCustomer ? 'yes' : 'No';
+      else {
+        this.objqa = data;
+        this.classificationValue = this.objqa.classificationOfChange ? 'major' : 'minor';
+        this.proceduresValue = this.objqa.impactOnProcFormats ? 'yes' : 'no';
+        this.changeImpactProcedure = this.objqa.impactOnProcFormats;
+        this.commitmentvalue = this.objqa.isRegularCustomer ? 'yes' : 'No';
       }
     });
   }
   updateqareview(objqa: QAReview) {
-    this.qaservice.updateQAReview(objqa).subscribe((data:any)=>{
-      alert('updated qa review');
+    this.qaservice.updateQAReview(objqa).subscribe((data: any) => {
+      if (data) {
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'QA Review Updated Successfully' });
+      }
     });
   }
-  approveqa(){
-    
-    this.isapprove=true;
-    this.isreject=false;
-    this.isreturn=false;
-    this.objqa.isSave=true;
+  approveqa() {
+    this.isapprove = true;
+    this.isreject = false;
+    this.isreturn = false;
+    this.objqa.isSave = true;
     this.cdr.detectChanges();
   }
-  rejectqa(){
-    this.isapprove=false;
-    this.isreject=true;
-    this.isreturn=false;
-    this.objqa.isSave=true;
+  rejectqa() {
+    this.isapprove = false;
+    this.isreject = true;
+    this.isreturn = false;
+    this.objqa.isSave = true;
     this.cdr.detectChanges();
   }
-  returnqa(){
-    this.isapprove=false;
-    this.isreject=false;
-    this.isreturn=true;
-    this.objqa.isSave=true;
+  returnqa() {
+    this.isapprove = false;
+    this.isreject = false;
+    this.isreturn = true;
+    this.objqa.isSave = true;
     this.cdr.detectChanges();
   }
-  submitqa(objqa:QAReview){
-    objqa.isSave=true;
-    objqa.updatedBy=1234;
-    if(this.isapprove){
-      objqa.status="Approve";
-    } else if(this.isreject){
-      objqa.status="Reject";
-      }else if(this.isreturn){
-        objqa.status="Return";
-        }
-    this.qaservice.updateQAReview(objqa).subscribe((data:any)=>{
+  submitqa(objqa: QAReview) {
+    objqa.isSave = true;
+    objqa.updatedBy = 1234;
+    if (this.isapprove) {
+      objqa.status = "Approve";
+    } else if (this.isreject) {
+      objqa.status = "Reject";
+    } else if (this.isreturn) {
+      objqa.status = "Return";
+    }
+    this.qaservice.updateQAReview(objqa).subscribe((data: any) => {
 
     });
   }

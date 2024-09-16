@@ -1,13 +1,14 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PrimeNGConfig } from 'primeng/api';
+import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { CustomerNotificationReview } from 'src/app/models/customernotification-review.model';
 import { CustomerNotificationReviewService } from 'src/app/modules/change-controls/services/customernotification-review.service';
 
 @Component({
   selector: 'app-customer-notification',
   templateUrl: './customer-notification.component.html',
-  styleUrls: ['./customer-notification.component.scss']
+  styleUrls: ['./customer-notification.component.scss'],
+  providers: [MessageService]
 })
 export class CustomerNotificationComponent {
 
@@ -23,6 +24,7 @@ export class CustomerNotificationComponent {
 
   constructor(private primeConfig: PrimeNGConfig,
     private cdr: ChangeDetectorRef,
+    private messageService: MessageService,
     private cnReviewService: CustomerNotificationReviewService,
     private route: ActivatedRoute) { }
 
@@ -69,14 +71,18 @@ export class CustomerNotificationComponent {
     this.cnReview.createdBy = 1234;
     this.cnReview.updatedBy = 1234;
     this.cnReviewService.saveCustomerNotificationReview(this.cnReview).subscribe((data: any) => {
-      console.log(data);
+      if (data) {
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Customer Notification Updated Successfully' });
+      }
     }, er => console.log(er));
   }
 
   submit() {
     this.cnReview.isSave = true;
     this.cnReviewService.updateCustomerNotificationReview(this.cnReview).subscribe((data: any) => {
-      console.log(data);
+      if (data) {
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Customer Notification Updated Successfully' });
+      }
     }, er => console.log(er));
   }
 

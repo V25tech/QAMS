@@ -1,19 +1,14 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MessageService, PrimeNGConfig } from 'primeng/api';
-import { ChangeControlsService } from '../../../../services/change-controls.service'
 import { ActionPlanReviewService } from 'src/app/modules/change-controls/services/actionplan-review.service';
 import { ActionPlanModel } from 'src/app/models/action-plan.model';
-interface ActionPlan {
-  id: string;
-  description: string;
-  assignedTo: string;
-  status: string;
-}
+
 @Component({
   selector: 'app-action-plans-review',
   templateUrl: './action-plans-review.component.html',
-  styleUrls: ['./action-plans-review.component.scss']
+  styleUrls: ['./action-plans-review.component.scss'],
+  providers: [MessageService]
 })
 export class ActionPlansReviewComponent implements OnInit {
   selectPlantTypeOption: any = "Documentation";
@@ -52,13 +47,14 @@ export class ActionPlansReviewComponent implements OnInit {
   ];
 
   changeControlId: number = 0;
-  constructor(private primeConfig: PrimeNGConfig, private cdr: ChangeDetectorRef,
-    private route: ActivatedRoute, private changeControlsService: ChangeControlsService,
+  constructor(private primeConfig: PrimeNGConfig,
+    private cdr: ChangeDetectorRef,
+    private route: ActivatedRoute,
+    private messageService: MessageService,
     private actionPlanReviewService: ActionPlanReviewService
   ) { }
 
   ngOnInit(): void {
-
     this.primeConfig.ripple = true;
     this.route.queryParams.subscribe(params => {
       this.id = params['id'];
@@ -77,8 +73,9 @@ export class ActionPlansReviewComponent implements OnInit {
 
   updateActionPlan() {
     this.actionPlanReviewService.updateActionPlans(this.currentActionPlan).subscribe((data: any) => {
-      console.log(data);
-      //this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Action plan updated successfully' });
+      if (data) {
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Action Plan Updated Successfully' });
+      }
       this.backToActionPlans();
     }, er => console.log(er));
   }

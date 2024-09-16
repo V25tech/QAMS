@@ -119,10 +119,7 @@ export class ActionPlanFormComponent implements OnInit {
         actionPlan.createdDate = new Date().toISOString();
         actionPlan.targetDate = new Date(actionPlan.targetDate).toISOString();
 
-        console.log(JSON.stringify(actionPlan))
         this.actionPlanService.saveActionPlans(actionPlan).subscribe(res => {
-            console.log(res);
-
             this.refreshEvent.emit(this.actionPlanInput.workflowId);
             this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Action Plan Initiated Successfully' });
             this.buildMainForm();

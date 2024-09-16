@@ -152,8 +152,6 @@ export class RegisterCCComponent implements OnInit {
     this.editCCValue.requestDetails = ccValue.requestDetails;
     this.editCCValue.impactAssessmentDetails = ccValue.impactAssessmentDetails;
     this.editCCValue.modifiedBy = 'Modifier';
-
-    console.log(JSON.stringify(ccValue))
     this.changeControlsService.updateChangeControlRegistration(this.editCCValue).subscribe(res => {
       //console.log(res);
       this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Change Control Login Updated Successfully' });

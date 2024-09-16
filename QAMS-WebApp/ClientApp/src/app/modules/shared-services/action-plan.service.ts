@@ -29,11 +29,15 @@ export class ActionPlanService {
         return this.http.get(this.apiUrl + '/changecontolactionplan/' + actionPlanId);
     }
 
-    getActionsplansByInitIdAndWorkId(init_id: number, work_id: number) {    
+    getActionsplansByInitIdAndWorkId(init_id: number, work_id: number) {
         return this.http.get(`${this.apiUrl}/actionplan/getActionPlanByIntIdandWorkId?p_IntId=${init_id}&p_WorkId=${work_id}`);
     }
 
     savehodreview(actionPlan: ActionPlanModel) {
         return this.http.post(this.apiUrl + '/hodreview/savehodreview', JSON.stringify(actionPlan));
+    }
+
+    getActivitiesByInitId(initId: number) {
+        return this.http.get(this.apiUrl + '/actionplan/getactivitiesbyinitid?p_IntId=' + initId);
     }
 }

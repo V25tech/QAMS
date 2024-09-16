@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PrimeNGConfig } from 'primeng/api';
+import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { ActionPlanInput, ActionPlanModel } from 'src/app/models/action-plan.model';
 import { CftReview } from 'src/app/models/cft-review.model';
 import { CC_Model } from 'src/app/models/changecontrol.model';
@@ -12,7 +12,8 @@ import { CommonService } from 'src/app/modules/shared-services/common.service';
 @Component({
   selector: 'app-cft-review',
   templateUrl: './cft-review.component.html',
-  styleUrls: ['./cft-review.component.scss']
+  styleUrls: ['./cft-review.component.scss'],
+  providers: [MessageService]
 })
 export class CftReviewComponent {
 
@@ -35,6 +36,7 @@ export class CftReviewComponent {
   constructor(private primeConfig: PrimeNGConfig,
     private cdr: ChangeDetectorRef,
     private commonService: CommonService,
+    private messageService: MessageService,
     private actionPlanService: ActionPlanService,
     private cftReviewService: CftReviewService,
     private route: ActivatedRoute) { }
@@ -65,7 +67,6 @@ export class CftReviewComponent {
   loadActionPlans() {
     this.actionPlanService.getActionsplansByInitIdAndWorkId(this.changeControlId, ActionPlansEnum.CC_CFT_REVIEW_AP).subscribe((p: any) => {
       this.action_plans = p;
-
     }, er => console.log(er));
   }
 
@@ -87,7 +88,7 @@ export class CftReviewComponent {
     }, err => {
       console.log(err);
       this.cftreview = this.getEmptyCftReview();
-    } )
+    })
   }
 
   refresh(event: any) {
@@ -115,15 +116,18 @@ export class CftReviewComponent {
     this.cftreview.createdBy = 1234;
     this.cftreview.updatedBy = 1234;
     this.cftReviewService.saveCftReview(this.cftreview).subscribe((data: any) => {
-      console.log(data);
+      if (data) {
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'CFT Review Updated Successfully' });
+      }
     }, er => console.log(er));
   }
 
   submit() {
     this.cftreview.isSave = true;
-    // this.cftReview
     this.cftReviewService.updateCftReview(this.cftreview).subscribe((data: any) => {
-      console.log(data);
+      if (data) {
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'CFT Review Updated Successfully' });
+      }
     }, er => console.log(er));
   }
 

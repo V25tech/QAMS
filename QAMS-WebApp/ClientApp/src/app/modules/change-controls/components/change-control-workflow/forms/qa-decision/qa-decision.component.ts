@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PrimeNGConfig } from 'primeng/api';
+import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { ActionPlanInput, ActionPlanModel } from 'src/app/models/action-plan.model';
 import { CC_Model } from 'src/app/models/changecontrol.model';
 import { QADecision } from 'src/app/models/qa-decision.model';
@@ -12,7 +12,8 @@ import { CommonService } from 'src/app/modules/shared-services/common.service';
 @Component({
   selector: 'app-qa-decision',
   templateUrl: './qa-decision.component.html',
-  styleUrls: ['./qa-decision.component.scss']
+  styleUrls: ['./qa-decision.component.scss'],
+  providers: [MessageService]
 })
 export class QaDecisionComponent {
 
@@ -49,6 +50,7 @@ export class QaDecisionComponent {
   constructor(private primeConfig: PrimeNGConfig,
     private cdr: ChangeDetectorRef,
     private commonService: CommonService,
+    private messageService: MessageService,
     private actionPlanService: ActionPlanService,
     private qaDecisionService: QaDecisionService,
     private route: ActivatedRoute) { }
@@ -91,11 +93,7 @@ export class QaDecisionComponent {
 
   loadQADecision() {
     this.qaDecisionService.getQaDecisionbyintid(this.changeControlId).subscribe((data: any) => {
-      if (data) { this.qaDecision = data; }
-      else {
-        this.qaDecision = this.getEmptyQADecision();
-      }
-
+      this.qaDecision = data ?? this.getEmptyQADecision();
     }, er => {
       this.qaDecision = this.getEmptyQADecision();
       console.log(er);
@@ -120,15 +118,19 @@ export class QaDecisionComponent {
     this.qaDecision.createdBy = 1234;
     this.qaDecision.updatedBy = 1234;
     this.qaDecisionService.saveQaDecision(this.qaDecision).subscribe((data: any) => {
-      console.log(data);
+      if (data) {
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'QA Decision Updated Successfully' });
+      }
     }, er => console.log(er));
   }
 
   submit() {
     this.qaDecision.isSave = true;
-    this.qaDecision.updatedBy =1234;
+    this.qaDecision.updatedBy = 1234;
     this.qaDecisionService.updateQaDecision(this.qaDecision).subscribe((data: any) => {
-      console.log(data);
+      if (data) {
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'QA Decision Updated Successfully' });
+      }
     }, er => console.log(er));
   }
 

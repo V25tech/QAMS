@@ -1,6 +1,6 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PrimeNGConfig } from 'primeng/api';
+import { MessageService, PrimeNGConfig } from 'primeng/api';
 import { ActionPlanInput, ActionPlanModel } from 'src/app/models/action-plan.model';
 import { CC_Model, HodReview } from 'src/app/models/changecontrol.model';
 import { Hod_ReviewService } from 'src/app/modules/change-controls/services/hod-review.service';
@@ -12,13 +12,14 @@ import { CommonService } from 'src/app/modules/shared-services/common.service';
 @Component({
   selector: 'app-hod-review',
   templateUrl: './hod-review.component.html',
-  styleUrls: ['./hod-review.component.scss']
+  styleUrls: ['./hod-review.component.scss'],
+  providers: [MessageService]
 })
 export class HODReviewComponent implements OnInit {
 
   @Input('changeControl') changeControl: CC_Model;
-  objhod: HodReview ={};
-  isapprove=false;isreturn=false;isreject=false;
+  objhod: HodReview = {};
+  isapprove = false; isreturn = false; isreject = false;
   selectedDate: string = "10/11/2024";
   defaultRadioBtn = 0;
   id: any;
@@ -36,6 +37,7 @@ export class HODReviewComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     private route: ActivatedRoute,
     private commonService: CommonService,
+    private messageService: MessageService,
     private actionPlanService: ActionPlanService,
     private hod_ReviewService: Hod_ReviewService) { }
 
@@ -51,33 +53,33 @@ export class HODReviewComponent implements OnInit {
     //this.setActionPlanInput();
   }
 
-  loadhodreview()
-  {
-    this.hod_ReviewService.gethodreviewbyintid(this.changeControlId).subscribe((data:any)=>{
-      if(data==null || undefined){
-        this.objhod.status="In Progress";
-      }else{
-      this.objhod=data; }
-      
-      if(data==null || undefined){
-        
+  loadhodreview() {
+    this.hod_ReviewService.gethodreviewbyintid(this.changeControlId).subscribe((data: any) => {
+      if (data == null || undefined) {
+        this.objhod.status = "In Progress";
+      } else {
+        this.objhod = data;
       }
-     else{
-      if(this.objhod.status!='In Progress'){
-        if(this.objhod.status=='Approve'){
-          this.isapprove=true;
-        }else if(this.objhod.status=='Reject'){
-          this.isreject=true;
-        }else if(this.objhod.status=='Return'){
-          this.isreturn=true;
+
+      if (data == null || undefined) {
+
+      }
+      else {
+        if (this.objhod.status != 'In Progress') {
+          if (this.objhod.status == 'Approve') {
+            this.isapprove = true;
+          } else if (this.objhod.status == 'Reject') {
+            this.isreject = true;
+          } else if (this.objhod.status == 'Return') {
+            this.isreturn = true;
+          }
+          this.cdr.detectChanges();
         }
-        this.cdr.detectChanges();
       }
-    }
       console.log(data);
     })
   }
- 
+
   loadActionPlans() {
     this.actionPlanService.getActionsplansByInitIdAndWorkId(this.changeControlId, ActionPlansEnum.CC_HOD_REVIEW_AP).subscribe((p: any) => {
       this.action_plans = p;
@@ -99,51 +101,55 @@ export class HODReviewComponent implements OnInit {
     this.visibleSidebar2 = true;
     this.commonService.setActionPlanInput(actionPlanInput);
   }
-  savehod(objhod:HodReview){
-    objhod.isSave=false;
-    objhod.initiativeId=this.changeControlId;
-    objhod.initiativeName="ChangeControl";
-    objhod.plant=3;
-    objhod.createdBy=1234;
-    objhod.updatedBy=1234;
-    this.hod_ReviewService.saveHodReview(objhod).subscribe((data:any)=>{
-
-    });
+  savehod(objhod: HodReview) {
+    objhod.isSave = false;
+    objhod.initiativeId = this.changeControlId;
+    objhod.initiativeName = "ChangeControl";
+    objhod.plant = 3;
+    objhod.createdBy = 1234;
+    objhod.updatedBy = 1234;
+    this.hod_ReviewService.saveHodReview(objhod).subscribe((data: any) => {
+      if (data) {
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'HOD Review Updated Successfully' });
+      }
+    }, er => console.log(er));
   }
-  submithod(objhod:HodReview){
-    objhod.isSave=true;
-    objhod.updatedBy=1234;
-    if(this.isapprove){
-    objhod.status="Approve";
-    } else if(this.isreject){
-      objhod.status="Reject";
-      }else if(this.isreturn){
-        objhod.status="Return";
-        }
-    this.hod_ReviewService.updateHodReview(objhod).subscribe((data:any)=>{
-
-    });
+  submithod(objhod: HodReview) {
+    objhod.isSave = true;
+    objhod.updatedBy = 1234;
+    if (this.isapprove) {
+      objhod.status = "Approve";
+    } else if (this.isreject) {
+      objhod.status = "Reject";
+    } else if (this.isreturn) {
+      objhod.status = "Return";
+    }
+    this.hod_ReviewService.updateHodReview(objhod).subscribe((data: any) => {
+      if (data) {
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'HOD Review Updated Successfully' });
+      }
+    }, er => console.log(er));
   }
-  approvehod(){
-    
-    this.isapprove=true;
-    this.isreject=false;
-    this.isreturn=false;
-    this.objhod.isSave=true;
+  approvehod() {
+
+    this.isapprove = true;
+    this.isreject = false;
+    this.isreturn = false;
+    this.objhod.isSave = true;
     this.cdr.detectChanges();
   }
-  rejecthod(){
-    this.isapprove=false;
-    this.isreject=true;
-    this.isreturn=false;
-    this.objhod.isSave=true;
+  rejecthod() {
+    this.isapprove = false;
+    this.isreject = true;
+    this.isreturn = false;
+    this.objhod.isSave = true;
     this.cdr.detectChanges();
   }
-  returnhod(){
-    this.isapprove=false;
-    this.isreject=false;
-    this.isreturn=true;
-    this.objhod.isSave=true;
+  returnhod() {
+    this.isapprove = false;
+    this.isreject = false;
+    this.isreturn = true;
+    this.objhod.isSave = true;
     this.cdr.detectChanges();
   }
 }
