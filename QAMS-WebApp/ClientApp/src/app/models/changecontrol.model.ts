@@ -69,11 +69,13 @@ export interface ChangeControls {
     status?: string
 }
 export interface ChangeControlsDocument {
-    document?: string,
-    id?: string,
+    uploadfile?: string,
+    title?: string,
+    nd?: string,
     description?: string,
-    uploadedBy?: string,
-    date: string | Date,
+    modifiedBy?: string,
+    createdBy?: string,
+    createdDate?: string | Date,
     parentControlId:number,
     parentType ? : string
 }

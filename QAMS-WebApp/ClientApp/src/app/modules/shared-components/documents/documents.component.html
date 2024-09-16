@@ -8,17 +8,17 @@
     </div>
 
     <p-table #dt dataKey="id" [value]="documentDatasource" [paginator]="true" [rows]="10" [rowsPerPageOptions]="[10, 25, 50]" [showCurrentPageReport]="true"
-    [globalFilterFields]="['document', 'id', 'description', 'uploadedBy']"
+    [globalFilterFields]="['uploadfile', 'nd', 'description', 'uploadedBy']"
         tableStyleClass="table table-striped">
         <ng-template pTemplate="header">
             <tr>
                 <th class="lh-lg">S.No</th>
-                <th pSortableColumn="document" style="width:150px">Document<p-sortIcon field="document"></p-sortIcon>
-                    <p-columnFilter type="text" field="document" display="menu"></p-columnFilter>  </th>
-                <th pSortableColumn="id" style="width:150px">ID <p-columnFilter type="text" field="id" display="menu"></p-columnFilter></th>
-                <th pSortableColumn="Description" style="width:300px">Description <p-columnFilter type="text" field="description" display="menu"></p-columnFilter></th>
-                <th pSortableColumn="Uploaded by" style="width:200px">Uploaded by <p-columnFilter type="text" field="uploadedBy" display="menu"></p-columnFilter> </th>
-                <th pSortableColumn="Uploaded on" style="width:200px">Uploaded on <p-columnFilter type="date" field="date" display="menu"></p-columnFilter></th>
+                <th pSortableColumn="uploadfile" style="width:150px">Document<p-sortIcon field="uploadfile"></p-sortIcon>
+                    <p-columnFilter type="text" field="uploadfile" display="menu"></p-columnFilter>  </th>
+                <th pSortableColumn="nd" style="width:150px">ID <p-columnFilter type="text" field="nd" display="menu"></p-columnFilter></th>
+                <th pSortableColumn="description" style="width:300px">Description <p-columnFilter type="text" field="description" display="menu"></p-columnFilter></th>
+                <th pSortableColumn="createdBy" style="width:200px">Uploaded by <p-columnFilter type="text" field="createdBy" display="menu"></p-columnFilter> </th>
+                <th pSortableColumn="createdDate" style="width:200px">Uploaded on <p-columnFilter type="date" field="createdDate" display="menu"></p-columnFilter></th>
                 <!-- <th style="width:50px">Actions</th> -->
 
             </tr>
@@ -27,11 +27,11 @@
             <tr>
                 <td>{{i+1}}</td>
                 <td><img src="../../../assets/images/vscode-icons--file-type-excel.svg" width="20" height="20">
-                    <span (click)="showDialog()" class="cursor-pointer">{{document.document}}</span></td>
-                <td>{{document.id}}</td>
+                    <span (click)="showDialog()" class="cursor-pointer">{{document.uploadfile}}</span></td>
+                <td>{{document.nd}}</td>
                 <td>{{document.description}}</td>
-                <td>{{document.uploadedBy}}</td>
-                <td>{{document.date | date: 'MM/dd/yyyy'}}</td>
+                <td>{{document.createdBy}}</td>
+                <td>{{document.createdDate | date: 'MM/dd/yyyy'}}</td>
                 <!-- <td class="text-center">
                     <div class="ellipsis-menu">
                         <i class="fa fa-ellipsis-h"></i>

@@ -4,6 +4,7 @@ import { Table } from 'primeng/table';
 import { ChangeControlsDocument } from 'src/app/models/changecontrol.model';
 import { LoginInitiateService } from 'src/app/modules/change-controls/services/login-initiate.service';
 import { DocumentService } from '../../shared-services/document.service';
+import { MessageService } from 'primeng/api';
 interface PageEvent {
   first?: any;
   rows?: any;
@@ -13,7 +14,8 @@ interface PageEvent {
 @Component({
   selector: 'app-documents',
   templateUrl: './documents.component.html',
-  styleUrls: ['./documents.component.scss']
+  styleUrls: ['./documents.component.scss'],
+  providers: [MessageService]
 })
 export class DocumentsComponent implements OnInit {
   documentDatasource: ChangeControlsDocument[] = [];
@@ -25,25 +27,33 @@ export class DocumentsComponent implements OnInit {
   file: File | null = null;
   description = '';
   title = '';
-  constructor(private loginInitiateService: LoginInitiateService, private route: ActivatedRoute, private documentService: DocumentService) {
+  constructor(private loginInitiateService: LoginInitiateService,
+    private route: ActivatedRoute,
+    private messageService: MessageService,
+    private documentService: DocumentService) {
 
   }
   ngOnInit(): void {
-
     this.route.queryParams.subscribe(params => {
       let id = params['id'];
       let splitItesms = id.split('-');
       this.initiativeId = Number.parseInt(splitItesms[splitItesms.length - 1]);
-      this.loadDocuments();
+      this.loadDocuments(this.initiativeId, 'ChangeControl');
     })
 
   }
 
-  loadDocuments() {
-    this.loginInitiateService.getDocumentData().subscribe((data: any) => {
+  loadDocuments(initID: number, initType: string) {
+
+    this.documentService.getAllDocuments(initID, initType).subscribe((data) => {
+      console.log(data);
       this.documentDatasource = data;
-      this.documentDatasource.forEach(dataSource => (dataSource.date = new Date(dataSource.date)))
-    });
+    }, er => console.log(er));
+
+    // this.loginInitiateService.getDocumentData().subscribe((data: any) => {
+    //   this.documentDatasource = data;
+    //   this.documentDatasource.forEach(dataSource => (dataSource.date = new Date(dataSource.date)))
+    // });
   }
 
   onFileSelected(event: Event): void {
@@ -54,7 +64,6 @@ export class DocumentsComponent implements OnInit {
   }
 
   onSubmit(): void {
-    debugger
     if (this.file) {
       const formData: FormData = new FormData();
       formData.append('file', this.file);
@@ -64,7 +73,10 @@ export class DocumentsComponent implements OnInit {
       formData.append('parentType', 'ChangeControl');
       formData.append('CreatedBy', '123');
       this.documentService.uploadAndSaveInfo(formData).subscribe(event => {
-        console.log(event);
+        if (event) {
+          this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Document Uploaded Successfully' });
+          this.closeNavBar();
+        }
       }, er => console.log(er));
     }
   }

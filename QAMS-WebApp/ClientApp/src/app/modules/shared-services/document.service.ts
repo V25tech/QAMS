@@ -10,14 +10,14 @@ export class DocumentService {
 
     constructor(private http: HttpClient) { }
 
-    getAllDocuments(initiativeId: number): Observable<any> {
-        return this.http.get('assets/json/actionPlans.json');
+    getAllDocuments(initiativeId: number, initType: string): Observable<any> {
+        return this.http.get(this.apiUrl + `/newdocument/getdocbyparent?p_parentId=${initiativeId}&p_Type=${initType}`);
     }
 
     uploadAndSaveInfo(formData: FormData) {
-        return this.http.post(this.apiUrl + '/newdocument/uploadandsave', formData,{
+        return this.http.post(this.apiUrl + '/newdocument/uploadandsave', formData, {
             reportProgress: true,
             observe: 'events'
-          });
+        });
     }
 }
