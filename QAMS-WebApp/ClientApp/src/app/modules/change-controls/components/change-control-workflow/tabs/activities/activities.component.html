@@ -14,171 +14,26 @@
     </div>
   </div>
 
-  <div class="activity-block p-3">
+  <div class="activity-block p-3" *ngIf="activityEvents">
 
-
-    <div class="d-flex">
+    <div class="d-flex" *ngFor="let actDate of activityEvents">
       <div class="activity-time">
-        <p>16-10-2023</p>
+        <p>{{actDate.dateKey}}</p>
       </div>
       <div class="activity-items">
         <ul>
-          <li class="d-flex">
+          <li class="d-flex" *ngFor="let act of actDate.activites">
             <div class="activity-icon">
               <img src="../../../assets/images/mdi--edit-outline.svg" width="15" height="15">
             </div>
             <div class="activity-info">
-              <p class="mb-0 p-date-styles"> <span class="name-styles">Stef Bogaerts</span> Initiated Action Plan <span
-                  class="p-date-styles">CC-PL01-24-0001-WP1</span></p>
-              <span class="activity-date">04:05am IST</span>
-            </div>
-
-          </li>
-          <li class="d-flex">
-            <div class="activity-icon">
-              <img src="../../../assets/images/mdi--edit-outline.svg" width="15" height="15">
-            </div>
-            <div class="activity-info">
-              <p class="mb-0 p-date-styles"> <span class="name-styles">Stef Bogaerts</span> Initiated Action Plan <span
-                  class="p-date-styles">CC-PL01-24-0001-WP1</span></p>
-              <span class="activity-date">04:05am IST</span>
-            </div>
-
-          </li>
-          <li class="d-flex">
-            <div class="activity-icon">
-              <img src="../../../assets/images/mdi--edit-outline.svg" width="15" height="15">
-            </div>
-            <div class="activity-info">
-              <p class="mb-0 p-date-styles"> <span class="name-styles">Stef Bogaerts</span> Initiated Action Plan <span
-                  class="p-date-styles">CC-PL01-24-0001-WP1</span></p>
-              <span class="activity-date">04:05am IST</span>
-            </div>
-
-          </li>
-          <li class="d-flex">
-            <div class="activity-icon">
-              <img src="../../../assets/images/mdi--edit-outline.svg" width="15" height="15">
-            </div>
-            <div class="activity-info">
-              <p class="mb-0 p-date-styles"> <span class="name-styles">Stef Bogaerts</span> Initiated Action Plan <span
-                  class="p-date-styles">CC-PL01-24-0001-WP1</span></p>
-              <span class="activity-date">04:05am IST</span>
+              <p class="mb-0 p-date-styles"> <span class="name-styles">{{act.eventStr}}</span></p>
+              <span class="activity-date">{{act.time}}</span>
             </div>
 
           </li>
         </ul>
       </div>
     </div>
-
-    <div class="d-flex">
-      <div class="activity-time">
-        <p>16-10-2023</p>
-      </div>
-      <div class="activity-items">
-        <ul>
-          <li class="d-flex">
-            <div class="activity-icon">
-              <img src="../../../assets/images/mdi--edit-outline.svg" width="15" height="15">
-            </div>
-            <div class="activity-info">
-              <p class="mb-0 p-date-styles"> <span class="name-styles">Stef Bogaerts</span> Initiated Action Plan <span
-                  class="p-date-styles">CC-PL01-24-0001-WP1</span></p>
-              <span class="activity-date">04:05am IST</span>
-            </div>
-
-          </li>
-          <li class="d-flex">
-            <div class="activity-icon">
-              <img src="../../../assets/images/mdi--edit-outline.svg" width="15" height="15">
-            </div>
-            <div class="activity-info">
-              <p class="mb-0 p-date-styles"> <span class="name-styles">Stef Bogaerts</span> Initiated Action Plan <span
-                  class="p-date-styles">CC-PL01-24-0001-WP1</span></p>
-              <span class="activity-date">04:05am IST</span>
-            </div>
-
-          </li>
-          <li class="d-flex">
-            <div class="activity-icon">
-              <img src="../../../assets/images/mdi--edit-outline.svg" width="15" height="15">
-            </div>
-            <div class="activity-info">
-              <p class="mb-0 p-date-styles"> <span class="name-styles">Stef Bogaerts</span> Initiated Action Plan <span
-                  class="p-date-styles">CC-PL01-24-0001-WP1</span></p>
-              <span class="activity-date">04:05am IST</span>
-            </div>
-
-          </li>
-          <li class="d-flex">
-            <div class="activity-icon">
-              <img src="../../../assets/images/mdi--edit-outline.svg" width="15" height="15">
-            </div>
-            <div class="activity-info">
-              <p class="mb-0 p-date-styles"> <span class="name-styles">Stef Bogaerts</span> Initiated Action Plan <span
-                  class="p-date-styles">CC-PL01-24-0001-WP1</span></p>
-              <span class="activity-date">04:05am IST</span>
-            </div>
-
-          </li>
-        </ul>
-      </div>
-    </div>
-
-
-    <div class="d-flex">
-      <div class="activity-time">
-        <p>16-10-2023</p>
-      </div>
-      <div class="activity-items">
-        <ul>
-          <li class="d-flex">
-            <div class="activity-icon">
-              <img src="../../../assets/images/mdi--edit-outline.svg" width="15" height="15">
-            </div>
-            <div class="activity-info">
-              <p class="mb-0 p-date-styles"> <span class="name-styles">Stef Bogaerts</span> Initiated Action Plan <span
-                  class="p-date-styles">CC-PL01-24-0001-WP1</span></p>
-              <span class="activity-date">04:05am IST</span>
-            </div>
-
-          </li>
-          <li class="d-flex">
-            <div class="activity-icon">
-              <img src="../../../assets/images/mdi--edit-outline.svg" width="15" height="15">
-            </div>
-            <div class="activity-info">
-              <p class="mb-0 p-date-styles"> <span class="name-styles">Stef Bogaerts</span> Initiated Action Plan <span
-                  class="p-date-styles">CC-PL01-24-0001-WP1</span></p>
-              <span class="activity-date">04:05am IST</span>
-            </div>
-
-          </li>
-          <li class="d-flex">
-            <div class="activity-icon">
-              <img src="../../../assets/images/mdi--edit-outline.svg" width="15" height="15">
-            </div>
-            <div class="activity-info">
-              <p class="mb-0 p-date-styles"> <span class="name-styles">Stef Bogaerts</span> Initiated Action Plan <span
-                  class="p-date-styles">CC-PL01-24-0001-WP1</span></p>
-              <span class="activity-date">04:05am IST</span>
-            </div>
-
-          </li>
-          <li class="d-flex">
-            <div class="activity-icon">
-              <img src="../../../assets/images/mdi--edit-outline.svg" width="15" height="15">
-            </div>
-            <div class="activity-info">
-              <p class="mb-0 p-date-styles"> <span class="name-styles">Stef Bogaerts</span> Initiated Action Plan <span
-                  class="p-date-styles">CC-PL01-24-0001-WP1</span></p>
-              <span class="activity-date">04:05am IST</span>
-            </div>
-
-          </li>
-        </ul>
-      </div>
-    </div>
-
   </div>
 </div>
