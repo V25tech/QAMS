@@ -21,7 +21,14 @@ ReviewComments_PSY=@ReviewComments_PSY,
 IsSave_PSY=@IsSave_PSY,
 Status_PSY=@Status_PSY,
 UpdatedBy_PSY=@UpdatedBy_PSY,
-UpdatedDate_PSY=@UpdatedDate_PSY WHERE  [QAId_PSY] = @QAId_PSY ;  select @QAId_PSY; 
+UpdatedDate_PSY=@UpdatedDate_PSY WHERE  [QAId_PSY] = @QAId_PSY ;  
+IF(@Status_PSY='REJECT' OR @Status_PSY='REJECTED')
+ BEGIN
+  DECLARE @CCID INT=0
+ SET @CCID=(SELECT InitiativeId_PSY FROM QAReview_PSY WHERE QAId_PSY=@QAId_PSY)
+ UPDATE ChangeControlRegistration_PSY SET Status_PSY=@Status_PSY WHERE ChangeControlId_PSY=@CCID
+ END
+select @QAId_PSY; 
   
   END TRY 
  BEGIN CATCH 

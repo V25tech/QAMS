@@ -14,7 +14,7 @@
  AS 
  BEGIN 
   BEGIN TRY 
-  
+ DECLARE @CCID INT=0 
  UPDATE [dbo].[Closure_PSY] SET 
 IsSave_PSY=@IsSave_PSY,
 ImplementEffChanges_PSY=@ImplementEffChanges_PSY,
@@ -29,7 +29,18 @@ TrainingCompleted_PSY=@TrainingCompleted_PSY,
 IsApprovedChangesEff_PSY=@IsApprovedChangesEff_PSY,
 IsIdentifiedActions_PSY=@IsIdentifiedActions_PSY,
 CDocument_PSY=@CDocument_PSY
- WHERE  [CId_PSY] = @CId_PSY ;  select @CId_PSY; 
+ WHERE  [CId_PSY] = @CId_PSY ; 
+ IF(@Status_PSY='APPROVE' OR @Status_PSY='APPROVED')
+ BEGIN
+ SET @CCID=(SELECT InitiativeId_PSY FROM Closure_PSY WHERE CId_PSY=@CId_PSY)
+ UPDATE ChangeControlRegistration_PSY SET Status_PSY=@Status_PSY WHERE ChangeControlId_PSY=@CCID
+ END
+ ELSE IF(@Status_PSY='REJECT' OR @Status_PSY='REJECTED')
+ BEGIN
+ SET @CCID=(SELECT InitiativeId_PSY FROM Closure_PSY WHERE CId_PSY=@CId_PSY)
+ UPDATE ChangeControlRegistration_PSY SET Status_PSY=@Status_PSY WHERE ChangeControlId_PSY=@CCID
+ END
+  select @CId_PSY; 
   
   END TRY 
  BEGIN CATCH 

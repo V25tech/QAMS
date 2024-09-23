@@ -21,7 +21,14 @@ UpdatedDate_PSY=@UpdatedDate_PSY,
 Plant_PSY=@Plant_PSY,
 IsProposedChange_PSY=@IsProposedChange_PSY,
 CFTDocument_PSY=@CFTDocument_PSY
- WHERE  [CFTId_PSY] = @CFTId_PSY ;  select @CFTId_PSY; 
+ WHERE  [CFTId_PSY] = @CFTId_PSY ;  
+ IF(@Status_PSY='REJECT' OR @Status_PSY='REJECTED')
+ BEGIN
+  DECLARE @CCID INT=0
+ SET @CCID=(SELECT InitiativeId_PSY FROM CFTReview_PSY WHERE CFTId_PSY=@CFTId_PSY)
+ UPDATE ChangeControlRegistration_PSY SET Status_PSY=@Status_PSY WHERE ChangeControlId_PSY=@CCID
+ END
+ select @CFTId_PSY; 
   
   END TRY 
  BEGIN CATCH 
